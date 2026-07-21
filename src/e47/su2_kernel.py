@@ -96,7 +96,7 @@ def build_e47_operators() -> E47Operators:
     return E47Operators(
         single_spin=CANONICAL_SINGLE_SPIN,
         single_dimension=SINGLE_REPRESENTATION_DIMENSION,
-        carrier_dimension=EXPECTED_CARRIER_DIMENSION,
+        carrier_dimension=identity_total.shape[0],
         identity_total=identity_total,
         total_jx=total_jx,
         total_jy=total_jy,
