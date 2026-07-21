@@ -109,6 +109,9 @@ def _as_square_matrix(
 ) -> ComplexArray:
     """Convert an input to a finite square complex matrix."""
 
+    if hasattr(matrix, "full") and callable(matrix.full):
+        matrix = matrix.full()
+
     array = np.asarray(matrix, dtype=np.complex128)
 
     if array.ndim != 2:
@@ -174,6 +177,9 @@ def apply_contraction(
     """Apply one contraction step to a vector or matrix of states."""
 
     Gamma = _as_square_matrix(gamma, name="gamma")
+    if hasattr(state, "full") and callable(state.full):
+        state = state.full()
+
     state_array = np.asarray(state, dtype=np.complex128)
 
     if state_array.ndim not in (1, 2):
@@ -215,6 +221,9 @@ def iterate_contraction(
         raise ValueError("iterations must be non-negative.")
 
     Gamma = _as_square_matrix(gamma, name="gamma")
+    if hasattr(state, "full") and callable(state.full):
+        state = state.full()
+
     result = np.asarray(state, dtype=np.complex128).copy()
 
     if result.ndim not in (1, 2):

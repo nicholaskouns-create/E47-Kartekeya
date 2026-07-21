@@ -42,6 +42,16 @@ def _to_json_compatible(value: Any) -> Any:
         If the value type is not supported.
     """
 
+    if isinstance(value, E47ValidationResults):
+        return {
+            "kernel_validation": _to_json_compatible(value.kernel_validation),
+            "projector_validation": _to_json_compatible(value.projector_validation),
+            "contraction_validation": _to_json_compatible(value.contraction_validation),
+            "semigroup_validation": _to_json_compatible(value.semigroup_validation),
+            "qutip_validation": _to_json_compatible(value.qutip_validation),
+            "valid": value.valid,
+        }
+
     if is_dataclass(value):
         return {
             key: _to_json_compatible(item)
@@ -97,7 +107,7 @@ def validation_results_to_dict(
 def write_validation_certificate(
     results: E47ValidationResults,
     output_path: str | Path,
-) -> None:
+) -> Path:
     """Write an E47 validation certificate to a JSON file.
 
     The file is written with sorted keys for reproducibility and ends with
@@ -110,10 +120,10 @@ def write_validation_certificate(
     output_path
         Path to the output JSON file. Parent directories are created if needed.
 
-    Raises
-    ------
-    TypeError
-        If any certificate field contains an unsupported type.
+    Returns
+    -------
+    pathlib.Path
+        The normalized output path that was written.
     """
 
     path = Path(output_path)
@@ -124,6 +134,8 @@ def write_validation_certificate(
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, sort_keys=True, indent=2)
         f.write("\n")
+
+    return path
 
 
 def read_validation_certificate(
