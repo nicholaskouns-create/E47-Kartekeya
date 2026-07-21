@@ -1,0 +1,115 @@
+{
+  "module": "qutip_validation",
+  "status": "pass",
+  "generated_at": "2026-07-21T21:19:19Z",
+  "python_version": "3.8+",
+  "dependencies": {
+    "numpy": ">=1.19.0",
+    "scipy": ">=1.5.0",
+    "qutip": ">=4.5.0"
+  },
+  "inputs": {
+    "base_spin": 2,
+    "base_dimension": 5,
+    "tensor_product_rank": 3,
+    "total_hilbert_dimension": 125
+  },
+  "results": {
+    "carrier_dimension": 125,
+    "kernel_dimension": 47,
+    "coherence_fraction": 0.376,
+    "coherence_fraction_exact": "47/125",
+    "spectral_gap": 11664,
+    "casimir_eigenvalue_spectrum": {
+      "lambda_0": 0,
+      "lambda_2": 2,
+      "lambda_6": 6,
+      "lambda_12": 12,
+      "lambda_20": 20,
+      "lambda_30": 30,
+      "lambda_42": 42
+    },
+    "kernel_operator": "K = (C - 6I)(C - 30I)",
+    "target_casimir_roots": [6, 30],
+    "target_j_values": [2, 5],
+    "kernel_multiplicity_j2": 5,
+    "kernel_dimension_j2": 25,
+    "kernel_multiplicity_j5": 11,
+    "kernel_dimension_j5": 22,
+    "total_kernel_dimension": 47
+  },
+  "tolerances": {
+    "eigenvalue_rounding_decimals": 5,
+    "floating_point_epsilon": 1e-10,
+    "dimension_check_exact": true,
+    "coherence_fraction_tolerance": 1e-3
+  },
+  "checks": [
+    {
+      "name": "Hilbert space dimension",
+      "expected": 125,
+      "computed": 125,
+      "pass": true,
+      "tolerance": "exact"
+    },
+    {
+      "name": "Kernel dimension (E_47)",
+      "expected": 47,
+      "computed": 47,
+      "pass": true,
+      "tolerance": "exact"
+    },
+    {
+      "name": "Coherence fraction (Ω_c)",
+      "expected": 0.376,
+      "computed": 0.376,
+      "pass": true,
+      "tolerance": 0.001,
+      "relative_error": 0.0
+    },
+    {
+      "name": "Spectral gap (γ)",
+      "expected": 11664,
+      "computed": 11664,
+      "pass": true,
+      "tolerance": "exact"
+    },
+    {
+      "name": "Tensor product decomposition",
+      "description": "5 ⊗ 5 ⊗ 5 decomposes into irreps with total dimension 125",
+      "pass": true
+    },
+    {
+      "name": "Kernel filter idempotence",
+      "description": "K² eigenvalues at kernel are zero (projector property)",
+      "pass": true
+    },
+    {
+      "name": "Casimir eigenvalue clustering",
+      "description": "All states segregate by j quantum number via Casimir operator",
+      "pass": true
+    }
+  ],
+  "source_commit": "1d0457cc6b91316bd8184cb8bbc1b11accb697a3",
+  "source_file": "tests/qutip_validation.py",
+  "mathematical_framework": {
+    "hilbert_space": "V = V_2 ⊗ V_2 ⊗ V_2 where V_2 is Spin-2 irrep",
+    "casimir_operator": "C = J_x² + J_y² + J_z² with eigenvalues λ = j(j+1)",
+    "kernel_filter": "K = (C - 6I)(C - 30I) targets j=2 (λ=6) and j=5 (λ=30) sectors",
+    "invariant_kernel": "E_47 = ker(K) is the 47-dimensional invariant subspace",
+    "coherence_constant": "Ω_c = dim(E_47) / dim(V) = 47/125 = 0.376"
+  },
+  "reproducibility": {
+    "instructions": "Run: python tests/qutip_validation.py",
+    "expected_output": "All VALID checks in console output",
+    "random_seed": "None (deterministic spectral decomposition)",
+    "floating_point_notes": "Eigenvalue rounding to 5 decimals removes numerical artifacts from diagonalization"
+  },
+  "notes": [
+    "QuTiP's eigenenergies() method performs full diagonalization of Hermitian operators.",
+    "Kernel dimension extracted by counting eigenvalues == 0.0 after rounding.",
+    "Spectral gap is smallest positive eigenvalue of K², indicating decay rate of transient noise.",
+    "All computations are deterministic (no Monte Carlo sampling).",
+    "This validation forms the quantum foundation of the E47 paradigm."
+  ]
+}
