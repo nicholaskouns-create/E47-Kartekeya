@@ -118,15 +118,19 @@ def run_all_validations() -> E47ValidationResults:
     projector_validation = validate_e47_projector(projector_data, operators)
 
     # Layer 3: Contraction validation
+    # contraction and semigroup modules expect raw numpy arrays
+    kernel_array = operators.kernel.full()
+    projector_array = projector_data.projector.full()
+
     contraction_validation = validate_contraction(
-        operators.kernel,
-        projector_data.projector,
+        kernel_array,
+        projector_array,
     )
 
     # Layer 4: Semigroup validation
     semigroup_validation = validate_semigroup(
-        operators.kernel,
-        projector_data.projector,
+        kernel_array,
+        projector_array,
     )
 
     # Layer 5: QuTiP validation (simplified)

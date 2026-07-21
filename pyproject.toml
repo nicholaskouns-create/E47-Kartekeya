@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "e47"
+version = "0.1.0"
+description = "Canonical E47 SU(2) kernel algebra and validation"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "qutip",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

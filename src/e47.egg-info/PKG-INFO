@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: e47
+Version: 0.1.0
+Summary: Canonical E47 SU(2) kernel algebra and validation
+Requires-Python: >=3.10
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: qutip
+Dynamic: license-file

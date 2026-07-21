@@ -91,13 +91,15 @@ def validation_results_to_dict(
         If any certificate field contains an unsupported type.
     """
 
-    return _to_json_compatible(results)
+    payload = _to_json_compatible(results)
+    payload["valid"] = results.valid
+    return payload
 
 
 def write_validation_certificate(
     results: E47ValidationResults,
     output_path: str | Path,
-) -> None:
+) -> Path:
     """Write an E47 validation certificate to a JSON file.
 
     The file is written with sorted keys for reproducibility and ends with
@@ -109,6 +111,11 @@ def write_validation_certificate(
         Complete E47 validation certificate.
     output_path
         Path to the output JSON file. Parent directories are created if needed.
+
+    Returns
+    -------
+    Path
+        The resolved path of the written certificate file.
 
     Raises
     ------
@@ -124,6 +131,8 @@ def write_validation_certificate(
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, sort_keys=True, indent=2)
         f.write("\n")
+
+    return path
 
 
 def read_validation_certificate(

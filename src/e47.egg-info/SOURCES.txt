@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/e47/__init__.py
+src/e47/contraction.py
+src/e47/mathematical_city.py
+src/e47/projector.py
+src/e47/semigroup.py
+src/e47/serialization.py
+src/e47/su2_kernel.py
+src/e47/validation_results.py
+src/e47.egg-info/PKG-INFO
+src/e47.egg-info/SOURCES.txt
+src/e47.egg-info/dependency_links.txt
+src/e47.egg-info/requires.txt
+src/e47.egg-info/top_level.txt
+tests/test_qutip_validation.py
