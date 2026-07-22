@@ -1,0 +1,23 @@
+{
+  "valid": true,
+  "carrier_dimension": 125,
+  "kernel_dimension": 47,
+  "coherence_ratio": 0.376,
+  "casimir_spectrum": [
+    0.0,
+    2.0,
+    6.0,
+    12.0,
+    20.0,
+    30.0,
+    42.0
+  ],
+  "kernel_eigenvalues": [
+    0.0
+  ],
+  "projector_rank": 47,
+  "projector_hermitian_error": 0.0,
+  "projector_idempotence_error": 0.0,
+  "kernel_annihilation_error": 0.0,
+  "contraction_limit_error": 6.144839727475527e-12
+}
