@@ -119,14 +119,14 @@ def run_all_validations() -> E47ValidationResults:
 
     # Layer 3: Contraction validation
     contraction_validation = validate_contraction(
-        operators.kernel,
-        projector_data.projector,
+        operators.kernel.full(),
+        projector_data.projector.full(),
     )
 
     # Layer 4: Semigroup validation
     semigroup_validation = validate_semigroup(
-        operators.kernel,
-        projector_data.projector,
+        operators.kernel.full(),
+        projector_data.projector.full(),
     )
 
     # Layer 5: QuTiP validation (simplified)
