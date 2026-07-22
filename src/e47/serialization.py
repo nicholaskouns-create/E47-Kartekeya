@@ -91,7 +91,9 @@ def validation_results_to_dict(
         If any certificate field contains an unsupported type.
     """
 
-    return _to_json_compatible(results)
+    payload = _to_json_compatible(results)
+    payload["valid"] = results.valid
+    return payload
 
 
 def write_validation_certificate(
