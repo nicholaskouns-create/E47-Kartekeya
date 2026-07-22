@@ -66,7 +66,11 @@ def build_e47_operators() -> E47Operators:
     jz_total = j1z + j2z + j3z
 
     carrier_dimension = BASE_DIMENSION**TENSOR_PRODUCT_RANK
-    identity_total = qt.qeye(carrier_dimension)
+    identity_total = qt.tensor(
+        identity_single,
+        identity_single,
+        identity_single,
+    )
     casimir = jx_total * jx_total + jy_total * jy_total + jz_total * jz_total
     casimir = 0.5 * (casimir + casimir.dag())
 
