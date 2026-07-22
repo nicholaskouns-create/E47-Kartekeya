@@ -7,6 +7,12 @@ of the E47 construction:
     K = (C - 6I)(C - 30I)
     E₄₇ = ker(K),       dim(E₄₇) = 47
 
+and of the SU(3) adjoint 512-dimensional singlet construction:
+
+    V = V_adj ⊗ V_adj ⊗ V_adj,    dim(V) = 512
+    K = C₂^tot
+    Singlet = ker(C₂^tot),       dim = 2
+
 Public API includes operators, projectors, contractions, semigroups,
 and aggregated validation infrastructure.
 
@@ -52,7 +58,26 @@ from .validation_results import (
     run_all_validations,
 )
 
+from .su3_adjoint import (
+    SU3AdjointOperators,
+    SU3Certificate,
+    SU3SingletProjector,
+    adjoint_generators,
+    build_su3_adjoint_operators,
+    build_total_casimir,
+    construct_singlet_projector,
+    d_state,
+    f_state,
+    gell_mann_matrices,
+    leakage,
+    run_su3_adjoint_validation,
+    structure_constants,
+    symmetric_structure_constants,
+    validate_su3_adjoint,
+)
+
 __all__ = [
+    # SU(2) E47 kernel
     "E47Operators",
     "KernelValidation",
     "E47Projector",
@@ -74,4 +99,20 @@ __all__ = [
     "require_valid_semigroup",
     "run_all_validations",
     "require_all_validations",
+    # SU(3) 512-dim adjoint
+    "SU3AdjointOperators",
+    "SU3Certificate",
+    "SU3SingletProjector",
+    "adjoint_generators",
+    "build_su3_adjoint_operators",
+    "build_total_casimir",
+    "construct_singlet_projector",
+    "d_state",
+    "f_state",
+    "gell_mann_matrices",
+    "leakage",
+    "run_su3_adjoint_validation",
+    "structure_constants",
+    "symmetric_structure_constants",
+    "validate_su3_adjoint",
 ]
