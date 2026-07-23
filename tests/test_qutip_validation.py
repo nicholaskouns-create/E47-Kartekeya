@@ -12,6 +12,7 @@ from __future__ import annotations
 import pytest
 
 from e47.serialization import validation_results_to_dict
+from e47.su2_kernel import build_e47_operators
 from e47.validation_results import (
     require_all_validations,
     run_all_validations,
@@ -35,6 +36,12 @@ def test_qutip_validation_carrier_dimension() -> None:
     """Assert the carrier dimension is 125."""
     results = run_all_validations()
     assert results.qutip_validation.carrier_dimension == 125
+
+
+def test_qutip_validation_carrier_dimension_matches_constructed_operator() -> None:
+    """Assert the reported carrier dimension matches the constructed operator."""
+    operators = build_e47_operators()
+    assert operators.carrier_dimension == operators.identity_total.shape[0]
 
 
 def test_qutip_validation_kernel_dimension() -> None:

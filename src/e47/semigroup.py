@@ -70,6 +70,9 @@ class SemigroupValidation:
 def _as_square_matrix(matrix: ArrayLike, *, name: str) -> ComplexArray:
     """Convert an input to a finite square complex matrix."""
 
+    if hasattr(matrix, "full") and callable(matrix.full):
+        matrix = matrix.full()
+
     array = np.asarray(matrix, dtype=np.complex128)
 
     if array.ndim != 2:
@@ -130,6 +133,9 @@ def apply_semigroup(
     """Apply a semigroup matrix to one state or columns of states."""
 
     S = _as_square_matrix(semigroup, name="semigroup")
+    if hasattr(state, "full") and callable(state.full):
+        state = state.full()
+
     state_array = np.asarray(state, dtype=np.complex128)
 
     if state_array.ndim not in (1, 2):
