@@ -54,7 +54,7 @@ The workflow:
 2. Writes the result to `artifacts/e47_validation_certificate.json`.
 3. Commits and pushes the updated certificate only if the content changed.
 
-To trigger a manual regeneration navigate to
+To trigger a manual regeneration, navigate to
 **Actions → Regenerate validation certificate → Run workflow**.
 
 ### Dependency updates (`dependabot.yml`)
