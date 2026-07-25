@@ -52,6 +52,14 @@ from .validation_results import (
     run_all_validations,
 )
 
+from .spectral_compilation import (
+    SpectralCompilation,
+    compile_spectral_kernel,
+    parse_spin,
+    spectral_passport,
+    write_spectral_compilation,
+)
+
 __all__ = [
     "E47Operators",
     "KernelValidation",
@@ -60,6 +68,7 @@ __all__ = [
     "ContractionValidation",
     "SemigroupValidation",
     "E47ValidationResults",
+    "SpectralCompilation",
     "build_e47_operators",
     "validate_e47_kernel",
     "require_valid_e47_kernel",
@@ -74,4 +83,8 @@ __all__ = [
     "require_valid_semigroup",
     "run_all_validations",
     "require_all_validations",
+    "compile_spectral_kernel",
+    "parse_spin",
+    "spectral_passport",
+    "write_spectral_compilation",
 ]

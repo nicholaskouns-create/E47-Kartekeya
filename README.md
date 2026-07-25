@@ -34,6 +34,17 @@ python scripts/generate_validation_certificate.py
 
 Output: `artifacts/e47_validation_certificate.json`
 
+## Spectral kernel compilation
+
+```bash
+python scripts/compile_spectral_kernel.py --spin 2 --copies 3 --select 2 5
+```
+
+Outputs:
+
+- `artifacts/spectral_kernel_certificate.json`
+- `artifacts/spectral_kernel_passport.md`
+
 ## Documentation
 
 - [`docs/provenance.md`](docs/provenance.md) — Canonical implementation chain and reproducibility record
