@@ -127,7 +127,19 @@ def kron_power_operator(
     position: int,
     copies: int,
 ) -> np.ndarray:
-    """Lift a single-site operator into a tensor-product carrier."""
+    """Lift a single-site operator into a tensor-product carrier.
+
+    Parameters
+    ----------
+    single
+        Operator acting on one factor.
+    identity
+        Identity operator for the same single-factor space.
+    position
+        Zero-based factor index where ``single`` is inserted.
+    copies
+        Total number of tensor factors in the carrier.
+    """
 
     factors = [identity] * copies
     factors[position] = single
@@ -138,7 +150,11 @@ def kron_power_operator(
 
 
 def total_generators(spin: Fraction, copies: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Construct total Jx, Jy, Jz on the repeated spin carrier."""
+    """Construct total Jx, Jy, Jz on the repeated spin carrier.
+
+    The result is the sum of the corresponding single-site generator over all
+    tensor-factor positions in ``(V_spin)^(⊗ copies)``.
+    """
 
     single_generators = spin_generators(spin)
     identity = np.eye(spin_dimension(spin), dtype=complex)
