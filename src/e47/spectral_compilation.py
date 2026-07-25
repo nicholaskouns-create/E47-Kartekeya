@@ -153,7 +153,8 @@ def total_generators(spin: Fraction, copies: int) -> tuple[np.ndarray, np.ndarra
     """Construct total Jx, Jy, Jz on the repeated spin carrier.
 
     The result is the sum of the corresponding single-site generator over all
-    tensor-factor positions in ``(V_spin)^(⊗ copies)``.
+    tensor-factor positions in ``(V_spin)^(⊗ copies)`` and is returned as the
+    tuple ``(Jx, Jy, Jz)``.
     """
 
     single_generators = spin_generators(spin)
@@ -302,7 +303,7 @@ def compile_spectral_kernel(
             discrete = discrete - float(optimal_epsilon) * (q_matrix @ discrete)
 
         continuous = expm(-0.01 * q_matrix) @ x0
-        m0, m1 = projector, complement
+        selected_projector, complement_projector = projector, complement
 
         residuals = {
             "casimir_hermiticity": float(
@@ -319,10 +320,12 @@ def compile_spectral_kernel(
             ),
             "matrix_rank_projector": float(np.linalg.matrix_rank(projector, tol=1e-8)),
             "discrete_error_500": float(np.linalg.norm(discrete - x_star)),
-            "continuous_error_t_0_01": float(np.linalg.norm(continuous - x_star)),
+            "continuous_error_t_0p01": float(np.linalg.norm(continuous - x_star)),
             "channel_completeness": float(
                 np.linalg.norm(
-                    m0.conj().T @ m0 + m1.conj().T @ m1 - np.eye(carrier_dimension),
+                    selected_projector.conj().T @ selected_projector
+                    + complement_projector.conj().T @ complement_projector
+                    - np.eye(carrier_dimension),
                     ord=2,
                 )
             ),

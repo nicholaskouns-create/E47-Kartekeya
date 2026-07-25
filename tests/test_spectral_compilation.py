@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -100,7 +101,7 @@ def test_compile_spectral_kernel_rejects_full_selection() -> None:
         )
 
 
-def test_write_spectral_compilation_outputs_files(tmp_path) -> None:
+def test_write_spectral_compilation_outputs_files(tmp_path: Path) -> None:
     """The certificate writer emits both JSON and passport artifacts."""
 
     compilation = compile_spectral_kernel(
