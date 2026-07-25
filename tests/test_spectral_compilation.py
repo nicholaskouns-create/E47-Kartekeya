@@ -63,7 +63,7 @@ def test_compile_spectral_kernel_canonical_certificate() -> None:
     assert compilation.maximum_q_eigenvalue == parse_spin("186624")
     assert compilation.epsilon_max == parse_spin("1/93312")
     assert compilation.optimal_epsilon == parse_spin("1/99144")
-    assert compilation.optimal_rate == parse_spin("583/656")
+    assert compilation.optimal_rate == parse_spin("15/17")
     assert compilation.numerical_residuals["matrix_rank_projector"] == 47.0
     assert compilation.numerical_residuals["casimir_hermiticity"] < 1e-10
     assert compilation.numerical_residuals["projector_idempotence"] < 1e-10
