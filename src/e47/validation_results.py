@@ -78,7 +78,9 @@ class E47ValidationResults:
             "coherence_fraction": self.kernel_validation.results[
                 "coherence_fraction"
             ],
-            "k2_spectral_gap": self.kernel_validation.results["k2_spectral_gap"],
+            "k2_spectral_gap": round(
+                self.kernel_validation.results["k2_spectral_gap"]
+            ),
             "projector_rank": self.projector_validation.results["projector_rank"],
             "projector_trace": self.projector_validation.results["projector_trace"],
             "contraction_epsilon": self.contraction_validation.epsilon,
@@ -155,18 +157,22 @@ def run_all_validations() -> E47ValidationResults:
         )
         qutip_valid = False
 
-    if kernel_validation.results["k2_spectral_gap"] != 11664:
+    if not abs(kernel_validation.results["k2_spectral_gap"] - 11664) < 1e-3:
         qutip_errors.append(
             f"K² spectral gap {kernel_validation.results['k2_spectral_gap']} != 11664."
         )
         qutip_valid = False
+
+    k2_spectral_gap_int: int = round(
+        kernel_validation.results["k2_spectral_gap"]
+    )
 
     qutip_validation = QuTiPValidation(
         valid=qutip_valid,
         carrier_dimension=operators.carrier_dimension,
         kernel_dimension=kernel_validation.results["kernel_dimension"],
         coherence_fraction=actual_coherence,
-        k2_spectral_gap=kernel_validation.results["k2_spectral_gap"],
+        k2_spectral_gap=k2_spectral_gap_int,
         errors=tuple(qutip_errors),
     )
 
