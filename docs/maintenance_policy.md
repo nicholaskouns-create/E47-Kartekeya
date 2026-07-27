@@ -36,7 +36,7 @@ Every CI run enforces these invariants via the drift-detection job.
 
 Triggered on every push to `main` and on every pull request targeting `main`.
 
-1. **test** – Runs `python -m pytest tests/ -v` on Python 3.11 and 3.12.
+1. **test** – Runs `python -m pytest tests/ -v` on Python 3.12.
    All 16 test cases in `tests/test_qutip_validation.py` must pass.
 
 2. **drift-check** – Recomputes the canonical invariants from scratch (without
