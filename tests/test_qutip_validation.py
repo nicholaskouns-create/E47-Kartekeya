@@ -9,6 +9,12 @@ or validation logic.
 
 from __future__ import annotations
 
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
 import pytest
 
 from e47.serialization import validation_results_to_dict
@@ -142,10 +148,37 @@ def test_serialized_certificate_lists_not_tuples() -> None:
     assert isinstance(payload["contraction_validation"]["errors"], list)
 
 
+def test_certificate_generation_script_runs_from_repo_root(tmp_path: Path) -> None:
+    """Assert the standalone certificate generator can import the src package."""
+    repo_root = Path(__file__).resolve().parents[1]
+    output_path = tmp_path / "certificate.json"
+    env = os.environ.copy()
+    env.pop("PYTHONPATH", None)
+
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(repo_root / "scripts" / "generate_validation_certificate.py"),
+            "--output",
+            str(output_path),
+        ],
+        cwd=repo_root,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert payload["valid"] is True
+
+
 __all__ = [
     "test_aggregate_certificate_is_serializable",
     "test_aggregate_summarize_method",
     "test_all_five_layers_pass",
+    "test_certificate_generation_script_runs_from_repo_root",
     "test_contraction_validation_passes",
     "test_kernel_validation_passes",
     "test_projector_validation_passes",
