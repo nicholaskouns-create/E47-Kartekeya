@@ -92,6 +92,11 @@ def validation_results_to_dict(
     """
 
     payload = _to_json_compatible(results)
+<<<<<<< HEAD
+=======
+    # `valid` is a @property on E47ValidationResults, not a dataclass field,
+    # so asdict() does not include it.  Add it explicitly.
+>>>>>>> origin/main
     payload["valid"] = results.valid
     return payload
 

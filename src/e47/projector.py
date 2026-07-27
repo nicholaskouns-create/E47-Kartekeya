@@ -71,8 +71,11 @@ def construct_e47_projector(
     Construct the orthogonal projector onto ker(K).
 
     The eigensystem of K² is used because K² is Hermitian and
-    positive semidefinite. Eigenvectors with eigenvalue below
-    ``kernel_tolerance`` span the canonical E47 kernel.
+    positive semidefinite. ``numpy.linalg.eigh`` is used directly on
+    the dense matrix to guarantee orthonormal eigenvectors even when
+    eigenvalues are degenerate (as they are in the 47-dimensional kernel).
+    Eigenvectors with eigenvalue below ``kernel_tolerance`` span the
+    canonical E47 kernel.
 
     Parameters
     ----------
@@ -96,51 +99,45 @@ def construct_e47_projector(
     if operators is None:
         operators = build_e47_operators()
 
-    eigenvalues, eigenstates = (
-        operators.kernel_squared.eigenstates()
-    )
+    # Use numpy.linalg.eigh on the dense matrix.  eigh is numerically
+    # superior to the QuTiP eigenstates() call for degenerate eigenspaces
+    # because it returns an orthonormal eigenbasis by construction.
+    K2_matrix = operators.kernel_squared.full()
+    eigenvalues, eigenvectors = np.linalg.eigh(K2_matrix)
 
-    kernel_basis = tuple(
-        state
-        for eigenvalue, state in zip(
-            eigenvalues,
-            eigenstates,
-            strict=True,
-        )
-        if abs(float(np.real_if_close(eigenvalue)))
-        < kernel_tolerance
-    )
-
-    if not kernel_basis:
+    kernel_mask = np.abs(eigenvalues) < kernel_tolerance
+    if not np.any(kernel_mask):
         raise RuntimeError(
             "No zero-eigenvalue states were identified for K²."
         )
 
-    projector = sum(
-        (
-            state * state.dag()
-            for state in kernel_basis
-        ),
+    # Orthonormal kernel basis as QuTiP ket objects.
+    kernel_columns = eigenvectors[:, kernel_mask]
+    kernel_basis = tuple(
         qt.Qobj(
-            np.zeros(
-                (
-                    operators.carrier_dimension,
-                    operators.carrier_dimension,
-                ),
-                dtype=complex,
-            ),
-            dims=operators.identity_total.dims,
-        ),
+            kernel_columns[:, k : k + 1],
+            dims=[
+                operators.identity_total.dims[0],
+                [1],
+            ],
+        )
+        for k in range(kernel_columns.shape[1])
     )
 
-    projector = 0.5 * (
-        projector + projector.dag()
+    # Build the projector as the sum of rank-1 outer products.
+    # Because kernel_columns are orthonormal, P = Q Q†.
+    P_matrix = kernel_columns @ kernel_columns.conj().T
+    P_matrix = 0.5 * (P_matrix + P_matrix.conj().T)
+
+    projector = qt.Qobj(
+        P_matrix,
+        dims=operators.identity_total.dims,
     )
 
     return E47Projector(
         projector=projector,
         kernel_basis=kernel_basis,
-        kernel_dimension=len(kernel_basis),
+        kernel_dimension=int(np.sum(kernel_mask)),
         construction_tolerance=kernel_tolerance,
     )
 
@@ -243,8 +240,12 @@ def validate_e47_projector(
         trace_real - EXPECTED_KERNEL_DIMENSION
     )
 
-    projector_eigenvalues = np.real_if_close(
-        projector.eigenenergies()
+    raw_projector_eigenvalues = projector.eigenenergies()
+    projector_eigenvalues_imag_max = float(
+        np.max(np.abs(np.imag(raw_projector_eigenvalues)))
+    )
+    projector_eigenvalues = np.real(
+        raw_projector_eigenvalues
     ).astype(float)
 
     numerical_rank = int(
@@ -370,8 +371,11 @@ def validate_e47_projector(
             ),
             "expected": 0.0,
             "computed": hermiticity_error,
+            "eigenvalue_imaginary_max": projector_eigenvalues_imag_max,
             "pass": (
                 hermiticity_error
+                < hermiticity_tolerance
+                and projector_eigenvalues_imag_max
                 < hermiticity_tolerance
             ),
         },

@@ -58,6 +58,7 @@ from .validation_results import (
     run_all_validations,
 )
 
+<<<<<<< HEAD
 from .su3_adjoint import (
     SU3AdjointOperators,
     SU3Certificate,
@@ -74,6 +75,14 @@ from .su3_adjoint import (
     structure_constants,
     symmetric_structure_constants,
     validate_su3_adjoint,
+=======
+from .spectral_compilation import (
+    SpectralCompilation,
+    compile_spectral_kernel,
+    parse_spin,
+    spectral_passport,
+    write_spectral_compilation,
+>>>>>>> origin/main
 )
 
 __all__ = [
@@ -85,6 +94,7 @@ __all__ = [
     "ContractionValidation",
     "SemigroupValidation",
     "E47ValidationResults",
+    "SpectralCompilation",
     "build_e47_operators",
     "validate_e47_kernel",
     "require_valid_e47_kernel",
@@ -99,6 +109,7 @@ __all__ = [
     "require_valid_semigroup",
     "run_all_validations",
     "require_all_validations",
+<<<<<<< HEAD
     # SU(3) 512-dim adjoint
     "SU3AdjointOperators",
     "SU3Certificate",
@@ -115,4 +126,10 @@ __all__ = [
     "structure_constants",
     "symmetric_structure_constants",
     "validate_su3_adjoint",
+=======
+    "compile_spectral_kernel",
+    "parse_spin",
+    "spectral_passport",
+    "write_spectral_compilation",
+>>>>>>> origin/main
 ]
