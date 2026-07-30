@@ -9,6 +9,22 @@ E47 Recursive Intelligence Code
 This repository validates the finite-dimensional algebraic construction of the
 E47 spectral kernel on V₂⊗V₂⊗V₂.
 
+## Installation
+
+Install the published package from PyPI:
+
+```bash
+pip install e47-kartekeya
+```
+
+The distribution name is `e47-kartekeya`, and the import package is `e47`.
+
+To work from a local checkout instead:
+
+```bash
+pip install -e .
+```
+
 ### Canonical invariants
 
 | Invariant | Value |
@@ -50,3 +66,10 @@ Outputs:
 - [`docs/provenance.md`](docs/provenance.md) — Canonical implementation chain and reproducibility record
 - [`docs/validation_scope.md`](docs/validation_scope.md) — What is and is not validated
 - [`docs/maintenance_policy.md`](docs/maintenance_policy.md) — Automated and manual maintenance procedures
+
+## Package publishing
+
+Publishing is handled by `.github/workflows/publish.yml`.
+
+- Create a GitHub release to build and publish `e47-kartekeya` to PyPI
+- Configure PyPI trusted publishing for this repository before the first release
