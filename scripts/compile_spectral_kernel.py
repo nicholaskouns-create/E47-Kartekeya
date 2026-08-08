@@ -43,6 +43,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=Path("artifacts/spectral_kernel_passport.md"),
     )
     parser.add_argument("--no-matrix-witness", action="store_true")
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="Verify the compiled spectral kernel against canonical invariants.",
+    )
     return parser.parse_args(argv)
 
 
