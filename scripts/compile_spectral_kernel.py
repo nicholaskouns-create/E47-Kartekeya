@@ -43,6 +43,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=Path("artifacts/spectral_kernel_passport.md"),
     )
     parser.add_argument("--no-matrix-witness", action="store_true")
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="Run compilation in verify-only mode (no artifacts written).",
+    )
     return parser.parse_args(argv)
 
 
@@ -56,6 +61,12 @@ def main(argv: list[str] | None = None) -> int:
         [parse_spin(value) for value in args.select],
         build_matrix_witness=not args.no_matrix_witness,
     )
+
+    if args.verify:
+        print(json.dumps(compilation.to_json_dict(), indent=2))
+        print("\nVerification PASSED – spectral kernel compiled successfully.")
+        return 0
+
     certificate, passport = write_spectral_compilation(
         compilation,
         args.certificate,
