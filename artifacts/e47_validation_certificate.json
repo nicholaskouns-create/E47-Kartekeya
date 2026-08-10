@@ -1,0 +1,298 @@
+{
+  "contraction_validation": {
+    "asymptotic_projector_residual": 9.841760953537459e-11,
+    "carrier_dimension": 125,
+    "complement_dimension": 78,
+    "complement_spectral_radius": 0.9437500000000003,
+    "epsilon": 4.822530864197531e-06,
+    "epsilon_max": 1.0716735253772278e-05,
+    "errors": [],
+    "gamma_max_eigenvalue": 1.0000000000000002,
+    "gamma_min_eigenvalue": 0.09999999999999887,
+    "hermitian_residual": 4.5614838681767503e-14,
+    "iterations": 398,
+    "k2_max_eigenvalue": 186624.00000000023,
+    "k2_min_eigenvalue": -3.023683698931091e-11,
+    "kernel_dimension": 47,
+    "kernel_fixed_residual": 5.2903539071262844e-15,
+    "monotone_epsilon_max": 5.358367626886139e-06,
+    "projector_commutator_residual": 5.302322383667821e-15,
+    "spectral_gap": 11663.999999999933,
+    "tolerance": 1e-10,
+    "valid": true
+  },
+  "kernel_validation": {
+    "checks": {
+      "carrier_dimension": {
+        "computed": 125,
+        "description": "dim(V) = dim(V\u2082 \u2297 V\u2082 \u2297 V\u2082) = 5\u00b3 = 125.",
+        "expected": 125,
+        "pass": true
+      },
+      "casimir_eigenvalue_spectrum": {
+        "computed": {
+          "0": 1,
+          "12": 28,
+          "2": 9,
+          "20": 27,
+          "30": 22,
+          "42": 13,
+          "6": 25
+        },
+        "description": "C has eigenvalue multiplicities consistent with V\u2082 \u2297 V\u2082 \u2297 V\u2082 decomposed into SU(2) irreps.",
+        "expected": {
+          "0": 1,
+          "12": 28,
+          "2": 9,
+          "20": 27,
+          "30": 22,
+          "42": 13,
+          "6": 25
+        },
+        "pass": true
+      },
+      "casimir_hermiticity": {
+        "computed": 0.0,
+        "description": "C is Hermitian.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "coherence_fraction": {
+        "computed": 0.376,
+        "description": "dim(E\u2084\u2087) / dim(V) = 47/125.",
+        "expected": 0.376,
+        "pass": true
+      },
+      "k2_max_eigenvalue": {
+        "computed": 186624,
+        "description": "Largest eigenvalue of K\u00b2 is 186624.",
+        "expected": 186624,
+        "pass": true
+      },
+      "k2_positive_semidefinite": {
+        "computed": -3.8513545013291515e-11,
+        "description": "K\u00b2 is positive semidefinite.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "k2_spectral_gap": {
+        "computed": 11664,
+        "description": "Smallest positive eigenvalue of K\u00b2 is 11664.",
+        "expected": 11664,
+        "pass": true
+      },
+      "k2_spectrum": {
+        "computed": [
+          0,
+          11664,
+          12544,
+          19600,
+          32400,
+          186624
+        ],
+        "description": "K\u00b2 spectrum equals {0, 11664, 12544, 19600, 32400, 186624}.",
+        "expected": [
+          0,
+          11664,
+          12544,
+          19600,
+          32400,
+          186624
+        ],
+        "pass": true
+      },
+      "kernel_annihilation": {
+        "computed": 3.66356143212542e-13,
+        "description": "K annihilates every vector in ker(K\u00b2).",
+        "expected": 0.0,
+        "pass": true
+      },
+      "kernel_dimension": {
+        "computed": 47,
+        "description": "dim(ker K) = 47.",
+        "expected": 47,
+        "pass": true
+      },
+      "kernel_hermiticity": {
+        "computed": 0.0,
+        "description": "K = (C \u2212 6I)(C \u2212 30I) is Hermitian.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "kernel_squared_hermiticity": {
+        "computed": 0.0,
+        "description": "K\u00b2 is Hermitian.",
+        "expected": 0.0,
+        "pass": true
+      }
+    },
+    "results": {
+      "carrier_dimension": 125,
+      "casimir_hermitian_residual": 0.0,
+      "coherence_fraction": 0.376,
+      "k2_hermitian_residual": 0.0,
+      "k2_max_eigenvalue": 186624,
+      "k2_spectral_gap": 11664,
+      "k2_unique_eigenvalues": [
+        0,
+        11664,
+        12544,
+        19600,
+        32400,
+        186624
+      ],
+      "kernel_dimension": 47,
+      "kernel_hermitian_residual": 0.0,
+      "max_kernel_annihilation_error": 3.66356143212542e-13
+    },
+    "status": "pass"
+  },
+  "projector_validation": {
+    "checks": {
+      "complement_idempotence": {
+        "computed": 4.9771532071534406e-14,
+        "description": "I - P\u2084\u2087 is also an orthogonal projector.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "kernel_annihilation": {
+        "computed": 2.306547804400579e-11,
+        "description": "K annihilates the range of P\u2084\u2087: K P\u2084\u2087 = 0.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "kernel_basis_dimension": {
+        "computed": 47,
+        "description": "The extracted zero eigenspace of K\u00b2 contains exactly 47 orthonormal vectors.",
+        "expected": 47,
+        "pass": true
+      },
+      "kernel_basis_orthonormality": {
+        "computed": 8.019108826791589e-15,
+        "description": "The extracted kernel eigenvectors form an orthonormal basis.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "kernel_squared_annihilation": {
+        "computed": 3.0778843423254525e-09,
+        "description": "K\u00b2 annihilates the range of P\u2084\u2087.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "orthogonal_decomposition": {
+        "computed": 4.813039516702142e-14,
+        "description": "The projector and its complement have orthogonal ranges.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "projector_commutes_with_casimir": {
+        "computed": 5.1880980981082575e-12,
+        "description": "P\u2084\u2087 is a spectral projector of C and therefore commutes with C.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "projector_commutes_with_kernel": {
+        "computed": 4.4871719659351695e-11,
+        "description": "P\u2084\u2087 and K commute.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "projector_hermiticity": {
+        "computed": 0.0,
+        "description": "P\u2084\u2087 is Hermitian: P\u2084\u2087\u2020 = P\u2084\u2087.",
+        "eigenvalue_imaginary_max": 0.0,
+        "expected": 0.0,
+        "pass": true
+      },
+      "projector_idempotence": {
+        "computed": 4.906691467917368e-14,
+        "description": "P\u2084\u2087 is idempotent: P\u2084\u2087\u00b2 = P\u2084\u2087.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "projector_identity_on_basis": {
+        "computed": 2.7641683914309598e-15,
+        "description": "P\u2084\u2087 acts as the identity on every kernel-basis vector.",
+        "expected": 0.0,
+        "pass": true
+      },
+      "projector_rank": {
+        "computed": 47,
+        "description": "The numerical rank of P\u2084\u2087 is 47.",
+        "expected": 47,
+        "pass": true
+      },
+      "projector_trace": {
+        "absolute_error": 7.105427357601002e-15,
+        "computed": 46.99999999999999,
+        "description": "The trace of an orthogonal projector equals its rank.",
+        "expected": 47,
+        "imaginary_component_error": 0.0,
+        "pass": true
+      }
+    },
+    "inputs": {
+      "carrier_dimension": 125,
+      "expected_rank": 47,
+      "kernel_operator": "K = (C - 6I)(C - 30I)",
+      "projector_definition": "P47 = sum_i |e_i><e_i| over the zero eigenspace of K^2"
+    },
+    "results": {
+      "basis_orthonormality_error": 8.019108826791589e-15,
+      "carrier_dimension": 125,
+      "complement_idempotence_error": 4.9771532071534406e-14,
+      "construction_tolerance": 1e-08,
+      "kernel_annihilation_error": 2.306547804400579e-11,
+      "kernel_basis_dimension": 47,
+      "kernel_squared_annihilation_error": 3.0778843423254525e-09,
+      "maximum_basis_action_error": 2.7641683914309598e-15,
+      "orthogonal_decomposition_error": 4.813039516702142e-14,
+      "projector_casimir_commutator_error": 5.1880980981082575e-12,
+      "projector_hermiticity_error": 0.0,
+      "projector_idempotence_error": 4.906691467917368e-14,
+      "projector_kernel_commutator_error": 4.4871719659351695e-11,
+      "projector_rank": 47,
+      "projector_trace": 46.99999999999999
+    },
+    "status": "pass",
+    "tolerances": {
+      "annihilation_tolerance": 1e-08,
+      "basis_tolerance": 1e-10,
+      "hermiticity_tolerance": 1e-10,
+      "idempotence_tolerance": 1e-10,
+      "trace_tolerance": 1e-08
+    }
+  },
+  "qutip_validation": {
+    "carrier_dimension": 125,
+    "coherence_fraction": 0.376,
+    "errors": [],
+    "k2_spectral_gap": 11664,
+    "kernel_dimension": 47,
+    "valid": true
+  },
+  "semigroup_validation": {
+    "asymptotic_projector_residual": 8.597836122919425e-06,
+    "carrier_dimension": 125,
+    "complement_dimension": 78,
+    "contraction_violation": 6.372680161348399e-14,
+    "errors": [],
+    "expected_decay_bound": 8.597836122737877e-06,
+    "hermitian_residual": 1.589393196129677e-16,
+    "identity_residual": 2.608735010101322e-15,
+    "k2_max_eigenvalue": 186624.0,
+    "kernel_dimension": 47,
+    "kernel_fixed_residual": 1.0097045299853382e-13,
+    "positivity_violation": 4.630113888715213e-16,
+    "projector_commutator_residual": 9.517276153749086e-14,
+    "second_time": 0.00075,
+    "semigroup_law_residual": 2.401747409270404e-15,
+    "semigroup_max_eigenvalue": 1.0000000000000637,
+    "semigroup_min_eigenvalue": -4.630113888715213e-16,
+    "spectral_gap": 11663.999999999964,
+    "time": 0.001,
+    "tolerance": 1e-10,
+    "valid": true
+  },
+  "valid": true
+}
