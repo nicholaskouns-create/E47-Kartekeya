@@ -66,6 +66,8 @@
           `<span class="pill">Timestamp: ${escapeHtml(pipeline.timestamp)}</span>`
         );
       }
+    } else {
+      pills.push(`<span class="pill"><span class="dot"></span> Pipeline: unavailable</span>`);
     }
 
     if (qutip) {
@@ -91,11 +93,11 @@
           pills.push(`<span class="pill">gap=${escapeHtml(r.spectral_gap)}</span>`);
         }
       }
+    } else {
+      pills.push(`<span class="pill"><span class="dot"></span> QuTiP cert: unavailable</span>`);
     }
 
-    statusBar.innerHTML = pills.length
-      ? pills.join("")
-      : `<span class="pill"><span class="dot"></span> Certificate data unavailable</span>`;
+    statusBar.innerHTML = pills.join("");
   }
 
   async function loadJson(path) {
