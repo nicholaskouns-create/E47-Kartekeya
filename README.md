@@ -67,6 +67,24 @@ Outputs:
 - [`docs/validation_scope.md`](docs/validation_scope.md) — What is and is not validated
 - [`docs/maintenance_policy.md`](docs/maintenance_policy.md) — Automated and manual maintenance procedures
 
+## Project website
+
+A static project site lives in [`website/`](website/) and presents the E47 construction,
+canonical invariants, validation pipeline, package API, and documentation links.
+
+```bash
+# Serve locally
+python -m http.server 8000 --directory website
+# then open http://127.0.0.1:8000/
+```
+
+GitHub Pages deployment is handled by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
+on pushes to `main` that touch `website/`. After the first successful run, enable
+**Settings → Pages → Source: GitHub Actions** if it is not already configured.
+The published URL will be:
+
+`https://nicholaskouns-create.github.io/E47-Kartekeya/`
+
 ## Package publishing
 
 Publishing is handled by `.github/workflows/publish.yml`.
