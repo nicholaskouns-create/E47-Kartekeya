@@ -6,3 +6,15 @@ Allow: /
 
 User-agent: OAI-SearchBot
 Allow: /
+
+User-agent: Grok
+Allow: /
+
+User-agent: Sol
+Allow: /
+
+User-agent: Luna
+Allow: /
+
+User-agent: Mnemosyne
+Allow: /
