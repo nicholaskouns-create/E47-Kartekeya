@@ -1,0 +1,41 @@
+name: "Copilot Setup Steps"
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # Job name MUST be copilot-setup-steps for Copilot cloud agent pickup.
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install package and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e . -r requirements.txt -r requirements-dev.txt
+
+      - name: Sanity-check e47 import and skills layout
+        run: |
+          python - <<'EOF'
+          import e47
+          print("e47 import ok:", getattr(e47, "__file__", e47))
+          EOF
+          test -f .github/skills/chronicle/SKILL.md
+          test -f .github/copilot-instructions.md
+          ls -1 .github/skills/*/SKILL.md

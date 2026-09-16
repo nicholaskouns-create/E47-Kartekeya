@@ -66,6 +66,17 @@ Outputs:
 - [`docs/provenance.md`](docs/provenance.md) — Canonical implementation chain and reproducibility record
 - [`docs/validation_scope.md`](docs/validation_scope.md) — What is and is not validated
 - [`docs/maintenance_policy.md`](docs/maintenance_policy.md) — Automated and manual maintenance procedures
+- [`docs/skills-and-agents.md`](docs/skills-and-agents.md) — Copilot skills, agents, and platform interconnect
+
+## Copilot skills (quick invoke)
+
+| Command | Use |
+|---|---|
+| `/chronicle tips` | Personalized session-history tips |
+| `/fix-ci` | Repair failing GitHub Actions |
+| `/validate-invariants` | Run tests + frozen invariant checks |
+| `/regenerate-certificate` | Refresh validation certificates |
+| `/platform-interconnect status` | Audit skills/agents/setup surface |
 
 ## Package publishing
 
