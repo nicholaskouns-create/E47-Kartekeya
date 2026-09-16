@@ -78,6 +78,41 @@ Outputs:
 | `/regenerate-certificate` | Refresh validation certificates |
 | `/platform-interconnect status` | Audit skills/agents/setup surface |
 
+## Project website
+
+A static project site lives in [`website/`](website/) and presents the E47 construction,
+canonical invariants, validation pipeline, package API, and documentation links.
+
+```bash
+# Serve locally
+python -m http.server 8000 --directory website
+# then open http://127.0.0.1:8000/
+```
+
+Run the website checks with Node.js 22 or newer:
+
+```bash
+node --test scripts/check_website.cjs
+```
+
+These checks cover local assets and links, certificate rendering (including
+unavailable data), and equality between the JSON snapshots in `website/data/`
+and `certificates/`. When updating either source snapshot, refresh its website
+copy in the same change. The site displays committed snapshots; it does not
+run the Python validators in the browser.
+
+GitHub Pages deployment is handled by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
+on relevant pushes to `main`, or by manually running **Deploy website** on `main`.
+Pull requests run **Validate website** without deploying. Deployment runs only
+after the website checks pass.
+
+**Before the first deployment**, enable **Settings → Pages → Source: GitHub Actions**
+if it is not already configured. After merging, check the **Deploy GitHub Pages**
+job; if Pages was enabled after a failed run, rerun the workflow on `main`.
+The published URL after a successful deployment will be:
+
+`https://nicholaskouns-create.github.io/E47-Kartekeya/`
+
 ## Package publishing
 
 Publishing is handled by `.github/workflows/publish.yml`.
