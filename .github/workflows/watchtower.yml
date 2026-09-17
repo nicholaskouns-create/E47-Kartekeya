@@ -1,0 +1,83 @@
+name: City Watchtower
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Public-system heartbeat every six hours.
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  watchtower:
+    name: Public surfaces + handshake
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Re-run City validators
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs
+
+      - name: Verify source handshake contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'https://mathematicalcity.notion.site/?pvs=74' website/index.html
+          grep -Fq 'https://github.com/nicholaskouns-create/E47-Kartekeya' website/index.html
+          grep -Fq 'Read the Research Atlas' website/index.html
+          grep -Fq 'HUMAN ATLAS ↔ EXECUTABLE CITY' website/index.html
+
+      - name: Probe public entry surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > watchtower.tsv
+
+          probe() {
+            name="$1"
+            url="$2"
+            out="$3"
+            code=$(curl -L \
+              -A 'Mozilla/5.0 Mathematical-City-Watchtower/1.0' \
+              --silent --show-error --fail-with-body \
+              --retry 2 --retry-delay 2 --max-time 35 \
+              --output "$out" --write-out '%{http_code}' "$url")
+            printf '%s\t%s\t%s\n' "$name" "$code" "$url" | tee -a watchtower.tsv
+          }
+
+          probe 'Executable City' 'https://nicholaskouns-create.github.io/E47-Kartekeya/' live-city.html
+          probe 'Research Atlas' 'https://mathematicalcity.notion.site/?pvs=74' notion-atlas.html
+          probe 'EIDOLON' 'https://eidolon-flight-lab.nicholaskouns.chatgpt.site' eidolon.html
+
+          grep -Fq 'The Mathematical City' live-city.html
+          grep -Fq 'https://mathematicalcity.notion.site/?pvs=74' live-city.html
+
+      - name: Publish watchtower summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## Mathematical City Watchtower'
+            echo
+            echo "Run: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo
+            if [ -f watchtower.tsv ]; then
+              echo '| Surface | HTTP | URL |'
+              echo '|---|---:|---|'
+              while IFS=$'\t' read -r name code url; do
+                echo "| ${name} | ${code} | ${url} |"
+              done < watchtower.tsv
+            else
+              echo 'Public probes did not complete.'
+            fi
+            echo
+            echo 'Source contract: Notion atlas ↔ executable City ↔ repository.'
+          } >> "$GITHUB_STEP_SUMMARY"
