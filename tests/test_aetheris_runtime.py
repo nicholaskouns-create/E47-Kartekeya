@@ -139,9 +139,13 @@ def test_e47_projector_rejects_zero_state_when_qutip_available():
     runtime = AetherisRuntime()
     runtime.register(E47ProjectorModule())
     x = np.zeros(125, dtype=np.complex128)
+    packet = StatePacket(kind="quantum.state", payload={"state": x})
 
-    with pytest.raises(ValueError, match="non-zero 125-amplitude state"):
-        runtime.execute(
-            StatePacket(kind="quantum.state", payload={"state": x}),
-            ["e47.projector"],
-        )
+    result = runtime.execute(packet, ["e47.projector"])
+
+    assert result.certificate.status == "FAIL"
+    assert result.packet.digest == packet.digest
+    receipt = result.certificate.receipts[0]
+    assert receipt.checks[0].name == "module_execution"
+    assert "non-zero 125-amplitude state" in str(receipt.checks[0].observed)
+    assert receipt.measurements == {}
