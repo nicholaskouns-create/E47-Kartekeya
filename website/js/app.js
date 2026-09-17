@@ -1,5 +1,5 @@
 const LABS=[
-{name:'EIDOLON',role:'Flight',q:'Move through the modeled City.',desc:'The front door: a game-like flight and navigation surface for exploring the Mathematical City.',url:'#world'},
+{name:'EIDOLON',role:'Flight',q:'Move through the modeled City.',desc:'The front door: a visible flight-simulator deck with EIDOLON, UFO Propulsion, Hover, MAV, and flight-lineage surfaces.',url:'interfaces/kouns-core/?module=eidolon'},
 {name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'https://prairie-dream-glow-fire.grok.me/'},
 {name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'https://giant-beacon-dawn-falcon.grok.me/'},
 {name:'Murmuration',role:'Dynamics',q:'How does structure move?',desc:'Watch many-body organization, topology and collective motion.',url:'https://kite-glade-tiger-cabin.grok.me/'},
@@ -54,8 +54,8 @@ function selectLab(index){
   desc.textContent=lab.desc;
   what.textContent=`${lab.name} is the City district for ${lab.role.toLowerCase()}.`;
   tryText.textContent=lab.q;
-  enter.textContent=lab.url==='#world'?'Explore here':'Open current instrument';
-  enter.onclick=()=>{if(lab.url==='#world')return;window.open(lab.url,'_blank','noopener,noreferrer')};
+  enter.textContent='Open current instrument';
+  enter.onclick=()=>{if(lab.url.startsWith('http'))window.open(lab.url,'_blank','noopener,noreferrer');else location.href=lab.url};
   renderOrbit();
   document.getElementById('egg-world').textContent=`DISTRICT: ${lab.name}\nROLE: ${lab.role}\nQUESTION: ${lab.q}\n\nCITIZEN RUNTIME POPULATION: ${CITIZENS.length}\nAETHERIS: receipt-bound state transitions\nCITY-INVARIANT: 1.0\nEVIDENCE: district-specific; no automatic promotion`;
 }
