@@ -7,6 +7,7 @@ on:
       - "website/**"
       - "certificates/**"
       - "scripts/check_website.cjs"
+      - "scripts/check_e47_bridge.cjs"
       - ".github/workflows/pages.yml"
   pull_request:
     branches: ["main"]
@@ -14,6 +15,7 @@ on:
       - "website/**"
       - "certificates/**"
       - "scripts/check_website.cjs"
+      - "scripts/check_e47_bridge.cjs"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -33,8 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Check assets, certificate copies and rendering
-        run: node --test scripts/check_website.cjs
+      - name: Check assets, certificates, rendering and E47 bridge contract
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs
 
   publish:
     name: Publish website root to gh-pages
@@ -74,8 +76,10 @@ jobs:
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: |
           set -euo pipefail
+          last_status=""
           for attempt in $(seq 1 24); do
             status="$(curl -sS -L -o /tmp/pages.html -w '%{http_code}' --max-time 20 "$SITE_URL" || true)"
+            last_status="$status"
             if [ "$status" = "200" ] && grep -q '<title>The Mathematical City</title>' /tmp/pages.html; then
               echo "Live Pages verified: $SITE_URL"
               exit 0
@@ -85,6 +89,10 @@ jobs:
           done
 
           echo "Pages did not serve the expected document within the verification window."
+          if [ "$last_status" = "404" ]; then
+            echo "The gh-pages branch was published, but the repository Pages site is not serving it."
+            echo "One-time repository setting required: Settings > Pages > Build and deployment > Source: Deploy from a branch > gh-pages / (root)."
+          fi
           head -80 /tmp/pages.html || true
           exit 1
 
