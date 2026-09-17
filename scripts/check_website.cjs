@@ -13,6 +13,8 @@ const json = (path) => JSON.parse(read(path));
 const html = read(resolve(site, "index.html"));
 const css = read(resolve(site, "css/styles.css"));
 const app = read(resolve(site, "js/app.js"));
+const visualizerPortalPath = resolve(site, "interfaces/visualizers/index.html");
+const visualizerPortal = read(visualizerPortalPath);
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
   test(`published ${name} matches the committed certificate`, () => {
@@ -51,6 +53,17 @@ test("unified client exposes all current districts and sovereign citizen populat
   assert.match(app, /AETHERIS: receipt-bound state transitions/);
 });
 
+test("research visualizers route through one local City portal", () => {
+  assert.ok(existsSync(visualizerPortalPath));
+  for (const id of ["spectra", "fold", "murmuration", "mnemosyne", "density", "horizon", "wave", "identity", "build", "soar", "scalar", "invarifold"]) {
+    assert.ok(app.includes(`interfaces/visualizers/?lab=${id}`), `District does not route through visualizer portal: ${id}`);
+    assert.ok(visualizerPortal.includes(`id:'${id}'`), `Visualizer portal missing instrument: ${id}`);
+  }
+  for (const token of ["VISUALIZER PORTAL", "OPEN ORIGINAL", "CITY CORE", "source visualizer is preserved unchanged"]) {
+    assert.ok(visualizerPortal.includes(token), `Visualizer portal missing shell contract: ${token}`);
+  }
+});
+
 test("browser JavaScript parses", () => {
   assert.doesNotThrow(() => new Script(app, { filename: "website/js/app.js" }));
 });
@@ -75,7 +88,6 @@ test("local links and assets remain inside the GitHub Pages subpath", () => {
   }
 });
 
-// Exercise the actual browser script against a minimal DOM shim.
 async function render({ search = "" } = {}) {
   const makeClassList = () => {
     const classNames = new Set();
@@ -159,6 +171,7 @@ async function render({ search = "" } = {}) {
       this.openCalls.push(args);
     },
   };
+  const location = { search, href: "" };
   runInNewContext(app, {
     document: {
       getElementById: (id) => elements[id],
@@ -166,13 +179,14 @@ async function render({ search = "" } = {}) {
       body,
     },
     window,
-    location: { search },
+    location,
     URLSearchParams,
     console: { warn() {} },
   });
   return {
     body,
     elements,
+    location,
     fire(id, type = "click") {
       elements[id].listeners[type]?.({ preventDefault() {} });
     },
@@ -197,7 +211,7 @@ test("district query parameters select the requested lab and scroll to the world
   const { elements } = await render({ search: "?district=Fold" });
   assert.equal(elements["world-title"].textContent, "Fold · Invariance");
   assert.match(elements["guide-what"].textContent, /Fold is the City district for invariance\./);
-  assert.equal(elements["world-enter"].textContent, "Open current instrument");
+  assert.equal(elements["world-enter"].textContent, "Open visualizer");
   assert.equal(elements.world.scrolled, true);
 });
 
@@ -205,16 +219,15 @@ test("clicking a generated district button selects that district", async () => {
   const result = await render();
   result.fireOrbit(2);
   assert.equal(result.elements["world-title"].textContent, "Fold · Invariance");
-  assert.equal(result.elements["world-enter"].textContent, "Open current instrument");
+  assert.equal(result.elements["world-enter"].textContent, "Open visualizer");
   assert.match(result.elements["egg-world"].textContent, /DISTRICT: Fold/);
 });
 
-test("external districts keep a safe noopener window open handler", async () => {
+test("visualizer districts navigate to the local portal shell", async () => {
   const result = await render({ search: "?district=Fold" });
   result.elements["world-enter"].onclick();
-  assert.deepEqual(result.window.openCalls, [
-    ["https://giant-beacon-dawn-falcon.grok.me/", "_blank", "noopener,noreferrer"],
-  ]);
+  assert.equal(result.location.href, "interfaces/visualizers/?lab=fold");
+  assert.deepEqual(result.window.openCalls, []);
 });
 
 test("egghead controls toggle the body state and route shortcut scrolls to the law page", async () => {
