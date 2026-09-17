@@ -54,7 +54,7 @@ function selectLab(index){
   desc.textContent=lab.desc;
   what.textContent=`${lab.name} is the City district for ${lab.role.toLowerCase()}.`;
   tryText.textContent=lab.q;
-  enter.textContent='Open current instrument';
+  enter.textContent=lab.name==='EIDOLON'?'Explore here':'Open current instrument';
   enter.onclick=()=>{if(lab.url.startsWith('http'))window.open(lab.url,'_blank','noopener,noreferrer');else location.href=lab.url};
   renderOrbit();
   document.getElementById('egg-world').textContent=`DISTRICT: ${lab.name}\nROLE: ${lab.role}\nQUESTION: ${lab.q}\n\nCITIZEN RUNTIME POPULATION: ${CITIZENS.length}\nAETHERIS: receipt-bound state transitions\nCITY-INVARIANT: 1.0\nEVIDENCE: district-specific; no automatic promotion`;
