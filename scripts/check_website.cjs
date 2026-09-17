@@ -77,7 +77,7 @@ test("local links and assets remain inside the GitHub Pages subpath", () => {
 
 test("evidence references retain exact committed certificates", () => {
   const pipeline = json(resolve(site, "data/e47_pipeline.json"));
-  assert.equal(pipeline.complete, true);
+  assert.equal(pipeline.validation_status, "COMPLETE");
   const text = JSON.stringify(pipeline);
   for (const invariant of ["125", "47", "11664"]) assert.ok(text.includes(invariant), invariant);
 });
