@@ -1,163 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOUNS CORE // ENGINE CONTROLLER</title>
-    <style>
-        :root {
-            --bg-color: #050505;
-            --panel-bg: #0a0a0a;
-            --border-color: #1a1a1a;
-            --text-primary: #e5e5e5;
-            --text-secondary: #737373;
-            --accent: #bc9c6c;
-            --accent-dim: #262118;
-            --font-mono: 'Courier New', Courier, monospace;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-color); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
-        header { padding: 20px 40px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; gap: 24px; align-items: center; }
-        .title-block h1 { font-size: 14px; font-weight: 400; color: var(--text-primary); }
-        .title-block p { color: var(--text-secondary); font-size: 9px; margin-top: 4px; }
-        .system-status { text-align: right; font-size: 9px; color: var(--accent); }
-        .main-container { display: flex; flex: 1; min-height: 0; }
-        .sidebar { width: 320px; border-right: 1px solid var(--border-color); background-color: var(--panel-bg); padding: 30px 40px; display: flex; flex-direction: column; gap: 25px; overflow-y: auto; }
-        .control-group { display: flex; flex-direction: column; gap: 8px; }
-        .control-group label { color: var(--text-secondary); font-size: 9px; text-transform: uppercase; }
-        input[type="number"], select { width: 100%; background-color: #000; border: 1px solid var(--border-color); color: var(--text-primary); padding: 10px; font-family: var(--font-mono); font-size: 11px; outline: none; transition: border-color 0.2s; }
-        input[type="number"]:focus, select:focus { border-color: var(--accent); }
-        .range-slider { width: 100%; -webkit-appearance: none; appearance: none; background: var(--border-color); height: 2px; outline: none; margin: 10px 0; }
-        .range-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 8px; height: 12px; background: var(--accent); cursor: pointer; }
-        .btn-execute { background-color: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 12px; cursor: pointer; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; transition: all 0.2s; margin-top: 15px; }
-        .btn-execute:hover { background-color: var(--accent-dim); color: var(--text-primary); }
-        .content-area { flex: 1; min-width: 0; background-color: #000; display: flex; flex-direction: column; overflow: hidden; }
-        .terminal-header { padding: 15px 30px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); font-size: 9px; display: flex; justify-content: space-between; gap: 20px; }
-        .terminal-body { flex: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .log-entry { display: flex; gap: 20px; }
-        .log-timestamp { color: var(--text-secondary); flex-shrink: 0; width: 80px; }
-        .log-text { color: var(--text-primary); white-space: pre-wrap; }
-        .log-text.success { color: #8ce1a0; }
-        .log-text.accent { color: var(--accent); }
-        .matrix-display { border: 1px solid var(--border-color); background: var(--panel-bg); padding: 15px; margin-top: 10px; font-size: 10px; color: var(--text-secondary); }
-        footer { padding: 10px 40px; border-top: 1px solid var(--border-color); font-size: 8px; color: var(--text-secondary); display: flex; justify-content: space-between; gap: 20px; }
-        @media (max-width: 760px) {
-            header, footer { padding-left: 18px; padding-right: 18px; align-items: flex-start; flex-direction: column; }
-            .system-status { text-align: left; }
-            .main-container { flex-direction: column; }
-            .sidebar { width: 100%; border-right: 0; border-bottom: 1px solid var(--border-color); padding: 22px 18px; }
-            .content-area { min-height: 52vh; }
-            .terminal-header, .terminal-body { padding-left: 18px; padding-right: 18px; }
-            .log-entry { display: grid; grid-template-columns: 68px 1fr; gap: 8px; }
-            .log-timestamp { width: auto; }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#07090b" />
+<title>CITY CORE // UNIFIED INTERFACE</title>
+<style>
+:root{--bg:#07090b;--panel:#0b0f12;--panel2:#10161a;--line:#253138;--line2:#38464d;--fg:#e9ece8;--muted:#879399;--faint:#56636a;--cyan:#63d7cf;--mint:#b9e6c8;--bronze:#bc9c6c;--amber:#d3ad74;--danger:#d78c7c;--mono:'SFMono-Regular',Consolas,'Liberation Mono',monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--fg);font-family:var(--sans);overflow:hidden}button,input,select{font:inherit}a{color:inherit}.shell{height:100dvh;display:grid;grid-template-rows:50px minmax(0,1fr) 30px;background:radial-gradient(circle at 64% 28%,rgba(99,215,207,.06),transparent 28%),var(--bg)}
+.top{display:flex;align-items:center;gap:14px;padding:0 14px;border-bottom:1px solid var(--line);background:rgba(7,9,11,.96);backdrop-filter:blur(14px);z-index:5}.mark{display:flex;align-items:center;gap:10px;min-width:260px}.sigil{width:22px;height:22px;border:1px solid var(--cyan);border-radius:50%;display:grid;place-items:center;color:var(--cyan);font:10px var(--mono);box-shadow:0 0 18px rgba(99,215,207,.12)}.brand strong{display:block;font:600 11px var(--mono);letter-spacing:.16em}.brand span{display:block;color:var(--muted);font:8px var(--mono);letter-spacing:.12em;margin-top:2px}.top-status{display:flex;align-items:center;gap:7px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:999px;padding:5px 8px;color:var(--muted);font:8px var(--mono);letter-spacing:.08em;white-space:nowrap}.chip.live{color:var(--cyan);border-color:#315a59}.chip.lock{color:var(--mint);border-color:#3c5848}.chip.auth{color:var(--bronze);border-color:#574a38}.dot{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}.layout{min-height:0;display:grid;grid-template-columns:264px minmax(0,1fr) 268px}.rail,.inspector{min-height:0;background:rgba(11,15,18,.96);overflow:auto}.rail{border-right:1px solid var(--line)}.inspector{border-left:1px solid var(--line);padding:16px}.rail-head{position:sticky;top:0;background:linear-gradient(#0b0f12 86%,transparent);padding:14px 12px 9px;z-index:2}.search{position:relative}.search input{width:100%;background:#050708;border:1px solid var(--line);border-radius:7px;color:var(--fg);padding:10px 36px 10px 10px;outline:none;font:10px var(--mono)}.search input:focus{border-color:var(--cyan)}.search kbd{position:absolute;right:8px;top:8px;border:1px solid var(--line2);border-radius:4px;padding:2px 5px;color:var(--faint);font:8px var(--mono)}.filters{display:flex;gap:5px;overflow:auto;padding-top:8px}.filters button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:5px 7px;font:8px var(--mono);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.filters button.active,.filters button:hover{color:var(--cyan);border-color:#315a59}.app-list{padding:4px 8px 18px}.group-label{padding:13px 7px 5px;color:var(--faint);font:8px var(--mono);letter-spacing:.14em}.app{width:100%;border:1px solid transparent;background:transparent;color:var(--fg);border-radius:8px;padding:9px;text-align:left;cursor:pointer;display:grid;grid-template-columns:25px 1fr auto;gap:8px;align-items:center}.app:hover{background:#10171a}.app.active{background:#111b1d;border-color:#2d4e4e}.app-icon{width:25px;height:25px;border:1px solid var(--line2);border-radius:6px;display:grid;place-items:center;color:var(--cyan);font:8px var(--mono)}.app-name{display:block;font:600 10px var(--mono);letter-spacing:.03em}.app-role{display:block;color:var(--muted);font:8px var(--mono);margin-top:2px}.app-badge{font:7px var(--mono);color:var(--faint);text-transform:uppercase}.workspace{position:relative;min-width:0;min-height:0;background:#030506;overflow:hidden}.ambient{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}.stage{position:absolute;inset:0;display:flex;flex-direction:column}.stage-head{height:43px;flex:none;display:flex;align-items:center;gap:10px;padding:0 11px;border-bottom:1px solid var(--line);background:rgba(7,9,11,.9);backdrop-filter:blur(10px);z-index:2}.stage-head strong{font:600 10px var(--mono);letter-spacing:.06em}.stage-head span{color:var(--muted);font:8px var(--mono)}.stage-actions{margin-left:auto;display:flex;gap:6px}.mini-btn{border:1px solid var(--line2);border-radius:6px;background:#0b0f12;color:var(--muted);padding:6px 8px;font:8px var(--mono);cursor:pointer;text-decoration:none}.mini-btn:hover{border-color:var(--cyan);color:var(--cyan)}.frame-wrap{position:relative;flex:1;min-height:0}.frame-wrap iframe{width:100%;height:100%;border:0;background:#050607}.loading{position:absolute;inset:0;display:grid;place-items:center;background:#050708;color:var(--muted);font:9px var(--mono);letter-spacing:.1em;z-index:1}.loading.hide{display:none}.native{position:absolute;inset:0;overflow:auto;padding:26px;background:radial-gradient(circle at 78% 20%,rgba(188,156,108,.08),transparent 32%),#050607}.native[hidden]{display:none}.crf-grid{display:grid;grid-template-columns:minmax(230px,330px) minmax(0,1fr);gap:14px;min-height:100%}.crf-controls,.terminal{border:1px solid var(--line);background:#080b0d;border-radius:10px;overflow:hidden}.panel-title{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--bronze);font:9px var(--mono);letter-spacing:.12em}.controls-body{padding:16px}.field{margin-bottom:16px}.field label{display:block;color:var(--muted);font:8px var(--mono);text-transform:uppercase;margin-bottom:7px}.field select,.field input[type=number]{width:100%;padding:9px;background:#020304;border:1px solid var(--line);color:var(--fg);font:10px var(--mono)}.range-row{display:flex;justify-content:space-between;color:var(--faint);font:8px var(--mono)}.field input[type=range]{width:100%;accent-color:var(--bronze)}.execute{width:100%;border:1px solid var(--bronze);background:transparent;color:var(--bronze);padding:10px;font:9px var(--mono);text-transform:uppercase;cursor:pointer}.execute:hover{background:#1e1912}.demo-note{margin-top:13px;color:var(--muted);font:9px/1.55 var(--mono)}.terminal-log{padding:14px;font:9px/1.6 var(--mono);overflow:auto;height:calc(100% - 40px)}.log{display:grid;grid-template-columns:72px 1fr;gap:10px;margin-bottom:7px}.time{color:var(--faint)}.accent{color:var(--bronze)}.success{color:#8ce1a0}.matrix{border:1px solid var(--line);padding:10px;margin-top:7px;color:var(--muted);background:#050708}.inspector h2{font:500 26px/1.05 Georgia,serif;margin:8px 0}.eyebrow{color:var(--cyan);font:8px var(--mono);letter-spacing:.14em;text-transform:uppercase}.summary{color:#aeb7b9;font-size:12px;line-height:1.55}.meta{display:grid;gap:8px;margin:17px 0}.meta-row{border-top:1px solid var(--line);padding-top:8px}.meta-row span{display:block;color:var(--faint);font:7px var(--mono);letter-spacing:.12em;text-transform:uppercase}.meta-row strong{display:block;color:var(--fg);font:9px/1.45 var(--mono);margin-top:4px}.inspector-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.inspector-actions a{border:1px solid var(--line2);border-radius:7px;padding:9px;text-align:center;text-decoration:none;font:8px var(--mono)}.inspector-actions a.primary{background:var(--cyan);border-color:var(--cyan);color:#051011}.inspector-actions a[hidden]{display:none}.backend{margin-top:20px}.backend h3{font:8px var(--mono);color:var(--faint);letter-spacing:.14em;text-transform:uppercase}.backend-item{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:8px 0;font:8px var(--mono)}.backend-item span:first-child{color:var(--muted)}.backend-item span:last-child{color:var(--cyan)}.backend-item.protected span:last-child{color:var(--bronze)}.foot{display:flex;align-items:center;gap:16px;border-top:1px solid var(--line);padding:0 12px;color:var(--faint);background:#07090b;font:8px var(--mono);white-space:nowrap;overflow:auto}.foot b{color:var(--mint);font-weight:500}.mobile-toggle{display:none}.empty{padding:20px;color:var(--muted);font:10px var(--mono)}
+@media(max-width:980px){.layout{grid-template-columns:230px minmax(0,1fr)}.inspector{display:none}.mark{min-width:auto}.top-status .chip:nth-child(n+3){display:none}}
+@media(max-width:720px){.shell{grid-template-rows:50px minmax(0,1fr) 28px}.top{padding:0 9px}.brand span{display:none}.mobile-toggle{display:block;border:1px solid var(--line2);background:transparent;color:var(--cyan);border-radius:6px;padding:6px 8px;font:9px var(--mono)}.layout{display:block;position:relative}.rail{position:absolute;left:0;top:0;bottom:0;width:min(84vw,310px);z-index:8;transform:translateX(-102%);transition:.2s transform;box-shadow:14px 0 40px rgba(0,0,0,.45)}body.menu-open .rail{transform:none}.workspace{height:100%}.crf-grid{grid-template-columns:1fr}.native{padding:12px}.stage-head{padding-left:9px}.top-status .chip:not(.live){display:none}}
+</style>
 </head>
 <body>
-    <header>
-        <div class="title-block">
-            <h1>KOUNS QUANTUM PARADIGM // INTEGRAL CONTROLLER</h1>
-            <p>SUBSTRATE-NEUTRAL CONTINUITY RECURSION FIELD (CRF) SIMULATOR v4.1.0</p>
-        </div>
-        <div class="system-status">NODE_CLUSTER // ACTIVE_NCCL_TOPOLOGY</div>
-    </header>
-
-    <div class="main-container">
-        <div class="sidebar">
-            <div class="control-group">
-                <label for="hilbert-dim">Hilbert Dimension (d)</label>
-                <select id="hilbert-dim">
-                    <option value="3">d = 3 // Qutrit Regime</option>
-                    <option value="4" selected>d = 4 // Ququart Regime</option>
-                    <option value="5">d = 5 // Qupent Regime</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label for="node-count">Distributed Compute Nodes</label>
-                <input type="number" id="node-count" value="8" min="1" max="128">
-            </div>
-            <div class="control-group">
-                <label for="entropy-ratio">Thermodynamic Ratio (S / S_max)</label>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-secondary);">
-                    <span>0.01</span><span id="entropy-val" style="color:var(--accent);">0.50</span><span>1.00</span>
-                </div>
-                <input type="range" id="entropy-ratio" class="range-slider" min="0.01" max="1.00" step="0.01" value="0.50">
-            </div>
-            <button class="btn-execute" onclick="executeSweep()">Initialize Field Contraction</button>
-        </div>
-
-        <div class="content-area">
-            <div class="terminal-header">
-                <span>VIRTUAL_STREAM_OUTPUT</span>
-                <span>SYSTEM_LOCK_UNITARY: TRUE</span>
-            </div>
-            <div class="terminal-body" id="terminal">
-                <div class="log-entry">
-                    <div class="log-timestamp">[00:00:00]</div>
-                    <div class="log-text accent">System architecture bound to primary telemetry layer. Ready for instruction.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <span>Ω_c = 0.3760603</span>
-        <span>SECURITY LEVEL: ACCELERATED HARDWARE BALANCING BLOCK</span>
-    </footer>
-
-    <script>
-        const slider = document.getElementById('entropy-ratio');
-        const valDisplay = document.getElementById('entropy-val');
-        slider.oninput = function() { valDisplay.textContent = parseFloat(this.value).toFixed(2); };
-
-        function getTime() {
-            const now = new Date();
-            return `[${now.toTimeString().split(' ')[0]}]`;
-        }
-
-        function logToTerminal(text, type = '') {
-            const term = document.getElementById('terminal');
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            const ts = document.createElement('div');
-            ts.className = 'log-timestamp';
-            ts.textContent = getTime();
-            const txt = document.createElement('div');
-            txt.className = 'log-text ' + type;
-            txt.innerHTML = text;
-            entry.appendChild(ts);
-            entry.appendChild(txt);
-            term.appendChild(entry);
-            term.scrollTop = term.scrollHeight;
-        }
-
-        function executeSweep() {
-            const d = parseInt(document.getElementById('hilbert-dim').value);
-            const nodes = parseInt(document.getElementById('node-count').value);
-            const sRatio = parseFloat(slider.value);
-            logToTerminal(`Initiating distributed out-of-band bootstrap sequence on ${nodes} ranks...`, 'accent');
-            setTimeout(() => {
-                const rhs_bound = Math.exp(-1.0 / sRatio) / 4.0;
-                const discriminant = 1.0 - 4.0 * rhs_bound;
-                const omega = discriminant >= 0 ? (0.5 - 0.5 * Math.sqrt(discriminant)) : 0.5;
-                logToTerminal(`[MPI] Synchronized cross-node communication layout via NCCL unique ID.`);
-                logToTerminal(`[CUDA] Allocated device memory blocks for Hilbert space grid layout (Dim: ${d*d*d}).`);
-                logToTerminal(`[CRF] Resolved Operational Field Identity Invariant (Omega): ${omega.toFixed(6)}`);
-                let matrixStr = "Local Tensor Projection Slice (Density Distribution):<br><div class='matrix-display'>";
-                for (let i=0; i<3; i++) {
-                    matrixStr += `[ `;
-                    for (let j=0; j<3; j++) {
-                        const val = (Math.random() * 0.1).toFixed(4);
-                        matrixStr += `${i===j ? (0.3333).toFixed(4) : val} `;
-                    }
-                    matrixStr += `]<br>`;
-                }
-                matrixStr += "</div>";
-                logToTerminal(matrixStr);
-                logToTerminal(`[CLUSTER AUDIT] Unified System Trace Value: 1.000000`, 'success');
-                logToTerminal(`[STATUS] TOPOLOGY VERIFICATION SUCCESSFULLY COMPLETED [UNITARY COHERENCE SECURED].`, 'success');
-            }, 600);
-        }
-    </script>
+<div class="shell">
+<header class="top">
+<button id="menuBtn" class="mobile-toggle" aria-label="Open modules">☰</button>
+<div class="mark"><div class="sigil">47</div><div class="brand"><strong>CITY CORE // UNIFIED INTERFACE</strong><span>MATHEMATICAL CITY · RECURSIVE INTELLIGENCE / E47</span></div></div>
+<div class="top-status">
+<span class="chip live"><i class="dot"></i><span id="graphicsChip">GRAPHICS · DETECTING</span></span>
+<span class="chip lock">Ωc 47/125</span>
+<span class="chip">APP HOST · PUBLIC</span>
+<span class="chip auth">ACTOR BACKEND · AUTH</span>
+</div>
+</header>
+<div class="layout">
+<aside class="rail" id="rail">
+<div class="rail-head"><div class="search"><input id="search" type="search" placeholder="Search City modules" autocomplete="off"/><kbd>⌘K</kbd></div><div class="filters" id="filters"></div></div>
+<div class="app-list" id="appList"></div>
+</aside>
+<main class="workspace">
+<canvas id="ambient" class="ambient"></canvas>
+<section class="stage">
+<div class="stage-head"><strong id="stageTitle">CITY WORLD</strong><span id="stageRoute">UNIFIED GAME</span><div class="stage-actions"><a id="stageSource" class="mini-btn" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a id="stageOpen" class="mini-btn" target="_blank" rel="noopener noreferrer">OPEN ↗</a></div></div>
+<div class="frame-wrap"><div id="loading" class="loading">ROUTING CITY SURFACE...</div><iframe id="frame" title="City Core module" allow="fullscreen; gamepad; clipboard-read; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe><section id="native" class="native" hidden></section></div>
+</section>
+</main>
+<aside class="inspector">
+<div class="eyebrow" id="inspectKind">WORLD · EMBEDDED</div><h2 id="inspectTitle">City World</h2><p class="summary" id="inspectSummary"></p>
+<div class="meta"><div class="meta-row"><span>Evidence boundary</span><strong id="inspectEvidence"></strong></div><div class="meta-row"><span>Runtime route</span><strong id="inspectRuntime"></strong></div><div class="meta-row"><span>Primary / lineage</span><strong id="inspectSourceText"></strong></div></div>
+<div class="inspector-actions"><a id="inspectOpen" class="primary" target="_blank" rel="noopener noreferrer">OPEN FULL</a><a id="inspectSource" target="_blank" rel="noopener noreferrer">SOURCE</a></div>
+<div class="backend"><h3>Backend fabric</h3><div class="backend-item"><span>city-app-host</span><span>PUBLIC</span></div><div class="backend-item"><span>city-unified-game</span><span>PUBLIC</span></div><div class="backend-item"><span>city-graphics-accelerator</span><span>PUBLIC</span></div><div class="backend-item protected"><span>eidolon-city-adapter</span><span>AUTH</span></div><div class="backend-item protected"><span>city-recursive-engine</span><span>AUTH</span></div></div>
+</aside>
+</div>
+<footer class="foot"><span><b>CITY-INVARIANT 1.0</b></span><span id="footModule">MODULE · CITY WORLD</span><span id="footGraphics">GPU · PROBING</span><span>EVIDENCE · NO AUTOMATIC PROMOTION</span><span>BACKEND · SUPABASE / GITHUB PAGES</span></footer>
+</div>
+<script>
+const SUPA='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1';
+const host=slug=>`${SUPA}/city-app-host/${slug}/`;
+const ORIGINS={spectra:'https://prairie-dream-glow-fire.grok.me/',fold:'https://giant-beacon-dawn-falcon.grok.me/',murmuration:'https://kite-glade-tiger-cabin.grok.me/',mnemosyne:'https://moon-clear-urban-nova.grok.me/',density:'https://winter-dawn-leaf-marble.grok.me/',horizon:'https://zenith-fjord-pearl-pixel.grok.me/',wave:'https://apex-star-crisp-blend.grok.me/',identity:'https://mist-mint-branch-nova.grok.me/',build:'https://brave-ivory-pearl-ever.grok.me/',soar:'https://topaz-solar-iris-drift.grok.me/',scalar:'https://heart-eagle-blade-hazel.grok.me/',eidolon:'https://lark-plaza-umbra-drum.grok.me/',kartekeya:'https://velvet-king-quiet-amber.grok.me/',see:'https://orbit-coral-delta-fjord.grok.me/',cube:'https://garden-king-granite-pixel.grok.me/',cityos:'https://spark-maple-sail-tiger.grok.me/',matrix:'https://oasis-acorn-pearl-prism.grok.me/',chimera:'https://zest-blade-turbo-rose.grok.me/',sigillum:'https://prism-shadow-sage-craft.grok.me/',proof:'https://pepper-raven-blade-heart.grok.me/',invarifold:'https://sapphire-cabin-crystal-king.grok.me/',gestalt:'https://tundra-drift-dune-finch.grok.me/',ufo:'https://star-sage-atlas-rapid.grok.me/',harmonic:'https://nova-wood-clear-zest.grok.me/',hoverbuild:'https://willow-fjord-king-cap.grok.me/',hover:'https://bison-drum-daisy-plaza.grok.me/',mav:'https://glow-garden-brick-cedar.grok.me/'};
+const apps=[
+{id:'world',group:'WORLD',name:'City World',role:'Playable unified City',icon:'∞',kind:'WORLD · EMBEDDED',runtime:`${SUPA}/city-unified-game`,source:'../../index.html',evidence:'Mixed surface. Each district retains its own evidence class.',summary:'The game-like front door. Move among City districts from one embedded world instead of opening disconnected apps.'},
+{id:'atlas',group:'WORLD',name:'City Atlas',role:'Full GitHub site',icon:'⌘',kind:'SITE · SAME ORIGIN',runtime:'../../index.html',source:'https://github.com/nicholaskouns-create/E47-Kartekeya',evidence:'Site presentation only. Claims inherit evidence from their underlying records.',summary:'The entire current Mathematical City GitHub Pages site, embedded inside City Core as a first-class module.'},
+{id:'eidolon',group:'FLIGHT',name:'EIDOLON',role:'3D flight simulator',icon:'▲',kind:'FLIGHT · SIMULATION',runtime:host('eidolon'),source:ORIGINS.eidolon,evidence:'Simulation / presentation surface unless a linked record establishes more.',summary:'Primary flight and navigation experience, served through the City app host for unified framing.'},
+{id:'ufo',group:'FLIGHT',name:'UFO Propulsion',role:'Fly + tune fields',icon:'◉',kind:'FLIGHT · SIMULATION',runtime:host('ufo-propulsion'),source:ORIGINS.ufo,evidence:'Simulation / model exploration.',summary:'Interactive propulsion surface that combines craft flight with scalar-field and metamaterial parameter controls.'},
+{id:'hover',group:'FLIGHT',name:'Hover',role:'P47 cockpit',icon:'⌁',kind:'FLIGHT · GAME',runtime:host('hover'),source:ORIGINS.hover,evidence:'Simulation / gameplay surface.',summary:'Cockpit-forward Hover interface with direct piloting controls.'},
+{id:'mav',group:'FLIGHT',name:'MAV',role:'Micro aerial vehicle',icon:'✦',kind:'FLIGHT · GAME',runtime:host('mav'),source:ORIGINS.mav,evidence:'Simulation / gameplay surface.',summary:'Compact aerial-vehicle game surface with flight controls and spectral-node objectives.'},
+{id:'harmonic',group:'FLIGHT',name:'Eidolon Harmonic',role:'Flight lineage',icon:'≈',kind:'FLIGHT · LINEAGE',runtime:host('eidolon-harmonic'),source:ORIGINS.harmonic,evidence:'Simulation / lineage surface.',summary:'Harmonic variant retained as executable flight lineage beside the primary EIDOLON surface.'},
+{id:'hoverbuild',group:'FLIGHT',name:'Hover Build',role:'Assembly instrument',icon:'◇',kind:'CONSTRUCTION · SIMULATION',runtime:host('hover-build'),source:ORIGINS.hoverbuild,evidence:'Simulation / construction interface.',summary:'Assembly-oriented Hover variant preserved as a separate construction instrument.'},
+{id:'spectra',group:'LABS',name:'SPECTRA',role:'Structure',icon:'S',kind:'LAB · STRUCTURE',runtime:host('spectra'),source:ORIGINS.spectra,evidence:'District-specific. Presentation does not promote evidence.',summary:'Inspect spectra, modes, and invariant structure before interpretation.'},
+{id:'fold',group:'LABS',name:'FOLD',role:'Invariance',icon:'F',kind:'LAB · INVARIANCE',runtime:host('fold'),source:ORIGINS.fold,evidence:'District-specific.',summary:'Explore contraction geometry and what survives transformation.'},
+{id:'murmuration',group:'LABS',name:'MURMURATION',role:'Dynamics',icon:'M',kind:'LAB · DYNAMICS',runtime:host('murmuration'),source:ORIGINS.murmuration,evidence:'District-specific.',summary:'Many-body organization, topology, and collective motion.'},
+{id:'mnemosyne',group:'LABS',name:'MNEMOSYNE',role:'Memory',icon:'N',kind:'LAB · MEMORY',runtime:host('mnemosyne'),source:ORIGINS.mnemosyne,evidence:'Provenance surface. Underlying records determine evidence class.',summary:'Chronology, hashes, correction lineage, and sealed forecasts.'},
+{id:'density',group:'LABS',name:'DENSITY',role:'Measurement',icon:'D',kind:'LAB · MEASUREMENT',runtime:host('density'),source:ORIGINS.density,evidence:'District-specific.',summary:'Reconstruction from incomplete or noisy observations.'},
+{id:'horizon',group:'LABS',name:'HORIZON',role:'Prediction',icon:'H',kind:'LAB · PREDICTION',runtime:host('horizon'),source:ORIGINS.horizon,evidence:'Prediction surface. Prospective and retrospective status must remain explicit.',summary:'Forecast instruments with evidence boundaries kept visible.'},
+{id:'wave',group:'LABS',name:'WAVE',role:'Flow',icon:'W',kind:'LAB · FLOW',runtime:host('wave'),source:ORIGINS.wave,evidence:'Simulation unless separately certified.',summary:'Coherent flow and field-evolution surfaces.'},
+{id:'identity',group:'LABS',name:'IDENTITY',role:'Persistence',icon:'I',kind:'LAB · PERSISTENCE',runtime:host('identity'),source:ORIGINS.identity,evidence:'District-specific.',summary:'Track identity through change, transport, and representation.'},
+{id:'build',group:'LABS',name:'BUILD',role:'Construction',icon:'B',kind:'LAB · CONSTRUCTION',runtime:host('build'),source:ORIGINS.build,evidence:'Simulation / construction surface unless separately certified.',summary:'Assembly around selected invariant targets.'},
+{id:'soar',group:'LABS',name:'SOAR',role:'Restoration',icon:'R',kind:'LAB · RESTORATION',runtime:host('soar'),source:ORIGINS.soar,evidence:'District-specific.',summary:'Control, recovery, transformation, and restoration experiments.'},
+{id:'scalar',group:'LABS',name:'SCALAR',role:'Field',icon:'φ',kind:'LAB · FIELD',runtime:host('scalar'),source:ORIGINS.scalar,evidence:'Visualization / model surface unless linked evidence states otherwise.',summary:'Finite E47 spectral structure presented through scalar-field visualizations.'},
+{id:'invarifold',group:'LABS',name:'InvariFold',role:'Protein cinema',icon:'P',kind:'LAB · PROTEIN',runtime:host('invarifold'),source:ORIGINS.invarifold,evidence:'Simulation / analysis surface.',summary:'Cinematic geometry and deterministic payloads around the Fold instrument.'},
+{id:'kartekeya',group:'MACHINES',name:'KARTEKEYA',role:'Canonical E47 machine',icon:'K',kind:'CORE · MACHINE',runtime:host('kartekeya'),source:ORIGINS.kartekeya,evidence:'E0 exact mathematics plus E1 machine witnesses where explicitly certified.',summary:'Canonical executable E47 machine and spectral selector surface.'},
+{id:'see',group:'MACHINES',name:'SEE / CITADEL',role:'Evidence gateway',icon:'C',kind:'CORE · EVIDENCE',runtime:host('see'),source:ORIGINS.see,evidence:'Evidence gateway. It reports provenance, residuals, and certificate state rather than promoting claims.',summary:'Inspection point for certificates, residuals, provenance, and corrections.'},
+{id:'cube',group:'MACHINES',name:'THE CUBE',role:'Geometric computation',icon:'□',kind:'INSTRUMENT · GEOMETRY',runtime:host('cube'),source:ORIGINS.cube,evidence:'Interactive teaching / computation surface.',summary:'Puzzle-like 125-state geometric computation and symmetry instrument.'},
+{id:'matrix',group:'MACHINES',name:'THE MATRIX',role:'Quantum circuits',icon:'⊗',kind:'INSTRUMENT · QUANTUM',runtime:host('matrix'),source:ORIGINS.matrix,evidence:'Interface-specific. Simulation does not imply hardware validation.',summary:'Quantum-circuit and tensor-network interface.'},
+{id:'chimera',group:'MACHINES',name:'CHIMERA',role:'HAR / QEGT bridge',icon:'χ',kind:'INSTRUMENT · BIOLOGY',runtime:host('chimera'),source:ORIGINS.chimera,evidence:'Established historical/genomic material, open catalog work, and synthetic bridges remain separated.',summary:'HAR codex and QEGT bridge with explicit established/open/demo distinctions.'},
+{id:'sigillum',group:'MACHINES',name:'SIGILLUM',role:'Spectral wheel',icon:'◎',kind:'INSTRUMENT · SPECTRAL',runtime:host('sigillum'),source:ORIGINS.sigillum,evidence:'Interactive spectral-computation surface.',summary:'Forty-state wheel with orbit, contraction, operator, and certificate controls.'},
+{id:'proof',group:'MACHINES',name:'Proof Forge',role:'Proof production',icon:'∎',kind:'INSTRUMENT · PROOF',runtime:host('proof-forge'),source:ORIGINS.proof,evidence:'Proof workspace. Exactness attaches to the proof object, not the interface chrome.',summary:'First-principles proof production and proof-ledger navigation.'},
+{id:'gestalt',group:'MACHINES',name:'E47 Gestalt',role:'Whole-system walkthrough',icon:'G',kind:'SYSTEM · WALKTHROUGH',runtime:host('gestalt'),source:ORIGINS.gestalt,evidence:'Mixed walkthrough. Each component retains its own evidence state.',summary:'Whole-system tour of the carrier, kernel, projector, chain, field, City, and applications.'},
+{id:'cityos',group:'MACHINES',name:'City OS',role:'Composition console',icon:'OS',kind:'SYSTEM · COMPOSITION',runtime:host('city-os'),source:ORIGINS.cityos,evidence:'Composition preserves evidence class; it does not automatically upgrade it.',summary:'Labs-as-morphisms composition console for the City operating layer.'},
+{id:'crf',group:'NATIVE',name:'CRF Controller',role:'Original KOUNS CORE demo',icon:'Ω',kind:'NATIVE · DEMO',native:true,source:'https://drive.google.com/file/d/1NVOxBMM545ltfuK6NSzDMq7Je4q48Riv/view?usp=drivesdk',evidence:'E2/demo interface. MPI/CUDA status lines are simulated and matrix off-diagonals are randomized.',summary:'The original KOUNS CORE browser controller preserved inside the new shell as a native demo instrument.'}
+];
+const groups=['WORLD','FLIGHT','LABS','MACHINES','NATIVE'];
+let activeId='world',filter='ALL';
+const $=s=>document.querySelector(s), frame=$('#frame'),native=$('#native'),loading=$('#loading');
+function renderFilters(){const f=$('#filters');f.innerHTML=['ALL',...groups].map(g=>`<button class="${filter===g?'active':''}" data-filter="${g}">${g}</button>`).join('');f.querySelectorAll('button').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;renderFilters();renderList()})}
+function renderList(){const q=$('#search').value.trim().toLowerCase();const list=$('#appList');let html='';for(const g of groups){if(filter!=='ALL'&&filter!==g)continue;const rows=apps.filter(a=>a.group===g&&(!q||`${a.name} ${a.role} ${a.summary}`.toLowerCase().includes(q)));if(!rows.length)continue;html+=`<div class="group-label">${g}</div>`+rows.map(a=>`<button class="app ${a.id===activeId?'active':''}" data-id="${a.id}"><span class="app-icon">${a.icon}</span><span><span class="app-name">${a.name}</span><span class="app-role">${a.role}</span></span><span class="app-badge">${a.native?'NATIVE':'EMBED'}</span></button>`).join('')}list.innerHTML=html||'<div class="empty">NO MATCHING CITY MODULES</div>';list.querySelectorAll('.app').forEach(b=>b.onclick=()=>selectApp(b.dataset.id))}
+function selectApp(id){const a=apps.find(x=>x.id===id);if(!a)return;activeId=id;history.replaceState(null,'',`#app=${encodeURIComponent(id)}`);renderList();$('#stageTitle').textContent=a.name.toUpperCase();$('#stageRoute').textContent=a.kind;$('#inspectKind').textContent=a.kind;$('#inspectTitle').textContent=a.name;$('#inspectSummary').textContent=a.summary;$('#inspectEvidence').textContent=a.evidence;$('#inspectRuntime').textContent=a.native?'LOCAL BROWSER MODULE':a.runtime;$('#inspectSourceText').textContent=a.source||'Internal City route';$('#footModule').textContent=`MODULE · ${a.name.toUpperCase()}`;const open=$('#stageOpen'),io=$('#inspectOpen'),source=$('#stageSource'),is=$('#inspectSource');if(a.native){frame.hidden=true;loading.classList.add('hide');native.hidden=false;renderCRF();open.href='#app=crf';io.href='#app=crf'}else{native.hidden=true;frame.hidden=false;loading.classList.remove('hide');frame.src=a.runtime;open.href=a.runtime;io.href=a.runtime}if(a.source){source.hidden=false;is.hidden=false;source.href=a.source;is.href=a.source}else{source.hidden=true;is.hidden=true}document.body.classList.remove('menu-open')}
+frame.addEventListener('load',()=>loading.classList.add('hide'));
+function renderCRF(){native.innerHTML=`<div class="crf-grid"><section class="crf-controls"><div class="panel-title">KOUNS QUANTUM PARADIGM // CRF DEMO</div><div class="controls-body"><div class="field"><label>Hilbert Dimension (d)</label><select id="crfDim"><option value="3">d = 3 // Qutrit Regime</option><option value="4" selected>d = 4 // Ququart Regime</option><option value="5">d = 5 // Qupent Regime</option></select></div><div class="field"><label>Distributed Compute Nodes (simulated)</label><input id="crfNodes" type="number" value="8" min="1" max="128" /></div><div class="field"><label>Thermodynamic Ratio (S / S_max)</label><div class="range-row"><span>0.01</span><span id="crfRatioVal">0.50</span><span>1.00</span></div><input id="crfRatio" type="range" min="0.01" max="1" step="0.01" value="0.50" /></div><button id="crfRun" class="execute">Initialize Field Contraction</button><p class="demo-note">This preserves the original browser controller as an explicit demo. The MPI/CUDA lines are interface telemetry strings, not a connection to a distributed GPU cluster. Random matrix entries remain demo output.</p></div></section><section class="terminal"><div class="panel-title">VIRTUAL_STREAM_OUTPUT // DEMO</div><div id="crfLog" class="terminal-log"><div class="log"><span class="time">[00:00:00]</span><span class="accent">System architecture bound to City Core. Ready for instruction.</span></div></div></section></div>`;const r=$('#crfRatio'),v=$('#crfRatioVal');r.oninput=()=>v.textContent=Number(r.value).toFixed(2);$('#crfRun').onclick=runCRF}
+function addLog(text,cls=''){const box=$('#crfLog'),row=document.createElement('div');row.className='log';const t=new Date().toTimeString().split(' ')[0];row.innerHTML=`<span class="time">[${t}]</span><span class="${cls}">${text}</span>`;box.appendChild(row);box.scrollTop=box.scrollHeight}
+function runCRF(){const d=Number($('#crfDim').value),nodes=Number($('#crfNodes').value),s=Number($('#crfRatio').value);addLog(`Initiating browser demo sequence on ${nodes} nominal ranks...`,'accent');setTimeout(()=>{const rhs=Math.exp(-1/s)/4,disc=1-4*rhs,omega=disc>=0?.5-.5*Math.sqrt(disc):.5;addLog(`[DEMO] Nominal distributed layout prepared.`);addLog(`[DEMO] Hilbert grid dimension: ${d*d*d}.`);addLog(`[CRF] Operational field identity value: ${omega.toFixed(6)}`);let m="Local Tensor Projection Slice:<div class='matrix'>";for(let i=0;i<3;i++){m+='[ ';for(let j=0;j<3;j++)m+=`${i===j?'0.3333':(Math.random()*.1).toFixed(4)} `;m+=']<br>'}m+='</div>';addLog(m);addLog('[DEMO AUDIT] Display trace target: 1.000000','success');addLog('[STATUS] Browser simulation completed.','success')},450)}
+$('#search').addEventListener('input',renderList);$('#menuBtn').onclick=()=>document.body.classList.toggle('menu-open');document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#search').focus()}if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();$('#search').focus()}if(e.key==='Escape')document.body.classList.remove('menu-open')});
+function initAmbient(){const c=$('#ambient'),ctx=c.getContext('2d');let t=0;function size(){c.width=Math.max(1,c.clientWidth*devicePixelRatio);c.height=Math.max(1,c.clientHeight*devicePixelRatio)}size();addEventListener('resize',size);function draw(){t+=.004;ctx.clearRect(0,0,c.width,c.height);ctx.strokeStyle='rgba(99,215,207,.06)';ctx.lineWidth=1*devicePixelRatio;for(let k=0;k<5;k++){ctx.beginPath();for(let x=0;x<c.width;x+=22*devicePixelRatio){const y=c.height*(.18+.14*k)+Math.sin(x*.0025+t+k)*18*devicePixelRatio;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y)}ctx.stroke()}requestAnimationFrame(draw)}draw()}
+async function initGraphics(){initAmbient();try{const mod=await import(`${SUPA}/city-graphics-accelerator?format=module`);if(typeof mod.detectCityGraphicsCapabilities==='function'){const cap=await mod.detectCityGraphicsCapabilities();const backend=(cap.backend||cap.renderer||'adaptive').toString().toUpperCase();const quality=(cap.quality||cap.profile||'').toString().toUpperCase();$('#graphicsChip').textContent=`GRAPHICS · ${backend}${quality?' · '+quality:''}`;$('#footGraphics').textContent=`GPU · ${backend}${quality?' / '+quality:''}`}}catch(err){$('#graphicsChip').textContent='GRAPHICS · ADAPTIVE';$('#footGraphics').textContent='GPU · BROWSER FALLBACK'}}
+renderFilters();renderList();const hash=new URLSearchParams(location.hash.replace(/^#/,'')).get('app');if(hash&&apps.some(a=>a.id===hash))activeId=hash;selectApp(activeId);initGraphics();
+</script>
 </body>
 </html>
