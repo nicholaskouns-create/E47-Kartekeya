@@ -144,4 +144,5 @@ def test_e47_projector_rejects_zero_state_when_qutip_available():
         runtime.execute(
             StatePacket(kind="quantum.state", payload={"state": x}),
             ["e47.projector"],
+            raise_on_error=True,
         )
