@@ -1,0 +1,39 @@
+{
+  "schema": "CITY-GRAPHICS-PROFILES-1.0",
+  "contract": "CITY-GRAPHICS-ACCELERATOR-1.0",
+  "invariant": "Rendering acceleration must not alter solver timestep, state-transition law, deterministic seed, evidence class, provenance, or scientific outputs.",
+  "proof_gates": [
+    "accelerated_vs_reference_state_equivalence",
+    "frame_rate_independence",
+    "backend_fallback_equivalence"
+  ],
+  "default_runtime": {
+    "preferred_backend": "webgpu",
+    "fallbacks": ["webgl2", "webgl1", "canvas2d"],
+    "adaptive_resolution": true,
+    "fixed_timestep": true,
+    "offscreen_canvas_worker_ready": true,
+    "visibility_throttling": true,
+    "wasm_simd_ready": true,
+    "compressed_texture_ready": true
+  },
+  "surfaces": [
+    {"order":1,"name":"SPECTRA","profile":"spectral-2d","priority":["batched-geometry","adaptive-dpr","worker-precompute"],"host_status":"external-host-migration"},
+    {"order":2,"name":"Fold","profile":"protein-geometry","priority":["instancing","lod","worker-geometry","adaptive-dpr"],"host_status":"external-host-migration"},
+    {"order":3,"name":"Murmuration","profile":"instanced-agents","priority":["gpu-instancing","spatial-binning","worker-simulation","adaptive-dpr"],"host_status":"external-host-migration"},
+    {"order":4,"name":"Mnemosyne","profile":"ui-low-motion","priority":["visibility-throttling","layer-caching","reduced-motion"],"host_status":"external-host-migration"},
+    {"order":5,"name":"Density","profile":"volume-field","priority":["webgpu-compute-ready","texture-atlas","adaptive-resolution"],"host_status":"external-host-migration"},
+    {"order":6,"name":"Horizon","profile":"timeseries","priority":["decimated-series","offscreen-render","visibility-throttling"],"host_status":"external-host-migration"},
+    {"order":7,"name":"Wave","profile":"field-solver","priority":["webgpu-compute-ready","ping-pong-textures","fixed-step","worker-solver"],"host_status":"external-host-migration"},
+    {"order":8,"name":"Identity","profile":"transport","priority":["batched-arrows","adaptive-dpr","worker-metrics"],"host_status":"external-host-migration"},
+    {"order":9,"name":"BUILD","profile":"instanced-construction","priority":["gpu-instancing","frustum-culling","lod","compressed-textures"],"host_status":"external-host-migration"},
+    {"order":10,"name":"SOAR","profile":"trajectory","priority":["trajectory-batching","fixed-step","adaptive-dpr"],"host_status":"external-host-migration"},
+    {"order":11,"name":"SCALAR","profile":"scalar-field","priority":["webgpu-compute-ready","field-texture","adaptive-resolution"],"host_status":"external-host-migration"},
+    {"order":12,"name":"EIDOLON","profile":"flight-simulator","priority":["webgpu-render-path","gpu-instancing","terrain-lod","ktx2-basis","temporal-upscale-ready","worker-flight-dynamics","fixed-step"],"host_status":"source-migration-required"},
+    {"order":13,"name":"InvariFold","profile":"protein-cinema","priority":["instanced-residues","lod","worker-geometry","adaptive-dpr"],"host_status":"fold-payload-migration"},
+    {"name":"The Cube","profile":"canvas-scientific","priority":["adaptive-dpr","visibility-throttling","fixed-step-animation"],"host_status":"supabase-direct-patch-candidate"},
+    {"name":"THE MATRIX","profile":"quantum-circuit","priority":["worker-statevector","batched-svg-canvas","visibility-throttling"],"host_status":"source-migration-required"},
+    {"name":"City OS","profile":"control-plane","priority":["layer-caching","worker-layout","visibility-throttling","adaptive-dpr"],"host_status":"source-migration-required"}
+  ],
+  "boundary": "A profile is an implementation target, not proof that an external host has already been patched. host_status must be advanced only after the corresponding source/runtime is changed and proof gates pass."
+}
