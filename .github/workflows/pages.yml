@@ -2,7 +2,7 @@ name: Deploy website
 
 on:
   push:
-    branches: ["main", "gh-pages"]
+    branches: ["main"]
     paths:
       - "website/**"
       - "certificates/**"
@@ -36,10 +36,10 @@ jobs:
       - name: Check assets, certificate copies and rendering
         run: node --test scripts/check_website.cjs
 
-  promote:
-    name: Promote validated main to gh-pages
+  publish:
+    name: Publish website root to gh-pages
     needs: validate
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -47,64 +47,34 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Advance gh-pages to this validated commit
-        shell: bash
-        run: git push origin HEAD:refs/heads/gh-pages
 
-  deploy:
-    name: Deploy GitHub Pages
-    needs: validate
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/gh-pages'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: pages-deploy
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload website artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: website
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
-
-      - name: Deployment receipt
-        shell: bash
-        run: |
-          {
-            echo "## GitHub Pages deployment receipt"
-            echo
-            echo "| Field | Value |"
-            echo "|---|---|"
-            echo "| Repository | \`${GITHUB_REPOSITORY}\` |"
-            echo "| Commit | \`${GITHUB_SHA}\` |"
-            echo "| Pages URL | ${{ steps.deployment.outputs.page_url }} |"
-            echo "| Base URL | ${{ steps.pages.outputs.base_url }} |"
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Verify deployed site responds
-        env:
-          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+      - name: Build gh-pages branch from website directory
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error \
-            --location \
-            --retry 5 \
-            --retry-delay 3 \
-            --retry-all-errors \
-            --max-time 30 \
-            -o /dev/null \
-            "$PAGE_URL"
-          echo "Public Pages endpoint responded successfully: $PAGE_URL"
+
+          site_dir="$(mktemp -d)"
+          cp -a website/. "$site_dir/"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan gh-pages-publish
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -a "$site_dir/." .
+          touch .nojekyll
+
+          git add -A
+          git commit -m "Deploy website from ${GITHUB_SHA}"
+          git push --force origin HEAD:refs/heads/gh-pages
+
+      - name: Publish receipt
+        shell: bash
+        run: |
+          {
+            echo "## GitHub Pages publish receipt"
+            echo
+            echo "Published the validated \`website/\` directory as the root of \`gh-pages\`."
+            echo
+            echo "Pages URL: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+          } >> "$GITHUB_STEP_SUMMARY"
