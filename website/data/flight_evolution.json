@@ -1,0 +1,72 @@
+{
+  "version": "CITY-FLIGHT-EVOLUTION-1.0",
+  "updated": "2026-09-17",
+  "principle": "Upgrade sequentially, capture reusable interaction/visual features, then carry them forward without erasing source lineage.",
+  "shared_runtime": {
+    "adaptive_quality": true,
+    "webgpu_feature_detection": true,
+    "webgl_fallback_label": true,
+    "gamepad_detection": true,
+    "fullscreen": true,
+    "landscape_lock_when_supported": true,
+    "reduced_motion_fallback": true,
+    "source_escape_hatch": true,
+    "evidence_boundary_persistent": true
+  },
+  "levels": [
+    {
+      "step": 1,
+      "id": "hover-assembly",
+      "level": 1,
+      "title": "Hover Assembly",
+      "source": "https://willow-fjord-king-cap.grok.me/",
+      "captured": ["twelve-step construction sequence", "assembly-bay framing", "build-before-flight onboarding"],
+      "carried_forward": ["progressive mission card", "minimal HUD", "source-preserving wrapper"]
+    },
+    {
+      "step": 2,
+      "id": "mav",
+      "level": 1,
+      "title": "MAV",
+      "source": "https://glow-garden-brick-cedar.grok.me/",
+      "captured": ["W/S throttle", "A/D yaw", "Space/Shift vertical control", "five spectral-node objective"],
+      "carried_forward": ["input-status chip", "simple reticle", "training objective"]
+    },
+    {
+      "step": 3,
+      "id": "eidolon-harmonic",
+      "level": 2,
+      "title": "Eidolon Harmonic",
+      "source": "https://nova-wood-clear-zest.grok.me/",
+      "captured": ["coherence/flow instrument framing", "P47-gated harmonic vocabulary", "typed observable boundary"],
+      "carried_forward": ["field rings", "horizon overlay", "level-2 telemetry density"]
+    },
+    {
+      "step": 4,
+      "id": "eidolon",
+      "level": 2,
+      "title": "EIDOLON",
+      "source": "https://lark-plaza-umbra-drum.grok.me/",
+      "captured": ["flagship 3D flight role", "City navigation role"],
+      "carried_forward": ["fullscreen flight shell", "adaptive graphics status", "clean flagship HUD"]
+    },
+    {
+      "step": 5,
+      "id": "hover-cockpit",
+      "level": 3,
+      "title": "Hover P47 Cockpit",
+      "source": "https://bison-drum-daisy-plaza.grok.me/",
+      "captured": ["W/S surge", "A/D yaw", "Space climb", "H hover lock", "cockpit-intro video lineage"],
+      "carried_forward": ["dense reticle", "range ticks", "bronze/cyan advanced instrumentation"]
+    },
+    {
+      "step": 6,
+      "id": "ufo-propulsion",
+      "level": 3,
+      "title": "UFO Propulsion Lab",
+      "source": "https://star-sage-atlas-rapid.grok.me/",
+      "captured": ["flight plus parameter tuning", "phi0/sigma/omega controls", "epsilon/mu metamaterial controls", "Warp W/m_eff/index n telemetry"],
+      "carried_forward": ["expert visual density", "parameter-space mission language", "explicit model-output boundary"]
+    }
+  ]
+}
