@@ -1,0 +1,19 @@
+{
+  "schema": "CITY-GRAPHICS-CERTIFICATE-1.0",
+  "app": "example",
+  "app_version": "0.0.0",
+  "graphics_contract": "CITY-GRAPHICS-ACCELERATOR-1.0",
+  "profile": "example-profile",
+  "backend": "webgpu",
+  "reference_digest": null,
+  "accelerated_digest": null,
+  "deterministic_seed": null,
+  "fixed_timestep_seconds": 0.016666666666666666,
+  "tolerance": null,
+  "gates": {
+    "accelerated_vs_reference_state_equivalence": null,
+    "frame_rate_independence": null,
+    "backend_fallback_equivalence": null
+  },
+  "boundary": "Certificate validates implementation equivalence only; it does not promote scientific evidence class."
+}
