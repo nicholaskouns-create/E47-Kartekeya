@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "CITY-GRAPHICS-PROFILES-1.0",
+  "type": "object",
+  "required": ["schema", "contract", "invariant", "proof_gates", "default_runtime", "surfaces"],
+  "properties": {
+    "schema": {"const": "CITY-GRAPHICS-PROFILES-1.0"},
+    "contract": {"const": "CITY-GRAPHICS-ACCELERATOR-1.0"},
+    "invariant": {"type": "string", "minLength": 1},
+    "proof_gates": {"type": "array", "minItems": 3, "items": {"type": "string"}, "uniqueItems": true},
+    "default_runtime": {"type": "object"},
+    "surfaces": {
+      "type": "array",
+      "minItems": 13,
+      "items": {
+        "type": "object",
+        "required": ["name", "profile", "priority", "host_status"],
+        "properties": {
+          "order": {"type": "integer", "minimum": 1},
+          "name": {"type": "string", "minLength": 1},
+          "profile": {"type": "string", "minLength": 1},
+          "priority": {"type": "array", "items": {"type": "string"}},
+          "host_status": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
