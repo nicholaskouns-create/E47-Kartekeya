@@ -40,67 +40,127 @@ test("local links, assets and documentation targets exist at the Pages subpath",
   }
 });
 
-// Exercise the actual browser script and its asynchronous fetch/render path.
-async function render(overrides = {}) {
-  const elements = {
-    "pipeline-root": { innerHTML: "" },
-    "status-bar": { innerHTML: "" },
+// Exercise the actual browser script against a minimal DOM shim.
+async function render({ search = "" } = {}) {
+  const makeClassList = () => {
+    const classNames = new Set();
+    return {
+      toggle(name, force) {
+        if (force === undefined) {
+          if (classNames.has(name)) classNames.delete(name);
+          else classNames.add(name);
+          return classNames.has(name);
+        }
+        if (force) classNames.add(name);
+        else classNames.delete(name);
+        return force;
+      },
+      contains(name) {
+        return classNames.has(name);
+      },
+    };
+  };
+  const makeElement = () => ({
+    innerHTML: "",
+    textContent: "",
+    classList: makeClassList(),
+    attributes: {},
+    dataset: {},
+    listeners: {},
+    addEventListener(type, listener) {
+      this.listeners[type] = listener;
+    },
+    setAttribute(name, value) {
+      this.attributes[name] = value;
+    },
+    querySelectorAll() {
+      return [];
+    },
+    scrollIntoView() {
+      this.scrolled = true;
+    },
+    onclick: null,
+  });
+  const elements = Object.fromEntries(
+    [
+      "pipeline-root",
+      "status-bar",
+      "lab-grid",
+      "district-orbit",
+      "world-title",
+      "world-description",
+      "guide-what",
+      "guide-try",
+      "world-enter",
+      "egg-world",
+      "egg-toggle",
+      "route-egg",
+      "law",
+      "world",
+    ].map((id) => [id, makeElement()]),
+  );
+  const body = { classList: makeClassList() };
+  const window = {
+    openCalls: [],
+    open(...args) {
+      this.openCalls.push(args);
+    },
   };
   runInNewContext(app, {
     document: {
       getElementById: (id) => elements[id],
       querySelectorAll: () => [],
+      body,
     },
-    window: {},
+    window,
+    location: { search },
+    URLSearchParams,
     console: { warn() {} },
-    fetch: async (path) => {
-      const url = new URL(path, base);
-      assert.equal(url.origin, base.origin);
-      assert.ok(url.pathname.startsWith(base.pathname));
-      const content = Object.hasOwn(overrides, path)
-        ? overrides[path]
-        : read(resolve(site, url.pathname.slice(base.pathname.length)));
-      return {
-        ok: content !== null,
-        status: content === null ? 404 : 200,
-        json: async () => JSON.parse(content),
-      };
-    },
   });
-  await new Promise(setImmediate);
-  return { pipeline: elements["pipeline-root"].innerHTML, status: elements["status-bar"].innerHTML };
+  return {
+    body,
+    elements,
+    fire(id, type = "click") {
+      elements[id].listeners[type]?.({ preventDefault() {} });
+    },
+    window,
+  };
 }
 
-test("renders every pipeline stage and both certificate statuses", async () => {
+test("renders the city districts and selects Eidolon by default", async () => {
+  const { elements } = await render();
+  assert.equal((elements["lab-grid"].innerHTML.match(/class="lab-card"/g) || []).length, 13);
+  assert.equal((elements["district-orbit"].innerHTML.match(/class="district/g) || []).length, 13);
+  assert.match(elements["lab-grid"].innerHTML, /EIDOLON/);
+  assert.equal(elements["world-title"].textContent, "EIDOLON · Flight");
+  assert.equal(elements["world-enter"].textContent, "Explore here");
+  assert.match(elements["egg-world"].textContent, /DISTRICT: EIDOLON/);
+});
+
+test("district query parameters select the requested lab and scroll to the world view", async () => {
+  const { elements } = await render({ search: "?district=Fold" });
+  assert.equal(elements["world-title"].textContent, "Fold · Invariance");
+  assert.match(elements["guide-what"].textContent, /Fold is the City district for invariance\./);
+  assert.equal(elements["world-enter"].textContent, "Open current instrument");
+  assert.equal(elements.world.scrolled, true);
+});
+
+test("external districts keep a safe noopener window open handler", async () => {
+  const result = await render({ search: "?district=Fold" });
+  result.elements["world-enter"].onclick();
+  assert.deepEqual(result.window.openCalls, [
+    ["https://giant-beacon-dawn-falcon.grok.me/", "_blank", "noopener,noreferrer"],
+  ]);
+});
+
+test("egghead controls toggle the body state and route shortcut scrolls to the law page", async () => {
   const result = await render();
-  const stages = json(resolve(site, "data/e47_pipeline.json")).pipeline;
-  assert.equal((result.pipeline.match(/class="pipeline-stage"/g) || []).length, stages.length);
-  for (const stage of stages) assert.ok(result.pipeline.includes(stage.name));
-  assert.match(result.status, /Pipeline: COMPLETE/);
-  assert.match(result.status, /QuTiP cert: pass/);
-  for (const invariant of ["dim(V)=125", "dim(E₄₇)=47", "Ω=47/125", "gap=11664"]) {
-    assert.ok(result.status.includes(invariant), invariant);
-  }
-});
-
-test("a missing QuTiP certificate is visible while the pipeline still renders", async () => {
-  const result = await render({ "data/qutip_validation.json": null });
-  assert.match(result.status, /QuTiP cert: unavailable/);
-  assert.doesNotMatch(result.status, /QuTiP cert: pass/);
-  assert.match(result.status, /Pipeline: COMPLETE/);
-  assert.match(result.pipeline, /State Space/);
-});
-
-test("a missing pipeline is visible while the QuTiP certificate still renders", async () => {
-  const result = await render({ "data/e47_pipeline.json": null });
-  assert.match(result.pipeline, /Pipeline data unavailable/);
-  assert.match(result.status, /Pipeline: unavailable/);
-  assert.match(result.status, /QuTiP cert: pass/);
-});
-
-test("unreadable certificates show unavailable statuses without pass badges", async () => {
-  const result = await render({ "data/e47_pipeline.json": "{", "data/qutip_validation.json": "{" });
-  assert.match(result.status, /Pipeline: unavailable/);
-  assert.match(result.status, /QuTiP cert: unavailable/);
-  assert.doesNotMatch(result.status, /class="pill pass"/);
+  result.fire("egg-toggle");
+  assert.ok(result.body.classList.contains("egghead-on"));
+  assert.ok(result.elements["egg-toggle"].classList.contains("on"));
+  assert.equal(result.elements["egg-toggle"].attributes["aria-pressed"], "true");
+  assert.equal(result.elements["egg-toggle"].textContent, "🥚 Egghead · ON");
+  result.fire("route-egg");
+  assert.ok(result.body.classList.contains("egghead-on"));
+  assert.equal(result.elements.law.scrolled, true);
 });
