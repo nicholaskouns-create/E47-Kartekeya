@@ -2,6 +2,8 @@ name: City Watchtower
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
   schedule:
     # Public-system heartbeat every six hours.
     - cron: "17 */6 * * *"
