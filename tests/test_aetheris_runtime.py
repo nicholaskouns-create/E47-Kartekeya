@@ -94,14 +94,54 @@ def test_jsonl_store_writes_portable_record(tmp_path):
 
 def test_e47_projector_module_contract_when_qutip_available():
     pytest.importorskip("qutip")
+    from e47.projector import construct_e47_projector
+    from e47.su2_kernel import build_e47_operators
+
     runtime = AetherisRuntime()
     runtime.register(E47ProjectorModule())
     x = np.zeros(125, dtype=np.complex128)
     x[0] = 1.0
-    result = runtime.execute(StatePacket(kind="quantum.state", payload={"state": x}), ["e47.projector"])
+    x[37] = 0.25 - 0.5j
+    result = runtime.execute(
+        StatePacket(kind="quantum.state", payload={"state": x}),
+        ["e47.projector"],
+    )
 
     assert result.certificate.status == "PASS"
     receipt = result.certificate.receipts[0]
-    assert receipt.measurements["projector_rank"] == 47
-    assert receipt.measurements["projection_leakage"] <= 1e-8
+    measurements = receipt.measurements
+    metadata = result.packet.metadata["aetheris.e47"]
+
+    projector = construct_e47_projector().projector.full()
+    projected = projector @ x
+    expected_coherence = float(np.vdot(projected, projected).real / np.vdot(x, x).real)
+
+    operators = build_e47_operators()
+    eigenvalues, eigenvectors = np.linalg.eigh(operators.kernel_squared.full())
+    weights = np.abs(eigenvectors.conj().T @ x) ** 2
+    expected_k2 = float(np.dot(eigenvalues.real, weights) / np.vdot(x, x).real)
+
+    assert measurements["carrier_amplitudes"] == 125
+    assert measurements["projector_rank"] == 47
+    assert measurements["projector_status"] == "PASS"
+    assert measurements["projection_invariance_error"] <= 1e-8
+    assert measurements["coherence"] == pytest.approx(expected_coherence, abs=1e-12)
+    assert measurements["k2_expectation"] == pytest.approx(expected_k2, abs=1e-8)
+    assert measurements["k2_spectrum"] == [0, 11664, 12544, 19600, 32400, 186624]
+    assert "coherence_fraction" not in measurements
+    assert "coherence_fraction" not in metadata
+    assert metadata["coherence"] == pytest.approx(expected_coherence, abs=1e-12)
     assert np.asarray(result.packet.payload["state"]).shape == (125,)
+
+
+def test_e47_projector_rejects_zero_state_when_qutip_available():
+    pytest.importorskip("qutip")
+    runtime = AetherisRuntime()
+    runtime.register(E47ProjectorModule())
+    x = np.zeros(125, dtype=np.complex128)
+
+    with pytest.raises(ValueError, match="non-zero 125-amplitude state"):
+        runtime.execute(
+            StatePacket(kind="quantum.state", payload={"state": x}),
+            ["e47.projector"],
+        )
