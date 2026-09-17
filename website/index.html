@@ -1,427 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="antialiased">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="E47-Kartekeya: finite-dimensional algebraic validation of the E47 spectral kernel on V₂⊗V₂⊗V₂." />
-  <meta name="theme-color" content="#070b14" />
-  <title>E47-Kartekeya · Spectral Kernel Validation</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0c0e" />
+  <meta name="description" content="The Mathematical City — executable atlas for Recursive Intelligence, E47, AETHERIS, and Eidolon." />
+  <meta property="og:title" content="The Mathematical City" />
+  <meta property="og:description" content="An executable research architecture for invariant computation." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>The Mathematical City</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="E47-Kartekeya home">
-        <span class="brand-mark">E47</span>
-        <span>Kartekeya</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#invariants">Invariants</a></li>
-        <li><a href="#pipeline">Pipeline</a></li>
-        <li><a href="#math">Mathematics</a></li>
-        <li><a href="#validation">Validation</a></li>
-        <li><a href="#docs">Docs</a></li>
-        <li><a href="#install">Install</a></li>
-      </ul>
-      <a class="nav-cta" href="https://github.com/nicholaskouns-create/E47-Kartekeya" rel="noopener noreferrer" target="_blank">GitHub</a>
+<header class="topbar">
+  <a class="brand" href="#gate">Mathematical City</a>
+  <nav aria-label="City pages">
+    <a href="#gate">Gate</a><a href="#object">Object</a><a href="#world">World</a><a href="#labs">Labs</a><a href="#law">Law</a><a href="#see">SEE</a><a href="#route">Route</a>
+  </nav>
+  <button id="egg-toggle" class="egg-toggle" aria-pressed="false">🥚 Egghead</button>
+</header>
+
+<main>
+<section id="gate" class="page hero">
+  <div class="wrap">
+    <p class="kicker">Atlas clone · Ωc = 47/125 · GitHub-hosted</p>
+    <h1>The Mathematical City</h1>
+    <p class="lede">An executable research architecture for invariant computation. Structure is discovered. Invariance is selected. Everything else is tested.</p>
+    <div class="callout-row">
+      <aside class="callout live"><span>OPEN THE CITY</span><p>Enter the world through Eidolon, move among computational districts, and meet persistent City citizens.</p><a class="text-link" href="#world">Enter the world ↓</a></aside>
+      <aside class="callout"><span>VISUAL SYSTEM</span><p>Near-black laboratory. Cyan live · bronze Λ-ghost · mint lock. Styling never upgrades a claim.</p><code>CITY-VISUAL-GRAMMAR-20260915</code></aside>
     </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Recursive intelligence · algebraic validation</div>
-          <h1>Finite-dimensional spectral core of <span>E₄₇</span></h1>
-          <p class="lead">
-            E47-Kartekeya validates the algebraic construction of the spectral kernel on
-            <strong>V₂ ⊗ V₂ ⊗ V₂</strong>. The package certifies operator identities,
-            projectors, contractions, and semigroup dynamics with reproducible machine evidence.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#install">Install package</a>
-            <a class="btn btn-secondary" href="https://pypi.org/project/e47-kartekeya/" rel="noopener noreferrer" target="_blank">View on PyPI</a>
-            <a class="btn btn-secondary" href="#pipeline">Explore pipeline</a>
-          </div>
-        </div>
-        <aside class="hero-panel" aria-label="Canonical construction">
-          <pre class="formula-block">V = V₂ ⊗ V₂ ⊗ V₂
-dim(V) = 5³ = 125
-
-C  = total SU(2) Casimir
-K  = (C − 6I)(C − 30I)
-E₄₇ = ker(K)
-dim(E₄₇) = 47
-
-Ω = 47/125 = 0.376</pre>
-          <div class="panel-meta">
-            <div class="meta-chip">
-              <span class="label">Spectral gap</span>
-              <span class="value">11664</span>
-            </div>
-            <div class="meta-chip">
-              <span class="label">K² max λ</span>
-              <span class="value">186624</span>
-            </div>
-            <div class="meta-chip">
-              <span class="label">Evidence class</span>
-              <span class="value">E0 / E1</span>
-            </div>
-            <div class="meta-chip">
-              <span class="label">Python</span>
-              <span class="value">≥ 3.12</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="overview">
-      <div class="container">
-        <div class="section-head">
-          <h2>What this repository is</h2>
-          <p>
-            A research software package that reconstructs and certifies the E47 spectral
-            kernel algebraically. It is not a claim of experimental physics hardware or
-            cosmological discovery — it is executable mathematics with frozen certificates.
-          </p>
-        </div>
-        <div class="card-grid">
-          <article class="card">
-            <h3>SU(2) kernel algebra</h3>
-            <p>
-              Builds spin-2 triple tensor operators, Casimir spectrum, and the selector
-              <code>K = (C − 6I)(C − 30I)</code> with exact kernel dimension 47.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Projector &amp; channel</h3>
-            <p>
-              Constructs the orthogonal projector <code>P₄₇</code>, verifies idempotence,
-              hermiticity, annihilation <code>KP = 0</code>, and discrete dephasing contraction.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Semigroup flow</h3>
-            <p>
-              Validates continuous evolution <code>S(t) = exp(−t K²)</code> and asymptotic
-              convergence onto the E47 subspace.
-            </p>
-          </article>
-          <article class="card">
-            <h3>SU(3) adjoint extension</h3>
-            <p>
-              Additional 512-dimensional adjoint construction with singlet projector and
-              structure-constant tooling in the same package surface.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="invariants">
-      <div class="container">
-        <div class="section-head">
-          <h2>Canonical invariants</h2>
-          <p>These values are CI-guarded and must not drift across regenerations.</p>
-        </div>
-        <div class="card-grid">
-          <article class="card">
-            <div class="stat-label">Carrier dimension dim(V)</div>
-            <div class="stat-value">125</div>
-            <p>Three copies of the spin-2 representation: 5 × 5 × 5.</p>
-          </article>
-          <article class="card">
-            <div class="stat-label">Kernel dimension dim(E₄₇)</div>
-            <div class="stat-value">47</div>
-            <p>Selected subspace ker(K) = E₆ ⊕ E₃₀ with dims 25 + 22.</p>
-          </article>
-          <article class="card">
-            <div class="stat-label">Coherence fraction</div>
-            <div class="stat-value">47/125</div>
-            <p>Invariant occupancy of the maximally mixed state under P₄₇.</p>
-          </article>
-          <article class="card">
-            <div class="stat-label">K² spectral gap</div>
-            <div class="stat-value">11664</div>
-            <p>Smallest positive eigenvalue of K²; drives contraction rate.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="pipeline">
-      <div class="container">
-        <div class="section-head">
-          <h2>Validation pipeline</h2>
-          <p>
-            Stages mirror the frozen certificate in
-            <code>certificates/e47_pipeline.json</code>.
-          </p>
-        </div>
-        <div id="pipeline-root" class="pipeline" aria-live="polite">
-          <!-- Filled by js/app.js; static fallback below if JS disabled -->
-          <noscript>
-            <div class="pipeline-stage">
-              <div class="stage-badge">Σ</div>
-              <div class="stage-body">
-                <h3>State Space</h3>
-                <p>Ambient input vector space ℝ¹²⁵ from 5³ spin-2 tensor product.</p>
-              </div>
-              <div class="stage-meta"><span class="stage-ok">validated</span></div>
-            </div>
-          </noscript>
-        </div>
-      </div>
-    </section>
-
-    <section id="math">
-      <div class="container">
-        <div class="section-head">
-          <h2>Mathematical core</h2>
-          <p>Exact spectral facts recorded in the repository theorem notes.</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Object</th>
-                <th>Definition / spectrum</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>Σ = V₂⊗V₂⊗V₂</code></td>
-                <td>dim = 125</td>
-                <td>Carrier Hilbert space</td>
-              </tr>
-              <tr>
-                <td><code>spec(C)</code></td>
-                <td>{0, 2, 6, 12, 20, 30, 42}</td>
-                <td>Multiplicities 1, 9, 25, 28, 27, 22, 13</td>
-              </tr>
-              <tr>
-                <td><code>K</code></td>
-                <td><code>(C − 6I)(C − 30I)</code></td>
-                <td>Selects E₆ ⊕ E₃₀</td>
-              </tr>
-              <tr>
-                <td><code>P₄₇</code></td>
-                <td><code>P₆ + P₃₀</code></td>
-                <td>Idempotent, Hermitian, rank 47</td>
-              </tr>
-              <tr>
-                <td><code>Γ_ε</code></td>
-                <td><code>I − ε K²</code></td>
-                <td>Optimal ε* = 1/99144, ρ* = 15/17</td>
-              </tr>
-              <tr>
-                <td><code>S(t)</code></td>
-                <td><code>exp(−t K²)</code></td>
-                <td>Continuous contraction → P₄₇</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="validation">
-      <div class="container">
-        <div class="section-head">
-          <h2>Certificate status</h2>
-          <p>
-            Live view of committed certificate metadata. Aggregate validity requires every layer to pass.
-          </p>
-        </div>
-        <div class="status-bar" id="status-bar">
-          <span class="pill"><span class="dot"></span> Loading certificates…</span>
-        </div>
-        <div class="split">
-          <article class="card scope-card good">
-            <h3>Validated here</h3>
-            <ul>
-              <li>Carrier dimension 125 and kernel dimension 47</li>
-              <li>Casimir spectrum and multiplicities</li>
-              <li>Projector hermiticity, idempotence, and rank</li>
-              <li>Kernel annihilation KP = 0</li>
-              <li>Discrete contraction and continuous semigroup laws</li>
-              <li>QuTiP reconstruction checks where available</li>
-            </ul>
-          </article>
-          <article class="card scope-card caution">
-            <h3>Not claimed by this package</h3>
-            <ul>
-              <li>Physical laboratory realization of E₄₇</li>
-              <li>New particle, field, or cosmological evidence</li>
-              <li>Hardware performance or QEC device equivalence</li>
-              <li>Derivation of measured physical constants</li>
-              <li>Infinite-dimensional global PDE regularity</li>
-              <li>Claims outside finite-dimensional algebra</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="api">
-      <div class="container">
-        <div class="section-head">
-          <h2>Package surface</h2>
-          <p>Public API exported by <code>import e47</code> from the <code>e47-kartekeya</code> distribution.</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Module</th>
-                <th>Role</th>
-                <th>Entry points</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>su2_kernel</code></td>
-                <td>Operator algebra &amp; kernel</td>
-                <td><code>build_e47_operators</code>, <code>validate_e47_kernel</code></td>
-              </tr>
-              <tr>
-                <td><code>projector</code></td>
-                <td>Orthogonal projector P₄₇</td>
-                <td><code>construct_e47_projector</code>, <code>validate_e47_projector</code></td>
-              </tr>
-              <tr>
-                <td><code>contraction</code></td>
-                <td>Discrete dephasing map</td>
-                <td><code>build_contraction</code>, <code>validate_contraction</code></td>
-              </tr>
-              <tr>
-                <td><code>semigroup</code></td>
-                <td>Continuous flow S(t)</td>
-                <td><code>construct_semigroup</code>, <code>validate_semigroup</code></td>
-              </tr>
-              <tr>
-                <td><code>validation_results</code></td>
-                <td>Five-layer aggregate cert</td>
-                <td><code>run_all_validations</code>, <code>require_all_validations</code></td>
-              </tr>
-              <tr>
-                <td><code>spectral_compilation</code></td>
-                <td>Kernel compilation passport</td>
-                <td><code>compile_spectral_kernel</code>, <code>spectral_passport</code></td>
-              </tr>
-              <tr>
-                <td><code>su3_adjoint</code></td>
-                <td>512-dim adjoint singlet</td>
-                <td><code>run_su3_adjoint_validation</code>, <code>construct_singlet_projector</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="docs">
-      <div class="container">
-        <div class="section-head">
-          <h2>Documentation &amp; theorems</h2>
-          <p>Primary sources in the repository, linked for deep reading.</p>
-        </div>
-        <div class="doc-list">
-          <article class="doc-item">
-            <div>
-              <h3>README</h3>
-              <p>Installation, quick start, certificate regeneration, and publishing notes.</p>
-              <span class="tag">overview</span>
-            </div>
-            <a class="btn btn-secondary" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/README.md" target="_blank" rel="noopener noreferrer">Open</a>
-          </article>
-          <article class="doc-item">
-            <div>
-              <h3>Provenance</h3>
-              <p>Canonical implementation chain, reproducibility record, certificate structure.</p>
-              <span class="tag">docs</span>
-            </div>
-            <a class="btn btn-secondary" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/provenance.md" target="_blank" rel="noopener noreferrer">Open</a>
-          </article>
-          <article class="doc-item">
-            <div>
-              <h3>Validation scope</h3>
-              <p>What is and is not validated; evidence classes E0–H1.</p>
-              <span class="tag">scope</span>
-            </div>
-            <a class="btn btn-secondary" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/validation_scope.md" target="_blank" rel="noopener noreferrer">Open</a>
-          </article>
-          <article class="doc-item">
-            <div>
-              <h3>E47 Core Spectral Certificate</h3>
-              <p>Exact spectral core, kernel selector, occupancy, and contraction constants.</p>
-              <span class="tag">theorem</span>
-            </div>
-            <a class="btn btn-secondary" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/E47_Core_Spectral_Certificate.md" target="_blank" rel="noopener noreferrer">Open</a>
-          </article>
-          <article class="doc-item">
-            <div>
-              <h3>Projection Flow Theorem</h3>
-              <p>Gradient flow of transverse energy with exact exponential decay to P x₀.</p>
-              <span class="tag">theorem</span>
-            </div>
-            <a class="btn btn-secondary" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/E47_Projection_Flow_Theorem.md" target="_blank" rel="noopener noreferrer">Open</a>
-          </article>
-          <article class="doc-item">
-            <div>
-              <h3>Linearized Einstein Intertwiner</h3>
-              <p>Candidate intertwiner from E₄₇ into a pure-gauge vacuum sector (human review pending).</p>
-              <span class="tag">candidate</span>
-            </div>
-            <a class="btn btn-secondary" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/E47_Linearized_Einstein_Intertwiner_Theorem.md" target="_blank" rel="noopener noreferrer">Open</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="install">
-      <div class="container">
-        <div class="section-head">
-          <h2>Install &amp; reproduce</h2>
-          <p>Distribution name <code>e47-kartekeya</code>; import package <code>e47</code>.</p>
-        </div>
-        <div class="install-block">
-          <pre># From PyPI
-pip install e47-kartekeya
-
-# From a local checkout
-pip install -e .
-pip install -r requirements.txt -r requirements-dev.txt
-python -m pytest tests/ -v
-
-# Regenerate aggregate certificate
-python scripts/generate_validation_certificate.py
-
-# Compile spectral kernel passport
-python scripts/compile_spectral_kernel.py --spin 2 --copies 3 --select 2 5</pre>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>E47-Kartekeya</strong>
-        <div>Finite-dimensional algebraic validation · Public Domain license</div>
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/nicholaskouns-create/E47-Kartekeya" target="_blank" rel="noopener noreferrer">Repository</a>
-        <a href="https://pypi.org/project/e47-kartekeya/" target="_blank" rel="noopener noreferrer">PyPI</a>
-        <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">CI</a>
-        <a href="robots.txt">robots.txt</a>
-      </div>
+    <div class="stats">
+      <div><b>125</b><span>carrier</span></div><div><b>47</b><span>kernel</span></div><div><b>15/17</b><span>bound</span></div><div><b>E0/E1</b><span>ceiling here</span></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="js/app.js" defer></script>
+<section id="object" class="page">
+  <div class="wrap narrow">
+    <p class="kicker">Page 02 · The object</p>
+    <h2>125 → K → 47</h2>
+    <p class="section-intro">The City opens with the executable object, not a directory of laboratories.</p>
+    <div class="object-grid">
+      <article><strong>V</strong><code>V₂⊗³</code><span>carrier dim 125</span></article>
+      <article><strong>K</strong><code>(C−6I)(C−30I)</code><span>Casimir selector</span></article>
+      <article><strong>E47</strong><code>ker K</code><span>selected dim 47</span></article>
+    </div>
+    <p class="formula">P₄₇ = P₆ + P₃₀ · Γ = I − εK² · ε* = 1/99144 · ρ* = 15/17</p>
+    <aside class="callout lock"><span>BOUNDARY RETAINED</span><p>Exact finite-dimensional operator mathematics and machine validation. Hardware, physical protection, continuum field claims, and experiment remain separate gates.</p></aside>
+  </div>
+</section>
+
+<section id="world" class="page world-page">
+  <div class="wrap">
+    <div class="page-head"><div><p class="kicker">Page 03 · Instantiated world</p><h2>Play the City.</h2><p class="section-intro">One quiet client. Many instruments. Persistent computational citizens underneath.</p></div><div class="world-status"><span class="dot"></span> CITY WORLD · READY</div></div>
+    <div class="world-grid">
+      <article class="world-stage">
+        <div class="horizon"></div>
+        <div class="city-core"><span>E47</span><small>INVARIANT CORE</small></div>
+        <div id="district-orbit" class="district-orbit" aria-label="Interactive City districts"></div>
+        <div class="world-copy"><p>Pick a district.</p><h3 id="world-title">Eidolon · Flight</h3><p id="world-description">Navigate the City as an explorable simulation surface. Instruments are places, not disconnected websites.</p><button id="world-enter" class="primary">Enter district</button></div>
+      </article>
+      <aside class="learn-panel">
+        <p class="kicker">Lay guide</p>
+        <div class="guide-step"><b>01</b><div><strong>What is this?</strong><p id="guide-what">A live computational district inside the Mathematical City.</p></div></div>
+        <div class="guide-step"><b>02</b><div><strong>Try it</strong><p id="guide-try">Choose a district and interact with its instrument.</p></div></div>
+        <div class="guide-step"><b>03</b><div><strong>What changed?</strong><p>State transitions can be returned as AETHERIS receipts.</p></div></div>
+        <div class="guide-step"><b>04</b><div><strong>Why it matters</strong><p>The experience stays simple while the evidence remains inspectable.</p></div></div>
+        <div class="egghead-panel" data-egghead hidden><p class="kicker">🥚 Egghead mode</p><pre id="egg-world">CITY-INVARIANT 1.0
+AETHERIS receipt layer
+persistent citizen identities
+provenance-preserving state transitions</pre></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="labs" class="page">
+  <div class="wrap">
+    <p class="kicker">Page 04 · Instruments</p><h2>Thirteen districts. One civic instrument.</h2>
+    <p class="section-intro">The public surface is deliberately quiet. Open a district for the experience. Open Egghead Mode for the mathematics.</p>
+    <div id="lab-grid" class="lab-grid"></div>
+  </div>
+</section>
+
+<section id="law" class="page">
+  <div class="wrap narrow">
+    <p class="kicker">Page 05 · Composition law</p><h2>Labs are morphisms. The City is the operad.</h2>
+    <div class="law-plate"><div>P</div><span>→</span><div>Γ<sub>ε*</sub>(P)</div><span>→</span><div>P<sub>47</sub>(P)</div></div>
+    <p class="section-intro">Evidence class is invariant under composition. Cross-system mappings are typed arrows. Local failure does not silently become global refutation, and successful simulation does not silently become physical evidence.</p>
+    <div class="egghead-panel" data-egghead hidden><pre>object → operator → invariant → witness → evidence → provenance → next_action
+
+Canonical communication grammar: CITY-INVARIANT 1.0
+Human promotion gate: BITHOS
+Runtime receipts: AETHERIS
+World actor layer: Eidolon</pre></div>
+  </div>
+</section>
+
+<section id="see" class="page">
+  <div class="wrap">
+    <p class="kicker">Page 06 · SEE · Citadel</p><h2>Every claim has a route back to evidence.</h2>
+    <div class="evidence-grid">
+      <article><b>E0</b><span>exact</span><p>Proof-level finite mathematics.</p></article>
+      <article><b>E1</b><span>machine</span><p>Executable numerical witness.</p></article>
+      <article><b>E2</b><span>simulation</span><p>Controlled modeled behavior.</p></article>
+      <article><b>E3+</b><span>external</span><p>Empirical, experimental, hardware gates remain explicit.</p></article>
+    </div>
+    <div class="egghead-panel" data-egghead hidden><p class="kicker">Core references</p><ul class="refs"><li><a href="../certificates/e47_pipeline.json">E47 pipeline certificate</a></li><li><a href="../docs/aetheris_runtime.md">AETHERIS runtime</a></li><li><a href="https://github.com/nicholaskouns-create/E47-Kartekeya">Canonical repository</a></li></ul></div>
+  </div>
+</section>
+
+<section id="route" class="page final-page">
+  <div class="wrap">
+    <p class="kicker">Page 07 · Route</p><h2>Start simple. Go as deep as you want.</h2>
+    <div class="route-grid">
+      <a href="#world"><span>01</span><strong>Fly / explore</strong><p>Begin with Eidolon and the City world.</p></a>
+      <a href="#labs"><span>02</span><strong>Choose an instrument</strong><p>Move through structure, dynamics, memory, prediction, flow, construction and restoration.</p></a>
+      <button id="route-egg"><span>03</span><strong>Open Egghead Mode</strong><p>Reveal equations, evidence boundaries, receipts and provenance.</p></button>
+      <a href="https://github.com/nicholaskouns-create/E47-Kartekeya"><span>04</span><strong>Inspect the machine</strong><p>Read source, tests, certificates and commit history.</p></a>
+    </div>
+    <footer><p>THE MATHEMATICAL CITY · RECURSIVE INTELLIGENCE / E47</p><p class="faint">GitHub Pages frontend · Supabase runtime · Google Drive corpus · Notion research atlas</p></footer>
+  </div>
+</section>
+</main>
+<script src="js/app.js"></script>
 </body>
 </html>
