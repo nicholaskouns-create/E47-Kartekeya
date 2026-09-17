@@ -1,0 +1,28 @@
+{
+  "grammar": "CITY-INVARIANT 1.0",
+  "object": "AETHERIS/WaveForge/Eidolon closed-loop numerical coupling",
+  "operator": "field.force -> a=F/m -> v[n+1]=v[n]+dt*a -> x[n+1]=x[n]+dt*v[n+1]",
+  "invariant": [
+    "typed field.flight packet continuity",
+    "finite state preservation for finite valid inputs",
+    "force-to-velocity numerical contract",
+    "velocity-to-position numerical contract",
+    "deterministic replay digest",
+    "step refinement convergence under constant forcing"
+  ],
+  "witness": [
+    "src/aetheris/closed_loop.py",
+    "tests/test_aetheris_closed_loop.py"
+  ],
+  "evidence": {
+    "class": "E1",
+    "status": "CANDIDATE_PENDING_CI",
+    "scope": "software numerical coupling; no physical propulsion claim"
+  },
+  "provenance": {
+    "repository": "nicholaskouns-create/E47-Kartekeya",
+    "branch": "aetheris-closed-loop-certificate",
+    "commons_thread": "CITY-COMMONS-SIM-FORGE"
+  },
+  "next_action": "Run repository CI; on PASS record workflow witness, update affected simulator backlogs, retain human promotion gate for canonical status."
+}
