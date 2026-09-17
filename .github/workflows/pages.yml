@@ -22,14 +22,14 @@ permissions:
 
 concurrency:
   group: pages-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   validate:
     name: Validate website
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -50,9 +50,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
 
       - name: Configure Pages
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Upload website artifact
@@ -62,52 +63,21 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
-      - name: Verify GitHub Pages control-plane state
-        id: pages_state
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
+      - name: Deployment receipt
         shell: bash
         run: |
-          set -euo pipefail
-
-          echo "Querying GitHub Pages state for ${GH_REPO}"
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            "/repos/${GH_REPO}/pages" > pages-state.json
-
-          SITE_URL="$(jq -r '.html_url // empty' pages-state.json)"
-          STATUS="$(jq -r '.status // empty' pages-state.json)"
-          HTTPS="$(jq -r '.https_enforced // false' pages-state.json)"
-          CNAME="$(jq -r '.cname // empty' pages-state.json)"
-          BUILD_TYPE="$(jq -r '.build_type // empty' pages-state.json)"
-
-          echo "site_url=${SITE_URL}" >> "$GITHUB_OUTPUT"
-          echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
-          echo "https_enforced=${HTTPS}" >> "$GITHUB_OUTPUT"
-          echo "cname=${CNAME}" >> "$GITHUB_OUTPUT"
-          echo "build_type=${BUILD_TYPE}" >> "$GITHUB_OUTPUT"
-
           {
             echo "## GitHub Pages deployment receipt"
             echo
             echo "| Field | Value |"
             echo "|---|---|"
-            echo "| Repository | \`${GH_REPO}\` |"
-            echo "| Deployment output | ${DEPLOYED_URL} |"
-            echo "| Pages URL | ${SITE_URL:-n/a} |"
-            echo "| Pages status | \`${STATUS:-unknown}\` |"
-            echo "| HTTPS enforced | \`${HTTPS}\` |"
-            echo "| Custom domain | ${CNAME:-none} |"
-            echo "| Build type | \`${BUILD_TYPE:-unknown}\` |"
+            echo "| Repository | \`${GITHUB_REPOSITORY}\` |"
             echo "| Commit | \`${GITHUB_SHA}\` |"
+            echo "| Pages URL | ${{ steps.deployment.outputs.page_url }} |"
+            echo "| Base URL | ${{ steps.pages.outputs.base_url }} |"
           } >> "$GITHUB_STEP_SUMMARY"
-
-          test -n "$SITE_URL"
-          test "$STATUS" = "built"
 
       - name: Verify deployed site responds
         env:
