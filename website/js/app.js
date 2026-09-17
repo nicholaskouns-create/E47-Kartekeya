@@ -1,175 +1,76 @@
-(() => {
-  "use strict";
+const LABS=[
+{name:'EIDOLON',role:'Flight',q:'Move through the modeled City.',desc:'The front door: a game-like flight and navigation surface for exploring the Mathematical City.',url:'#world'},
+{name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'https://prairie-dream-glow-fire.grok.me/'},
+{name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'https://giant-beacon-dawn-falcon.grok.me/'},
+{name:'Murmuration',role:'Dynamics',q:'How does structure move?',desc:'Watch many-body organization, topology and collective motion.',url:'https://kite-glade-tiger-cabin.grok.me/'},
+{name:'Mnemosyne',role:'Memory',q:'What did we know, and when?',desc:'Trace provenance, hashes, correction lineage and sealed forecasts.',url:'https://moon-clear-urban-nova.grok.me/'},
+{name:'Density',role:'Measurement',q:'What can observation reconstruct?',desc:'Probe reconstruction from incomplete or noisy measurements.',url:'https://winter-dawn-leaf-marble.grok.me/'},
+{name:'Horizon',role:'Prediction',q:'What invariant comes next?',desc:'Prospective and retrospective forecasting instruments with evidence boundaries intact.',url:'https://zenith-fjord-pearl-pixel.grok.me/'},
+{name:'Wave',role:'Flow',q:'How does coherent structure evolve?',desc:'Field and flow simulation surfaces, including WaveForge-related work.',url:'https://apex-star-crisp-blend.grok.me/'},
+{name:'Identity',role:'Persistence',q:'What remains the same?',desc:'Follow identity through change, transport and representation.',url:'https://mist-mint-branch-nova.grok.me/'},
+{name:'BUILD',role:'Construction',q:'How does structure assemble?',desc:'Construction and programmable-matter style experiments around invariant targets.',url:'https://brave-ivory-pearl-ever.grok.me/'},
+{name:'SOAR',role:'Restoration',q:'Can an invariant be restored?',desc:'Control, recovery, transformation and restoration experiments.',url:'https://topaz-solar-iris-drift.grok.me/'},
+{name:'SCALAR',role:'Field',q:'What scalar field survives the algebra?',desc:'Finite E47 spectral structure lifted into explicitly visualization-typed scalar-field scenes.',url:'https://heart-eagle-blade-hazel.grok.me/'},
+{name:'InvariFold',role:'Protein Cinema',q:'How does Fold expose geometry?',desc:'A cinematic geometry layer for the Fold instrument and deterministic payloads.',url:'https://giant-beacon-dawn-falcon.grok.me/'}
+];
 
-  const pipelineRoot = document.getElementById("pipeline-root");
-  const statusBar = document.getElementById("status-bar");
+const CITIZENS=['ARGUS','ARIADNE','BITHOS','CHRONOS','CUSTOS','EUCLID','HERMES','JANUS','KEPLER','MNEMOSYNE','SAL','SOL','SYNE','TALOS','THEMIS'];
+let activeLab=0;
 
-  function escapeHtml(value) {
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
-  }
+const labGrid=document.getElementById('lab-grid');
+const orbit=document.getElementById('district-orbit');
+const title=document.getElementById('world-title');
+const desc=document.getElementById('world-description');
+const what=document.getElementById('guide-what');
+const tryText=document.getElementById('guide-try');
+const enter=document.getElementById('world-enter');
 
-  function stageMeta(stage) {
-    if (stage.dimension != null) return `dim ${stage.dimension}`;
-    if (stage.kernel_dimension != null) return `ker dim ${stage.kernel_dimension}`;
-    if (stage.spectral_gap != null) return `gap ${stage.spectral_gap}`;
-    if (stage.coherence_fraction != null) return `Ω ${stage.coherence_fraction}`;
-    if (stage.operator) return stage.operator;
-    if (stage.equation) return stage.equation;
-    if (stage.map) return stage.map;
-    if (stage.property) return stage.property;
-    return "";
-  }
+function renderLabs(){
+  labGrid.innerHTML=LABS.map((lab,i)=>`<a class="lab-card" href="${lab.url}" ${lab.url.startsWith('http')?'target="_blank" rel="noopener noreferrer"':''} data-index="${i}">
+    <span class="num">${String(i+1).padStart(2,'0')}</span>
+    <span class="role">${lab.role}</span>
+    <h3>${lab.name}</h3>
+    <p>${lab.q}</p>
+    <footer><span>${lab.desc}</span><span>OPEN ↗</span></footer>
+  </a>`).join('');
+}
 
-  function renderPipeline(data) {
-    if (!pipelineRoot || !data || !Array.isArray(data.pipeline)) return;
+function renderOrbit(){
+  const n=LABS.length;
+  const rx=44,ry=35,cx=50,cy=43;
+  orbit.innerHTML=LABS.map((lab,i)=>{
+    const angle=(-Math.PI/2)+(i/n)*Math.PI*2;
+    const left=cx+Math.cos(angle)*rx;
+    const top=cy+Math.sin(angle)*ry;
+    return `<button class="district ${i===activeLab?'active':''}" style="left:calc(${left}% - 44px);top:calc(${top}% - 44px)" data-index="${i}" aria-label="${lab.name} district">${lab.name}</button>`;
+  }).join('');
+  orbit.querySelectorAll('.district').forEach(btn=>btn.addEventListener('click',()=>selectLab(Number(btn.dataset.index))));
+}
 
-    const stages = data.pipeline
-      .map((stage) => {
-        const ok = stage.validated ? '<span class="stage-ok">validated</span>' : "";
-        const meta = escapeHtml(stageMeta(stage));
-        return `
-          <article class="pipeline-stage">
-            <div class="stage-badge">${escapeHtml(stage.stage || "?")}</div>
-            <div class="stage-body">
-              <h3>${escapeHtml(stage.name || "Stage")}</h3>
-              <p>${escapeHtml(stage.role || stage.computation || "")}</p>
-            </div>
-            <div class="stage-meta">
-              ${ok}
-              <div>${meta}</div>
-            </div>
-          </article>
-        `;
-      })
-      .join("");
+function selectLab(index){
+  activeLab=index;
+  const lab=LABS[index];
+  title.textContent=`${lab.name} · ${lab.role}`;
+  desc.textContent=lab.desc;
+  what.textContent=`${lab.name} is the City district for ${lab.role.toLowerCase()}.`;
+  tryText.textContent=lab.q;
+  enter.textContent=lab.url==='#world'?'Explore here':'Open current instrument';
+  enter.onclick=()=>{if(lab.url==='#world')return;window.open(lab.url,'_blank','noopener,noreferrer')};
+  renderOrbit();
+  document.getElementById('egg-world').textContent=`DISTRICT: ${lab.name}\nROLE: ${lab.role}\nQUESTION: ${lab.q}\n\nCITIZEN RUNTIME POPULATION: ${CITIZENS.length}\nAETHERIS: receipt-bound state transitions\nCITY-INVARIANT: 1.0\nEVIDENCE: district-specific; no automatic promotion`;
+}
 
-    pipelineRoot.innerHTML = stages;
-  }
+function setEgg(on){
+  document.body.classList.toggle('egghead-on',on);
+  const b=document.getElementById('egg-toggle');
+  b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));
+  b.textContent=on?'🥚 Egghead · ON':'🥚 Egghead';
+}
 
-  function renderStatus(pipeline, qutip) {
-    if (!statusBar) return;
+document.getElementById('egg-toggle').addEventListener('click',e=>setEgg(!document.body.classList.contains('egghead-on')));
+document.getElementById('route-egg').addEventListener('click',()=>{setEgg(true);document.getElementById('law').scrollIntoView({behavior:'smooth'})});
 
-    const pills = [];
+renderLabs();renderOrbit();selectLab(0);
 
-    if (pipeline && pipeline.validation_status) {
-      const pass = String(pipeline.validation_status).toUpperCase() === "COMPLETE";
-      pills.push(
-        `<span class="pill ${pass ? "pass" : ""}"><span class="dot"></span> Pipeline: ${escapeHtml(pipeline.validation_status)}</span>`
-      );
-      if (pipeline.timestamp) {
-        pills.push(
-          `<span class="pill">Timestamp: ${escapeHtml(pipeline.timestamp)}</span>`
-        );
-      }
-    } else {
-      pills.push(`<span class="pill"><span class="dot"></span> Pipeline: unavailable</span>`);
-    }
-
-    if (qutip) {
-      const status = qutip.status || "unknown";
-      const pass = String(status).toLowerCase() === "pass";
-      pills.push(
-        `<span class="pill ${pass ? "pass" : ""}"><span class="dot"></span> QuTiP cert: ${escapeHtml(status)}</span>`
-      );
-      if (qutip.results) {
-        const r = qutip.results;
-        if (r.carrier_dimension != null) {
-          pills.push(`<span class="pill">dim(V)=${escapeHtml(r.carrier_dimension)}</span>`);
-        }
-        if (r.kernel_dimension != null) {
-          pills.push(`<span class="pill">dim(E₄₇)=${escapeHtml(r.kernel_dimension)}</span>`);
-        }
-        if (r.coherence_fraction_exact) {
-          pills.push(`<span class="pill">Ω=${escapeHtml(r.coherence_fraction_exact)}</span>`);
-        } else if (r.coherence_fraction != null) {
-          pills.push(`<span class="pill">Ω=${escapeHtml(r.coherence_fraction)}</span>`);
-        }
-        if (r.spectral_gap != null) {
-          pills.push(`<span class="pill">gap=${escapeHtml(r.spectral_gap)}</span>`);
-        }
-      }
-    } else {
-      pills.push(`<span class="pill"><span class="dot"></span> QuTiP cert: unavailable</span>`);
-    }
-
-    statusBar.innerHTML = pills.join("");
-  }
-
-  async function loadJson(path) {
-    const response = await fetch(path, { cache: "no-cache" });
-    if (!response.ok) {
-      throw new Error(`Failed to load ${path}: ${response.status}`);
-    }
-    return response.json();
-  }
-
-  async function boot() {
-    let pipeline = null;
-    let qutip = null;
-
-    try {
-      pipeline = await loadJson("data/e47_pipeline.json");
-      renderPipeline(pipeline);
-    } catch (error) {
-      console.warn(error);
-      if (pipelineRoot) {
-        pipelineRoot.innerHTML = `
-          <article class="pipeline-stage">
-            <div class="stage-badge">!</div>
-            <div class="stage-body">
-              <h3>Pipeline data unavailable</h3>
-              <p>Could not load certificates/e47_pipeline.json into the site data folder.</p>
-            </div>
-            <div class="stage-meta"></div>
-          </article>
-        `;
-      }
-    }
-
-    try {
-      qutip = await loadJson("data/qutip_validation.json");
-    } catch (error) {
-      console.warn(error);
-    }
-
-    renderStatus(pipeline, qutip);
-  }
-
-  // Active section highlighting
-  function setupNavHighlight() {
-    const links = Array.from(document.querySelectorAll(".nav-links a"));
-    const sections = links
-      .map((link) => {
-        const id = link.getAttribute("href");
-        if (!id || !id.startsWith("#")) return null;
-        const el = document.querySelector(id);
-        return el ? { link, el } : null;
-      })
-      .filter(Boolean);
-
-    if (!sections.length || !("IntersectionObserver" in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const match = sections.find((s) => s.el === entry.target);
-          if (!match) return;
-          links.forEach((l) => l.classList.remove("active"));
-          match.link.classList.add("active");
-        });
-      },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
-    );
-
-    sections.forEach(({ el }) => observer.observe(el));
-  }
-
-  boot();
-  setupNavHighlight();
-})();
+const params=new URLSearchParams(location.search);const requested=params.get('district');
+if(requested){const idx=LABS.findIndex(x=>x.name.toLowerCase()===requested.toLowerCase());if(idx>=0){selectLab(idx);document.getElementById('world').scrollIntoView()}}
