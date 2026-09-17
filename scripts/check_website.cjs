@@ -60,27 +60,45 @@ async function render({ search = "" } = {}) {
       },
     };
   };
-  const makeElement = () => ({
-    innerHTML: "",
-    textContent: "",
-    classList: makeClassList(),
-    attributes: {},
-    dataset: {},
-    listeners: {},
-    addEventListener(type, listener) {
-      this.listeners[type] = listener;
-    },
-    setAttribute(name, value) {
-      this.attributes[name] = value;
-    },
-    querySelectorAll() {
-      return [];
-    },
-    scrollIntoView() {
-      this.scrolled = true;
-    },
-    onclick: null,
-  });
+  const makeElement = () => {
+    let innerHTML = "";
+    let districts = [];
+    return {
+      get innerHTML() {
+        return innerHTML;
+      },
+      set innerHTML(value) {
+        innerHTML = value;
+        districts = [...value.matchAll(/class="district[^"]*"[^>]*data-index="(\d+)"/g)].map(
+          ([, index]) => ({
+            dataset: { index },
+            listeners: {},
+            addEventListener(type, listener) {
+              this.listeners[type] = listener;
+            },
+          }),
+        );
+      },
+      textContent: "",
+      classList: makeClassList(),
+      attributes: {},
+      dataset: {},
+      listeners: {},
+      addEventListener(type, listener) {
+        this.listeners[type] = listener;
+      },
+      setAttribute(name, value) {
+        this.attributes[name] = value;
+      },
+      querySelectorAll(selector) {
+        return selector === ".district" ? districts : [];
+      },
+      scrollIntoView() {
+        this.scrolled = true;
+      },
+      onclick: null,
+    };
+  };
   const elements = Object.fromEntries(
     [
       "pipeline-root",
@@ -123,6 +141,9 @@ async function render({ search = "" } = {}) {
     fire(id, type = "click") {
       elements[id].listeners[type]?.({ preventDefault() {} });
     },
+    fireOrbit(index, type = "click") {
+      elements["district-orbit"].querySelectorAll(".district")[index]?.listeners[type]?.({ preventDefault() {} });
+    },
     window,
   };
 }
@@ -143,6 +164,14 @@ test("district query parameters select the requested lab and scroll to the world
   assert.match(elements["guide-what"].textContent, /Fold is the City district for invariance\./);
   assert.equal(elements["world-enter"].textContent, "Open current instrument");
   assert.equal(elements.world.scrolled, true);
+});
+
+test("clicking a generated district button selects that district", async () => {
+  const result = await render();
+  result.fireOrbit(2);
+  assert.equal(result.elements["world-title"].textContent, "Fold · Invariance");
+  assert.equal(result.elements["world-enter"].textContent, "Open current instrument");
+  assert.match(result.elements["egg-world"].textContent, /DISTRICT: Fold/);
 });
 
 test("external districts keep a safe noopener window open handler", async () => {
