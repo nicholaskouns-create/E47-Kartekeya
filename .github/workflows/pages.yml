@@ -68,6 +68,26 @@ jobs:
           git commit -m "Deploy website from ${GITHUB_SHA}"
           git push --force origin HEAD:refs/heads/gh-pages
 
+      - name: Verify the live Pages document
+        shell: bash
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            status="$(curl -sS -L -o /tmp/pages.html -w '%{http_code}' --max-time 20 "$SITE_URL" || true)"
+            if [ "$status" = "200" ] && grep -q '<title>The Mathematical City</title>' /tmp/pages.html; then
+              echo "Live Pages verified: $SITE_URL"
+              exit 0
+            fi
+            echo "Attempt $attempt: HTTP $status; waiting for Pages propagation..."
+            sleep 5
+          done
+
+          echo "Pages did not serve the expected document within the verification window."
+          head -80 /tmp/pages.html || true
+          exit 1
+
       - name: Publish receipt
         shell: bash
         run: |
@@ -76,5 +96,5 @@ jobs:
             echo
             echo "Published the validated \`website/\` directory as the root of \`gh-pages\`."
             echo
-            echo "Pages URL: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+            echo "Verified live URL: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
           } >> "$GITHUB_STEP_SUMMARY"
