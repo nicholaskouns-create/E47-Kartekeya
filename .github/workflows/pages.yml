@@ -2,7 +2,7 @@ name: Deploy website
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "gh-pages"]
     paths:
       - "website/**"
       - "certificates/**"
@@ -36,10 +36,25 @@ jobs:
       - name: Check assets, certificate copies and rendering
         run: node --test scripts/check_website.cjs
 
+  promote:
+    name: Promote validated main to gh-pages
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Advance gh-pages to this validated commit
+        shell: bash
+        run: git push origin HEAD:refs/heads/gh-pages
+
   deploy:
     name: Deploy GitHub Pages
     needs: validate
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/gh-pages'
     runs-on: ubuntu-latest
     permissions:
       contents: read
