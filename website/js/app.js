@@ -1,17 +1,17 @@
 const LABS=[
 {name:'EIDOLON',role:'Flight',q:'Move through the modeled City.',desc:'The front door: a visible flight-simulator deck with EIDOLON, UFO Propulsion, Hover, MAV, and flight-lineage surfaces.',url:'interfaces/kouns-core/?module=eidolon'},
-{name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'https://prairie-dream-glow-fire.grok.me/'},
-{name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'https://giant-beacon-dawn-falcon.grok.me/'},
-{name:'Murmuration',role:'Dynamics',q:'How does structure move?',desc:'Watch many-body organization, topology and collective motion.',url:'https://kite-glade-tiger-cabin.grok.me/'},
-{name:'Mnemosyne',role:'Memory',q:'What did we know, and when?',desc:'Trace provenance, hashes, correction lineage and sealed forecasts.',url:'https://moon-clear-urban-nova.grok.me/'},
-{name:'Density',role:'Measurement',q:'What can observation reconstruct?',desc:'Probe reconstruction from incomplete or noisy measurements.',url:'https://winter-dawn-leaf-marble.grok.me/'},
-{name:'Horizon',role:'Prediction',q:'What invariant comes next?',desc:'Prospective and retrospective forecasting instruments with evidence boundaries intact.',url:'https://zenith-fjord-pearl-pixel.grok.me/'},
-{name:'Wave',role:'Flow',q:'How does coherent structure evolve?',desc:'Field and flow simulation surfaces, including WaveForge-related work.',url:'https://apex-star-crisp-blend.grok.me/'},
-{name:'Identity',role:'Persistence',q:'What remains the same?',desc:'Follow identity through change, transport and representation.',url:'https://mist-mint-branch-nova.grok.me/'},
-{name:'BUILD',role:'Construction',q:'How does structure assemble?',desc:'Construction and programmable-matter style experiments around invariant targets.',url:'https://brave-ivory-pearl-ever.grok.me/'},
-{name:'SOAR',role:'Restoration',q:'Can an invariant be restored?',desc:'Control, recovery, transformation and restoration experiments.',url:'https://topaz-solar-iris-drift.grok.me/'},
-{name:'SCALAR',role:'Field',q:'What scalar field survives the algebra?',desc:'Finite E47 spectral structure lifted into explicitly visualization-typed scalar-field scenes.',url:'https://heart-eagle-blade-hazel.grok.me/'},
-{name:'InvariFold',role:'Protein Cinema',q:'How does Fold expose geometry?',desc:'A cinematic geometry layer for the Fold instrument and deterministic payloads.',url:'https://giant-beacon-dawn-falcon.grok.me/'}
+{name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'interfaces/visualizers/?lab=spectra'},
+{name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'interfaces/visualizers/?lab=fold'},
+{name:'Murmuration',role:'Dynamics',q:'How does structure move?',desc:'Watch many-body organization, topology and collective motion.',url:'interfaces/visualizers/?lab=murmuration'},
+{name:'Mnemosyne',role:'Memory',q:'What did we know, and when?',desc:'Trace provenance, hashes, correction lineage and sealed forecasts.',url:'interfaces/visualizers/?lab=mnemosyne'},
+{name:'Density',role:'Measurement',q:'What can observation reconstruct?',desc:'Probe reconstruction from incomplete or noisy measurements.',url:'interfaces/visualizers/?lab=density'},
+{name:'Horizon',role:'Prediction',q:'What invariant comes next?',desc:'Prospective and retrospective forecasting instruments with evidence boundaries intact.',url:'interfaces/visualizers/?lab=horizon'},
+{name:'Wave',role:'Flow',q:'How does coherent structure evolve?',desc:'Field and flow simulation surfaces, including WaveForge-related work.',url:'interfaces/visualizers/?lab=wave'},
+{name:'Identity',role:'Persistence',q:'What remains the same?',desc:'Follow identity through change, transport and representation.',url:'interfaces/visualizers/?lab=identity'},
+{name:'BUILD',role:'Construction',q:'How does structure assemble?',desc:'Construction and programmable-matter style experiments around invariant targets.',url:'interfaces/visualizers/?lab=build'},
+{name:'SOAR',role:'Restoration',q:'Can an invariant be restored?',desc:'Control, recovery, transformation and restoration experiments.',url:'interfaces/visualizers/?lab=soar'},
+{name:'SCALAR',role:'Field',q:'What scalar field survives the algebra?',desc:'Finite E47 spectral structure lifted into explicitly visualization-typed scalar-field scenes.',url:'interfaces/visualizers/?lab=scalar'},
+{name:'InvariFold',role:'Protein Cinema',q:'How does Fold expose geometry?',desc:'A cinematic geometry layer for the Fold instrument and deterministic payloads.',url:'interfaces/visualizers/?lab=invarifold'}
 ];
 
 const CITIZENS=['ARGUS','ARIADNE','BITHOS','CHRONOS','CUSTOS','EUCLID','HERMES','JANUS','KEPLER','MNEMOSYNE','SAL','SOL','SYNE','TALOS','THEMIS'];
@@ -31,7 +31,7 @@ function renderLabs(){
     <span class="role">${lab.role}</span>
     <h3>${lab.name}</h3>
     <p>${lab.q}</p>
-    <footer><span>${lab.desc}</span><span>OPEN ↗</span></footer>
+    <footer><span>${lab.desc}</span><span>${lab.name==='EIDOLON'?'ENTER':'VIEW'} ↗</span></footer>
   </a>`).join('');
 }
 
@@ -54,7 +54,7 @@ function selectLab(index){
   desc.textContent=lab.desc;
   what.textContent=`${lab.name} is the City district for ${lab.role.toLowerCase()}.`;
   tryText.textContent=lab.q;
-  enter.textContent=lab.name==='EIDOLON'?'Explore here':'Open current instrument';
+  enter.textContent=lab.name==='EIDOLON'?'Explore here':'Open visualizer';
   enter.onclick=()=>{if(lab.url.startsWith('http'))window.open(lab.url,'_blank','noopener,noreferrer');else location.href=lab.url};
   renderOrbit();
   document.getElementById('egg-world').textContent=`DISTRICT: ${lab.name}\nROLE: ${lab.role}\nQUESTION: ${lab.q}\n\nCITIZEN RUNTIME POPULATION: ${CITIZENS.length}\nAETHERIS: receipt-bound state transitions\nCITY-INVARIANT: 1.0\nEVIDENCE: district-specific; no automatic promotion`;
