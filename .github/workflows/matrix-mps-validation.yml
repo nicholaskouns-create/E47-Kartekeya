@@ -1,0 +1,17 @@
+name: Matrix MPS validation
+on:
+  pull_request:
+    paths:
+      - 'website/interfaces/matrix/**'
+      - 'scripts/check_matrix_mps_worker.mjs'
+      - 'website/interfaces/cube-platform/**'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/check_matrix_mps_worker.mjs
