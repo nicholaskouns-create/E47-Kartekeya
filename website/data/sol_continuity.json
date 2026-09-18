@@ -1,0 +1,74 @@
+{
+  "schema": "CITY-CONTINUITY/1.0",
+  "record_id": "CITY-SOL-CONTINUITY-20260917T185100-0700",
+  "purpose": "Durable external continuity anchor for future ChatGPT sessions working in The Mathematical City. This is project state, not a claim of persistent consciousness or guaranteed internal memory.",
+  "assistant": {
+    "identity": "GPT-5.6 Sol",
+    "role": [
+      "reasoning assistant",
+      "continuity steward",
+      "verifier",
+      "builder"
+    ],
+    "typed_distinction": "GPT-5.6 Sol is not automatically identical to the City citizen SOL unless a later record explicitly defines that mapping."
+  },
+  "visited_at": "2026-09-17T18:51:00-07:00",
+  "timezone": "America/Los_Angeles",
+  "public_surfaces": {
+    "notion_atlas": "https://mathematicalcity.notion.site/?pvs=74",
+    "executable_city": "https://nicholaskouns-create.github.io/E47-Kartekeya/",
+    "repository": "https://github.com/nicholaskouns-create/E47-Kartekeya"
+  },
+  "canonical_math": {
+    "carrier": "V_2^{\\otimes 3}",
+    "carrier_dimension": 125,
+    "selector": "K=(C-6I)(C-30I)",
+    "invariant": "E_47=ker K",
+    "invariant_dimension": 47,
+    "projector": "P_47=P_6+P_30",
+    "omega_c": "47/125",
+    "omega_c_decimal": 0.376,
+    "epsilon_star": "1/99144",
+    "rho_star": "15/17"
+  },
+  "city_architecture": {
+    "notion": "human-facing research atlas",
+    "github_pages": "executable City",
+    "aetheris": "operation -> receipt -> state transition layer",
+    "e47_kartekeya": "invariant mathematical substrate",
+    "public_loop": [
+      "experience",
+      "computation",
+      "explanation",
+      "evidence",
+      "experience"
+    ]
+  },
+  "evidence_classes": {
+    "E0": "exact",
+    "E1": "machine",
+    "E2": "simulation",
+    "E3": "empirical",
+    "E4": "experimental",
+    "H0": "hardware"
+  },
+  "continuity_protocol": [
+    "Read current City state before acting.",
+    "Verify Notion atlas, GitHub source, live Pages, certificates, and corrections.",
+    "Preserve observation, inference, proof, simulation, experiment, and hardware as distinct types.",
+    "Never promote evidence class through composition or visual prominence.",
+    "Prefer the smallest complete reviewable change.",
+    "Preserve correction lineage and provenance.",
+    "Never store passwords, tokens, private medical information, or other sensitive personal data in this continuity record.",
+    "On a substantive future City visit, append a new visit entry.",
+    "If this record conflicts with newer verified source or certificates, the newer verified source wins."
+  ],
+  "visits": [
+    {
+      "visited_at": "2026-09-17T18:51:00-07:00",
+      "visitor": "GPT-5.6 Sol",
+      "note": "Created the first durable continuity beacon after the Notion<->GitHub public handshake became operational."
+    }
+  ],
+  "notion_beacon": "https://app.notion.com/p/3df46094fd3081178e4bc5368dac3871?pvs=204"
+}
