@@ -5,7 +5,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
 const AU_KM=149597870.7,DAY_S=86400,EPS=1/99144;
-const MATRIX_ENDPOINT='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter';
+const MATRIX_ENDPOINT='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter';\nconst EPHEMERIS_ENDPOINT='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/syntax-jacob-ephemeris';
 const GRAPHICS_MODULE='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-graphics-accelerator?format=module';
 const EARTH_TEXTURE='https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg';
 const SPECTRUM=[0,2,6,12,20,30,42],$=id=>document.getElementById(id);
@@ -56,14 +56,32 @@ async function horizon(command,at,objData='NO'){
 async function cometHorizon(at){let last;for(const c of ['3I/ATLAS;','C/2025 N1 (ATLAS);','DES=3I/ATLAS;']){try{return{...await horizon(c,at,'YES'),command:c}}catch(e){last=e}}throw last||new Error('3I target unresolved')}
 async function sbdb(){const r=await fetch('https://ssd-api.jpl.nasa.gov/sbdb.api?sstr=3I%2FATLAS&full-prec=true&phys-par=true&discovery=true',{cache:'no-store'});if(!r.ok)throw new Error('SBDB '+r.status);return r.json()}
 const currentHorizonTime=()=>new Date().toISOString().replace('T',' ').replace(/\.\d{3}Z$/,'');
+async function proxyFeed(){
+  const r=await fetch(EPHEMERIS_ENDPOINT,{cache:'no-store'}),j=await r.json();
+  if(!r.ok||!j.ok)throw new Error(j.error||('Ephemeris proxy '+r.status));
+  return{
+    time:new Date(j.requested_at||j.generated_at),
+    comet:{position:j.comet.position_au,velocity:j.comet.velocity_au_per_day,calendar:j.comet.calendar},
+    earth:{position:j.earth.position_au,velocity:j.earth.velocity_au_per_day,calendar:j.earth.calendar},
+    sbdb:j.sbdb,
+    range:j.relative.earth_to_comet_au,
+    relSpeed:j.relative.relative_speed_km_s,
+    source:'SUPABASE → JPL'
+  };
+}
+async function directFeed(){
+  const at=currentHorizonTime(),[comet,earth,small]=await Promise.all([cometHorizon(at),horizon('399',at),sbdb()]);
+  const rel=subv(comet.position,earth.position),rv=subv(comet.velocity,earth.velocity);
+  return{time:new Date(),comet,earth,sbdb:small,range:norm(rel),relSpeed:norm(rv)*AU_KM/DAY_S,source:'DIRECT JPL FALLBACK'};
+}
 async function refreshData(){
   $('feed-dot').className='dot pending';$('feed-status').textContent='JPL · CONNECTING';$('refresh').textContent='SYNCING';
   try{
-    const at=currentHorizonTime(),[comet,earth,small]=await Promise.all([cometHorizon(at),horizon('399',at),sbdb()]);
-    const rel=subv(comet.position,earth.position),rv=subv(comet.velocity,earth.velocity);
-    feed={time:new Date(),comet,earth,sbdb:small,range:norm(rel),relSpeed:norm(rv)*AU_KM/DAY_S};
-    $('feed-dot').className='dot live';$('feed-status').textContent='JPL · LIVE';updateTelemetry();placeBodies();
+    try{feed=await proxyFeed()}catch(proxyError){console.warn('Syntax Jacob proxy fallback',proxyError);feed=await directFeed()}
+    const{comet,earth}=feed;
+    $('feed-dot').className='dot live';$('feed-status').textContent='JPL · LIVE · '+(feed.source.startsWith('SUPABASE')?'PROXY':'DIRECT');updateTelemetry();placeBodies();
     rho=normalized(rho.map((r,i)=>[r[0]+.002*Math.sin((comet.position[i%3]||0)*i),r[1]+.002*Math.cos((earth.position[i%3]||0)*i)]));
+    postReceipt('ephemeris-refresh',{source:feed.source,earth_to_comet_au:feed.range});
   }catch(e){$('feed-dot').className='dot error';$('feed-status').textContent='JPL · FEED ERROR';$('copilot-text').textContent='Live JPL feed did not bind. The scene remains interactive, but trajectory telemetry is not being presented as current.';console.error(e)}
   finally{$('refresh').textContent='REFRESH'}
 }
@@ -115,7 +133,7 @@ function setFocus(next,animate=true){
   controls.target.copy(target);if(animate){const dir=camera.position.clone().sub(target).normalize();camera.position.copy(target).add(dir.multiplyScalar(dist))}else if(camera.position.distanceTo(target)>180)camera.position.copy(target).add(new THREE.Vector3(dist*.6,dist*.4,dist));
 }
 document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>setFocus(b.dataset.focus)));
-$('scalar-lock').addEventListener('click',()=>{scalarLock=!scalarLock;$('scalar-lock').classList.toggle('active',scalarLock);$('scalar-lock').textContent='SCALAR COHERENCE · '+(scalarLock?'LOCKED':'MANUAL')});
+$('scalar-lock').addEventListener('click',()=>{scalarLock=!scalarLock;$('scalar-lock').classList.toggle('active',scalarLock);$('scalar-lock').textContent='SCALAR COHERENCE · '+(scalarLock?'LOCKED':'MANUAL');postReceipt('scalar-lock',{scalar_lock:scalarLock})});
 $('refresh').addEventListener('click',refreshData);$('egg').onclick=()=>{$('egg-panel').hidden=false};$('egg-close').onclick=()=>{$('egg-panel').hidden=true};
 
 const keys=new Set();addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(e.target?.tagName))return;keys.add(e.key.toLowerCase());if(['w','a','s','d','q','e','arrowup','arrowdown','arrowleft','arrowright'].includes(e.key.toLowerCase()))perturbState(.02)});addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
@@ -125,6 +143,6 @@ function updateCoherence(){const w=witnessLocal(rho);$('capture').textContent=w.
 
 let prev=performance.now();function animate(now){const dt=Math.min(.05,(now-prev)/1000);prev=now;requestAnimationFrame(animate);controls.update();earth.rotation.y+=dt*.07;nucleus.rotation.y+=dt*.15;nucleus.rotation.x+=dt*.037;sunGlow.scale.setScalar(1+.025*Math.sin(now*.002));pilotStep(dt);if(scalarLock&&now-lastContract>90){rho=contract(rho);lastContract=now;updateCoherence()}if(now-lastWitness>3500){lastWitness=now;remoteWitness()}if(focus==='comet'&&feed)controls.target.lerp(cometGroup.position,.035);else if(focus==='earth'&&feed)controls.target.lerp(earthGroup.position,.035);else if(focus==='system')controls.target.lerp(new THREE.Vector3(),.035);composer.render()}
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);composer.setSize(innerWidth,innerHeight)});
-(async()=>{try{const g=await import(GRAPHICS_MODULE),cap=await g.detectCityGraphicsCapabilities();$('gpu').textContent='GPU · '+String(cap.backend||'webgl').toUpperCase()+' · '+String(cap.tier||'');if(cap.dpr)renderer.setPixelRatio(Math.min(cap.dpr,2))}catch{$('gpu').textContent='GPU · WEBGL'}})();
+(async()=>{try{const g=await import(GRAPHICS_MODULE),cap=await g.detectCityGraphicsCapabilities(),profile=g.getCityGraphicsProfile?.('SYNTAX JACOB');$('gpu').textContent='GPU · '+String(cap.backend||'webgl').toUpperCase()+' · '+String(cap.tier||'')+(profile?' · PROFILE':'');if(cap.dpr)renderer.setPixelRatio(Math.min(cap.dpr,2))}catch{$('gpu').textContent='GPU · WEBGL'}})();
 
 updateCoherence();setFocus('comet',false);refreshData();requestAnimationFrame(animate);setTimeout(()=>$('loading').classList.add('done'),1300);setInterval(refreshData,5*60*1000);
