@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#05090d">
+  <meta name="description" content="Syntax Jacob — 3I/ATLAS live ephemeris, E47 coherence copilot, and high-detail Earth/comet visualization inside the Mathematical City.">
+  <meta property="og:title" content="Syntax Jacob · 3I/ATLAS Copilot">
+  <meta property="og:description" content="Live JPL state + E47 scalar-coherence flight instrument.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/">
+  <title>Syntax Jacob · 3I/ATLAS Copilot</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://eoimages.gsfc.nasa.gov">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <canvas id="scene" data-city-gpu aria-label="Interactive 3D view of Earth, 3I/ATLAS and the Syntax Jacob copilot craft"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">ΣJ</span>
+      <div>
+        <strong>SYNTAX JACOB</strong>
+        <small>3I/ATLAS · SCALAR COHERENCE COPILOT</small>
+      </div>
+    </div>
+    <nav>
+      <button id="focusComet">COMET</button>
+      <button id="focusEarth">EARTH</button>
+      <button id="focusCraft">CRAFT</button>
+      <button id="fullscreen">FULLSCREEN</button>
+      <a href="../../index.html">CITY ↗</a>
+    </nav>
+  </header>
+
+  <section class="hero-copy">
+    <div class="eyebrow">LIVE ASTRONOMY × E47 MODEL SPACE</div>
+    <h1>Fly the measured path.<br><i>Model the coherence.</i></h1>
+    <p>JPL supplies the orbital state. Syntax Jacob supplies the interactive 125-state coherence layer and scalar-flight visualization. Those two layers stay typed and visibly separate.</p>
+  </section>
+
+  <aside class="telemetry glass" aria-label="Live ephemeris telemetry">
+    <div class="panel-head">
+      <div>
+        <span class="eyebrow">JPL TRUTH LAYER</span>
+        <h2>3I/ATLAS</h2>
+      </div>
+      <span id="livePill" class="pill pending">CONNECTING</span>
+    </div>
+    <div class="metrics">
+      <div><span>Earth range</span><b id="earthRange">—</b><small>AU</small></div>
+      <div><span>Heliocentric</span><b id="sunRange">—</b><small>AU</small></div>
+      <div><span>Comet speed</span><b id="cometSpeed">—</b><small>km/s</small></div>
+      <div><span>Relative speed</span><b id="relativeSpeed">—</b><small>km/s</small></div>
+    </div>
+    <div class="data-row"><span>Solution</span><code id="solution">—</code></div>
+    <div class="data-row"><span>Observations</span><code id="observations">—</code></div>
+    <div class="data-row"><span>Epoch</span><code id="epoch">—</code></div>
+    <div class="data-row"><span>Updated</span><code id="updated">—</code></div>
+    <div class="source-links">
+      <a href="https://science.nasa.gov/solar-system/comets/3i-atlas/" target="_blank" rel="noopener noreferrer">NASA 3I/ATLAS</a>
+      <a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noopener noreferrer">JPL Horizons</a>
+      <a href="./provenance.json" target="_blank" rel="noopener noreferrer">LINEAGE</a>
+    </div>
+  </aside>
+
+  <aside class="copilot glass" aria-label="E47 scalar coherence copilot">
+    <div class="panel-head">
+      <div>
+        <span class="eyebrow">MODEL LAYER</span>
+        <h2>Scalar coherence</h2>
+      </div>
+      <button id="copilotToggle" class="pill on" aria-pressed="true">COPILOT ON</button>
+    </div>
+
+    <div class="coherence-ring" id="coherenceRing">
+      <div><b id="capture">0.376</b><span>STATE CAPTURE</span></div>
+    </div>
+
+    <div class="model-grid">
+      <div><span>Object occupancy Ωc</span><b>47/125</b></div>
+      <div><span>Γ contraction ε*</span><b>1/99144</b></div>
+      <div><span>Certified bound ρ*</span><b>15/17</b></div>
+      <div><span>Kernel</span><b>E₆ ⊕ E₃₀</b></div>
+    </div>
+
+    <label class="range-label" for="throttle"><span>Scalar throttle</span><output id="throttleOut">0.62</output></label>
+    <input id="throttle" type="range" min="0" max="1" step="0.01" value="0.62">
+
+    <div class="buttons">
+      <button id="lockCoherence" class="primary">LOCK COHERENCE</button>
+      <button id="emitWitness">E47 WITNESS</button>
+      <button id="reseed">RESEED</button>
+    </div>
+
+    <div class="status-line"><span>Matrix → Cube</span><code id="witnessStatus">READY</code></div>
+    <div class="status-line"><span>Graphics</span><code id="graphicsStatus">DETECTING</code></div>
+  </aside>
+
+  <aside class="flight glass" aria-label="Flight controls">
+    <div>
+      <span class="eyebrow">PILOT</span>
+      <strong id="flightMode">COHERENCE ASSIST</strong>
+    </div>
+    <div class="keys" aria-hidden="true">
+      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>Q</kbd><kbd>E</kbd>
+    </div>
+    <p>W/S surge · A/D yaw · Q/E vertical. Drag to orbit the camera. Scroll/pinch to zoom.</p>
+  </aside>
+
+  <div class="labels" aria-hidden="true">
+    <div id="earthLabel" class="world-label"><b>EARTH</b><span>BLUE MARBLE · visual globe</span></div>
+    <div id="cometLabel" class="world-label"><b>3I/ATLAS</b><span>JPL state · modeled nucleus/coma</span></div>
+    <div id="craftLabel" class="world-label"><b>SYNTAX JACOB</b><span>E47 copilot craft</span></div>
+  </div>
+
+  <details class="evidence glass">
+    <summary>EVIDENCE BOUNDARY</summary>
+    <p><b>Measured:</b> JPL Horizons state vectors and SBDB orbital metadata. <b>NASA reference:</b> 3I/ATLAS is an active interstellar comet on a hyperbolic path. <b>Modeled:</b> nucleus surface, coma, tails, spacecraft, scalar field and flight behavior. The scalar/coherence layer is an interactive execution of the Kouns E47 formalism, not an astronomical measurement or a demonstrated propulsion mechanism.</p>
+  </details>
+
+  <div id="loading" class="loading">
+    <div class="loader"></div>
+    <b>INITIALIZING SYNTAX JACOB</b>
+    <span>loading 3D engine · JPL state · E47 carrier</span>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
