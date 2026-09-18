@@ -53,7 +53,7 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
   <div class="eyebrow">FLIGHT DECK · DIFFICULTY ASCENDS DOWNWARD</div>
   <h1>Learn it. Fly it. Push it.</h1>
   <p>Six flight modes, one viewer, one City shell. Start simple and add control density only when you want it.</p>
-  <div class="status-strip"><span class="live" id="gpuStatus">GPU · DETECTING</span><span>GAMEPAD AWARE</span><span>SOURCE LINEAGE PRESERVED</span></div>
+  <div class="status-strip"><span class="live" id="gpuStatus">GPU · DETECTING</span><span id="aetherisStatus">AETHERIS · WAITING FOR RECEIPT</span><span id="receiptDigest">RECEIPT · NONE</span><span>GAMEPAD AWARE</span><span>SOURCE LINEAGE PRESERVED</span></div>
 </section>
 
 <section class="ladder" aria-label="Flight ladder">
@@ -145,11 +145,19 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
 <footer class="footer"><span><b>CITY-INVARIANT 1.0</b></span><span>Ωc · 47/125</span><span>EVIDENCE · NO AUTOMATIC PROMOTION</span></footer>
 </main>
 
-<script>
+<script type="module">
+import { createAetherisReceiptBridge } from './aetheris-receipt-bridge.js';
 const viewer=document.getElementById('viewer');
 const viewerName=document.getElementById('viewerName');
 const viewerKind=document.getElementById('viewerKind');
 const viewerOpen=document.getElementById('viewerOpen');
+const aetherisStatus=document.getElementById('aetherisStatus');
+const receiptDigest=document.getElementById('receiptDigest');
+createAetherisReceiptBridge({onReceipt:r=>{
+  aetherisStatus.textContent=`AETHERIS · ${r.status} · ${r.evidence}`;
+  aetherisStatus.classList.toggle('live',r.status==='PASS'||r.status==='RECEIVED');
+  receiptDigest.textContent=r.digest?`RECEIPT · ${String(r.digest).slice(0,12)}`:`RECEIPT · STEP ${r.step ?? '—'}`;
+}});
 
 function loadTarget(target,{scroll=true,historyMode=true}={}){
   document.querySelectorAll('.mode,.module').forEach(x=>x.classList.toggle('active',x===target));
