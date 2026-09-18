@@ -260,3 +260,22 @@ test("evidence references retain exact committed certificates", () => {
   const text = JSON.stringify(pipeline);
   for (const invariant of ["125", "47", "11664"]) assert.ok(text.includes(invariant), invariant);
 });
+
+
+test("Syntax Jacob keeps its standalone portal semantics", async () => {
+  const { elements, location } = await render({ search: "?district=Syntax%20Jacob" });
+  assert.equal(elements["world-title"].textContent, "Syntax Jacob · 3I Copilot");
+  assert.equal(elements["world-enter"].textContent, "Launch copilot");
+  elements["world-enter"].onclick();
+  assert.equal(location.href, "interfaces/syntax-jacob/");
+});
+
+test("Syntax Jacob publishes runtime provenance", () => {
+  const dir = resolve(site, "interfaces/syntax-jacob");
+  const provenance = json(resolve(dir, "provenance.json"));
+  assert.equal(provenance.original_work, true);
+  assert.equal(provenance.e47.dimension, 125);
+  assert.equal(provenance.e47.kernel_dimension, 47);
+  const runtime = read(resolve(dir, "app.js"));
+  for (const token of ["syntax-jacob-ephemeris", "matrix-cube-adapter", "aetheris.receipt", "1/99144"]) assert.ok(runtime.includes(token), token);
+});
