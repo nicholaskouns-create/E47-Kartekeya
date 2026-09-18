@@ -172,7 +172,7 @@ function updateCapture(){
   let k=0,n=0;for(let i=0;i<125;i++){const z=eState[i]*eState[i];n+=z;if(C[i]===6||C[i]===30)k+=z}
   capture=k/(n||1);
   $("capture").textContent=capture.toFixed(3);
-  $("coherenceRing").style.setProperty("--capture",String(Math.max(0,Math.min(1,capture))));
+  $("coherenceRing").style.setProperty("--capture-angle",(Math.max(0,Math.min(1,capture))*360).toFixed(2)+"deg");
   craft.shells.forEach((s,i)=>{s.material.opacity=.04+.19*capture*(1-i*.11);s.scale.setScalar(.78+.3*capture+.025*i)});
 }
 function contract(steps=1){
