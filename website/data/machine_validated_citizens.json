@@ -1,0 +1,198 @@
+[
+  {
+    "citizen_code": "B5-PACK-125",
+    "title": "Base-5 Packing Bijection",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite carrier address map."
+  },
+  {
+    "citizen_code": "C5CUBE-LAP",
+    "title": "C5 Cubed Laplacian Spectrum",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite cycle-product graph."
+  },
+  {
+    "citizen_code": "DH-C01",
+    "title": "Binary Exchange Involution",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Exact finite algebra."
+  },
+  {
+    "citizen_code": "DH-C02",
+    "title": "Complementary Dual-Horizon Projectors",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Exact finite algebra."
+  },
+  {
+    "citizen_code": "DH-C03",
+    "title": "Radix Negation Involution",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Exact radix action."
+  },
+  {
+    "citizen_code": "DH-C04",
+    "title": "Even-Radix Negation Fixed Points",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "For odd b, only fixed point is 0."
+  },
+  {
+    "citizen_code": "DH-C05",
+    "title": "Endpoint Round-Trip",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Exact finite identity."
+  },
+  {
+    "citizen_code": "DH-C06",
+    "title": "Negation Acts Trivially on Fixed Endpoints",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Supersedes false D_bN_bE_b=J claim."
+  },
+  {
+    "citizen_code": "DH-C07",
+    "title": "Half-Cycle Exchange Equivariance",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Requires even b."
+  },
+  {
+    "citizen_code": "DH-C08",
+    "title": "Klein Four Radix Action",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Degenerates at b=2."
+  },
+  {
+    "citizen_code": "E47-MULTI-20260819",
+    "title": "Revised E47 Multi-Branch Formalism",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Umbrella curation only; branches remain independent absent explicit maps."
+  },
+  {
+    "citizen_code": "E47-P47-SUM",
+    "title": "Correct E47 Spectral Projector",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite-dimensional SU(2) carrier."
+  },
+  {
+    "citizen_code": "E47-QOP-C11",
+    "title": "E47 Conditional-Expectation and Cross-Dynamical Closure Theorem",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite-dimensional operator algebra; finite-step fluid derivative remains discretization."
+  },
+  {
+    "citizen_code": "FPV20-C01",
+    "title": "Recursive PSD Contraction Closure",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite-dimensional PSD linear contraction only."
+  },
+  {
+    "citizen_code": "RUB5-C01",
+    "title": "Full Professor's Cube Permutation Suite",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite 125-site permutation action."
+  },
+  {
+    "citizen_code": "RUB5-C02",
+    "title": "C5 Cubed Kronecker-Sum Laplacian Spectrum",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Distinct from FCC graph."
+  },
+  {
+    "citizen_code": "RUB5-C03",
+    "title": "Uniform Kernel Invariance Under All 15 Moves",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Kernel rank is one, not 47."
+  },
+  {
+    "citizen_code": "RUB5-C04",
+    "title": "Rubik Twist Energy-Conjugation Identity",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Slice turns need not commute with fixed graph Laplacian."
+  },
+  {
+    "citizen_code": "RUB5-C05",
+    "title": "Professor's Cube Eigenmode Impact Benchmark",
+    "evidence_class": "E1",
+    "validation_status": "machine_validated",
+    "boundary": "Degenerate-eigenspace eigenvectors are basis dependent."
+  },
+  {
+    "citizen_code": "RUB5-C06",
+    "title": "Seven-Dimensional Low-Band Retention Statistic",
+    "evidence_class": "E1",
+    "validation_status": "machine_validated",
+    "boundary": "Approximate retention, not exact invariance."
+  },
+  {
+    "citizen_code": "RUB5-C07",
+    "title": "C5 Cubed Heat-Flow Lyapunov and Projector Limit",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Limit projector has rank one."
+  },
+  {
+    "citizen_code": "RUB5-C08",
+    "title": "Rank-One and E47 Kernel Separation Identity",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "47/125 is not derived by this Laplacian flow."
+  },
+  {
+    "citizen_code": "RUB5-C09",
+    "title": "First-Harmonic Subspace Retention Identity",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Projector-defined invariant."
+  },
+  {
+    "citizen_code": "RUB5-C10",
+    "title": "Two-Axis Harmonic Retention Identity",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Projector-defined invariant."
+  },
+  {
+    "citizen_code": "RUB5-C11",
+    "title": "Universal Layer-Defect Norm Identity",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Single-layer quarter turns only."
+  },
+  {
+    "citizen_code": "RUB5-C12",
+    "title": "Mean-Preserving 47/125 Lock Theorem",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Mean lock only; not kerL=E47."
+  },
+  {
+    "citizen_code": "RUB5-ORBIT-C01",
+    "title": "Professor’s Cube Orbit-Kernel Equivalence and Heat-Projection Theorem",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Twist Laplacian, not C5^3 product Laplacian."
+  },
+  {
+    "citizen_code": "TRANSIT-Γ-001",
+    "title": "Optimal E47 contraction",
+    "evidence_class": "E0 + E1",
+    "validation_status": "machine_validated",
+    "boundary": "Finite-dimensional linear contraction only."
+  }
+]
