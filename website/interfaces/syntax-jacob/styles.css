@@ -33,3 +33,61 @@ body.visual-first #loading b,
 body.visual-first #loading span{
   display:none !important;
 }
+
+
+/* Propulsion laboratory: the scene stays primary; controls live in a compact dock. */
+[hidden]{display:none!important}
+.propulsion-dock{
+  position:fixed;z-index:26;right:calc(12px + env(safe-area-inset-right));
+  bottom:calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:8px;
+  padding:7px;border:1px solid rgba(98,215,220,.22);border-radius:999px;
+  background:rgba(5,9,11,.68);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 14px 44px rgba(0,0,0,.34)
+}
+.propulsion-trigger,.propulsion-icon,.propulsion-panel button{
+  border:1px solid rgba(148,179,182,.18);background:rgba(8,12,14,.86);color:var(--fg)
+}
+.propulsion-trigger,.propulsion-icon{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;padding:0;font-size:18px
+}
+.propulsion-trigger{border-color:rgba(138,240,189,.42);box-shadow:inset 0 0 20px rgba(138,240,189,.08),0 0 18px rgba(98,215,220,.08)}
+.propulsion-icon{font-size:20px;color:var(--cyan)}
+.throttle-mini{width:58px;display:grid;gap:4px;justify-items:center}
+.throttle-mini span{font:700 8px var(--mono);letter-spacing:.08em;color:var(--mint)}
+.throttle-mini i{display:block;width:50px;height:4px;border-radius:999px;background:#132024;overflow:hidden}
+.throttle-mini b{display:block;width:35%;height:100%;background:linear-gradient(90deg,var(--cyan),var(--mint));border-radius:inherit;box-shadow:0 0 8px rgba(98,215,220,.45)}
+
+.propulsion-panel{
+  position:fixed;z-index:27;right:calc(12px + env(safe-area-inset-right));
+  bottom:calc(70px + env(safe-area-inset-bottom));width:min(326px,calc(100vw - 24px));
+  padding:13px;border-radius:18px;background:linear-gradient(180deg,rgba(5,10,12,.92),rgba(3,6,8,.88));
+  border-color:rgba(98,215,220,.22);box-shadow:0 24px 80px rgba(0,0,0,.42)
+}
+.prop-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.prop-head>div{display:flex;flex-direction:column;gap:2px}
+.prop-head small{font:700 7px var(--mono);letter-spacing:.14em;color:var(--amber)}
+.prop-head b{font:700 12px var(--mono);letter-spacing:.11em;color:var(--fg)}
+#propulsion-close{width:30px;height:30px;border-radius:50%;padding:0;font-size:18px;color:var(--muted)}
+.prop-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.prop-mode{border-radius:8px;padding:8px 5px;font:700 7px var(--mono);letter-spacing:.07em;color:#7f9193}
+.prop-mode.active{color:#061011;background:var(--mint);border-color:var(--mint);box-shadow:0 0 18px rgba(138,240,189,.14)}
+.throttle-row{display:grid;gap:6px;margin:11px 0}
+.throttle-row span{display:flex;justify-content:space-between;font:700 7px var(--mono);letter-spacing:.08em;color:#718588}
+.throttle-row b{color:var(--mint)}
+#throttle{width:100%;accent-color:var(--mint)}
+.axis-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:7px}
+.axis-pad button{height:39px;border-radius:10px;font:700 9px var(--mono);color:#a9bbbd;touch-action:none;user-select:none;-webkit-user-select:none}
+.axis-pad button:active,.axis-pad button.active{background:rgba(98,215,220,.22);border-color:rgba(98,215,220,.72);color:white;box-shadow:0 0 18px rgba(98,215,220,.14)}
+.axis-pad .pulse-thrust{border-radius:50%;width:39px;justify-self:center;color:var(--mint);font-size:12px}
+.focus-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:8px}
+.focus-strip button{border-radius:8px;padding:7px 4px;font:700 7px var(--mono);color:#72878a}
+.focus-strip button.active{color:var(--cyan);border-color:rgba(98,215,220,.54)}
+.prop-readouts{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}
+.prop-readouts div{border:1px solid rgba(148,179,182,.11);border-radius:9px;padding:7px;background:rgba(0,0,0,.18)}
+.prop-readouts span{display:block;font:700 6px var(--mono);letter-spacing:.07em;color:#617679}
+.prop-readouts b{display:block;margin-top:4px;font:700 9px var(--mono);color:#dce6e5}
+.prop-boundary{margin:9px 1px 0;font:6.5px/1.45 var(--mono);color:#607174}
+@media(max-width:560px){
+  .propulsion-dock{right:8px;bottom:calc(8px + env(safe-area-inset-bottom))}
+  .propulsion-panel{right:8px;bottom:calc(66px + env(safe-area-inset-bottom));width:min(314px,calc(100vw - 16px));padding:11px}
+}
