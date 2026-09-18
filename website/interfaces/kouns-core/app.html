@@ -53,7 +53,7 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
   <div class="eyebrow">FLIGHT DECK · DIFFICULTY ASCENDS DOWNWARD</div>
   <h1>Learn it. Fly it. Push it.</h1>
   <p>Six flight modes, one viewer, one City shell. Start simple and add control density only when you want it.</p>
-  <div class="status-strip"><span class="live" id="gpuStatus">GPU · DETECTING</span><span id="aetherisStatus">AETHERIS · WAITING FOR RECEIPT</span><span id="receiptDigest">RECEIPT · NONE</span><span>GAMEPAD AWARE</span><span>SOURCE LINEAGE PRESERVED</span></div>
+  <div class="status-strip"><span class="live" id="gpuStatus">GPU · DETECTING</span><span id="aetherisStatus">AETHERIS · WAITING FOR RECEIPT</span><span id="receiptDigest">RECEIPT · NONE</span><span id="matrixWitness">MATRIX→CUBE · WAITING</span><span>GAMEPAD AWARE</span><span>SOURCE LINEAGE PRESERVED</span></div>
 </section>
 
 <section class="ladder" aria-label="Flight ladder">
@@ -149,12 +149,19 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
 
 <script type="module">
 import { createAetherisReceiptBridge } from './aetheris-receipt-bridge.js';
+import { createMatrixCubeBridge } from './matrix-cube-bridge.js';
 const viewer=document.getElementById('viewer');
 const viewerName=document.getElementById('viewerName');
 const viewerKind=document.getElementById('viewerKind');
 const viewerOpen=document.getElementById('viewerOpen');
 const aetherisStatus=document.getElementById('aetherisStatus');
 const receiptDigest=document.getElementById('receiptDigest');
+const matrixWitness=document.getElementById('matrixWitness');
+createMatrixCubeBridge({viewer,onWitness:w=>{
+  if(w.error){matrixWitness.textContent='MATRIX→CUBE · '+w.error;matrixWitness.classList.remove('live');return}
+  matrixWitness.textContent='MATRIX→CUBE · E47 '+(100*w.witness.e47_weight).toFixed(2)+'%';
+  matrixWitness.classList.add('live');
+}});
 createAetherisReceiptBridge({onReceipt:r=>{
   aetherisStatus.textContent=`AETHERIS · ${r.status} · ${r.evidence}`;
   aetherisStatus.classList.toggle('live',r.status==='PASS'||r.status==='RECEIVED');
