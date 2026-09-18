@@ -250,7 +250,8 @@ async function detectGraphics(){
   try{
     const m=await import(GRAPHICS);
     const c=await m.detectCityGraphicsCapabilities();
-    $("graphicsStatus").textContent=(c.tier||c.backend||"READY").toUpperCase();
+    const p=m.getCityGraphicsProfile?.("SYNTAX JACOB");
+    $("graphicsStatus").textContent=((c.tier||c.backend||"READY")+(p?" · PROFILE":"")).toUpperCase();
   }catch{
     $("graphicsStatus").textContent=(navigator.gpu?"WEBGPU":"WEBGL");
   }
