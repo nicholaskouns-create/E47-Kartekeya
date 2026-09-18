@@ -28,7 +28,8 @@ def test_public_lab_orders_are_complete_and_unique():
     assert len({s["name"] for s in ordered}) == 14
     assert ordered[10]["name"] == "SCALAR"
     assert ordered[11]["name"] == "EIDOLON"
-    assert ordered[12]["name"] == "SYNTAX JACOB"\n    assert ordered[13]["name"] == "InvariFold"
+    assert ordered[12]["name"] == "SYNTAX JACOB"
+    assert ordered[13]["name"] == "InvariFold"
 
 
 def test_runtime_has_safe_fallback_chain():
