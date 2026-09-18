@@ -30,7 +30,8 @@
     {"order":10,"name":"SOAR","profile":"trajectory","priority":["trajectory-batching","fixed-step","adaptive-dpr"],"host_status":"external-host-migration"},
     {"order":11,"name":"SCALAR","profile":"scalar-field","priority":["webgpu-compute-ready","field-texture","adaptive-resolution"],"host_status":"external-host-migration"},
     {"order":12,"name":"EIDOLON","profile":"flight-simulator","priority":["webgpu-render-path","gpu-instancing","terrain-lod","ktx2-basis","temporal-upscale-ready","worker-flight-dynamics","fixed-step"],"host_status":"source-migration-required"},
-    {"order":13,"name":"InvariFold","profile":"protein-cinema","priority":["instanced-residues","lod","worker-geometry","adaptive-dpr"],"host_status":"fold-payload-migration"},
+    {"order":13,"name":"SYNTAX JACOB","profile":"interstellar-flight","priority":["webgpu-render-path","adaptive-dpr","fixed-step","gpu-particles","ephemeris-decoupling","typed-e47-witness"],"host_status":"integrated-github-pages"},
+    {"order":14,"name":"InvariFold","profile":"protein-cinema","priority":["instanced-residues","lod","worker-geometry","adaptive-dpr"],"host_status":"fold-payload-migration"},
     {"name":"The Cube","profile":"canvas-scientific","priority":["adaptive-dpr","visibility-throttling","fixed-step-animation"],"host_status":"supabase-direct-patch-candidate"},
     {"name":"THE MATRIX","profile":"quantum-circuit","priority":["worker-statevector","batched-svg-canvas","visibility-throttling"],"host_status":"source-migration-required"},
     {"name":"City OS","profile":"control-plane","priority":["layer-caching","worker-layout","visibility-throttling","adaptive-dpr"],"host_status":"source-migration-required"}
