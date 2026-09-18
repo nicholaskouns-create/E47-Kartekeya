@@ -1,0 +1,63 @@
+{
+  "schema": "CITY-PYTHON-MIGRATION-1.0",
+  "generated_at": "2026-09-17",
+  "source": "Supabase public.python_corpus_registry + public.source_artifacts",
+  "source_rows": 47,
+  "note": "This manifest mirrors registry metadata. Python source is copied only when exact source bytes were recoverable from linked Drive artifacts. Held/candidate/planned records retain their original status and boundaries.",
+  "recovered_sources": [
+    {
+      "artifact": "CITY-DRIVE-SCALAR-SOURCE-20260910",
+      "path": "migration/python/scalar_app.py",
+      "sha256": "b14f551353e977a8cae560cfca3ab8b3edaf6a7f8e0ca82ca5343fb839ead542",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "CITY-DRIVE-SOAR-SOURCE-20260910",
+      "path": "migration/python/soar.py",
+      "sha256": "6bd545b5457906b772347b23658894b7b7f77986e6577f079bd70498e287f1df",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "LIG-SPECTRAL-BUS-PY-20260908",
+      "path": "migration/python/city_spectral_engine_v2.py",
+      "sha256": "288c2e7c6742611786542eb7207e0de6d76a3e467e30fc94d50850a5e6c5c3cb",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "LIG-UNIVERSAL-TRANSLATOR-PY-20260908",
+      "path": "migration/python/linguistics_bureau_universal_translator_v0_3_1.py",
+      "sha256": "44a3a11e31a7a5228925dc5478931f18d50ec16583c2e237dafba814b9d9b945",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "CITY-LABS-SPECTRAL-BUS-PY-20260908",
+      "path": "migration/python/city_spectral_engine_v1.py",
+      "sha256": "533aaf63617e99e1f76904d357a9cdee997b59552571acf6b4fbd6ff3a1a8bc4",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "CITY-LABS-SPECTRA-E47-PY-20260908",
+      "path": "migration/python/e47_first_principles_spectral_engine.py",
+      "sha256": "07325ddd5d8c08bfe6d90ee8d94c3335484d9897bac33fe73554ae1aba2e052d",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "CITY-LABS-MURM-TRAJ-AUDIT-PY-20260908",
+      "path": "migration/python/murmuration_actual_trajectory_audit.py",
+      "sha256": "b90911e6fdfd08eabde3398a3d81e009da47137ea41e4ea6f8babe2db9f52cc7",
+      "evidence": "E1"
+    },
+    {
+      "artifact": "CITY-LABS-MURM-SPECTRA-BRIDGE-PY-20260908",
+      "path": "migration/python/murmuration_spectra_bridge.py",
+      "sha256": "052f8664b28bfe827398d41532758392d7099e5c4a654fb63fc10ca647128fd2",
+      "evidence": "E1"
+    }
+  ],
+  "boundaries": [
+    "Supabase Edge Functions are TypeScript/Deno services, not Python runtimes.",
+    "No Supabase data or services are deleted by this migration.",
+    "Registry status and evidence class are preserved.",
+    "Canonical promotion remains human-gated."
+  ]
+}
