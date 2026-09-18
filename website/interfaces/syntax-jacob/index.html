@@ -16,7 +16,7 @@
   {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
   </script>
 </head>
-<body>
+<body class="visual-first">
   <canvas id="scene" aria-label="Interactive 3D Earth and 3I/ATLAS scene"></canvas>
   <div id="loading"><div class="loader-ring"></div><b>SYNTAX JACOB</b><span>binding live ephemeris + coherence engine</span></div>
 
@@ -95,6 +95,11 @@ VZ —</pre>
     </div>
     <p class="original">Syntax Jacob and the 3I/ATLAS syntax/coherence construction are presented here as original work by Nick Kouns. External astronomy data remain attributed to NASA/JPL.</p>
   </section>
+  <script>
+    if (new URLSearchParams(location.search).get("hud") === "1") {
+      document.body.classList.remove("visual-first");
+    }
+  </script>
   <script type="module" src="app.js"></script>
 </body>
 </html>
