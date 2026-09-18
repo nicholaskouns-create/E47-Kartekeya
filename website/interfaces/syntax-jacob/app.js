@@ -192,12 +192,12 @@ function pilotStep(dt){
     perturbState(.0018*throttle);
   }
   lastAccel=accel;
-  const drag=propulsionMode==='inertial'?.9992:propulsionMode==='coherence'?.9965:.9997;
+  const drag=propulsionMode==='inertial' ? .9992 : propulsionMode==='coherence' ? .9965 : .9997;
   velocity.multiplyScalar(Math.pow(drag,dt*60));
   craftOffset.addScaledVector(velocity,dt*16);craftOffset.clampLength(2.5,28);
   if(feed&&focus!=='free')craft.position.lerp(cometGroup.position.clone().add(craftOffset),1-Math.pow(.003,dt));else craft.position.addScaledVector(velocity,dt*14);
   const plumeTarget=accel>0?Math.min(.78,.16+throttle*.62):0;enginePlume.material.opacity+= (plumeTarget-enginePlume.material.opacity)*Math.min(1,dt*12);enginePlume.scale.set(1,.7+throttle*1.8,1);
-  fieldShell.material.opacity=propulsionMode==='coherence'?.12+.3*lastCapture:.08;fieldShell.rotation.z+=dt*(.25+throttle*1.8);
+  fieldShell.material.opacity=propulsionMode==='coherence' ? .12+.3*lastCapture : .08;fieldShell.rotation.z+=dt*(.25+throttle*1.8);
   updateLabReadouts();
 }
 async function remoteWitness(){try{const r=await fetch(MATRIX_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({statevector:rho,source:'Syntax Jacob',circuit:{mode:focus,scalar_lock:scalarLock,propulsion_mode:propulsionMode,throttle}})}),j=await r.json();if(!j.ok)throw new Error(j.error||'witness rejected');$('cube').textContent='CUBE WITNESS · E47 '+(j.witness.witness.e47_weight*100).toFixed(2)+'%';$('cube').style.color='var(--mint)'}catch{$('cube').textContent='CUBE WITNESS · OFFLINE';$('cube').style.color='var(--hot)'}}
