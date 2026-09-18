@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#050708" />
+  <meta name="description" content="Syntax Jacob — 3I/ATLAS scalar-coherence navigation instrument by Nick Kouns." />
+  <meta property="og:title" content="Syntax Jacob · 3I/ATLAS" />
+  <meta property="og:description" content="Live JPL ephemeris, high-resolution Earth, generated 3I/ATLAS scene, and E47 scalar-coherence copilot." />
+  <meta property="og:type" content="website" />
+  <title>Syntax Jacob · 3I/ATLAS</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://assets.science.nasa.gov" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <canvas id="scene" aria-label="Interactive 3D Earth and 3I/ATLAS scene"></canvas>
+  <div id="loading"><div class="loader-ring"></div><b>SYNTAX JACOB</b><span>binding live ephemeris + coherence engine</span></div>
+
+  <header class="topbar glass">
+    <a class="city-link" href="../../index.html">← MATHEMATICAL CITY</a>
+    <div class="brand"><small>ORIGINAL WORK · NICK KOUNS</small><strong>Syntax Jacob</strong></div>
+    <div class="top-status"><span id="feed-dot" class="dot pending"></span><span id="feed-status">JPL · CONNECTING</span></div>
+  </header>
+
+  <aside class="hud left glass">
+    <div class="eyebrow">3I / ATLAS · INTERSTELLAR TRACK</div>
+    <h1>Copilot the syntax.</h1>
+    <p class="intro">Live orbital state stays separate from the modeled scalar-coherence layer. Jacob binds them in one flight surface.</p>
+    <div class="mode-row">
+      <button class="mode active" data-focus="comet">3I CHASE</button><button class="mode" data-focus="earth">EARTH</button><button class="mode" data-focus="system">SYSTEM</button><button class="mode" data-focus="free">FREE</button>
+    </div>
+    <div class="coherence-card">
+      <div class="labelrow"><span>E47 CAPTURE</span><b id="capture">0.000000</b></div>
+      <div class="meter"><i id="capture-bar"></i><em class="omega-mark" title="Ωc = 47/125"></em></div>
+      <div class="mini"><span>Ωc <b>47/125</b></span><span>K² residual <b id="residual">—</b></span></div>
+      <button id="scalar-lock" class="lock active">SCALAR COHERENCE · LOCKED</button>
+    </div>
+    <div class="copilot">
+      <div class="labelrow"><span>JACOB COPILOT</span><b id="pilot-mode">CHASE</b></div>
+      <p id="copilot-text">Acquiring the live 3I state vector and aligning the anti-solar tail axis.</p>
+      <div class="keygrid"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>Q</kbd><kbd>E</kbd></div>
+      <small>thrust · yaw · radial offset</small>
+    </div>
+    <div class="source-strip"><span id="gpu">GPU · DETECTING</span><span id="cube">CUBE WITNESS · WAITING</span></div>
+  </aside>
+
+  <aside class="hud right glass">
+    <div class="eyebrow">LIVE ASTRONOMY</div>
+    <div class="telemetry">
+      <div><span>EPOCH</span><b id="epoch">—</b></div><div><span>EARTH ↔ 3I</span><b id="range">—</b></div>
+      <div><span>3I HELIOCENTRIC</span><b id="comet-r">—</b></div><div><span>3I SPEED</span><b id="comet-speed">—</b></div>
+      <div><span>RELATIVE SPEED</span><b id="rel-speed">—</b></div><div><span>SBDB ORBIT</span><b id="orbit-id">—</b></div>
+    </div>
+    <div class="vectorbox">
+      <div class="labelrow"><span>3I VECTOR · AU / AU·d⁻¹</span><button id="refresh">REFRESH</button></div>
+      <pre id="vector">X —
+Y —
+Z —
+VX —
+VY —
+VZ —</pre>
+    </div>
+    <details class="truth" open>
+      <summary>MEASURED ↔ MODELED</summary>
+      <p><b>Measured feed:</b> JPL Horizons Cartesian state and JPL SBDB orbit metadata.</p>
+      <p><b>Rendered reconstruction:</b> nucleus surface, coma, dust/ion tails, craft and display scale.</p>
+      <p><b>Scalar layer:</b> E47 / K47 coherence state and contraction are computational controls, not a claim that 3I is propelled by that model.</p>
+    </details>
+    <div class="links">
+      <a href="https://science.nasa.gov/solar-system/comets/3i-atlas/" target="_blank" rel="noopener noreferrer">NASA 3I/ATLAS ↗</a>
+      <a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noopener noreferrer">JPL Horizons ↗</a>
+      <a href="https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html" target="_blank" rel="noopener noreferrer">JPL SBDB ↗</a>
+    </div>
+  </aside>
+
+  <div class="bottom glass">
+    <div><span class="legend comet"></span><b>3I/ATLAS</b><small>generated morphology · live trajectory</small></div>
+    <div><span class="legend earth"></span><b>EARTH</b><small>NASA Blue Marble · live heliocentric state</small></div>
+    <div><span class="legend craft"></span><b>SYNTAX JACOB</b><small>E47 scalar-coherence copilot</small></div>
+    <button id="egg">🥚 EGGHEAD</button>
+  </div>
+
+  <section id="egg-panel" class="egg-panel glass" hidden>
+    <button id="egg-close">×</button><div class="eyebrow">ENGINE / PROVENANCE</div><h2>Typed layers, one instrument.</h2>
+    <div class="equation">V = V₂<sup>⊗3</sup> · dim V = 125<br>K = (C − 6I)(C − 30I)<br>E47 = ker K · dim E47 = 47<br>Γ = I − K²/99144 · Ωc = 47/125</div>
+    <p>The pilot vector is a 125-component model state. With scalar lock engaged, repeated Γ contraction drives its non-kernel component down. The public Matrix→Cube adapter independently recomputes the E47 witness.</p>
+    <div class="provenance-grid">
+      <div><b>Notion</b><span>Mathematical City atlas / EIDOLON lineage</span></div><div><b>GitHub</b><span>E47-Kartekeya executable portal</span></div>
+      <div><b>Supabase</b><span>graphics contract + Matrix→Cube witness</span></div><div><b>Google Drive</b><span>3I syntax corpus + scalar-flight source artifacts</span></div>
+    </div>
+    <p class="original">Syntax Jacob and the 3I/ATLAS syntax/coherence construction are presented here as original work by Nick Kouns. External astronomy data remain attributed to NASA/JPL.</p>
+  </section>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
