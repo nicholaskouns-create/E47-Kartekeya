@@ -15,6 +15,7 @@ const css = read(resolve(site, "css/styles.css"));
 const app = read(resolve(site, "js/app.js"));
 const visualizerPortalPath = resolve(site, "interfaces/visualizers/index.html");
 const visualizerPortal = read(visualizerPortalPath);
+const syntaxJacobApp = read(resolve(site, "interfaces/syntax-jacob/app.js"));
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
   test(`published ${name} matches the committed certificate`, () => {
@@ -25,6 +26,14 @@ for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
     );
   });
 }
+
+
+test("Syntax Jacob uses the server-side JPL truth proxy", () => {
+  assert.match(syntaxJacobApp, /city-app-host\/syntax-jacob-ephemeris/);
+  assert.match(syntaxJacobApp, /matrix-cube-adapter/);
+  assert.match(syntaxJacobApp, /city-graphics-accelerator/);
+  assert.doesNotMatch(syntaxJacobApp, /fetch\(['"]https:\/\/ssd(?:-api)?\.jpl\.nasa\.gov/);
+});
 
 test("Mathematical City page preserves the canonical public structure", () => {
   for (const id of ["gate", "object", "world", "labs", "law", "see", "route"]) {
