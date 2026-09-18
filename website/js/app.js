@@ -1,5 +1,6 @@
 const LABS=[
 {name:'EIDOLON',role:'Flight',q:'Move through the modeled City.',desc:'The front door: a visible flight-simulator deck with EIDOLON, UFO Propulsion, Hover, MAV, and flight-lineage surfaces.',url:'interfaces/flight/eidolon/'},
+{name:'Syntax Jacob',role:'3I Copilot',q:'Can a live interstellar trajectory be flown through the coherence layer?',desc:'Live JPL 3I/ATLAS and Earth state vectors, NASA Earth imagery, generated comet rendering, and a typed E47 scalar-coherence copilot.',url:'interfaces/syntax-jacob/'},
 {name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'interfaces/visualizers/?lab=spectra'},
 {name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'interfaces/visualizers/?lab=fold'},
 {name:'Murmuration',role:'Dynamics',q:'How does structure move?',desc:'Watch many-body organization, topology and collective motion.',url:'interfaces/visualizers/?lab=murmuration'},
