@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#050708" />
-  <meta name="description" content="Syntax Jacob — 3I/ATLAS scalar-coherence navigation instrument by Nick Kouns." />
-  <meta property="og:title" content="Syntax Jacob · 3I/ATLAS" />
-  <meta property="og:description" content="Live JPL ephemeris, high-resolution Earth, generated 3I/ATLAS scene, and E47 scalar-coherence copilot." />
+  <meta name="description" content="Syntax Jacob Propulsion Lab — interactive 3I/ATLAS flight and E47 coherence simulation by Nick Kouns." />
+  <meta property="og:title" content="Syntax Jacob · Propulsion Lab · 3I/ATLAS" />
+  <meta property="og:description" content="Interactive propulsion laboratory with live JPL 3I/ATLAS ephemeris, Earth, vector thrust, and E47 coherence controls." />
   <meta property="og:type" content="website" />
-  <title>Syntax Jacob · 3I/ATLAS</title>
+  <title>Syntax Jacob · Propulsion Lab · 3I/ATLAS</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="preconnect" href="https://assets.science.nasa.gov" />
-  <link rel="stylesheet" href="styles.css?v=20260918c" />
+  <link rel="stylesheet" href="styles.css?v=20260918-propulsion" />
   <script type="importmap">
   {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
   </script>
@@ -95,6 +95,42 @@ VZ —</pre>
     </div>
     <p class="original">Syntax Jacob and the 3I/ATLAS syntax/coherence construction are presented here as original work by Nick Kouns. External astronomy data remain attributed to NASA/JPL.</p>
   </section>
+
+  <div id="propulsion-dock" class="propulsion-dock" aria-label="Propulsion laboratory controls">
+    <button id="propulsion-toggle" class="propulsion-trigger" type="button" aria-expanded="false" aria-controls="propulsion-panel" title="Open propulsion lab">🚀</button>
+    <div class="throttle-mini" aria-label="Throttle"><span id="throttle-mini">35%</span><i><b id="throttle-mini-bar"></b></i></div>
+    <button id="kill-velocity" class="propulsion-icon" type="button" title="Zero modeled velocity">◎</button>
+  </div>
+
+  <section id="propulsion-panel" class="propulsion-panel glass" hidden aria-label="Syntax Jacob propulsion laboratory">
+    <div class="prop-head"><div><small>SYNTAX JACOB</small><b>PROPULSION LAB</b></div><button id="propulsion-close" type="button" aria-label="Close propulsion lab">×</button></div>
+    <div class="prop-modes" role="group" aria-label="Propulsion model">
+      <button class="prop-mode" data-prop-mode="inertial" type="button">INERTIAL</button>
+      <button class="prop-mode active" data-prop-mode="coherence" type="button">E47 FIELD</button>
+      <button class="prop-mode" data-prop-mode="coast" type="button">COAST</button>
+    </div>
+    <label class="throttle-row"><span>THROTTLE <b id="throttle-value">35%</b></span><input id="throttle" type="range" min="0" max="100" value="35" step="1" /></label>
+    <div class="axis-pad" aria-label="Thrust vector controls">
+      <button data-thrust="q" type="button" aria-label="Thrust up">＋Y</button>
+      <button data-thrust="w" type="button" aria-label="Thrust forward">▲</button>
+      <button data-thrust="e" type="button" aria-label="Thrust down">−Y</button>
+      <button data-thrust="a" type="button" aria-label="Thrust left">◀</button>
+      <button id="pulse-thrust" class="pulse-thrust" type="button" aria-label="Pulse thrust">●</button>
+      <button data-thrust="d" type="button" aria-label="Thrust right">▶</button>
+      <span></span><button data-thrust="s" type="button" aria-label="Reverse thrust">▼</button><span></span>
+    </div>
+    <div class="focus-strip" role="group" aria-label="Camera focus">
+      <button data-lab-focus="comet" type="button">3I</button><button data-lab-focus="earth" type="button">⊕</button><button data-lab-focus="system" type="button">◎</button><button data-lab-focus="free" type="button">FREE</button>
+    </div>
+    <div class="prop-readouts">
+      <div><span>MODELED SPEED</span><b id="lab-speed">0.000</b></div>
+      <div><span>ACCEL</span><b id="lab-accel">0.000</b></div>
+      <div><span>ΔV INTEGRAL</span><b id="lab-dv">0.000</b></div>
+      <div><span>E47 CAPTURE</span><b id="lab-capture">0.000</b></div>
+    </div>
+    <p class="prop-boundary">Simulation surface. JPL ephemeris is measured source data; propulsion response is modeled display-space dynamics. E47 changes the simulation control law, not the measured 3I trajectory.</p>
+  </section>
+
   <script>
     if (new URLSearchParams(location.search).get("hud") === "1") {
       document.body.classList.remove("visual-first");
