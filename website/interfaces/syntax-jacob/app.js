@@ -6,6 +6,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 
 const AU_KM=149597870.7,DAY_S=86400,EPS=1/99144;
 const MATRIX_ENDPOINT='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter';
+const EPHEMERIS_ENDPOINT='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/syntax-jacob-ephemeris';
 const GRAPHICS_MODULE='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-graphics-accelerator?format=module';
 const EARTH_TEXTURE='https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg';
 const SPECTRUM=[0,2,6,12,20,30,42],$=id=>document.getElementById(id);
@@ -38,34 +39,22 @@ function seedState(){return normalized(Array.from({length:125},(_,i)=>[Math.sin(
 let rho=seedState();
 function perturbState(amount=.015){rho=normalized(rho.map((r,i)=>[r[0]+amount*Math.sin(i*.91+performance.now()*.001),r[1]+amount*.4*Math.cos(i*.37)]))}
 
-function q(v){return `'${v}'`}
-function parseVector(result){
-  const s=result.indexOf('$$SOE'),e=result.indexOf('$$EOE');if(s<0||e<0)throw new Error('no vector block');
-  const row=result.slice(s+5,e).trim().split(/\r?\n/).map(x=>x.trim()).find(Boolean);
-  const f=row.replace(/,$/,'').split(',').map(x=>x.trim().replace(/^"|"$/g,'')),n=f.map(Number);
-  if(f.length>=8&&n.slice(2,8).every(Number.isFinite))return{jd:n[0],calendar:f[1],position:n.slice(2,5),velocity:n.slice(5,8)};
-  const grab=k=>{const m=result.match(new RegExp(k+'\\s*=\\s*([+\\-0-9.Ee]+)'));return m?Number(m[1]):NaN};
-  const position=[grab('X'),grab('Y'),grab('Z')],velocity=[grab('VX'),grab('VY'),grab('VZ')];
-  if(!position.every(Number.isFinite)||!velocity.every(Number.isFinite))throw new Error('vector parse failure');
-  return{jd:null,calendar:null,position,velocity};
-}
-async function horizon(command,at,objData='NO'){
-  const p=new URLSearchParams({format:'json',COMMAND:q(command),OBJ_DATA:q(objData),MAKE_EPHEM:q('YES'),EPHEM_TYPE:q('VECTORS'),CENTER:q('500@10'),TLIST:q(at),TLIST_TYPE:q('CAL'),TIME_TYPE:q('TDB'),OUT_UNITS:q('AU-D'),VEC_TABLE:q('2'),VEC_LABELS:q('NO'),CSV_FORMAT:q('YES'),REF_PLANE:q('ECLIPTIC')});
-  const r=await fetch('https://ssd.jpl.nasa.gov/api/horizons.api?'+p,{cache:'no-store'});if(!r.ok)throw new Error('Horizons '+r.status);const j=await r.json();if(j.error)throw new Error(j.error);return parseVector(String(j.result||''));
-}
-async function cometHorizon(at){let last;for(const c of ['3I/ATLAS;','C/2025 N1 (ATLAS);','DES=3I/ATLAS;']){try{return{...await horizon(c,at,'YES'),command:c}}catch(e){last=e}}throw last||new Error('3I target unresolved')}
-async function sbdb(){const r=await fetch('https://ssd-api.jpl.nasa.gov/sbdb.api?sstr=3I%2FATLAS&full-prec=true&phys-par=true&discovery=true',{cache:'no-store'});if(!r.ok)throw new Error('SBDB '+r.status);return r.json()}
-const currentHorizonTime=()=>new Date().toISOString().replace('T',' ').replace(/\.\d{3}Z$/,'');
 async function refreshData(){
   $('feed-dot').className='dot pending';$('feed-status').textContent='JPL · CONNECTING';$('refresh').textContent='SYNCING';
   try{
-    const at=currentHorizonTime(),[comet,earth,small]=await Promise.all([cometHorizon(at),horizon('399',at),sbdb()]);
-    const rel=subv(comet.position,earth.position),rv=subv(comet.velocity,earth.velocity);
-    feed={time:new Date(),comet,earth,sbdb:small,range:norm(rel),relSpeed:norm(rv)*AU_KM/DAY_S};
+    const r=await fetch(EPHEMERIS_ENDPOINT,{cache:'no-store'});
+    const j=await r.json();
+    if(!r.ok||!j.ok)throw new Error(j.error||('Ephemeris '+r.status));
+    const comet={position:j.comet.position_au,velocity:j.comet.velocity_au_per_day,calendar:j.comet.calendar,command:j.comet.command};
+    const earth={position:j.earth.position_au,velocity:j.earth.velocity_au_per_day,calendar:j.earth.calendar};
+    feed={time:new Date(j.requested_at),comet,earth,sbdb:j.sbdb,range:j.relative.earth_to_comet_au,relSpeed:j.relative.relative_speed_km_s};
     $('feed-dot').className='dot live';$('feed-status').textContent='JPL · LIVE';updateTelemetry();placeBodies();
     rho=normalized(rho.map((r,i)=>[r[0]+.002*Math.sin((comet.position[i%3]||0)*i),r[1]+.002*Math.cos((earth.position[i%3]||0)*i)]));
-  }catch(e){$('feed-dot').className='dot error';$('feed-status').textContent='JPL · FEED ERROR';$('copilot-text').textContent='Live JPL feed did not bind. The scene remains interactive, but trajectory telemetry is not being presented as current.';console.error(e)}
-  finally{$('refresh').textContent='REFRESH'}
+  }catch(e){
+    $('feed-dot').className='dot error';$('feed-status').textContent='JPL · FEED ERROR';
+    $('copilot-text').textContent='The server-side JPL truth feed did not bind. The 3D scene remains interactive, but trajectory telemetry is not presented as current.';
+    console.error(e);
+  }finally{$('refresh').textContent='REFRESH'}
 }
 function updateTelemetry(){
   if(!feed)return;const{comet,sbdb:s}=feed,cr=norm(comet.position),cs=norm(comet.velocity)*AU_KM/DAY_S;
