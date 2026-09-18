@@ -8,6 +8,7 @@ on:
       - "certificates/**"
       - "scripts/check_website.cjs"
       - "scripts/check_e47_bridge.cjs"
+      - "scripts/check_eidolon_receipt_binding.mjs"
       - ".github/workflows/pages.yml"
   pull_request:
     branches: ["main"]
@@ -16,6 +17,7 @@ on:
       - "certificates/**"
       - "scripts/check_website.cjs"
       - "scripts/check_e47_bridge.cjs"
+      - "scripts/check_eidolon_receipt_binding.mjs"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -36,7 +38,7 @@ jobs:
         with:
           node-version: "22"
       - name: Check assets, certificates, rendering and E47 bridge contract
-        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs
 
   publish:
     name: Publish website root to gh-pages
