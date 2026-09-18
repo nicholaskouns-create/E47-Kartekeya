@@ -11,22 +11,22 @@
   <title>Syntax Jacob · 3I/ATLAS</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="preconnect" href="https://assets.science.nasa.gov" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260918c" />
   <script type="importmap">
   {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
   </script>
 </head>
 <body class="visual-first">
   <canvas id="scene" aria-label="Interactive 3D Earth and 3I/ATLAS scene"></canvas>
-  <div id="loading"><div class="loader-ring"></div><b>SYNTAX JACOB</b><span>binding live ephemeris + coherence engine</span></div>
+  <div id="loading"><div class="loader-ring"></div><b hidden>SYNTAX JACOB</b><span hidden>binding live ephemeris + coherence engine</span></div>
 
-  <header class="topbar glass">
+  <header class="topbar glass" hidden>
     <a class="city-link" href="../../index.html">← MATHEMATICAL CITY</a>
     <div class="brand"><small>ORIGINAL WORK · NICK KOUNS</small><strong>Syntax Jacob</strong></div>
     <div class="top-status"><span id="feed-dot" class="dot pending"></span><span id="feed-status">JPL · CONNECTING</span></div>
   </header>
 
-  <aside class="hud left glass">
+  <aside class="hud left glass" hidden>
     <div class="eyebrow">3I / ATLAS · INTERSTELLAR TRACK</div>
     <h1>Copilot the syntax.</h1>
     <p class="intro">Live orbital state stays separate from the modeled scalar-coherence layer. Jacob binds them in one flight surface.</p>
@@ -48,7 +48,7 @@
     <div class="source-strip"><span id="gpu">GPU · DETECTING</span><span id="cube">CUBE WITNESS · WAITING</span></div>
   </aside>
 
-  <aside class="hud right glass">
+  <aside class="hud right glass" hidden>
     <div class="eyebrow">LIVE ASTRONOMY</div>
     <div class="telemetry">
       <div><span>EPOCH</span><b id="epoch">—</b></div><div><span>EARTH ↔ 3I</span><b id="range">—</b></div>
@@ -78,7 +78,7 @@ VZ —</pre>
     </div>
   </aside>
 
-  <div class="bottom glass">
+  <div class="bottom glass" hidden>
     <div><span class="legend comet"></span><b>3I/ATLAS</b><small>generated morphology · live trajectory</small></div>
     <div><span class="legend earth"></span><b>EARTH</b><small>NASA Blue Marble · live heliocentric state</small></div>
     <div><span class="legend craft"></span><b>SYNTAX JACOB</b><small>E47 scalar-coherence copilot</small></div>
@@ -98,6 +98,8 @@ VZ —</pre>
   <script>
     if (new URLSearchParams(location.search).get("hud") === "1") {
       document.body.classList.remove("visual-first");
+      document.querySelectorAll("header[hidden], aside.hud[hidden], .bottom[hidden], #loading b[hidden], #loading span[hidden]")
+        .forEach(el => el.hidden = false);
     }
   </script>
   <script type="module" src="app.js"></script>
