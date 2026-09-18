@@ -23,6 +23,30 @@ const prevLink=document.getElementById('prevLink');
 const field=document.getElementById('field');
 const ctx=field?.getContext('2d');
 
+let receiptFlightBinding=null;
+let receiptChip=null;
+if(mode.toUpperCase()==='EIDOLON'){
+  receiptChip=document.createElement('span');
+  receiptChip.className='chip';
+  receiptChip.textContent='AETHERIS · WAITING';
+  document.querySelector('.hud .top .cluster')?.appendChild(receiptChip);
+  import('./aetheris-flight-binding.js').then(({createEidolonFlightReceiptBinding})=>{
+    receiptFlightBinding=createEidolonFlightReceiptBinding({
+      sim,
+      onApply:r=>{
+        const live=['PASS','RECEIVED','COMPLETED','LOCAL-WITNESS'].includes(String(r.status||'').toUpperCase());
+        receiptChip.textContent=`AETHERIS · ${String(r.status||'RECEIVED').toUpperCase()} · STEP ${r.step ?? '—'}`;
+        receiptChip.classList.toggle('live',live);
+        if(r.step!=null)body.dataset.receiptStep=String(r.step);
+        if(r.state_after_digest)body.dataset.receiptDigest=String(r.state_after_digest).slice(0,12);
+      }
+    });
+  }).catch(()=>{
+    receiptChip.textContent='AETHERIS · BINDING UNAVAILABLE';
+    receiptChip.classList.remove('live');
+  });
+}
+
 sim.src=source;
 sourceOpen.href=source;
 modeName.textContent=mode;
@@ -106,23 +130,28 @@ let t0=performance.now();
 function draw(now){
   if(!ctx||quality==='low'||matchMedia('(prefers-reduced-motion: reduce)').matches){requestAnimationFrame(draw);return;}
   const w=innerWidth,h=innerHeight,t=(now-t0)/1000;
+  const receiptSample=receiptFlightBinding?.sample?.()||null;
+  const control=receiptSample?.control||{yaw:0,pitch:0,roll:0,vertical:0,throttle:0,speed:0};
+  const receiptStep=Number(receiptSample?.step||0);
+  const phaseOffset=receiptStep*.015+control.yaw*.25;
   ctx.clearRect(0,0,w,h);
   ctx.lineWidth=1;
   const alpha=level===3?.16:level===2?.11:.07;
   ctx.strokeStyle=`rgba(102,221,211,${alpha})`;
-  const cx=w/2,cy=h/2;
+  const cx=w/2+control.roll*w*.035,cy=h/2+control.pitch*h*.035-control.vertical*h*.02;
   const rings=level===3?5:level===2?3:2;
   for(let r=1;r<=rings;r++){
     ctx.beginPath();
-    const radius=(80+r*78)+(Math.sin(t*.45+r)*7);
-    ctx.ellipse(cx,cy,radius,radius*.56,Math.sin(t*.11)*.08,0,Math.PI*2);
+    const radius=((80+r*78)+(Math.sin((t+phaseOffset)*.45+r)*7))*(1+control.throttle*.04);
+    const rotation=Math.sin((t+phaseOffset)*.11)*.08+control.roll*.12;
+    ctx.ellipse(cx,cy,radius,radius*.56,rotation,0,Math.PI*2);
     ctx.stroke();
   }
   if(level>=2){
     const n=level===3?26:14;
     for(let i=0;i<n;i++){
-      const phase=i/n*Math.PI*2+t*(level===3?.08:.04);
-      const r=Math.min(w,h)*(.22+(i%5)*.035);
+      const phase=i/n*Math.PI*2+(t+phaseOffset)*(level===3?.08:.04);
+      const r=Math.min(w,h)*(.22+(i%5)*.035)*(1+control.throttle*.025);
       const x=cx+Math.cos(phase)*r;
       const y=cy+Math.sin(phase)*r*.55;
       ctx.fillStyle=`rgba(185,230,200,${level===3?.35:.2})`;

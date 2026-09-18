@@ -26,7 +26,7 @@ jobs:
           node-version: "22"
 
       - name: Re-run City validators
-        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs
 
       - name: Verify source handshake contract
         shell: bash
@@ -57,8 +57,11 @@ jobs:
 
           probe 'Executable City' 'https://nicholaskouns-create.github.io/E47-Kartekeya/' live-city.html
           probe 'Research Atlas' 'https://mathematicalcity.notion.site/?pvs=74' notion-atlas.html
-          probe 'EIDOLON' 'https://eidolon-flight-lab.nicholaskouns.chatgpt.site' eidolon.html
+          probe 'EIDOLON · bound City shell' 'https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/' eidolon-bound.html
+          probe 'EIDOLON · source app' 'https://eidolon-flight-lab.nicholaskouns.chatgpt.site' eidolon-source.html
 
+          grep -Fq 'EIDOLON' eidolon-bound.html
+          grep -Fq 'aetheris-flight-binding.js' <(curl -fsSL 'https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/flight-shell.js')
           grep -Fq 'The Mathematical City' live-city.html
           grep -Fq 'https://mathematicalcity.notion.site/?pvs=74' live-city.html
 

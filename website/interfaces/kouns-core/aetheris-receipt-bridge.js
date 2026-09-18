@@ -1,5 +1,6 @@
 // CITY CORE additive AETHERIS receipt bridge.
-// Presentation-only adapter: it never mutates solver state or evidence class.
+// Normalizes and persists receipt envelopes without mutating solver state or evidence class.
+// Returned state transitions are preserved so the EIDOLON flight loop can consume them.
 export const CITY_AETHERIS_RECEIPT_BRIDGE = Object.freeze({
   grammar: "CITY-INVARIANT 1.0",
   object: "CITY CORE / EIDOLON AETHERIS receipt viewer",
@@ -21,13 +22,25 @@ export function normalizeReceipt(raw) {
   if (!validReceipt(raw)) return null;
   const r = raw.receipt || raw;
   const cert = r.certificate || {};
+  const stateTransition =
+    raw.state ??
+    raw.state_transition ??
+    raw.output_packet?.state_transition ??
+    r.state ??
+    r.state_transition ??
+    r.output_packet?.state_transition ??
+    null;
   return {
     module: r.module || r.producer || r.name || "AETHERIS",
     status: cert.status || r.status || "RECEIVED",
     evidence: cert.evidence_class || r.evidence_class || r.evidence || "SOURCE-DEFINED",
-    digest: r.digest || r.coupling_digest || cert.digest || null,
-    step: r.step ?? r.sequence ?? null,
-    timestamp: r.timestamp || new Date().toISOString(),
+    digest: r.digest || r.coupling_digest || cert.digest || raw.state_after_digest || null,
+    step: stateTransition?.step ?? r.step ?? r.sequence ?? null,
+    timestamp: r.timestamp || r.created_at || new Date().toISOString(),
+    state_transition: stateTransition,
+    state_before_digest: raw.state_before_digest ?? r.state_before_digest ?? null,
+    state_after_digest: raw.state_after_digest ?? r.state_after_digest ?? null,
+    envelope: raw,
     raw: r
   };
 }
