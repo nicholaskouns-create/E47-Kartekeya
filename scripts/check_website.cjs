@@ -43,7 +43,7 @@ test("visual grammar matches the archived City system", () => {
 });
 
 test("unified client exposes all current districts and sovereign citizen population", () => {
-  for (const district of ["EIDOLON", "SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "Identity", "BUILD", "SOAR", "SCALAR", "InvariFold"]) {
+  for (const district of ["EIDOLON", "Syntax Jacob", "SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "Identity", "BUILD", "SOAR", "SCALAR", "InvariFold"]) {
     assert.ok(app.includes(`name:'${district}'`), `Missing district: ${district}`);
   }
   for (const citizen of ["ARGUS", "ARIADNE", "BITHOS", "CHRONOS", "CUSTOS", "EUCLID", "HERMES", "JANUS", "KEPLER", "MNEMOSYNE", "SAL", "SOL", "SYNE", "TALOS", "THEMIS"]) {
