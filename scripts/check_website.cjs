@@ -199,8 +199,8 @@ async function render({ search = "" } = {}) {
 
 test("renders the city districts and selects Eidolon by default", async () => {
   const { elements } = await render();
-  assert.equal((elements["lab-grid"].innerHTML.match(/class="lab-card"/g) || []).length, 13);
-  assert.equal((elements["district-orbit"].innerHTML.match(/class="district/g) || []).length, 13);
+  assert.equal((elements["lab-grid"].innerHTML.match(/class="lab-card"/g) || []).length, 14);
+  assert.equal((elements["district-orbit"].innerHTML.match(/class="district/g) || []).length, 14);
   assert.match(elements["lab-grid"].innerHTML, /EIDOLON/);
   assert.equal(elements["world-title"].textContent, "EIDOLON · Flight");
   assert.equal(elements["world-enter"].textContent, "Explore here");
@@ -217,7 +217,7 @@ test("district query parameters select the requested lab and scroll to the world
 
 test("clicking a generated district button selects that district", async () => {
   const result = await render();
-  result.fireOrbit(2);
+  result.fireOrbit(3);
   assert.equal(result.elements["world-title"].textContent, "Fold · Invariance");
   assert.equal(result.elements["world-enter"].textContent, "Open visualizer");
   assert.match(result.elements["egg-world"].textContent, /DISTRICT: Fold/);
