@@ -12,3 +12,24 @@
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{opacity:.3}}
 @media(max-width:920px){.hud.right{display:none}.hud.left{top:auto;bottom:82px;max-height:44dvh;width:calc(100vw - 28px)}.left h1{font-size:28px}.intro,.copilot{display:none}.topbar{height:54px}.bottom{min-width:calc(100vw - 28px);overflow-x:auto}.bottom>div{min-width:130px}.bottom small{white-space:normal}.top-status{font-size:6px}}
 @media(max-width:560px){.city-link{display:none}.topbar{left:8px;right:8px}.hud.left{left:8px;width:calc(100vw - 16px);padding:11px}.bottom{bottom:calc(6px + env(safe-area-inset-bottom));min-width:calc(100vw - 16px)}.mode-row{grid-template-columns:repeat(2,1fr)}.telemetry{grid-template-columns:1fr}.provenance-grid{grid-template-columns:1fr}}
+
+
+/* Visual-first default: keep the 3D instrument unobstructed. The full HUD remains
+   available for diagnostics with ?hud=1 without occupying the public flight surface. */
+body.visual-first #scene{
+  inset:0;
+  width:100vw;
+  height:100dvh;
+  max-width:none;
+  max-height:none;
+}
+body.visual-first .topbar,
+body.visual-first .hud,
+body.visual-first .bottom,
+body.visual-first .egg-panel{
+  display:none !important;
+}
+body.visual-first #loading b,
+body.visual-first #loading span{
+  display:none !important;
+}
