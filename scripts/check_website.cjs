@@ -43,7 +43,7 @@ test("visual grammar matches the archived City system", () => {
 });
 
 test("unified client exposes all current districts and sovereign citizen population", () => {
-  for (const district of ["EIDOLON", "SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "Identity", "BUILD", "SOAR", "SCALAR", "InvariFold"]) {
+  for (const district of ["EIDOLON", "SYNTAX JACOB", "SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "Identity", "BUILD", "SOAR", "SCALAR", "InvariFold"]) {
     assert.ok(app.includes(`name:'${district}'`), `Missing district: ${district}`);
   }
   for (const citizen of ["ARGUS", "ARIADNE", "BITHOS", "CHRONOS", "CUSTOS", "EUCLID", "HERMES", "JANUS", "KEPLER", "MNEMOSYNE", "SAL", "SOL", "SYNE", "TALOS", "THEMIS"]) {
@@ -199,8 +199,8 @@ async function render({ search = "" } = {}) {
 
 test("renders the city districts and selects Eidolon by default", async () => {
   const { elements } = await render();
-  assert.equal((elements["lab-grid"].innerHTML.match(/class="lab-card"/g) || []).length, 13);
-  assert.equal((elements["district-orbit"].innerHTML.match(/class="district/g) || []).length, 13);
+  assert.equal((elements["lab-grid"].innerHTML.match(/class="lab-card"/g) || []).length, 14);
+  assert.equal((elements["district-orbit"].innerHTML.match(/class="district/g) || []).length, 14);
   assert.match(elements["lab-grid"].innerHTML, /EIDOLON/);
   assert.equal(elements["world-title"].textContent, "EIDOLON · Flight");
   assert.equal(elements["world-enter"].textContent, "Explore here");
@@ -217,7 +217,7 @@ test("district query parameters select the requested lab and scroll to the world
 
 test("clicking a generated district button selects that district", async () => {
   const result = await render();
-  result.fireOrbit(2);
+  result.fireOrbit(3);
   assert.equal(result.elements["world-title"].textContent, "Fold · Invariance");
   assert.equal(result.elements["world-enter"].textContent, "Open visualizer");
   assert.match(result.elements["egg-world"].textContent, /DISTRICT: Fold/);
@@ -250,4 +250,21 @@ test("evidence references retain exact committed certificates", () => {
   assert.ok(pipeline.pipeline.every((stage) => stage.validated === true));
   const text = JSON.stringify(pipeline);
   for (const invariant of ["125", "47", "11664"]) assert.ok(text.includes(invariant), invariant);
+});
+
+
+test("Syntax Jacob standalone instrument is published and linked", () => {
+  const dir = resolve(site, "interfaces/syntax-jacob");
+  for (const name of ["index.html", "styles.css", "app.js", "provenance.json"]) {
+    assert.ok(existsSync(resolve(dir, name)), `Missing Syntax Jacob asset: ${name}`);
+  }
+  const shell = read(resolve(dir, "index.html"));
+  const runtime = read(resolve(dir, "app.js"));
+  const provenance = json(resolve(dir, "provenance.json"));
+  assert.ok(app.includes("interfaces/syntax-jacob/"));
+  for (const token of ["SYNTAX JACOB", "3I/ATLAS", "JPL TRUTH LAYER", "Scalar coherence"]) assert.ok(shell.includes(token), token);
+  for (const token of ["syntax-jacob-ephemeris", "matrix-cube-adapter", "1/99144", "47/125"]) assert.ok(runtime.includes(token), token);
+  assert.equal(provenance.original_work, true);
+  assert.equal(provenance.e47.dimension, 125);
+  assert.equal(provenance.e47.kernel_dimension, 47);
 });
