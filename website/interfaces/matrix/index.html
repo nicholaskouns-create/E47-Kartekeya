@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#06100d">
+<title>THE MATRIX · Quantum Simulator</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#040a08;color:#dfffee;font:14px ui-monospace,SFMono-Regular,Menlo,monospace}header,main{max-width:1280px;margin:auto;padding:18px}.ey{color:#65ffb0;letter-spacing:.16em;font-size:11px}h1{font:800 clamp(42px,8vw,88px)/.85 system-ui;margin:20px 0;letter-spacing:-.06em}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.card{border:1px solid #174b36;background:#07130f;border-radius:14px;padding:16px}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:end}label{display:grid;gap:5px;color:#8ec9aa}input,select,button{background:#091a13;color:#dfffee;border:1px solid #267852;border-radius:8px;padding:9px}button{cursor:pointer;color:#04110a;background:#65ffb0;font-weight:800}.metric{font:700 28px system-ui}.muted{color:#7fa48f}.ok{color:#65ffb0}.warn{color:#ffd479}canvas{width:100%;height:230px;background:#030806;border-radius:10px}.bars{display:flex;align-items:end;height:180px;gap:2px}.bar{flex:1;min-width:2px;background:#65ffb0;opacity:.75}.log{max-height:220px;overflow:auto;white-space:pre-wrap;font-size:11px}.wide{grid-column:1/-1}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style></head><body><header><div class="ey">MATHEMATICAL CITY · QUANTUM-CIRCUIT / TENSOR NETWORK INSTRUMENT</div><h1>THE MATRIX</h1><p>MPS simulation with explicit truncation telemetry. E47 analysis is available only through an explicit 125-amplitude canonical lift. No qubit register is silently identified with the E47 carrier.</p></header>
+<main class="grid">
+<section class="card wide controls">
+<label>Qubits<input id="n" type="number" min="2" max="24" value="12"></label>
+<label>Max bond χ<input id="chi" type="number" min="2" max="64" value="8"></label>
+<label>Layers<input id="layers" type="number" min="1" max="30" value="6"></label>
+<label>Phase φ<input id="phi" type="number" step=".05" value=".7"></label>
+<label>Noise model<select id="noise"><option value="none">None</option><option value="trajectory">Amplitude + phase trajectory</option></select></label>
+<label>T1 γ<input id="g1" type="number" step=".0001" value=".0025"></label>
+<label>Tφ γ<input id="gphi" type="number" step=".0001" value=".004"></label>
+<button id="run">RUN CIRCUIT</button><button id="lift">LIFT → E47</button>
+</section>
+<section class="card"><div class="muted">REGISTER NORM</div><div class="metric" id="norm">1.000000</div><div class="muted">MPS norm after circuit / trajectory</div><hr><div class="muted">MAX BOND USED</div><div class="metric" id="bond">1</div><div class="muted">discarded SVD weight <span id="discard">0</span></div></section>
+<section class="card"><div class="muted">E47 WITNESS</div><div class="metric" id="e47">NOT LIFTED</div><div id="e47detail" class="muted">Requires canonical 5×5×5 feature lift.</div></section>
+<section class="card wide"><div class="muted">SCHMIDT SPECTRUM · LAST BOND</div><div id="bars" class="bars"></div></section>
+<section class="card wide"><div class="muted">EXECUTION / PROVENANCE</div><div id="log" class="log"></div></section>
+</main>
+<script type="module" src="./matrix.js"></script></body></html>
