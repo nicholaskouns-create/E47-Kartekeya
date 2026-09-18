@@ -1,0 +1,19 @@
+name: Validate Eidolon embed
+on:
+  pull_request:
+    paths:
+      - 'website/interfaces/eidolon-flight-lab/**'
+      - 'website/interfaces/kouns-core/app.html'
+      - 'website/js/app.js'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs
+      - run: |
+          test -f website/interfaces/eidolon-flight-lab/index.html
+          grep -q "eidolon-flight-lab.nicholaskouns.chatgpt.site" website/interfaces/eidolon-flight-lab/index.html
+          grep -q "interfaces/eidolon-flight-lab/" website/js/app.js
