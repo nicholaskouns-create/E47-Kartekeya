@@ -1,6 +1,6 @@
 {
-  "schema": "SYNTAX-JACOB-PROVENANCE-1.0",
-  "title": "Syntax Jacob",
+  "schema": "SYNTAX-JACOB-PROVENANCE-1.1",
+  "title": "Syntax Jacob — Propulsion Lab",
   "author": "Nicholas Shane Kouns, DO",
   "original_work": true,
   "created": "2026-09-18",
@@ -14,7 +14,23 @@
     ],
     "graphics": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-graphics-accelerator",
     "e47_witness": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter",
-    "receipt_bus": "AETHERIS receipt bridge via CITY CORE postMessage"
+    "receipt_bus": "AETHERIS receipt bridge via CITY CORE postMessage",
+    "propulsion_lab": {
+      "modes": [
+        "inertial",
+        "coherence",
+        "coast"
+      ],
+      "controls": [
+        "vector thrust",
+        "throttle",
+        "pulse thrust",
+        "modeled velocity zero",
+        "camera focus"
+      ],
+      "dynamics_space": "display-space simulation",
+      "physical_claim": "none"
+    }
   },
   "astronomy_sources": [
     {
@@ -89,6 +105,6 @@
   "evidence_boundary": {
     "measured": "JPL Horizons state vectors and JPL SBDB orbit metadata",
     "rendered": "nucleus morphology, coma, tails, display scaling, spacecraft and visual effects",
-    "model": "E47 coherence state, scalar lock/copilot behavior and witness interpretation"
+    "model": "E47 coherence state, propulsion control law, scalar lock/copilot behavior, witness interpretation, and all spacecraft response dynamics"
   }
 }
