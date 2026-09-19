@@ -241,16 +241,18 @@ function addLandingLights(g,{x=1.3,z=-1.6}={}){
 }
 function addPanelMicrodetail(g){
   const lineMat=new THREE.LineBasicMaterial({color:0x9fb2b4,transparent:true,opacity:.10,depthWrite:false});
-  const overlays=[];
+  const targets=[];
   g.traverse(o=>{
     if(!o.isMesh||o.material?.transparent||o.geometry?.type==='SphereGeometry'||o.geometry?.type==='TorusGeometry')return;
-    if(!o.geometry?.attributes?.position||overlays.length>14)return;
-    try{
-      const edge=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,38),lineMat);
-      edge.position.copy(o.position);edge.rotation.copy(o.rotation);edge.scale.copy(o.scale);edge.renderOrder=2;overlays.push(edge);
-    }catch{}
+    if(!o.geometry?.attributes?.position||targets.length>=14)return;
+    targets.push(o);
   });
-  overlays.forEach(x=>g.add(x));
+  for(const target of targets){
+    try{
+      const edge=new THREE.LineSegments(new THREE.EdgesGeometry(target.geometry,38),lineMat);
+      edge.renderOrder=2;target.add(edge);
+    }catch{}
+  }
 }
 function finalizeCraft(g,spec={}){
   Object.assign(g.userData,spec);
