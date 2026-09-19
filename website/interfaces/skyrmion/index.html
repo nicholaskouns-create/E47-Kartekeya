@@ -7,7 +7,8 @@ canvas{position:fixed;inset:0;width:100%;height:100%;touch-action:none;z-index:1
 </style></head><body>
 <section id="launch" class="launch"><div class="launch-inner"><div class="ey">WGS84 · GLOBAL TERRAIN · E47</div><h1>SKYRMION</h1><p>Live satellite terrain on a WGS84 world. Fly conventional aircraft or enter the EIDOLON, MANTA and Syntax Jacob simulation modes.</p><button id="startFlight">Start flight</button></div></section>
 <section class="world-strip"><div class="label">World streaming · <b>Online</b> · Real-time terrain · Enabled</div><div class="world-cards">
-<button class="world-card active" data-world data-lat="34.052235" data-lon="-118.243683" data-alt="1100">Los Angeles<small>California</small></button>
+<button class="world-card active" data-world data-lat="36.169900" data-lon="-115.139800" data-alt="1100">Las Vegas<small>Nevada</small></button>
+<button class="world-card" data-world data-lat="34.052235" data-lon="-118.243683" data-alt="1100">Los Angeles<small>California</small></button>
 <button class="world-card" data-world data-lat="40.712776" data-lon="-74.005974" data-alt="1200">New York<small>New York</small></button>
 <button class="world-card" data-world data-lat="35.676200" data-lon="139.650300" data-alt="1050">Tokyo<small>Japan</small></button>
 <button class="world-card" data-world data-lat="27.988121" data-lon="86.925026" data-alt="9800">Everest<small>Himalaya</small></button>
@@ -17,7 +18,7 @@ import {installCityGps} from '../shared/city-gps-runtime.js';
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
 import {installSkyrmionTerrain} from './terrain-renderer.js';
 const gpsRuntime=installCityGps({chip:document.getElementById('gps'),label:'GPS'});
-const terrain=installSkyrmionTerrain({root:document.body,lat:34.052235,lon:-118.243683,altitude_m:1100});
+const terrain=installSkyrmionTerrain({root:document.body,lat:36.1699,lon:-115.1398,altitude_m:1100});
 installCityCinemaCodec({canvas:document.getElementById('world')});
 addEventListener('skyrmion:flight-state',e=>terrain.update(e.detail||{}));
 document.getElementById('startFlight')?.addEventListener('click',()=>document.body.classList.add('flight-started'));
@@ -29,7 +30,7 @@ document.querySelectorAll('[data-world]').forEach(btn=>btn.addEventListener('cli
   document.body.classList.add('flight-started');
 }));
 </script><script>
-(()=>{const c=document.getElementById('world'),x=c.getContext('2d',{alpha:true}),tele=document.getElementById('tele'),stick=document.getElementById('stick'),knob=document.getElementById('knob'),gps=document.getElementById('gps');let W,H,D=1,t=0,roll=0,pitch=0,tr=0,tp=0,spd=420,alt=12000,domain=0,active=0,drag=0,lat=34.052235,lon=-118.243683,heading=0;const craft=['F-16','SR-71','X-15','EIDOLON','MANTA','SYNTAX JACOB'],base=[420,1650,3100,680,540,900];
+(()=>{const c=document.getElementById('world'),x=c.getContext('2d',{alpha:true}),tele=document.getElementById('tele'),stick=document.getElementById('stick'),knob=document.getElementById('knob'),gps=document.getElementById('gps');let W,H,D=1,t=0,roll=0,pitch=0,tr=0,tp=0,spd=420,alt=12000,domain=0,active=0,drag=0,lat=36.1699,lon=-115.1398,heading=0;const craft=['F-16','SR-71','X-15','EIDOLON','MANTA','SYNTAX JACOB'],base=[420,1650,3100,680,540,900];
 let mantaWorker=null,mantaFrame=null,mantaReady=false,mantaBusy=false,lastMantaStep=0,mantaError='',gpsSeeded=false;
 addEventListener('city:gps',e=>{const g=e.detail;if(!gpsSeeded&&g?.source==='device'){lat=g.lat;lon=g.lon;gpsSeeded=true;}});
 addEventListener('skyrmion:teleport',e=>{const p=e.detail||{};if(Number.isFinite(p.lat))lat=p.lat;if(Number.isFinite(p.lon))lon=p.lon;if(Number.isFinite(p.altitude_m))alt=Math.max(50,p.altitude_m/0.3048);heading=0;gpsSeeded=true;});
