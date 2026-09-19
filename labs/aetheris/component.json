@@ -1,0 +1,41 @@
+{
+  "schema": "LAB-COMPONENT-1.0",
+  "id": "aetheris",
+  "version": "1.0.0",
+  "kind": "research-runtime",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "contract": "Receipt-oriented runtime and state-transition research.",
+  "entrypoint": "python -m pytest tests/ -q",
+  "smoke": "python scripts/lab_component.py smoke aetheris",
+  "benchmark": {
+    "kind": "runtime-import-and-tests",
+    "command": "python scripts/lab_component.py benchmark aetheris"
+  },
+  "receipt": "python scripts/lab_component.py receipt aetheris",
+  "provenance": [
+    "src/aetheris",
+    "docs/aetheris_runtime.md"
+  ],
+  "invariants": [
+    "receipt-oriented execution",
+    "evidence class preserved through runtime"
+  ],
+  "failure_telemetry": {
+    "schema": "LAB-FAILURE-1.0",
+    "required": [
+      "component",
+      "version",
+      "operation",
+      "status",
+      "timestamp_utc",
+      "error_type",
+      "message",
+      "duration_ms"
+    ],
+    "output": "JSON line on stderr; nonzero exit code"
+  }
+}
