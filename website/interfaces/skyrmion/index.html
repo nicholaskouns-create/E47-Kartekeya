@@ -42,5 +42,8 @@ button.active{background:#12352f;border-color:#7fffe977}
     <canvas id="minimap" class="panel minimap" width="320" height="184"></canvas>
   </div>
 </div>
-<script type="module" src="./skyrmion.js"></script>
+<script>
+(()=>{const s=document.createElement('script');s.type='module';s.src='./skyrmion.js?v=d77ab5b7';document.body.appendChild(s);
+setTimeout(()=>{const el=document.getElementById('status');if(el&&el.textContent.includes('WASD'))el.textContent='LIVE · WASD pitch/yaw · QE vertical · 1-6 aircraft · F domain';},1500);})();
+</script>
 </body></html>
