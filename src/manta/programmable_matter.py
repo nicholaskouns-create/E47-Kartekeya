@@ -155,6 +155,27 @@ class MantaEngine:
     def geometry(self):
         return np.array([n.position for n in self.nodes])
 
+    def frame(self):
+        state=self.telemetry()
+        state.update({
+            "geometry":self.geometry().astype(np.float32).reshape(-1).tolist(),
+            "activation":[float(n.activation) for n in self.nodes],
+            "stiffness":[float(n.stiffness) for n in self.nodes],
+            "anisotropy":[float(n.anisotropy) for n in self.nodes],
+        })
+        return state
+
+    def step_packet(self,pitch=0.0,roll=0.0,yaw=0.0,morph=0.0,mode="CRUISE"):
+        pilot=PilotInput(
+            pitch=float(pitch),
+            roll=float(roll),
+            yaw=float(yaw),
+            morph=float(morph),
+        )
+        morph_mode=mode if isinstance(mode,MorphMode) else MorphMode[str(mode).upper()]
+        self.step(pilot,morph_mode)
+        return self.frame()
+
 if __name__=="__main__":
     manta=MantaEngine()
     pilot=PilotInput(pitch=.15,roll=.25,morph=.65)
