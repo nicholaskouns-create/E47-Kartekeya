@@ -1,0 +1,19 @@
+index,Validation,Pass,Result
+0,E47 ratio,True,Ω = 47/125 = 0.376; dimensionless rank fraction only.
+1,Profile derivative,True,dρ/dl = (ε/ℓ) sech²(l/ℓ).
+2,Squared gradient,True,"(dρ/dl)² = (ε²/ℓ²) sech⁴(l/ℓ), not sech²."
+3,sech⁴ integral,True,"By t=tanh(u), ∫sech⁴u du over R = 4/3."
+4,Average dwell functional,True,A normalized time average does not grow merely because dwell time grows.
+5,Accumulating dwell functional,True,"If dwell accumulation is intended, use a fixed reference time or a dynamical memory variable."
+6,Stress-energy energy density,True,ε = V + Z*rho_l**2/2.
+7,Stress-energy radial pressure,True,p_l = -V + Z*rho_l**2/2.
+8,Radial NEC,True,ε+p_l = Z*rho_l**2; NEC violation requires Z<0 for nonzero gradient in this simple effective sector.
+9,Conditional flare-out example,True,"With 8πG=1 toy units, b'(r0)=0.875000<1."
+10,Corrected ANEC profile integral,True,Scalar-sector integral = -0.00333333 for the chosen Z<0 example.
+11,Old negative-k² Hessian is unstable,True,"λ_old(k)=m²+Zk² reaches -4999.000 over k∈[0,100] and tends to -∞."
+12,Static k⁴-regularized Hessian positive in example,True,λ_reg minimum ≈ 0.375001 at k≈1.5800; this is static spectral stabilization only.
+13,Analytic static Hessian minimum,True,λ_min = m² - Z²/(4α); require m² > Z²/(4α).
+14,Variable-coupling divergence,True,∇[(1-Ω)T] is generically nonzero when Ω varies.
+15,Compensated total conservation,True,A compensating field/control stress can restore total conservation.
+16,Claimed v_max law contradicts low-drag limit,True,"v_max∝c(1-Ω) decreases to zero as Ω→1, opposite the surrounding narrative."
+17,Planck-time scram causality,True,3 m one-way light time = 1.001e-08s ≈ 1.856e+35 Planck times.
