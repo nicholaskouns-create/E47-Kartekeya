@@ -496,10 +496,11 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   const craftRoot=new THREE.Group(),fleet=makeFleet();fleet.forEach(m=>craftRoot.add(m));scene.add(craftRoot);
   const trailSystem=makeTrailSystem(scene),shadowTarget=new THREE.Object3D();scene.add(shadowTarget);atmos.sun.target=shadowTarget;
   const flight={lat,lon,altitude_m,heading,pitch,roll,speed,active,domain:0,enabled:true};
-  const chase={distance:36,height:12,lookAhead:62,damping:.105,bankMix:.38};
+  const chase={distance:36,height:12,lookAhead:62,positionRate:7.5,targetRate:10.5,upRate:4.2,bankMix:.10,speedPullback:12};
   const worldUp=new THREE.Vector3(0,1,0),forward=new THREE.Vector3(),right=new THREE.Vector3(),craftUp=new THREE.Vector3(),cameraUp=new THREE.Vector3();
+  const cameraForward=new THREE.Vector3(),cameraRight=new THREE.Vector3(),cameraLocalUp=new THREE.Vector3();
   const desiredCamera=new THREE.Vector3(),desiredTarget=new THREE.Vector3(),smoothTarget=new THREE.Vector3(),basis=new THREE.Matrix4(),baseQ=new THREE.Quaternion(),rollQ=new THREE.Quaternion(),localRollAxis=new THREE.Vector3(0,0,-1);
-  let patch=null,patchLoading=false,generation=0,destroyed=false,activeIndex=clamp(Number(active)||0,0,5),mantaState=null;
+  let patch=null,patchLoading=false,generation=0,destroyed=false,activeIndex=clamp(Number(active)||0,0,5),mantaState=null,cameraInitialized=false;
   const licensedAssetState={loaded:{},replacements:{},errors:{},audit:null,registry:null};
   async function licensedAPI(){
     const api=await getLicensedAssetModule();
@@ -576,7 +577,19 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
       const seed=seedFor(center.lat,center.lon),world=new THREE.Group(),buildings=makeBuildings(span,seed),clouds=makeClouds(span,seed),lights=makeLights(span,seed);
       const centerElevation=field.heights[Math.floor(field.heights.length/2)]||0;buildings.position.y=centerElevation;lights.position.y=centerElevation;
       world.add(terrain,buildings,clouds,lights);scene.add(world);
-      if(patch?.world){scene.remove(patch.world);dispose(patch.world);patch.texture?.dispose?.()}
+      if(patch?.world){
+        if(!force&&cameraInitialized){
+          const oldLocal=localMeters(patch.center,flight.lat,flight.lon),newLocal=localMeters(center,flight.lat,flight.lon);
+          const dx=newLocal.x-oldLocal.x,dz=newLocal.z-oldLocal.z;
+          camera.position.x+=dx;camera.position.z+=dz;
+          smoothTarget.x+=dx;smoothTarget.z+=dz;
+          desiredCamera.x+=dx;desiredCamera.z+=dz;
+          desiredTarget.x+=dx;desiredTarget.z+=dz;
+        }else if(force){
+          cameraInitialized=false;
+        }
+        scene.remove(patch.world);dispose(patch.world);patch.texture?.dispose?.();
+      }
       patch={center,span,world,terrain,buildings,clouds,lights,texture,min:field.min,max:field.max,centerElevation,
         heights:field.heights,samples:field.samples};trailSystem?.clear?.();
       updateDomainVisibility();
@@ -606,7 +619,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
     if(!patch||distanceMeters(patch.center,flight)>patch.span*.28)buildPatch(flight.lat,flight.lon).catch(()=>{});
   }
   function updateMantaFrame(state){mantaState=state;updateMantaModel(fleet[4],state)}
-  function teleport(next={}){Object.assign(flight,next);setActiveCraft(flight.active);buildPatch(flight.lat,flight.lon,true).catch(()=>{})}
+  function teleport(next={}){Object.assign(flight,next);setActiveCraft(flight.active);cameraInitialized=false;buildPatch(flight.lat,flight.lon,true).catch(()=>{})}
   function updateCraftPose(){
     if(!patch)return;
     const local=localMeters(patch.center,flight.lat,flight.lon),h=Number(flight.heading||0),p=Number(flight.pitch||0),r=Number(flight.roll||0),cp=Math.cos(p),sp=Math.sin(p);
@@ -619,14 +632,46 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   }
   function updateCamera(dt){
     if(!patch)return;updateCraftPose();
-    const current=fleet[activeIndex],speedFactor=clamp(Number(flight.speed||0)/450,0,1),k=1-Math.pow(1-chase.damping,dt*60);
-    craftUp.set(0,1,0).applyQuaternion(craftRoot.quaternion).normalize();
-    cameraUp.copy(worldUp).lerp(craftUp,chase.bankMix).normalize();
-    const baseDistance=current?.userData?.cameraDistance||chase.distance,baseHeight=current?.userData?.cameraHeight||chase.height,baseLook=current?.userData?.cameraLookAhead||chase.lookAhead;
-    desiredCamera.copy(craftRoot.position).addScaledVector(forward,-(baseDistance+speedFactor*55)).addScaledVector(cameraUp,baseHeight+Math.max(0,Number(flight.pitch||0))*28);
-    desiredTarget.copy(craftRoot.position).addScaledVector(forward,baseLook+speedFactor*85);
-    camera.position.lerp(desiredCamera,k);smoothTarget.lerp(desiredTarget,k*1.15);camera.up.lerp(cameraUp,k*.85).normalize();camera.lookAt(smoothTarget);
-    camera.fov+=(47+speedFactor*4-camera.fov)*k*.4;camera.updateProjectionMatrix();
+    const current=fleet[activeIndex],speedFactor=clamp(Number(flight.speed||0)/450,0,1);
+    const baseDistance=current?.userData?.cameraDistance||chase.distance;
+    const baseHeight=current?.userData?.cameraHeight||chase.height;
+    const baseLook=current?.userData?.cameraLookAhead||chase.lookAhead;
+
+    cameraForward.set(0,0,-1).applyQuaternion(craftRoot.quaternion).normalize();
+    cameraRight.set(1,0,0).applyQuaternion(craftRoot.quaternion).normalize();
+    cameraLocalUp.set(0,1,0).applyQuaternion(craftRoot.quaternion).normalize();
+    cameraUp.copy(worldUp).lerp(cameraLocalUp,chase.bankMix).normalize();
+
+    desiredCamera.copy(craftRoot.position)
+      .addScaledVector(cameraForward,-(baseDistance+speedFactor*chase.speedPullback))
+      .addScaledVector(worldUp,baseHeight+speedFactor*2.5);
+
+    const cameraGround=samplePatchHeight(desiredCamera.x,desiredCamera.z);
+    desiredCamera.y=Math.max(desiredCamera.y,cameraGround+5.5);
+
+    desiredTarget.copy(craftRoot.position)
+      .addScaledVector(cameraForward,baseLook+speedFactor*18)
+      .addScaledVector(worldUp,1.8);
+
+    const kp=1-Math.exp(-chase.positionRate*dt);
+    const kt=1-Math.exp(-chase.targetRate*dt);
+    const ku=1-Math.exp(-chase.upRate*dt);
+
+    if(!cameraInitialized){
+      camera.position.copy(desiredCamera);
+      smoothTarget.copy(desiredTarget);
+      camera.up.copy(cameraUp);
+      cameraInitialized=true;
+    }else{
+      camera.position.lerp(desiredCamera,kp);
+      smoothTarget.lerp(desiredTarget,kt);
+      camera.up.lerp(cameraUp,ku).normalize();
+    }
+
+    camera.lookAt(smoothTarget);
+    const targetFov=46+speedFactor*2.5;
+    camera.fov+=(targetFov-camera.fov)*(1-Math.exp(-3.6*dt));
+    camera.updateProjectionMatrix();
   }
   let last=performance.now();
   function frame(now){
@@ -665,7 +710,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   }).catch(()=>{});
   requestAnimationFrame(frame);
   return {
-    schema:'SKYRMION-TERRAIN-3D-6.0',ready:true,renderer,scene,camera,craftRoot,fleet,
+    schema:'SKYRMION-TERRAIN-3D-6.1',ready:true,renderer,scene,camera,craftRoot,fleet,
     get activeCraft(){return fleet[activeIndex]},get patch(){return patch},
     updateFlightState,updateMantaFrame,teleport,setActiveCraft,
     licensedAssetState,quality,getLicensedAssets:async()=>Object.keys((await licensedAPI()).LICENSED_AIRCRAFT_ASSETS),loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,samplePatchHeight,
