@@ -1,6 +1,7 @@
 import {installCityCinemaCodec} from './city-cinema-codec.js';
 import {installCityGps,drawGpsOverlay} from '../shared/city-gps-runtime.js';
 import {installStargateInvariantBridge} from '../shared/stargate-invariants.js';
+import {installWorldBinding,readWorldState} from '../shared/world-engine/world-binding.js';
 const body=document.body;
 const source=body.dataset.source;
 const mode=body.dataset.mode||'Flight mode';
@@ -25,8 +26,28 @@ const nextLink=document.getElementById('nextLink');
 const prevLink=document.getElementById('prevLink');
 const field=document.getElementById('field');
 const ctx=field?.getContext('2d');
-const gps=installCityGps({postTarget:sim,label:'GPS'});
-sim?.addEventListener('load',()=>gps.publish());
+const savedWorld=readWorldState();
+const worldChip=document.createElement('span');
+worldChip.className='chip live';
+document.querySelector('.hud .top .cluster')?.appendChild(worldChip);
+const world=installWorldBinding({
+  surface:'FLIGHT/'+String(mode).toUpperCase(),
+  initial:savedWorld||undefined,
+  postTarget:sim,
+  generateCell:true,
+  onState:(s,cell)=>{
+    worldChip.textContent='WORLD · '+(cell?.biome?.id||'WGS84').toUpperCase()+' · '+s.lat.toFixed(4)+' · '+s.lon.toFixed(4);
+  }
+});
+window.CITY_WORLD=world;
+const seedWorld=world.state;
+const gps=installCityGps({
+  postTarget:sim,
+  label:'GPS',
+  seed:{lat:seedWorld.lat,lon:seedWorld.lon,altitude_m:seedWorld.altitudeM},
+  onUpdate:d=>world.update({lat:d.lat,lon:d.lon,altitude_m:d.altitude_m})
+});
+sim?.addEventListener('load',()=>{gps.publish();world.publishTo(sim)});
 
 const stargate=installStargateInvariantBridge({
   surface:`FLIGHT/${mode}`,
