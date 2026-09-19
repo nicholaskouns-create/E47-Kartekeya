@@ -137,3 +137,19 @@ def test_stable_flight_controls_and_yaw():
     assert 'yawRate' in vehicles
     assert 'function shapeAxis' in boot
     assert 'keyYaw*.46' in boot
+
+
+def test_supabase_world_registry_pipeline():
+    registry=(root/'website/interfaces/skyrmion/world-registry.js').read_text()
+    world=json.loads((root/'website/interfaces/skyrmion/world-data.json').read_text())
+    assert 'SKYRMION-TERRAIN-3D-6.2' in terrain
+    assert 'skyrmion-world-runtime' in registry
+    assert 'SKYRMION-WORLD-RUNTIME-2.0' in registry
+    assert 'loadWorldRegistry' in terrain
+    assert 'TILE_BLOB_CACHE' in terrain
+    assert 'compositeHillshade' in terrain
+    assert 'nearestPlaces' in terrain
+    assert 'id="mapStatus"' in html
+    assert world['schema']=='SKYRMION-WORLD-DATA-2.0'
+    assert 'gps_map_sources' in world['map_runtime']['database_tables']
+    assert world['terrain']['encoding']=='mapbox-terrain-rgb'
