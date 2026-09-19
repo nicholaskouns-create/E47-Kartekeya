@@ -23,7 +23,7 @@ def main() -> None:
 
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
 
-    if data.get("schema") != "E47-LAB-MANIFEST-1.0":
+    if data.get("schema") not in {"E47-LAB-MANIFEST-1.0", "E47-LAB-MANIFEST-1.1"}:
         fail("unexpected manifest schema")
 
     if data.get("canonical_web_root") != "website/":
@@ -64,6 +64,11 @@ def main() -> None:
         maturity = component.get("maturity")
         evidence = component.get("evidence")
         contract = component.get("contract")
+        version = component.get("version")
+        contract_file = component.get("contract_file")
+        smoke = component.get("smoke")
+        benchmark = component.get("benchmark")
+        receipt = component.get("receipt")
 
         if not isinstance(cid, str) or not cid:
             fail("component id is missing")
@@ -87,6 +92,18 @@ def main() -> None:
 
         if not isinstance(contract, str) or len(contract.strip()) < 12:
             fail(f"{cid}: component contract is too weak or missing")
+        if not isinstance(version, str) or version.count(".") != 2:
+            fail(f"{cid}: semantic version is missing")
+        if not isinstance(contract_file, str) or not (ROOT / contract_file).is_file():
+            fail(f"{cid}: component contract file is missing: {contract_file}")
+        local = json.loads((ROOT / contract_file).read_text(encoding="utf-8"))
+        if local.get("id") != cid or local.get("version") != version:
+            fail(f"{cid}: manifest/contract identity or version mismatch")
+        if local.get("failure_telemetry", {}).get("schema") != "LAB-FAILURE-1.0":
+            fail(f"{cid}: standardized failure telemetry is missing")
+        for field, value in [("smoke", smoke), ("benchmark", benchmark), ("receipt", receipt)]:
+            if not isinstance(value, str) or cid not in value:
+                fail(f"{cid}: {field} entry point is missing or malformed")
 
     if "e47-core" not in component_ids:
         fail("canonical e47-core component is not declared")
