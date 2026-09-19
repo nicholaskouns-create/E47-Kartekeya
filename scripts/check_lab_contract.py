@@ -36,6 +36,19 @@ def main() -> None:
     if not (website / "index.html").is_file():
         fail("canonical website/index.html is missing")
 
+    for required in [
+        "README.md",
+        "CONTRIBUTING.md",
+        "CITATION.cff",
+        "docs/lab_architecture.md",
+        "docs/reproducibility.md",
+        "docs/validation_scope.md",
+        "research/README.md",
+        "research/e47/README.md",
+    ]:
+        if not (ROOT / required).exists():
+            fail(f"research envelope file is missing: {required}")
+
     # web/ is a shared runtime library, not a competing deployable homepage.
     if (ROOT / "web" / "index.html").exists():
         fail("web/index.html would create an ambiguous second public web root")
