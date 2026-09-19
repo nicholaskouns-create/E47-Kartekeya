@@ -111,6 +111,7 @@ export function installStargateInvariantBridge({
   container=null,
   readModeled=()=>({}),
   readConditional=()=>({}),
+  postTarget=null,
   intervalMs=1000,
   eventName='city:stargate-invariants'
 }={}){
@@ -130,6 +131,7 @@ export function installStargateInvariantBridge({
     });
     try{window.dispatchEvent(new CustomEvent(eventName,{detail:packet}))}catch{}
     try{window.parent?.postMessage({type:'city.stargate.invariants',packet},'*')}catch{}
+    try{postTarget?.contentWindow?.postMessage({type:'city.stargate.invariants',packet},'*')}catch{}
     return packet;
   };
   publish();
