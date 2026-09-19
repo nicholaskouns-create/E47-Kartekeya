@@ -31,6 +31,7 @@ sim?.addEventListener('load',()=>gps.publish());
 const stargate=installStargateInvariantBridge({
   surface:`FLIGHT/${mode}`,
   container:document.querySelector('.hud .top .cluster'),
+  postTarget:sim,
   readModeled:()=>({
     mode,
     level,
