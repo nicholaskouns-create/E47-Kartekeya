@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {loadWorldRegistry,selectWorldSources,tileUrl,nearestPlaces} from './world-registry.js';
+import {CITY_WORLD_ENGINE,generateWorldCell,publishWorldState} from '../shared/world-engine/world-engine.js';
 let licensedAssetModulePromise=null;
 const getLicensedAssetModule=()=>licensedAssetModulePromise||(licensedAssetModulePromise=import('./licensed-aircraft-assets.js'));
 
@@ -85,7 +86,10 @@ function sampleHeightField(canvas,samples=GRID+1){
   }
   return {heights,samples,min,max};
 }
-function flatHeightField(){return {heights:new Float32Array((GRID+1)*(GRID+1)),samples:GRID+1,min:0,max:0}}
+function proceduralHeightField(lat,lon,span){
+  const cell=generateWorldCell({lat,lon,span,samples:GRID+1,seed:470125});
+  return {...cell.terrain,cell};
+}
 function fallbackTexture(){
   const c=document.createElement('canvas');c.width=c.height=768;
   const ctx=c.getContext('2d'),g=ctx.createLinearGradient(0,0,768,768);
@@ -116,10 +120,10 @@ function makeEnvironmentTexture(){
 }
 function makeSky(scene){
   const fog=new THREE.FogExp2(0x896044,.00005);scene.fog=fog;
-  scene.add(new THREE.HemisphereLight(0xffd1a5,0x162329,2.4));
   const sun=new THREE.DirectionalLight(0xffbf7a,4.2);sun.position.set(-2600,4200,1900);
   sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.near=10;sun.shadow.camera.far=11000;
   sun.shadow.camera.left=-3500;sun.shadow.camera.right=3500;sun.shadow.camera.top=3500;sun.shadow.camera.bottom=-3500;sun.shadow.bias=-.0002;
+  const hemi=new THREE.HemisphereLight(0xffd1a5,0x162329,2.4);scene.add(hemi);
   scene.add(sun);
   const sky=new THREE.Mesh(new THREE.SphereGeometry(18000,40,24),new THREE.ShaderMaterial({
     side:THREE.BackSide,depthWrite:false,
@@ -127,7 +131,7 @@ function makeSky(scene){
     vertexShader:`varying vec3 vPos;void main(){vec4 w=modelMatrix*vec4(position,1.);vPos=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
     fragmentShader:`varying vec3 vPos;uniform vec3 top;uniform vec3 horizon;uniform vec3 low;void main(){float h=normalize(vPos).y*.5+.5;vec3 c=mix(low,horizon,smoothstep(.12,.48,h));c=mix(c,top,smoothstep(.52,1.,h));gl_FragColor=vec4(c,1.);}`
   }));
-  scene.add(sky);return {sky,sun,fog};
+  scene.add(sky);return {sky,sun,hemi,fog};
 }
 function makeSpace(scene){
   const count=4200,pos=new Float32Array(count*3);
@@ -140,19 +144,20 @@ function makeSpace(scene){
   const planet=new THREE.Mesh(new THREE.SphereGeometry(5800,64,40),new THREE.MeshStandardMaterial({color:0x16466d,roughness:1,metalness:0,emissive:0x061522,emissiveIntensity:.3}));
   planet.position.set(0,-5700,-5200);stars.visible=false;planet.visible=false;scene.add(stars,planet);return {stars,planet};
 }
-function makeClouds(span,seed){
+function makeClouds(span,seed,{coverage=.55}={}){
   const rng=seeded(seed^0x4f1bbcdc),tex=cloudTexture(),group=new THREE.Group();
-  for(let i=0;i<52;i++){
+  const count=Math.round(18+clamp(coverage,0,1)*62);
+  for(let i=0;i<count;i++){
     const cloud=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,opacity:.09+rng()*.15,depthWrite:false,color:0xfff3e6}));
     const w=500+rng()*1200;cloud.position.set((rng()-.5)*span*1.25,1200+rng()*1300,(rng()-.5)*span*1.25);
     cloud.scale.set(w,w*(.22+rng()*.18),1);group.add(cloud);
   }
   return group;
 }
-function makeBuildings(span,seed){
+function makeBuildings(span,seed,{urbanity=.55}={}){
   const rng=seeded(seed^0x6a09e667),group=new THREE.Group();
   const geom=new THREE.BoxGeometry(1,1,1),mat=new THREE.MeshStandardMaterial({color:0x354145,roughness:.94,metalness:.03,emissive:0x101716,emissiveIntensity:.2});
-  const count=330,mesh=new THREE.InstancedMesh(geom,mat,count),dummy=new THREE.Object3D();
+  const count=Math.round(30+clamp(urbanity,0,1)*470),mesh=new THREE.InstancedMesh(geom,mat,count),dummy=new THREE.Object3D();
   for(let i=0;i<count;i++){
     const w=16+rng()*50,d=18+rng()*60,h=10+Math.pow(rng(),2.4)*220,ring=Math.sqrt(rng())*span*.32,a=rng()*Math.PI*2;
     dummy.position.set(Math.cos(a)*ring,h*.5+3,Math.sin(a)*ring);dummy.rotation.y=Math.round(rng()*4)*Math.PI/2;dummy.scale.set(w,h,d);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);
@@ -162,11 +167,12 @@ function makeBuildings(span,seed){
 function points(points,color,size){
   return new THREE.Points(new THREE.BufferGeometry().setFromPoints(points),new THREE.PointsMaterial({color,size,sizeAttenuation:true,transparent:true,opacity:.95,depthWrite:false}));
 }
-function makeLights(span,seed){
+function makeLights(span,seed,{urbanity=.55}={}){
   const rng=seeded(seed^0xbb67ae85),group=new THREE.Group(),left=[],right=[],runwayLength=Math.min(3600,span*.48);
   for(let z=-runwayLength/2;z<=runwayLength/2;z+=55){left.push(new THREE.Vector3(-34,7,z));right.push(new THREE.Vector3(34,7,z))}
   group.add(points(left,0xc7edff,9),points(right,0xc7edff,9));
-  for(let road=0;road<7;road++){
+  const roads=Math.max(2,Math.round(2+clamp(urbanity,0,1)*9));
+  for(let road=0;road<roads;road++){
     const p=[],baseZ=(rng()-.5)*span*.55,phase=rng()*Math.PI*2;
     for(let i=0;i<110;i++){const u=i/109;p.push(new THREE.Vector3((u-.5)*span*.72,5.5,baseZ+Math.sin(u*5+phase)*(80+rng()*35)))}
     group.add(points(p,0xffbd68,5.5));
@@ -607,14 +613,15 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
       if(gen!==generation||destroyed)return;
       const imagery=imgResult.status==='fulfilled'?imgResult.value:fallbackTexture();
       if(shadeResult.status==='fulfilled'&&shadeResult.value)compositeHillshade(imagery,shadeResult.value,.17);
-      let field=flatHeightField();
-      if(demResult.status==='fulfilled'){try{field=sampleHeightField(demResult.value)}catch{}}
+      const proceduralCell=generateWorldCell({lat:center.lat,lon:center.lon,span,samples:GRID+1,seed:470125});
+      let field={...proceduralCell.terrain,cell:proceduralCell},terrainSource='procedural';
+      if(demResult.status==='fulfilled'){try{field={...sampleHeightField(demResult.value),cell:proceduralCell};terrainSource='dem'}catch{}}
       const geometry=new THREE.PlaneGeometry(span,span,GRID,GRID);geometry.rotateX(-Math.PI/2);const pos=geometry.attributes.position;
       for(let j=0;j<=GRID;j++)for(let i=0;i<=GRID;i++){const vi=j*(GRID+1)+i;pos.setY(vi,field.heights[vi])}
       pos.needsUpdate=true;geometry.computeVertexNormals();
       const texture=new THREE.CanvasTexture(imagery);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(16,renderer.capabilities.getMaxAnisotropy());texture.minFilter=THREE.LinearMipmapLinearFilter;texture.magFilter=THREE.LinearFilter;
       const terrain=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({map:texture,roughness:.98,metalness:0}));terrain.receiveShadow=true;
-      const seed=seedFor(center.lat,center.lon),world=new THREE.Group(),buildings=makeBuildings(span,seed),clouds=makeClouds(span,seed),lights=makeLights(span,seed);
+      const seed=seedFor(center.lat,center.lon),world=new THREE.Group(),buildings=makeBuildings(span,seed,{urbanity:proceduralCell.biome.urbanity}),clouds=makeClouds(span,seed,{coverage:proceduralCell.weather.cloudCover}),lights=makeLights(span,seed,{urbanity:proceduralCell.biome.urbanity});
       const centerElevation=field.heights[Math.floor(field.heights.length/2)]||0;buildings.position.y=centerElevation;lights.position.y=centerElevation;
       world.add(terrain,buildings,clouds,lights);scene.add(world);
       if(patch?.world){
@@ -632,13 +639,14 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
       }
       const nearby=nearestPlaces(worldRegistry,center.lat,center.lon,{limit:8,maxKm:Math.max(30,span/1000)});
       patch={center,span,world,terrain,buildings,clouds,lights,texture,min:field.min,max:field.max,centerElevation,
-        heights:field.heights,samples:field.samples,sources,nearby};trailSystem?.clear?.();
+        heights:field.heights,samples:field.samples,sources,nearby,worldCell:proceduralCell,terrainSource};trailSystem?.clear?.();
       updateDomainVisibility();
       dispatchEvent(new CustomEvent('skyrmion:terrain-status',{detail:{
         status:imgResult.status==='fulfilled'&&demResult.status==='fulfilled'?'LIVE':'DEGRADED',
         center,span,elevation_min_m:field.min,elevation_max_m:field.max,
         registry_online:worldRegistry.online,imagery_source:sources.imagery?.id||null,dem_source:sources.dem?.id||null,
-        hillshade_source:sources.hillshade?.id||null,nearby
+        hillshade_source:sources.hillshade?.id||null,terrain_source:terrainSource,biome:proceduralCell.biome.id,
+        cloud_cover:proceduralCell.weather.cloudCover,wind_mps:proceduralCell.weather.windMps,nearby
       }}));
     }catch(error){
       dispatchEvent(new CustomEvent('skyrmion:terrain-status',{detail:{status:'FALLBACK',error:String(error?.message||error)}}));
@@ -663,7 +671,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   function updateFlightState(next={}){
     for(const key of ['lat','lon','altitude_m','heading','pitch','roll','speed'])if(key in next&&!Number.isFinite(next[key]))return;
     if(Math.abs(next.lat??flight.lat)>90||Math.abs(next.lon??flight.lon)>180)return;
-    Object.assign(flight,next);setActiveCraft(flight.active);updateDomainVisibility();
+    Object.assign(flight,next);setActiveCraft(flight.active);updateDomainVisibility();publishWorldState(flight);
     if(!patch||distanceMeters(patch.center,flight)>patch.span*.28)buildPatch(flight.lat,flight.lon).catch(()=>{});
   }
   function updateMantaFrame(state){mantaState=state;updateMantaModel(fleet[4],state)}
@@ -721,10 +729,21 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
     camera.fov+=(targetFov-camera.fov)*(1-Math.exp(-3.6*dt));
     camera.updateProjectionMatrix();
   }
-  let last=performance.now();
+  let last=performance.now(),lastWorldLighting=0;
+  function updateWorldLighting(now){
+    if(now-lastWorldLighting<2000)return;lastWorldLighting=now;
+    const solar=CITY_WORLD_ENGINE.solarState(Date.now(),flight.lat,flight.lon),d=solar.daylight;
+    atmos.sun.intensity=.12+4.1*d;atmos.hemi.intensity=.28+2.2*d;
+    const u=atmos.sky.material.uniforms;
+    u.top.value.set(d<.12?0x02050d:d<.42?0x2a1b22:0x361306);
+    u.horizon.value.set(d<.12?0x101b2a:d<.42?0x9c5e45:0xc07843);
+    u.low.value.set(d<.12?0x05090c:0x33464b);
+    if(patch?.lights)patch.lights.visible=d<.62;
+    dispatchEvent(new CustomEvent('city:world-lighting',{detail:solar}));
+  }
   function frame(now){
     if(destroyed)return;requestAnimationFrame(frame);
-    const dt=Math.min(.033,Math.max(.001,(now-last)/1000));last=now;updateCamera(dt);
+    const dt=Math.min(.033,Math.max(.001,(now-last)/1000));last=now;updateWorldLighting(now);updateCamera(dt);
     const current=fleet[activeIndex],ground=samplePatchHeight(craftRoot.position.x,craftRoot.position.z);
     const clearance=Math.max(0,Number(flight.altitude_m||0)-ground),atmospheric=Number(flight.domain||0)===0;
     updateCraftSystems(current,flight,dt,ground);
@@ -758,7 +777,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   }).catch(()=>{});
   requestAnimationFrame(frame);
   return {
-    schema:'SKYRMION-TERRAIN-3D-6.2',ready:true,renderer,scene,camera,craftRoot,fleet,
+    schema:'SKYRMION-TERRAIN-3D-6.3',ready:true,renderer,scene,camera,craftRoot,fleet,worldEngine:CITY_WORLD_ENGINE,
     get activeCraft(){return fleet[activeIndex]},get patch(){return patch},
     updateFlightState,updateMantaFrame,teleport,setActiveCraft,
     worldRegistry,licensedAssetState,quality,getLicensedAssets:async()=>Object.keys((await licensedAPI()).LICENSED_AIRCRAFT_ASSETS),loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,samplePatchHeight,

@@ -1,5 +1,6 @@
 export const SKYRMION_WORLD_RUNTIME=Object.freeze({
  schema:"SKYRMION-WORLD-RUNTIME-2.0",
+ worldEngine:{id:"CITY-WORLD-ENGINE",version:"1.0.0",module:"../shared/world-engine/world-engine.js",fallback:"deterministic procedural terrain"},
  runtime:"SKYRMION-RUNTIME-2.0",
  pipeline:["World Engine","6DOF Physics","Vehicle Registry","Propulsion Registry","E47 Runtime","GPU Renderer","Mission/Replays","Proof + Telemetry"],
  maplibreVersion:"6.10.0",mapStyle:"https://demotiles.maplibre.org/globe.json",terrainTiles:"https://demotiles.maplibre.org/terrain-tiles/tiles.json",
