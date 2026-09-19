@@ -174,7 +174,7 @@ function makeSR71(){
   const g=new THREE.Group(),skin=material(0x111719,{metalness:.8,roughness:.22});
   g.add(planform([[0,-13],[2,-7],[8,-1],[7.5,4],[3,8],[1.7,10],[-1.7,10],[-3,8],[-7.5,4],[-8,-1],[-2,-7]],skin,.03));
   const body=capsule(.62,17,skin);body.position.z=-1.3;g.add(body);
-  for(const x of [-3.1,3.1]){const n=capsule(.66,10.5,skin);n.position.set(x,-.12,1.4);g.add(n);g.add(Object.assign(engineGlow(7.0,0x5fdcff,.52),{position:new THREE.Vector3(x,0,7)}))}
+  for(const x of [-3.1,3.1]){const n=capsule(.66,10.5,skin);n.position.set(x,-.12,1.4);g.add(n);const glow=engineGlow(7.0,0x5fdcff,.52);glow.position.set(x,0,7);g.add(glow)}
   g.userData.label='SR-71';return shadowize(g);
 }
 function makeX15(){
