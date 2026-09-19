@@ -1,5 +1,5 @@
 {
-  "schema": "SYNTAX-JACOB-PROVENANCE-1.1",
+  "schema": "SYNTAX-JACOB-PROVENANCE-1.2",
   "title": "Syntax Jacob — Propulsion Lab",
   "author": "Nicholas Shane Kouns, DO",
   "original_work": true,
@@ -30,6 +30,13 @@
       ],
       "dynamics_space": "display-space simulation",
       "physical_claim": "none"
+    },
+    "stargate_invariants": {
+      "module": "website/interfaces/shared/stargate-invariants.js",
+      "validation": "STARGATE-CORRECTED-VALIDATION-1.1",
+      "certificate": "MC-STARGATE-CORRECTED-20260919",
+      "receipt_binding": "AETHERIS receipts include an E2 Stargate packet",
+      "physical_promotion": false
     }
   },
   "astronomy_sources": [
@@ -105,6 +112,7 @@
   "evidence_boundary": {
     "measured": "JPL Horizons state vectors and JPL SBDB orbit metadata",
     "rendered": "nucleus morphology, coma, tails, display scaling, spacecraft and visual effects",
-    "model": "E47 coherence state, propulsion control law, scalar lock/copilot behavior, witness interpretation, and all spacecraft response dynamics"
+    "model": "E47 coherence state, propulsion control law, scalar lock/copilot behavior, witness interpretation, and all spacecraft response dynamics",
+    "stargate": "Corrected Stargate formulas/invariants are attached as conditional mathematics and E2 simulator state. E47 capture, scalar lock and propulsion response are not physical wormhole evidence."
   }
 }
