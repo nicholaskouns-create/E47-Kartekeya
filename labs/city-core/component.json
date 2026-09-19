@@ -1,0 +1,40 @@
+{
+  "schema": "LAB-COMPONENT-1.0",
+  "id": "city-core",
+  "version": "1.0.0",
+  "kind": "research-console",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "contract": "Cross-interface console; presentation does not promote evidence class.",
+  "entrypoint": "website/interfaces/kouns-core/index.html",
+  "smoke": "python scripts/lab_component.py smoke city-core",
+  "benchmark": {
+    "kind": "static-contract-smoke",
+    "command": "python scripts/lab_component.py benchmark city-core"
+  },
+  "receipt": "python scripts/lab_component.py receipt city-core",
+  "provenance": [
+    "website/interfaces/kouns-core"
+  ],
+  "invariants": [
+    "console does not promote evidence class",
+    "independent interfaces remain directly addressable"
+  ],
+  "failure_telemetry": {
+    "schema": "LAB-FAILURE-1.0",
+    "required": [
+      "component",
+      "version",
+      "operation",
+      "status",
+      "timestamp_utc",
+      "error_type",
+      "message",
+      "duration_ms"
+    ],
+    "output": "JSON line on stderr; nonzero exit code"
+  }
+}
