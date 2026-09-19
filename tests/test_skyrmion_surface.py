@@ -60,3 +60,20 @@ def test_high_detail_vehicle_systems():
         assert token in terrain
     for craft in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob']:
         assert craft in terrain
+
+
+def test_licensed_aircraft_pipeline():
+    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
+    assets=(root/'website/interfaces/skyrmion/licensed-aircraft-assets.js').read_text()
+    licenses=(root/'website/interfaces/skyrmion/ASSET_LICENSES.md').read_text()
+    assert 'licensed-aircraft-assets.js' in terrain
+    assert 'ASSET_LICENSES.md' in str(root/'website/interfaces/skyrmion/ASSET_LICENSES.md')
+    assert 'Identity gate' in terrain
+    assert 'SKYRMION-TERRAIN-3D-4.0' in terrain
+    assert 'f15-polyducky' in assets
+    assert 'CC BY 4.0' in assets
+    assert 'CC BY 4.0' in licenses
+    assert 'auditLicensedAssets' in assets
+    assert 'runLicensedAssetAudit' in terrain
+    assert 'exactFor:"F-16"' not in assets
+    assert 'must not become the F-16' in licenses
