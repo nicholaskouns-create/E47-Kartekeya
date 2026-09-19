@@ -26,10 +26,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/nicholaskouns-create/E47-Kartekeya"
+Homepage = "https://nicholaskouns-create.github.io/E47-Kartekeya/"
 Repository = "https://github.com/nicholaskouns-create/E47-Kartekeya"
 Issues = "https://github.com/nicholaskouns-create/E47-Kartekeya/issues"
-Documentation = "https://github.com/nicholaskouns-create/E47-Kartekeya#readme"
+Documentation = "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/reproducibility.md"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
