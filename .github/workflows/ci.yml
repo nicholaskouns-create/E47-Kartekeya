@@ -15,10 +15,14 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Validate lab and instrument contracts
         run: |
           python scripts/check_lab_contract.py
           python scripts/check_instrument_contracts.py
+          node scripts/external_agents_smoke.mjs
 
   test:
     name: Pytest – E47 canonical invariants
