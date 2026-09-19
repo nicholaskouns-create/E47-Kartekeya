@@ -7,10 +7,11 @@ import {MissionReplay} from './mission-replay.js';
 import {ProofTelemetry} from './proof-telemetry.js';
 import {clamp,norm,qToEuler} from './math.js';
 import {stateIssue,copyState} from './flight-state.js';
+import {createStargatePacket} from '../../shared/stargate-invariants.js';
 export class SkyrmionRuntime2 extends EventTarget{
  constructor({fixedStepHz=120,spawn={}}={}){
   super();if(!Number.isFinite(fixedStepHz)||fixedStepHz<60||fixedStepHz>240)throw new Error('fixedStepHz must be 60–240');
-  this.schema='SKYRMION-RUNTIME-2.2';this.fixedStepHz=fixedStepHz;this.dt=1/fixedStepHz;
+  this.schema='SKYRMION-RUNTIME-2.3';this.fixedStepHz=fixedStepHz;this.dt=1/fixedStepHz;
   this.world=new WorldEngine();this.physics=new SixDOFPhysics();this.mission=new MissionReplay();this.proof=new ProofTelemetry();
   this.spawn={lat:36.1699,lon:-115.1398,altitudeM:3658,speedMps:216,heading:0,...spawn};
   this.accumulator=0;this.lastNow=0;this.running=false;this.raf=0;this.mantaFrame=null;this.stepCount=0;this.fault=null;
@@ -61,7 +62,19 @@ export class SkyrmionRuntime2 extends EventTarget{
  }
  telemetry(world=this.world.sample(this.state)){
   const e=qToEuler(this.state.quaternion),speed=norm(this.state.velocityBody),e47=this.e47?.snapshot()??null;
-  return {schema:this.schema,vehicleId:this.vehicle.id,vehicleName:this.vehicle.name,evidence:this.vehicle.evidence,model:this.model.kind,t:this.state.t,lat:this.state.position.lat,lon:this.state.position.lon,altitude_m:this.state.position.altitudeM,speed,speedKt:speed/0.514444,heading:e.yaw,pitch:e.pitch,roll:e.roll,alpha:this.state.last.alpha,beta:this.state.last.beta,mach:speed/world.speedOfSound,qbar:this.vehicle.evidence==='conventional'?.5*world.density*speed*speed:0,controls:{...this.state.controls},commandControls:{...this.commandControls},bodyRates:{roll:this.state.omegaBody[0],pitch:this.state.omegaBody[1],yaw:this.state.omegaBody[2]},world,e47,proof:this.proof.last,propulsion:this.lastPropulsion.receipt,fault:this.fault};
+  const stargate=createStargatePacket({
+   surface:`SKYRMION/${this.vehicle.id}`,
+   modeled:{
+    vehicle_id:this.vehicle.id,
+    vehicle_evidence:this.vehicle.evidence,
+    flight_model:this.model.kind,
+    e47_capture:e47?.capture??null,
+    e47_residual:e47?.residual??null,
+    altitude_m:this.state.position.altitudeM,
+    speed_m_s:speed
+   }
+  });
+  return {schema:this.schema,vehicleId:this.vehicle.id,vehicleName:this.vehicle.name,evidence:this.vehicle.evidence,model:this.model.kind,t:this.state.t,lat:this.state.position.lat,lon:this.state.position.lon,altitude_m:this.state.position.altitudeM,speed,speedKt:speed/0.514444,heading:e.yaw,pitch:e.pitch,roll:e.roll,alpha:this.state.last.alpha,beta:this.state.last.beta,mach:speed/world.speedOfSound,qbar:this.vehicle.evidence==='conventional'?.5*world.density*speed*speed:0,controls:{...this.state.controls},commandControls:{...this.commandControls},bodyRates:{roll:this.state.omegaBody[0],pitch:this.state.omegaBody[1],yaw:this.state.omegaBody[2]},world,e47,stargate,proof:this.proof.last,propulsion:this.lastPropulsion.receipt,fault:this.fault};
  }
  emit(){
   const d=this.telemetry();
@@ -86,5 +99,5 @@ export class SkyrmionRuntime2 extends EventTarget{
  stopReplay(){this.mission.stopReplay();this.start()}
  start(){if(this.running)return;this.running=true;this.lastNow=0;this.raf=requestAnimationFrame(this.frame)}
  stop(){this.running=false;if(this.raf)cancelAnimationFrame(this.raf);this.raf=0;}
- exportProof(){return {schema:'SKYRMION-RUNTIME-2-RECEIPT',generatedAt:new Date().toISOString(),runtime:this.schema,fixedStepHz:this.fixedStepHz,vehicle:this.vehicle,proof:this.proof.last,e47:this.e47?.snapshot()??null,missionFrames:this.mission.frames.length,fault:this.fault}}
+ exportProof(){const d=this.telemetry();return {schema:'SKYRMION-RUNTIME-2-RECEIPT',generatedAt:new Date().toISOString(),runtime:this.schema,fixedStepHz:this.fixedStepHz,vehicle:this.vehicle,proof:this.proof.last,e47:d.e47,stargate:d.stargate,missionFrames:this.mission.frames.length,fault:this.fault}}
 }
