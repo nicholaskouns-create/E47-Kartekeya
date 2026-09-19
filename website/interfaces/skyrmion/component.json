@@ -1,24 +1,37 @@
 {
-  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
-  "id":"skyrmion",
-  "display_name":"SKYRMION Runtime 2",
-  "version":"2.2.0",
-  "kind":"interactive-simulator",
-  "maturity":"research",
-  "evidence":["E1","E2"],
-  "entrypoint":"website/interfaces/skyrmion/index.html",
-  "smoke":{
-    "entrypoint":"website/interfaces/skyrmion/smoke.mjs",
-    "command":"node website/interfaces/skyrmion/smoke.mjs",
-    "benchmark_command":"node website/interfaces/skyrmion/smoke.mjs --benchmark"
+  "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
+  "id": "skyrmion",
+  "display_name": "SKYRMION Runtime 2",
+  "version": "2.3.0",
+  "kind": "interactive-simulator",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "entrypoint": "website/interfaces/skyrmion/index.html",
+  "smoke": {
+    "entrypoint": "website/interfaces/skyrmion/smoke.mjs",
+    "command": "node website/interfaces/skyrmion/smoke.mjs",
+    "benchmark_command": "node website/interfaces/skyrmion/smoke.mjs --benchmark"
   },
-  "provenance":{
-    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
-    "sources":["website/interfaces/skyrmion/provenance.json","website/interfaces/skyrmion/runtime2-smoke-20260919.json","scripts/check_skyrmion_runtime.cjs"]
+  "provenance": {
+    "receipt_schema": "CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources": [
+      "website/interfaces/skyrmion/provenance.json",
+      "website/interfaces/skyrmion/runtime2-smoke-20260919.json",
+      "scripts/check_skyrmion_runtime.cjs",
+      "website/interfaces/shared/stargate-invariants.js",
+      "research/stargate/validation/stargate_corrected_validation_report.json"
+    ]
   },
-  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
-  "boundaries":[
+  "telemetry": {
+    "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0"
+  },
+  "boundaries": [
     "F-16, SR-71 and X-15 use conventional aerodynamic models.",
-    "MANTA, EIDOLON, SKYRMION and Syntax Jacob experimental craft use explicitly separated experimental simulation models."
+    "MANTA, EIDOLON, SKYRMION and Syntax Jacob experimental craft use explicitly separated experimental simulation models.",
+    "Corrected Stargate formalism is exposed as E2 simulator telemetry; E47 capture is not treated as a validated physical wormhole threshold.",
+    "Full nonlinear Einstein closure, Lorentzian stability, empirical NEC violation and hardware Stargate realization remain open."
   ]
 }
