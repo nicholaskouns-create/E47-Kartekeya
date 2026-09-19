@@ -44,3 +44,11 @@ def test_elevation_aware_terrain3d():
     assert 'terrain-3d.js' in html
     for token in ['World_Imagery','terrain-tiles','makeBuildings','makeClouds','makeLights','updateCamera','pitch','roll']:
         assert token in terrain
+
+
+def test_threejs_vehicle_fleet():
+    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
+    for token in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob','craftRoot','updateMantaFrame','SKYRMION-TERRAIN-3D-2.0']:
+        assert token in terrain
+    assert "skyrmion:manta-frame" in html
+    assert "CITY_SKYRMION_TERRAIN3D?.ready" in html
