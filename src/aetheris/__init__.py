@@ -45,3 +45,5 @@ __all__ = [
     "canonicalize",
     "digest_data",
 ]
+
+__version__ = RUNTIME_VERSION
