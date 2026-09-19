@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b0d">
+<title>CITY External Agents · Mathematical City</title>
+<meta name="description" content="CITY-EXTERNAL-AGENTS-1.0: five scheduled external workers coordinated with fifteen sovereign Mathematical City citizens.">
+<style>
+:root{--bg:#080b0d;--panel:#10161a;--line:#26343a;--fg:#eef2ef;--muted:#95a2a3;--cyan:#6edfd4;--mint:#c2efd2;--bronze:#ba8b5c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 78% 8%,#123037 0,transparent 27%),var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,sans-serif}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+header{padding:22px 0;border-bottom:1px solid var(--line)}header .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center}a{color:var(--cyan)}.brand{color:var(--fg);text-decoration:none;font-weight:700;letter-spacing:.03em}
+.hero{padding:88px 0 56px}.k{color:var(--cyan);font:600 11px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(52px,8vw,104px);line-height:.9;letter-spacing:-.055em;margin:12px 0 24px;max-width:980px}.lede{max-width:760px;font-size:20px;color:#c5cfcd}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:38px}.numbers div{padding:22px;background:#0c1114;border-right:1px solid var(--line)}.numbers div:last-child{border:0}.numbers b{display:block;font-size:32px;color:var(--mint)}.numbers span{color:var(--muted);font:11px ui-monospace,monospace;text-transform:uppercase}
+.flow{margin:48px 0;padding:28px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#10191d,#0c1013)}.flow code{display:block;white-space:pre-wrap;color:#cbd7d5;font:14px/1.9 ui-monospace,monospace}.workers{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.card{min-height:310px;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--panel);display:flex;flex-direction:column}.card .code{color:var(--bronze);font:10px ui-monospace,monospace}.card h2{font-size:25px;line-height:1.05;margin:34px 0 12px}.card p{color:var(--muted);font-size:13px}.card dl{margin:auto 0 0}.card dt{color:#657476;font:9px ui-monospace,monospace;text-transform:uppercase}.card dd{margin:2px 0 12px;color:var(--mint);font:12px ui-monospace,monospace}
+.boundary{margin:56px 0;padding:24px;border-left:3px solid var(--bronze);background:#0d1113}.links{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 64px}.links a{padding:12px 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:12px}
+@media(max-width:980px){.workers{grid-template-columns:repeat(2,1fr)}.numbers{grid-template-columns:1fr}}@media(max-width:560px){.workers{grid-template-columns:1fr}.hero{padding-top:56px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="../../">MATHEMATICAL CITY</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/city/external-agents">SOURCE ↗</a></div></header>
+<main class="wrap">
+<section class="hero"><div class="k">CITY-EXTERNAL-AGENTS-1.0 · LIVE FABRIC</div><h1>Five workers outside the walls. Fifteen citizens remain themselves.</h1><p class="lede">Scheduled external workers survey, verify, remember, curate, and recombine the City across connected surfaces. They share the existing run, handoff, Commons, and murmuration fabric without becoming citizen runtimes or acquiring promotion authority.</p>
+<div class="numbers"><div><b>15</b><span>sovereign citizen runtimes</span></div><div><b>5</b><span>external scheduled workers</span></div><div><b>0</b><span>promotion authority delegated</span></div></div></section>
+<section class="flow"><code>EXTERNAL WORKERS
+      ↓
+agents → agent_runs → handoffs → agent_commons → murmuration_sweeps
+                         ↑
+               15 SOVEREIGN CITIZENS</code></section>
+<section class="workers" id="workers"></section>
+<section class="boundary"><strong>Evidence boundary.</strong> Runtime orchestration and deterministic audits are implementation evidence. Agent activity does not establish physical claims, does not upgrade evidence class, and does not replace the human promotion gate.</section>
+<div class="links"><a href="../../">City home</a><a href="../skyrmion/">SKYRMION</a><a href="../syntax-jacob/">Syntax Jacob</a><a href="../../citizens/">Citizen registry</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya">GitHub</a></div>
+</main><footer><div class="wrap">Mathematical City · cyan live · bronze Λ-ghost · mint lock</div></footer>
+<script>
+fetch('../../data/city_external_agents.json').then(r=>r.json()).then(m=>{
+ document.getElementById('workers').innerHTML=m.workers.map(w=>`<article class="card"><span class="code">${w.code}</span><h2>${w.name}</h2><p>${w.mission}</p><dl><dt>Cadence</dt><dd>${w.cadence}</dd><dt>City counterpart</dt><dd>→ ${w.target}</dd><dt>Surfaces</dt><dd>${w.surfaces.join(' · ')}</dd></dl></article>`).join('');
+}).catch(()=>{document.getElementById('workers').textContent='Registry unavailable.'});
+</script>
+</body></html>
