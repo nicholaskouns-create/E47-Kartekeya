@@ -1,13 +1,16 @@
 {
   "schema": "CITY-INVARIANT/1.0",
   "object": "SKYRMION multi-domain flight simulator",
-  "operator": "aircraft selection + MANTA Python programmable-matter geometry + WGS84 GPS navigation + domain dynamics + MATRIX/Cube E47 witness + AETHERIS receipt + City graphics acceleration",
+  "operator": "aircraft selection + MANTA Python programmable-matter geometry + WGS84 GPS navigation + domain dynamics + MATRIX/Cube E47 witness + AETHERIS receipt + City graphics acceleration + corrected Stargate invariant packet",
   "invariant": [
     "real-aircraft conventional dynamics are separate from experimental/latent propulsion simulation",
     "E47/Cube witness does not claim physical propulsion validity",
     "graphics acceleration must not alter fixed-step solver semantics",
     "human canonical-promotion gate remains external and unchanged",
-    "GPS coordinates affect navigation/rendering only and do not alter scientific evidence class"
+    "GPS coordinates affect navigation/rendering only and do not alter scientific evidence class",
+    "Stargate packet preserves Ωc=47/125 as the exact E47 rank fraction, not an automatically physical threshold",
+    "simulator telemetry never upgrades corrected Stargate conditional mathematics beyond E2 without an independent validated bridge",
+    "negative-stiffness, conservation, causality and nonlinear-Einstein proof obligations remain explicit"
   ],
   "witness": [
     "website/interfaces/flight/*",
@@ -22,9 +25,12 @@
     "website/interfaces/shared/city-geo.js",
     "src/manta/programmable_matter.py",
     "website/runtime/manta/programmable_matter.py",
-    "website/interfaces/skyrmion/manta-worker.js"
+    "website/interfaces/skyrmion/manta-worker.js",
+    "website/interfaces/shared/stargate-invariants.js",
+    "research/stargate/validation/stargate_corrected_validation_report.json",
+    "MC-STARGATE-CORRECTED-20260919"
   ],
-  "evidence": "E1 implementation; simulator output E2; experimental propulsion remains simulation-only",
+  "evidence": "E1 implementation and corrected Stargate machine certificate; simulator output E2; experimental propulsion and physical wormhole realization remain unvalidated",
   "provenance": "nicholaskouns-create/E47-Kartekeya + CITY-COMMONS-SIM-FORGE + connected Supabase/Notion/Drive",
-  "next_action": "validate deterministic multi-domain flight state, backend fallback equivalence, and AETHERIS receipt interoperability before promotion"
+  "next_action": "rerun simulator smokes with Stargate telemetry, preserve physical-claim gates, and keep nonlinear Einstein/Lorentzian closure open"
 }
