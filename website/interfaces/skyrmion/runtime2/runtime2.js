@@ -25,7 +25,7 @@ export class SkyrmionRuntime2 extends EventTarget{
   const rollTarget=clamp((cmd.roll*(f.rollGain??.8)*authority)-p*(f.rollDamp??.2),-1,1);
   const pitchTarget=clamp((cmd.pitch*(f.pitchGain??.75)*authority)-q*(f.pitchDamp??.24),-1,1);
   const coordinated=(cmd.roll||0)*(f.coordination??.08)*clamp(V/140,0,1);
-  const yawTarget=clamp((cmd.yaw*(f.yawGain??.35)*authority)+coordinated-beta*(f.betaDamp??1.25)-r*(f.yawDamp??.8),-.58,.58);
+  const yawTarget=clamp((cmd.yaw*(f.yawGain??.35)*authority)+coordinated+beta*(f.betaDamp??1.25)-r*(f.yawDamp??.8),-.58,.58);
   ctl.roll=this._slew(ctl.roll,rollTarget,f.rollRate??2.2);
   ctl.pitch=this._slew(ctl.pitch,pitchTarget,f.pitchRate??1.8);
   ctl.yaw=this._slew(ctl.yaw,yawTarget,f.yawRate??1.0);
