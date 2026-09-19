@@ -52,3 +52,11 @@ def test_threejs_vehicle_fleet():
         assert token in terrain
     assert "skyrmion:manta-frame" in html
     assert "CITY_SKYRMION_TERRAIN3D?.ready" in html
+
+
+def test_high_detail_vehicle_systems():
+    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
+    for token in ['physicalGlass','pivotSurface','landingGear','engineFlame','makeTrailSystem','updateCraftSystems','castShadow','receiveShadow','shadowTarget','SKYRMION-TERRAIN-3D-3.0']:
+        assert token in terrain
+    for craft in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob']:
+        assert craft in terrain
