@@ -58,12 +58,13 @@ button:not(:disabled),a[href],[role=button]{cursor:pointer}
       <div class="meta-right"><span class="role-pill" id="role">Structure</span></div>
     </section>
     <section class="viewport">
-      <iframe id="viewer" title="Research visualizer" allow="fullscreen; accelerometer; gyroscope; clipboard-read; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <iframe id="viewer" title="Research visualizer" allow="fullscreen; gamepad; accelerometer; gyroscope; clipboard-read; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       <div class="frame-note"><b>City shell:</b> the source visualizer is preserved unchanged. Use OPEN ORIGINAL if the provider blocks embedded viewing.</div>
     </section>
   </main>
 </div>
 <script>
+const PARADIGM='https://monarch-sky-daisy-civic.grok.me/';
 const LABS=[
 {id:'spectra',name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'https://prairie-dream-glow-fire.grok.me/'},
 {id:'fold',name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'https://giant-beacon-dawn-falcon.grok.me/'},
@@ -78,6 +79,13 @@ const LABS=[
 {id:'scalar',name:'SCALAR',role:'Field',q:'What scalar field survives the algebra?',desc:'Finite E47 spectral structure lifted into explicitly visualization-typed scalar-field scenes.',url:'https://heart-eagle-blade-hazel.grok.me/'},
 {id:'invarifold',name:'InvariFold',role:'Protein Cinema',q:'How does Fold expose geometry?',desc:'A cinematic geometry layer for the Fold instrument and deterministic payloads.',url:'https://giant-beacon-dawn-falcon.grok.me/'}
 ];
+function paradigmSrc(lab){
+  const u=new URL(PARADIGM);
+  u.searchParams.set('lab', lab.id);
+  u.searchParams.set('district', lab.role.toLowerCase());
+  u.hash=lab.id;
+  return u.href;
+}
 const rail=document.getElementById('rail');
 const viewer=document.getElementById('viewer');
 const title=document.getElementById('title');
@@ -99,7 +107,10 @@ function renderRail(){
 function select(id,push=false){
   const lab=LABS.find(x=>x.id===id)||LABS[0];active=lab.id;
   title.textContent=lab.name;role.textContent=lab.role;question.textContent=lab.q;description.textContent=lab.desc;
-  eyebrow.textContent=`VISUALIZER · ${lab.role.toUpperCase()}`;original.href=lab.url;viewer.src=lab.url;viewer.title=`${lab.name} visualizer`;
+  eyebrow.textContent=`VISUALIZER · ${lab.role.toUpperCase()}`;
+  original.href=lab.url;
+  viewer.src=paradigmSrc(lab);
+  viewer.title=`${lab.name} · SKYRMION paradigm interface`;
   document.title=`${lab.name} | Visualizer Portal`;
   rail.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.id===lab.id));
   if(push){const u=new URL(location.href);u.searchParams.set('lab',lab.id);history.pushState({lab:lab.id},'',u)}
