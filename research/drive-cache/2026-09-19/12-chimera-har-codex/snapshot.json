@@ -1,0 +1,91 @@
+{
+  "schema": "CITY-DRIVE-CACHE-FOLDER-1.0",
+  "source_folder": "https://drive.google.com/drive/folders/1Hc0HjHFwDNxiu7nR3gUKt8DYbtlCIqd-",
+  "snapshot_date": "2026-09-19",
+  "canonical": false,
+  "files": [
+    {
+      "id": "1ILKtHTru8PeW_d_UwTRqe74Ru0bVb6Gx",
+      "title": "INTEGRATION_RECORD.md",
+      "mime_type": "text/markdown",
+      "size": "2577",
+      "modified_time": "2026-09-15T21:05:45.706Z",
+      "url": "https://drive.google.com/file/d/1ILKtHTru8PeW_d_UwTRqe74Ru0bVb6Gx/view?usp=drivesdk",
+      "content": "# CHIMERA — Mini AI Labs integration and operating record\n\n| Field | Value |\n|---|---|\n| Record | `CITY-APP-CHIMERA-20260915` |\n| Instrument | 12 · CHIMERA · catalog |\n| Question | How is accelerated-region biology catalogued, and what can a statistical mixing operator actually claim? |\n| Parent | The Mathematical City — Recursive Intelligence / E47 |\n| Hub | Mini AI Labs — Advanced Research Interface |\n| Packet | **Not an Octet stage.** No `MC-OCTET-PACKET-1.0` adapter. |\n| Visual | `CITY-LABS-VISUAL-SYSTEM-20260915` |\n| Machine | `CHIMERA-QEGT-HAR-20260915` PASS |\n| Projected Gibbs | `PGT-E47-20260731` |\n| GitHub | https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/chimera |\n| Drive | https://drive.google.com/drive/folders/1Hc0HjHFwDNxiu7nR3gUKt8DYbtlCIqd- |\n| Published | 2026-09-15 |\n\n## Live interface\n\nThe CHIMERA atlas is the Grok App Builder runtime (dual Field/Formal register; routes Atlas / Lab / Catalog / Walk / Proof / QEGT). A public `*.grok.me` host is recorded here when the platform assigns one. Until then the permanent sources are GitHub and this Drive folder.\n\nThe public Mini AI Labs HTML portal (`city-mini-labs`, registry version 7) currently lists labs 01–10. SCALAR (11) is already a City child and hub tile without being in that JSON. CHIMERA follows SCALAR: **Notion City page + hub tile + Drive folder + GitHub**, no octet insertion, no evidence-class promotion.\n\n## Interface (declared)\n\n| Surface | Contents |\n|---|---|\n| Atlas `/` | Dual-register index, evidence legend, catalog range ~2,600–3,100 |\n| Lab `/lab` | Field canvas / contraction readouts |\n| Catalog `/hars` | Named HAR loci with evidence badges |\n| Walk `/walk` | Eleven-stop paper (general + scientist) |\n| Proof `/theorems` | Typed theorems; QEGT-as-statistical-operator note |\n| QEGT `/qegt` | Mixing-board instrument (β, synthetic \\(B_i\\) toggles) |\n| Witness | `/qegt_har_bridge.py`, `/qegt-certificate.json` |\n\n## Operating rules\n\n1. Keep ESTABLISHED / MACHINE VERIFIED / HYPOTHESIS separate.\n2. Never present 47/125 as a biological cognition threshold.\n3. HAR → QEGT is a typed rejectable hypothesis.\n4. Gibbs is a statistical operator first (not physical-quantum).\n5. No personal-genotype content.\n6. Catalog numbers ~2,600–3,100, not “~3,000”.\n7. Drop unsourced “186 societies”.\n8. Six-cluster taxonomy is a model.\n\n## Status\n\n**City child page · Drive repository · GitHub source · hub tile.** Public grok.me embed is pending host assignment. Registry JSON (`city-mini-labs?format=json`) is not mutated from this record.\n"
+    },
+    {
+      "id": "1MVZjXrpJb6Qq_MsdSqygFxchoSjeIjd2",
+      "title": "EVIDENCE_BOUNDARY.md",
+      "mime_type": "text/markdown",
+      "size": "2409",
+      "modified_time": "2026-09-15T21:05:44.669Z",
+      "url": "https://drive.google.com/file/d/1MVZjXrpJb6Qq_MsdSqygFxchoSjeIjd2/view?usp=drivesdk",
+      "content": "# Evidence boundary — CHIMERA / HAR / QEGT\n\nRecord: `CITY-APP-CHIMERA-20260915`\nMachine run: `CHIMERA-QEGT-HAR-20260915`\n\nThree classes. No promotion across classes.\n\n## Established (HAR biology)\n\nSupported by the cited literature. Catalog size is definition-dependent; functional studies interrogate **~2,600–3,100** loci, not a rounded “~3,000”. Whalen et al. 2023: ~96% noncoding in that set; 31% enhancer-active in human/chimp NPCs; **43%** contain human variants with large opposing chromatin-state effects; **14%** with opposing neurodevelopmental enhancer effects.\n\nNamed anchors include Pollard 2006 (HAR1), Boyd 2015 (HARE5/FZD8), Girskis 2021 (PPP1R17), Cui 2025 (HAR202/NPAS3; 2xHAR.319/PUM2; HAR26), Pal 2025 (HAR–target contacts), Mosti 2026 (HAR1984).\n\nNot claimed: a single cognition gene; an unsourced “186 societies” figure; a personal-genotype walkthrough.\n\n## Machine verified (E47 + Gibbs)\n\nE47 is reconstructed from spin-2 SU(2) generators on \\(V_2^{\\otimes 3}\\) (\\(\\dim=125\\)), \\(K=(C-6I)(C-30I)\\), \\(\\dim\\ker K=47\\), \\(\\Omega_c=47/125\\), \\(\\rho_\\perp=15/17\\) at \\(\\varepsilon_*=1/99144\\).\n\nGibbs/softmax \\(p(\\omega)=\\exp(-\\beta C)/Z\\) is a **statistical operator**. A physical-quantum implementation requires an explicit Hilbert space, observable or channel, preparation, and measurement. That is not assumed.\n\nProjected Gibbs uniqueness on an allowed subspace is a separate machine record (`PGT-E47-20260731`). \\(P_{\\mathrm{dev}}\\) is **not** identified with \\(P_{47}\\).\n\n## Hypothesis (HAR → QEGT)\n\nTyped translation chain, every arrow rejectable:\n\n\\[\nS_{\\mathrm{HAR}}\\xrightarrow{\\varphi_{\\mathrm{cis}}}G_{\\mathrm{dev}}\\xrightarrow{\\varphi_{\\mathrm{op}}}H_{\\mathrm{dev}}(h,t)\\xrightarrow{G_\\beta}\\rho_*(h,t)\\xrightarrow{\\varphi_{\\mathrm{pheno}}}Y\n\\]\n\nSynthetic operators \\(B_i\\) in the witness are mixed-sign **demonstrators** (`SYNTHETIC_BRIDGE_DEMO_ONLY`). They are not biological effect sizes.\n\nH1–H5 (distributed-operator, compensatory-curvature, 3D-topology, threshold-emergence, cross-species transport) are the rejection surface. H4 forbids pasting 47/125 onto a fitted developmental threshold.\n\n## Six-cluster taxonomy\n\nThe atlas’s six-cluster grouping is a **model**, not a consensus biological partition.\n\n## Visual system\n\nNear-black laboratory. Cyan live · bronze Λ-ghost · mint lock. No type on stills. Record: `CITY-LABS-VISUAL-SYSTEM-20260915`.\n"
+    },
+    {
+      "id": "1JeGksWcvSJvwJRxRvr1mAy-Jups4x-sw",
+      "title": "SCIENTIST_EDITION.md",
+      "mime_type": "text/markdown",
+      "size": "3627",
+      "modified_time": "2026-09-15T21:02:34.448Z",
+      "url": "https://drive.google.com/file/d/1JeGksWcvSJvwJRxRvr1mAy-Jups4x-sw/view?usp=drivesdk",
+      "content": "# CHIMERA — scientist edition\n\nDual-register instrument. Field copy lives in `GENERAL_AUDIENCE.md`. This page is the formal register.\n\n## HAR biology (established)\n\nHARs: conserved mammalian sequence with a human-lineage substitution burst. Catalog size is definition-dependent; major functional studies interrogate ~2,600–3,100 loci (Whalen et al. *Neuron* 2023: 2,645 HARs; ~96% noncoding; 31% enhancer-active in human/chimp NPCs; 43% opposing chromatin-state effects; 14% opposing neurodevelopmental enhancer effects). Same sequence in human vs chimp cells: activity highly similar ⇒ divergence is largely cis.\n\nAnchors:\n\n- Pollard et al. *Nature* 2006: HAR1/HAR1F in Cajal–Retzius neurons, GW ~7–19, coexpressed with reelin.\n- Boyd et al. *Curr Biol* 2015: human HARE5 contacts FZD8; accelerated progenitor cycling and increased brain size vs chimpanzee ortholog in transgenic mice.\n- Girskis et al. 2021: PPP1R17 HAR.\n- Pal et al. *Cell* 2025: 1,590 HARs → 2,963 neurodevelopmental targets.\n- Cui et al. *Nature* 2025: HAR202 attenuates NPAS3; 2xHAR.319→PUM2; HAR26/2xHAR.178→SOCS2/neurites.\n- Mosti et al. *Cell Stem Cell* 2026: HAR1984 species-specific chromatin architecture, ETV5/TRA2B contacts, opposite neurogenesis direction on human↔chimp organoid swaps.\n\n## QEGT statistical operator (machine / structural)\n\n\\[\np(\\omega\\mid h)=\\frac{\\exp[-\\beta C(\\omega\\mid h)]}{Z},\\qquad\nC(\\omega\\mid h)=\\langle\\omega,H_{\\mathrm{dev}}(h)\\,\\omega\\rangle+\\gamma R(\\omega)\n\\]\n\n\\[\nH_{\\mathrm{dev}}(h)=H_0+\\sum_i h_i B_i+\\cdots\n\\]\n\nGibbs is a statistical operator. Physical-quantum status requires Hilbert space, observable/channel, preparation, measurement. Formalism Registry: **FRM-38** QEGT–ETNS Gibbs Strategy Selection.\n\nProjected Gibbs on an allowed subspace: \\([P,H]=0\\), \\(\\rho_*=P e^{-\\beta H}P/\\mathrm{Tr}(P e^{-\\beta H})\\), uniqueness via \\(F(\\rho)-F(\\rho_*)=\\beta^{-1}D(\\rho\\|\\rho_*)\\). Certificate `PGT-E47-20260731`.\n\n## Canonical E47 (machine reconstructed)\n\n\\[\nV=V_2^{\\otimes 3},\\quad \\dim V=125,\\quad C=J_{\\mathrm{tot}}^2,\\quad\nK=(C-6I)(C-30I)\n\\]\n\n\\[\nE_{47}=\\ker K=E_6\\oplus E_{30},\\quad \\dim E_{47}=47,\\quad\n\\Omega_c=\\frac{\\mathrm{Tr}P_{47}}{125}=\\frac{47}{125}\n\\]\n\n\\[\n\\Gamma_\\varepsilon=I-\\varepsilon K^2,\\qquad \\varepsilon_*=1/99144,\\qquad \\rho_\\perp=15/17\n\\]\n\nWitness `python/qegt_har_bridge.py` reconstructs this from spin-2 SU(2) generators (not a rank-prescribed random kernel). Run `CHIMERA-QEGT-HAR-20260915` status PASS.\n\n\\(P_{\\mathrm{dev}}\\) is not identified with \\(P_{47}\\). 47/125 is not a fitted biological constant.\n\n## Typed bridge (hypothesis)\n\n\\[\nS_{\\mathrm{HAR}}\\xrightarrow{\\varphi_{\\mathrm{cis}}}G_{\\mathrm{dev}}\\xrightarrow{\\varphi_{\\mathrm{op}}}H_{\\mathrm{dev}}(h,t)\\xrightarrow{G_\\beta}\\rho_*(h,t)\\xrightarrow{\\varphi_{\\mathrm{pheno}}}Y\n\\]\n\nNo equality of spaces. \\(B_i\\) estimated from HAR sequence swaps (CRISPR/prime editing) plus scRNA, scATAC, 3D contacts. Synthetic \\(B_i\\) in the witness are `SYNTHETIC_BRIDGE_DEMO_ONLY`.\n\n### Rejection surface\n\n| ID | Claim |\n|---|---|\n| H1 | Multi-HAR operator ensemble predicts cell-state transitions better than one-HAR baselines after complexity control |\n| H2 | Compensatory HARs have larger Hessian/interaction terms than matched controls |\n| H3 | Contact-changing swaps shift operator spectra beyond amplitude |\n| H4 | A data-derived \\(Q_{\\mathrm{dev}}\\) may cross a fitted \\(Q_c\\) — **not** 47/125 |\n| H5 | Parameters transport to held-out human↔chimp swaps |\n\nFailure of predictive transport rejects the parametrization.\n\n## Six-cluster taxonomy\n\nA model used by the atlas UI. Not a consensus biological partition.\n"
+    },
+    {
+      "id": "1YPj3_DyGoPpjA8VbmbFXFkndRo8rzxl5",
+      "title": "GENERAL_AUDIENCE.md",
+      "mime_type": "text/markdown",
+      "size": "2746",
+      "modified_time": "2026-09-15T21:02:33.366Z",
+      "url": "https://drive.google.com/file/d/1YPj3_DyGoPpjA8VbmbFXFkndRo8rzxl5/view?usp=drivesdk",
+      "content": "# CHIMERA — a walk for anyone\n\nThe Chimera is one named whole made of unlike parts. That image is older than genetics. This atlas uses it as a *register*, not a proof: mixed identity is something a culture can hold, and something a body can literally be, and something a genome’s control layer can look like.\n\n## What HARs are\n\nAfter the human lineage split from other apes, some stretches of DNA that had sat almost still for ages suddenly changed. Most of those stretches do not make proteins. They are switches — they time when, where, and how hard other genes are used. Human-ness, in this picture, is a rewritten mixing board, not a new list of parts.\n\nCatalogs used in functional work hold on the order of **2,600–3,100** such stretches. About **96%** of one large tested set do not code for protein.\n\n## Two early anchors\n\nHAR1 is an RNA that turns on in the cells that first map the fetal cortex. HARE5 is a switch for a Wnt receptor; the human version, placed in a mouse, makes neural stem cells divide a little faster and the cortex a little larger. These are timed controls, not mysteries.\n\n## The compensation surprise\n\nInside a single accelerated stretch, one human letter can push a switch up while another pushes it down. The circuit still works. Local fights, global tune. In one 2023 study, **43%** of tested HARs showed large opposing chromatin effects; **14%** showed opposing enhancer effects in neurodevelopment.\n\n## Contacts, not only volume\n\nA switch can change who it sits next to when the chromosome folds. Mapped HAR contacts, CRISPR edits, and a human enhancer (HAR1984) that rewires loops and changes how many neurons an organoid makes — in opposite directions when you swap human and chimpanzee letters — are now on the record.\n\n## What the math is allowed to say\n\nImagine every possible way a developing cortex could run as a strategy with a cost. Cheaper strategies get more weight. That weighting is a softmax, a statistical mixing law. HARs, *in this model*, do not flip a cognition switch — they tilt the landscape those strategies live on. Whether biology uses that law is the question, not the premise.\n\nA 125-dimensional spin construction has a 47-dimensional keep-set. **47/125 is exact there.** That number is a property of that algebra. It is not a brain threshold.\n\n## The honest chain\n\nSequence → regulatory network → operator → strategy weights → measurable traits. Each arrow can fail on its own. If a bag of HAR switches does not predict cell-state changes better than simpler models, the bridge falls. If a learned threshold locks to 47/125 by construction, we refuse that as biology.\n\nDownload the Python witness. Break it. Replace the fake HAR sliders with real measurements.\n"
+    },
+    {
+      "id": "1HyxjPttTYpbkaa9I5X_c0CBobBUis64l",
+      "title": "CHIMERA_REPO_MANIFEST.json",
+      "mime_type": "application/json",
+      "size": "625",
+      "modified_time": "2026-09-15T21:02:32.364Z",
+      "url": "https://drive.google.com/file/d/1HyxjPttTYpbkaa9I5X_c0CBobBUis64l/view?usp=drivesdk",
+      "content": ""
+    },
+    {
+      "id": "15l-06gxZFTgBtEuJeVTocSSN0oB9Tvbg",
+      "title": "requirements.txt",
+      "mime_type": "text/plain",
+      "size": "12",
+      "modified_time": "2026-09-15T21:02:31.316Z",
+      "url": "https://drive.google.com/file/d/15l-06gxZFTgBtEuJeVTocSSN0oB9Tvbg/view?usp=drivesdk",
+      "content": "numpy>=1.26\n"
+    },
+    {
+      "id": "19NeqmeWLtUPQSOQkHzasdPfp-gjFWvmG",
+      "title": "README_CHIMERA.md",
+      "mime_type": "text/markdown",
+      "size": "2383",
+      "modified_time": "2026-09-15T21:01:51.685Z",
+      "url": "https://drive.google.com/file/d/19NeqmeWLtUPQSOQkHzasdPfp-gjFWvmG/view?usp=drivesdk",
+      "content": "# CHIMERA — HAR Codex / QEGT Bridge\n\nPermanent Mini AI Labs source under [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya). Dual-register educational atlas of **established HAR biology**, **machine-verified E47 + Gibbs**, and a **typed, rejectable HAR → QEGT hypothesis**.\n\nThis folder is instrument **12 · CHIMERA · catalog**. It does **not** promote 47/125 as a biological cognition threshold. It does **not** claim HAR biology is a quantum game. Gibbs is a statistical operator first.\n\n| Record | Value |\n|---|---|\n| Integration | `CITY-APP-CHIMERA-20260915` |\n| Machine run | `CHIMERA-QEGT-HAR-20260915` |\n| Projected Gibbs | `PGT-E47-20260731` |\n| Visual system | `CITY-LABS-VISUAL-SYSTEM-20260915` |\n| Drive | [12 — CHIMERA — HAR Codex](https://drive.google.com/drive/folders/1Hc0HjHFwDNxiu7nR3gUKt8DYbtlCIqd-) |\n| License | CC0 1.0 (same as this repository) |\n\n## Evidence classes (kept separate)\n\n| Class | What it covers | What it does not |\n|---|---|---|\n| **Established** | HAR catalogs, compensatory cis-regulation, 3D-contact rewiring, named loci (HAR1, HARE5, HAR1984, …) | A cognition gene; a 47/125 brain threshold |\n| **Machine verified** | E47 reconstruction from spin-2 SU(2) on \\(V_2^{\\otimes 3}\\); Gibbs/softmax normalization; projected-Gibbs uniqueness on an allowed subspace | A physical-quantum implementation; fitted biological operators |\n| **Hypothesis** | HAR sequence → GRN → operator \\(H_{\\mathrm{dev}}(h)\\) → Gibbs weights → phenotype. Each arrow is independently rejectable | Equality of spaces; synthetic \\(B_i\\) as effect sizes |\n\nThe 47/125 quantity is the exact E47 invariant \\(\\Omega_c=\\mathrm{Tr}P_{47}/125\\). It is not transported onto development unless an encoder is independently derived.\n\n## Quick start\n\n```bash\npython3 -m pip install -r chimera/requirements.txt\npython3 chimera/python/qegt_har_bridge.py\n```\n\nExpected: JSON with `\"status\": \"PASS\"` and `\"har_demo.status\": \"SYNTHETIC_BRIDGE_DEMO_ONLY\"`.\n\n## Layout\n\n```\nchimera/python/qegt_har_bridge.py\nchimera/certificates/CHIMERA-QEGT-HAR-20260915.json\nchimera/docs/GENERAL_AUDIENCE.md\nchimera/docs/SCIENTIST_EDITION.md\nchimera/docs/EVIDENCE_BOUNDARY.md\nchimera/docs/INTEGRATION_RECORD.md\n```\n\nCanonical E47 kernel code remains at the repository root (`src/e47/`). CHIMERA is a catalog / evidence-boundary instrument, not an Octet packet stage.\n"
+    },
+    {
+      "id": "10cXEJ2Bc-wVL1lYGpYoH7Q3-43dRdEWD",
+      "title": "CHIMERA-QEGT-HAR-20260915.json",
+      "mime_type": "application/json",
+      "size": "1924",
+      "modified_time": "2026-09-15T21:01:45.970Z",
+      "url": "https://drive.google.com/file/d/10cXEJ2Bc-wVL1lYGpYoH7Q3-43dRdEWD/view?usp=drivesdk",
+      "content": ""
+    },
+    {
+      "id": "17ZmUdZxY9E-0bJA4LvLF0oW8S3KYJSG2",
+      "title": "qegt_har_bridge.py",
+      "mime_type": "text/x-python",
+      "size": "6298",
+      "modified_time": "2026-09-15T21:01:44.682Z",
+      "url": "https://drive.google.com/file/d/17ZmUdZxY9E-0bJA4LvLF0oW8S3KYJSG2/view?usp=drivesdk",
+      "content": ""
+    }
+  ],
+  "folder_name": "12 — CHIMERA — HAR Codex",
+  "file_count": 9
+}
