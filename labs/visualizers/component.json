@@ -1,0 +1,40 @@
+{
+  "schema": "LAB-COMPONENT-1.0",
+  "id": "visualizers",
+  "version": "1.0.0",
+  "kind": "research-instruments",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "contract": "Independent visual instruments with source behavior preserved.",
+  "entrypoint": "website/interfaces/visualizers/index.html",
+  "smoke": "python scripts/lab_component.py smoke visualizers",
+  "benchmark": {
+    "kind": "static-contract-smoke",
+    "command": "python scripts/lab_component.py benchmark visualizers"
+  },
+  "receipt": "python scripts/lab_component.py receipt visualizers",
+  "provenance": [
+    "website/interfaces/visualizers"
+  ],
+  "invariants": [
+    "visualization does not alter source evidence class",
+    "instrument autonomy preserved"
+  ],
+  "failure_telemetry": {
+    "schema": "LAB-FAILURE-1.0",
+    "required": [
+      "component",
+      "version",
+      "operation",
+      "status",
+      "timestamp_utc",
+      "error_type",
+      "message",
+      "duration_ms"
+    ],
+    "output": "JSON line on stderr; nonzero exit code"
+  }
+}
