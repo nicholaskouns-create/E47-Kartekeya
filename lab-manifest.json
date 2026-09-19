@@ -135,5 +135,14 @@
       "certificate": "MC-STARGATE-CORRECTED-20260919",
       "evidence_boundary": "conditional mathematics + E2 simulator telemetry; physical closure open"
     }
+  },
+  "external_agent_fabric": {
+    "contract": "CITY-EXTERNAL-AGENTS-1.0",
+    "version": "1.0.0",
+    "registry": "city/external-agents/CITY-EXTERNAL-AGENTS-1.0.json",
+    "public_surface": "website/interfaces/external-agents/",
+    "worker_count": 5,
+    "citizen_runtime_invariant": 15,
+    "boundary": "External workers coordinate with components and citizens but are not mathematical instruments or citizen runtimes."
   }
 }
