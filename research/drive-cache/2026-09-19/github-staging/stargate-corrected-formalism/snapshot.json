@@ -1,0 +1,46 @@
+{
+  "schema": "CITY-DRIVE-CACHE-FOLDER-1.0",
+  "folder_name": "Stargate Corrected Formalism — 2026-09-19",
+  "source_folder": "https://drive.google.com/drive/folders/1WyzE7bJXlzICvUBxXT5rFX0LTaftXOml",
+  "snapshot_date": "2026-09-19",
+  "canonical": false,
+  "file_count": 4,
+  "files": [
+    {
+      "id": "14Yu0EXVOFIrafRdRwgV_fmdqXraiy_DB",
+      "title": "STARGATE_CORRECTED_FORMALISM_README.md",
+      "mime_type": "text/markdown",
+      "size": "618",
+      "modified_time": "2026-09-19T16:04:22.894Z",
+      "url": "https://drive.google.com/file/d/14Yu0EXVOFIrafRdRwgV_fmdqXraiy_DB/view?usp=drivesdk",
+      "content": "# Stargate Corrected Formalism — 2026-09-19\n\nOperation: `STARGATE-CORRECTION-ITERATION-20260919`\n\nPackage: `STARGATE-CORRECTED-VALIDATION-1.1`\n\nMachine result: **18/18 PASS**.\n\nThe package preserves exact symbolic identities separately from machine validation and keeps the physical boundary explicit: no physical wormhole, ghost-free Lorentzian completion, empirical NEC violation, or realizable Stargate hardware is claimed by this certificate.\n\nFiles:\n- stargate_corrected_validation.py\n- stargate_corrected_validation_report.json\n- stargate_corrected_validation.csv\n- STARGATE-CORRECTION-ITERATION-20260919.json\n"
+    },
+    {
+      "id": "1uzZ8BZIRT3rsSe4imyEVoAwL87qIpOj-",
+      "title": "stargate_corrected_validation.csv",
+      "mime_type": "text/csv",
+      "size": "1714",
+      "modified_time": "2026-09-19T16:04:20.558Z",
+      "url": "https://drive.google.com/file/d/1uzZ8BZIRT3rsSe4imyEVoAwL87qIpOj-/view?usp=drivesdk",
+      "content": "Validation,Pass,Result\nE47 ratio,True,Ω = 47/125 = 0.376; dimensionless rank fraction only.\nProfile derivative,True,dρ/dl = (ε/ℓ) sech²(l/ℓ).\nSquared gradient,True,\"(dρ/dl)² = (ε²/ℓ²) sech⁴(l/ℓ), not sech².\"\nsech⁴ integral,True,\"By t=tanh(u), ∫sech⁴u du over R = 4/3.\"\nAverage dwell functional,True,A normalized time average does not grow merely because dwell time grows.\nAccumulating dwell functional,True,\"If dwell accumulation is intended, use a fixed reference time or a dynamical memory variable.\"\nStress-energy energy density,True,ε = V + Z*rho_l**2/2.\nStress-energy radial pressure,True,p_l = -V + Z*rho_l**2/2.\nRadial NEC,True,ε+p_l = Z*rho_l**2; NEC violation requires Z<0 for nonzero gradient in this simple effective sector.\nConditional flare-out example,True,\"With 8πG=1 toy units, b'(r0)=0.875000<1.\"\nCorrected ANEC profile integral,True,Scalar-sector integral = -0.00333333 for the chosen Z<0 example.\nOld negative-k² Hessian is unstable,True,\"λ_old(k)=m²+Zk² reaches -4999.000 over k∈[0,100] and tends to -∞.\"\nStatic k⁴-regularized Hessian positive in example,True,λ_reg minimum ≈ 0.375001 at k≈1.5800; this is static spectral stabilization only.\nAnalytic static Hessian minimum,True,λ_min = m² - Z²/(4α); require m² > Z²/(4α).\nVariable-coupling divergence,True,∇[(1-Ω)T] is generically nonzero when Ω varies.\nCompensated total conservation,True,A compensating field/control stress can restore total conservation.\nClaimed v_max law contradicts low-drag limit,True,\"v_max∝c(1-Ω) decreases to zero as Ω→1, opposite the surrounding narrative.\"\nPlanck-time scram causality,True,3 m one-way light time = 1.001e-08s ≈ 1.856e+35 Planck times.\n"
+    },
+    {
+      "id": "1WrQ24FmbiazSQFE3eaMXsFxdHbUmepB0",
+      "title": "stargate_corrected_validation_report.json",
+      "mime_type": "application/json",
+      "size": "1899",
+      "modified_time": "2026-09-19T16:04:18.435Z",
+      "url": "https://drive.google.com/file/d/1WrQ24FmbiazSQFE3eaMXsFxdHbUmepB0/view?usp=drivesdk",
+      "content": "{\n  \"schema\": \"STARGATE-CORRECTED-VALIDATION-1.1\",\n  \"scope\": [\n    \"The Stargate Derivation\",\n    \"Informational Geometrodynamics of Traversable Topology\",\n    \"Metric Engineering via Recursive Coherence\",\n    \"Project Stargate\",\n    \"current Notion correction/Einstein-boundary records\"\n  ],\n  \"validated\": {\n    \"omega_c_exact_rank_fraction\": \"47/125\",\n    \"profile_derivative\": \"eps/(ell*cosh(l/ell)**2)\",\n    \"profile_gradient_squared\": \"eps**2/(ell**2*cosh(l/ell)**4)\",\n    \"sech4_integral\": \"4/3\",\n    \"chi_average_constant_plateau\": \"c0\",\n    \"chi_accumulating_plateau\": \"c0*tau/tau_ref\",\n    \"energy_density\": \"V + Z*rho_l**2/2\",\n    \"radial_pressure\": \"-V + Z*rho_l**2/2\",\n    \"radial_nec\": \"Z*rho_l**2\",\n    \"regularized_static_hessian_minimum\": \"-Zneg**2/(4*alpha) + m2\",\n    \"variable_coupling_divergence\": \"-T0*Derivative(Omega(x1), x1)\",\n    \"compensated_total_divergence\": \"0\",\n    \"claimed_vmax_derivative\": \"-c\",\n    \"claimed_vmax_at_omega_1\": \"0\"\n  },\n  \"numerical_example\": {\n    \"Z\": -0.5,\n    \"m2\": 1.0,\n    \"alpha\": 0.1,\n    \"eps\": 0.1,\n    \"ell\": 2.0,\n    \"r0\": 10.0,\n    \"rho_l_at_throat\": 0.05,\n    \"NEC_at_throat\": -0.0012500000000000002,\n    \"bprime_at_throat_8piG_equals_1\": 0.875,\n    \"ANEC_like_scalar_integral\": -0.003333333333333334,\n    \"old_hessian_sample_min\": -4999.0,\n    \"regularized_static_hessian_min\": 0.375001296,\n    \"regularized_min_k\": 1.58,\n    \"light_crossing_3m_seconds\": 1.0006922855944561e-08,\n    \"light_crossing_6m_seconds\": 2.0013845711889122e-08,\n    \"light_crossing_3m_in_planck_times\": 1.8561425317639055e+35\n  },\n  \"important_boundary\": \"The k^4 term validates positivity of a static free-energy Hessian in the toy effective model. It does not establish a ghost-free Lorentzian quantum field theory, a self-consistent nonlinear Einstein-scalar wormhole, empirical NEC violation, or a realizable Stargate device.\",\n  \"all_checks_pass\": true\n}"
+    },
+    {
+      "id": "1IYKaf-H2xOmyLz_pVjiJmcRFDFcWqnvS",
+      "title": "stargate_corrected_validation.py",
+      "mime_type": "text/x-python",
+      "size": "1814",
+      "modified_time": "2026-09-19T16:03:44.567Z",
+      "url": "https://drive.google.com/file/d/1IYKaf-H2xOmyLz_pVjiJmcRFDFcWqnvS/view?usp=drivesdk",
+      "content": "\"\"\"Corrected Stargate formalism validation v1.1.\nValidates corrected mathematical identities and exposes old contradictions.\nNot experimental evidence for a physical wormhole.\n\"\"\"\nimport numpy as np\nimport sympy as sp\n\nomega_c = sp.Rational(47,125)\nl, ell, eps = sp.symbols(\"l ell eps\", positive=True, real=True)\nrho = omega_c + eps*sp.tanh(l/ell)\nassert sp.simplify(sp.diff(rho,l) - eps/ell*sp.sech(l/ell)**2) == 0\nassert sp.simplify(sp.diff(rho,l)**2 - eps**2/ell**2*sp.sech(l/ell)**4) == 0\n\n# t = tanh(u) -> sech^4(u) du = (1-t^2) dt\nt = sp.symbols(\"t\", real=True)\nassert sp.integrate(1-t**2,(t,-1,1)) == sp.Rational(4,3)\n\ntime,tau,tau_ref,c0 = sp.symbols(\"time tau tau_ref c0\", positive=True)\nchi_avg = sp.simplify(sp.integrate(c0,(time,0,tau))/tau)\nchi_acc = sp.simplify(sp.integrate(c0,(time,0,tau))/tau_ref)\nassert chi_avg == c0\nassert chi_acc == c0*tau/tau_ref\n\nZ,V,rp = sp.symbols(\"Z V rp\", real=True)\nenergy = sp.Rational(1,2)*Z*rp**2 + V\np_radial = sp.Rational(1,2)*Z*rp**2 - V\nassert sp.simplify(energy+p_radial-Z*rp**2) == 0\n\nm2,alpha = sp.symbols(\"m2 alpha\", positive=True)\nZneg = sp.symbols(\"Zneg\", negative=True)\nx = sp.symbols(\"x\", nonnegative=True)\nlam = m2 + Zneg*x + alpha*x**2\nxstar = -Zneg/(2*alpha)\nassert sp.simplify(lam.subs(x,xstar) - (m2-Zneg**2/(4*alpha))) == 0\n\nZnum,m2num,anum = -0.5,1.0,0.10\nks=np.linspace(0,100,10001)\nassert (m2num+Znum*ks**2).min() < 0\nassert (m2num+Znum*ks**2+anum*ks**4).min() > 0\n\nx1,T0=sp.symbols(\"x1 T0\", real=True)\nOm=sp.Function(\"Omega\")(x1)\ndiv_eff=sp.diff((1-Om)*T0,x1)\nassert sp.simplify(div_eff + T0*sp.diff(Om,x1)) == 0\n\nc_si=299792458.0\nt_planck=5.391247e-44\nassert 3.0/c_si > t_planck\n\nprint(\"PASS: corrected mathematical identities and contradiction checks.\")\nprint(\"BOUNDARY: no physical-wormhole, ghost-free QFT, or hardware-realization claim.\")\n"
+    }
+  ]
+}
