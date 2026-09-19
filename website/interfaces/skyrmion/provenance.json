@@ -1,0 +1,24 @@
+{
+  "schema": "CITY-INVARIANT/1.0",
+  "object": "SKYRMION multi-domain flight simulator",
+  "operator": "aircraft selection + domain dynamics + MATRIX/Cube E47 witness + AETHERIS receipt + City graphics acceleration",
+  "invariant": [
+    "real-aircraft conventional dynamics are separate from experimental/latent propulsion simulation",
+    "E47/Cube witness does not claim physical propulsion validity",
+    "graphics acceleration must not alter fixed-step solver semantics",
+    "human canonical-promotion gate remains external and unchanged"
+  ],
+  "witness": [
+    "website/interfaces/flight/*",
+    "website/interfaces/syntax-jacob/*",
+    "website/interfaces/matrix/*",
+    "web/city_graphics_profiles.json",
+    "Supabase matrix-cube-adapter",
+    "Supabase city-graphics-accelerator",
+    "Supabase syntax-jacob-ephemeris",
+    "Supabase eidolon-city-adapter"
+  ],
+  "evidence": "E1 implementation; simulator output E2; experimental propulsion remains simulation-only",
+  "provenance": "nicholaskouns-create/E47-Kartekeya + CITY-COMMONS-SIM-FORGE + connected Supabase/Notion/Drive",
+  "next_action": "validate deterministic multi-domain flight state, backend fallback equivalence, and AETHERIS receipt interoperability before promotion"
+}
