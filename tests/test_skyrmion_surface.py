@@ -15,3 +15,15 @@ def test_boundary():
     assert 'simulation-only' in js
     assert prov['schema']=='CITY-INVARIANT/1.0'
     assert 'human canonical-promotion gate remains external and unchanged' in prov['invariant']
+
+
+def test_live_manta_and_gps_bridge():
+    worker=(root/'website/interfaces/skyrmion/manta-worker.js').read_text()
+    gps=(root/'website/interfaces/shared/city-gps-runtime.js').read_text()
+    py=(root/'src/manta/programmable_matter.py').read_text()
+    assert 'manta-worker.js' in html
+    assert 'city-gps-runtime.js' in html
+    assert 'MANTA-PYTHON-BRIDGE-1.0' in worker
+    assert 'step_packet' in py
+    assert 'geometry_nodes' in py
+    assert 'CITY-GPS-RUNTIME-1.0' in gps
