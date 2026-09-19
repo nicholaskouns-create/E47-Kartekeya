@@ -1,49 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>SKYRMION · Multi-Domain Flight Simulator</title>
-<style>
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020406;color:#e9ffff;font-family:Inter,system-ui,sans-serif}
-#scene{position:fixed;inset:0;width:100%;height:100%;display:block}
-.hud{position:fixed;inset:0;pointer-events:none}
-.top{position:absolute;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;gap:12px}
-.brand,.cluster{display:flex;gap:8px;align-items:center}
-.chip{pointer-events:auto;background:#071015cc;border:1px solid #7fffe933;border-radius:999px;padding:8px 11px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(14px)}
-.brand strong{font-size:13px;letter-spacing:.2em}
-.bottom{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:end;gap:12px}
-.panel{pointer-events:auto;background:#061014d9;border:1px solid #7fffe92a;border-radius:16px;padding:10px;backdrop-filter:blur(16px);box-shadow:0 12px 40px #0008}
-.vehicle-grid{display:flex;gap:8px;flex-wrap:wrap;max-width:min(88vw,960px)}
-button{background:#0b171d;border:1px solid #84fff02e;color:#dffffa;border-radius:12px;padding:9px 12px;font:inherit;font-size:12px;cursor:pointer}
-button.active{background:#12352f;border-color:#7fffe977}
-.minimap{width:160px;height:92px}
-.tiny{font-size:10px;opacity:.65;letter-spacing:.08em}
-.center-reticle{position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%);border:1px solid #8fffe955;border-radius:50%}
-.center-reticle:before,.center-reticle:after{content:"";position:absolute;background:#8fffe955}
-.center-reticle:before{width:1px;height:58px;left:21px;top:-8px}.center-reticle:after{height:1px;width:58px;top:21px;left:-8px}
-.experimental{color:#ffd28a}.real{color:#9fffd6}.latent{color:#b4b5ff}
-@media(max-width:800px){.cluster{display:none}.bottom{align-items:stretch}.minimap{display:none}.vehicle-grid{max-width:calc(100vw - 32px)}}
-</style>
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.180.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.180.0/examples/jsm/"}}</script>
-</head>
-<body>
-<canvas id="scene"></canvas>
-<div class="hud">
-  <div class="top">
-    <div class="brand"><span class="chip"><strong>SKYRMION</strong> · MULTI-DOMAIN FLIGHT</span><span id="domain" class="chip">EARTH · ATMOSPHERE</span></div>
-    <div class="cluster"><span id="gpu" class="chip">GPU · DETECTING</span><span id="bus" class="chip">CITY BUS · READY</span><span id="e47" class="chip">E47 · —</span></div>
-  </div>
-  <div class="center-reticle"></div>
-  <div class="bottom">
-    <div class="panel">
-      <div class="vehicle-grid" id="vehicles"></div>
-      <div class="tiny" id="status">WASD · QE vertical · drag to look · wheel zoom · 1-6 aircraft · F domain</div>
-    </div>
-    <canvas id="minimap" class="panel minimap" width="320" height="184"></canvas>
-  </div>
-</div>
-<script>
-(()=>{const s=document.createElement('script');s.type='module';s.src='./skyrmion.js?v=d77ab5b7';document.body.appendChild(s);
-setTimeout(()=>{const el=document.getElementById('status');if(el&&el.textContent.includes('WASD'))el.textContent='LIVE · WASD pitch/yaw · QE vertical · 1-6 aircraft · F domain';},1500);})();
-</script>
-</body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#02050a"><title>SKYRMION · Flight Simulator</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#02050a;color:#eaffff;font-family:system-ui,-apple-system,sans-serif}canvas{position:fixed;inset:0;width:100%;height:100%;touch-action:none}.hud{position:fixed;inset:0;pointer-events:none}.top{position:absolute;top:max(10px,env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;gap:8px}.chip,.panel,button{background:#061118d9;border:1px solid #7fffe944;color:#eaffff;border-radius:14px;backdrop-filter:blur(12px)}.chip{padding:8px 10px;font-size:10px;letter-spacing:.12em}.bottom{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:end}.panel{pointer-events:auto;padding:9px;max-width:78vw}.crafts{display:flex;gap:6px;flex-wrap:wrap}button{pointer-events:auto;padding:9px 11px;font-weight:700}button.on{border-color:#8ff;background:#123a3a}.stick{pointer-events:auto;width:112px;height:112px;border-radius:50%;border:1px solid #8ff6;background:#06111899;position:relative;touch-action:none}.knob{position:absolute;width:42px;height:42px;border-radius:50%;background:#9ff5;border:1px solid #aff;left:35px;top:35px}.ret{position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%);border:1px solid #aff8;border-radius:50%}.ret:after{content:"";position:absolute;left:-15px;right:-15px;top:21px;height:1px;background:#aff8}@media(max-width:700px){.top .optional{display:none}.panel{max-width:64vw}.crafts button{font-size:9px;padding:7px}}
+</style></head><body><canvas id="world"></canvas><div class="hud"><div class="top"><span class="chip">SKYRMION · LIVE FLIGHT</span><span id="tele" class="chip">F-16 · 420 KT · 12,000 FT</span><span class="chip optional">2D SAFE RUNTIME · NO EXTERNAL ENGINE</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div style="font-size:9px;opacity:.7;margin-top:6px">DRAG STICK · WASD/ARROWS · 1–6 CRAFT · F DOMAIN</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div><script>
+(()=>{const c=document.getElementById('world'),x=c.getContext('2d',{alpha:false}),tele=document.getElementById('tele'),stick=document.getElementById('stick'),knob=document.getElementById('knob');let W,H,D=1,t=0,roll=0,pitch=0,tr=0,tp=0,spd=420,alt=12000,domain=0,active=0,drag=0;const craft=['F-16','SR-71','X-15','EIDOLON','MANTA','SYNTAX JACOB'],base=[420,1650,3100,680,540,900];function size(){D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0)}addEventListener('resize',size);size();const root=document.getElementById('crafts');craft.forEach((n,i)=>{let b=document.createElement('button');b.textContent=n;b.onclick=()=>{active=i;[...root.children].forEach((q,j)=>q.classList.toggle('on',j===i))};root.appendChild(b)});root.children[0].classList.add('on');function input(px,py){let r=stick.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(px-r.left-r.width/2)/(r.width*.34))),dy=Math.max(-1,Math.min(1,(py-r.top-r.height/2)/(r.height*.34)));tr=dx*.8;tp=-dy*.5;knob.style.transform='translate('+dx*32+'px,'+dy*32+'px)'}stick.onpointerdown=e=>{drag=1;stick.setPointerCapture(e.pointerId);input(e.clientX,e.clientY)};stick.onpointermove=e=>{if(drag)input(e.clientX,e.clientY)};stick.onpointerup=stick.onpointercancel=()=>{drag=0;tr=tp=0;knob.style.transform='none'};const keys={};onkeydown=e=>{keys[e.key.toLowerCase()]=1;if(e.key>='1'&&e.key<='6')root.children[+e.key-1].click();if(e.key.toLowerCase()==='f')domain=(domain+1)%3};onkeyup=e=>keys[e.key.toLowerCase()]=0;function jet(){x.save();x.translate(W/2,H*.61);x.rotate(roll*.5);x.fillStyle=active<3?'#dce8e9':active===4?'#9cebd5':'#c6c5ff';x.shadowBlur=active<3?8:28;x.shadowColor='#76fff0';x.beginPath();x.moveTo(0,-45);x.lineTo(9,12);x.lineTo(65,33);x.lineTo(60,42);x.lineTo(10,29);x.lineTo(5,55);x.lineTo(-5,55);x.lineTo(-10,29);x.lineTo(-60,42);x.lineTo(-65,33);x.lineTo(-9,12);x.closePath();x.fill();x.fillStyle='#071820';x.beginPath();x.ellipse(0,-8,6,16,0,0,7);x.fill();if(active>=3){x.strokeStyle='#7ff';x.lineWidth=2;x.beginPath();x.ellipse(0,18,34+Math.sin(t*4)*4,12,0,0,7);x.stroke()}x.restore()}function draw(){requestAnimationFrame(draw);t+=.016;let kr=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0),kp=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0);roll+=(Math.max(-.9,Math.min(.9,tr+kr*.7))-roll)*.06;pitch+=(Math.max(-.55,Math.min(.55,tp+kp*.4))-pitch)*.06;spd+=(base[active]-spd)*.012;alt=Math.max(50,alt+pitch*25);let g=x.createLinearGradient(0,0,0,H);if(domain===0){g.addColorStop(0,'#07152f');g.addColorStop(.48,'#2878a6');g.addColorStop(1,'#cbbf98')}else{g.addColorStop(0,'#010208');g.addColorStop(1,domain===1?'#09233c':'#080816')}x.fillStyle=g;x.fillRect(0,0,W,H);x.save();x.translate(W/2,H/2+pitch*H*.42);x.rotate(-roll*.55);if(domain===0){x.fillStyle='#253d2b';x.fillRect(-W,-2,W*2,H);x.strokeStyle='#ffffff24';let flow=(t*spd*.22)%60;for(let y=20-flow;y<H;y+=60){x.beginPath();x.moveTo(-W,y);x.lineTo(W,y);x.stroke()}for(let i=-10;i<=10;i++){x.beginPath();x.moveTo(W/2+i*8,0);x.lineTo(W/2+i*120,H);x.stroke()}}else{for(let i=0;i<100;i++){let sx=(i*97+t*spd*.04)%W,sy=(i*i*31)%H;x.fillStyle='#dff';x.fillRect(sx,sy,1+(i%13===0),1+(i%13===0))}if(domain===1){x.fillStyle='#16466d';x.beginPath();x.arc(0,H*1.25,W,0,7);x.fill()}}x.restore();jet();tele.textContent=craft[active]+' · '+Math.round(spd)+' KT · '+Math.round(alt).toLocaleString()+' FT';}draw();})();
+</script></body></html>
