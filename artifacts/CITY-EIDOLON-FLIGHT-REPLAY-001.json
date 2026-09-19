@@ -1,0 +1,158 @@
+{
+  "certificate_id": "CITY-EIDOLON-FLIGHT-REPLAY-001",
+  "checks": {
+    "L_in_unit_interval": {
+      "L0": 0.510776577,
+      "L_final": 0.968451699,
+      "pass": true
+    },
+    "W_recomputed_from_L": {
+      "description": "Logged scalar amplitude matches the documented E2 thrust-envelope adapter.",
+      "formula": "W = clip(scalar_amp * L / Ω_c, 0, 3)",
+      "max_abs_error": 1.3936167775341346e-09,
+      "pass": true
+    },
+    "channels_present": {
+      "description": "Every sample logs W, L, m_eff, mode.",
+      "pass": true
+    },
+    "evidence_class_locked_E2": {
+      "description": "Certificate refuses any promotion above E2.",
+      "pass": true
+    },
+    "m_eff_recomputed_from_L": {
+      "description": "Logged inertia matches the documented E2 mass rule.",
+      "formula": "m_eff = m * ((78/125)*(1-L) + 1e-6)",
+      "max_abs_error": 3.7400001318133036e-07,
+      "pass": true
+    },
+    "parent_invariants_declared": {
+      "computed": {
+        "dim_E47": 47,
+        "dim_V": 125,
+        "gap": 11664,
+        "k2_max": 186624,
+        "omega_c": 0.376
+      },
+      "description": "Replay binds the locked E47 invariants; it does not re-prove them.",
+      "pass": true
+    },
+    "trajectory_merkle": {
+      "n_samples": 961,
+      "pass": true,
+      "root": "36da7d47568e75d112b45c0fbc27163550a12e7c8c530cbd8f0a6dabe7c42b06"
+    }
+  },
+  "claims": {
+    "asserted": [
+      "The attached trajectory logs W, L, m_eff, and mode at every sample.",
+      "Logged m_eff and W recompute from L under the documented E2 rules.",
+      "The Merkle root commits the sample sequence.",
+      "The certificate is cryptographically bound to this payload by the E2 lab key.",
+      "Parent E47 invariants are declared, not re-derived here."
+    ],
+    "refused": [
+      "Physical inertial nullification.",
+      "Measured SI thrust or vacuum specific impulse.",
+      "Promotion of E2 game rules to E0, E1, E3, E4, or H1.",
+      "Identity of the lab signing key with the originator.",
+      "That WebGL rendering evaluates the 125-component field."
+    ]
+  },
+  "craft": {
+    "dt": 0.05,
+    "duration_s": 48.0,
+    "engine_mode": "translate",
+    "id": "S-47",
+    "lab_mode": "explore",
+    "lock_target": 0.92,
+    "mass_kg": 1200.0,
+    "name": "Scalar craft",
+    "scalar_amp": 0.7,
+    "scale": "kernel",
+    "seed": 47
+  },
+  "credits": {
+    "affiliation": "AIMS Research Institute / Recursive Intelligence Consortium",
+    "instrument": "EIDOLON · Scalar Flight Lab · The Mathematical City",
+    "kernel": "E47 on V2⊗³, dim H=125, dim ker K=47, Ω_c=47/125",
+    "license_intent": "CC0-1.0 aligned with E47-Kartekeya for the certificate payload",
+    "originator": "Nicholas Shane Kouns",
+    "signing_authority": "EIDOLON E2 lab instrument key (not a personal identity key)"
+  },
+  "environment": {
+    "arch": "x86_64",
+    "engine_path": "/home/workdir/.grok/skills/eidolon-propulsion/scripts/eidolon_engine.py",
+    "implementation": "CPython",
+    "numpy": "2.4.4",
+    "os": "Linux 6.12.8+",
+    "python": "3.12.3"
+  },
+  "evidence": {
+    "class": "E2",
+    "scope": "Educational flight-lab replay. Scalar thrust and effective mass are game-model rules. E47 spectral algebra is evaluated separately in the parent E0/E1 certificate. Rendering uses ordinary GPU graphics.",
+    "status": "PASS"
+  },
+  "game_rules": {
+    "L": "L = (n2 + n5) / Σ n                   # kernel occupancy",
+    "W": "W = clip(scalar_amp * L / Ω_c, 0, 3)   # flight-deck envelope",
+    "honesty": "These are E2 game rules. They are not SI flight-test results.",
+    "m_eff": "m_eff = m * ((78/125)*(1-L) + 1e-6) # complement-weighted inertia",
+    "mode": "engine mode mapped to lab mode; hover applies zero plane force",
+    "thrust": "T_K = G L (Ω/Ω_c) (γ·n)/κ · m g0   # kernel units, game coupling"
+  },
+  "grammar": "CITY-INVARIANT 1.0",
+  "issued_utc": "2026-09-19T20:55:13Z",
+  "lineage": {
+    "data_lifetime": "Lineage-aware retention. No deletion of this certificate or its trajectory without review of the entire upstream/downstream set.",
+    "engine": "eidolon_engine.py 7-sector ODE, K=(C-6I)(C-30I)",
+    "flight_lab": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site/",
+    "parent_certificate": "artifacts/e47_validation_certificate.json",
+    "parent_evidence_class": [
+      "E0",
+      "E1"
+    ],
+    "parent_repository": "nicholaskouns-create/E47-Kartekeya",
+    "parent_sha256": "bfc57650142200e967c18ee584d7dcc43cfc7405ec40478864023fb1525409f3",
+    "parent_url": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/artifacts/e47_validation_certificate.json",
+    "sibling_certificate": "CITY-AETHERIS-WAVEFORGE-EIDOLON-001",
+    "sibling_note": "Aetheris closed-loop numerical coupling; software only."
+  },
+  "schema": "CITY-EIDOLON-FLIGHT-REPLAY/1.0",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "EIDOLON-E2-LAB-2026-09-19",
+    "payload_sha256": "ac9c7df7617c3a1c0cce68a6a3a427ad3956b4924cd1ca00eda79af1e909f7b1",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5CgpbiprcN/oF9+ddBCmW7Bxv/B8VtPl1RkJ8kMryL8=\n-----END PUBLIC KEY-----\n",
+    "signature_hex": "aaae9c491f2de855b5be34f4bafdbcd07f1d0368a6500079677d15f13284ad149d655a6ce41aefcd291c0ecfd3216440bc1406cc0ae3514d27b7088c1723140a",
+    "signed_fields": "canonical JSON of the certificate excluding the signature object"
+  },
+  "trajectory": {
+    "canonical_sha256": "8a8f7d40deb882f5e6d163a157babfdc59e0a6fd6e1c2583438e7ffb5e763b81",
+    "channels": [
+      "t",
+      "W",
+      "L",
+      "m_eff",
+      "mode",
+      "lab_mode"
+    ],
+    "dt": 0.05,
+    "merkle_root": "36da7d47568e75d112b45c0fbc27163550a12e7c8c530cbd8f0a6dabe7c42b06",
+    "n_samples": 961,
+    "summary": {
+      "L0": 0.510776577,
+      "L_final": 0.968451699,
+      "W0": 0.95091384,
+      "W_final": 1.802968588,
+      "airspeed_final_mps": 38.154055,
+      "m_eff_0": 366.331699196,
+      "m_eff_final": 23.624567934,
+      "range_m": 921.550068,
+      "t_lock_s": 0.0
+    },
+    "t0": 0.0,
+    "t1": 48.0,
+    "uri": "trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson"
+  }
+}
