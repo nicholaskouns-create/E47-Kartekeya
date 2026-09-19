@@ -1,4 +1,5 @@
 // Run with: node --test scripts/check_website.cjs (Node.js 22+).
+require('./check_skyrmion_runtime.cjs');
 const assert = require("node:assert/strict");
 const { existsSync, readFileSync } = require("node:fs");
 const { resolve } = require("node:path");

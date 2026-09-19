@@ -1,29 +1,27 @@
-import {clamp,cross,qMul,qNormalize,qRotate,qRotateInv,norm} from './math.js';
+import {cross,qMul,qNormalize,qRotate,qRotateInv} from './math.js';
+// Shared rigid-body kinematics only. Each flight model supplies its own loads.
 export class SixDOFPhysics{
- constructor(){this.schema='SKYRMION-6DOF-2.0'}
+ constructor(){this.schema='SKYRMION-6DOF-2.1'}
  createState(vehicle,{lat=36.1699,lon=-115.1398,altitudeM=3600,speedMps=216,heading=0}={}){return {t:0,position:{lat,lon,altitudeM},velocityBody:[speedMps,0,0],quaternion:[Math.cos(heading/2),0,0,Math.sin(heading/2)],omegaBody:[0,0,0],controls:{throttle:.72,pitch:0,roll:0,yaw:0},vehicleId:vehicle.id,accelBody:[0,0,0],last:{alpha:0,beta:0,mach:0,qbar:0}}}
- aerodynamic(vehicle,state,world){
-  if(vehicle.evidence!=='conventional')return {forceBody:[0,0,0],momentBody:[0,0,0],alpha:0,beta:0,qbar:0,mach:norm(state.velocityBody)/world.speedOfSound};
-  const [u,v,w]=state.velocityBody,V=Math.max(1,norm(state.velocityBody)),alpha=Math.atan2(w,Math.max(.1,u)),beta=Math.asin(clamp(v/V,-1,1));
-  const qbar=.5*world.density*V*V,S=vehicle.wing.area,b=vehicle.wing.span,c=vehicle.wing.chord,a=vehicle.aero,ctl=state.controls;
-  const CL=a.CL0+a.CLa*alpha+.72*ctl.pitch,CD=a.CD0+a.k*CL*CL+.04*beta*beta,CY=a.CyBeta*beta+a.CyDr*ctl.yaw;
-  const L=qbar*S*CL,D=qbar*S*CD,Y=qbar*S*CY;
-  const ca=Math.cos(alpha),sa=Math.sin(alpha);const Fx=-D*ca+L*sa,Fz=-D*sa-L*ca;
-  const p=state.omegaBody[0],q=state.omegaBody[1],r=state.omegaBody[2];
-  const Cl=a.Clp*(p*b/(2*V))+a.ClDa*ctl.roll, Cm=a.Cm0+a.Cma*alpha+a.CmDe*ctl.pitch, Cn=a.Cnr*(r*b/(2*V))+a.CnDr*ctl.yaw;
-  return {forceBody:[Fx,Y,Fz],momentBody:[qbar*S*b*Cl,qbar*S*c*Cm,qbar*S*b*Cn],alpha,beta,qbar,mach:V/world.speedOfSound};
- }
- step(vehicle,state,world,propulsion,dt){
-  const aero=this.aerodynamic(vehicle,state,world),mass=vehicle.massKg,I=vehicle.inertia;
-  const gNed=[0,0,world.gravity*mass],gBody=qRotateInv(state.quaternion,gNed);
-  const F=[aero.forceBody[0]+propulsion.forceBody[0]+gBody[0],aero.forceBody[1]+propulsion.forceBody[1]+gBody[1],aero.forceBody[2]+propulsion.forceBody[2]+gBody[2]];
-  const omega=state.omegaBody,Iw=[I[0]*omega[0],I[1]*omega[1],I[2]*omega[2]],gyro=cross(omega,Iw),M=propulsion.momentBody.map((v,i)=>v+aero.momentBody[i]);
-  const acc=[F[0]/mass-(omega[1]*state.velocityBody[2]-omega[2]*state.velocityBody[1]),F[1]/mass-(omega[2]*state.velocityBody[0]-omega[0]*state.velocityBody[2]),F[2]/mass-(omega[0]*state.velocityBody[1]-omega[1]*state.velocityBody[0])];
-  for(let i=0;i<3;i++)state.velocityBody[i]+=acc[i]*dt;
-  for(let i=0;i<3;i++)state.omegaBody[i]+=(M[i]-gyro[i])/I[i]*dt;
-  const qdot=qMul(state.quaternion,[0,...state.omegaBody]).map(v=>.5*v);state.quaternion=qNormalize(state.quaternion.map((v,i)=>v+qdot[i]*dt));
-  state.accelBody=acc;state.t+=dt;state.last={alpha:aero.alpha,beta:aero.beta,mach:aero.mach,qbar:aero.qbar};
-  return state;
+ step(vehicle,state,world,dt,loads){
+  const mass=vehicle.massKg,I=vehicle.inertia;
+  const initial=[...state.velocityBody,...state.omegaBody,...state.quaternion];
+  const derivative=x=>{
+   const s={...state,velocityBody:x.slice(0,3),omegaBody:x.slice(3,6),quaternion:qNormalize(x.slice(6))};
+   const {aero,propulsion}=loads(s),omega=s.omegaBody;
+   const gBody=qRotateInv(s.quaternion,[0,0,world.gravity*mass]);
+   const coriolis=cross(omega,s.velocityBody),gyro=cross(omega,omega.map((v,i)=>I[i]*v));
+   const acc=gBody.map((g,i)=>(g+aero.forceBody[i]+propulsion.forceBody[i])/mass-coriolis[i]);
+   const angular=omega.map((_,i)=>(aero.momentBody[i]+propulsion.momentBody[i]-gyro[i])/I[i]);
+   return [...acc,...angular,...qMul(s.quaternion,[0,...omega]).map(v=>v*.5)];
+  };
+  // RK4 avoids the artificial energy gain of Euler integration in rotating axes.
+  const offset=(k,f)=>initial.map((v,i)=>v+dt*f*k[i]);
+  const a=derivative(initial),b=derivative(offset(a,.5)),c=derivative(offset(b,.5)),d=derivative(offset(c,1));
+  const next=initial.map((v,i)=>v+dt*(a[i]+2*b[i]+2*c[i]+d[i])/6);
+  state.velocityBody=next.slice(0,3);state.omegaBody=next.slice(3,6);state.quaternion=qNormalize(next.slice(6));
+  state.accelBody=derivative([...state.velocityBody,...state.omegaBody,...state.quaternion]).slice(0,3);state.t+=dt;
+  const {alpha,beta,mach,qbar}=loads(state).aero;state.last={alpha,beta,mach,qbar};return state;
  }
  velocityNed(state){return qRotate(state.quaternion,state.velocityBody)}
 }

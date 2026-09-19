@@ -108,7 +108,7 @@ def test_resilient_boot_and_hero_framing():
     assert 'addNavigationLights' in terrain
     assert 'cameraDistance:31' in terrain
     assert 'cameraDistance:48' in terrain
-    assert 'cameraDistance:39' in boot
+    assert 'cameraDistance:39' in terrain
     assert 'src="./runtime2/bootstrap.js"' in html
     assert 'await createSkyrmionTerrain3D' not in html
 
@@ -116,7 +116,7 @@ def test_resilient_boot_and_hero_framing():
 def test_runtime2_boot_syntax_regressions():
     boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
     assert 'keys.control?.35:.72' not in boot
-    assert 'keys.control ? .35 : .72' in boot
+    assert 'rt.trim?.throttle' in boot
     assert 'SKYRMION-VISUAL-FALLBACK-1.0' in boot
 
 
@@ -132,11 +132,13 @@ def test_stable_flight_controls_and_yaw():
     runtime=(root/'website/interfaces/skyrmion/runtime2/runtime2.js').read_text()
     vehicles=(root/'website/interfaces/skyrmion/runtime2/vehicle-registry.js').read_text()
     boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
-    assert 'SKYRMION-RUNTIME-2.1' in runtime
+    assert 'SKYRMION-RUNTIME-2.2' in runtime
     assert 'commandControls' in runtime
-    assert '_updateFlightControls' in runtime
-    assert '+beta*(f.betaDamp??1.25)' in runtime
-    assert '-r*(f.yawDamp??.8)' in runtime
+    conventional=(root/'website/interfaces/skyrmion/runtime2/conventional-model.js').read_text()
+    assert 'ConventionalFlightModel' in runtime
+    assert 'ExperimentalFlightModel' in runtime
+    assert '+beta*(f.betaDamp??1.25)' in conventional
+    assert '-r*(f.yawDamp??.8)' in conventional
     assert 'yawRate' in vehicles
     assert 'function shapeAxis' in boot
     assert 'keyYaw*.46' in boot

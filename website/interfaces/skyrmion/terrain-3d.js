@@ -9,7 +9,7 @@ const PATCH_RADIUS=1;
 const GRID=96;
 const DEFAULT_ZOOM=12;
 const DEG=Math.PI/180;
-const CRAFT_NAMES=['F-16','SR-71','X-15','EIDOLON','MANTA','SYNTAX JACOB'];
+const CRAFT_NAMES=['F-16','SR-71','X-15','EIDOLON','MANTA','SKYRMION','SYNTAX JACOB'];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const wrap=(v,n)=>((v%n)+n)%n;
 
@@ -381,12 +381,19 @@ function makeSyntaxJacob(){
   const exhaust=engineFlame(.95,4.0,0x9b8cff);exhaust.position.z=6.3;g.add(exhaust);
   return finalizeCraft(g,{label:'SYNTAX JACOB',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.7,0,4.5),trailAnchor(g,2.7,0,4.5)],cameraDistance:38,cameraHeight:12,cameraLookAhead:65,span:13.6,tailZ:6.2,noseZ:-8.8,animateVisual:dt=>{r1.rotation.z+=dt*.34;r2.rotation.z-=dt*.7}});
 }
+function makeSkyrmion(){
+  // Construct a fresh rig: cloning userData would alias live control surfaces/lights.
+  const g=makeSyntaxJacob();g.scale.multiplyScalar(.92);
+  g.traverse(o=>{if(o.material){o.material.color?.setHex?.(0x6ee7d8);o.material.emissive?.setHex?.(0x082a31);}});
+  Object.assign(g.userData,{label:'SKYRMION',cameraDistance:39,cameraHeight:12,cameraLookAhead:66});
+  return g;
+}
 function makeFleet(){
-  const models=[makeF16(),makeSR71(),makeX15(),makeEidolon(),makeManta(),makeSyntaxJacob()];
+  const models=[makeF16(),makeSR71(),makeX15(),makeEidolon(),makeManta(),makeSkyrmion(),makeSyntaxJacob()];
   models.forEach((m,i)=>{m.visible=i===0;m.name=CRAFT_NAMES[i]});return models;
 }
 function updateMantaModel(model,state){
-  const geo=state?.geometry;if(!model||!Array.isArray(geo)||geo.length<375)return;
+  const geo=state?.geometry;if(!model||!Array.isArray(geo)||geo.length<375||!geo.every(Number.isFinite))return;
   const d=model.userData,scale=3.65;
   for(let i=0;i<125;i++){const j=i*3;d.pointPositions[j]=geo[j]*scale;d.pointPositions[j+1]=geo[j+1]*scale*2.1;d.pointPositions[j+2]=geo[j+2]*scale}
   d.pointGeo.attributes.position.needsUpdate=true;let k=0;
@@ -526,7 +533,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   const worldUp=new THREE.Vector3(0,1,0),forward=new THREE.Vector3(),right=new THREE.Vector3(),craftUp=new THREE.Vector3(),cameraUp=new THREE.Vector3();
   const cameraForward=new THREE.Vector3(),cameraRight=new THREE.Vector3(),cameraLocalUp=new THREE.Vector3();
   const desiredCamera=new THREE.Vector3(),desiredTarget=new THREE.Vector3(),smoothTarget=new THREE.Vector3(),basis=new THREE.Matrix4(),baseQ=new THREE.Quaternion(),rollQ=new THREE.Quaternion(),localRollAxis=new THREE.Vector3(0,0,-1);
-  let patch=null,patchLoading=false,generation=0,destroyed=false,activeIndex=clamp(Number(active)||0,0,5),mantaState=null,cameraInitialized=false;
+  let patch=null,patchLoading=false,generation=0,destroyed=false,activeIndex=clamp(Number(active)||0,0,fleet.length-1),mantaState=null,cameraInitialized=false;
   const licensedAssetState={loaded:{},replacements:{},errors:{},audit:null,registry:null};
   async function licensedAPI(){
     const api=await getLicensedAssetModule();
@@ -654,11 +661,13 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
     space.stars.visible=!atmospheric;space.planet.visible=d===1;trailSystem.mesh.visible=atmospheric;
   }
   function updateFlightState(next={}){
+    for(const key of ['lat','lon','altitude_m','heading','pitch','roll','speed'])if(key in next&&!Number.isFinite(next[key]))return;
+    if(Math.abs(next.lat??flight.lat)>90||Math.abs(next.lon??flight.lon)>180)return;
     Object.assign(flight,next);setActiveCraft(flight.active);updateDomainVisibility();
     if(!patch||distanceMeters(patch.center,flight)>patch.span*.28)buildPatch(flight.lat,flight.lon).catch(()=>{});
   }
   function updateMantaFrame(state){mantaState=state;updateMantaModel(fleet[4],state)}
-  function teleport(next={}){Object.assign(flight,next);setActiveCraft(flight.active);cameraInitialized=false;buildPatch(flight.lat,flight.lon,true).catch(()=>{})}
+  function teleport(next={}){updateFlightState(next);cameraInitialized=false;buildPatch(flight.lat,flight.lon,true).catch(()=>{})}
   function updateCraftPose(){
     if(!patch)return;
     const local=localMeters(patch.center,flight.lat,flight.lon),h=Number(flight.heading||0),p=Number(flight.pitch||0),r=Number(flight.roll||0),cp=Math.cos(p),sp=Math.sin(p);
