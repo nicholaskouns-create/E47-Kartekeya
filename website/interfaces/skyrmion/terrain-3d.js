@@ -146,69 +146,170 @@ function makeLights(span,seed){
 function material(color,{emissive=0x000000,emissiveIntensity=0,metalness=.58,roughness=.34,transparent=false,opacity=1}={}){
   return new THREE.MeshStandardMaterial({color,emissive,emissiveIntensity,metalness,roughness,transparent,opacity,side:THREE.DoubleSide});
 }
-function basic(color,opacity=1){return new THREE.MeshBasicMaterial({color,transparent:opacity<1,opacity,side:THREE.DoubleSide,depthWrite:opacity>=1})}
-function shadowize(group){
-  group.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true}});return group;
+function physicalGlass(color=0x7fc9da){
+  return new THREE.MeshPhysicalMaterial({
+    color,metalness:.05,roughness:.08,transparent:true,opacity:.48,transmission:.38,thickness:.22,
+    clearcoat:1,clearcoatRoughness:.05,ior:1.46,side:THREE.DoubleSide,depthWrite:false
+  });
 }
-function planform(coords,mat,y=0){
+function basic(color,opacity=1){
+  return new THREE.MeshBasicMaterial({color,transparent:opacity<1,opacity,side:THREE.DoubleSide,depthWrite:opacity>=1,blending:opacity<1?THREE.AdditiveBlending:THREE.NormalBlending});
+}
+function shadowize(group){
+  group.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true}});
+  return group;
+}
+function extrudedPlanform(coords,mat,thickness=.16,y=0){
   const shape=new THREE.Shape();shape.moveTo(coords[0][0],coords[0][1]);
   for(let i=1;i<coords.length;i++)shape.lineTo(coords[i][0],coords[i][1]);
   shape.closePath();
-  const mesh=new THREE.Mesh(new THREE.ShapeGeometry(shape),mat);mesh.rotation.x=Math.PI/2;mesh.position.y=y;return mesh;
+  const geo=new THREE.ExtrudeGeometry(shape,{depth:thickness,bevelEnabled:true,bevelThickness:.035,bevelSize:.045,bevelSegments:2,curveSegments:1});
+  geo.rotateX(Math.PI/2);
+  const mesh=new THREE.Mesh(geo,mat);mesh.position.y=y-thickness*.5;return mesh;
 }
-function capsule(radius,length,mat){
-  const m=new THREE.Mesh(new THREE.CapsuleGeometry(radius,length,6,16),mat);m.rotation.x=Math.PI/2;return m;
+function planform(coords,mat,y=0){return extrudedPlanform(coords,mat,.09,y)}
+function fuselage(profile,mat,segments=32){
+  const pts=profile.map(([z,r])=>new THREE.Vector2(r,z));
+  const geo=new THREE.LatheGeometry(pts,segments);geo.rotateX(Math.PI/2);geo.computeVertexNormals();
+  return new THREE.Mesh(geo,mat);
 }
-function engineGlow(z,color=0x66fff0,radius=.8){
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(radius,.14,8,32),basic(color,.85));ring.position.z=z;return ring;
+function canopy(scale,position,glass=physicalGlass()){
+  const m=new THREE.Mesh(new THREE.SphereGeometry(1,32,18),glass);m.scale.set(...scale);m.position.set(...position);return m;
+}
+function verticalSurface(coords,mat,x=0){
+  const shape=new THREE.Shape();shape.moveTo(coords[0][0],coords[0][1]);
+  for(let i=1;i<coords.length;i++)shape.lineTo(coords[i][0],coords[i][1]);shape.closePath();
+  const geo=new THREE.ExtrudeGeometry(shape,{depth:.11,bevelEnabled:true,bevelThickness:.025,bevelSize:.025,bevelSegments:1});
+  geo.rotateY(Math.PI/2);
+  const mesh=new THREE.Mesh(geo,mat);mesh.position.x=x;return mesh;
+}
+function pivotSurface(coords,mat,pivotX,pivotZ,y=.08,thickness=.11){
+  const local=coords.map(([x,z])=>[x-pivotX,z-pivotZ]),pivot=new THREE.Group();
+  pivot.position.set(pivotX,y,pivotZ);pivot.add(extrudedPlanform(local,mat,thickness,0));return pivot;
+}
+function engineFlame(radius,length,color=0x6eefff){
+  const g=new THREE.Group();
+  const outer=new THREE.Mesh(new THREE.ConeGeometry(radius,length,20,1,true),basic(color,.26));outer.rotation.x=Math.PI/2;outer.position.z=length*.48;
+  const inner=new THREE.Mesh(new THREE.ConeGeometry(radius*.52,length*.7,16,1,true),basic(0xf2ffff,.55));inner.rotation.x=Math.PI/2;inner.position.z=length*.35;
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(radius*.86,.08,8,28),basic(color,.82));
+  g.add(outer,inner,ring);g.userData={outer,inner,ring,baseLength:length};return g;
+}
+function trailAnchor(parent,x,y,z){const a=new THREE.Object3D();a.position.set(x,y,z);parent.add(a);return a}
+function landingGear(skin,{mainX=2.2,mainZ=1.6,noseZ=-4.2,height=1.75}={}){
+  const g=new THREE.Group(),strutMat=material(0x737c7e,{metalness:.78,roughness:.24}),rubber=material(0x15191a,{metalness:.05,roughness:.9});
+  function leg(x,z,h=height,wheel=.34){
+    const lg=new THREE.Group();
+    const strut=new THREE.Mesh(new THREE.CylinderGeometry(.08,.10,h,10),strutMat);strut.position.y=-h*.5;lg.add(strut);
+    const wh=new THREE.Mesh(new THREE.CylinderGeometry(wheel,wheel,.16,18),rubber);wh.rotation.z=Math.PI/2;wh.position.y=-h;lg.add(wh);
+    lg.position.set(x,-.12,z);return lg;
+  }
+  g.add(leg(-mainX,mainZ),leg(mainX,mainZ),leg(0,noseZ,height*.78,.27));
+  g.userData.deploy=0;g.scale.y=.001;g.visible=false;return g;
+}
+function finalizeCraft(g,spec={}){
+  Object.assign(g.userData,spec);
+  g.userData.controls=g.userData.controls||{};
+  g.userData.exhausts=g.userData.exhausts||[];
+  g.userData.trailAnchors=g.userData.trailAnchors||[];
+  g.userData.cameraDistance=g.userData.cameraDistance||115;
+  g.userData.cameraHeight=g.userData.cameraHeight||32;
+  g.userData.cameraLookAhead=g.userData.cameraLookAhead||175;
+  return shadowize(g);
 }
 function makeF16(){
-  const g=new THREE.Group(),skin=material(0x7d898c,{metalness:.72,roughness:.28});
-  g.add(planform([[0,-8.2],[1.6,-3.1],[5.8,.8],[5.1,2.4],[1.2,1.8],[1.4,6.2],[-1.4,6.2],[-1.2,1.8],[-5.1,2.4],[-5.8,.8],[-1.6,-3.1]],skin,.05));
-  const body=capsule(.72,10.5,skin);body.position.z=-.2;g.add(body);
-  const tail=planform([[0,1.8],[0,6.4],[0,6.4]],skin);tail.visible=false;
-  const fin=new THREE.Mesh(new THREE.BoxGeometry(.12,2.8,3.0),skin);fin.position.set(0,1.4,3.5);fin.rotation.x=-.25;g.add(fin);
-  g.add(engineGlow(6.1,0x68d9ff,.58));g.scale.setScalar(1.15);g.userData.label='F-16';return shadowize(g);
+  const g=new THREE.Group(),skin=material(0x7f8b8e,{metalness:.72,roughness:.27}),dark=material(0x30383a,{metalness:.58,roughness:.3});
+  const body=fuselage([[-8.5,.05],[-7.8,.34],[-6.4,.62],[-3.8,.86],[.5,.92],[3.8,.70],[6.5,.44],[7.2,.08]],skin,36);g.add(body);
+  g.add(extrudedPlanform([[-1.1,-3.5],[-5.9,-.3],[-5.2,1.65],[-1.0,1.3],[1.0,1.3],[5.2,1.65],[5.9,-.3],[1.1,-3.5]],skin,.19,.02));
+  g.add(extrudedPlanform([[-.9,3.7],[-2.6,5.1],[-2.15,6.15],[0,5.55],[2.15,6.15],[2.6,5.1],[.9,3.7]],skin,.14,.09));
+  g.add(verticalSurface([[3.0,0],[5.8,0],[5.1,3.15],[3.8,3.45]],skin,0));
+  const canopyMesh=canopy([.72,.48,2.05],[0,.63,-3.4]);g.add(canopyMesh);
+  const intake=new THREE.Mesh(new THREE.TorusGeometry(.54,.10,10,28),dark);intake.rotation.x=Math.PI/2;intake.position.set(0,-.2,-1.65);g.add(intake);
+  const aL=pivotSurface([[-5.05,.7],[-2.6,.85],[-2.45,1.55],[-4.6,1.62]],skin,-2.55,1.1,.13);
+  const aR=pivotSurface([[2.6,.85],[5.05,.7],[4.6,1.62],[2.45,1.55]],skin,2.55,1.1,.13);
+  const elevator=pivotSurface([[-2.1,5.15],[-.3,5.0],[.3,5.0],[2.1,5.15],[1.95,5.85],[-1.95,5.85]],skin,0,5.15,.13);
+  const rudderPivot=new THREE.Group();rudderPivot.position.set(0,0,5.0);const rudder=verticalSurface([[0,0],[1.1,0],[.55,2.8],[.05,3.0]],skin,0);rudder.position.z=-1.1;rudderPivot.add(rudder);
+  g.add(aL,aR,elevator,rudderPivot);
+  const gear=landingGear(skin,{mainX:2.0,mainZ:1.0,noseZ:-4.7,height:1.65});g.add(gear);
+  const exhaust=engineFlame(.52,3.2,0x64dfff);exhaust.position.set(0,0,7.0);g.add(exhaust);
+  const anchors=[trailAnchor(g,-3.8,.1,1.4),trailAnchor(g,3.8,.1,1.4)];
+  return finalizeCraft(g,{label:'F-16',controls:{aileronL:aL,aileronR:aR,elevator,rudder:rudderPivot},gear,exhausts:[exhaust],trailAnchors:anchors,cameraDistance:98,cameraHeight:29,cameraLookAhead:165});
 }
 function makeSR71(){
-  const g=new THREE.Group(),skin=material(0x111719,{metalness:.8,roughness:.22});
-  g.add(planform([[0,-13],[2,-7],[8,-1],[7.5,4],[3,8],[1.7,10],[-1.7,10],[-3,8],[-7.5,4],[-8,-1],[-2,-7]],skin,.03));
-  const body=capsule(.62,17,skin);body.position.z=-1.3;g.add(body);
-  for(const x of [-3.1,3.1]){const n=capsule(.66,10.5,skin);n.position.set(x,-.12,1.4);g.add(n);const glow=engineGlow(7.0,0x5fdcff,.52);glow.position.set(x,0,7);g.add(glow)}
-  g.userData.label='SR-71';return shadowize(g);
+  const g=new THREE.Group(),skin=material(0x111719,{metalness:.82,roughness:.2}),dark=material(0x06090a,{metalness:.5,roughness:.35});
+  const body=fuselage([[-13.8,.05],[-12.5,.28],[-9.5,.48],[-5,.58],[1,.55],[7,.40],[10,.08]],skin,36);g.add(body);
+  g.add(extrudedPlanform([[-.8,-8],[-8.6,-1.5],[-7.7,4.4],[-3.1,8.2],[-1.0,8.2],[1.0,8.2],[3.1,8.2],[7.7,4.4],[8.6,-1.5],[.8,-8]],skin,.16,.01));
+  const canopyMesh=canopy([.56,.28,2.35],[0,.42,-7.4],physicalGlass(0x7aa4ab));g.add(canopyMesh);
+  const aL=pivotSurface([[-7.3,2.2],[-3.9,4.4],[-3.0,6.0],[-6.6,4.2]],skin,-3.65,4.15,.10);
+  const aR=pivotSurface([[3.9,4.4],[7.3,2.2],[6.6,4.2],[3.0,6.0]],skin,3.65,4.15,.10);g.add(aL,aR);
+  const exhausts=[],anchors=[];
+  for(const x of [-3.15,3.15]){
+    const nac=fuselage([[-5.4,.15],[-4.6,.56],[1,.72],[6.6,.66],[7.7,.22]],skin,24);nac.position.x=x;g.add(nac);
+    const intake=new THREE.Mesh(new THREE.TorusGeometry(.7,.11,10,28),dark);intake.rotation.x=Math.PI/2;intake.position.set(x,0,-5.1);g.add(intake);
+    const ex=engineFlame(.56,4.2,0x66e5ff);ex.position.set(x,0,7.65);g.add(ex);exhausts.push(ex);anchors.push(trailAnchor(g,x,0,7.4));
+  }
+  const rudderL=new THREE.Group(),rudderR=new THREE.Group();
+  for(const [pivot,x] of [[rudderL,-2.45],[rudderR,2.45]]){
+    pivot.position.set(x,0,5.7);const fin=verticalSurface([[0,0],[2.2,0],[1.5,2.3],[.3,2.75]],skin,0);fin.position.z=-2.2;pivot.add(fin);g.add(pivot);
+  }
+  const gear=landingGear(skin,{mainX:2.6,mainZ:3.4,noseZ:-8.0,height:1.85});g.add(gear);
+  return finalizeCraft(g,{label:'SR-71',controls:{aileronL:aL,aileronR:aR,rudderL,rudderR},gear,exhausts,trailAnchors:anchors,cameraDistance:135,cameraHeight:38,cameraLookAhead:225});
 }
 function makeX15(){
-  const g=new THREE.Group(),skin=material(0x596469,{metalness:.7,roughness:.3});
-  g.add(planform([[0,-7.8],[1,-3],[4,.2],[3.5,1.6],[1,1.2],[1.2,6],[-1.2,6],[-1,1.2],[-3.5,1.6],[-4,.2],[-1,-3]],skin,.04));
-  const body=capsule(.66,10.8,skin);body.position.z=-.8;g.add(body);
-  const fin=new THREE.Mesh(new THREE.BoxGeometry(.1,3.5,2.4),skin);fin.position.set(0,1.7,3.8);fin.rotation.x=-.2;g.add(fin);
-  g.add(engineGlow(6,0xff985f,.68));g.userData.label='X-15';return shadowize(g);
+  const g=new THREE.Group(),skin=material(0x596469,{metalness:.72,roughness:.28}),dark=material(0x22292b,{metalness:.5,roughness:.4});
+  g.add(fuselage([[-8.4,.04],[-7.5,.28],[-5.7,.56],[-1,.72],[4.1,.60],[6.2,.30],[6.8,.06]],skin,34));
+  g.add(extrudedPlanform([[-.8,-2.7],[-4.4,.1],[-3.8,1.7],[-.9,1.25],[.9,1.25],[3.8,1.7],[4.4,.1],[.8,-2.7]],skin,.16,.02));
+  g.add(extrudedPlanform([[-.7,4.1],[-2.25,5.2],[-1.9,6.15],[0,5.6],[1.9,6.15],[2.25,5.2],[.7,4.1]],skin,.13,.10));
+  g.add(verticalSurface([[3.2,0],[5.7,0],[5.25,3.6],[4.1,3.9]],skin,0));
+  const canopyMesh=canopy([.62,.35,1.7],[0,.5,-4.4],physicalGlass(0x89a6a7));g.add(canopyMesh);
+  const aL=pivotSurface([[-3.7,.9],[-2.1,1.05],[-1.8,1.55],[-3.45,1.65]],skin,-2.05,1.2,.11);
+  const aR=pivotSurface([[2.1,1.05],[3.7,.9],[3.45,1.65],[1.8,1.55]],skin,2.05,1.2,.11);
+  const elevator=pivotSurface([[-1.9,5.05],[-.2,5.0],[.2,5.0],[1.9,5.05],[1.65,5.85],[-1.65,5.85]],skin,0,5.1,.11);
+  g.add(aL,aR,elevator);
+  const gear=landingGear(skin,{mainX:1.7,mainZ:1.8,noseZ:-4.9,height:1.55});g.add(gear);
+  const exhaust=engineFlame(.69,4.4,0xff9d5c);exhaust.position.z=6.75;g.add(exhaust);
+  const nozzle=new THREE.Mesh(new THREE.TorusGeometry(.68,.12,10,30),dark);nozzle.rotation.x=Math.PI/2;nozzle.position.z=6.65;g.add(nozzle);
+  return finalizeCraft(g,{label:'X-15',controls:{aileronL:aL,aileronR:aR,elevator},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.1,.1,1.5),trailAnchor(g,2.1,.1,1.5)],cameraDistance:102,cameraHeight:30,cameraLookAhead:175});
 }
 function makeEidolon(){
-  const g=new THREE.Group(),shell=material(0x6b7d7f,{emissive:0x123b3a,emissiveIntensity:.55,metalness:.72,roughness:.2});
-  const core=new THREE.Mesh(new THREE.SphereGeometry(3.5,32,18),shell);core.scale.set(1.8,.38,1);g.add(core);
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(4.8,.18,12,72),basic(0x6fffe8,.72));ring.rotation.x=Math.PI/2;g.add(ring);
-  const ring2=new THREE.Mesh(new THREE.TorusGeometry(3.8,.07,8,64),basic(0xb8fff2,.55));ring2.rotation.x=Math.PI/2;ring2.rotation.z=.35;g.add(ring2);
-  g.userData.animate=dt=>{ring.rotation.z+=dt*.55;ring2.rotation.z-=dt*.9};g.userData.label='EIDOLON';return shadowize(g);
+  const g=new THREE.Group(),shell=material(0x617b7c,{emissive:0x123b3a,emissiveIntensity:.48,metalness:.75,roughness:.17});
+  const upper=new THREE.Mesh(new THREE.SphereGeometry(4.2,48,24),shell);upper.scale.set(1.8,.28,1.25);g.add(upper);
+  const lower=new THREE.Mesh(new THREE.SphereGeometry(3.9,40,20),material(0x334f50,{metalness:.65,roughness:.22}));lower.scale.set(1.75,.20,1.2);lower.position.y=-.28;g.add(lower);
+  const canopyMesh=canopy([1.7,.52,2.35],[0,.62,-1.05],physicalGlass(0x74d1d1));g.add(canopyMesh);
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(5.4,.16,12,96),basic(0x6fffe8,.68));ring.rotation.x=Math.PI/2;g.add(ring);
+  const ring2=new THREE.Mesh(new THREE.TorusGeometry(4.25,.06,8,80),basic(0xc1fff4,.48));ring2.rotation.x=Math.PI/2;ring2.rotation.z=.4;g.add(ring2);
+  const left=pivotSurface([[-7.0,-1.0],[-4.4,-.5],[-4.0,2.0],[-6.4,1.2]],shell,-4.2,.2,.02),right=pivotSurface([[4.4,-.5],[7.0,-1.0],[6.4,1.2],[4.0,2.0]],shell,4.2,.2,.02);g.add(left,right);
+  const gear=landingGear(shell,{mainX:2.8,mainZ:1.4,noseZ:-2.6,height:1.45});g.add(gear);
+  const exhaust=engineFlame(1.15,3.5,0x64ffe4);exhaust.position.z=4.0;g.add(exhaust);
+  const anchors=[trailAnchor(g,-3.8,0,3.1),trailAnchor(g,3.8,0,3.1)];
+  return finalizeCraft(g,{label:'EIDOLON',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:anchors,cameraDistance:112,cameraHeight:34,cameraLookAhead:185,animateVisual:dt=>{ring.rotation.z+=dt*.5;ring2.rotation.z-=dt*.82}});
 }
 function makeManta(){
-  const g=new THREE.Group(),baseMat=material(0x447d78,{emissive:0x123d38,emissiveIntensity:.65,metalness:.46,roughness:.28,transparent:true,opacity:.72});
-  const shell=planform([[0,-8],[4.5,-4],[8,0],[5.8,3.2],[2.2,5.5],[0,4.4],[-2.2,5.5],[-5.8,3.2],[-8,0],[-4.5,-4]],baseMat,0);g.add(shell);
+  const g=new THREE.Group(),baseMat=material(0x447d78,{emissive:0x123d38,emissiveIntensity:.58,metalness:.48,roughness:.24,transparent:true,opacity:.66});
+  const shell=extrudedPlanform([[0,-8.2],[4.4,-4.6],[8.3,-.4],[6.2,3.4],[2.6,5.9],[0,4.7],[-2.6,5.9],[-6.2,3.4],[-8.3,-.4],[-4.4,-4.6]],baseMat,.23,0);g.add(shell);
+  const canopyMesh=canopy([1.25,.42,2.05],[0,.52,-2.2],physicalGlass(0x79d7cc));g.add(canopyMesh);
+  const wingL=pivotSurface([[-8.0,-.3],[-5.0,1.2],[-4.2,3.6],[-6.4,3.0]],baseMat,-4.5,1.1,.08);
+  const wingR=pivotSurface([[5.0,1.2],[8.0,-.3],[6.4,3.0],[4.2,3.6]],baseMat,4.5,1.1,.08);g.add(wingL,wingR);
   const pointPositions=new Float32Array(125*3),pointGeo=new THREE.BufferGeometry();pointGeo.setAttribute('position',new THREE.BufferAttribute(pointPositions,3));
   const pts=new THREE.Points(pointGeo,new THREE.PointsMaterial({color:0xbaffee,size:.48,sizeAttenuation:true,transparent:true,opacity:.95,depthWrite:false}));g.add(pts);
   const edges=[];for(let a=0;a<5;a++)for(let b=0;b<5;b++)for(let c=0;c<5;c++){const i=a*25+b*5+c;if(a<4)edges.push([i,i+25]);if(b<4)edges.push([i,i+5]);if(c<4)edges.push([i,i+1])}
   const linePositions=new Float32Array(edges.length*2*3),lineGeo=new THREE.BufferGeometry();lineGeo.setAttribute('position',new THREE.BufferAttribute(linePositions,3));
   const lines=new THREE.LineSegments(lineGeo,new THREE.LineBasicMaterial({color:0x72e9d9,transparent:true,opacity:.42,depthWrite:false}));g.add(lines);
-  g.userData={label:'MANTA',shell,pointPositions,pointGeo,linePositions,lineGeo,edges,hasFrame:false};
-  return shadowize(g);
+  const gear=landingGear(baseMat,{mainX:2.5,mainZ:1.2,noseZ:-2.9,height:1.35});g.add(gear);
+  const exL=engineFlame(.72,3.2,0x63ffe4),exR=engineFlame(.72,3.2,0x63ffe4);exL.position.set(-2.5,0,4.6);exR.position.set(2.5,0,4.6);g.add(exL,exR);
+  Object.assign(g.userData,{label:'MANTA',shell,pointPositions,pointGeo,linePositions,lineGeo,edges,hasFrame:false});
+  return finalizeCraft(g,{controls:{aileronL:wingL,aileronR:wingR},gear,exhausts:[exL,exR],trailAnchors:[trailAnchor(g,-2.5,0,4.5),trailAnchor(g,2.5,0,4.5)],cameraDistance:118,cameraHeight:32,cameraLookAhead:185});
 }
 function makeSyntaxJacob(){
-  const g=new THREE.Group(),shell=material(0x7778a2,{emissive:0x2c245d,emissiveIntensity:.75,metalness:.65,roughness:.22});
-  const body=new THREE.Mesh(new THREE.OctahedronGeometry(4.2,1),shell);body.scale.set(.75,.45,1.65);body.rotation.x=.18;g.add(body);
-  const spine=capsule(.38,10.5,shell);spine.position.z=-1;g.add(spine);
-  const r1=new THREE.Mesh(new THREE.TorusGeometry(5.2,.11,8,72),basic(0xb6a8ff,.8));r1.rotation.x=Math.PI/2;g.add(r1);
-  const r2=new THREE.Mesh(new THREE.TorusGeometry(3.7,.08,8,64),basic(0x86fff0,.62));r2.rotation.x=Math.PI/2;r2.rotation.z=Math.PI/4;g.add(r2);
-  g.userData.animate=dt=>{r1.rotation.z+=dt*.38;r2.rotation.z-=dt*.72};g.userData.label='SYNTAX JACOB';return shadowize(g);
+  const g=new THREE.Group(),shell=material(0x73749a,{emissive:0x2c245d,emissiveIntensity:.68,metalness:.68,roughness:.19});
+  const body=fuselage([[-8.8,.03],[-7.2,.42],[-4.8,1.45],[-1.5,2.1],[2.2,1.65],[5.2,.72],[6.4,.08]],shell,8);body.scale.y=.65;g.add(body);
+  g.add(extrudedPlanform([[0,-7.6],[-5.2,-2.1],[-6.8,1.6],[-3.2,3.9],[-1.2,5.0],[1.2,5.0],[3.2,3.9],[6.8,1.6],[5.2,-2.1]],shell,.22,0));
+  const canopyMesh=canopy([1.3,.5,2.1],[0,.64,-3.6],physicalGlass(0x9e92df));g.add(canopyMesh);
+  const r1=new THREE.Mesh(new THREE.TorusGeometry(5.6,.11,8,88),basic(0xb6a8ff,.78));r1.rotation.x=Math.PI/2;r1.position.z=.4;g.add(r1);
+  const r2=new THREE.Mesh(new THREE.TorusGeometry(4.0,.07,8,72),basic(0x86fff0,.58));r2.rotation.x=Math.PI/2;r2.rotation.z=Math.PI/4;r2.position.z=.4;g.add(r2);
+  const left=pivotSurface([[-6.5,.4],[-4.0,1.5],[-3.0,3.4],[-5.4,2.7]],shell,-3.8,1.4,.08),right=pivotSurface([[4.0,1.5],[6.5,.4],[5.4,2.7],[3.0,3.4]],shell,3.8,1.4,.08);g.add(left,right);
+  const gear=landingGear(shell,{mainX:2.5,mainZ:1.7,noseZ:-4.5,height:1.45});g.add(gear);
+  const exhaust=engineFlame(.95,4.0,0x9b8cff);exhaust.position.z=6.3;g.add(exhaust);
+  return finalizeCraft(g,{label:'SYNTAX JACOB',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.7,0,4.5),trailAnchor(g,2.7,0,4.5)],cameraDistance:125,cameraHeight:36,cameraLookAhead:210,animateVisual:dt=>{r1.rotation.z+=dt*.34;r2.rotation.z-=dt*.7}});
 }
 function makeFleet(){
   const models=[makeF16(),makeSR71(),makeX15(),makeEidolon(),makeManta(),makeSyntaxJacob()];
@@ -217,17 +318,67 @@ function makeFleet(){
 function updateMantaModel(model,state){
   const geo=state?.geometry;if(!model||!Array.isArray(geo)||geo.length<375)return;
   const d=model.userData,scale=3.65;
-  for(let i=0;i<125;i++){
-    const j=i*3;d.pointPositions[j]=geo[j]*scale;d.pointPositions[j+1]=geo[j+1]*scale*2.1;d.pointPositions[j+2]=geo[j+2]*scale;
-  }
-  d.pointGeo.attributes.position.needsUpdate=true;
-  let k=0;
+  for(let i=0;i<125;i++){const j=i*3;d.pointPositions[j]=geo[j]*scale;d.pointPositions[j+1]=geo[j+1]*scale*2.1;d.pointPositions[j+2]=geo[j+2]*scale}
+  d.pointGeo.attributes.position.needsUpdate=true;let k=0;
   for(const [a,b] of d.edges){
     const ia=a*3,ib=b*3;
     d.linePositions[k++]=d.pointPositions[ia];d.linePositions[k++]=d.pointPositions[ia+1];d.linePositions[k++]=d.pointPositions[ia+2];
     d.linePositions[k++]=d.pointPositions[ib];d.linePositions[k++]=d.pointPositions[ib+1];d.linePositions[k++]=d.pointPositions[ib+2];
   }
-  d.lineGeo.attributes.position.needsUpdate=true;d.hasFrame=true;d.shell.material.opacity=.35;
+  d.lineGeo.attributes.position.needsUpdate=true;d.hasFrame=true;d.shell.material.opacity=.32;
+}
+function updateCraftSystems(model,flight,dt,groundElevation=0){
+  if(!model)return;
+  const u=model.userData,c=u.controls||{},roll=clamp(Number(flight.roll||0),-.9,.9),pitch=clamp(Number(flight.pitch||0),-.55,.55),speed=Math.max(0,Number(flight.speed||0));
+  if(c.aileronL)c.aileronL.rotation.x+=(roll*.48-c.aileronL.rotation.x)*Math.min(1,dt*9);
+  if(c.aileronR)c.aileronR.rotation.x+=(-roll*.48-c.aileronR.rotation.x)*Math.min(1,dt*9);
+  if(c.elevator)c.elevator.rotation.x+=(-pitch*.55-c.elevator.rotation.x)*Math.min(1,dt*9);
+  const rudderTarget=roll*.16;
+  for(const r of [c.rudder,c.rudderL,c.rudderR])if(r)r.rotation.y+=(rudderTarget-r.rotation.y)*Math.min(1,dt*7);
+  const clearance=Number(flight.altitude_m||0)-Number(groundElevation||0),gearTarget=(Number(flight.domain||0)===0&&clearance<180&&speed<125)?1:0;
+  if(u.gear){
+    u.gear.userData.deploy+=(gearTarget-u.gear.userData.deploy)*Math.min(1,dt*3.5);
+    const d=u.gear.userData.deploy;u.gear.visible=d>.015;u.gear.scale.y=Math.max(.001,d);
+  }
+  const thrust=clamp(.18+speed/420,.18,1.18);
+  for(const ex of u.exhausts||[]){
+    const pulse=.92+Math.sin(performance.now()*.025)*.08;
+    ex.scale.set(1,1,thrust*pulse);ex.visible=speed>15;
+    const outer=ex.userData.outer,inner=ex.userData.inner;
+    if(outer)outer.material.opacity=.12+.2*clamp(thrust,0,1);
+    if(inner)inner.material.opacity=.28+.35*clamp(thrust,0,1);
+  }
+  u.animateVisual?.(dt,flight);
+}
+function makeTrailSystem(scene){
+  const MAX=150,geometry=new THREE.BufferGeometry(),positions=new Float32Array(MAX*2*3),colors=new Float32Array(MAX*2*3);
+  geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));
+  const pointsMesh=new THREE.Points(geometry,new THREE.PointsMaterial({size:4.2,sizeAttenuation:true,transparent:true,opacity:.34,depthWrite:false,vertexColors:true,blending:THREE.AdditiveBlending}));
+  scene.add(pointsMesh);
+  let history=[[],[]],accum=0;
+  function clear(){history=[[],[]];positions.fill(0);colors.fill(0);geometry.attributes.position.needsUpdate=true;geometry.attributes.color.needsUpdate=true}
+  function update(model,flight,dt){
+    accum+=dt;if(!model||accum<.055)return;accum=0;
+    const anchors=model.userData.trailAnchors||[],speed=Number(flight.speed||0),alt=Number(flight.altitude_m||0),domain=Number(flight.domain||0);
+    const emit=domain===0&&speed>95;
+    if(!emit){if(history[0].length||history[1].length){for(const h of history)if(h.length)h.pop();render()}return}
+    for(let lane=0;lane<2;lane++){
+      const a=anchors[lane]||anchors[0];if(!a)continue;
+      const p=new THREE.Vector3();a.getWorldPosition(p);history[lane].unshift(p);if(history[lane].length>MAX)history[lane].length=MAX;
+    }
+    render();
+  }
+  function render(){
+    for(let lane=0;lane<2;lane++){
+      for(let i=0;i<MAX;i++){
+        const idx=(lane*MAX+i)*3,p=history[lane][i];
+        if(p){positions[idx]=p.x;positions[idx+1]=p.y;positions[idx+2]=p.z;const fade=1-i/MAX;colors[idx]=.55+.45*fade;colors[idx+1]=.72+.28*fade;colors[idx+2]=.82+.18*fade}
+        else{positions[idx]=positions[idx+1]=positions[idx+2]=0;colors[idx]=colors[idx+1]=colors[idx+2]=0}
+      }
+    }
+    geometry.attributes.position.needsUpdate=true;geometry.attributes.color.needsUpdate=true;
+  }
+  return {mesh:pointsMesh,update,clear};
 }
 function dispose(root){
   root?.traverse?.(o=>{o.geometry?.dispose?.();if(Array.isArray(o.material))o.material.forEach(m=>m.dispose?.());else o.material?.dispose?.()});
@@ -243,6 +394,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.setClearColor(0x010207,1);
   const scene=new THREE.Scene(),atmos=makeSky(scene),space=makeSpace(scene),camera=new THREE.PerspectiveCamera(61,innerWidth/innerHeight,1,30000);
   const craftRoot=new THREE.Group(),fleet=makeFleet();fleet.forEach(m=>craftRoot.add(m));scene.add(craftRoot);
+  const trailSystem=makeTrailSystem(scene),shadowTarget=new THREE.Object3D();scene.add(shadowTarget);atmos.sun.target=shadowTarget;
   const flight={lat,lon,altitude_m,heading,pitch,roll,speed,active,domain:0,enabled:true};
   const chase={distance:185,height:52,lookAhead:235,damping:.09,bankMix:.38};
   const worldUp=new THREE.Vector3(0,1,0),forward=new THREE.Vector3(),right=new THREE.Vector3(),craftUp=new THREE.Vector3(),cameraUp=new THREE.Vector3();
@@ -251,7 +403,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
 
   function setActiveCraft(i){
     const next=clamp(Number(i)||0,0,fleet.length-1);if(next===activeIndex&&fleet[next].visible)return;
-    activeIndex=next;fleet.forEach((m,j)=>m.visible=j===activeIndex);
+    activeIndex=next;fleet.forEach((m,j)=>m.visible=j===activeIndex);trailSystem?.clear?.();
     dispatchEvent(new CustomEvent('skyrmion:craft-3d',{detail:{active:activeIndex,name:CRAFT_NAMES[activeIndex]}}));
   }
   async function buildPatch(centerLat,centerLon,force=false){
@@ -274,7 +426,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
       const centerElevation=field.heights[Math.floor(field.heights.length/2)]||0;buildings.position.y=centerElevation;lights.position.y=centerElevation;
       world.add(terrain,buildings,clouds,lights);scene.add(world);
       if(patch?.world){scene.remove(patch.world);dispose(patch.world);patch.texture?.dispose?.()}
-      patch={center,span,world,terrain,buildings,clouds,lights,texture,min:field.min,max:field.max,centerElevation};
+      patch={center,span,world,terrain,buildings,clouds,lights,texture,min:field.min,max:field.max,centerElevation};trailSystem?.clear?.();
       updateDomainVisibility();
       dispatchEvent(new CustomEvent('skyrmion:terrain-status',{detail:{status:imgResult.status==='fulfilled'&&demResult.status==='fulfilled'?'LIVE':'DEGRADED',center,span,elevation_min_m:field.min,elevation_max_m:field.max}}));
     }catch(error){
@@ -305,11 +457,12 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   }
   function updateCamera(dt){
     if(!patch)return;updateCraftPose();
-    const speedFactor=clamp(Number(flight.speed||0)/450,0,1),k=1-Math.pow(1-chase.damping,dt*60);
+    const current=fleet[activeIndex],speedFactor=clamp(Number(flight.speed||0)/450,0,1),k=1-Math.pow(1-chase.damping,dt*60);
     craftUp.set(0,1,0).applyQuaternion(craftRoot.quaternion).normalize();
     cameraUp.copy(worldUp).lerp(craftUp,chase.bankMix).normalize();
-    desiredCamera.copy(craftRoot.position).addScaledVector(forward,-(chase.distance+speedFactor*85)).addScaledVector(cameraUp,chase.height+Math.max(0,Number(flight.pitch||0))*34);
-    desiredTarget.copy(craftRoot.position).addScaledVector(forward,chase.lookAhead+speedFactor*105);
+    const baseDistance=current?.userData?.cameraDistance||chase.distance,baseHeight=current?.userData?.cameraHeight||chase.height,baseLook=current?.userData?.cameraLookAhead||chase.lookAhead;
+    desiredCamera.copy(craftRoot.position).addScaledVector(forward,-(baseDistance+speedFactor*55)).addScaledVector(cameraUp,baseHeight+Math.max(0,Number(flight.pitch||0))*28);
+    desiredTarget.copy(craftRoot.position).addScaledVector(forward,baseLook+speedFactor*85);
     camera.position.lerp(desiredCamera,k);smoothTarget.lerp(desiredTarget,k*1.15);camera.up.lerp(cameraUp,k*.85).normalize();camera.lookAt(smoothTarget);
     camera.fov+=(61+speedFactor*5-camera.fov)*k*.4;camera.updateProjectionMatrix();
   }
@@ -317,14 +470,19 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   function frame(now){
     if(destroyed)return;requestAnimationFrame(frame);
     const dt=Math.min(.033,Math.max(.001,(now-last)/1000));last=now;updateCamera(dt);
-    const current=fleet[activeIndex];current?.userData?.animate?.(dt);
+    const current=fleet[activeIndex],ground=patch?.centerElevation||0;
+    updateCraftSystems(current,flight,dt,ground);
+    trailSystem.update(current,flight,dt);
+    shadowTarget.position.copy(craftRoot.position);
+    atmos.sun.position.copy(craftRoot.position).add(new THREE.Vector3(-2200,3400,1700));
+    atmos.sun.target.updateMatrixWorld();
     if(patch?.clouds)patch.clouds.rotation.y+=dt*.0018;
     renderer.render(scene,camera);
   }
   addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio||1,maxDpr))});
   await buildPatch(lat,lon,true);setActiveCraft(activeIndex);if(mantaState)updateMantaFrame(mantaState);updateFlightState(flight);updateCraftPose();requestAnimationFrame(frame);
   return {
-    schema:'SKYRMION-TERRAIN-3D-2.0',ready:true,renderer,scene,camera,craftRoot,fleet,
+    schema:'SKYRMION-TERRAIN-3D-3.0',ready:true,renderer,scene,camera,craftRoot,fleet,
     get activeCraft(){return fleet[activeIndex]},get patch(){return patch},
     updateFlightState,updateMantaFrame,teleport,setActiveCraft,
     destroy(){destroyed=true;generation++;if(patch?.world)dispose(patch.world);fleet.forEach(dispose);renderer.dispose();canvas.remove()}
