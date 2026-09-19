@@ -1,0 +1,24 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"e47-core",
+  "display_name":"E47 Mathematical Core",
+  "version":"0.1.0",
+  "kind":"mathematical-core",
+  "maturity":"validated-core",
+  "evidence":["E0","E1"],
+  "entrypoint":"e47.validation_results:run_all_validations",
+  "smoke":{
+    "entrypoint":"src/e47/smoke.py",
+    "command":"PYTHONPATH=src python -m e47.smoke",
+    "benchmark_command":"PYTHONPATH=src python -m e47.smoke --benchmark"
+  },
+  "provenance":{
+    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources":["src/e47/","tests/test_qutip_validation.py","certificates/"]
+  },
+  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+  "boundaries":[
+    "Finite-dimensional algebraic and numerical validation.",
+    "Does not by itself establish physical realization or hardware evidence."
+  ]
+}
