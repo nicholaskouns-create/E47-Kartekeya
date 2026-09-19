@@ -107,3 +107,10 @@ def test_resilient_boot_and_hero_framing():
     assert 'cameraDistance:39' in boot
     assert 'src="./runtime2/bootstrap.js"' in html
     assert 'await createSkyrmionTerrain3D' not in html
+
+
+def test_runtime2_boot_syntax_regressions():
+    boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
+    assert 'keys.control?.35:.72' not in boot
+    assert 'keys.control ? .35 : .72' in boot
+    assert 'SKYRMION-VISUAL-FALLBACK-1.0' in boot
