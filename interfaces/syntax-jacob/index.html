@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#050708" />
+  <meta name="description" content="Syntax Jacob Propulsion Lab — interactive 3I/ATLAS flight and E47 coherence simulation by Nick Kouns." />
+  <meta property="og:title" content="Syntax Jacob · Propulsion Lab · 3I/ATLAS" />
+  <meta property="og:description" content="Interactive propulsion laboratory with live JPL 3I/ATLAS ephemeris, Earth, vector thrust, and E47 coherence controls." />
+  <meta property="og:type" content="website" />
+  <title>Syntax Jacob · Propulsion Lab · 3I/ATLAS</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://assets.science.nasa.gov" />
+  <link rel="stylesheet" href="styles.css?v=20260918-propulsion" />
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+  </script>
+</head>
+<body class="visual-first">
+  <canvas id="scene" aria-label="Interactive 3D Earth and 3I/ATLAS scene"></canvas>
+  <div id="loading"><div class="loader-ring"></div><b hidden>SYNTAX JACOB</b><span hidden>binding live ephemeris + coherence engine</span></div>
+
+  <header class="topbar glass" hidden>
+    <a class="city-link" href="../../index.html">← MATHEMATICAL CITY</a>
+    <div class="brand"><small>ORIGINAL WORK · NICK KOUNS</small><strong>Syntax Jacob</strong></div>
+    <div class="top-status"><span id="feed-dot" class="dot pending"></span><span id="feed-status">JPL · CONNECTING</span></div>
+  </header>
+
+  <aside class="hud left glass" hidden>
+    <div class="eyebrow">3I / ATLAS · INTERSTELLAR TRACK</div>
+    <h1>Copilot the syntax.</h1>
+    <p class="intro">Live orbital state stays separate from the modeled scalar-coherence layer. Jacob binds them in one flight surface.</p>
+    <div class="mode-row">
+      <button class="mode active" data-focus="comet">3I CHASE</button><button class="mode" data-focus="earth">EARTH</button><button class="mode" data-focus="system">SYSTEM</button><button class="mode" data-focus="free">FREE</button>
+    </div>
+    <div class="coherence-card">
+      <div class="labelrow"><span>E47 CAPTURE</span><b id="capture">0.000000</b></div>
+      <div class="meter"><i id="capture-bar"></i><em class="omega-mark" title="Ωc = 47/125"></em></div>
+      <div class="mini"><span>Ωc <b>47/125</b></span><span>K² residual <b id="residual">—</b></span></div>
+      <button id="scalar-lock" class="lock active">SCALAR COHERENCE · LOCKED</button>
+    </div>
+    <div class="copilot">
+      <div class="labelrow"><span>JACOB COPILOT</span><b id="pilot-mode">CHASE</b></div>
+      <p id="copilot-text">Acquiring the live 3I state vector and aligning the anti-solar tail axis.</p>
+      <div class="keygrid"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>Q</kbd><kbd>E</kbd></div>
+      <small>thrust · yaw · radial offset</small>
+    </div>
+    <div class="source-strip"><span id="gpu">GPU · DETECTING</span><span id="cube">CUBE WITNESS · WAITING</span></div>
+  </aside>
+
+  <aside class="hud right glass" hidden>
+    <div class="eyebrow">LIVE ASTRONOMY</div>
+    <div class="telemetry">
+      <div><span>EPOCH</span><b id="epoch">—</b></div><div><span>EARTH ↔ 3I</span><b id="range">—</b></div>
+      <div><span>3I HELIOCENTRIC</span><b id="comet-r">—</b></div><div><span>3I SPEED</span><b id="comet-speed">—</b></div>
+      <div><span>RELATIVE SPEED</span><b id="rel-speed">—</b></div><div><span>SBDB ORBIT</span><b id="orbit-id">—</b></div>
+    </div>
+    <div class="vectorbox">
+      <div class="labelrow"><span>3I VECTOR · AU / AU·d⁻¹</span><button id="refresh">REFRESH</button></div>
+      <pre id="vector">X —
+Y —
+Z —
+VX —
+VY —
+VZ —</pre>
+    </div>
+    <details class="truth" open>
+      <summary>MEASURED ↔ MODELED</summary>
+      <p><b>Measured feed:</b> JPL Horizons Cartesian state and JPL SBDB orbit metadata.</p>
+      <p><b>Rendered reconstruction:</b> nucleus surface, coma, dust/ion tails, craft and display scale.</p>
+      <p><b>Scalar layer:</b> E47 / K47 coherence state and contraction are computational controls, not a claim that 3I is propelled by that model.</p>
+    </details>
+    <div class="links">
+      <a href="https://science.nasa.gov/solar-system/comets/3i-atlas/" target="_blank" rel="noopener noreferrer">NASA 3I/ATLAS ↗</a>
+      <a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noopener noreferrer">JPL Horizons ↗</a>
+      <a href="https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html" target="_blank" rel="noopener noreferrer">JPL SBDB ↗</a>
+      <a href="provenance.json" target="_blank" rel="noopener noreferrer">PROVENANCE ↗</a>
+    </div>
+  </aside>
+
+  <div class="bottom glass" hidden>
+    <div><span class="legend comet"></span><b>3I/ATLAS</b><small>generated morphology · live trajectory</small></div>
+    <div><span class="legend earth"></span><b>EARTH</b><small>NASA Blue Marble · live heliocentric state</small></div>
+    <div><span class="legend craft"></span><b>SYNTAX JACOB</b><small>E47 scalar-coherence copilot</small></div>
+    <button id="egg">🥚 EGGHEAD</button>
+  </div>
+
+  <section id="egg-panel" class="egg-panel glass" hidden>
+    <button id="egg-close">×</button><div class="eyebrow">ENGINE / PROVENANCE</div><h2>Typed layers, one instrument.</h2>
+    <div class="equation">V = V₂<sup>⊗3</sup> · dim V = 125<br>K = (C − 6I)(C − 30I)<br>E47 = ker K · dim E47 = 47<br>Γ = I − K²/99144 · Ωc = 47/125</div>
+    <p>The pilot vector is a 125-component model state. With scalar lock engaged, repeated Γ contraction drives its non-kernel component down. The public Matrix→Cube adapter independently recomputes the E47 witness.</p>
+    <div class="provenance-grid">
+      <div><b>Notion</b><span>Mathematical City atlas / EIDOLON lineage</span></div><div><b>GitHub</b><span>E47-Kartekeya executable portal</span></div>
+      <div><b>Supabase</b><span>graphics contract + Matrix→Cube witness</span></div><div><b>Google Drive</b><span>3I syntax corpus + scalar-flight source artifacts</span></div>
+    </div>
+    <p class="original">Syntax Jacob and the 3I/ATLAS syntax/coherence construction are presented here as original work by Nick Kouns. External astronomy data remain attributed to NASA/JPL.</p>
+  </section>
+
+  <div id="propulsion-dock" class="propulsion-dock" aria-label="Propulsion laboratory controls">
+    <button id="propulsion-toggle" class="propulsion-trigger" type="button" aria-expanded="false" aria-controls="propulsion-panel" title="Open propulsion lab">🚀</button>
+    <div class="throttle-mini" aria-label="Throttle"><span id="throttle-mini">35%</span><i><b id="throttle-mini-bar"></b></i></div>
+    <button id="kill-velocity" class="propulsion-icon" type="button" title="Zero modeled velocity">◎</button>
+  </div>
+
+  <section id="propulsion-panel" class="propulsion-panel glass" hidden aria-label="Syntax Jacob propulsion laboratory">
+    <div class="prop-head"><div><small>SYNTAX JACOB</small><b>PROPULSION LAB</b></div><button id="propulsion-close" type="button" aria-label="Close propulsion lab">×</button></div>
+    <div class="prop-modes" role="group" aria-label="Propulsion model">
+      <button class="prop-mode" data-prop-mode="inertial" type="button">INERTIAL</button>
+      <button class="prop-mode active" data-prop-mode="coherence" type="button">E47 FIELD</button>
+      <button class="prop-mode" data-prop-mode="coast" type="button">COAST</button>
+    </div>
+    <label class="throttle-row"><span>THROTTLE <b id="throttle-value">35%</b></span><input id="throttle" type="range" min="0" max="100" value="35" step="1" /></label>
+    <div class="axis-pad" aria-label="Thrust vector controls">
+      <button data-thrust="q" type="button" aria-label="Thrust up">＋Y</button>
+      <button data-thrust="w" type="button" aria-label="Thrust forward">▲</button>
+      <button data-thrust="e" type="button" aria-label="Thrust down">−Y</button>
+      <button data-thrust="a" type="button" aria-label="Thrust left">◀</button>
+      <button id="pulse-thrust" class="pulse-thrust" type="button" aria-label="Pulse thrust">●</button>
+      <button data-thrust="d" type="button" aria-label="Thrust right">▶</button>
+      <span></span><button data-thrust="s" type="button" aria-label="Reverse thrust">▼</button><span></span>
+    </div>
+    <div class="focus-strip" role="group" aria-label="Camera focus">
+      <button data-lab-focus="comet" type="button">3I</button><button data-lab-focus="earth" type="button">⊕</button><button data-lab-focus="system" type="button">◎</button><button data-lab-focus="free" type="button">FREE</button>
+    </div>
+    <div class="prop-readouts">
+      <div><span>MODELED SPEED</span><b id="lab-speed">0.000</b></div>
+      <div><span>ACCEL</span><b id="lab-accel">0.000</b></div>
+      <div><span>ΔV INTEGRAL</span><b id="lab-dv">0.000</b></div>
+      <div><span>E47 CAPTURE</span><b id="lab-capture">0.000</b></div>
+    </div>
+    <p class="prop-boundary">Simulation surface. JPL ephemeris is measured source data; propulsion response is modeled display-space dynamics. E47 changes the simulation control law, not the measured 3I trajectory.</p>
+  </section>
+
+  <script>
+    if (new URLSearchParams(location.search).get("hud") === "1") {
+      document.body.classList.remove("visual-first");
+      document.querySelectorAll("header[hidden], aside.hud[hidden], .bottom[hidden], #loading b[hidden], #loading span[hidden]")
+        .forEach(el => el.hidden = false);
+    }
+  </script>
+  <script type="module" src="app.js"></script>
+<script type="module">import{installPropulsionGeo}from'../shared/propulsion-geo.js';installPropulsionGeo();</script></body>
+</html>

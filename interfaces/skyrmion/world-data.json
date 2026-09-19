@@ -1,0 +1,77 @@
+{
+  "schema": "SKYRMION-WORLD-DATA-2.0",
+  "engine": "Three.js flight world + Supabase geospatial registry",
+  "map_runtime": {
+    "registry_endpoint": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/skyrmion-world-runtime",
+    "registry_schema": "SKYRMION-WORLD-RUNTIME-2.0",
+    "database_tables": [
+      "gps_map_sources",
+      "gps_places",
+      "city_geo_anchors"
+    ],
+    "imagery_policy": "source selected from gps_map_sources; current primary esri-world-imagery",
+    "hillshade_policy": "database-registered Esri World Hillshade composited into satellite texture",
+    "tile_cache": "browser promise/blob cache; interactive viewport only; no bulk prefetch",
+    "attribution_required": true,
+    "fallback": "embedded source definitions only when world registry is unavailable"
+  },
+  "terrain": {
+    "type": "raster-dem heightfield",
+    "source_registry_id": "maplibre-jaxa-dem",
+    "url_template": "https://demotiles.maplibre.org/terrain-tiles/{z}/{x}/{y}.png",
+    "encoding": "mapbox-terrain-rgb",
+    "max_zoom": 12,
+    "attribution": "AW3D30 © JAXA · served by MapLibre demo tiles",
+    "rendering": "Three.js PlaneGeometry displaced from decoded RGB elevations"
+  },
+  "navigation": {
+    "gps_mode": "browser geolocation optional at runtime",
+    "fallback_spawn": {
+      "lng": -115.139832,
+      "lat": 36.169941,
+      "altitude_m": 610,
+      "label": "Las Vegas"
+    },
+    "runtime": "CITY-GPS-RUNTIME-1.0",
+    "crs": "EPSG:4326",
+    "datum": "WGS84",
+    "shared_module": "../shared/city-gps-runtime.js",
+    "preset_source": "Supabase gps_places"
+  },
+  "aircraft": [
+    "F-16",
+    "SR-71",
+    "X-15",
+    "EIDOLON",
+    "MANTA",
+    "SYNTAX JACOB"
+  ],
+  "spectral_domains": [
+    "flight",
+    "scalar",
+    "wave",
+    "matrix",
+    "cube",
+    "e47",
+    "aetheris"
+  ],
+  "invariants": [
+    "map source definitions, WGS84 anchors, and place presets are read from the on-platform Supabase geospatial registry",
+    "imagery/DEM tile bytes still stream from the external providers named by gps_map_sources; they are not stored as raster tiles in Supabase",
+    "map imagery and DEM affect rendering and navigation only, not scientific evidence class",
+    "experimental propulsion modes remain simulation-only",
+    "graphics acceleration must preserve fixed-step state-transition semantics",
+    "E47/Cube mapping remains typed and does not establish physical propulsion validity"
+  ],
+  "programmable_matter": {
+    "asset": "MANTA",
+    "engine": "src/manta/programmable_matter.py",
+    "deployed_engine": "website/runtime/manta/programmable_matter.py",
+    "browser_bridge": "website/interfaces/skyrmion/manta-worker.js",
+    "runtime": "Python via lazy Pyodide worker",
+    "carrier_dimension": 125,
+    "kernel_dimension": 47,
+    "geometry_nodes": 125,
+    "selector_hook": "MANTA activates worker; other aircraft do not load Python"
+  }
+}
