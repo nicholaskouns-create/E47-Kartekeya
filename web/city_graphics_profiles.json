@@ -218,6 +218,54 @@
         "adaptive-dpr"
       ],
       "host_status": "source-migration-required"
+    },
+    {
+      "order": 15,
+      "name": "SKYRMION",
+      "profile": "multi-domain-flight",
+      "priority": [
+        "adaptive-dpr",
+        "canvas-safe-fallback",
+        "gps-wgs84-overlay",
+        "lazy-python-worker",
+        "fixed-step"
+      ],
+      "host_status": "integrated-github-pages"
+    },
+    {
+      "order": 16,
+      "name": "MANTA",
+      "profile": "programmable-matter-flight",
+      "priority": [
+        "python-wasm-worker",
+        "125-node-geometry",
+        "adaptive-dpr",
+        "gps-wgs84-overlay"
+      ],
+      "host_status": "integrated-skyrmion-runtime"
+    },
+    {
+      "order": 17,
+      "name": "UFO PROPULSION LAB",
+      "profile": "canvas-flight",
+      "priority": [
+        "adaptive-resolution",
+        "gps-wgs84-overlay",
+        "visibility-throttling"
+      ],
+      "host_status": "integrated-github-pages"
+    },
+    {
+      "order": 18,
+      "name": "CITY FLIGHT SHELL",
+      "profile": "shared-flight-overlay",
+      "priority": [
+        "adaptive-resolution",
+        "gps-wgs84-overlay",
+        "render-scale-events",
+        "iframe-gps-bridge"
+      ],
+      "host_status": "integrated-github-pages"
     }
   ],
   "boundary": "A profile is an implementation target, not proof that an external host has already been patched. host_status must be advanced only after the corresponding source/runtime is changed and proof gates pass.",
@@ -231,8 +279,14 @@
       "SKYRMION",
       "EIDOLON",
       "SCALAR",
-      "SYNTAX JACOB"
+      "SYNTAX JACOB",
+      "MANTA",
+      "UFO PROPULSION LAB",
+      "MAV",
+      "HOVER",
+      "CITY FLIGHT SHELL"
     ],
-    "invariant": "visual codec never mutates solver timestep, state transition, evidence class, provenance, or scientific output"
+    "invariant": "visual codec never mutates solver timestep, state transition, evidence class, provenance, or scientific output",
+    "gps_overlay": "CITY-GPS-RUNTIME-1.0 / CITY-GEO-1.0"
   }
 }
