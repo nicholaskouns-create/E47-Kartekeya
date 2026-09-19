@@ -23,7 +23,9 @@ def main()->None:
         proc=subprocess.run(command,cwd=ROOT,env=env,shell=True,text=True,capture_output=True)
         lines=[line for line in proc.stdout.splitlines() if line.strip()]
         try:
-            receipt=json.loads(lines[-1]) if lines else {}
+            if not lines:
+                raise json.JSONDecodeError("empty stdout","",0)
+            receipt=json.loads(lines[-1])
         except json.JSONDecodeError:
             receipt={
                 "schema":"CITY-INSTRUMENT-RECEIPT/1.0",
