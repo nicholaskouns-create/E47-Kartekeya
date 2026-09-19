@@ -47,7 +47,7 @@ def test_threejs_vehicle_fleet():
     for token in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob','craftRoot','updateMantaFrame']:
         assert token in terrain
     assert 'CITY_SKYRMION_TERRAIN3D?.ready' in html
-    assert "schema:'SKYRMION-TERRAIN-3D-6.0'" in terrain
+    assert "schema:'SKYRMION-TERRAIN-3D-6.1'" in terrain
 
 def test_high_detail_vehicle_systems():
     for token in ['physicalGlass','pivotSurface','landingGear','engineFlame','makeTrailSystem','updateCraftSystems','castShadow','receiveShadow','shadowTarget']:
@@ -66,7 +66,7 @@ def test_render_quality_governor():
 def test_licensed_aircraft_pipeline():
     assert 'licensed-aircraft-assets.js' in terrain
     assert 'Identity gate' in terrain
-    assert 'SKYRMION-TERRAIN-3D-6.0' in terrain
+    assert 'SKYRMION-TERRAIN-3D-6.1' in terrain
     for token in ['f15-polyducky','nasa-global-hawk','amvlab-b737-nologo','f16-cdesrocher','sr71-manilov','x15-cmoreau']:
         assert token in assets
     for token in ['GLTFLoader','SkeletonUtils.js','collectModelStats','validateAssetRecord','auditLicensedAssets','GLB load timeout']:
@@ -96,7 +96,7 @@ def test_asset_license_register():
 
 def test_resilient_boot_and_hero_framing():
     boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
-    assert 'SKYRMION-TERRAIN-3D-6.0' in terrain
+    assert 'SKYRMION-TERRAIN-3D-6.1' in terrain
     assert "getLicensedAssetModule" in terrain
     assert "from './licensed-aircraft-assets.js'" not in terrain
     assert 'PerspectiveCamera(47' in terrain
@@ -114,3 +114,12 @@ def test_runtime2_boot_syntax_regressions():
     assert 'keys.control?.35:.72' not in boot
     assert 'keys.control ? .35 : .72' in boot
     assert 'SKYRMION-VISUAL-FALLBACK-1.0' in boot
+
+
+def test_stable_chase_camera():
+    assert 'SKYRMION-TERRAIN-3D-6.1' in terrain
+    assert 'cameraForward.set(0,0,-1).applyQuaternion' in terrain
+    assert 'bankMix:.10' in terrain
+    assert 'cameraGround+5.5' in terrain
+    assert 'oldLocal=localMeters(patch.center' in terrain
+    assert 'speedFactor*55' not in terrain
