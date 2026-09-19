@@ -1,5 +1,6 @@
 import {installCityCinemaCodec} from './city-cinema-codec.js';
 import {installCityGps,drawGpsOverlay} from '../shared/city-gps-runtime.js';
+import {installStargateInvariantBridge} from '../shared/stargate-invariants.js';
 const body=document.body;
 const source=body.dataset.source;
 const mode=body.dataset.mode||'Flight mode';
@@ -26,6 +27,19 @@ const field=document.getElementById('field');
 const ctx=field?.getContext('2d');
 const gps=installCityGps({postTarget:sim,label:'GPS'});
 sim?.addEventListener('load',()=>gps.publish());
+
+const stargate=installStargateInvariantBridge({
+  surface:`FLIGHT/${mode}`,
+  container:document.querySelector('.hud .top .cluster'),
+  readModeled:()=>({
+    mode,
+    level,
+    step,
+    receipt_step:Number(body.dataset.receiptStep||0)||null,
+    receipt_digest:body.dataset.receiptDigest||null
+  })
+});
+window.CITY_STARGATE=stargate;
 
 let receiptFlightBinding=null;
 let receiptChip=null;
