@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import {LICENSED_AIRCRAFT_ASSETS,loadLicensedAircraft,canReplaceCraft,auditLicensedAssets} from './licensed-aircraft-assets.js';
+let licensedAssetModulePromise=null;
+const getLicensedAssetModule=()=>licensedAssetModulePromise||(licensedAssetModulePromise=import('./licensed-aircraft-assets.js'));
 
 const R=6378137;
 const TILE_SIZE=256;
@@ -84,6 +85,16 @@ function cloudTexture(){
 function seeded(seed){let x=(seed|0)||1;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return((x>>>0)%1000000)/1000000}}
 function seedFor(lat,lon){return((Math.round((lat+90)*10000)*73856093)^(Math.round((lon+180)*10000)*19349663))>>>0}
 
+function makeEnvironmentTexture(){
+  const c=document.createElement('canvas');c.width=1024;c.height=512;
+  const ctx=c.getContext('2d'),g=ctx.createLinearGradient(0,0,0,c.height);
+  g.addColorStop(0,'#152534');g.addColorStop(.28,'#5a6570');g.addColorStop(.47,'#d09565');g.addColorStop(.56,'#6c6558');g.addColorStop(1,'#111715');
+  ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+  const sun=ctx.createRadialGradient(210,225,2,210,225,95);
+  sun.addColorStop(0,'rgba(255,245,210,1)');sun.addColorStop(.2,'rgba(255,189,112,.75)');sun.addColorStop(1,'rgba(255,150,75,0)');
+  ctx.fillStyle=sun;ctx.fillRect(0,0,c.width,c.height);
+  const tex=new THREE.CanvasTexture(c);tex.mapping=THREE.EquirectangularReflectionMapping;tex.colorSpace=THREE.SRGBColorSpace;return tex;
+}
 function makeSky(scene){
   const fog=new THREE.FogExp2(0x896044,.00005);scene.fog=fog;
   scene.add(new THREE.HemisphereLight(0xffd1a5,0x162329,2.4));
@@ -145,7 +156,10 @@ function makeLights(span,seed){
 }
 
 function material(color,{emissive=0x000000,emissiveIntensity=0,metalness=.58,roughness=.34,transparent=false,opacity=1}={}){
-  return new THREE.MeshStandardMaterial({color,emissive,emissiveIntensity,metalness,roughness,transparent,opacity,side:THREE.DoubleSide});
+  return new THREE.MeshPhysicalMaterial({
+    color,emissive,emissiveIntensity,metalness,roughness,transparent,opacity,side:THREE.DoubleSide,
+    clearcoat:.42,clearcoatRoughness:.22,sheen:.08,sheenRoughness:.45
+  });
 }
 function physicalGlass(color=0x7fc9da){
   return new THREE.MeshPhysicalMaterial({
@@ -207,14 +221,48 @@ function landingGear(skin,{mainX=2.2,mainZ=1.6,noseZ=-4.2,height=1.75}={}){
   g.add(leg(-mainX,mainZ),leg(mainX,mainZ),leg(0,noseZ,height*.78,.27));
   g.userData.deploy=0;g.scale.y=.001;g.visible=false;return g;
 }
+function navLight(color,intensity=2.2){
+  const group=new THREE.Group();
+  const lens=new THREE.Mesh(new THREE.SphereGeometry(.115,16,10),new THREE.MeshBasicMaterial({color,toneMapped:false}));
+  const light=new THREE.PointLight(color,intensity,45,2);group.add(lens,light);return group;
+}
+function addNavigationLights(g,{span=8,tailZ=5,noseZ=-6}={}){
+  const left=navLight(0xff2d2d,2.4),right=navLight(0x35ff8a,2.4),tail=navLight(0xffffff,1.7),beacon=navLight(0xff4433,1.3);
+  left.position.set(-span*.48,.12,0);right.position.set(span*.48,.12,0);tail.position.set(0,.18,tailZ);beacon.position.set(0,.75,noseZ*.08);
+  g.add(left,right,tail,beacon);g.userData.navLights={left,right,tail,beacon};return g.userData.navLights;
+}
+function addLandingLights(g,{x=1.3,z=-1.6}={}){
+  const lights=[];
+  for(const sx of [-1,1]){
+    const lamp=new THREE.SpotLight(0xfff1d5,0,280,Math.PI/10,.55,1.5);
+    lamp.position.set(sx*x,-.15,z);lamp.target.position.set(sx*x,-22,z-115);g.add(lamp,lamp.target);lights.push(lamp);
+  }
+  g.userData.landingLights=lights;return lights;
+}
+function addPanelMicrodetail(g){
+  const lineMat=new THREE.LineBasicMaterial({color:0x9fb2b4,transparent:true,opacity:.10,depthWrite:false});
+  const overlays=[];
+  g.traverse(o=>{
+    if(!o.isMesh||o.material?.transparent||o.geometry?.type==='SphereGeometry'||o.geometry?.type==='TorusGeometry')return;
+    if(!o.geometry?.attributes?.position||overlays.length>14)return;
+    try{
+      const edge=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,38),lineMat);
+      edge.position.copy(o.position);edge.rotation.copy(o.rotation);edge.scale.copy(o.scale);edge.renderOrder=2;overlays.push(edge);
+    }catch{}
+  });
+  overlays.forEach(x=>g.add(x));
+}
 function finalizeCraft(g,spec={}){
   Object.assign(g.userData,spec);
   g.userData.controls=g.userData.controls||{};
   g.userData.exhausts=g.userData.exhausts||[];
   g.userData.trailAnchors=g.userData.trailAnchors||[];
-  g.userData.cameraDistance=g.userData.cameraDistance||115;
-  g.userData.cameraHeight=g.userData.cameraHeight||32;
-  g.userData.cameraLookAhead=g.userData.cameraLookAhead||175;
+  g.userData.cameraDistance=g.userData.cameraDistance||36;
+  g.userData.cameraHeight=g.userData.cameraHeight||12;
+  g.userData.cameraLookAhead=g.userData.cameraLookAhead||62;
+  if(!g.userData.navLights)addNavigationLights(g,{span:Math.max(6,spec.span||10),tailZ:spec.tailZ||5,noseZ:spec.noseZ||-6});
+  if(!g.userData.landingLights)addLandingLights(g,{x:Math.max(.9,(spec.span||10)*.14),z:spec.landingZ||-1.5});
+  addPanelMicrodetail(g);
   return shadowize(g);
 }
 function makeF16(){
@@ -233,7 +281,7 @@ function makeF16(){
   const gear=landingGear(skin,{mainX:2.0,mainZ:1.0,noseZ:-4.7,height:1.65});g.add(gear);
   const exhaust=engineFlame(.52,3.2,0x64dfff);exhaust.position.set(0,0,7.0);g.add(exhaust);
   const anchors=[trailAnchor(g,-3.8,.1,1.4),trailAnchor(g,3.8,.1,1.4)];
-  return finalizeCraft(g,{label:'F-16',controls:{aileronL:aL,aileronR:aR,elevator,rudder:rudderPivot},gear,exhausts:[exhaust],trailAnchors:anchors,cameraDistance:98,cameraHeight:29,cameraLookAhead:165});
+  return finalizeCraft(g,{label:'F-16',controls:{aileronL:aL,aileronR:aR,elevator,rudder:rudderPivot},gear,exhausts:[exhaust],trailAnchors:anchors,cameraDistance:31,cameraHeight:10,cameraLookAhead:52,span:9.96,tailZ:6.2,noseZ:-8.5});
 }
 function makeSR71(){
   const g=new THREE.Group(),skin=material(0x111719,{metalness:.82,roughness:.2}),dark=material(0x06090a,{metalness:.5,roughness:.35});
@@ -253,7 +301,7 @@ function makeSR71(){
     pivot.position.set(x,0,5.7);const fin=verticalSurface([[0,0],[2.2,0],[1.5,2.3],[.3,2.75]],skin,0);fin.position.z=-2.2;pivot.add(fin);g.add(pivot);
   }
   const gear=landingGear(skin,{mainX:2.6,mainZ:3.4,noseZ:-8.0,height:1.85});g.add(gear);
-  return finalizeCraft(g,{label:'SR-71',controls:{aileronL:aL,aileronR:aR,rudderL,rudderR},gear,exhausts,trailAnchors:anchors,cameraDistance:135,cameraHeight:38,cameraLookAhead:225});
+  return finalizeCraft(g,{label:'SR-71',controls:{aileronL:aL,aileronR:aR,rudderL,rudderR},gear,exhausts,trailAnchors:anchors,cameraDistance:48,cameraHeight:15,cameraLookAhead:76,span:16.94,tailZ:9.8,noseZ:-13.8});
 }
 function makeX15(){
   const g=new THREE.Group(),skin=material(0x596469,{metalness:.72,roughness:.28}),dark=material(0x22292b,{metalness:.5,roughness:.4});
@@ -269,7 +317,7 @@ function makeX15(){
   const gear=landingGear(skin,{mainX:1.7,mainZ:1.8,noseZ:-4.9,height:1.55});g.add(gear);
   const exhaust=engineFlame(.69,4.4,0xff9d5c);exhaust.position.z=6.75;g.add(exhaust);
   const nozzle=new THREE.Mesh(new THREE.TorusGeometry(.68,.12,10,30),dark);nozzle.rotation.x=Math.PI/2;nozzle.position.z=6.65;g.add(nozzle);
-  return finalizeCraft(g,{label:'X-15',controls:{aileronL:aL,aileronR:aR,elevator},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.1,.1,1.5),trailAnchor(g,2.1,.1,1.5)],cameraDistance:102,cameraHeight:30,cameraLookAhead:175});
+  return finalizeCraft(g,{label:'X-15',controls:{aileronL:aL,aileronR:aR,elevator},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.1,.1,1.5),trailAnchor(g,2.1,.1,1.5)],cameraDistance:32,cameraHeight:10,cameraLookAhead:54,span:6.8,tailZ:6.1,noseZ:-8.4});
 }
 function makeEidolon(){
   const g=new THREE.Group(),shell=material(0x617b7c,{emissive:0x123b3a,emissiveIntensity:.48,metalness:.75,roughness:.17});
@@ -282,7 +330,7 @@ function makeEidolon(){
   const gear=landingGear(shell,{mainX:2.8,mainZ:1.4,noseZ:-2.6,height:1.45});g.add(gear);
   const exhaust=engineFlame(1.15,3.5,0x64ffe4);exhaust.position.z=4.0;g.add(exhaust);
   const anchors=[trailAnchor(g,-3.8,0,3.1),trailAnchor(g,3.8,0,3.1)];
-  return finalizeCraft(g,{label:'EIDOLON',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:anchors,cameraDistance:112,cameraHeight:34,cameraLookAhead:185,animateVisual:dt=>{ring.rotation.z+=dt*.5;ring2.rotation.z-=dt*.82}});
+  return finalizeCraft(g,{label:'EIDOLON',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:anchors,cameraDistance:34,cameraHeight:11,cameraLookAhead:58,span:14.0,tailZ:4.2,noseZ:-5.2,animateVisual:dt=>{ring.rotation.z+=dt*.5;ring2.rotation.z-=dt*.82}});
 }
 function makeManta(){
   const g=new THREE.Group(),baseMat=material(0x447d78,{emissive:0x123d38,emissiveIntensity:.58,metalness:.48,roughness:.24,transparent:true,opacity:.66});
@@ -298,7 +346,7 @@ function makeManta(){
   const gear=landingGear(baseMat,{mainX:2.5,mainZ:1.2,noseZ:-2.9,height:1.35});g.add(gear);
   const exL=engineFlame(.72,3.2,0x63ffe4),exR=engineFlame(.72,3.2,0x63ffe4);exL.position.set(-2.5,0,4.6);exR.position.set(2.5,0,4.6);g.add(exL,exR);
   Object.assign(g.userData,{label:'MANTA',shell,pointPositions,pointGeo,linePositions,lineGeo,edges,hasFrame:false});
-  return finalizeCraft(g,{controls:{aileronL:wingL,aileronR:wingR},gear,exhausts:[exL,exR],trailAnchors:[trailAnchor(g,-2.5,0,4.5),trailAnchor(g,2.5,0,4.5)],cameraDistance:118,cameraHeight:32,cameraLookAhead:185});
+  return finalizeCraft(g,{controls:{aileronL:wingL,aileronR:wingR},gear,exhausts:[exL,exR],trailAnchors:[trailAnchor(g,-2.5,0,4.5),trailAnchor(g,2.5,0,4.5)],cameraDistance:35,cameraHeight:11,cameraLookAhead:60,span:16.0,tailZ:5.0,noseZ:-8.2});
 }
 function makeSyntaxJacob(){
   const g=new THREE.Group(),shell=material(0x73749a,{emissive:0x2c245d,emissiveIntensity:.68,metalness:.68,roughness:.19});
@@ -310,7 +358,7 @@ function makeSyntaxJacob(){
   const left=pivotSurface([[-6.5,.4],[-4.0,1.5],[-3.0,3.4],[-5.4,2.7]],shell,-3.8,1.4,.08),right=pivotSurface([[4.0,1.5],[6.5,.4],[5.4,2.7],[3.0,3.4]],shell,3.8,1.4,.08);g.add(left,right);
   const gear=landingGear(shell,{mainX:2.5,mainZ:1.7,noseZ:-4.5,height:1.45});g.add(gear);
   const exhaust=engineFlame(.95,4.0,0x9b8cff);exhaust.position.z=6.3;g.add(exhaust);
-  return finalizeCraft(g,{label:'SYNTAX JACOB',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.7,0,4.5),trailAnchor(g,2.7,0,4.5)],cameraDistance:125,cameraHeight:36,cameraLookAhead:210,animateVisual:dt=>{r1.rotation.z+=dt*.34;r2.rotation.z-=dt*.7}});
+  return finalizeCraft(g,{label:'SYNTAX JACOB',controls:{aileronL:left,aileronR:right},gear,exhausts:[exhaust],trailAnchors:[trailAnchor(g,-2.7,0,4.5),trailAnchor(g,2.7,0,4.5)],cameraDistance:38,cameraHeight:12,cameraLookAhead:65,span:13.6,tailZ:6.2,noseZ:-8.8,animateVisual:dt=>{r1.rotation.z+=dt*.34;r2.rotation.z-=dt*.7}});
 }
 function makeFleet(){
   const models=[makeF16(),makeSR71(),makeX15(),makeEidolon(),makeManta(),makeSyntaxJacob()];
@@ -366,6 +414,9 @@ function updateCraftSystems(model,flight,dt,groundElevation=0){
     if(outer)outer.material.opacity=.12+.2*clamp(thrust,0,1);
     if(inner)inner.material.opacity=.28+.35*clamp(thrust,0,1);
   }
+  const lowAndSlow=Number(flight.domain||0)===0&&clearance<850&&speed<180;
+  for(const lamp of u.landingLights||[])lamp.intensity+=( (lowAndSlow?22:0)-lamp.intensity)*Math.min(1,dt*6);
+  if(u.navLights?.beacon)u.navLights.beacon.visible=(Math.floor(performance.now()/420)%2)===0;
   u.animationMixer?.update?.(dt);
   u.animateVisual?.(dt,flight);
 }
@@ -438,21 +489,27 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   const maxDpr=matchMedia('(max-width:800px)').matches?1.45:2;
   renderer.setPixelRatio(Math.min(devicePixelRatio||1,maxDpr));renderer.setSize(innerWidth,innerHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.setClearColor(0x010207,1);
-  const scene=new THREE.Scene(),atmos=makeSky(scene),space=makeSpace(scene),camera=new THREE.PerspectiveCamera(61,innerWidth/innerHeight,1,30000);
+  const scene=new THREE.Scene(),environmentTexture=makeEnvironmentTexture();scene.environment=environmentTexture;
+  const atmos=makeSky(scene),space=makeSpace(scene),camera=new THREE.PerspectiveCamera(47,innerWidth/innerHeight,.25,30000);
   const craftRoot=new THREE.Group(),fleet=makeFleet();fleet.forEach(m=>craftRoot.add(m));scene.add(craftRoot);
   const trailSystem=makeTrailSystem(scene),shadowTarget=new THREE.Object3D();scene.add(shadowTarget);atmos.sun.target=shadowTarget;
   const flight={lat,lon,altitude_m,heading,pitch,roll,speed,active,domain:0,enabled:true};
-  const chase={distance:185,height:52,lookAhead:235,damping:.09,bankMix:.38};
+  const chase={distance:36,height:12,lookAhead:62,damping:.105,bankMix:.38};
   const worldUp=new THREE.Vector3(0,1,0),forward=new THREE.Vector3(),right=new THREE.Vector3(),craftUp=new THREE.Vector3(),cameraUp=new THREE.Vector3();
   const desiredCamera=new THREE.Vector3(),desiredTarget=new THREE.Vector3(),smoothTarget=new THREE.Vector3(),basis=new THREE.Matrix4(),baseQ=new THREE.Quaternion(),rollQ=new THREE.Quaternion(),localRollAxis=new THREE.Vector3(0,0,-1);
   let patch=null,patchLoading=false,generation=0,destroyed=false,activeIndex=clamp(Number(active)||0,0,5),mantaState=null;
-  const licensedAssetState={loaded:{},replacements:{},errors:{},audit:null};
+  const licensedAssetState={loaded:{},replacements:{},errors:{},audit:null,registry:null};
+  async function licensedAPI(){
+    const api=await getLicensedAssetModule();
+    licensedAssetState.registry=api.LICENSED_AIRCRAFT_ASSETS;
+    return api;
+  }
   const quality={renderScale:1,dpr:Math.min(devicePixelRatio||1,maxDpr),shadowSize:1024,lastTelemetry:0};
   function applyQualityScale(next){
     const scale=clamp(Number(next??window.CITY_CINEMA_CODEC?.state?.scale??1),.5,1);
     quality.renderScale=scale;quality.dpr=Math.max(.65,Math.min((devicePixelRatio||1)*scale,maxDpr));
     renderer.setPixelRatio(quality.dpr);renderer.setSize(innerWidth,innerHeight,false);
-    const shadowSize=scale<.72?512:1024;
+    const shadowSize=scale<.64?512:scale<.9?1024:matchMedia('(max-width:800px)').matches?1024:2048;
     if(shadowSize!==quality.shadowSize){
       quality.shadowSize=shadowSize;atmos.sun.shadow.mapSize.set(shadowSize,shadowSize);
       atmos.sun.shadow.map?.dispose?.();atmos.sun.shadow.map=null;
@@ -462,6 +519,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   async function loadLicensedReference(assetId){
     if(licensedAssetState.loaded[assetId])return licensedAssetState.loaded[assetId];
     try{
+      const {loadLicensedAircraft}=await licensedAPI();
       const loaded=await loadLicensedAircraft(assetId,{clone:true});
       const rig=prepareLicensedRig(loaded.scene,loaded.meta,loaded.inspection,loaded.gltf?.animations||[]);
       rig.visible=false;
@@ -474,6 +532,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   }
   async function replaceCraftWithLicensedAsset(slotIndex,assetId){
     const slot=clamp(Number(slotIndex)||0,0,fleet.length-1),craftName=CRAFT_NAMES[slot];
+    const {canReplaceCraft,loadLicensedAircraft}=await licensedAPI();
     if(!canReplaceCraft(assetId,craftName))throw new Error(`Identity gate: ${assetId} is not licensed/registered as exact ${craftName}`);
     const loaded=await loadLicensedAircraft(assetId,{clone:true});
     const old=fleet[slot],rig=prepareLicensedRig(loaded.scene,loaded.meta,loaded.inspection,loaded.gltf?.animations||[]);
@@ -485,6 +544,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
     return {craftName,assetId,license:loaded.meta.license,author:loaded.meta.author};
   }
   async function runLicensedAssetAudit(){
+    const {auditLicensedAssets}=await licensedAPI();
     const report=await auditLicensedAssets();
     licensedAssetState.audit=report;
     dispatchEvent(new CustomEvent('skyrmion:asset-audit',{detail:report}));
@@ -564,7 +624,7 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
     desiredCamera.copy(craftRoot.position).addScaledVector(forward,-(baseDistance+speedFactor*55)).addScaledVector(cameraUp,baseHeight+Math.max(0,Number(flight.pitch||0))*28);
     desiredTarget.copy(craftRoot.position).addScaledVector(forward,baseLook+speedFactor*85);
     camera.position.lerp(desiredCamera,k);smoothTarget.lerp(desiredTarget,k*1.15);camera.up.lerp(cameraUp,k*.85).normalize();camera.lookAt(smoothTarget);
-    camera.fov+=(61+speedFactor*5-camera.fov)*k*.4;camera.updateProjectionMatrix();
+    camera.fov+=(47+speedFactor*4-camera.fov)*k*.4;camera.updateProjectionMatrix();
   }
   let last=performance.now();
   function frame(now){
@@ -597,13 +657,16 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   applyQualityScale(window.CITY_CINEMA_CODEC?.state?.scale??1);
   const lab=new URLSearchParams(location.search).get('assetlab');
   if(lab==='audit')runLicensedAssetAudit().catch(()=>{});
-  else if(lab&&LICENSED_AIRCRAFT_ASSETS[lab])loadLicensedReference(lab).then(v=>dispatchEvent(new CustomEvent('skyrmion:asset-reference-ready',{detail:{id:lab,meta:v.meta,stats:v.stats,inspection:{nodes:v.inspection.nodes.length,bindings:Object.fromEntries(Object.entries(v.inspection.bindings).map(([k,x])=>[k,x.length]))}}}))).catch(()=>{});
+  else if(lab)getLicensedAssetModule().then(api=>{
+    if(!api.LICENSED_AIRCRAFT_ASSETS[lab])return;
+    return loadLicensedReference(lab).then(v=>dispatchEvent(new CustomEvent('skyrmion:asset-reference-ready',{detail:{id:lab,meta:v.meta,stats:v.stats,inspection:{nodes:v.inspection.nodes.length,bindings:Object.fromEntries(Object.entries(v.inspection.bindings).map(([k,x])=>[k,x.length]))}}})));
+  }).catch(()=>{});
   requestAnimationFrame(frame);
   return {
-    schema:'SKYRMION-TERRAIN-3D-5.0',ready:true,renderer,scene,camera,craftRoot,fleet,
+    schema:'SKYRMION-TERRAIN-3D-6.0',ready:true,renderer,scene,camera,craftRoot,fleet,
     get activeCraft(){return fleet[activeIndex]},get patch(){return patch},
     updateFlightState,updateMantaFrame,teleport,setActiveCraft,
-    licensedAssets:LICENSED_AIRCRAFT_ASSETS,licensedAssetState,quality,loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,samplePatchHeight,
-    destroy(){destroyed=true;generation++;if(patch?.world)dispose(patch.world);fleet.forEach(dispose);renderer.dispose();canvas.remove()}
+    licensedAssetState,quality,getLicensedAssets:async()=>Object.keys((await licensedAPI()).LICENSED_AIRCRAFT_ASSETS),loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,samplePatchHeight,
+    destroy(){destroyed=true;generation++;if(patch?.world)dispose(patch.world);fleet.forEach(dispose);environmentTexture.dispose?.();renderer.dispose();canvas.remove()}
   };
 }
