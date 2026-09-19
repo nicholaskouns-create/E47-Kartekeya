@@ -2,10 +2,9 @@ name: Validate Eidolon embed
 on:
   pull_request:
     paths:
-      - 'website/interfaces/eidolon-flight-lab/**'
       - 'website/interfaces/flight/**'
-      - 'website/interfaces/kouns-core/app.html'
-      - 'website/interfaces/kouns-core/aetheris-receipt-bridge.js'
+      - 'website/interfaces/skyrmion/**'
+      - 'website/interfaces/kouns-core/**'
       - 'website/js/app.js'
       - 'scripts/check_eidolon_receipt_binding.mjs'
       - '.github/workflows/eidolon-embed-validation.yml'
@@ -13,15 +12,15 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
       - run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs
       - run: |
-          test -f website/interfaces/eidolon-flight-lab/index.html
+          test -f website/interfaces/skyrmion/index.html
           test -f website/interfaces/flight/eidolon/index.html
           test -f website/interfaces/flight/aetheris-flight-binding.js
-          grep -q "eidolon-flight-lab.nicholaskouns.chatgpt.site" website/interfaces/flight/eidolon/index.html
-          grep -q "interfaces/flight/eidolon/" website/js/app.js
+          grep -q "interfaces/skyrmion/" website/js/app.js
+          grep -q "../flight/eidolon/" website/interfaces/kouns-core/app.html
           grep -q "aetheris-flight-binding.js" website/interfaces/flight/flight-shell.js
           grep -q "EIDOLON:AETHERIS_STATE_TRANSITION" website/interfaces/flight/aetheris-flight-binding.js
