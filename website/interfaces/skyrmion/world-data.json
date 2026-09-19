@@ -1,0 +1,27 @@
+{
+  "schema":"SKYRMION-WORLD-DATA-1.0",
+  "engine":"MapLibre GL JS + Three.js layered flight runtime",
+  "map_runtime":{
+    "provider":"OpenStreetMap-compatible vector/raster tiles via configurable style URL",
+    "policy":"interactive viewport only; no bulk prefetch",
+    "attribution_required":true
+  },
+  "terrain":{
+    "type":"raster-dem",
+    "runtime":"MapLibre setTerrain",
+    "default_demo_source":"https://demotiles.maplibre.org/terrain-tiles/tiles.json",
+    "production_note":"replace with licensed or self-hosted DEM for sustained game traffic"
+  },
+  "navigation":{
+    "gps_mode":"browser geolocation optional at runtime",
+    "fallback_spawn":{"lng":-115.1398,"lat":36.1699,"label":"Las Vegas"}
+  },
+  "aircraft":["F-16","SR-71","X-15","EIDOLON","MANTA","SYNTAX JACOB"],
+  "spectral_domains":["flight","scalar","wave","matrix","cube","e47","aetheris"],
+  "invariants":[
+    "map imagery and DEM affect rendering and navigation only, not scientific evidence class",
+    "experimental propulsion modes remain simulation-only",
+    "graphics acceleration must preserve fixed-step state-transition semantics",
+    "E47/Cube mapping remains typed and does not establish physical propulsion validity"
+  ]
+}
