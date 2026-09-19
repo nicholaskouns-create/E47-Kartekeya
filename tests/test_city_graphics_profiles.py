@@ -24,12 +24,15 @@ def test_graphics_manifest_contract_and_proof_gates():
 def test_public_lab_orders_are_complete_and_unique():
     data = load_manifest()
     ordered = [s for s in data["surfaces"] if isinstance(s.get("order"), int)]
-    assert [s["order"] for s in ordered] == list(range(1, 15))
-    assert len({s["name"] for s in ordered}) == 14
+    assert [s["order"] for s in ordered] == list(range(1, len(ordered) + 1))
+    assert len({s["name"] for s in ordered}) == len(ordered)
     assert ordered[10]["name"] == "SCALAR"
     assert ordered[11]["name"] == "EIDOLON"
     assert ordered[12]["name"] == "SYNTAX JACOB"
     assert ordered[13]["name"] == "InvariFold"
+    assert [s["name"] for s in ordered[14:18]] == [
+        "SKYRMION", "MANTA", "UFO PROPULSION LAB", "CITY FLIGHT SHELL"
+    ]
 
 
 def test_runtime_has_safe_fallback_chain():

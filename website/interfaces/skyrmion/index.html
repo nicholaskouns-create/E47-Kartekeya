@@ -1,121 +1,34 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#02050a"><title>SKYRMION · Flight Simulator</title>
-<script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
-</script><style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07090b;color:#eaffff;font-family:system-ui,-apple-system,sans-serif}
-body{position:relative}.terrain-stage{position:fixed;inset:0;overflow:hidden;z-index:0;background:#6b3514;pointer-events:none}.terrain-sky{position:absolute;inset:0;background:linear-gradient(180deg,#6d2e0d 0%,#98511e 28%,#6e6250 45%,#243236 66%,#11191b 100%)}.terrain-haze{position:absolute;left:0;right:0;top:29%;height:25%;background:linear-gradient(180deg,rgba(213,154,93,.32),rgba(100,118,108,.12),transparent);filter:blur(9px);z-index:2}.terrain-camera{position:absolute;inset:21% -18% -34%;perspective:760px;perspective-origin:50% 18%;overflow:visible;transform-style:preserve-3d}.terrain-plane{position:absolute;left:50%;top:48%;width:1280px;height:1280px;transform-origin:50% 50%;transform-style:preserve-3d;will-change:transform}.terrain-grid{position:absolute;left:50%;top:50%;margin-left:-640px;margin-top:-640px;will-change:transform}.terrain-grid img{position:absolute;width:256px;height:256px;object-fit:cover;filter:saturate(.72) brightness(.74) contrast(1.12) sepia(.08);transform:translateZ(0)}.terrain-vignette{position:absolute;inset:0;z-index:4;background:linear-gradient(180deg,rgba(0,0,0,.02),transparent 35%,rgba(0,0,0,.38) 100%),radial-gradient(circle at 50% 46%,transparent 35%,rgba(0,0,0,.2) 100%)}.terrain-attribution{position:absolute;right:10px;bottom:7px;z-index:8;color:#cdd6d0aa;font:7px ui-monospace,monospace;text-shadow:0 1px 2px #000}
-canvas{position:fixed;inset:0;width:100%;height:100%;touch-action:none;z-index:1;background:transparent}.hud{position:fixed;inset:0;z-index:8;pointer-events:none}.top{position:absolute;top:max(10px,env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;gap:8px}.chip,.panel,button{background:#071015b8;border:1px solid #7fffe944;color:#eaffff;border-radius:14px;backdrop-filter:blur(12px)}.chip{padding:8px 10px;font-size:10px;letter-spacing:.12em}.chip:first-child{letter-spacing:.28em;color:#91d9d2}.bottom{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:end}.panel{pointer-events:auto;padding:9px;max-width:78vw}.crafts{display:flex;gap:6px;flex-wrap:wrap}button{pointer-events:auto;padding:9px 11px;font-weight:700}button.on{border-color:#8ff;background:#123a3acc}.stick{pointer-events:auto;width:112px;height:112px;border-radius:50%;border:1px solid #8ff6;background:#06111899;position:relative;touch-action:none}.knob{position:absolute;width:42px;height:42px;border-radius:50%;background:#9ff5;border:1px solid #aff;left:35px;top:35px}.ret{position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%);border:1px solid #aff8;border-radius:50%;opacity:.62}.ret:after{content:"";position:absolute;left:-15px;right:-15px;top:21px;height:1px;background:#aff8}
-.launch{position:fixed;z-index:7;left:0;right:0;top:18%;padding:0 clamp(24px,5vw,64px);pointer-events:none;transition:opacity .45s ease,transform .45s ease}.launch-inner{max-width:650px;text-shadow:0 2px 20px #000}.launch .ey{font:600 13px ui-monospace,monospace;letter-spacing:.38em;color:#81d9d0}.launch h1{margin:25px 0 17px;font:500 clamp(52px,8vw,96px)/.88 system-ui,sans-serif;letter-spacing:-.055em}.launch p{margin:0;max-width:560px;color:#e1e5e0c7;font:400 clamp(16px,2vw,26px)/1.45 system-ui,sans-serif;text-shadow:0 2px 12px #000}.launch button{margin-top:30px;background:#eef3ef;color:#071012;border:0;border-radius:15px;padding:16px 25px;font-size:18px;pointer-events:auto;box-shadow:0 12px 40px #0008}.flight-started .launch{opacity:0;transform:translateY(-24px);pointer-events:none}.world-strip{position:fixed;z-index:7;left:0;right:0;bottom:0;padding:12px 18px calc(140px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(3,8,11,.88) 28%);transition:opacity .35s ease}.world-strip .label{font:10px ui-monospace,monospace;letter-spacing:.08em;color:#84d6ce;margin-bottom:9px}.world-cards{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;pointer-events:auto}.world-cards::-webkit-scrollbar{display:none}.world-card{min-width:168px;text-align:left;padding:15px;border-radius:14px;border:1px solid #6fd8cf55;background:#061016c9;color:#dce7e1;font:600 12px system-ui}.world-card small{display:block;margin-top:3px;color:#8ba09d;font-weight:400}.world-card.active{border-color:#78e6da;box-shadow:0 0 28px #60e0d019}.flight-started .world-strip{opacity:.38}.flight-started .world-strip:hover{opacity:1}
-@media(max-width:700px){.top .optional{display:none}.panel{max-width:64vw}.crafts button{font-size:9px;padding:7px}.launch{top:20%;padding:0 20px}.launch .ey{font-size:10px}.launch h1{font-size:52px;margin-top:18px}.launch p{font-size:17px}.world-strip{padding:10px 12px calc(132px + env(safe-area-inset-bottom))}.world-card{min-width:146px}.terrain-camera{inset:24% -65% -36%}.terrain-plane{width:1280px;height:1280px}.terrain-attribution{font-size:6px}}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#02050a"><title>SKYRMION Runtime 2</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#010207;color:#eaffff;font-family:system-ui,-apple-system,sans-serif}body{position:relative}canvas#world{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;background:transparent}.hud{position:fixed;inset:0;z-index:8;pointer-events:none}.top{position:absolute;top:max(10px,env(safe-area-inset-top));left:12px;right:12px;display:flex;gap:7px;flex-wrap:wrap}.chip,.panel,button{background:#071015c7;border:1px solid #7fffe944;color:#eaffff;border-radius:13px;backdrop-filter:blur(12px)}.chip{padding:7px 9px;font:600 9px ui-monospace,monospace;letter-spacing:.08em}.chip:first-child{letter-spacing:.24em;color:#91d9d2}.chip.live{border-color:#78e6da88;box-shadow:0 0 18px #60e0d017}.ret{position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%);border:1px solid #aff8;border-radius:50%;opacity:.55}.ret:after{content:"";position:absolute;left:-15px;right:-15px;top:21px;height:1px;background:#aff8}.bottom{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:end;gap:12px}.panel{pointer-events:auto;padding:9px;max-width:min(82vw,880px)}.crafts{display:flex;gap:6px;flex-wrap:wrap}.crafts button,.mission button{padding:8px 10px;font-size:10px;font-weight:750}.crafts button.on,.mission button.on{border-color:#8ff;background:#123a3acc}.hint{font:8px ui-monospace,monospace;opacity:.65;margin-top:6px;letter-spacing:.04em}.mission{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.stick{pointer-events:auto;width:112px;height:112px;border-radius:50%;border:1px solid #8ff6;background:#06111899;position:relative;touch-action:none}.knob{position:absolute;width:42px;height:42px;border-radius:50%;background:#9ff5;border:1px solid #aff;left:35px;top:35px}.launch{position:fixed;z-index:7;left:0;right:0;top:17%;padding:0 clamp(24px,5vw,64px);pointer-events:none;transition:opacity .45s,transform .45s}.launch-inner{max-width:700px;text-shadow:0 2px 20px #000}.launch .ey{font:600 12px ui-monospace,monospace;letter-spacing:.34em;color:#81d9d0}.launch h1{margin:22px 0 13px;font:500 clamp(52px,8vw,98px)/.88 system-ui,sans-serif;letter-spacing:-.055em}.launch p{margin:0;max-width:650px;color:#e1e5e0c7;font:400 clamp(15px,1.8vw,23px)/1.43 system-ui,sans-serif}.launch button{margin-top:26px;background:#eef3ef;color:#071012;border:0;border-radius:14px;padding:14px 23px;font-size:17px;pointer-events:auto}.flight-started .launch{opacity:0;transform:translateY(-24px);pointer-events:none}.world-strip{position:fixed;z-index:7;left:0;right:0;bottom:0;padding:10px 18px calc(150px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(3,8,11,.84) 30%);transition:opacity .3s}.world-strip .label{font:9px ui-monospace,monospace;letter-spacing:.08em;color:#84d6ce;margin-bottom:7px}.world-cards{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;pointer-events:auto}.world-card{min-width:145px;text-align:left;padding:11px;border-radius:12px;font:650 11px system-ui}.world-card small{display:block;margin-top:2px;color:#8ba09d;font-weight:400}.world-card.active{border-color:#78e6da}.flight-started .world-strip{opacity:.28}.flight-started .world-strip:hover{opacity:1}.proof-panel{position:fixed;right:12px;top:58px;z-index:9;width:min(390px,calc(100vw - 24px));padding:12px;border:1px solid #7fffe944;border-radius:13px;background:#031016e8;backdrop-filter:blur(15px);font:10px/1.65 ui-monospace,monospace;color:#cce8e5;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.2s}.proof-panel.open{opacity:1;transform:none;pointer-events:auto}.proof-toggle{position:fixed;z-index:10;right:12px;top:max(10px,env(safe-area-inset-top));pointer-events:auto;padding:7px 9px;font:700 9px ui-monospace,monospace}.boundary{position:fixed;left:50%;transform:translateX(-50%);top:54px;z-index:7;font:650 8px ui-monospace,monospace;letter-spacing:.08em;color:#a9c8c5aa;text-align:center;pointer-events:none}.terrain-attribution{position:fixed;right:9px;bottom:4px;z-index:8;color:#cdd6d077;font:6px ui-monospace,monospace}
+@media(max-width:760px){.top .optional{display:none}.panel{max-width:70vw}.crafts button,.mission button{font-size:8px;padding:6px 7px}.stick{width:94px;height:94px}.knob{width:36px;height:36px;left:29px;top:29px}.launch{top:19%;padding:0 20px}.launch h1{font-size:52px}.launch p{font-size:15px}.world-strip{padding:8px 10px calc(128px + env(safe-area-inset-bottom))}.world-card{min-width:128px}.boundary{display:none}.proof-toggle{top:48px}}
 </style></head><body>
-<section id="launch" class="launch"><div class="launch-inner"><div class="ey">WGS84 · GLOBAL TERRAIN · E47</div><h1>SKYRMION</h1><p>Live satellite terrain on a WGS84 world with the aircraft rendered inside the same Three.js scene and followed by the chase camera.</p><button id="startFlight">Start flight</button></div></section>
-<section class="world-strip"><div class="label">World streaming · <b>Online</b> · Real-time terrain · Enabled</div><div class="world-cards">
+<section class="launch"><div class="launch-inner"><div class="ey">WORLD ENGINE · 6DOF · E47 · PROOF</div><h1>SKYRMION<br>Runtime 2</h1><p>One state. Seven vehicles. Conventional aerodynamic dynamics for F-16, SR-71 and X-15; separately typed experimental simulation adapters for EIDOLON, MANTA, SKYRMION and Syntax Jacob.</p><button id="startFlight">Start flight · Runtime 2</button></div></section>
+<section class="world-strip"><div class="label">WORLD ENGINE · WGS84 · DEM + SATELLITE · FIXED STEP 120 HZ</div><div class="world-cards">
 <button class="world-card active" data-world data-lat="36.169900" data-lon="-115.139800" data-alt="1100">Las Vegas<small>Nevada</small></button>
 <button class="world-card" data-world data-lat="34.052235" data-lon="-118.243683" data-alt="1100">Los Angeles<small>California</small></button>
 <button class="world-card" data-world data-lat="40.712776" data-lon="-74.005974" data-alt="1200">New York<small>New York</small></button>
 <button class="world-card" data-world data-lat="35.676200" data-lon="139.650300" data-alt="1050">Tokyo<small>Japan</small></button>
 <button class="world-card" data-world data-lat="27.988121" data-lon="86.925026" data-alt="9800">Everest<small>Himalaya</small></button>
 </div></section>
-<canvas id="world"></canvas><div class="terrain-attribution">Imagery © Esri, Maxar, Earthstar Geographics and contributors · DEM © MapLibre demo terrain source</div><div class="hud"><div class="top"><span class="chip">SKYRMION · LIVE FLIGHT</span><span id="tele" class="chip">F-16 · 420 KT · 12,000 FT</span><span id="gps" class="chip">36.169900° N · 115.139800° W · 3,600 m</span><span id="terrainStatus" class="chip optional">TERRAIN · BOOTING</span><span id="assetStatus" class="chip optional">ASSET · NATIVE RIG</span><span id="renderStats" class="chip optional">GPU · ADAPTIVE</span><span class="chip optional">3D WORLD · VEHICLE + CHASE CAMERA</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div style="font-size:9px;opacity:.7;margin-top:6px">DRAG STICK · WASD/ARROWS · 1–6 CRAFT · F DOMAIN</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div><script type="module">
+<canvas id="world"></canvas><button id="proofToggle" class="proof-toggle">PROOF + TELEMETRY</button><div id="proofPanel" class="proof-panel"><b>SKYRMION Runtime 2</b><br>Awaiting first proof receipt.</div><div class="boundary">CONVENTIONAL ⇄ EXPLICIT EXPERIMENTAL-SIMULATION BOUNDARY</div>
+<div class="hud"><div class="top"><span class="chip">SKYRMION · RT2</span><span id="tele" class="chip">F-16 · INITIALIZING</span><span id="gps" class="chip">WGS84 · ACQUIRING</span><span id="terrainStatus" class="chip optional">TERRAIN · BOOTING</span><span id="assetStatus" class="chip optional">ASSET · NATIVE RIG</span><span id="renderStats" class="chip optional">GPU · ADAPTIVE</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div class="mission"><button id="missionRecord" class="on">REC ON</button><button id="missionReplay">REPLAY</button><button id="missionExport">EXPORT</button><button id="missionClear">CLEAR</button></div><div class="hint">STICK / WASD · Q/E YAW · SHIFT FULL THRUST · 1–7 VEHICLES · PROOF RECEIPTS CONTINUOUS</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div>
+<div class="terrain-attribution">Imagery © Esri, Maxar, Earthstar Geographics and contributors · DEM © MapLibre demo terrain source</div>
+<!-- Runtime 2 MANTA bridge: manta-worker.js -->
+<script type="module">
 import {installCityGps} from '../shared/city-gps-runtime.js';
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
 import {createSkyrmionTerrain3D} from './terrain-3d.js';
-
-const gpsRuntime=installCityGps({chip:document.getElementById('gps'),label:'GPS'});
-installCityCinemaCodec({canvas:document.getElementById('world')});
-
-const terrainStatus=document.getElementById('terrainStatus');
-const assetStatus=document.getElementById('assetStatus');
-const renderStats=document.getElementById('renderStats');
-let terrain3d=null;
-let lastMantaFrame=null;
-let lastFlightState={lat:36.1699,lon:-115.1398,altitude_m:3658,heading:0,pitch:0,roll:0,speed:216,active:0,domain:0,enabled:true};
-
-addEventListener('skyrmion:terrain-status',e=>{
-  const status=String(e.detail?.status||'UNKNOWN').toUpperCase();
-  terrainStatus.textContent='TERRAIN · '+status;
-  terrainStatus.classList.toggle('live',status==='LIVE');
-});
-
-addEventListener('skyrmion:asset-load',e=>{
-  const d=e.detail||{},status=String(d.status||'').toUpperCase();
-  assetStatus.textContent='ASSET · '+status+(d.id?' · '+d.id:'');
-  assetStatus.classList.toggle('live',status==='READY');
-});
-addEventListener('skyrmion:asset-replacement',e=>{
-  const d=e.detail||{};
-  assetStatus.textContent='ASSET · '+(d.craftName||'CRAFT')+' · LICENSED GLB';
-  assetStatus.classList.add('live');
-});
-addEventListener('skyrmion:render-stats',e=>{
-  const d=e.detail||{};
-  renderStats.textContent='GPU · '+Math.round(d.triangles||0).toLocaleString()+' TRI · '+Number(d.dpr||1).toFixed(2)+'×';
-  renderStats.classList.toggle('live',Number(d.renderScale||1)>.7);
-});
-
-addEventListener('skyrmion:flight-state',e=>{
-  lastFlightState={...lastFlightState,...(e.detail||{})};
-  terrain3d?.updateFlightState(lastFlightState);
-});
-
-addEventListener('skyrmion:manta-frame',e=>{
-  lastMantaFrame=e.detail||null;
-  if(lastMantaFrame)terrain3d?.updateMantaFrame(lastMantaFrame);
-});
-
-createSkyrmionTerrain3D(lastFlightState).then(world=>{
-  terrain3d=world;
-  window.CITY_SKYRMION_TERRAIN3D=world;
-  world.updateFlightState(lastFlightState);
-  if(lastMantaFrame)world.updateMantaFrame(lastMantaFrame);
-}).catch(error=>{
-  terrainStatus.textContent='TERRAIN · FALLBACK';
-  console.error('SKYRMION terrain-3d failed',error);
-});
-
-document.getElementById('startFlight')?.addEventListener('click',()=>document.body.classList.add('flight-started'));
-
-document.querySelectorAll('[data-world]').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('[data-world]').forEach(b=>b.classList.toggle('active',b===btn));
-  const detail={lat:+btn.dataset.lat,lon:+btn.dataset.lon,altitude_m:+btn.dataset.alt,heading:0,pitch:0,roll:0,domain:0,enabled:true};
-  terrain3d?.teleport(detail);
-  dispatchEvent(new CustomEvent('skyrmion:teleport',{detail}));
-  document.body.classList.add('flight-started');
-}));
-</script><script>
-(()=>{const c=document.getElementById('world'),x=c.getContext('2d',{alpha:true}),tele=document.getElementById('tele'),stick=document.getElementById('stick'),knob=document.getElementById('knob'),gps=document.getElementById('gps');let W,H,D=1,t=0,roll=0,pitch=0,tr=0,tp=0,spd=420,alt=12000,domain=0,active=0,drag=0,lat=36.1699,lon=-115.1398,heading=0;const craft=['F-16','SR-71','X-15','EIDOLON','MANTA','SYNTAX JACOB'],base=[420,1650,3100,680,540,900];
-let mantaWorker=null,mantaFrame=null,mantaReady=false,mantaBusy=false,lastMantaStep=0,mantaError='',gpsSeeded=false;
-addEventListener('city:gps',e=>{const g=e.detail;if(!gpsSeeded&&g?.source==='device'){lat=g.lat;lon=g.lon;gpsSeeded=true;}});
-addEventListener('skyrmion:teleport',e=>{const p=e.detail||{};if(Number.isFinite(p.lat))lat=p.lat;if(Number.isFinite(p.lon))lon=p.lon;if(Number.isFinite(p.altitude_m))alt=Math.max(50,p.altitude_m/0.3048);heading=0;gpsSeeded=true;});
-function initManta(){
-  if(mantaWorker)return;
-  mantaWorker=new Worker('./manta-worker.js');
-  mantaWorker.onmessage=({data})=>{
-    if(data?.type==='ready'){mantaReady=true;mantaError='';}
-    else if(data?.type==='frame'){mantaFrame=data.state;mantaBusy=false;dispatchEvent(new CustomEvent('skyrmion:manta-frame',{detail:data.state}));}
-    else if(data?.type==='error'){mantaError=data.error||'runtime error';mantaBusy=false;}
-  };
-  mantaWorker.onerror=e=>{mantaError=e.message||'worker error';mantaBusy=false;};
-  mantaWorker.postMessage({type:'init',schema:'MANTA-PYTHON-BRIDGE-1.0'});
-}
-function stepManta(now){
-  if(active!==4||!mantaReady||mantaBusy||now-lastMantaStep<34)return;
-  lastMantaStep=now;mantaBusy=true;
-  const effort=Math.min(1,Math.abs(pitch)+Math.abs(roll));
-  const mode=domain===0?(effort>.45?'MANEUVER':'CRUISE'):'TRANSITION';
-  mantaWorker.postMessage({type:'step',pilot:{pitch,roll,yaw:tr,morph:effort,mode}});
-}
-function size(){D=Math.min(devicePixelRatio||1,2)*(window.CITY_CINEMA_CODEC?.state?.scale||1);D=Math.max(.65,D);W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0)}addEventListener('resize',size);addEventListener('city:render-scale',size);size();const root=document.getElementById('crafts');craft.forEach((n,i)=>{let b=document.createElement('button');b.textContent=n;b.onclick=()=>{active=i;if(i===4)initManta();[...root.children].forEach((q,j)=>q.classList.toggle('on',j===i))};root.appendChild(b)});root.children[0].classList.add('on');function input(px,py){let r=stick.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(px-r.left-r.width/2)/(r.width*.34))),dy=Math.max(-1,Math.min(1,(py-r.top-r.height/2)/(r.height*.34)));tr=dx*.8;tp=-dy*.5;knob.style.transform='translate('+dx*32+'px,'+dy*32+'px)'}stick.onpointerdown=e=>{drag=1;stick.setPointerCapture(e.pointerId);input(e.clientX,e.clientY)};stick.onpointermove=e=>{if(drag)input(e.clientX,e.clientY)};stick.onpointerup=stick.onpointercancel=()=>{drag=0;tr=tp=0;knob.style.transform='none'};const keys={};onkeydown=e=>{keys[e.key.toLowerCase()]=1;if(e.key>='1'&&e.key<='6')root.children[+e.key-1].click();if(e.key.toLowerCase()==='f')domain=(domain+1)%3};onkeyup=e=>keys[e.key.toLowerCase()]=0;function drawManta(){
-  const g=mantaFrame?.geometry||[],act=mantaFrame?.activation||[];if(g.length<375)return false;
-  x.save();x.translate(W/2,H*.61);x.rotate(roll*.42);const pts=[];
-  for(let i=0;i<125;i++){const j=i*3;pts.push([g[j]*14,g[j+2]*12-g[j+1]*22,act[i]||0]);}
-  x.lineWidth=1;x.strokeStyle='#8ff3';
-  for(let a=0;a<5;a++)for(let b=0;b<5;b++)for(let c0=0;c0<5;c0++){
-    const i=a*25+b*5+c0,p=pts[i];
-    for(const ni of [a<4?i+25:-1,b<4?i+5:-1,c0<4?i+1:-1])if(ni>=0){const q=pts[ni];x.beginPath();x.moveTo(p[0],p[1]);x.lineTo(q[0],q[1]);x.stroke();}
-  }
-  for(const p of pts){x.globalAlpha=.28+.72*p[2];x.fillStyle='#9cebd5';x.beginPath();x.arc(p[0],p[1],1.2+2.2*p[2],0,Math.PI*2);x.fill();}
-  x.globalAlpha=1;x.strokeStyle='#dfffff';x.lineWidth=1.4;x.beginPath();x.moveTo(-68,8);x.quadraticCurveTo(0,-34,68,8);x.quadraticCurveTo(0,34,-68,8);x.stroke();x.restore();return true;
-}
-function jet(){if(window.CITY_SKYRMION_TERRAIN3D?.ready)return;if(active===4&&mantaFrame&&drawManta())return;x.save();x.translate(W/2,H*.61);x.rotate(roll*.5);x.fillStyle=active<3?(domain===0?'#080d10':'#dce8e9'):active===4?'#9cebd5':'#c6c5ff';x.shadowBlur=active<3?8:28;x.shadowColor='#76fff0';x.beginPath();x.moveTo(0,-45);x.lineTo(9,12);x.lineTo(65,33);x.lineTo(60,42);x.lineTo(10,29);x.lineTo(5,55);x.lineTo(-5,55);x.lineTo(-10,29);x.lineTo(-60,42);x.lineTo(-65,33);x.lineTo(-9,12);x.closePath();x.fill();x.fillStyle='#071820';x.beginPath();x.ellipse(0,-8,6,16,0,0,7);x.fill();if(active>=3){x.strokeStyle='#7ff';x.lineWidth=2;x.beginPath();x.ellipse(0,18,34+Math.sin(t*4)*4,12,0,0,7);x.stroke()}x.restore()}function draw(){requestAnimationFrame(draw);t+=.016;let kr=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0),kp=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0);roll+=(Math.max(-.9,Math.min(.9,tr+kr*.7))-roll)*.06;pitch+=(Math.max(-.55,Math.min(.55,tp+kp*.4))-pitch)*.06;if(active===4){initManta();stepManta(performance.now())}spd+=(base[active]-spd)*.012;alt=Math.max(50,alt+pitch*25);heading+=roll*.0018;const metersPerSec=spd*.514444;const step=metersPerSec*.016;lat+=(Math.cos(heading)*step/6378137)*180/Math.PI;lon+=(Math.sin(heading)*step/(6378137*Math.max(.000001,Math.cos(lat*Math.PI/180))))*180/Math.PI;x.clearRect(0,0,W,H);if(domain===0){let grade=x.createLinearGradient(0,0,0,H*.64);grade.addColorStop(0,'rgba(116,47,12,.28)');grade.addColorStop(.42,'rgba(112,76,44,.08)');grade.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=grade;x.fillRect(0,0,W,H*.68);x.save();x.translate(W/2,H/2+pitch*H*.24);x.rotate(-roll*.38);x.strokeStyle='rgba(230,255,250,.07)';let flow=(t*spd*.16)%72;for(let y=40-flow;y<H*.55;y+=72){x.beginPath();x.moveTo(-W,y);x.lineTo(W,y);x.stroke()}x.restore()}else if(!window.CITY_SKYRMION_TERRAIN3D?.ready){let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#010208');g.addColorStop(1,domain===1?'#09233c':'#080816');x.fillStyle=g;x.fillRect(0,0,W,H);for(let i=0;i<100;i++){let sx=(i*97+t*spd*.04)%W,sy=(i*i*31)%H;x.fillStyle='#dff';x.fillRect(sx,sy,1+(i%13===0),1+(i%13===0))}if(domain===1){x.fillStyle='#16466d';x.beginPath();x.arc(0,H*1.25,W,0,7);x.fill()}}jet();const mantaTele=active===4?(mantaFrame?' · Ω '+mantaFrame.e47_capture.toFixed(3)+' · R '+Number(mantaFrame.residual).toExponential(1):(mantaError?' · PYTHON FALLBACK':' · PYTHON LOADING')):'';tele.textContent=craft[active]+' · '+Math.round(spd)+' KT · '+Math.round(alt).toLocaleString()+' FT'+mantaTele;const ns=lat>=0?'N':'S',ew=lon>=0?'E':'W';gps.textContent=Math.abs(lat).toFixed(6)+'° '+ns+' · '+Math.abs(lon).toFixed(6)+'° '+ew+' · '+Math.round(alt*.3048).toLocaleString()+' m';dispatchEvent(new CustomEvent('skyrmion:flight-state',{detail:{lat,lon,altitude_m:alt*.3048,heading,pitch,roll,speed:metersPerSec,domain,active,enabled:domain===0}}));}setTimeout(()=>dispatchEvent(new CustomEvent('skyrmion:flight-state',{detail:{lat,lon,altitude_m:alt*.3048,heading,pitch,roll,speed:spd*.514444,domain,active,enabled:true}})),0);draw();})();
+installCityGps({chip:document.getElementById('gps'),label:'GPS'});installCityCinemaCodec({canvas:document.getElementById('world')});
+const terrainStatus=document.getElementById('terrainStatus'),assetStatus=document.getElementById('assetStatus'),renderStats=document.getElementById('renderStats');let terrain3d=null,lastMantaFrame=null,lastFlightState={lat:36.1699,lon:-115.1398,altitude_m:3658,heading:0,pitch:0,roll:0,speed:216,active:0,domain:0,enabled:true};
+addEventListener('skyrmion:terrain-status',e=>{const s=String(e.detail?.status||'UNKNOWN').toUpperCase();terrainStatus.textContent='TERRAIN · '+s;terrainStatus.classList.toggle('live',s==='LIVE')});
+addEventListener('skyrmion:asset-load',e=>{const d=e.detail||{},s=String(d.status||'').toUpperCase();assetStatus.textContent='ASSET · '+s+(d.id?' · '+d.id:'');assetStatus.classList.toggle('live',s==='READY')});
+addEventListener('skyrmion:asset-replacement',e=>{const d=e.detail||{};assetStatus.textContent='ASSET · '+(d.craftName||'CRAFT')+' · LICENSED GLB';assetStatus.classList.add('live')});
+addEventListener('skyrmion:render-stats',e=>{const d=e.detail||{};renderStats.textContent='GPU · '+Math.round(d.triangles||0).toLocaleString()+' TRI · '+Number(d.dpr||1).toFixed(2)+'×';renderStats.classList.toggle('live',Number(d.renderScale||1)>.7)});
+addEventListener('skyrmion:flight-state',e=>{lastFlightState={...lastFlightState,...(e.detail||{})};terrain3d?.updateFlightState(lastFlightState)});addEventListener('skyrmion:manta-frame',e=>{lastMantaFrame=e.detail||null;if(lastMantaFrame)terrain3d?.updateMantaFrame(lastMantaFrame)});
+document.getElementById('startFlight').addEventListener('click',()=>document.body.classList.add('flight-started'));
+document.querySelectorAll('[data-world]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-world]').forEach(b=>b.classList.toggle('active',b===btn));const detail={lat:+btn.dataset.lat,lon:+btn.dataset.lon,altitude_m:+btn.dataset.alt,heading:0,pitch:0,roll:0,domain:0,enabled:true};terrain3d?.teleport(detail);dispatchEvent(new CustomEvent('skyrmion:teleport',{detail}));document.body.classList.add('flight-started')}));
+try{terrain3d=await createSkyrmionTerrain3D(lastFlightState);window.CITY_SKYRMION_TERRAIN3D=terrain3d;if(window.CITY_SKYRMION_TERRAIN3D?.ready)terrainStatus.classList.add('live');terrain3d.updateFlightState(lastFlightState);if(lastMantaFrame)terrain3d.updateMantaFrame(lastMantaFrame);await import('./runtime2/bootstrap.js');}catch(error){terrainStatus.textContent='TERRAIN · FALLBACK';console.error('SKYRMION Runtime 2 boot failed',error);await import('./runtime2/bootstrap.js');}
 </script></body></html>

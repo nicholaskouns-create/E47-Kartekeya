@@ -1,0 +1,5 @@
+import {qNorm,norm} from './math.js';
+export class ProofTelemetry{
+ constructor(){this.schema='SKYRMION-PROOF-TELEMETRY-2.0';this.sequence=0;this.failures=0;this.last=null}
+ inspect({state,vehicle,world,e47,propulsion,fixedStepHz}){const checks={finite:[...state.velocityBody,...state.quaternion,...state.omegaBody,state.position.lat,state.position.lon,state.position.altitudeM].every(Number.isFinite),quaternion:Math.abs(qNorm(state.quaternion)-1)<1e-6,positiveMass:vehicle.massKg>0,fixedStep:fixedStepHz>=60&&fixedStepHz<=240,evidenceBoundary:vehicle.evidence==='conventional'?propulsion.receipt?.mode==='conventional':propulsion.receipt?.mode==='experimental-simulation',e47:Number.isFinite(e47.capture)&&e47.capture>=0&&e47.capture<=1};const pass=Object.values(checks).every(Boolean);if(!pass)this.failures++;return this.last={schema:this.schema,sequence:++this.sequence,pass,failures:this.failures,checks,vehicle:{id:vehicle.id,evidence:vehicle.evidence,model:vehicle.model},world:{density:world.density,gravity:world.gravity},e47,speedMps:norm(state.velocityBody),propulsion:propulsion.receipt};}
+}

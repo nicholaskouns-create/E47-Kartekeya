@@ -40,7 +40,7 @@ These records have a verified public license statement on the provider page, but
 2. Preserve author, source, license, and modification/provenance metadata.
 3. Do not map a different aircraft to a named slot. The F-15 and Global Hawk validate the pipeline but must not become F-16, SR-71, or X-15.
 4. Prefer CC0, U.S.-government/NASA material under applicable usage guidance, or CC BY assets. Noncommercial/share-alike assets require separate compatibility review.
-5. Imported assets are presentation geometry. They do not alter the authoritative flight-state, E47, MANTA, GPS, terrain, or propulsion-simulation contracts.
+5. Imported presentation geometry does not alter the authoritative flight-state, E47, MANTA, GPS, terrain, or propulsion-simulation contracts.
 6. Named bones/nodes may drive ailerons, elevators, stabilators, rudders, flaps, spoilers, gear, canopy materials, exhaust, contrails, and shadows. If those nodes do not exist, SKYRMION does not claim that the GLB is rigged.
 7. Skinned GLBs are cloned with Three.js SkeletonUtils rather than naive scene cloning.
 8. Material tuning clones materials per imported scene so runtime glass/roughness changes do not mutate the cached source.
