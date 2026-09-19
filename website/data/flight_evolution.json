@@ -1,6 +1,6 @@
 {
-  "version": "CITY-FLIGHT-EVOLUTION-1.0",
-  "updated": "2026-09-17",
+  "version": "CITY-FLIGHT-EVOLUTION-1.1",
+  "updated": "2026-09-19",
   "principle": "Upgrade sequentially, capture reusable interaction/visual features, then carry them forward without erasing source lineage.",
   "shared_runtime": {
     "adaptive_quality": true,
@@ -11,7 +11,11 @@
     "landscape_lock_when_supported": true,
     "reduced_motion_fallback": true,
     "source_escape_hatch": true,
-    "evidence_boundary_persistent": true
+    "evidence_boundary_persistent": true,
+    "stargate_invariant_bridge": true,
+    "stargate_validation": "STARGATE-CORRECTED-VALIDATION-1.1",
+    "stargate_physical_promotion": false,
+    "e47_rank_fraction_physical_bridge": false
   },
   "levels": [
     {
@@ -20,8 +24,18 @@
       "level": 1,
       "title": "Hover Assembly",
       "source": "https://willow-fjord-king-cap.grok.me/",
-      "captured": ["twelve-step construction sequence", "assembly-bay framing", "build-before-flight onboarding"],
-      "carried_forward": ["progressive mission card", "minimal HUD", "source-preserving wrapper"]
+      "captured": [
+        "twelve-step construction sequence",
+        "assembly-bay framing",
+        "build-before-flight onboarding"
+      ],
+      "carried_forward": [
+        "progressive mission card",
+        "minimal HUD",
+        "source-preserving wrapper",
+        "corrected Stargate invariant packet",
+        "explicit physical-closure boundary"
+      ]
     },
     {
       "step": 2,
@@ -29,8 +43,19 @@
       "level": 1,
       "title": "MAV",
       "source": "https://glow-garden-brick-cedar.grok.me/",
-      "captured": ["W/S throttle", "A/D yaw", "Space/Shift vertical control", "five spectral-node objective"],
-      "carried_forward": ["input-status chip", "simple reticle", "training objective"]
+      "captured": [
+        "W/S throttle",
+        "A/D yaw",
+        "Space/Shift vertical control",
+        "five spectral-node objective"
+      ],
+      "carried_forward": [
+        "input-status chip",
+        "simple reticle",
+        "training objective",
+        "corrected Stargate invariant packet",
+        "explicit physical-closure boundary"
+      ]
     },
     {
       "step": 3,
@@ -38,8 +63,18 @@
       "level": 2,
       "title": "Eidolon Harmonic",
       "source": "https://nova-wood-clear-zest.grok.me/",
-      "captured": ["coherence/flow instrument framing", "P47-gated harmonic vocabulary", "typed observable boundary"],
-      "carried_forward": ["field rings", "horizon overlay", "level-2 telemetry density"]
+      "captured": [
+        "coherence/flow instrument framing",
+        "P47-gated harmonic vocabulary",
+        "typed observable boundary"
+      ],
+      "carried_forward": [
+        "field rings",
+        "horizon overlay",
+        "level-2 telemetry density",
+        "corrected Stargate invariant packet",
+        "explicit physical-closure boundary"
+      ]
     },
     {
       "step": 4,
@@ -47,8 +82,17 @@
       "level": 2,
       "title": "EIDOLON",
       "source": "https://lark-plaza-umbra-drum.grok.me/",
-      "captured": ["flagship 3D flight role", "City navigation role"],
-      "carried_forward": ["fullscreen flight shell", "adaptive graphics status", "clean flagship HUD"]
+      "captured": [
+        "flagship 3D flight role",
+        "City navigation role"
+      ],
+      "carried_forward": [
+        "fullscreen flight shell",
+        "adaptive graphics status",
+        "clean flagship HUD",
+        "corrected Stargate invariant packet",
+        "explicit physical-closure boundary"
+      ]
     },
     {
       "step": 5,
@@ -56,8 +100,20 @@
       "level": 3,
       "title": "Hover P47 Cockpit",
       "source": "https://bison-drum-daisy-plaza.grok.me/",
-      "captured": ["W/S surge", "A/D yaw", "Space climb", "H hover lock", "cockpit-intro video lineage"],
-      "carried_forward": ["dense reticle", "range ticks", "bronze/cyan advanced instrumentation"]
+      "captured": [
+        "W/S surge",
+        "A/D yaw",
+        "Space climb",
+        "H hover lock",
+        "cockpit-intro video lineage"
+      ],
+      "carried_forward": [
+        "dense reticle",
+        "range ticks",
+        "bronze/cyan advanced instrumentation",
+        "corrected Stargate invariant packet",
+        "explicit physical-closure boundary"
+      ]
     },
     {
       "step": 6,
@@ -65,8 +121,19 @@
       "level": 3,
       "title": "UFO Propulsion Lab",
       "source": "https://star-sage-atlas-rapid.grok.me/",
-      "captured": ["flight plus parameter tuning", "phi0/sigma/omega controls", "epsilon/mu metamaterial controls", "Warp W/m_eff/index n telemetry"],
-      "carried_forward": ["expert visual density", "parameter-space mission language", "explicit model-output boundary"]
+      "captured": [
+        "flight plus parameter tuning",
+        "phi0/sigma/omega controls",
+        "epsilon/mu metamaterial controls",
+        "Warp W/m_eff/index n telemetry"
+      ],
+      "carried_forward": [
+        "expert visual density",
+        "parameter-space mission language",
+        "explicit model-output boundary",
+        "corrected Stargate invariant packet",
+        "explicit physical-closure boundary"
+      ]
     }
   ]
 }
