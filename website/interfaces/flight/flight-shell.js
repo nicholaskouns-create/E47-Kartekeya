@@ -1,3 +1,4 @@
+import {installCityCinemaCodec} from './city-cinema-codec.js';
 const body=document.body;
 const source=body.dataset.source;
 const mode=body.dataset.mode||'Flight mode';
@@ -125,6 +126,7 @@ function sizeField(){
 }
 window.addEventListener('resize',sizeField);
 sizeField();
+installCityCinemaCodec({canvas:field});
 
 let t0=performance.now();
 function draw(now){
