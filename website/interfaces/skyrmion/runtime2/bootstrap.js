@@ -1,9 +1,40 @@
+// SKYRMION-VISUAL-FALLBACK-1.0
 import {SkyrmionRuntime2} from './runtime2.js';
 import {VEHICLE_ORDER,vehicle} from './vehicle-registry.js';
 const rt=new SkyrmionRuntime2({fixedStepHz:120,spawn:{lat:36.1699,lon:-115.1398,altitudeM:3658,speedMps:216}});window.CITY_SKYRMION_RUNTIME2=rt;
 document.getElementById('startFlight')?.addEventListener('click',()=>document.body.classList.add('flight-started'));
 dispatchEvent(new CustomEvent('skyrmion:runtime2-boot-ready',{detail:{schema:rt.schema,fixedStepHz:rt.fixedStepHz}}));
 const root=document.getElementById('crafts'),tele=document.getElementById('tele'),gps=document.getElementById('gps'),stick=document.getElementById('stick'),knob=document.getElementById('knob'),proofPanel=document.getElementById('proofPanel');
+const fallbackCanvas=document.getElementById('world'),fallbackCtx=fallbackCanvas?.getContext?.('2d',{alpha:true});
+function sizeFallback(){
+  if(!fallbackCanvas||!fallbackCtx)return;
+  const d=Math.min(devicePixelRatio||1,1.6),w=innerWidth,h=innerHeight;
+  if(fallbackCanvas.width!==Math.round(w*d)||fallbackCanvas.height!==Math.round(h*d)){
+    fallbackCanvas.width=Math.round(w*d);fallbackCanvas.height=Math.round(h*d);
+    fallbackCtx.setTransform(d,0,0,d,0,0);
+  }
+}
+addEventListener('resize',sizeFallback);sizeFallback();
+function drawFallbackCraft(ctx,w,h,name,roll,pitch){
+  ctx.save();ctx.translate(w*.5,h*.61);ctx.rotate(roll*.42);ctx.scale(1.45,1.45);
+  const long=name==='SR-71'?1.35:name==='X-15'?1.08:1;
+  ctx.scale(1,long);ctx.fillStyle='#0b1114';ctx.strokeStyle='rgba(220,245,245,.48)';ctx.lineWidth=1.2;
+  ctx.beginPath();ctx.moveTo(0,-62);ctx.lineTo(10,-17);ctx.lineTo(58,15);ctx.lineTo(54,25);ctx.lineTo(15,16);ctx.lineTo(12,49);ctx.lineTo(-12,49);ctx.lineTo(-15,16);ctx.lineTo(-54,25);ctx.lineTo(-58,15);ctx.lineTo(-10,-17);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle='rgba(85,185,205,.5)';ctx.beginPath();ctx.ellipse(0,-22,7,17,0,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+}
+function visualFallback(now){
+  requestAnimationFrame(visualFallback);
+  if(!fallbackCtx||window.CITY_SKYRMION_TERRAIN3D?.ready){fallbackCtx?.clearRect(0,0,innerWidth,innerHeight);return}
+  sizeFallback();const w=innerWidth,h=innerHeight,d=rt.telemetry(),r=d.roll||0,p=d.pitch||0;
+  fallbackCtx.clearRect(0,0,w,h);
+  const sky=fallbackCtx.createLinearGradient(0,0,0,h);sky.addColorStop(0,'rgba(111,50,18,.55)');sky.addColorStop(.5,'rgba(63,78,80,.36)');sky.addColorStop(1,'rgba(4,9,12,.7)');fallbackCtx.fillStyle=sky;fallbackCtx.fillRect(0,0,w,h);
+  fallbackCtx.save();fallbackCtx.translate(w*.5,h*.55+p*h*.13);fallbackCtx.rotate(-r*.22);fallbackCtx.strokeStyle='rgba(225,245,240,.12)';
+  for(let y=-h;y<h;y+=54){fallbackCtx.beginPath();fallbackCtx.moveTo(-w,y+(now*.04)%54);fallbackCtx.lineTo(w,y+(now*.04)%54);fallbackCtx.stroke()}fallbackCtx.restore();
+  drawFallbackCraft(fallbackCtx,w,h,d.vehicleName,r,p);
+}
+requestAnimationFrame(visualFallback);
+
 function syncButtons(){[...root?.children||[]].forEach(q=>q.classList.toggle('on',q.dataset.vehicle===rt.vehicle.id));}
 if(root){root.textContent='';VEHICLE_ORDER.forEach((id,i)=>{const b=document.createElement('button');b.textContent=vehicle(id).name;b.dataset.vehicle=id;b.title=vehicle(id).evidence==='conventional'?'Conventional aerodynamic 6DOF':'Experimental simulation adapter';b.classList.toggle('on',i===0);b.onclick=()=>{rt.setVehicle(id);syncButtons();if(id==='manta')initManta();};root.appendChild(b);});}
 let drag=false,stickRoll=0,stickPitch=0,keys={};
