@@ -17,6 +17,8 @@ jobs:
           python-version: "3.12"
       - name: Validate component, maturity and evidence map
         run: python scripts/check_lab_contract.py
+      - name: Smoke every declared lab instrument
+        run: python scripts/lab_component.py smoke --all
 
   test:
     name: Pytest – E47 canonical invariants
