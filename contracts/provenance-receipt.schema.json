@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"CITY-INSTRUMENT-RECEIPT/1.0",
+  "title":"Mathematical City instrument provenance receipt",
+  "type":"object",
+  "required":["schema","component_id","version","mode","status","timestamp_utc","duration_ms","git_commit","contract_sha256","runtime","checks","metrics"],
+  "properties":{
+    "schema":{"const":"CITY-INSTRUMENT-RECEIPT/1.0"},
+    "component_id":{"type":"string"},
+    "version":{"type":"string"},
+    "mode":{"enum":["smoke","benchmark"]},
+    "status":{"enum":["PASS","FAIL"]},
+    "timestamp_utc":{"type":"string"},
+    "duration_ms":{"type":"number","minimum":0},
+    "git_commit":{"type":["string","null"]},
+    "contract_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "runtime":{"type":"object"},
+    "checks":{"type":"array"},
+    "metrics":{"type":"object"},
+    "failure":{"type":["object","null"]}
+  }
+}
