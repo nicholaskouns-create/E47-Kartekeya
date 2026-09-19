@@ -5,7 +5,9 @@ on:
       - 'website/interfaces/flight/**'
       - 'website/interfaces/skyrmion/**'
       - 'website/interfaces/kouns-core/**'
+      - 'website/index.html'
       - 'website/js/app.js'
+      - 'scripts/check_website.cjs'
       - 'scripts/check_eidolon_receipt_binding.mjs'
       - '.github/workflows/eidolon-embed-validation.yml'
 jobs:
@@ -20,7 +22,7 @@ jobs:
           test -f website/interfaces/skyrmion/index.html
           test -f website/interfaces/flight/eidolon/index.html
           test -f website/interfaces/flight/aetheris-flight-binding.js
-          grep -q "interfaces/skyrmion/" website/js/app.js
+          grep -q "interfaces/skyrmion/" website/index.html
           grep -q "../flight/eidolon/" website/interfaces/kouns-core/app.html
           grep -q "aetheris-flight-binding.js" website/interfaces/flight/flight-shell.js
           grep -q "EIDOLON:AETHERIS_STATE_TRANSITION" website/interfaces/flight/aetheris-flight-binding.js

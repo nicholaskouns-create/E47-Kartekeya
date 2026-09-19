@@ -32,11 +32,12 @@ test('derives bounded flight controls from returned state', () => {
 
 test('SKYRMION is public flagship while EIDOLON remains receipt-bound in CITY CORE', () => {
   const root=resolve(import.meta.dirname,'..');
-  const app=readFileSync(resolve(root,'website/js/app.js'),'utf8');
+  const homepage=readFileSync(resolve(root,'website/index.html'),'utf8');
   const core=readFileSync(resolve(root,'website/interfaces/kouns-core/app.html'),'utf8');
   const shell=readFileSync(resolve(root,'website/interfaces/flight/flight-shell.js'),'utf8');
   const eidolon=readFileSync(resolve(root,'website/interfaces/flight/eidolon/index.html'),'utf8');
-  assert.match(app,/interfaces\/skyrmion\//);
+  assert.match(homepage,/interfaces\/skyrmion\//);
+  assert.match(homepage,/SKYRMION Runtime 2/);
   assert.match(core,/\.\.\/flight\/eidolon\//);
   assert.match(shell,/createEidolonFlightReceiptBinding/);
   assert.match(shell,/receiptFlightBinding\?\.sample/);
