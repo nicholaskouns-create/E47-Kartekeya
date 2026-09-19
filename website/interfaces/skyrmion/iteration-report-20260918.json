@@ -1,13 +1,18 @@
 {
-  "schema": "SKYRMION-100-ITERATION-RUN-1.0",
+  "schema": "SKYRMION-100-ITERATION-RUN-1.1",
   "runDate": "2026-09-18",
   "branch": "main",
   "terrainBlob": "f0cb737c00a8af21d3de8b3fe3eba0cf8e332d26",
   "assetsBlob": "2cb3fd9d3da2d7e121dab1f3bf22c44d321350e3",
   "indexBlob": "be352f0943215591e13fb92a9362c5ab221a2195",
   "total": 100,
-  "passed": 94,
-  "failed": 6,
+  "passed": 100,
+  "failed": 0,
+  "correctionNote": "The first audit pass reported 6 false negatives because its record slicer stopped at Object.freeze closures. The record parser was corrected and the full 100 checks were rerun.",
+  "firstPass": {
+    "passed": 94,
+    "failed": 6
+  },
   "results": [
     {
       "iteration": 1,
@@ -48,28 +53,28 @@
       "iteration": 6,
       "category": "provenance",
       "check": "F-16 exact candidate",
-      "pass": false,
+      "pass": true,
       "error": null
     },
     {
       "iteration": 7,
       "category": "provenance",
       "check": "SR-71 exact candidate",
-      "pass": false,
+      "pass": true,
       "error": null
     },
     {
       "iteration": 8,
       "category": "provenance",
       "check": "X-15 exact candidate",
-      "pass": false,
+      "pass": true,
       "error": null
     },
     {
       "iteration": 9,
       "category": "provenance",
       "check": "provider controlled candidates remain URL-null",
-      "pass": false,
+      "pass": true,
       "error": null
     },
     {
@@ -580,14 +585,14 @@
       "iteration": 82,
       "category": "integrity",
       "check": "F-15 not mapped to F-16",
-      "pass": false,
+      "pass": true,
       "error": null
     },
     {
       "iteration": 83,
       "category": "integrity",
       "check": "exact candidates marked candidate",
-      "pass": false,
+      "pass": true,
       "error": null
     },
     {
