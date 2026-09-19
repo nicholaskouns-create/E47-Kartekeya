@@ -53,7 +53,7 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
   <div class="eyebrow">FLIGHT DECK · DIFFICULTY ASCENDS DOWNWARD</div>
   <h1>Learn it. Fly it. Push it.</h1>
   <p>Six flight modes, one viewer, one City shell. Start simple and add control density only when you want it.</p>
-  <div class="status-strip"><span class="live" id="gpuStatus">GPU · DETECTING</span><span id="aetherisStatus">AETHERIS · WAITING FOR RECEIPT</span><span id="receiptDigest">RECEIPT · NONE</span><span id="matrixWitness">MATRIX→CUBE · WAITING</span><span>GAMEPAD AWARE</span><span>SOURCE LINEAGE PRESERVED</span></div>
+  <div class="status-strip"><span class="live" id="gpuStatus">GPU · DETECTING</span><span id="aetherisStatus">AETHERIS · WAITING FOR RECEIPT</span><span id="receiptDigest">RECEIPT · NONE</span><span id="matrixWitness">MATRIX→CUBE · WAITING</span><span class="live">GPS · WGS84</span><span>GAMEPAD AWARE</span><span>SOURCE LINEAGE PRESERVED</span></div>
 </section>
 
 <section class="ladder" aria-label="Flight ladder">
@@ -116,6 +116,7 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
   <div class="section-head"><div><div class="eyebrow">RESEARCH INSTRUMENTS</div><h2>Load an instrument.</h2></div><p>Research surfaces now use the same viewer. Select one here; use Open Full only when you want the source surface by itself.</p></div>
   <div class="module-grid">
     <button class="module" data-module data-id="syntax-jacob" data-name="SYNTAX JACOB" data-url="../syntax-jacob/"><span class="role">3I / LIVE EPHEMERIS</span><strong>Syntax Jacob</strong><small>JPL-tracked 3I/ATLAS and Earth state vectors with an E47 scalar-coherence copilot.</small><small class="evidence">EVIDENCE · JPL DATA + MODELED COHERENCE</small></button>
+    <button class="module" data-module data-id="skyrmion-app" data-name="SKYRMION" data-url="../skyrmion/"><span class="role">FLAGSHIP / MULTI-DOMAIN FLIGHT</span><strong>SKYRMION</strong><small>F-16, SR-71, X-15, EIDOLON, programmable-matter MANTA and Syntax Jacob in one GPS-aware flight runtime.</small><small class="evidence">EVIDENCE · E2 SIMULATION + LIVE WGS84 NAVIGATION</small></button>
 
     <button class="module" data-module data-id="spectra" data-name="SPECTRA" data-url="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/spectra/"><span class="role">STRUCTURE</span><strong>SPECTRA</strong><small>Modes, spectra and invariant structure.</small><small class="evidence">EVIDENCE · DISTRICT SPECIFIC</small></button>
     <button class="module" data-module data-id="fold" data-name="FOLD" data-url="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/fold/"><span class="role">INVARIANCE</span><strong>FOLD</strong><small>Contraction geometry and invariant selection.</small><small class="evidence">EVIDENCE · DISTRICT SPECIFIC</small></button>
@@ -134,7 +135,7 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
   <details class="tech">
     <summary><strong>Technical fabric</strong><span>OPEN DETAILS</span></summary>
     <div class="tech-body">
-      <p class="tech-copy">Progressive enhancement keeps browser capability visible without making it the main event: WebGPU when available, WebGL-compatible source surfaces otherwise, gamepad awareness, fullscreen and orientation handling, and adaptive client presentation.</p>
+      <p class="tech-copy">Progressive enhancement keeps browser capability visible without making it the main event: WebGPU when available, WebGL-compatible source surfaces otherwise, adaptive rendering, CITY-GEO WGS84 navigation, gamepad awareness, fullscreen and orientation handling.</p>
       <div class="backend">
         <div><b>city-app-host</b><span>PUBLIC APP ROUTING</span></div>
         <div><b>city-unified-game</b><span>WORLD SURFACE</span></div>
