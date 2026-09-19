@@ -1,0 +1,55 @@
+{
+  "schema": "CITY-DRIVE-CACHE-FOLDER-1.0",
+  "source_folder": "https://drive.google.com/drive/folders/1QRHjcx1hGYnbDAozqgBr5ef82MFyFztt",
+  "snapshot_date": "2026-09-19",
+  "canonical": false,
+  "files": [
+    {
+      "id": "1wZfiswHA009v-hgWaZjkESWvUfepUEko",
+      "title": "SCALAR_REPO_MANIFEST.json",
+      "mime_type": "application/json",
+      "size": "1261",
+      "modified_time": "2026-09-10T13:22:05.744Z",
+      "url": "https://drive.google.com/file/d/1wZfiswHA009v-hgWaZjkESWvUfepUEko/view?usp=drivesdk",
+      "content": ""
+    },
+    {
+      "id": "1dgTvzR4UtB_s1LlEYRm-E2pBnlFB4Pbm",
+      "title": "README_SCALAR.md",
+      "mime_type": "text/markdown",
+      "size": "1324",
+      "modified_time": "2026-09-10T13:21:57.589Z",
+      "url": "https://drive.google.com/file/d/1dgTvzR4UtB_s1LlEYRm-E2pBnlFB4Pbm/view?usp=drivesdk",
+      "content": "# SCALAR · Algebraic Quantum Scalar Fields\n\nRun:\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate        # Windows: .venv\\Scripts\\activate\npip install -r requirements_scalar.txt\npython scalar_app.py\n```\n\nThen open `http://127.0.0.1:8050`.\n\n\n## Live surfaces\n\n- Public app: https://heart-eagle-blade-hazel.grok.me\n- Notion child page: https://app.notion.com/p/3d746094fd3081a9b279d3904123f8b4\n- Canonical SCALAR brand icon: https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-brand-scalar-icon\n- Reference certificate: `MC-AQSFT-E47-20260825`\n\n## Computational spine\n\n- `V = V_2^{\\otimes3}`, dimension 125\n- `C = J_tot^2`\n- `K = (C-6I)(C-30I)`\n- `E47 = ker K = E_6 \\oplus E_30`, dimension 47\n- `P47` is built from the actual Casimir eigenspaces\n- `Omega_c = Tr(P47)/125 = 47/125`\n- `Gamma_epsilon = I - epsilon K^2`\n- default `epsilon = 1/99144`\n\n## Scalar visualization lift\n\nThe app defines `L = -Delta` and assigns every algebraic Casimir component\na plane wave whose wavevector satisfies `|k|^2 = lambda`.\n\nTherefore the terminal E47 visualization contains only the `lambda=6` and\n`lambda=30` shells and satisfies\n\n`(L-6)(L-30) phi = 0`\n\nterm-by-term.\n\nThis plane-wave construction is an explicit visualization map from the finite\nalgebra. It does not by itself identify a unique physical spacetime field.\n"
+    },
+    {
+      "id": "1gSER1_bGUWtIHmieqZGzqLqZAY5TNC5N",
+      "title": "SCALAR_SELFTEST.json",
+      "mime_type": "application/json",
+      "size": "1160",
+      "modified_time": "2026-09-10T13:05:17.458Z",
+      "url": "https://drive.google.com/file/d/1gSER1_bGUWtIHmieqZGzqLqZAY5TNC5N/view?usp=drivesdk",
+      "content": ""
+    },
+    {
+      "id": "1FoiE9FHyc95LskhPFHIHwott3y7SZSqd",
+      "title": "requirements_scalar.txt",
+      "mime_type": "text/plain",
+      "size": "36",
+      "modified_time": "2026-09-10T12:57:24.491Z",
+      "url": "https://drive.google.com/file/d/1FoiE9FHyc95LskhPFHIHwott3y7SZSqd/view?usp=drivesdk",
+      "content": "numpy>=1.26\ndash>=2.17\nplotly>=5.22\n"
+    },
+    {
+      "id": "1sRrNpOXuFagSYac3QJTVvY3KI0VwWnoG",
+      "title": "scalar_app.py",
+      "mime_type": "text/x-python",
+      "size": "35796",
+      "modified_time": "2026-09-10T12:57:07.663Z",
+      "url": "https://drive.google.com/file/d/1sRrNpOXuFagSYac3QJTVvY3KI0VwWnoG/view?usp=drivesdk",
+      "content": ""
+    }
+  ],
+  "folder_name": "11 — SCALAR — Algebraic Quantum Scalar Fields",
+  "file_count": 5
+}
