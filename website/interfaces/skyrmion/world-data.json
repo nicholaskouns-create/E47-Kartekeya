@@ -22,7 +22,8 @@
     "encoding": "mapbox-terrain-rgb",
     "max_zoom": 12,
     "attribution": "AW3D30 © JAXA · served by MapLibre demo tiles",
-    "rendering": "Three.js PlaneGeometry displaced from decoded RGB elevations"
+    "rendering": "Three.js PlaneGeometry displaced from decoded RGB elevations",
+    "fallback": "CITY-WORLD-ENGINE deterministic procedural heightfield"
   },
   "navigation": {
     "gps_mode": "browser geolocation optional at runtime",
@@ -73,5 +74,13 @@
     "kernel_dimension": 47,
     "geometry_nodes": 125,
     "selector_hook": "MANTA activates worker; other aircraft do not load Python"
+  },
+  "world_engine": {
+    "id": "CITY-WORLD-ENGINE",
+    "version": "1.0.0",
+    "shared_module": "../shared/world-engine/world-engine.js",
+    "behavior": "WGS84 DEM/imagery primary; seeded procedural heightfield, biome, weather and solar state as deterministic world fallback",
+    "seed": 470125,
+    "state_event": "city:world-state"
   }
 }
