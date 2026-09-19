@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this research software, please cite the repository and the specific commit used."
+title: "E47-Kartekeya"
+type: software
+authors:
+  - family-names: "Kouns"
+    given-names: "Nicholas"
+repository-code: "https://github.com/nicholaskouns-create/E47-Kartekeya"
+url: "https://nicholaskouns-create.github.io/E47-Kartekeya/"
+license: "CC0-1.0"
+keywords:
+  - spectral computation
+  - SU(2)
+  - reproducible research
+  - scientific simulation
