@@ -47,7 +47,7 @@ def test_threejs_vehicle_fleet():
     for token in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob','craftRoot','updateMantaFrame']:
         assert token in terrain
     assert 'CITY_SKYRMION_TERRAIN3D?.ready' in html
-    assert "schema:'SKYRMION-TERRAIN-3D-5.0'" in terrain
+    assert "schema:'SKYRMION-TERRAIN-3D-6.0'" in terrain
 
 def test_high_detail_vehicle_systems():
     for token in ['physicalGlass','pivotSurface','landingGear','engineFlame','makeTrailSystem','updateCraftSystems','castShadow','receiveShadow','shadowTarget']:
@@ -66,7 +66,7 @@ def test_render_quality_governor():
 def test_licensed_aircraft_pipeline():
     assert 'licensed-aircraft-assets.js' in terrain
     assert 'Identity gate' in terrain
-    assert 'SKYRMION-TERRAIN-3D-5.0' in terrain
+    assert 'SKYRMION-TERRAIN-3D-6.0' in terrain
     for token in ['f15-polyducky','nasa-global-hawk','amvlab-b737-nologo','f16-cdesrocher','sr71-manilov','x15-cmoreau']:
         assert token in assets
     for token in ['GLTFLoader','SkeletonUtils.js','collectModelStats','validateAssetRecord','auditLicensedAssets','GLB load timeout']:
@@ -92,3 +92,18 @@ def test_asset_license_register():
     for token in ['NASA Global Hawk','amvlab-b737-nologo','f16-cdesrocher','sr71-manilov','x15-cmoreau','Creative Commons Attribution 4.0']:
         assert token in licenses
     assert 'does not alter the authoritative flight-state' in licenses
+
+
+def test_resilient_boot_and_hero_framing():
+    boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
+    assert 'SKYRMION-TERRAIN-3D-6.0' in terrain
+    assert "getLicensedAssetModule" in terrain
+    assert "from './licensed-aircraft-assets.js'" not in terrain
+    assert 'PerspectiveCamera(47' in terrain
+    assert 'MeshPhysicalMaterial' in terrain
+    assert 'addNavigationLights' in terrain
+    assert 'cameraDistance:31' in terrain
+    assert 'cameraDistance:48' in terrain
+    assert 'cameraDistance:39' in boot
+    assert 'src="./runtime2/bootstrap.js"' in html
+    assert 'await createSkyrmionTerrain3D' not in html
