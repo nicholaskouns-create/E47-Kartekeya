@@ -1,0 +1,24 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"manta",
+  "display_name":"MANTA",
+  "version":"0.1.0",
+  "kind":"experimental-simulation",
+  "maturity":"experimental",
+  "evidence":["E2"],
+  "entrypoint":"manta.programmable_matter:MantaEngine",
+  "smoke":{
+    "entrypoint":"src/manta/smoke.py",
+    "command":"PYTHONPATH=src python -m manta.smoke",
+    "benchmark_command":"PYTHONPATH=src python -m manta.smoke --benchmark"
+  },
+  "provenance":{
+    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources":["src/manta/programmable_matter.py","website/interfaces/skyrmion/manta-worker.js"]
+  },
+  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+  "boundaries":[
+    "125 spectral coordinates drive 125 simulated control nodes.",
+    "The geometry bridge is a software model, not evidence of physical programmable matter."
+  ]
+}
