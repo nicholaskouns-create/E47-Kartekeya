@@ -18,13 +18,6 @@ p{font-size:15px;line-height:1.5;color:#c5d8e0}
 html,body{overflow-x:clip}
 button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 button:not(:disabled),a[href],[role=button]{cursor:pointer}
-@media(max-width:760px){
-button,a.button,.button,.btn,.primary,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.crafts button,.mission button,.world-card,.controls button,.propulsion-trigger,.propulsion-icon,.prop-mode,.axis-pad button,.focus-strip button,.rail button,.module,.lab-card,.feature,.proof-links a,.pill{min-height:44px}
-input[type=number],input[type=text],select{min-height:44px;font-size:16px}
-.eyebrow,.kicker,.badge,.mode-tag,.difficulty,.brand small,.brand span,.chip,.pill,.rail .role,.rail .n,.role-pill,.labelrow,.telemetry span{font-size:11px!important}
-.brand strong,.rail .name,.module small,.mode p,.mission p,.intro,.drawer p,.note,.guard,.metric-small,.flow p,.copilot p{font-size:13px!important;line-height:1.45!important}
-.btn,.button,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.prop-mode,.axis-pad button,.lock{font-size:12px!important}
-}
 </style>
 </head><body><main><div>CITY-INVARIANT 1.0 · 5×5×5 COMPUTATIONAL ADDRESS SPACE</div><h1>CITY 125</h1><p>Each square is one address π(x,y,z)=25x+5y+z. State, operator, evidence, receipt and provenance are inspectable without identifying Cube permutations with the E47 spectral representation.</p><div class=bar><span class=pill id=carrier></span><span class=pill id=active></span><span class=pill id=receipts></span><span class=pill id=e47></span></div><div id=cube class=grid></div><div id=panel class=panel>Touch a cell.</div></main><script type=module>
 import{makeCity125,applyPacket,browserWitness}from'../../js/city-125-runtime.js';let cells=makeCity125();

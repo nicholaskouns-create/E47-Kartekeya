@@ -27,46 +27,42 @@
 @media(max-width:760px){
 .top .optional{display:none}
 .panel{max-width:100%}
-.crafts button,.mission button{min-height:44px;font-size:12px;padding:10px 12px}
-.stick{width:128px;height:128px;flex:0 0 128px}
-.knob{width:48px;height:48px;left:40px;top:40px}
-.launch{top:16%;padding:0 20px}
+.crafts button,.mission button{min-height:32px;font-size:11px;padding:6px 8px}
+.stick{width:96px;height:96px;flex:0 0 96px}
+.knob{width:36px;height:36px;left:30px;top:30px}
+.launch{top:18%;padding:0 20px}
 .launch h1{font-size:clamp(40px,12vw,52px)}
 .launch p{font-size:15px}
 .launch button{min-height:48px;padding:14px 22px;font-size:16px}
-.world-strip{padding:8px 10px calc(240px + env(safe-area-inset-bottom))}
-.world-card{min-width:148px;min-height:56px;padding:12px 14px;font-size:13px}
+.world-strip{padding:8px 10px calc(12px + env(safe-area-inset-bottom))}
+.flight-started .world-strip{display:none}
+.world-card{min-width:120px;min-height:44px;padding:8px 10px;font-size:12px}
 .boundary{display:none}
-.proof-toggle,.math-toggle{min-height:44px;padding:10px 14px;font-size:11px}
-.math-close{min-height:44px;min-width:44px}
-.bottom{left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));flex-direction:column-reverse;align-items:stretch;gap:10px}
+.proof-toggle,.math-toggle{min-height:36px;padding:8px 10px;font-size:10px}
+.math-close{min-height:36px;min-width:36px}
+.bottom{left:10px;right:10px;bottom:max(8px,env(safe-area-inset-bottom));flex-direction:row;align-items:flex-end;gap:8px}
+.bottom .panel{max-width:calc(100% - 108px);padding:6px}
 }
 
 .crafts{display:block}.craft-group{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:3px 0}.craft-label{width:94px;font:8px ui-monospace,monospace;color:#94c4c0}.proof-panel{white-space:pre-line}.math-toggle{position:fixed;z-index:10;left:12px;top:52px;padding:8px 12px}.math-panel{position:fixed;z-index:10;top:90px;left:12px;width:min(330px,calc(100vw - 24px));max-height:calc(100vh - 280px);overflow:auto;background:#061217ed;border:1px solid #7fffe944;border-radius:14px;padding:16px;color:#d6ece9;font:12px/1.5 system-ui;box-shadow:0 10px 35px #0005}.math-panel[hidden]{display:none}.math-panel h2{font-size:18px;margin:0 30px 3px 0}.math-panel p{margin:10px 0}.math-kind{color:#82e5cc;font:10px ui-monospace,monospace;text-transform:uppercase}.math-panel strong{display:block;font-size:11px;color:#81d9d0}.math-panel code{display:block;white-space:normal;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace}.math-panel dl{display:grid;grid-template-columns:55px 1fr;gap:4px;font-size:10px}.math-panel dd{margin:0}.math-note{font-size:11px;color:#aec0c0}.math-panel a{display:block;color:#9cebdd;margin:6px 0}.math-close{position:absolute;top:10px;right:10px;padding:5px 10px}.flight-fault{position:fixed;z-index:12;left:12px;right:12px;top:90px;background:#602827;padding:12px;border-radius:10px;font-size:13px}.boundary{display:none}
 @media(max-width:760px){
-.math-panel{top:auto;bottom:calc(168px + env(safe-area-inset-bottom));max-height:32vh;width:calc(100vw - 24px);padding:12px}
+.math-panel{top:auto;bottom:calc(118px + env(safe-area-inset-bottom));max-height:28vh;width:calc(100vw - 24px);padding:12px}
 .math-panel h2{font-size:16px}
 .math-toggle{top:max(10px,env(safe-area-inset-top));left:12px}
-.craft-label{width:100%;font-size:11px}
-.bottom .panel{max-width:100%}
-.world-strip{padding-bottom:calc(240px + env(safe-area-inset-bottom))}
+.craft-label{width:auto;font-size:10px}
+.world-strip{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
 .proof-panel{top:88px}
 .flight-fault{top:85px}
 .top{right:8px}
-.crafts .craft-group{gap:8px}
+.crafts{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px}
+.crafts .craft-group{flex:0 0 auto;gap:6px;margin:0}
+.mission{flex-wrap:nowrap;overflow-x:auto}
 }
 </style>
 <style id="city-touch">
 html,body{overflow-x:clip}
 button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 button:not(:disabled),a[href],[role=button]{cursor:pointer}
-@media(max-width:760px){
-button,a.button,.button,.btn,.primary,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.crafts button,.mission button,.world-card,.controls button,.propulsion-trigger,.propulsion-icon,.prop-mode,.axis-pad button,.focus-strip button,.rail button,.module,.lab-card,.feature,.proof-links a,.pill{min-height:44px}
-input[type=number],input[type=text],select{min-height:44px;font-size:16px}
-.eyebrow,.kicker,.badge,.mode-tag,.difficulty,.brand small,.brand span,.chip,.pill,.rail .role,.rail .n,.role-pill,.labelrow,.telemetry span{font-size:11px!important}
-.brand strong,.rail .name,.module small,.mode p,.mission p,.intro,.drawer p,.note,.guard,.metric-small,.flow p,.copilot p{font-size:13px!important;line-height:1.45!important}
-.btn,.button,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.prop-mode,.axis-pad button,.lock{font-size:12px!important}
-}
 </style>
 </head><body>
 <section class="launch"><div class="launch-inner"><div class="ey">WORLD ENGINE · 6DOF · E47 · PROOF</div><h1>SKYRMION<br>Runtime 2</h1><p>One state. Seven vehicles. Conventional aerodynamic dynamics for F-16, SR-71 and X-15; separately typed experimental simulation adapters for EIDOLON, MANTA, SKYRMION and Syntax Jacob.</p><button id="startFlight">Start flight · Runtime 2</button></div></section>

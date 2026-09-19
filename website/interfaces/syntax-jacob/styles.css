@@ -118,6 +118,19 @@ body.visual-first #loading span{
 .mode-row{grid-template-columns:repeat(2,1fr);gap:8px}
 .telemetry{grid-template-columns:1fr}
 .provenance-grid{grid-template-columns:1fr}
+}
+
+/* Keep the 3D scene open. Side HUDs stay off on phones; dock is the control. */
+@media(max-width:920px){
+body.visual-first .hud,
+body.visual-first .topbar,
+body.visual-first .bottom,
+body.visual-first .egg-panel{display:none !important}
+.propulsion-panel{width:min(300px,calc(100vw - 16px));max-height:42dvh;overflow:auto}
+.axis-pad button{min-height:36px;height:36px}
+.prop-mode,.focus-strip button{min-height:32px}
+}
+
 .propulsion-dock{right:8px;bottom:calc(8px + env(safe-area-inset-bottom))}
 .propulsion-panel{right:8px;bottom:calc(72px + env(safe-area-inset-bottom));width:min(314px,calc(100vw - 16px));padding:12px}
 }
