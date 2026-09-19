@@ -30,5 +30,19 @@ addEventListener('skyrmion:render-stats',e=>{const d=e.detail||{};renderStats.te
 addEventListener('skyrmion:flight-state',e=>{lastFlightState={...lastFlightState,...(e.detail||{})};terrain3d?.updateFlightState(lastFlightState)});addEventListener('skyrmion:manta-frame',e=>{lastMantaFrame=e.detail||null;if(lastMantaFrame)terrain3d?.updateMantaFrame(lastMantaFrame)});
 document.getElementById('startFlight').addEventListener('click',()=>document.body.classList.add('flight-started'));
 document.querySelectorAll('[data-world]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-world]').forEach(b=>b.classList.toggle('active',b===btn));const detail={lat:+btn.dataset.lat,lon:+btn.dataset.lon,altitude_m:+btn.dataset.alt,heading:0,pitch:0,roll:0,domain:0,enabled:true};terrain3d?.teleport(detail);dispatchEvent(new CustomEvent('skyrmion:teleport',{detail}));document.body.classList.add('flight-started')}));
-try{terrain3d=await createSkyrmionTerrain3D(lastFlightState);window.CITY_SKYRMION_TERRAIN3D=terrain3d;if(window.CITY_SKYRMION_TERRAIN3D?.ready)terrainStatus.classList.add('live');terrain3d.updateFlightState(lastFlightState);if(lastMantaFrame)terrain3d.updateMantaFrame(lastMantaFrame);await import('./runtime2/bootstrap.js');}catch(error){terrainStatus.textContent='TERRAIN · FALLBACK';console.error('SKYRMION Runtime 2 boot failed',error);await import('./runtime2/bootstrap.js');}
-</script></body></html>
+createSkyrmionTerrain3D(lastFlightState).then(world=>{
+  terrain3d=world;window.CITY_SKYRMION_TERRAIN3D=world;
+  if(world?.ready)terrainStatus.classList.add('live');
+  world.updateFlightState(lastFlightState);
+  if(lastMantaFrame)world.updateMantaFrame(lastMantaFrame);
+}).catch(error=>{
+  terrainStatus.textContent='TERRAIN · FALLBACK';
+  console.error('SKYRMION 3D terrain boot failed',error);
+  dispatchEvent(new CustomEvent('skyrmion:terrain-boot-error',{detail:{error:String(error?.message||error)}}));
+});
+</script>
+<script type="module" src="./runtime2/bootstrap.js"></script>
+<script>
+document.getElementById('startFlight')?.addEventListener('click',()=>document.body.classList.add('flight-started'));
+</script>
+</body></html>
