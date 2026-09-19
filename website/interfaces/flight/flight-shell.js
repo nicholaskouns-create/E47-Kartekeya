@@ -72,6 +72,13 @@ modeName.textContent=mode;
 objectiveEl.textContent=objective;
 body.classList.add(`level-${level}`);
 
+const coreHref=new URL('../../kouns-core/?module=eidolon#flight',location.href).href;
+const coreLink=document.createElement('a');
+coreLink.className='button';
+coreLink.href=coreHref;
+coreLink.textContent='CITY CORE';
+document.querySelector('.hud .top .cluster:last-of-type')?.prepend(coreLink);
+
 if(next){nextLink.href=next;nextLink.hidden=false}else nextLink.hidden=true;
 if(prev){prevLink.href=prev;prevLink.hidden=false}else prevLink.hidden=true;
 

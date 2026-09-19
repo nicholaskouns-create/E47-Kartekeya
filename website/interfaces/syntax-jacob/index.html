@@ -15,6 +15,19 @@
   <script type="importmap">
   {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
   </script>
+
+<style id="city-touch">
+html,body{overflow-x:clip}
+button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:not(:disabled),a[href],[role=button]{cursor:pointer}
+@media(max-width:760px){
+button,a.button,.button,.btn,.primary,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.crafts button,.mission button,.world-card,.controls button,.propulsion-trigger,.propulsion-icon,.prop-mode,.axis-pad button,.focus-strip button,.rail button,.module,.lab-card,.feature,.proof-links a,.pill{min-height:44px}
+input[type=number],input[type=text],select{min-height:44px;font-size:16px}
+.eyebrow,.kicker,.badge,.mode-tag,.difficulty,.brand small,.brand span,.chip,.pill,.rail .role,.rail .n,.role-pill,.labelrow,.telemetry span{font-size:11px!important}
+.brand strong,.rail .name,.module small,.mode p,.mission p,.intro,.drawer p,.note,.guard,.metric-small,.flow p,.copilot p{font-size:13px!important;line-height:1.45!important}
+.btn,.button,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.prop-mode,.axis-pad button,.lock{font-size:12px!important}
+}
+</style>
 </head>
 <body class="visual-first">
   <canvas id="scene" aria-label="Interactive 3D Earth and 3I/ATLAS scene"></canvas>
@@ -22,6 +35,7 @@
 
   <header class="topbar glass" hidden>
     <a class="city-link" href="../../index.html">← MATHEMATICAL CITY</a>
+    <a class="city-link" href="../kouns-core/?module=eidolon#flight">CITY CORE</a>
     <div class="brand"><small>ORIGINAL WORK · NICK KOUNS</small><strong>Syntax Jacob</strong></div>
     <div class="top-status"><span id="feed-dot" class="dot pending"></span><span id="feed-status">JPL · CONNECTING</span></div>
   </header>

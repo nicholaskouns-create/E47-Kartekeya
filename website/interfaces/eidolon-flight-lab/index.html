@@ -13,6 +13,26 @@ html,body{margin:0;height:100%;background:#05070a;color:#e8f8ff;font-family:ui-m
 .frame{position:relative;min-height:0}.frame iframe{width:100%;height:100%;border:0;background:#030405}
 .note{position:absolute;right:10px;bottom:10px;max-width:360px;background:#071116dd;border:1px solid #29424e;border-radius:10px;padding:8px 10px;color:#9fb8c3;font-size:10px;line-height:1.4;backdrop-filter:blur(8px)}
 @media(max-width:650px){.sub{display:none}.note{left:8px;right:8px;max-width:none}}
+
+.top a{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;font-size:12px}
+@media(max-width:650px){
+.top{flex-wrap:wrap;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));gap:8px}
+.brand{font-size:13px;letter-spacing:.06em}
+.note{font-size:12px;line-height:1.45;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom))}
+}
+</style>
+
+<style id="city-touch">
+html,body{overflow-x:clip}
+button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:not(:disabled),a[href],[role=button]{cursor:pointer}
+@media(max-width:760px){
+button,a.button,.button,.btn,.primary,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.crafts button,.mission button,.world-card,.controls button,.propulsion-trigger,.propulsion-icon,.prop-mode,.axis-pad button,.focus-strip button,.rail button,.module,.lab-card,.feature,.proof-links a,.pill{min-height:44px}
+input[type=number],input[type=text],select{min-height:44px;font-size:16px}
+.eyebrow,.kicker,.badge,.mode-tag,.difficulty,.brand small,.brand span,.chip,.pill,.rail .role,.rail .n,.role-pill,.labelrow,.telemetry span{font-size:11px!important}
+.brand strong,.rail .name,.module small,.mode p,.mission p,.intro,.drawer p,.note,.guard,.metric-small,.flow p,.copilot p{font-size:13px!important;line-height:1.45!important}
+.btn,.button,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.prop-mode,.axis-pad button,.lock{font-size:12px!important}
+}
 </style>
 </head>
 <body>
@@ -21,7 +41,7 @@ html,body{margin:0;height:100%;background:#05070a;color:#e8f8ff;font-family:ui-m
 <div><div class="brand">EIDOLON FLIGHT LAB</div><div class="sub">Embedded City instrument · source-hosted experience</div></div>
 <div class="spacer"></div>
 <a href="../../index.html#world">CITY</a>
-<a href="../kouns-core/?module=eidolon">CITY CORE</a>
+<a href="../kouns-core/?module=eidolon#flight">CITY CORE</a>
 <a href="https://eidolon-flight-lab.nicholaskouns.chatgpt.site/" target="_blank" rel="noopener noreferrer">OPEN SOURCE ↗</a>
 </header>
 <div class="frame">

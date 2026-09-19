@@ -31,8 +31,62 @@ main{width:min(1420px,100%);margin:auto;padding:18px}
 .module-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.module{appearance:none;text-align:left;border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:13px;color:var(--fg);min-height:120px;display:flex;flex-direction:column;cursor:pointer;transition:.15s border-color,.15s transform}.module:hover,.module.active{border-color:#36585a;transform:translateY(-1px)}.module .role{font:8px var(--mono);color:var(--cyan);letter-spacing:.1em}.module strong{font:500 22px var(--display);margin:18px 0 4px}.module small{color:var(--muted);font:8px/1.45 var(--mono)}.module .evidence{margin-top:auto;padding-top:9px;color:var(--faint)}
 .tech{border:1px solid var(--line);border-radius:10px;background:var(--panel)}.tech summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:10px}.tech summary::-webkit-details-marker{display:none}.tech summary strong{font:500 23px var(--display)}.tech summary span{margin-left:auto;color:var(--cyan);font:8px var(--mono)}.tech-body{border-top:1px solid var(--line);padding:14px}.backend{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.backend div{border:1px solid var(--line);background:var(--raised);border-radius:8px;padding:10px}.backend b{display:block;font:9px var(--mono);color:var(--mint)}.backend span{display:block;color:var(--muted);font:8px var(--mono);margin-top:4px}.tech-copy{margin:0 0 12px;color:var(--muted);font:10px/1.5 var(--mono);max-width:900px}
 .footer{padding:20px 0 8px;color:var(--faint);font:8px var(--mono);display:flex;gap:16px;flex-wrap:wrap}.footer b{color:var(--mint)}
-@media(max-width:980px){.module-grid{grid-template-columns:repeat(2,1fr)}.backend{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){main{padding:11px}.top{align-items:flex-start;flex-wrap:wrap}.top-actions{width:100%;margin-left:0}.brand strong{font-size:9px}.level-head{grid-template-columns:1fr;gap:4px}.flight-grid{grid-template-columns:1fr}.mode{min-height:260px}.viewer iframe{height:66vh;min-height:430px}.module-grid{grid-template-columns:1fr}.backend{grid-template-columns:1fr}.hero h1{font-size:52px}.section-head{align-items:flex-start;flex-direction:column}}
+
+html,body{overflow-x:clip}
+button,a,[role=button]{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.mode-actions button,.mode-actions a,.viewer-actions a,.viewer-actions button,.top-actions a,.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 14px}
+.dock{display:none}
+@media(max-width:700px){
+.top{padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));gap:8px}
+.top-actions{display:none}
+.brand strong{font-size:11px;letter-spacing:.1em}
+.brand small{font-size:10px}
+main{padding:14px 14px calc(92px + env(safe-area-inset-bottom))}
+.hero{padding:18px 0 12px}
+.hero h1{font-size:clamp(36px,12vw,56px)}
+.hero p{font-size:15px;line-height:1.5}
+.status-strip span{font-size:11px;padding:8px 12px;min-height:36px;display:inline-flex;align-items:center}
+.flight-grid,.module-grid{grid-template-columns:1fr}
+.level-head{grid-template-columns:1fr}
+.level-num{font-size:12px}
+.level p{font-size:14px}
+.mode{min-height:220px;padding:16px}
+.mode h3{font-size:32px}
+.mode p{font-size:13px;line-height:1.45}
+.mode-tag,.difficulty{font-size:11px;padding:6px 8px}
+.mode-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mode-actions button,.mode-actions a{width:100%;font-size:12px}
+.viewer iframe{height:62vh;min-height:360px}
+.viewer-head{min-height:52px;padding:8px 12px}
+.viewer-head strong{font-size:12px}
+.viewer-head span{font-size:11px}
+.module{min-height:132px;padding:16px}
+.module .role{font-size:11px}
+.module strong{font-size:22px;margin:12px 0 6px}
+.module small{font-size:12px;line-height:1.45}
+.backend{grid-template-columns:1fr}
+.backend b,.backend span{font-size:12px}
+.tech summary strong{font-size:22px}
+.tech-copy{font-size:13px;line-height:1.5}
+.footer{font-size:11px;padding-bottom:12px}
+.dock{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:40;gap:6px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:rgba(7,9,11,.96);backdrop-filter:blur(14px)}
+.dock a{min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:999px;font:600 12px var(--mono);color:var(--muted);text-decoration:none}
+.dock a:focus,.dock a:hover{color:var(--fg)}
+}
+
+</style>
+
+<style id="city-touch">
+html,body{overflow-x:clip}
+button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:not(:disabled),a[href],[role=button]{cursor:pointer}
+@media(max-width:760px){
+button,a.button,.button,.btn,.primary,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.crafts button,.mission button,.world-card,.controls button,.propulsion-trigger,.propulsion-icon,.prop-mode,.axis-pad button,.focus-strip button,.rail button,.module,.lab-card,.feature,.proof-links a,.pill{min-height:44px}
+input[type=number],input[type=text],select{min-height:44px;font-size:16px}
+.eyebrow,.kicker,.badge,.mode-tag,.difficulty,.brand small,.brand span,.chip,.pill,.rail .role,.rail .n,.role-pill,.labelrow,.telemetry span{font-size:11px!important}
+.brand strong,.rail .name,.module small,.mode p,.mission p,.intro,.drawer p,.note,.guard,.metric-small,.flow p,.copilot p{font-size:13px!important;line-height:1.45!important}
+.btn,.button,.mode-actions a,.mode-actions button,.viewer-actions a,.viewer-actions button,.top-actions a,.actions a,.actions button,.prop-mode,.axis-pad button,.lock{font-size:12px!important}
+}
 </style>
 </head>
 <body>
@@ -191,8 +245,11 @@ document.querySelectorAll('[data-module]').forEach(card=>card.addEventListener('
 
 const requested=new URLSearchParams(location.search).get('module');
 if(requested){
+  const key=requested.toLowerCase();
   const targets=[...document.querySelectorAll('.mode,.module')];
-  const target=targets.find(x=>x.dataset.id===requested||x.dataset.name.toLowerCase().includes(requested.toLowerCase()));
+  const target=targets.find(x=>x.dataset.id===requested)
+    || targets.find(x=>x.dataset.id.toLowerCase()===key)
+    || targets.find(x=>x.dataset.name.toLowerCase()===key);
   if(target)loadTarget(target,{scroll:location.hash==='#viewerShell',historyMode:false});
 }
 
@@ -218,5 +275,6 @@ document.getElementById('viewerFullscreen').addEventListener('click',async()=>{
   }
 })();
 </script>
+<nav class="dock" aria-label="City Core"><a href="#flight">Flight</a><a href="#viewerShell">Viewer</a><a href="#labs">Labs</a></nav>
 </body>
 </html>
