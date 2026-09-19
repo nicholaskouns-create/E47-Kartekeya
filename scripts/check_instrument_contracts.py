@@ -55,6 +55,15 @@ def main()->None:
             fail(f"{cid}: failure telemetry schema mismatch")
         if not c.get("boundaries"):
             fail(f"{cid}: evidence/runtime boundaries are missing")
+        if contract_path.startswith("website/interfaces/"):
+            index=path.parent/"index.html"
+            if not index.is_file():
+                fail(f"{cid}: browser instrument index.html is missing")
+            html=index.read_text(encoding="utf-8")
+            if "instrument-telemetry.js" not in html:
+                fail(f"{cid}: live standardized failure telemetry hook is not installed")
+            if c["version"] not in html:
+                fail(f"{cid}: live surface does not expose its component version")
     print(f"INSTRUMENT CONTRACT PASS: {len(components)} autonomous instruments")
 
 if __name__=="__main__":
