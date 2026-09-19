@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {LICENSED_AIRCRAFT_ASSETS,loadLicensedAircraft,canReplaceCraft,auditLicensedAssets} from './licensed-aircraft-assets.js';
 
 const R=6378137;
 const TILE_SIZE=256;
@@ -327,14 +328,21 @@ function updateMantaModel(model,state){
   }
   d.lineGeo.attributes.position.needsUpdate=true;d.hasFrame=true;d.shell.material.opacity=.32;
 }
+function controlList(value){return !value?[]:Array.isArray(value)?value:[value]}
+function driveControl(value,axis,target,rate,dt){
+  for(const node of controlList(value)){
+    if(!node?.rotation)continue;
+    node.rotation[axis]+=(target-node.rotation[axis])*Math.min(1,dt*rate);
+  }
+}
 function updateCraftSystems(model,flight,dt,groundElevation=0){
   if(!model)return;
   const u=model.userData,c=u.controls||{},roll=clamp(Number(flight.roll||0),-.9,.9),pitch=clamp(Number(flight.pitch||0),-.55,.55),speed=Math.max(0,Number(flight.speed||0));
-  if(c.aileronL)c.aileronL.rotation.x+=(roll*.48-c.aileronL.rotation.x)*Math.min(1,dt*9);
-  if(c.aileronR)c.aileronR.rotation.x+=(-roll*.48-c.aileronR.rotation.x)*Math.min(1,dt*9);
-  if(c.elevator)c.elevator.rotation.x+=(-pitch*.55-c.elevator.rotation.x)*Math.min(1,dt*9);
+  driveControl(c.aileronL,'x',roll*.48,9,dt);
+  driveControl(c.aileronR,'x',-roll*.48,9,dt);
+  driveControl(c.elevator,'x',-pitch*.55,9,dt);
   const rudderTarget=roll*.16;
-  for(const r of [c.rudder,c.rudderL,c.rudderR])if(r)r.rotation.y+=(rudderTarget-r.rotation.y)*Math.min(1,dt*7);
+  for(const r of [c.rudder,c.rudderL,c.rudderR])driveControl(r,'y',rudderTarget,7,dt);
   const clearance=Number(flight.altitude_m||0)-Number(groundElevation||0),gearTarget=(Number(flight.domain||0)===0&&clearance<650&&speed<240)?1:0;
   if(u.gear){
     u.gear.userData.deploy+=(gearTarget-u.gear.userData.deploy)*Math.min(1,dt*3.5);
@@ -380,6 +388,28 @@ function makeTrailSystem(scene){
   }
   return {mesh:pointsMesh,update,clear};
 }
+function prepareLicensedRig(scene,meta,inspection){
+  const rig=new THREE.Group();
+  rig.add(scene);
+  const box=new THREE.Box3().setFromObject(scene),size=new THREE.Vector3(),center=new THREE.Vector3();
+  box.getSize(size);box.getCenter(center);
+  const length=Math.max(size.x,size.z,6),width=Math.min(Math.max(size.x,size.z),length);
+  const bindings=inspection?.bindings||{};
+  const exhaust=engineFlame(Math.max(.35,width*.035),Math.max(2.4,length*.18),0x74e8ff);
+  exhaust.position.set(0,0,length*.48);rig.add(exhaust);
+  const left=trailAnchor(rig,-Math.max(1,width*.32),0,length*.20),right=trailAnchor(rig,Math.max(1,width*.32),0,length*.20);
+  const controls={
+    aileronL:bindings.aileronL||[],aileronR:bindings.aileronR||[],
+    elevator:bindings.elevator||[],rudder:bindings.rudder||[]
+  };
+  rig.userData={
+    label:meta.label,licensed:true,licensedAssetId:meta.id,
+    licensedBindings:bindings,controls,exhausts:[exhaust],trailAnchors:[left,right],
+    cameraDistance:Math.max(75,length*5.2),cameraHeight:Math.max(24,length*1.4),cameraLookAhead:Math.max(130,length*7),
+    gearNodes:bindings.gear||[],canopyNodes:bindings.canopy||[],sourceScene:scene
+  };
+  return shadowize(rig);
+}
 function dispose(root){
   root?.traverse?.(o=>{o.geometry?.dispose?.();if(Array.isArray(o.material))o.material.forEach(m=>m.dispose?.());else o.material?.dispose?.()});
 }
@@ -400,7 +430,38 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   const worldUp=new THREE.Vector3(0,1,0),forward=new THREE.Vector3(),right=new THREE.Vector3(),craftUp=new THREE.Vector3(),cameraUp=new THREE.Vector3();
   const desiredCamera=new THREE.Vector3(),desiredTarget=new THREE.Vector3(),smoothTarget=new THREE.Vector3(),basis=new THREE.Matrix4(),baseQ=new THREE.Quaternion(),rollQ=new THREE.Quaternion(),localRollAxis=new THREE.Vector3(0,0,-1);
   let patch=null,patchLoading=false,generation=0,destroyed=false,activeIndex=clamp(Number(active)||0,0,5),mantaState=null;
+  const licensedAssetState={loaded:{},replacements:{},errors:{},audit:null};
 
+  async function loadLicensedReference(assetId){
+    if(licensedAssetState.loaded[assetId])return licensedAssetState.loaded[assetId];
+    try{
+      const loaded=await loadLicensedAircraft(assetId,{clone:true});
+      const rig=prepareLicensedRig(loaded.scene,loaded.meta,loaded.inspection);
+      rig.visible=false;
+      licensedAssetState.loaded[assetId]={...loaded,rig};
+      return licensedAssetState.loaded[assetId];
+    }catch(error){
+      licensedAssetState.errors[assetId]=String(error?.message||error);
+      throw error;
+    }
+  }
+  async function replaceCraftWithLicensedAsset(slotIndex,assetId){
+    const slot=clamp(Number(slotIndex)||0,0,fleet.length-1),craftName=CRAFT_NAMES[slot];
+    if(!canReplaceCraft(assetId,craftName))throw new Error(`Identity gate: ${assetId} is not licensed/registered as exact ${craftName}`);
+    const loaded=await loadLicensedReference(assetId),old=fleet[slot],rig=loaded.rig.clone(true);
+    rig.userData={...loaded.rig.userData};
+    rig.visible=slot===activeIndex;
+    craftRoot.remove(old);craftRoot.add(rig);fleet[slot]=rig;
+    licensedAssetState.replacements[craftName]=assetId;
+    if(slot===activeIndex)trailSystem.clear();
+    return {craftName,assetId,license:loaded.meta.license,author:loaded.meta.author};
+  }
+  async function runLicensedAssetAudit(){
+    const report=await auditLicensedAssets();
+    licensedAssetState.audit=report;
+    dispatchEvent(new CustomEvent('skyrmion:asset-audit',{detail:report}));
+    return report;
+  }
   function setActiveCraft(i){
     const next=clamp(Number(i)||0,0,fleet.length-1);if(next===activeIndex&&fleet[next].visible)return;
     activeIndex=next;fleet.forEach((m,j)=>m.visible=j===activeIndex);trailSystem?.clear?.();
@@ -480,11 +541,15 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
     renderer.render(scene,camera);
   }
   addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio||1,maxDpr))});
-  await buildPatch(lat,lon,true);setActiveCraft(activeIndex);if(mantaState)updateMantaFrame(mantaState);updateFlightState(flight);updateCraftPose();requestAnimationFrame(frame);
+  await buildPatch(lat,lon,true);setActiveCraft(activeIndex);if(mantaState)updateMantaFrame(mantaState);updateFlightState(flight);updateCraftPose();
+  const lab=new URLSearchParams(location.search).get('assetlab');
+  if(lab&&LICENSED_AIRCRAFT_ASSETS[lab])loadLicensedReference(lab).then(v=>dispatchEvent(new CustomEvent('skyrmion:asset-reference-ready',{detail:{id:lab,meta:v.meta,inspection:{nodes:v.inspection.nodes.length,bindings:Object.fromEntries(Object.entries(v.inspection.bindings).map(([k,x])=>[k,x.length]))}}}))).catch(()=>{});
+  requestAnimationFrame(frame);
   return {
-    schema:'SKYRMION-TERRAIN-3D-3.0',ready:true,renderer,scene,camera,craftRoot,fleet,
+    schema:'SKYRMION-TERRAIN-3D-4.0',ready:true,renderer,scene,camera,craftRoot,fleet,
     get activeCraft(){return fleet[activeIndex]},get patch(){return patch},
     updateFlightState,updateMantaFrame,teleport,setActiveCraft,
+    licensedAssets:LICENSED_AIRCRAFT_ASSETS,licensedAssetState,loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,
     destroy(){destroyed=true;generation++;if(patch?.world)dispose(patch.world);fleet.forEach(dispose);renderer.dispose();canvas.remove()}
   };
 }
