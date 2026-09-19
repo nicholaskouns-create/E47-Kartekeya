@@ -16,7 +16,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;touch-action:none;z-index:1
 <button class="world-card" data-world data-lat="35.676200" data-lon="139.650300" data-alt="1050">Tokyo<small>Japan</small></button>
 <button class="world-card" data-world data-lat="27.988121" data-lon="86.925026" data-alt="9800">Everest<small>Himalaya</small></button>
 </div></section>
-<canvas id="world"></canvas><div class="terrain-attribution">Imagery © Esri, Maxar, Earthstar Geographics and contributors · DEM © MapLibre demo terrain source</div><div class="hud"><div class="top"><span class="chip">SKYRMION · LIVE FLIGHT</span><span id="tele" class="chip">F-16 · 420 KT · 12,000 FT</span><span id="gps" class="chip">36.169900° N · 115.139800° W · 3,600 m</span><span id="terrainStatus" class="chip optional">TERRAIN · BOOTING</span><span class="chip optional">3D WORLD · VEHICLE + CHASE CAMERA</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div style="font-size:9px;opacity:.7;margin-top:6px">DRAG STICK · WASD/ARROWS · 1–6 CRAFT · F DOMAIN</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div><script type="module">
+<canvas id="world"></canvas><div class="terrain-attribution">Imagery © Esri, Maxar, Earthstar Geographics and contributors · DEM © MapLibre demo terrain source</div><div class="hud"><div class="top"><span class="chip">SKYRMION · LIVE FLIGHT</span><span id="tele" class="chip">F-16 · 420 KT · 12,000 FT</span><span id="gps" class="chip">36.169900° N · 115.139800° W · 3,600 m</span><span id="terrainStatus" class="chip optional">TERRAIN · BOOTING</span><span id="assetStatus" class="chip optional">ASSET · NATIVE RIG</span><span id="renderStats" class="chip optional">GPU · ADAPTIVE</span><span class="chip optional">3D WORLD · VEHICLE + CHASE CAMERA</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div style="font-size:9px;opacity:.7;margin-top:6px">DRAG STICK · WASD/ARROWS · 1–6 CRAFT · F DOMAIN</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div><script type="module">
 import {installCityGps} from '../shared/city-gps-runtime.js';
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
 import {createSkyrmionTerrain3D} from './terrain-3d.js';
@@ -25,6 +25,8 @@ const gpsRuntime=installCityGps({chip:document.getElementById('gps'),label:'GPS'
 installCityCinemaCodec({canvas:document.getElementById('world')});
 
 const terrainStatus=document.getElementById('terrainStatus');
+const assetStatus=document.getElementById('assetStatus');
+const renderStats=document.getElementById('renderStats');
 let terrain3d=null;
 let lastMantaFrame=null;
 let lastFlightState={lat:36.1699,lon:-115.1398,altitude_m:3658,heading:0,pitch:0,roll:0,speed:216,active:0,domain:0,enabled:true};
@@ -33,6 +35,22 @@ addEventListener('skyrmion:terrain-status',e=>{
   const status=String(e.detail?.status||'UNKNOWN').toUpperCase();
   terrainStatus.textContent='TERRAIN · '+status;
   terrainStatus.classList.toggle('live',status==='LIVE');
+});
+
+addEventListener('skyrmion:asset-load',e=>{
+  const d=e.detail||{},status=String(d.status||'').toUpperCase();
+  assetStatus.textContent='ASSET · '+status+(d.id?' · '+d.id:'');
+  assetStatus.classList.toggle('live',status==='READY');
+});
+addEventListener('skyrmion:asset-replacement',e=>{
+  const d=e.detail||{};
+  assetStatus.textContent='ASSET · '+(d.craftName||'CRAFT')+' · LICENSED GLB';
+  assetStatus.classList.add('live');
+});
+addEventListener('skyrmion:render-stats',e=>{
+  const d=e.detail||{};
+  renderStats.textContent='GPU · '+Math.round(d.triangles||0).toLocaleString()+' TRI · '+Number(d.dpr||1).toFixed(2)+'×';
+  renderStats.classList.toggle('live',Number(d.renderScale||1)>.7);
 });
 
 addEventListener('skyrmion:flight-state',e=>{
