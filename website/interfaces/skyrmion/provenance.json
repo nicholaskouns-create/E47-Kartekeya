@@ -1,12 +1,13 @@
 {
   "schema": "CITY-INVARIANT/1.0",
   "object": "SKYRMION multi-domain flight simulator",
-  "operator": "aircraft selection + domain dynamics + MATRIX/Cube E47 witness + AETHERIS receipt + City graphics acceleration",
+  "operator": "aircraft selection + MANTA Python programmable-matter geometry + WGS84 GPS navigation + domain dynamics + MATRIX/Cube E47 witness + AETHERIS receipt + City graphics acceleration",
   "invariant": [
     "real-aircraft conventional dynamics are separate from experimental/latent propulsion simulation",
     "E47/Cube witness does not claim physical propulsion validity",
     "graphics acceleration must not alter fixed-step solver semantics",
-    "human canonical-promotion gate remains external and unchanged"
+    "human canonical-promotion gate remains external and unchanged",
+    "GPS coordinates affect navigation/rendering only and do not alter scientific evidence class"
   ],
   "witness": [
     "website/interfaces/flight/*",
@@ -16,7 +17,12 @@
     "Supabase matrix-cube-adapter",
     "Supabase city-graphics-accelerator",
     "Supabase syntax-jacob-ephemeris",
-    "Supabase eidolon-city-adapter"
+    "Supabase eidolon-city-adapter",
+    "website/interfaces/shared/city-gps-runtime.js",
+    "website/interfaces/shared/city-geo.js",
+    "src/manta/programmable_matter.py",
+    "website/runtime/manta/programmable_matter.py",
+    "website/interfaces/skyrmion/manta-worker.js"
   ],
   "evidence": "E1 implementation; simulator output E2; experimental propulsion remains simulation-only",
   "provenance": "nicholaskouns-create/E47-Kartekeya + CITY-COMMONS-SIM-FORGE + connected Supabase/Notion/Drive",
