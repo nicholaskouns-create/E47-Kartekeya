@@ -37,3 +37,10 @@ def test_satellite_terrain_renderer():
     assert 'Imagery © Esri' in terrain
     for token in ['Las Vegas','Los Angeles','New York','Tokyo','Everest','Start flight']:
         assert token in html
+
+
+def test_elevation_aware_terrain3d():
+    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
+    assert 'terrain-3d.js' in html
+    for token in ['World_Imagery','terrain-tiles','makeBuildings','makeClouds','makeLights','updateCamera','pitch','roll']:
+        assert token in terrain
