@@ -123,3 +123,17 @@ def test_stable_chase_camera():
     assert 'cameraGround+5.5' in terrain
     assert 'oldLocal=localMeters(patch.center' in terrain
     assert 'speedFactor*55' not in terrain
+
+
+def test_stable_flight_controls_and_yaw():
+    runtime=(root/'website/interfaces/skyrmion/runtime2/runtime2.js').read_text()
+    vehicles=(root/'website/interfaces/skyrmion/runtime2/vehicle-registry.js').read_text()
+    boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
+    assert 'SKYRMION-RUNTIME-2.1' in runtime
+    assert 'commandControls' in runtime
+    assert '_updateFlightControls' in runtime
+    assert '+beta*(f.betaDamp??1.25)' in runtime
+    assert '-r*(f.yawDamp??.8)' in runtime
+    assert 'yawRate' in vehicles
+    assert 'function shapeAxis' in boot
+    assert 'keyYaw*.46' in boot
