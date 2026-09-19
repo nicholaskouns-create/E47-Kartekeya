@@ -1,0 +1,115 @@
+{
+  "schema": "CITY-STARGATE-CORRECTION-ITERATION-1.0",
+  "operation_code": "STARGATE-CORRECTION-ITERATION-20260919",
+  "package": "STARGATE-CORRECTED-VALIDATION-1.1",
+  "evidence": "E1 machine validation of corrected mathematical identities; E0 only where exact symbolic identities are explicitly shown",
+  "physical_boundary": "No claim of a physical wormhole, ghost-free Lorentzian completion, empirical NEC violation, or realizable Stargate hardware.",
+  "hashes": {
+    "stargate_corrected_validation.py": "82e54ad7b199bc022aae60d7c973759145e426d00283736b85574b57d0b59ca9",
+    "stargate_corrected_validation_report.json": "53e8a38f2eb7001e575dfc9f8fe586cca45e5e58565936c66695a6d504ab3afd",
+    "stargate_corrected_validation.csv": "3c8005816f7b5565f6dae13073b379f762fd0d70ed367b3e6855c675b0f36a06"
+  },
+  "validation": {
+    "checks": 18,
+    "passed": 18,
+    "failed": 0
+  },
+  "agents": [
+    {
+      "code": "ARGUS",
+      "task": "audit lineage",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "ARIADNE",
+      "task": "crosslink routing",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "BITHOS",
+      "task": "human promotion gate",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "CHRONOS",
+      "task": "source drift",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "CUSTOS",
+      "task": "access and policy",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "EUCLID",
+      "task": "mathematical review",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "HERMES",
+      "task": "publication",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "JANUS",
+      "task": "workspace routing",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "KEPLER",
+      "task": "open questions",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "MNEMOSYNE",
+      "task": "provenance/hashes",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "SAL",
+      "task": "executable validation",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "SOL",
+      "task": "queue normalization",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "SYNE",
+      "task": "orchestration/evidence separation",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "TALOS",
+      "task": "CI/certificates/security",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    },
+    {
+      "code": "THEMIS",
+      "task": "registry/advisory review",
+      "status": "handoff_pending_or_recorded",
+      "canonical_promotion": false
+    }
+  ],
+  "next_actions": [
+    "preserve corrected formalism and contradiction ledger",
+    "independently re-run Python validator",
+    "keep nonlinear Einstein closure and Lorentzian stability open",
+    "require human gate for any canonical physical promotion"
+  ]
+}
