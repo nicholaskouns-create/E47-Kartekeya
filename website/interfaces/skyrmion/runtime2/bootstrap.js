@@ -42,7 +42,25 @@ function setStick(px,py){if(!stick)return;const r=stick.getBoundingClientRect(),
 stick?.addEventListener('pointerdown',e=>{drag=true;stick.setPointerCapture(e.pointerId);setStick(e.clientX,e.clientY)});stick?.addEventListener('pointermove',e=>{if(drag)setStick(e.clientX,e.clientY)});for(const n of ['pointerup','pointercancel'])stick?.addEventListener(n,()=>{drag=false;stickRoll=stickPitch=0;if(knob)knob.style.transform='none'});
 addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=1;if(e.key>='1'&&e.key<='7')root?.children[+e.key-1]?.click()});addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=0});
 addEventListener('skyrmion:teleport',e=>rt.teleport({lat:e.detail?.lat,lon:e.detail?.lon,altitudeM:e.detail?.altitude_m}));addEventListener('skyrmion:manta-frame',e=>rt.mantaFrame=e.detail||null);
-function controls(){const roll=stickRoll+(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0),pitch=stickPitch+(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0),yaw=(keys.e?1:0)-(keys.q?1:0),throttle=keys.shift?1:(keys.control ? .35 : .72);rt.setControls({roll,pitch,yaw,throttle});requestAnimationFrame(controls)}requestAnimationFrame(controls);
+function shapeAxis(v,{deadzone=.055,expo=.38,max=1}={}){
+  const sign=Math.sign(v),a=Math.min(1,Math.abs(v));
+  if(a<=deadzone)return 0;
+  const n=(a-deadzone)/(1-deadzone),shaped=(1-expo)*n+expo*n*n*n;
+  return sign*Math.min(max,shaped*max);
+}
+function controls(){
+  const keyRoll=((keys.d||keys.arrowright)?1:0)-((keys.a||keys.arrowleft)?1:0);
+  const keyPitch=((keys.w||keys.arrowup)?1:0)-((keys.s||keys.arrowdown)?1:0);
+  const keyYaw=(keys.e?1:0)-(keys.q?1:0);
+  const roll=shapeAxis(stickRoll+keyRoll*.68,{deadzone:.05,expo:.42,max:.92});
+  const pitch=shapeAxis(stickPitch+keyPitch*.62,{deadzone:.05,expo:.44,max:.88});
+  const yaw=shapeAxis(keyYaw*.46,{deadzone:.02,expo:.20,max:.52});
+  const throttle=keys.shift?1:(keys.control ? .35 : .72);
+  rt.setControls({roll,pitch,yaw,throttle});
+  requestAnimationFrame(controls);
+}
+requestAnimationFrame(controls);
+addEventListener('blur',()=>{keys={};stickRoll=0;stickPitch=0;if(knob)knob.style.transform='none'});
 let mantaWorker=null,mantaReady=false,mantaBusy=false,lastManta=0;
 function initManta(){if(mantaWorker)return;mantaWorker=new Worker(new URL('../manta-worker.js',import.meta.url));mantaWorker.onmessage=({data})=>{if(data?.type==='ready')mantaReady=true;else if(data?.type==='frame'){mantaBusy=false;rt.mantaFrame=data.state;dispatchEvent(new CustomEvent('skyrmion:manta-frame',{detail:data.state}));}else if(data?.type==='error')mantaBusy=false;};mantaWorker.postMessage({type:'init',schema:'MANTA-PYTHON-BRIDGE-1.0'});}
 function stepManta(now){if(rt.vehicle.id==='manta'&&mantaReady&&!mantaBusy&&now-lastManta>34){lastManta=now;mantaBusy=true;const c=rt.state.controls,effort=Math.min(1,Math.hypot(c.pitch,c.roll,c.yaw));mantaWorker.postMessage({type:'step',pilot:{pitch:c.pitch,roll:c.roll,yaw:c.yaw,morph:effort,mode:effort>.45?'MANEUVER':'CRUISE'}});}requestAnimationFrame(stepManta)}requestAnimationFrame(stepManta);
