@@ -30,13 +30,13 @@ test('derives bounded flight controls from returned state', () => {
   assert.deepEqual(c,{yaw:1,pitch:-1,roll:.2,vertical:-.4,throttle:1,speed:12});
 });
 
-test('public EIDOLON routes through the receipt-bound flight shell', () => {
+test('SKYRMION is public flagship while EIDOLON remains receipt-bound in CITY CORE', () => {
   const root=resolve(import.meta.dirname,'..');
   const app=readFileSync(resolve(root,'website/js/app.js'),'utf8');
   const core=readFileSync(resolve(root,'website/interfaces/kouns-core/app.html'),'utf8');
   const shell=readFileSync(resolve(root,'website/interfaces/flight/flight-shell.js'),'utf8');
   const eidolon=readFileSync(resolve(root,'website/interfaces/flight/eidolon/index.html'),'utf8');
-  assert.match(app,/interfaces\/flight\/eidolon\//);
+  assert.match(app,/interfaces\/skyrmion\//);
   assert.match(core,/\.\.\/flight\/eidolon\//);
   assert.match(shell,/createEidolonFlightReceiptBinding/);
   assert.match(shell,/receiptFlightBinding\?\.sample/);

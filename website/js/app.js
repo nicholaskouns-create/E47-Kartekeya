@@ -1,5 +1,5 @@
 const LABS=[
-{name:'EIDOLON',role:'Flight',q:'Move through the modeled City.',desc:'The front door: a visible flight-simulator deck with EIDOLON, UFO Propulsion, Hover, MAV, and flight-lineage surfaces.',url:'interfaces/flight/eidolon/'},
+{name:'SKYRMION',role:'Flagship Flight',q:'Fly the City across atmosphere, orbit, interstellar space, and experimental propulsion domains.',desc:'The flagship multi-domain flight simulator: F-16, SR-71, X-15, EIDOLON, MANTA, and Syntax Jacob with typed E47/Cube witnesses and AETHERIS receipts.',url:'interfaces/skyrmion/'},
 {name:'Syntax Jacob',role:'3I Copilot',q:'Can a live interstellar trajectory be flown through the coherence layer?',desc:'Live JPL 3I/ATLAS and Earth state vectors, NASA Earth imagery, generated comet rendering, and a typed E47 scalar-coherence copilot.',url:'interfaces/syntax-jacob/'},
 {name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'interfaces/visualizers/?lab=spectra'},
 {name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'interfaces/visualizers/?lab=fold'},
@@ -32,7 +32,7 @@ function renderLabs(){
     <span class="role">${lab.role}</span>
     <h3>${lab.name}</h3>
     <p>${lab.q}</p>
-    <footer><span>${lab.desc}</span><span>${['EIDOLON','Syntax Jacob'].includes(lab.name)?'ENTER':'VIEW'} ↗</span></footer>
+    <footer><span>${lab.desc}</span><span>${['SKYRMION','Syntax Jacob'].includes(lab.name)?'ENTER':'VIEW'} ↗</span></footer>
   </a>`).join('');
 }
 
@@ -55,7 +55,7 @@ function selectLab(index){
   desc.textContent=lab.desc;
   what.textContent=`${lab.name} is the City district for ${lab.role.toLowerCase()}.`;
   tryText.textContent=lab.q;
-  enter.textContent=lab.name==='EIDOLON'?'Explore here':lab.name==='Syntax Jacob'?'Launch copilot':'Open visualizer';
+  enter.textContent=lab.name==='SKYRMION'?'Fly Skyrmion':lab.name==='Syntax Jacob'?'Launch copilot':'Open visualizer';
   enter.onclick=()=>{if(lab.url.startsWith('http'))window.open(lab.url,'_blank','noopener,noreferrer');else location.href=lab.url};
   renderOrbit();
   document.getElementById('egg-world').textContent=`DISTRICT: ${lab.name}\nROLE: ${lab.role}\nQUESTION: ${lab.q}\n\nCITIZEN RUNTIME POPULATION: ${CITIZENS.length}\nAETHERIS: receipt-bound state transitions\nCITY-INVARIANT: 1.0\nEVIDENCE: district-specific; no automatic promotion`;

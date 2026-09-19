@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SKYRMION · Multi-Domain Flight Simulator</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020406;color:#e9ffff;font-family:Inter,system-ui,sans-serif}
+#scene{position:fixed;inset:0;width:100%;height:100%;display:block}
+.hud{position:fixed;inset:0;pointer-events:none}
+.top{position:absolute;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;gap:12px}
+.brand,.cluster{display:flex;gap:8px;align-items:center}
+.chip{pointer-events:auto;background:#071015cc;border:1px solid #7fffe933;border-radius:999px;padding:8px 11px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(14px)}
+.brand strong{font-size:13px;letter-spacing:.2em}
+.bottom{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+.panel{pointer-events:auto;background:#061014d9;border:1px solid #7fffe92a;border-radius:16px;padding:10px;backdrop-filter:blur(16px);box-shadow:0 12px 40px #0008}
+.vehicle-grid{display:flex;gap:8px;flex-wrap:wrap;max-width:min(88vw,960px)}
+button{background:#0b171d;border:1px solid #84fff02e;color:#dffffa;border-radius:12px;padding:9px 12px;font:inherit;font-size:12px;cursor:pointer}
+button.active{background:#12352f;border-color:#7fffe977}
+.minimap{width:160px;height:92px}
+.tiny{font-size:10px;opacity:.65;letter-spacing:.08em}
+.center-reticle{position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%);border:1px solid #8fffe955;border-radius:50%}
+.center-reticle:before,.center-reticle:after{content:"";position:absolute;background:#8fffe955}
+.center-reticle:before{width:1px;height:58px;left:21px;top:-8px}.center-reticle:after{height:1px;width:58px;top:21px;left:-8px}
+.experimental{color:#ffd28a}.real{color:#9fffd6}.latent{color:#b4b5ff}
+@media(max-width:800px){.cluster{display:none}.bottom{align-items:stretch}.minimap{display:none}.vehicle-grid{max-width:calc(100vw - 32px)}}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.180.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.180.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div class="hud">
+  <div class="top">
+    <div class="brand"><span class="chip"><strong>SKYRMION</strong> · MULTI-DOMAIN FLIGHT</span><span id="domain" class="chip">EARTH · ATMOSPHERE</span></div>
+    <div class="cluster"><span id="gpu" class="chip">GPU · DETECTING</span><span id="bus" class="chip">CITY BUS · READY</span><span id="e47" class="chip">E47 · —</span></div>
+  </div>
+  <div class="center-reticle"></div>
+  <div class="bottom">
+    <div class="panel">
+      <div class="vehicle-grid" id="vehicles"></div>
+      <div class="tiny" id="status">WASD · QE vertical · drag to look · wheel zoom · 1-6 aircraft · F domain</div>
+    </div>
+    <canvas id="minimap" class="panel minimap" width="320" height="184"></canvas>
+  </div>
+</div>
+<script type="module" src="./skyrmion.js"></script>
+</body></html>
