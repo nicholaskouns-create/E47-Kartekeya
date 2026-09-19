@@ -21,3 +21,14 @@ if (grid) {
     </a>
   `).join('');
 }
+
+const filter = document.getElementById('catalog-filter');
+if (filter) {
+  const rows = Array.from(document.querySelectorAll('[data-catalog] a'));
+  filter.addEventListener('input', () => {
+    const q = filter.value.trim().toLowerCase();
+    rows.forEach((row) => {
+      row.hidden = Boolean(q) && !row.textContent.toLowerCase().includes(q);
+    });
+  });
+}
