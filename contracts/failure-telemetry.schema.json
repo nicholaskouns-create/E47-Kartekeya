@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"CITY-INSTRUMENT-FAILURE/1.0",
+  "title":"Mathematical City standardized failure telemetry",
+  "type":"object",
+  "required":["schema","component_id","version","phase","error_type","message","recoverable","context"],
+  "properties":{
+    "schema":{"const":"CITY-INSTRUMENT-FAILURE/1.0"},
+    "component_id":{"type":"string"},
+    "version":{"type":"string"},
+    "phase":{"type":"string"},
+    "error_type":{"type":"string"},
+    "message":{"type":"string"},
+    "recoverable":{"type":"boolean"},
+    "context":{"type":"object"}
+  }
+}
