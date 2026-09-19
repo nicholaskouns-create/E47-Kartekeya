@@ -1,21 +1,29 @@
 from pathlib import Path
 import json
+
 root=Path(__file__).resolve().parents[1]
 html=(root/'website/interfaces/skyrmion/index.html').read_text()
 js=(root/'website/interfaces/skyrmion/skyrmion.js').read_text()
+terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
+assets=(root/'website/interfaces/skyrmion/licensed-aircraft-assets.js').read_text()
+licenses=(root/'website/interfaces/skyrmion/ASSET_LICENSES.md').read_text()
 prov=json.loads((root/'website/interfaces/skyrmion/provenance.json').read_text())
+
 def test_surface():
     assert 'SKYRMION' in html
     for token in ['F-16','SR-71','X-15','EIDOLON','MANTA','SYNTAX JACOB']:
-        assert token in js
+        assert token in html or token in js
+    for token in ['Las Vegas','Los Angeles','New York','Tokyo','Everest','Start flight']:
+        assert token in html
+
 def test_city_bindings():
     for token in ['matrix-cube-adapter','city-graphics-accelerator','syntax-jacob-ephemeris','aetheris.receipt','47/125']:
         assert token in js
+
 def test_boundary():
     assert 'simulation-only' in js
     assert prov['schema']=='CITY-INVARIANT/1.0'
     assert 'human canonical-promotion gate remains external and unchanged' in prov['invariant']
-
 
 def test_live_manta_and_gps_bridge():
     worker=(root/'website/interfaces/skyrmion/manta-worker.js').read_text()
@@ -27,53 +35,60 @@ def test_live_manta_and_gps_bridge():
     assert 'step_packet' in py
     assert 'geometry_nodes' in py
     assert 'CITY-GPS-RUNTIME-1.0' in gps
-
-
-def test_satellite_terrain_renderer():
-    terrain=(root/'website/interfaces/skyrmion/terrain-renderer.js').read_text()
-    assert 'terrain-renderer.js' in html
-    assert 'World_Imagery' in terrain
-    assert 'WGS84' in terrain
-    assert 'Imagery © Esri' in terrain
-    for token in ['Las Vegas','Los Angeles','New York','Tokyo','Everest','Start flight']:
-        assert token in html
-
+    assert 'skyrmion:manta-frame' in html
 
 def test_elevation_aware_terrain3d():
-    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
     assert 'terrain-3d.js' in html
-    for token in ['World_Imagery','terrain-tiles','makeBuildings','makeClouds','makeLights','updateCamera','pitch','roll']:
+    assert 'terrain-renderer.js' not in html
+    for token in ['World_Imagery','terrain-tiles','makeBuildings','makeClouds','makeLights','updateCamera','samplePatchHeight','pitch','roll']:
         assert token in terrain
-
 
 def test_threejs_vehicle_fleet():
-    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
-    for token in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob','craftRoot','updateMantaFrame','SKYRMION-TERRAIN-3D-2.0']:
+    for token in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob','craftRoot','updateMantaFrame']:
         assert token in terrain
-    assert "skyrmion:manta-frame" in html
-    assert "CITY_SKYRMION_TERRAIN3D?.ready" in html
-
+    assert 'CITY_SKYRMION_TERRAIN3D?.ready' in html
+    assert "schema:'SKYRMION-TERRAIN-3D-5.0'" in terrain
 
 def test_high_detail_vehicle_systems():
-    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
-    for token in ['physicalGlass','pivotSurface','landingGear','engineFlame','makeTrailSystem','updateCraftSystems','castShadow','receiveShadow','shadowTarget','SKYRMION-TERRAIN-3D-3.0']:
+    for token in ['physicalGlass','pivotSurface','landingGear','engineFlame','makeTrailSystem','updateCraftSystems','castShadow','receiveShadow','shadowTarget']:
         assert token in terrain
-    for craft in ['makeF16','makeSR71','makeX15','makeEidolon','makeManta','makeSyntaxJacob']:
-        assert craft in terrain
+    for token in ['aileronL','aileronR','elevatorL','elevatorR','flapL','flapR','spoilerL','spoilerR']:
+        assert token in terrain
+    assert 'skyrmionBindRotation' in terrain
+    assert 'animationMixer' in terrain
 
+def test_render_quality_governor():
+    for token in ['applyQualityScale','city:render-scale','quality.renderScale','shadowSize','skyrmion:render-stats']:
+        assert token in terrain
+    assert 'renderer.shadowMap.enabled=atmospheric' in terrain
+    assert 'scene.fog.density' in terrain
 
 def test_licensed_aircraft_pipeline():
-    terrain=(root/'website/interfaces/skyrmion/terrain-3d.js').read_text()
-    assets=(root/'website/interfaces/skyrmion/licensed-aircraft-assets.js').read_text()
-    licenses=(root/'website/interfaces/skyrmion/ASSET_LICENSES.md').read_text()
     assert 'licensed-aircraft-assets.js' in terrain
-    assert 'ASSET_LICENSES.md' in str(root/'website/interfaces/skyrmion/ASSET_LICENSES.md')
     assert 'Identity gate' in terrain
-    assert 'SKYRMION-TERRAIN-3D-4.0' in terrain
-    assert 'f15-polyducky' in assets
-    assert 'CC BY 4.0' in assets
-    assert 'CC BY 4.0' in licenses
-    assert 'auditLicensedAssets' in assets
+    assert 'SKYRMION-TERRAIN-3D-5.0' in terrain
+    for token in ['f15-polyducky','nasa-global-hawk','amvlab-b737-nologo','f16-cdesrocher','sr71-manilov','x15-cmoreau']:
+        assert token in assets
+    for token in ['GLTFLoader','SkeletonUtils.js','collectModelStats','validateAssetRecord','auditLicensedAssets','GLB load timeout']:
+        assert token in assets
     assert 'runLicensedAssetAudit' in terrain
-    assert 'exactFor:"F-16"' not in assets
-    assert 'must not become the F-16' in licenses
+    assert 'NASA Media Usage Guidelines' in assets
+    assert 'CC BY 4.0' in assets
+    assert 'runtimeUrl:null' in assets
+    assert 'must not become F-16, SR-71, or X-15' in licenses
+
+def test_identity_gate_preserves_named_fleet():
+    assert 'canReplaceCraft' in assets
+    assert 'meta?.runtimeUrl&&meta?.exactFor&&meta.exactFor===craftName' in assets
+    assert 'exactFor:"F-16"' in assets
+    assert 'exactFor:"SR-71"' in assets
+    assert 'exactFor:"X-15"' in assets
+    # Exact candidates are intentionally not runtime-downloadable until provider-authorized materialization.
+    for asset_id in ['f16-cdesrocher','sr71-manilov','x15-cmoreau']:
+        record=assets.split('"'+asset_id+'"',1)[1].split('})',1)[0]
+        assert 'runtimeUrl:null' in record
+
+def test_asset_license_register():
+    for token in ['NASA Global Hawk','amvlab-b737-nologo','f16-cdesrocher','sr71-manilov','x15-cmoreau','Creative Commons Attribution 4.0']:
+        assert token in licenses
+    assert 'does not alter the authoritative flight-state' in licenses
