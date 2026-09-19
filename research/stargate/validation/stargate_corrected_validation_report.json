@@ -1,0 +1,46 @@
+{
+  "schema": "STARGATE-CORRECTED-VALIDATION-1.1",
+  "scope": [
+    "The Stargate Derivation",
+    "Informational Geometrodynamics of Traversable Topology",
+    "Metric Engineering via Recursive Coherence",
+    "Project Stargate",
+    "current Notion correction/Einstein-boundary records"
+  ],
+  "validated": {
+    "omega_c_exact_rank_fraction": "47/125",
+    "profile_derivative": "eps/(ell*cosh(l/ell)**2)",
+    "profile_gradient_squared": "eps**2/(ell**2*cosh(l/ell)**4)",
+    "sech4_integral": "4/3",
+    "chi_average_constant_plateau": "c0",
+    "chi_accumulating_plateau": "c0*tau/tau_ref",
+    "energy_density": "V + Z*rho_l**2/2",
+    "radial_pressure": "-V + Z*rho_l**2/2",
+    "radial_nec": "Z*rho_l**2",
+    "regularized_static_hessian_minimum": "-Zneg**2/(4*alpha) + m2",
+    "variable_coupling_divergence": "-T0*Derivative(Omega(x1), x1)",
+    "compensated_total_divergence": "0",
+    "claimed_vmax_derivative": "-c",
+    "claimed_vmax_at_omega_1": "0"
+  },
+  "numerical_example": {
+    "Z": -0.5,
+    "m2": 1.0,
+    "alpha": 0.1,
+    "eps": 0.1,
+    "ell": 2.0,
+    "r0": 10.0,
+    "rho_l_at_throat": 0.05,
+    "NEC_at_throat": -0.0012500000000000002,
+    "bprime_at_throat_8piG_equals_1": 0.875,
+    "ANEC_like_scalar_integral": -0.003333333333333334,
+    "old_hessian_sample_min": -4999.0,
+    "regularized_static_hessian_min": 0.375001296,
+    "regularized_min_k": 1.58,
+    "light_crossing_3m_seconds": 1.0006922855944561e-08,
+    "light_crossing_6m_seconds": 2.0013845711889122e-08,
+    "light_crossing_3m_in_planck_times": 1.8561425317639055e+35
+  },
+  "important_boundary": "The k^4 term validates positivity of a static free-energy Hessian in the toy effective model. It does not establish a ghost-free Lorentzian quantum field theory, a self-consistent nonlinear Einstein-scalar wormhole, empirical NEC violation, or a realizable Stargate device.",
+  "all_checks_pass": true
+}
