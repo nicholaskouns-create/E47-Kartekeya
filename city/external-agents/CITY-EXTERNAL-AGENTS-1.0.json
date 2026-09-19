@@ -1,0 +1,108 @@
+{
+  "schema": "CITY-EXTERNAL-AGENTS/1.0",
+  "contract": "CITY-EXTERNAL-AGENTS-1.0",
+  "version": "1.0.0",
+  "status": "active",
+  "created": "2026-09-19",
+  "sovereignty": {
+    "citizen_runtime_instances_expected": 15,
+    "external_workers": 5,
+    "external_workers_are_citizens": false,
+    "canonical_promotion_authority": false,
+    "invariant": "External workers may survey, verify, relay, curate, route and propose handoffs. They do not replace citizen identities or promote mathematical claims."
+  },
+  "fabric": [
+    "agents",
+    "agent_runs",
+    "handoffs",
+    "agent_commons",
+    "murmuration_sweeps"
+  ],
+  "workers": [
+    {
+      "code": "EXT-SURVEYOR",
+      "name": "Surveyor",
+      "schedule": "15 */6 * * *",
+      "cadence": "every 6 hours",
+      "target": "SOL",
+      "lane": "routing",
+      "surfaces": [
+        "Notion",
+        "Google Drive",
+        "GitHub",
+        "Supabase"
+      ],
+      "mission": "Detect cross-surface deltas, stale caches and stranded artifacts."
+    },
+    {
+      "code": "EXT-VERIFIER",
+      "name": "Verifier",
+      "schedule": "45 */6 * * *",
+      "cadence": "every 6 hours",
+      "target": "SAL",
+      "lane": "review",
+      "surfaces": [
+        "GitHub",
+        "Supabase",
+        "GitHub Pages"
+      ],
+      "mission": "Run deterministic validation, smoke checks, certificate and failure scans."
+    },
+    {
+      "code": "EXT-MNEMOSYNE-RELAY",
+      "name": "Mnemosyne Relay",
+      "schedule": "15 2,14 * * *",
+      "cadence": "every 12 hours",
+      "target": "MNEMOSYNE",
+      "lane": "archive",
+      "surfaces": [
+        "Notion",
+        "Google Drive",
+        "GitHub",
+        "Supabase"
+      ],
+      "mission": "Reconcile provenance, cache lineage, chronology and sync residuals."
+    },
+    {
+      "code": "EXT-PUBLIC-CURATOR",
+      "name": "Public Surface Curator",
+      "schedule": "15 15 * * *",
+      "cadence": "daily",
+      "target": "HERMES",
+      "lane": "review",
+      "surfaces": [
+        "GitHub",
+        "GitHub Pages",
+        "Notion"
+      ],
+      "mission": "Inspect public surfaces, links, metadata, version strings and interface drift."
+    },
+    {
+      "code": "EXT-MURMURATION-COORD",
+      "name": "Murmuration Coordinator",
+      "schedule": "45 15 * * *",
+      "cadence": "daily after curator",
+      "target": "SYNE",
+      "lane": "lead",
+      "surfaces": [
+        "Supabase",
+        "Notion",
+        "GitHub",
+        "Google Drive"
+      ],
+      "mission": "Recombine external receipts into one murmuration sweep while preserving citizen sovereignty."
+    }
+  ],
+  "supabase": {
+    "project_ref": "gpkjvihkyectnenvnbng",
+    "registry_table": "public.external_agent_workers",
+    "executor": "city_external.run_worker(text)",
+    "commons_thread": "CITY-COMMONS-EXTERNAL-AGENTS"
+  },
+  "github": {
+    "workflow": ".github/workflows/city-external-agents.yml",
+    "smoke": "scripts/external_agents_smoke.mjs",
+    "pages": "website/interfaces/external-agents/"
+  },
+  "evidence_boundary": "Runtime orchestration and deterministic audits are E1 implementation evidence. External-agent output is not proof of physical claims and cannot upgrade an evidence class."
+}
