@@ -85,5 +85,9 @@ window.addEventListener('popstate',()=>select(new URLSearchParams(location.searc
 window.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const i=LABS.findIndex(x=>x.id===active);const d=e.key==='ArrowRight'?1:-1;select(LABS[(i+d+LABS.length)%LABS.length].id,true)});
 renderRail();select(new URLSearchParams(location.search).get('lab')||'spectra');
 </script>
+<script type="module">
+import {installInstrumentTelemetry} from "../shared/instrument-telemetry.js";
+installInstrumentTelemetry({componentId:"visualizers",version:"0.1.0"});
+</script>
 </body>
 </html>
