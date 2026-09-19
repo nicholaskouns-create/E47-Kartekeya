@@ -1,0 +1,24 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"aetheris",
+  "display_name":"AETHERIS Runtime",
+  "version":"0.1.0",
+  "kind":"research-runtime",
+  "maturity":"research",
+  "evidence":["E1","E2"],
+  "entrypoint":"aetheris.runtime:AetherisRuntime",
+  "smoke":{
+    "entrypoint":"src/aetheris/smoke.py",
+    "command":"PYTHONPATH=src python -m aetheris.smoke",
+    "benchmark_command":"PYTHONPATH=src python -m aetheris.smoke --benchmark"
+  },
+  "provenance":{
+    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources":["src/aetheris/","tests/test_aetheris_runtime.py","tests/test_aetheris_closed_loop.py"]
+  },
+  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+  "boundaries":[
+    "Receipt-oriented compositional research runtime.",
+    "Module evidence classes remain local and are not promoted by orchestration."
+  ]
+}
