@@ -1,0 +1,77 @@
+name: CITY External Agents
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  surveyor:
+    name: Surveyor · repository delta
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: node scripts/external_agents_smoke.mjs
+      - name: Repository census
+        run: |
+          echo "tracked_files=$(git ls-files | wc -l)"
+          echo "interfaces=$(find website/interfaces -name index.html | wc -l)"
+
+  verifier:
+    name: Verifier · contracts and smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: python scripts/check_instrument_contracts.py
+      - run: node scripts/external_agents_smoke.mjs
+
+  mnemosyne-relay:
+    name: Mnemosyne Relay · provenance continuity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify version/provenance markers
+        shell: bash
+        run: |
+          test -f city/external-agents/CITY-EXTERNAL-AGENTS-1.0.json
+          test -f city/external-agents/README.md
+          grep -q "CITY-EXTERNAL-AGENTS-1.0" city/external-agents/README.md
+          grep -q '"external_workers_are_citizens": false' city/external-agents/CITY-EXTERNAL-AGENTS-1.0.json
+
+  public-curator:
+    name: Public Surface Curator · Pages routes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check public City
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --max-time 20 https://nicholaskouns-create.github.io/E47-Kartekeya/ >/dev/null
+          curl --fail --silent --show-error --location --max-time 20 https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/ >/dev/null
+          curl --fail --silent --show-error --location --max-time 20 https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/ >/dev/null
+
+  coordinator:
+    name: Murmuration Coordinator · recombine
+    runs-on: ubuntu-latest
+    needs: [surveyor, verifier, mnemosyne-relay, public-curator]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: node scripts/external_agents_smoke.mjs
+      - name: Emit GitHub-side receipt
+        run: |
+          mkdir -p artifacts
+          printf '%s\n' '{"schema":"CITY-EXTERNAL-GITHUB-RECEIPT-1.0","contract":"CITY-EXTERNAL-AGENTS-1.0","workers":5,"citizen_runtime_invariant":15,"status":"pass"}' > artifacts/city-external-agents.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: city-external-agents-receipt
+          path: artifacts/city-external-agents.json
