@@ -220,5 +220,19 @@
       "host_status": "source-migration-required"
     }
   ],
-  "boundary": "A profile is an implementation target, not proof that an external host has already been patched. host_status must be advanced only after the corresponding source/runtime is changed and proof gates pass."
+  "boundary": "A profile is an implementation target, not proof that an external host has already been patched. host_status must be advanced only after the corresponding source/runtime is changed and proof gates pass.",
+  "cinema_codec": {
+    "schema": "CITY-CINEMA-CODEC-1.0",
+    "target": "high-resolution responsive propulsion rendering",
+    "adaptive_dpr": true,
+    "dynamic_resolution": true,
+    "solver_isolation": true,
+    "surfaces": [
+      "SKYRMION",
+      "EIDOLON",
+      "SCALAR",
+      "SYNTAX JACOB"
+    ],
+    "invariant": "visual codec never mutates solver timestep, state transition, evidence class, provenance, or scientific output"
+  }
 }
