@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {loadWorldRegistry,selectWorldSources,tileUrl,nearestPlaces} from './world-registry.js';
 let licensedAssetModulePromise=null;
 const getLicensedAssetModule=()=>licensedAssetModulePromise||(licensedAssetModulePromise=import('./licensed-aircraft-assets.js'));
 
@@ -26,31 +27,49 @@ function localMeters(origin,lat,lon){
   return {x:(lon-origin.lon)*DEG*R*Math.cos(lat0),z:-(lat-origin.lat)*DEG*R};
 }
 function distanceMeters(a,b){const m=localMeters(a,b.lat,b.lon);return Math.hypot(m.x,m.z)}
-function imageryUrl(z,x,y){
+const TILE_BLOB_CACHE=new Map();
+const TILE_CACHE_LIMIT=180;
+function normalizedTileUrl(source,z,x,y){
   const n=2**z;
-  return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${clamp(y,0,n-1)}/${wrap(x,n)}`;
-}
-function demUrl(z,x,y){
-  const n=2**z;
-  return `https://demotiles.maplibre.org/terrain-tiles/${z}/${wrap(x,n)}/${clamp(y,0,n-1)}.png`;
+  return tileUrl(source,z,wrap(x,n),clamp(y,0,n-1));
 }
 async function fetchBitmap(url){
-  const response=await fetch(url,{mode:'cors',cache:'force-cache'});
-  if(!response.ok)throw new Error(`tile ${response.status}: ${url}`);
-  return createImageBitmap(await response.blob());
+  let task=TILE_BLOB_CACHE.get(url);
+  if(!task){
+    task=fetch(url,{mode:'cors',cache:'force-cache'}).then(response=>{
+      if(!response.ok)throw new Error(`tile ${response.status}: ${url}`);
+      return response.blob();
+    }).catch(error=>{TILE_BLOB_CACHE.delete(url);throw error});
+    TILE_BLOB_CACHE.set(url,task);
+    while(TILE_BLOB_CACHE.size>TILE_CACHE_LIMIT){
+      const first=TILE_BLOB_CACHE.keys().next().value;
+      if(first===url)break;
+      TILE_BLOB_CACHE.delete(first);
+    }
+  }
+  return createImageBitmap(await task);
 }
-async function stitchTiles(urlFor,z,cx,cy){
+async function stitchTiles(source,z,cx,cy){
+  if(!source)throw new Error('missing tile source');
   const side=PATCH_RADIUS*2+1,canvas=document.createElement('canvas');
   canvas.width=canvas.height=side*TILE_SIZE;
   const ctx=canvas.getContext('2d',{willReadFrequently:true}),jobs=[];
   for(let dy=-PATCH_RADIUS;dy<=PATCH_RADIUS;dy++)for(let dx=-PATCH_RADIUS;dx<=PATCH_RADIUS;dx++){
-    jobs.push(fetchBitmap(urlFor(z,cx+dx,cy+dy)).then(bitmap=>({bitmap,dx,dy})));
+    const url=normalizedTileUrl(source,z,cx+dx,cy+dy);
+    jobs.push(fetchBitmap(url).then(bitmap=>({bitmap,dx,dy})));
   }
   for(const {bitmap,dx,dy} of await Promise.all(jobs)){
     ctx.drawImage(bitmap,(dx+PATCH_RADIUS)*TILE_SIZE,(dy+PATCH_RADIUS)*TILE_SIZE,TILE_SIZE,TILE_SIZE);
     bitmap.close?.();
   }
   return canvas;
+}
+function compositeHillshade(imagery,hillshade,opacity=.18){
+  if(!imagery||!hillshade)return imagery;
+  const ctx=imagery.getContext('2d');
+  ctx.save();ctx.globalAlpha=opacity;ctx.globalCompositeOperation='soft-light';
+  ctx.drawImage(hillshade,0,0,imagery.width,imagery.height);ctx.restore();
+  return imagery;
 }
 function decodeTerrainRGB(r,g,b){return -10000+(r*256*256+g*256+b)*.1}
 function sampleHeightField(canvas,samples=GRID+1){
@@ -497,6 +516,13 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   const trailSystem=makeTrailSystem(scene),shadowTarget=new THREE.Object3D();scene.add(shadowTarget);atmos.sun.target=shadowTarget;
   const flight={lat,lon,altitude_m,heading,pitch,roll,speed,active,domain:0,enabled:true};
   const chase={distance:36,height:12,lookAhead:62,positionRate:7.5,targetRate:10.5,upRate:4.2,bankMix:.10,speedPullback:12};
+  const worldRegistry=await loadWorldRegistry({timeoutMs:2500});
+  dispatchEvent(new CustomEvent('skyrmion:world-registry',{detail:{
+    schema:worldRegistry.schema,online:worldRegistry.online,fallback:worldRegistry.fallback,
+    sourceCount:worldRegistry.map_sources?.length||0,placeCount:worldRegistry.places?.length||0,
+    anchorCount:worldRegistry.geo_anchors?.length||0,
+    imagery:worldRegistry.selected?.imagery?.id||null,dem:worldRegistry.selected?.dem?.id||null
+  }}));
   const worldUp=new THREE.Vector3(0,1,0),forward=new THREE.Vector3(),right=new THREE.Vector3(),craftUp=new THREE.Vector3(),cameraUp=new THREE.Vector3();
   const cameraForward=new THREE.Vector3(),cameraRight=new THREE.Vector3(),cameraLocalUp=new THREE.Vector3();
   const desiredCamera=new THREE.Vector3(),desiredTarget=new THREE.Vector3(),smoothTarget=new THREE.Vector3(),basis=new THREE.Matrix4(),baseQ=new THREE.Quaternion(),rollQ=new THREE.Quaternion(),localRollAxis=new THREE.Vector3(0,0,-1);
@@ -565,14 +591,21 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
       const tile=lonLatToTile(centerLon,centerLat,zoom),cx=Math.floor(tile.x),cy=Math.floor(tile.y),center=tileToLonLat(cx+.5,cy+.5,zoom);
       const west=tileToLonLat(cx-PATCH_RADIUS,cy+.5,zoom),east=tileToLonLat(cx+PATCH_RADIUS+1,cy+.5,zoom);
       const span=Math.abs(localMeters(center,center.lat,east.lon).x-localMeters(center,center.lat,west.lon).x);
-      const [imgResult,demResult]=await Promise.allSettled([stitchTiles(imageryUrl,zoom,cx,cy),stitchTiles(demUrl,zoom,cx,cy)]);
+      const sources=selectWorldSources(worldRegistry,{altitude_m:flight.altitude_m,domain:flight.domain});
+      const [imgResult,demResult,shadeResult]=await Promise.allSettled([
+        stitchTiles(sources.imagery,zoom,cx,cy),
+        stitchTiles(sources.dem,Math.min(zoom,Number(sources.dem?.max_zoom||zoom)),cx,cy),
+        sources.hillshade?stitchTiles(sources.hillshade,zoom,cx,cy):Promise.resolve(null)
+      ]);
       if(gen!==generation||destroyed)return;
-      const imagery=imgResult.status==='fulfilled'?imgResult.value:fallbackTexture();let field=flatHeightField();
+      const imagery=imgResult.status==='fulfilled'?imgResult.value:fallbackTexture();
+      if(shadeResult.status==='fulfilled'&&shadeResult.value)compositeHillshade(imagery,shadeResult.value,.17);
+      let field=flatHeightField();
       if(demResult.status==='fulfilled'){try{field=sampleHeightField(demResult.value)}catch{}}
       const geometry=new THREE.PlaneGeometry(span,span,GRID,GRID);geometry.rotateX(-Math.PI/2);const pos=geometry.attributes.position;
       for(let j=0;j<=GRID;j++)for(let i=0;i<=GRID;i++){const vi=j*(GRID+1)+i;pos.setY(vi,field.heights[vi])}
       pos.needsUpdate=true;geometry.computeVertexNormals();
-      const texture=new THREE.CanvasTexture(imagery);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+      const texture=new THREE.CanvasTexture(imagery);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(16,renderer.capabilities.getMaxAnisotropy());texture.minFilter=THREE.LinearMipmapLinearFilter;texture.magFilter=THREE.LinearFilter;
       const terrain=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({map:texture,roughness:.98,metalness:0}));terrain.receiveShadow=true;
       const seed=seedFor(center.lat,center.lon),world=new THREE.Group(),buildings=makeBuildings(span,seed),clouds=makeClouds(span,seed),lights=makeLights(span,seed);
       const centerElevation=field.heights[Math.floor(field.heights.length/2)]||0;buildings.position.y=centerElevation;lights.position.y=centerElevation;
@@ -590,10 +623,16 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
         }
         scene.remove(patch.world);dispose(patch.world);patch.texture?.dispose?.();
       }
+      const nearby=nearestPlaces(worldRegistry,center.lat,center.lon,{limit:8,maxKm:Math.max(30,span/1000)});
       patch={center,span,world,terrain,buildings,clouds,lights,texture,min:field.min,max:field.max,centerElevation,
-        heights:field.heights,samples:field.samples};trailSystem?.clear?.();
+        heights:field.heights,samples:field.samples,sources,nearby};trailSystem?.clear?.();
       updateDomainVisibility();
-      dispatchEvent(new CustomEvent('skyrmion:terrain-status',{detail:{status:imgResult.status==='fulfilled'&&demResult.status==='fulfilled'?'LIVE':'DEGRADED',center,span,elevation_min_m:field.min,elevation_max_m:field.max}}));
+      dispatchEvent(new CustomEvent('skyrmion:terrain-status',{detail:{
+        status:imgResult.status==='fulfilled'&&demResult.status==='fulfilled'?'LIVE':'DEGRADED',
+        center,span,elevation_min_m:field.min,elevation_max_m:field.max,
+        registry_online:worldRegistry.online,imagery_source:sources.imagery?.id||null,dem_source:sources.dem?.id||null,
+        hillshade_source:sources.hillshade?.id||null,nearby
+      }}));
     }catch(error){
       dispatchEvent(new CustomEvent('skyrmion:terrain-status',{detail:{status:'FALLBACK',error:String(error?.message||error)}}));
     }finally{if(gen===generation)patchLoading=false}
@@ -710,10 +749,10 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   }).catch(()=>{});
   requestAnimationFrame(frame);
   return {
-    schema:'SKYRMION-TERRAIN-3D-6.1',ready:true,renderer,scene,camera,craftRoot,fleet,
+    schema:'SKYRMION-TERRAIN-3D-6.2',ready:true,renderer,scene,camera,craftRoot,fleet,
     get activeCraft(){return fleet[activeIndex]},get patch(){return patch},
     updateFlightState,updateMantaFrame,teleport,setActiveCraft,
-    licensedAssetState,quality,getLicensedAssets:async()=>Object.keys((await licensedAPI()).LICENSED_AIRCRAFT_ASSETS),loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,samplePatchHeight,
+    worldRegistry,licensedAssetState,quality,getLicensedAssets:async()=>Object.keys((await licensedAPI()).LICENSED_AIRCRAFT_ASSETS),loadLicensedReference,replaceCraftWithLicensedAsset,runLicensedAssetAudit,samplePatchHeight,
     destroy(){destroyed=true;generation++;if(patch?.world)dispose(patch.world);fleet.forEach(dispose);environmentTexture.dispose?.();renderer.dispose();canvas.remove()}
   };
 }
