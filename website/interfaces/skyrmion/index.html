@@ -6,24 +6,24 @@
 @media(max-width:760px){.top .optional{display:none}.panel{max-width:70vw}.crafts button,.mission button{font-size:8px;padding:6px 7px}.stick{width:94px;height:94px}.knob{width:36px;height:36px;left:29px;top:29px}.launch{top:19%;padding:0 20px}.launch h1{font-size:52px}.launch p{font-size:15px}.world-strip{padding:8px 10px calc(128px + env(safe-area-inset-bottom))}.world-card{min-width:128px}.boundary{display:none}.proof-toggle{top:48px}}
 </style></head><body>
 <section class="launch"><div class="launch-inner"><div class="ey">WORLD ENGINE · 6DOF · E47 · PROOF</div><h1>SKYRMION<br>Runtime 2</h1><p>One state. Seven vehicles. Conventional aerodynamic dynamics for F-16, SR-71 and X-15; separately typed experimental simulation adapters for EIDOLON, MANTA, SKYRMION and Syntax Jacob.</p><button id="startFlight">Start flight · Runtime 2</button></div></section>
-<section class="world-strip"><div class="label">WORLD ENGINE · WGS84 · DEM + SATELLITE · FIXED STEP 120 HZ</div><div class="world-cards">
-<button class="world-card active" data-world data-lat="36.169900" data-lon="-115.139800" data-alt="1100">Las Vegas<small>Nevada</small></button>
-<button class="world-card" data-world data-lat="34.052235" data-lon="-118.243683" data-alt="1100">Los Angeles<small>California</small></button>
-<button class="world-card" data-world data-lat="40.712776" data-lon="-74.005974" data-alt="1200">New York<small>New York</small></button>
-<button class="world-card" data-world data-lat="35.676200" data-lon="139.650300" data-alt="1050">Tokyo<small>Japan</small></button>
-<button class="world-card" data-world data-lat="27.988121" data-lon="86.925026" data-alt="9800">Everest<small>Himalaya</small></button>
+<section class="world-strip"><div class="label">WORLD ENGINE · SUPABASE GEO REGISTRY · WGS84 · DEM + SATELLITE · FIXED STEP 120 HZ</div><div class="world-cards">
+<button class="world-card active" data-world data-place="las-vegas" data-lat="36.169941" data-lon="-115.139832" data-alt="610">Las Vegas<small>Nevada</small></button>
+<button class="world-card" data-world data-place="los-angeles" data-lat="34.052235" data-lon="-118.243683" data-alt="87">Los Angeles<small>California</small></button>
+<button class="world-card" data-world data-place="new-york" data-lat="40.712776" data-lon="-74.005974" data-alt="10">New York<small>New York</small></button>
+<button class="world-card" data-world data-place="tokyo" data-lat="35.676422" data-lon="139.650027" data-alt="40">Tokyo<small>Japan</small></button>
+<button class="world-card" data-world data-place="everest" data-lat="27.988121" data-lon="86.924975" data-alt="8849">Everest<small>Khumbu</small></button>
 </div></section>
 <canvas id="world"></canvas><button id="proofToggle" class="proof-toggle">PROOF + TELEMETRY</button><div id="proofPanel" class="proof-panel"><b>SKYRMION Runtime 2</b><br>Awaiting first proof receipt.</div><div class="boundary">CONVENTIONAL ⇄ EXPLICIT EXPERIMENTAL-SIMULATION BOUNDARY</div>
-<div class="hud"><div class="top"><span class="chip">SKYRMION · RT2</span><span id="tele" class="chip">F-16 · INITIALIZING</span><span id="gps" class="chip">WGS84 · ACQUIRING</span><span id="terrainStatus" class="chip optional">TERRAIN · BOOTING</span><span id="assetStatus" class="chip optional">ASSET · NATIVE RIG</span><span id="renderStats" class="chip optional">GPU · ADAPTIVE</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div class="mission"><button id="missionRecord" class="on">REC ON</button><button id="missionReplay">REPLAY</button><button id="missionExport">EXPORT</button><button id="missionClear">CLEAR</button></div><div class="hint">STICK / WASD · Q/E YAW · SHIFT FULL THRUST · 1–7 VEHICLES · PROOF RECEIPTS CONTINUOUS</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div>
-<div class="terrain-attribution">Imagery © Esri, Maxar, Earthstar Geographics and contributors · DEM © MapLibre demo terrain source</div>
+<div class="hud"><div class="top"><span class="chip">SKYRMION · RT2</span><span id="tele" class="chip">F-16 · INITIALIZING</span><span id="gps" class="chip">WGS84 · ACQUIRING</span><span id="terrainStatus" class="chip optional">TERRAIN · BOOTING</span><span id="mapStatus" class="chip optional">MAP · REGISTRY</span><span id="assetStatus" class="chip optional">ASSET · NATIVE RIG</span><span id="renderStats" class="chip optional">GPU · ADAPTIVE</span></div><div class="ret"></div><div class="bottom"><div class="panel"><div id="crafts" class="crafts"></div><div class="mission"><button id="missionRecord" class="on">REC ON</button><button id="missionReplay">REPLAY</button><button id="missionExport">EXPORT</button><button id="missionClear">CLEAR</button></div><div class="hint">STICK / WASD · Q/E YAW · SHIFT FULL THRUST · 1–7 VEHICLES · PROOF RECEIPTS CONTINUOUS</div></div><div id="stick" class="stick"><div id="knob" class="knob"></div></div></div></div>
+<div id="terrainAttribution" class="terrain-attribution">Map registry loading · WGS84 / EPSG:4326</div>
 <!-- Runtime 2 MANTA bridge: manta-worker.js -->
 <script type="module">
 import {installCityGps} from '../shared/city-gps-runtime.js';
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
 import {createSkyrmionTerrain3D} from './terrain-3d.js';
 installCityGps({chip:document.getElementById('gps'),label:'GPS'});installCityCinemaCodec({canvas:document.getElementById('world')});
-const terrainStatus=document.getElementById('terrainStatus'),assetStatus=document.getElementById('assetStatus'),renderStats=document.getElementById('renderStats');let terrain3d=null,lastMantaFrame=null,lastFlightState={lat:36.1699,lon:-115.1398,altitude_m:3658,heading:0,pitch:0,roll:0,speed:216,active:0,domain:0,enabled:true};
-addEventListener('skyrmion:terrain-status',e=>{const s=String(e.detail?.status||'UNKNOWN').toUpperCase();terrainStatus.textContent='TERRAIN · '+s;terrainStatus.classList.toggle('live',s==='LIVE')});
+const terrainStatus=document.getElementById('terrainStatus'),mapStatus=document.getElementById('mapStatus'),assetStatus=document.getElementById('assetStatus'),renderStats=document.getElementById('renderStats'),terrainAttribution=document.getElementById('terrainAttribution');let terrain3d=null,lastMantaFrame=null,lastFlightState={lat:36.1699,lon:-115.1398,altitude_m:3658,heading:0,pitch:0,roll:0,speed:216,active:0,domain:0,enabled:true};
+addEventListener('skyrmion:terrain-status',e=>{const d=e.detail||{},s=String(d.status||'UNKNOWN').toUpperCase();terrainStatus.textContent='TERRAIN · '+s;terrainStatus.classList.toggle('live',s==='LIVE');if(d.imagery_source){mapStatus.textContent='MAP · '+String(d.imagery_source).replace('esri-world-','ESRI ').replace('maplibre-','ML ');mapStatus.classList.toggle('live',d.registry_online!==false)}});
 addEventListener('skyrmion:asset-load',e=>{const d=e.detail||{},s=String(d.status||'').toUpperCase();assetStatus.textContent='ASSET · '+s+(d.id?' · '+d.id:'');assetStatus.classList.toggle('live',s==='READY')});
 addEventListener('skyrmion:asset-replacement',e=>{const d=e.detail||{};assetStatus.textContent='ASSET · '+(d.craftName||'CRAFT')+' · LICENSED GLB';assetStatus.classList.add('live')});
 addEventListener('skyrmion:render-stats',e=>{const d=e.detail||{};renderStats.textContent='GPU · '+Math.round(d.triangles||0).toLocaleString()+' TRI · '+Number(d.dpr||1).toFixed(2)+'×';renderStats.classList.toggle('live',Number(d.renderScale||1)>.7)});
@@ -35,6 +35,17 @@ createSkyrmionTerrain3D(lastFlightState).then(world=>{
   if(world?.ready)terrainStatus.classList.add('live');
   world.updateFlightState(lastFlightState);
   if(lastMantaFrame)world.updateMantaFrame(lastMantaFrame);
+  const reg=world.worldRegistry||{};
+  mapStatus.textContent=reg.online?'MAP · DB LIVE · '+(reg.map_sources?.length||0)+' SOURCES':'MAP · FALLBACK';
+  mapStatus.classList.toggle('live',Boolean(reg.online));
+  const placeIndex=Object.fromEntries((reg.places||[]).map(p=>[p.id,p]));
+  document.querySelectorAll('[data-world][data-place]').forEach(btn=>{
+    const p=placeIndex[btn.dataset.place];if(!p)return;
+    btn.dataset.lat=p.lat;btn.dataset.lon=p.lon;btn.dataset.alt=p.alt_m||0;
+    const small=btn.querySelector('small');if(small)small.textContent=p.region||p.country||p.kind||'WGS84';
+  });
+  const attrs=[reg.selected?.imagery?.attribution,reg.selected?.hillshade?.attribution,reg.selected?.dem?.attribution].filter(Boolean);
+  terrainAttribution.textContent=[...new Set(attrs)].join(' · ');
 }).catch(error=>{
   terrainStatus.textContent='TERRAIN · FALLBACK';
   console.error('SKYRMION 3D terrain boot failed',error);
