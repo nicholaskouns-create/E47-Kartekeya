@@ -73,5 +73,11 @@ def emit_instrument_receipt(
         "metrics":metrics,
         "failure":failure,
     }
-    print(json.dumps(receipt, sort_keys=True))
+    def _default(value):
+        item=getattr(value,"item",None)
+        if callable(item):
+            try:return item()
+            except Exception:pass
+        return str(value)
+    print(json.dumps(receipt, sort_keys=True, default=_default))
     return 0 if status=="PASS" else 1
