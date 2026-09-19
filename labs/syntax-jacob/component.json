@@ -1,0 +1,40 @@
+{
+  "schema": "LAB-COMPONENT-1.0",
+  "id": "syntax-jacob",
+  "version": "1.1.0",
+  "kind": "interactive-simulator",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "contract": "3I/ATLAS trajectory and scalar-coherence research interface with runtime provenance.",
+  "entrypoint": "website/interfaces/syntax-jacob/index.html",
+  "smoke": "python scripts/lab_component.py smoke syntax-jacob",
+  "benchmark": {
+    "kind": "static-contract-smoke",
+    "command": "python scripts/lab_component.py benchmark syntax-jacob"
+  },
+  "receipt": "python scripts/lab_component.py receipt syntax-jacob",
+  "provenance": [
+    "website/interfaces/syntax-jacob/provenance.json"
+  ],
+  "invariants": [
+    "JPL data provenance remains distinct from modeled dynamics",
+    "display-space propulsion remains simulation"
+  ],
+  "failure_telemetry": {
+    "schema": "LAB-FAILURE-1.0",
+    "required": [
+      "component",
+      "version",
+      "operation",
+      "status",
+      "timestamp_utc",
+      "error_type",
+      "message",
+      "duration_ms"
+    ],
+    "output": "JSON line on stderr; nonzero exit code"
+  }
+}
