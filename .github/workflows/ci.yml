@@ -15,8 +15,10 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Validate component, maturity and evidence map
-        run: python scripts/check_lab_contract.py
+      - name: Validate lab and instrument contracts
+        run: |
+          python scripts/check_lab_contract.py
+          python scripts/check_instrument_contracts.py
 
   test:
     name: Pytest – E47 canonical invariants
@@ -35,6 +37,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Cache pip
         uses: actions/cache@v6
         with:
@@ -47,6 +54,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Run autonomous instrument smoke suite
+        run: python scripts/run_instrument_smokes.py --receipt-dir artifacts/instrument-receipts
+
+      - name: Upload instrument provenance receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: instrument-smoke-receipts
+          path: artifacts/instrument-receipts/
+          if-no-files-found: warn
 
       - name: Run test suite
         run: python -m pytest tests/ -v --tb=short
@@ -79,7 +97,6 @@ jobs:
           results = run_all_validations()
           require_all_validations(results)
 
-          # Canonical E47 invariants – must never change
           assert results.qutip_validation.carrier_dimension == 125, \
               f"dim(V) drift: expected 125, got {results.qutip_validation.carrier_dimension}"
           assert results.qutip_validation.kernel_dimension == 47, \

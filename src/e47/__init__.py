@@ -22,6 +22,8 @@ This package validates algebraic and numerical properties only.
 It does not establish experimental, physical, or hardware validation.
 """
 
+__version__ = "0.1.0"
+
 from .su2_kernel import (
     E47Operators,
     KernelValidation,

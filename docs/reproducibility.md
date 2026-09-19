@@ -76,3 +76,26 @@ It does not automatically promote:
 - a component's local success to a claim about every other component.
 
 The applicable evidence class is declared separately in `lab-manifest.json` and the corresponding validation record.
+
+## Instrument smoke receipts
+
+Validate every major lab's local component contract:
+
+```bash
+python scripts/check_instrument_contracts.py
+```
+
+Run each instrument through its own smoke entrypoint and retain normalized provenance receipts:
+
+```bash
+python scripts/run_instrument_smokes.py
+```
+
+For timed benchmark mode:
+
+```bash
+python scripts/run_instrument_smokes.py --benchmark \
+  --receipt-dir artifacts/instrument-benchmarks
+```
+
+See `docs/instrument_contracts.md` for the receipt and failure telemetry schemas.

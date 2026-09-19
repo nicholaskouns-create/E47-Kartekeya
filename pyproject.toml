@@ -36,3 +36,8 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+e47 = ["VERSION", "component.json"]
+aetheris = ["VERSION", "component.json"]
+manta = ["VERSION", "component.json"]

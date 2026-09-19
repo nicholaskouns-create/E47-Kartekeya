@@ -5,63 +5,104 @@
   "repository": "nicholaskouns-create/E47-Kartekeya",
   "canonical_web_root": "website/",
   "package_root": "src/",
-  "evidence_classes": ["E0", "E1", "E2", "E3", "E4", "H0"],
+  "evidence_classes": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "H0"
+  ],
   "components": [
     {
       "id": "e47-core",
       "path": "src/e47",
       "kind": "mathematical-core",
       "maturity": "validated-core",
-      "evidence": ["E0", "E1"],
-      "contract": "Finite-dimensional E47 kernel, projector, contraction and certificate machinery."
+      "evidence": [
+        "E0",
+        "E1"
+      ],
+      "contract": "src/e47/component.json",
+      "version": "0.1.0",
+      "smoke_entrypoint": "src/e47/smoke.py"
     },
     {
       "id": "aetheris",
       "path": "src/aetheris",
       "kind": "research-runtime",
       "maturity": "research",
-      "evidence": ["E1", "E2"],
-      "contract": "Receipt-oriented runtime and state-transition research."
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "contract": "src/aetheris/component.json",
+      "version": "0.1.0",
+      "smoke_entrypoint": "src/aetheris/smoke.py"
     },
     {
       "id": "manta",
       "path": "src/manta",
       "kind": "experimental-simulation",
       "maturity": "experimental",
-      "evidence": ["E2"],
-      "contract": "Experimental vehicle and programmable-matter simulation code."
+      "evidence": [
+        "E2"
+      ],
+      "contract": "src/manta/component.json",
+      "version": "0.1.0",
+      "smoke_entrypoint": "src/manta/smoke.py"
     },
     {
       "id": "skyrmion",
       "path": "website/interfaces/skyrmion",
       "kind": "interactive-simulator",
       "maturity": "research",
-      "evidence": ["E1", "E2"],
-      "contract": "Conventional craft use conventional aerodynamic models; experimental craft load explicitly separated experimental models."
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "contract": "website/interfaces/skyrmion/component.json",
+      "version": "2.2.0",
+      "smoke_entrypoint": "website/interfaces/skyrmion/smoke.mjs"
     },
     {
       "id": "syntax-jacob",
       "path": "website/interfaces/syntax-jacob",
       "kind": "interactive-simulator",
       "maturity": "research",
-      "evidence": ["E1", "E2"],
-      "contract": "3I/ATLAS trajectory and scalar-coherence research interface with runtime provenance."
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "contract": "website/interfaces/syntax-jacob/component.json",
+      "version": "1.1.0",
+      "smoke_entrypoint": "website/interfaces/syntax-jacob/smoke.mjs"
     },
     {
       "id": "city-core",
       "path": "website/interfaces/kouns-core",
       "kind": "research-console",
       "maturity": "research",
-      "evidence": ["E1", "E2"],
-      "contract": "Cross-interface console; presentation does not promote evidence class."
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "contract": "website/interfaces/kouns-core/component.json",
+      "version": "0.1.0",
+      "smoke_entrypoint": "website/interfaces/kouns-core/smoke.mjs"
     },
     {
       "id": "visualizers",
       "path": "website/interfaces/visualizers",
       "kind": "research-instruments",
       "maturity": "research",
-      "evidence": ["E1", "E2"],
-      "contract": "Independent visual instruments with source behavior preserved."
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "contract": "website/interfaces/visualizers/component.json",
+      "version": "0.1.0",
+      "smoke_entrypoint": "website/interfaces/visualizers/smoke.mjs"
     }
   ],
   "reproducibility": {
@@ -76,5 +117,13 @@
     "Simulation and physical validation remain distinct.",
     "Stable mathematical objects are separated from experimental runtimes.",
     "Public interfaces may compose components without becoming authority over them."
-  ]
+  ],
+  "instrument_contracts": {
+    "contract_schema": "contracts/instrument-contract.schema.json",
+    "receipt_schema": "contracts/provenance-receipt.schema.json",
+    "failure_schema": "contracts/failure-telemetry.schema.json",
+    "checker": "python scripts/check_instrument_contracts.py",
+    "smoke_runner": "python scripts/run_instrument_smokes.py",
+    "benchmark_runner": "python scripts/run_instrument_smokes.py --benchmark"
+  }
 }

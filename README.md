@@ -140,7 +140,7 @@ See [docs/validation_scope.md](docs/validation_scope.md) for claim boundaries.
 
 ## Documentation
 
-- [docs/lab_architecture.md](docs/lab_architecture.md) — component and interface architecture
+- [docs/lab_architecture.md](docs/lab_architecture.md) — component and interface architecture\n- [docs/instrument_contracts.md](docs/instrument_contracts.md) — per-lab versions, smoke/benchmark entrypoints, provenance receipts, and failure telemetry
 - [docs/reproducibility.md](docs/reproducibility.md) — clean-checkout reproduction path
 - [docs/validation_scope.md](docs/validation_scope.md) — validated and open claim classes
 - [docs/provenance.md](docs/provenance.md) — implementation lineage and certificates

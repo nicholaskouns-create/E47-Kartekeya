@@ -59,4 +59,8 @@ createSkyrmionTerrain3D(lastFlightState).then(world=>{
 <script>
 document.getElementById('startFlight')?.addEventListener('click',()=>document.body.classList.add('flight-started'));
 </script>
+<script type="module">
+import {installInstrumentTelemetry} from "../shared/instrument-telemetry.js";
+installInstrumentTelemetry({componentId:"skyrmion",version:"2.2.0"});
+</script>
 </body></html>
