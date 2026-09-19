@@ -104,5 +104,12 @@
     "smoke": "scripts/external_agents_smoke.mjs",
     "pages": "website/interfaces/external-agents/"
   },
-  "evidence_boundary": "Runtime orchestration and deterministic audits are E1 implementation evidence. External-agent output is not proof of physical claims and cannot upgrade an evidence class."
+  "evidence_boundary": "Runtime orchestration and deterministic audits are E1 implementation evidence. External-agent output is not proof of physical claims and cannot upgrade an evidence class.",
+  "mirrors": {
+    "notion": "https://app.notion.com/p/3e046094fd308141b59cc951584dbdf5",
+    "google_drive_folder": "https://drive.google.com/drive/folders/1weC8UNMi7lngUEhcPQOzAeSSAcqxyeph",
+    "google_drive_manifest": "https://docs.google.com/document/d/1Y8Fu7wuQYOxdT1zGhOSF24X62KpmWrduYGVgFGE9Dco/edit",
+    "github": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/city/external-agents",
+    "pages": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/external-agents/"
+  }
 }
