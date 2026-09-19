@@ -335,7 +335,7 @@ function updateCraftSystems(model,flight,dt,groundElevation=0){
   if(c.elevator)c.elevator.rotation.x+=(-pitch*.55-c.elevator.rotation.x)*Math.min(1,dt*9);
   const rudderTarget=roll*.16;
   for(const r of [c.rudder,c.rudderL,c.rudderR])if(r)r.rotation.y+=(rudderTarget-r.rotation.y)*Math.min(1,dt*7);
-  const clearance=Number(flight.altitude_m||0)-Number(groundElevation||0),gearTarget=(Number(flight.domain||0)===0&&clearance<180&&speed<125)?1:0;
+  const clearance=Number(flight.altitude_m||0)-Number(groundElevation||0),gearTarget=(Number(flight.domain||0)===0&&clearance<650&&speed<240)?1:0;
   if(u.gear){
     u.gear.userData.deploy+=(gearTarget-u.gear.userData.deploy)*Math.min(1,dt*3.5);
     const d=u.gear.userData.deploy;u.gear.visible=d>.015;u.gear.scale.y=Math.max(.001,d);
