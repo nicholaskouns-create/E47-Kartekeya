@@ -1,5 +1,6 @@
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
 import {installStargateInvariantBridge} from '../shared/stargate-invariants.js';
+import {installWorldBinding,readWorldState} from '../shared/world-engine/world-binding.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -15,6 +16,16 @@ const EARTH_TEXTURE='https://assets.science.nasa.gov/content/dam/science/esd/eo/
 const SPECTRUM=[0,2,6,12,20,30,42],$=id=>document.getElementById(id);
 const fmt=(n,d=3)=>Number.isFinite(n)?Number(n).toFixed(d):'—',norm=v=>Math.hypot(...v),subv=(a,b)=>a.map((x,i)=>x-b[i]);
 let feed=null,focus='comet',scalarLock=true,lastContract=0,lastWitness=0,propulsionMode='coherence',throttle=.35,deltaV=0,lastAccel=0,lastCapture=0;
+const sharedWorld=installWorldBinding({
+  surface:'SYNTAX JACOB',
+  initial:readWorldState()||undefined,
+  generateCell:true,
+  onState:(s,cell)=>{
+    document.body.dataset.worldCell=cell?.id||'';
+    document.body.dataset.worldAnchor=s.lat.toFixed(6)+','+s.lon.toFixed(6);
+  }
+});
+window.CITY_WORLD=sharedWorld;
 const stargate=installStargateInvariantBridge({
   surface:'SYNTAX JACOB',
   container:document.querySelector('.source-strip'),
@@ -24,7 +35,8 @@ const stargate=installStargateInvariantBridge({
     propulsion_mode:propulsionMode,
     throttle,
     modeled_delta_v:deltaV,
-    modeled_accel:lastAccel
+    modeled_accel:lastAccel,
+    world_anchor:{lat:sharedWorld.state.lat,lon:sharedWorld.state.lon,altitude_m:sharedWorld.state.altitudeM}
   })
 });
 window.CITY_STARGATE=stargate;
@@ -64,7 +76,7 @@ function postReceipt(kind,detail={}){
     state_transition:{kind,focus,scalar_lock:scalarLock,propulsion_mode:propulsionMode,throttle,capture:w.capture,residual:w.residual,omega_c:47/125,...detail},
     certificate:{status:'PASS',evidence_class:'E2'},
     stargate:stargate.packet(),
-    output_packet:{state_transition:{kind,focus,scalar_lock:scalarLock,propulsion_mode:propulsionMode,throttle,capture:w.capture,omega_c:47/125,...detail},stargate:stargate.packet()}
+    output_packet:{state_transition:{kind,focus,scalar_lock:scalarLock,propulsion_mode:propulsionMode,throttle,capture:w.capture,omega_c:47/125,...detail},world_anchor:sharedWorld.state,stargate:stargate.packet()}
   };
   try{window.parent?.postMessage(receipt,'*')}catch{}
 }
