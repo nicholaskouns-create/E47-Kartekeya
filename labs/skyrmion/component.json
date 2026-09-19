@@ -1,0 +1,41 @@
+{
+  "schema": "LAB-COMPONENT-1.0",
+  "id": "skyrmion",
+  "version": "2.0.0",
+  "kind": "interactive-simulator",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "contract": "Conventional craft use conventional aerodynamic models; experimental craft load explicitly separated experimental models.",
+  "entrypoint": "website/interfaces/skyrmion/index.html",
+  "smoke": "python scripts/lab_component.py smoke skyrmion",
+  "benchmark": {
+    "kind": "static-contract-smoke",
+    "command": "python scripts/lab_component.py benchmark skyrmion"
+  },
+  "receipt": "python scripts/lab_component.py receipt skyrmion",
+  "provenance": [
+    "website/interfaces/skyrmion/provenance.json",
+    "website/interfaces/skyrmion/runtime2-smoke-20260919.json"
+  ],
+  "invariants": [
+    "conventional and experimental flight models remain separated",
+    "fixed-step semantics independent of rendering"
+  ],
+  "failure_telemetry": {
+    "schema": "LAB-FAILURE-1.0",
+    "required": [
+      "component",
+      "version",
+      "operation",
+      "status",
+      "timestamp_utc",
+      "error_type",
+      "message",
+      "duration_ms"
+    ],
+    "output": "JSON line on stderr; nonzero exit code"
+  }
+}
