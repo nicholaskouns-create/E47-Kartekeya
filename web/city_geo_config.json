@@ -1,0 +1,16 @@
+{
+  "schema":"CITY-GEO-1.0",
+  "crs":"EPSG:4326",
+  "datum":"WGS84",
+  "supabase_table":"public.city_geo_anchors",
+  "default_origin":{"lat":36.1699,"lon":-115.1398,"altitude_m":610,"label":"Las Vegas"},
+  "map_data":{
+    "coordinate_sources":["Natural Earth public-domain vectors","OpenStreetMap interactive viewport tiles"],
+    "tile_policy":"do not bulk-download OSM tiles; stream viewport tiles with attribution and cache headers"
+  },
+  "simulator_contract":{
+    "axes":{"x":"east_m","y":"up_m","z":"north_m"},
+    "outputs":["latitude","longitude","altitude_m"],
+    "evidence_boundary":"navigation and rendering only"
+  }
+}
