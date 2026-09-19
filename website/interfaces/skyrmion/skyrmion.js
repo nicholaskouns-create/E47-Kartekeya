@@ -4,6 +4,8 @@ import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
 import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
+const crash=document.createElement('div');crash.id='runtimeError';crash.style.cssText='display:none;position:fixed;inset:0;z-index:9999;background:#020406;color:#dff;padding:24px;font:14px system-ui';document.body.appendChild(crash);
+addEventListener('error',e=>{crash.style.display='block';crash.textContent='SKYRMION runtime recovery: '+(e.message||'unknown error')});
 
 const MATRIX='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter';
 const GRAPHICS='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-graphics-accelerator?format=module';
@@ -24,7 +26,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(62,innerWidth/innerHeight,.05,5000);camera.position.set(0,4,11);
 const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;controls.target.set(0,1,-18);
 const composer=new EffectComposer(renderer);composer.addPass(new RenderPass(scene,camera));composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),.42,.7,.85));
-installCityCinemaCodec({renderer,composer,canvas});
+try{installCityCinemaCodec({renderer,composer,canvas})}catch(e){console.warn('Cinema codec fallback',e)}
 scene.add(new THREE.HemisphereLight(0xbfefff,0x081015,2.5));const sun=new THREE.DirectionalLight(0xffffff,4);sun.position.set(8,18,4);scene.add(sun);
 const world=new THREE.Group();scene.add(world);
 const earth=new THREE.Mesh(new THREE.SphereGeometry(250,96,64),new THREE.MeshStandardMaterial({color:0x183f3b,roughness:.9,metalness:.05}));
