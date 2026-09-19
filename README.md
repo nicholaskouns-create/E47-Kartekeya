@@ -144,6 +144,7 @@ See [docs/validation_scope.md](docs/validation_scope.md) for claim boundaries.
 - [docs/reproducibility.md](docs/reproducibility.md) — clean-checkout reproduction path
 - [docs/validation_scope.md](docs/validation_scope.md) — validated and open claim classes
 - [docs/provenance.md](docs/provenance.md) — implementation lineage and certificates
+- [docs/eidolon_flight_replay_ndjson.md](docs/eidolon_flight_replay_ndjson.md) — E2 trajectory NDJSON commit contract
 - [docs/aetheris_runtime.md](docs/aetheris_runtime.md) — AETHERIS runtime
 - [docs/city_125_runtime.md](docs/city_125_runtime.md) — City-125 runtime
 - [CONTRIBUTING.md](CONTRIBUTING.md) — local-component contribution pattern

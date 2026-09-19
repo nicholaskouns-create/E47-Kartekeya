@@ -77,6 +77,22 @@ It does not automatically promote:
 
 The applicable evidence class is declared separately in `lab-manifest.json` and the corresponding validation record.
 
+## EIDOLON E2 flight-replay NDJSON
+
+The replay certificate is `artifacts/CITY-EIDOLON-FLIGHT-REPLAY-001.json`.
+The bound log URI is `trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson`.
+
+Commit contract and git commands: [`docs/eidolon_flight_replay_ndjson.md`](eidolon_flight_replay_ndjson.md).
+
+```bash
+python scripts/check_eidolon_replay_ndjson.py \
+  --cert artifacts/CITY-EIDOLON-FLIGHT-REPLAY-001.json \
+  --ndjson trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson
+```
+
+The checker prints the `git add` / `git commit` / `git push` commands only on PASS.
+It does not promote the replay above E2.
+
 ## Instrument smoke receipts
 
 Validate every major lab's local component contract:

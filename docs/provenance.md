@@ -47,6 +47,20 @@ Output:
 artifacts/e47_validation_certificate.json
 ```
 
+## EIDOLON E2 flight replay
+
+The E2 replay certificate is a descendant, not a replacement, of the E0/E1 aggregate certificate:
+
+```
+artifacts/CITY-EIDOLON-FLIGHT-REPLAY-001.json
+trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson
+```
+
+`artifacts/` is gitignored; certificates there are committed with `git add -f`.
+Trajectory NDJSON is tracked under `trajectories/` and must match `trajectory.canonical_sha256` before commit.
+
+See [`docs/eidolon_flight_replay_ndjson.md`](eidolon_flight_replay_ndjson.md).
+
 ## Reproducibility record
 
 Each generated certificate records:

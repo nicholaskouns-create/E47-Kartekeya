@@ -48,6 +48,11 @@ Use the repository evidence classes consistently:
 - **E4** empirical / experimental evidence
 - **H0** hardware design or protocol
 
+EIDOLON flight-replay logs are E2. Commit them only through
+[`docs/eidolon_flight_replay_ndjson.md`](docs/eidolon_flight_replay_ndjson.md).
+Do not store NDJSON under `artifacts/` (gitignored). Place the issued bytes at
+the URI in the certificate, usually `trajectories/<certificate_id>.ndjson`.
+
 A new interface, visualization, model integration, or successful simulation does not automatically change evidence class.
 
 ## Interface autonomy
