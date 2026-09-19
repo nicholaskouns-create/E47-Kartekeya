@@ -62,7 +62,7 @@
         "E2"
       ],
       "contract": "website/interfaces/skyrmion/component.json",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "smoke_entrypoint": "website/interfaces/skyrmion/smoke.mjs"
     },
     {
@@ -75,7 +75,7 @@
         "E2"
       ],
       "contract": "website/interfaces/syntax-jacob/component.json",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "smoke_entrypoint": "website/interfaces/syntax-jacob/smoke.mjs"
     },
     {
@@ -116,7 +116,9 @@
     "Presentation never upgrades evidence class.",
     "Simulation and physical validation remain distinct.",
     "Stable mathematical objects are separated from experimental runtimes.",
-    "Public interfaces may compose components without becoming authority over them."
+    "Public interfaces may compose components without becoming authority over them.",
+    "Corrected Stargate invariants may be shared across simulators without converting E2 modeled observables into physical evidence.",
+    "E47 rank fraction 47/125 remains exact mathematics; any physical threshold interpretation requires an independently validated bridge."
   ],
   "instrument_contracts": {
     "contract_schema": "contracts/instrument-contract.schema.json",
@@ -125,5 +127,13 @@
     "checker": "python scripts/check_instrument_contracts.py",
     "smoke_runner": "python scripts/run_instrument_smokes.py",
     "benchmark_runner": "python scripts/run_instrument_smokes.py --benchmark"
+  },
+  "shared_formalisms": {
+    "stargate": {
+      "module": "website/interfaces/shared/stargate-invariants.js",
+      "validation": "research/stargate/validation/stargate_corrected_validation_report.json",
+      "certificate": "MC-STARGATE-CORRECTED-20260919",
+      "evidence_boundary": "conditional mathematics + E2 simulator telemetry; physical closure open"
+    }
   }
 }
