@@ -27,3 +27,13 @@ def test_live_manta_and_gps_bridge():
     assert 'step_packet' in py
     assert 'geometry_nodes' in py
     assert 'CITY-GPS-RUNTIME-1.0' in gps
+
+
+def test_satellite_terrain_renderer():
+    terrain=(root/'website/interfaces/skyrmion/terrain-renderer.js').read_text()
+    assert 'terrain-renderer.js' in html
+    assert 'World_Imagery' in terrain
+    assert 'WGS84' in terrain
+    assert 'Imagery © Esri' in terrain
+    for token in ['Las Vegas','Los Angeles','New York','Tokyo','Everest','Start flight']:
+        assert token in html
