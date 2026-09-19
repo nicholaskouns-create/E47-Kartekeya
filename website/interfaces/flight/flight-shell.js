@@ -1,4 +1,5 @@
 import {installCityCinemaCodec} from './city-cinema-codec.js';
+import {installCityGps,drawGpsOverlay} from '../shared/city-gps-runtime.js';
 const body=document.body;
 const source=body.dataset.source;
 const mode=body.dataset.mode||'Flight mode';
@@ -23,6 +24,8 @@ const nextLink=document.getElementById('nextLink');
 const prevLink=document.getElementById('prevLink');
 const field=document.getElementById('field');
 const ctx=field?.getContext('2d');
+const gps=installCityGps({postTarget:sim,label:'GPS'});
+sim?.addEventListener('load',()=>gps.publish());
 
 let receiptFlightBinding=null;
 let receiptChip=null;
@@ -115,9 +118,20 @@ fullscreenBtn.addEventListener('click',async()=>{
   }catch{}
 });
 
+const cinema=installCityCinemaCodec({canvas:field});
+const renderChip=document.createElement('span');
+renderChip.className='chip';
+document.querySelector('.hud .top .cluster')?.appendChild(renderChip);
+setInterval(()=>{
+  const s=cinema?.state||{};
+  renderChip.textContent='RENDER · '+String(s.backend||'canvas2d').toUpperCase()+' · '+(s.fps||0)+' FPS · '+Math.round((s.scale||1)*100)+'%';
+  renderChip.classList.toggle('live',(s.fps||0)>=42);
+},1000);
+
 function sizeField(){
   if(!field||!ctx)return;
-  const scale=quality==='high'?Math.min(devicePixelRatio||1,2):1;
+  const baseScale=quality==='high'?Math.min(devicePixelRatio||1,2):1;
+  const scale=Math.max(.65,baseScale*(cinema?.state?.scale||1));
   field.width=Math.floor(innerWidth*scale);
   field.height=Math.floor(innerHeight*scale);
   field.style.width=`${innerWidth}px`;
@@ -125,8 +139,8 @@ function sizeField(){
   ctx.setTransform(scale,0,0,scale,0,0);
 }
 window.addEventListener('resize',sizeField);
+window.addEventListener('city:render-scale',sizeField);
 sizeField();
-installCityCinemaCodec({canvas:field});
 
 let t0=performance.now();
 function draw(now){
@@ -160,6 +174,7 @@ function draw(now){
       ctx.fillRect(x,y,1.5,1.5);
     }
   }
+  drawGpsOverlay(ctx,w,h,gps.state,{alpha:level===3?.075:.045});
   requestAnimationFrame(draw);
 }
 requestAnimationFrame(draw);
