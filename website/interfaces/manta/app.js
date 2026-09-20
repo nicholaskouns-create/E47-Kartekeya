@@ -11,18 +11,18 @@ renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled=true;
 renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure=1.28;
+renderer.toneMappingExposure=1.65;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 
 const scene=new THREE.Scene();
-scene.background=new THREE.Color(0x8fc7e6);
-scene.fog=new THREE.Fog(0xa9d6eb,180,900);
+scene.background=new THREE.Color(0xdff4ff);
+scene.fog=new THREE.Fog(0xeaf8ff,320,1300);
 
 const camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,.1,5000);
 camera.position.set(-34,15,26);
 
-scene.add(new THREE.HemisphereLight(0xeaf8ff,0x80684e,3.4));
-const sun=new THREE.DirectionalLight(0xfff3d6,6.2);
+scene.add(new THREE.HemisphereLight(0xffffff,0xc7ad86,5.0));
+const sun=new THREE.DirectionalLight(0xffffff,8.5);
 sun.position.set(-90,150,70);
 sun.castShadow=true;
 sun.shadow.mapSize.set(2048,2048);
@@ -31,7 +31,7 @@ scene.add(sun);
 
 const ground=new THREE.Mesh(
   new THREE.PlaneGeometry(5000,5000,1,1),
-  new THREE.MeshStandardMaterial({color:0x947a59,roughness:1,metalness:0})
+  new THREE.MeshStandardMaterial({color:0xd8bc8d,roughness:.96,metalness:0})
 );
 ground.rotation.x=-Math.PI/2;
 ground.position.y=-14;
@@ -46,7 +46,7 @@ scene.add(grid);
 
 const runway=new THREE.Mesh(
   new THREE.PlaneGeometry(48,900),
-  new THREE.MeshStandardMaterial({color:0x33383b,roughness:.92})
+  new THREE.MeshStandardMaterial({color:0x7f878a,roughness:.86})
 );
 runway.rotation.x=-Math.PI/2;
 runway.position.set(0,-13.86,-170);
@@ -56,7 +56,7 @@ for(let z=-590;z<260;z+=38){
   stripe.rotation.x=-Math.PI/2;stripe.position.set(0,-13.82,z);scene.add(stripe);
 }
 
-const mountainMat=new THREE.MeshStandardMaterial({color:0x765f4e,roughness:1});
+const mountainMat=new THREE.MeshStandardMaterial({color:0xb38e6a,roughness:1});
 for(let i=0;i<32;i++){
   const h=38+Math.random()*85,r=28+Math.random()*60;
   const m=new THREE.Mesh(new THREE.ConeGeometry(r,h,5),mountainMat);
@@ -100,7 +100,7 @@ function wingShape(morph,ghost=false){
 
   const mat=ghost
     ? new THREE.MeshPhysicalMaterial({color:0xffb85c,emissive:0x5c2600,emissiveIntensity:.42,metalness:.25,roughness:.28,transparent:true,opacity:.34,wireframe:true})
-    : new THREE.MeshPhysicalMaterial({color:0x8ea8b7,metalness:.78,roughness:.18,clearcoat:1,clearcoatRoughness:.08,envMapIntensity:1.4});
+    : new THREE.MeshPhysicalMaterial({color:0xdde7ec,metalness:.58,roughness:.16,clearcoat:1,clearcoatRoughness:.06,envMapIntensity:1.8});
   const mesh=new THREE.Mesh(geo,mat);
   mesh.castShadow=!ghost;
   return mesh;
@@ -110,7 +110,7 @@ function buildCraft(ghost=false){
   const root=new THREE.Group();root.userData.ghost=ghost;
   const bodyMat=ghost
     ? new THREE.MeshPhysicalMaterial({color:0xffb85c,emissive:0x713700,emissiveIntensity:.35,transparent:true,opacity:.28,wireframe:true})
-    : new THREE.MeshPhysicalMaterial({color:0x50616d,metalness:.82,roughness:.15,clearcoat:1,clearcoatRoughness:.08});
+    : new THREE.MeshPhysicalMaterial({color:0xcbd8de,metalness:.64,roughness:.14,clearcoat:1,clearcoatRoughness:.05});
 
   const body=new THREE.Mesh(new THREE.CapsuleGeometry(1.35,9.4,14,28),bodyMat);
   body.rotation.z=Math.PI/2;
