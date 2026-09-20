@@ -118,7 +118,7 @@ button,a{font:inherit}
   <div class="top-status">
     <span class="chip" id="status">PAUSED</span>
     <span class="chip" id="clock">0.0 / 48s</span>
-    <span class="chip" id="phase">CLIMB</span>
+    <span class="chip" id="phase">CLIMB</span>\n    <span class="chip" id="renderStatus">RENDER BOOTING</span>
     <a class="chip" href="../kouns-core/?module=manta#labs">CITY CORE</a>
   </div>
 </header>
@@ -192,6 +192,16 @@ button,a{font:inherit}
   <div class="boundary">E2 experimental simulation. Aerodynamic derivatives, morph-material behavior and actuator energetics remain modeled parameters.</div>
 </section>
 
+<script>
+window.addEventListener('error',event=>{
+  const s=document.getElementById('renderStatus');
+  if(s){s.textContent='BOOT FAULT';s.style.color='#ff8c78';s.title=event.message||'render boot error'}
+});
+window.addEventListener('unhandledrejection',event=>{
+  const s=document.getElementById('renderStatus');
+  if(s){s.textContent='MODULE FAULT';s.style.color='#ff8c78';s.title=String(event.reason?.message||event.reason||'module rejection')}
+});
+</script>
 <script type="module" src="./app.js"></script>
 <script>
 const drawer=document.getElementById('dataDrawer');
