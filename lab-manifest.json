@@ -53,6 +53,18 @@
       "smoke_entrypoint": "src/manta/smoke.py"
     },
     {
+      "id": "manta-flight-lab",
+      "path": "website/interfaces/manta",
+      "kind": "interactive-simulator",
+      "maturity": "experimental",
+      "evidence": [
+        "E2"
+      ],
+      "contract": "website/interfaces/manta/component.json",
+      "version": "1.0.0",
+      "smoke_entrypoint": "website/interfaces/manta/smoke.mjs"
+    },
+    {
       "id": "skyrmion",
       "path": "website/interfaces/skyrmion",
       "kind": "interactive-simulator",
@@ -145,4 +157,4 @@
     "citizen_runtime_invariant": 15,
     "boundary": "External workers coordinate with components and citizens but are not mathematical instruments or citizen runtimes."
   }
-}
+}\n
