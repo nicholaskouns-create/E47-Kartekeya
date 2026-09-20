@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#cceeff">
+<title>MANTA DAYLIGHT // 6DOF MORPHING FLIGHT</title>
+<style>
+:root{--ink:#08202b;--cyan:#00aeca;--orange:#d87820;--glass:rgba(255,255,255,.82);--line:rgba(14,64,82,.18);--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-gradient(#cceeff 0 62%,#e6d0a6 62% 100%);font-family:var(--sans);color:var(--ink)}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;background:#cceeff}
+.fallback{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(#cceeff 0 63%,#e8d0a5 63% 100%);z-index:1}
+.webgl-live .fallback{display:none}
+.fallback svg{width:min(78vw,860px);filter:drop-shadow(0 28px 24px rgba(34,45,50,.18));animation:float 2.8s ease-in-out infinite alternate}
+@keyframes float{to{transform:translateY(-10px) rotate(-1deg)}}
+.horizon{position:absolute;left:0;right:0;bottom:31%;height:2px;background:rgba(84,106,111,.28)}
+.top{position:fixed;z-index:10;left:12px;right:12px;top:max(10px,env(safe-area-inset-top));display:flex;gap:7px;align-items:center;pointer-events:none}
+.brand{pointer-events:auto;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);border-radius:13px;padding:8px 10px;box-shadow:0 8px 30px rgba(32,72,87,.08)}
+.brand strong{display:block;font:800 17px/1 var(--sans);letter-spacing:-.03em}.brand small{display:block;margin-top:4px;font:700 8px var(--mono);letter-spacing:.13em;color:#167d92}
+.status{margin-left:auto;display:flex;gap:6px;pointer-events:auto}.chip,.btn{min-height:34px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(14px);padding:0 10px;color:var(--ink);font:700 9px var(--mono);text-decoration:none;white-space:nowrap}.live{color:#007d92}.fault{color:#b51f1f}
+.bottom{position:fixed;z-index:10;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));display:flex;gap:7px;align-items:flex-end;pointer-events:none}
+.controls{display:flex;gap:6px;flex-wrap:wrap;pointer-events:auto}.btn{cursor:pointer}.btn.primary{background:#00b8d4;color:white;border-color:#00b8d4}
+.readout{margin-left:auto;pointer-events:none;background:var(--glass);border:1px solid var(--line);border-radius:13px;padding:8px 10px;backdrop-filter:blur(14px);font:700 9px/1.5 var(--mono);box-shadow:0 8px 30px rgba(32,72,87,.08)}.readout b{color:#007d92}.readout .orange{color:var(--orange)}
+.legend{position:fixed;z-index:8;left:50%;transform:translateX(-50%);bottom:66px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font:700 8px var(--mono);display:flex;gap:14px}.legend .m{color:#008eab}.legend .b{color:#c76517}
+.data{position:fixed;z-index:15;left:12px;right:12px;bottom:12px;max-height:45vh;overflow:auto;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:17px;box-shadow:0 24px 80px rgba(50,70,80,.18);padding:12px;transform:translateY(calc(100% + 30px));transition:.2s;pointer-events:none}.data.open{transform:none;pointer-events:auto}.data-head{display:flex;align-items:center;gap:10px}.data h2{font:800 11px var(--mono);letter-spacing:.13em;margin:0}.data .close{margin-left:auto}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px}.metric{border:1px solid var(--line);border-radius:10px;padding:8px;background:#f7fcfe}.metric span{display:block;color:#617a84;font:700 7px var(--mono);letter-spacing:.08em}.metric b{display:block;margin-top:4px;font:800 12px var(--mono)}
+@media(max-width:700px){.brand small{display:none}.status .chip:nth-child(3){display:none}.status a{display:none}.readout{font-size:8px}.legend{bottom:61px}.controls #pause,.controls #reset{display:none}.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div class="fallback" id="fallback">
+  <div class="horizon"></div>
+  <svg viewBox="-460 -180 920 360" aria-label="MANTA daylight fallback">
+    <defs><linearGradient id="silver" x1="0" x2="1"><stop stop-color="#eef7fb"/><stop offset=".5" stop-color="#b8cbd4"/><stop offset="1" stop-color="#e9f3f6"/></linearGradient></defs>
+    <path fill="url(#silver)" stroke="#7b939e" stroke-width="3" d="M390 0 L125 -48 L-35 -150 L-230 -118 L-420 -28 L-250 0 L-420 28 L-230 118 L-35 150 L125 48 Z"/>
+    <ellipse cx="65" cy="0" rx="250" ry="38" fill="url(#silver)" stroke="#7b939e" stroke-width="3"/>
+    <ellipse cx="130" cy="-17" rx="82" ry="22" fill="#6dbbd9" opacity=".72"/>
+    <circle cx="-185" cy="0" r="22" fill="#1adbf1"/>
+  </svg>
+</div>
+
+<header class="top">
+  <div class="brand"><strong>MANTA DAYLIGHT</strong><small>SELF-CONTAINED WEBGL · NO EXTERNAL RENDERER</small></div>
+  <div class="status">
+    <span id="boot" class="chip">BOOTING</span>
+    <span id="clock" class="chip">0.0 s</span>
+    <span id="phase" class="chip">CLIMB</span>
+    <a class="chip" href="../kouns-core/?module=manta#labs">CITY CORE</a>
+  </div>
+</header>
+
+<div class="legend"><span class="m">● MORPHING</span><span class="b">● FIXED BASELINE</span></div>
+
+<footer class="bottom">
+  <div class="controls">
+    <button id="run" class="btn primary">RUN</button>
+    <button id="pause" class="btn">PAUSE</button>
+    <button id="speed" class="btn">1×</button>
+    <button id="reset" class="btn">RESET</button>
+    <button id="dataBtn" class="btn">DATA</button>
+  </div>
+  <div class="readout"><b id="speedM">216 m/s</b> morphing · <span class="orange" id="speedB">216 m/s</span> fixed<br><span id="delta">Δ speed 0.0 · Δ alt 0.0</span></div>
+</footer>
+
+<section id="data" class="data">
+  <div class="data-head"><h2>MANTA A/B TELEMETRY</h2><button id="close" class="btn close">CLOSE</button></div>
+  <div class="grid">
+    <div class="metric"><span>CL</span><b id="cl">0.000</b></div>
+    <div class="metric"><span>CD</span><b id="cd">0.000</b></div>
+    <div class="metric"><span>CM</span><b id="cm">0.000</b></div>
+    <div class="metric"><span>Ixx</span><b id="ixx">0</b></div>
+    <div class="metric"><span>MASS</span><b id="mass">7200</b></div>
+    <div class="metric"><span>MORPH ENERGY</span><b id="energy">0.00 kWh</b></div>
+  </div>
+</section>
+
+<script>
+(()=>{
+const canvas=document.getElementById('gl'),gl=canvas.getContext('webgl',{antialias:true,alpha:false});
+const boot=document.getElementById('boot');
+if(!gl){boot.textContent='WEBGL UNAVAILABLE';boot.className='chip fault';return;}
+
+const vs=`attribute vec3 aPos;attribute vec3 aNorm;attribute vec3 aColor;uniform mat4 uMVP;uniform mat4 uModel;varying vec3 vN;varying vec3 vC;void main(){vN=mat3(uModel)*aNorm;vC=aColor;gl_Position=uMVP*vec4(aPos,1.0);}`;
+const fs=`precision mediump float;varying vec3 vN;varying vec3 vC;uniform vec3 uLight;void main(){float d=max(.18,dot(normalize(vN),normalize(uLight)));vec3 c=vC*(.38+.82*d);gl_FragColor=vec4(c,1.0);}`;
+function shader(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s}
+const prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,vs));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));gl.useProgram(prog);
+const loc={pos:gl.getAttribLocation(prog,'aPos'),norm:gl.getAttribLocation(prog,'aNorm'),color:gl.getAttribLocation(prog,'aColor'),mvp:gl.getUniformLocation(prog,'uMVP'),model:gl.getUniformLocation(prog,'uModel'),light:gl.getUniformLocation(prog,'uLight')};
+const buf={pos:gl.createBuffer(),norm:gl.createBuffer(),color:gl.createBuffer()};
+function resize(){const d=Math.min(2,devicePixelRatio||1),w=Math.floor(innerWidth*d),h=Math.floor(innerHeight*d);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h)}}
+const I=()=>[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
+function mul(a,b){const o=Array(16).fill(0);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)o[c*4+r]+=a[k*4+r]*b[c*4+k];return o}
+function persp(fov,asp,n,f){const t=1/Math.tan(fov/2),nf=1/(n-f);return[t/asp,0,0,0,0,t,0,0,0,0,(f+n)*nf,-1,0,0,2*f*n*nf,0]}
+function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]]}function cross(a,b){return[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}function norm(a){const n=Math.hypot(...a)||1;return a.map(v=>v/n)}function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+function look(eye,center,up){const z=norm(sub(eye,center)),x=norm(cross(up,z)),y=cross(z,x);return[x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]}
+function model(tx,ty,tz,roll,pitch,yaw){const cr=Math.cos(roll),sr=Math.sin(roll),cp=Math.cos(pitch),sp=Math.sin(pitch),cy=Math.cos(yaw),sy=Math.sin(yaw);return[cy*cp,sy*cp,-sp,0,cy*sp*sr-sy*cr,sy*sp*sr+cy*cr,cp*sr,0,cy*sp*cr+sy*sr,sy*sp*cr-cy*sr,cp*cr,0,tx,ty,tz,1]}
+function tri(out,p0,p1,p2,c){const n=norm(cross(sub(p1,p0),sub(p2,p0)));for(const p of[p0,p1,p2]){out.p.push(...p);out.n.push(...n);out.c.push(...c)}}
+function craft(m,color){
+  const o={p:[],n:[],c:[]},N=14,M=8,span=6.8*(1+1.15*m.span),sweep=3.7+7*m.sweep,cam=.42+1.5*m.camber,tw=.8*m.twist,th=.22+1.2*(m.thickness+.10);
+  const pt=(i,j,side=1)=>{const s=-1+2*i/N,a=Math.abs(s),q=j/M,lead=4.7-sweep*a,trail=-4.8-1.1*a,x=lead*(1-q)+trail*q,z=s*span,y=2.7+side*(th+cam*(1-s*s)*Math.sin(Math.PI*q))+tw*s*q;return[x,y,z]};
+  for(let i=0;i<N;i++)for(let j=0;j<M;j++){let a=pt(i,j),b=pt(i+1,j),c=pt(i+1,j+1),d=pt(i,j+1);tri(o,a,b,c,color);tri(o,a,c,d,color);a=pt(i,j,-1);b=pt(i,j+1,-1);c=pt(i+1,j+1,-1);d=pt(i+1,j,-1);tri(o,a,b,c,color);tri(o,a,c,d,color)}
+  // fuselage
+  const rings=14,segs=12;for(let r=0;r<rings;r++){const x0=-5.4+r*.82,x1=-5.4+(r+1)*.82,rad0=.75*(1-Math.pow((x0-.2)/6.2,2))+.18,rad1=.75*(1-Math.pow((x1-.2)/6.2,2))+.18;for(let k=0;k<segs;k++){const a0=k/segs*Math.PI*2,a1=(k+1)/segs*Math.PI*2,p0=[x0,2.8+rad0*Math.cos(a0),rad0*Math.sin(a0)],p1=[x1,2.8+rad1*Math.cos(a0),rad1*Math.sin(a0)],p2=[x1,2.8+rad1*Math.cos(a1),rad1*Math.sin(a1)],p3=[x0,2.8+rad0*Math.cos(a1),rad0*Math.sin(a1)];tri(o,p0,p1,p2,color);tri(o,p0,p2,p3,color)}}
+  return o;
+}
+function ground(){
+  const o={p:[],n:[],c:[]};tri(o,[-1200,0,-1200],[1200,0,-1200],[1200,0,1200],[.83,.72,.56]);tri(o,[-1200,0,-1200],[1200,0,1200],[-1200,0,1200],[.83,.72,.56]);tri(o,[-18,.02,-700],[18,.02,-700],[18,.02,800],[.34,.37,.38]);tri(o,[-18,.02,-700],[18,.02,800],[-18,.02,800],[.34,.37,.38]);return o}
+function draw(mesh,M,V,P){for(const [key,data,loca] of[['pos',mesh.p,loc.pos],['norm',mesh.n,loc.norm],['color',mesh.c,loc.color]]){gl.bindBuffer(gl.ARRAY_BUFFER,buf[key]);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.DYNAMIC_DRAW);gl.enableVertexAttribArray(loca);gl.vertexAttribPointer(loca,3,gl.FLOAT,false,0,0)}gl.uniformMatrix4fv(loc.model,false,new Float32Array(M));gl.uniformMatrix4fv(loc.mvp,false,new Float32Array(mul(P,mul(V,M))));gl.drawArrays(gl.TRIANGLES,0,mesh.p.length/3)}
+const g=ground();
+let t=0,last=performance.now(),running=true,factor=1,energy=0;
+function morph(t){const ph=(t%48);if(ph<8)return{span:.08,sweep:.03,camber:.10,twist:.02,thickness:0};if(ph<16)return{span:.18,sweep:-.08,camber:.16,twist:.09,thickness:.04};if(ph<26)return{span:-.08,sweep:.30,camber:-.04,twist:-.03,thickness:-.04};if(ph<36)return{span:.22,sweep:-.12,camber:.18,twist:.13,thickness:.07};return{span:0,sweep:0,camber:0,twist:0,thickness:0}}
+function phase(t){t%=48;return t<8?'CLIMB':t<16?'TURN':t<26?'DASH':t<36?'PULL':'RECOVER'}
+function frame(now){resize();const dt=Math.min(.05,(now-last)/1000);last=now;if(running)t=(t+dt*factor)%48;const m=morph(t),base={span:0,sweep:0,camber:0,twist:0,thickness:0};energy+=running?dt*(9+120*Math.abs(m.span)+90*Math.abs(m.sweep)):0;const forward=t*5.2,roll=.10*Math.sin(t*.38)+(phase(t)==='TURN'?.12:0),pitch=.04+.055*Math.sin(t*.24),yaw=.02*Math.sin(t*.13);gl.clearColor(.80,.94,1,1);gl.clearDepth(1);gl.enable(gl.DEPTH_TEST);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);const eye=[forward-27,13,19],target=[forward,3,0],V=look(eye,target,[0,1,0]),P=persp(55*Math.PI/180,canvas.width/canvas.height,.1,3000);gl.uniform3f(loc.light,-.25,.9,.35);draw(g,I(),V,P);draw(craft(base,[.92,.50,.15]),model(forward-1.5,0,-10,roll*.7,pitch*.8,yaw),V,P);draw(craft(m,[.79,.88,.92]),model(forward,0,1.5,roll,pitch,yaw),V,P);const aoa=.04+.03*Math.sin(t*.31),CL=.16+4.25*aoa+1.15*m.camber+.54*m.twist,CD=.026+.075*CL*CL+.034*Math.abs(m.sweep),Cm=.018-.58*aoa-.30*m.camber+.34*m.twist-.06*m.sweep,sM=216+t*1.65+18*m.sweep-8*m.camber,sB=216+t*1.52,aM=3658+28*t+130*m.camber,aB=3658+25*t;document.getElementById('clock').textContent=t.toFixed(1)+' s';document.getElementById('phase').textContent=phase(t);document.getElementById('speedM').textContent=sM.toFixed(1)+' m/s';document.getElementById('speedB').textContent=sB.toFixed(1)+' m/s';document.getElementById('delta').textContent='Δ speed '+(sM-sB).toFixed(1)+' · Δ alt '+(aM-aB).toFixed(0)+' m';document.getElementById('cl').textContent=CL.toFixed(3);document.getElementById('cd').textContent=CD.toFixed(3);document.getElementById('cm').textContent=Cm.toFixed(3);document.getElementById('ixx').textContent=Math.round(68000*(1+.82*m.span-.18*m.sweep)).toLocaleString();document.getElementById('mass').textContent=(7200-t*.35).toFixed(0)+' kg';document.getElementById('energy').textContent=(energy/3600).toFixed(3)+' kWh';requestAnimationFrame(frame)}
+boot.textContent='WEBGL LIVE';boot.className='chip live';document.documentElement.classList.add('webgl-live');requestAnimationFrame(frame);
+document.getElementById('run').onclick=()=>running=true;document.getElementById('pause').onclick=()=>running=false;document.getElementById('reset').onclick=()=>{t=0;energy=0;running=true};document.getElementById('speed').onclick=e=>{factor=factor===1?4:factor===4?10:1;e.currentTarget.textContent=factor+'×'};const data=document.getElementById('data');document.getElementById('dataBtn').onclick=()=>data.classList.add('open');document.getElementById('close').onclick=()=>data.classList.remove('open');
+})()
+</script>
+</body>
+</html>
