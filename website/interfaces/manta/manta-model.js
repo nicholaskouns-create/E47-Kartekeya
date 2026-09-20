@@ -122,13 +122,15 @@ export class MantaABRuntime{
   propulsion(c,state){
     const throttle=state.controls.throttle;
     const thrust=REFERENCE.maxThrustN*throttle;
-    const fuelFlow=0.11+0.00000335*thrust;
-    c.mdot=-fuelFlow;c.fuelKg=Math.max(0,c.fuelKg-fuelFlow*DT);
     return {forceBody:[thrust,0,-thrust*.018*state.controls.pitch],momentBody:[0,0,0]};
   }
   stepCase(c,cmd){
     const world=this.world.sample(c.state);
     this.controls(c.state,cmd,DT);
+    const thrust=REFERENCE.maxThrustN*c.state.controls.throttle;
+    const fuelFlow=0.11+0.00000335*thrust;
+    c.mdot=-fuelFlow;
+    c.fuelKg=Math.max(0,c.fuelKg-fuelFlow*DT);
     c.morphPowerW=c.morph.step(cmd.morph,DT);
     const geom=this.derived(c);
     c.vehicle.massKg=geom.mass;c.vehicle.inertia=geom.inertia;c.vehicle.wing={area:geom.area,span:geom.span,chord:geom.chord,sweepRad:geom.sweepRad};
