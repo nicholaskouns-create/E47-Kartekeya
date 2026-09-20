@@ -1,0 +1,12 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"manta-flight-lab",
+  "display_name":"MANTA · Morphing 6DOF A/B Lab",
+  "version":"1.0.0",
+  "kind":"interactive-simulator",
+  "maturity":"experimental",
+  "evidence":["E2"],
+  "entrypoint":"website/interfaces/manta/index.html",
+  "smoke":{"entrypoint":"website/interfaces/manta/smoke.mjs","command":"node website/interfaces/manta/smoke.mjs"},
+  "boundary":"Morphing aerodynamics, mass properties, actuator bounds and energy are modeled quantities; physical validation remains open."
+}
