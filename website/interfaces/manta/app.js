@@ -51,7 +51,7 @@ function renderHud(s){
   $('#speedM').textContent=`${fmt(m.speed,1)} m/s`;$('#speedB').textContent=`${fmt(b.speed,1)} m/s`;$('#deltaSpeed').textContent=`${s.delta.speed>=0?'+':''}${fmt(s.delta.speed,1)}`;
   $('#altM').textContent=`${fmt(m.altitudeM,0)} m`;$('#altB').textContent=`${fmt(b.altitudeM,0)} m`;$('#deltaAlt').textContent=`${s.delta.altitude>=0?'+':''}${fmt(s.delta.altitude,0)}`;
   $('#fuelM').textContent=`${fmt(REFERENCE.fuelKg-m.fuelKg,1)} kg`;$('#fuelB').textContent=`${fmt(REFERENCE.fuelKg-b.fuelKg,1)} kg`;
-  $('#peakG').textContent=fmt(m.peakG,2);$('#peakQ').textContent=`${fmt(m.peakQ/1000,1)} kPa`;
+  $('#peakAlpha').textContent=`${fmt(m.peakAlpha*180/Math.PI,1)}°`;$('#peakQ').textContent=`${fmt(m.peakQ/1000,1)} kPa`;
   const morph=m.morph;for(const k of ['span','sweep','camber','twist','thickness','stiffness']){$(`#v-${k}`).textContent=fmt(morph[k],2);$(`#b-${k}`).style.width=`${Math.max(0,Math.min(100,(morph[k]+.2)/1.2*100))}%`;}
   $('#status').textContent=s.done?'MISSION COMPLETE':running?'A/B RUNNING':'PAUSED';
   $('#status').classList.toggle('live',running&&!s.done);
