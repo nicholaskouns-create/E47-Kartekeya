@@ -1,0 +1,22 @@
+{
+  "schema": "E47-CANONICAL-KERNEL-1.0",
+  "authority": "src/e47/spectral_compilation.py",
+  "kernel_source": "src/e47/su2_kernel.py",
+  "canonical": {
+    "spin": 2,
+    "copies": 3,
+    "selected_spins": [2, 5],
+    "casimir_roots": [6, 30],
+    "carrier_dimension": 125,
+    "kernel_dimension": 47,
+    "coherence_fraction": "47/125",
+    "kernel_polynomial": [1, -36, 180],
+    "q_gap": 11664,
+    "q_max": 186624,
+    "epsilon_max": "1/93312",
+    "epsilon_star": "1/99144",
+    "rho_star": "15/17"
+  },
+  "evidence": "E0/E1",
+  "scope": "Finite-dimensional canonical E47 kernel contract. Browser runtimes consume this object; it does not promote simulation outputs to physical evidence."
+}
