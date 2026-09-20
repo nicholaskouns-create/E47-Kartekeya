@@ -118,6 +118,16 @@ function makeEnvironmentTexture(){
   ctx.fillStyle=sun;ctx.fillRect(0,0,c.width,c.height);
   const tex=new THREE.CanvasTexture(c);tex.mapping=THREE.EquirectangularReflectionMapping;tex.colorSpace=THREE.SRGBColorSpace;return tex;
 }
+function makeDaylightEnvironmentTexture(){
+  const c=document.createElement('canvas');c.width=1024;c.height=512;
+  const ctx=c.getContext('2d'),g=ctx.createLinearGradient(0,0,0,c.height);
+  g.addColorStop(0,'#bfe9ff');g.addColorStop(.42,'#eaf8ff');g.addColorStop(.56,'#f3dfbb');g.addColorStop(1,'#a98a62');
+  ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+  const sun=ctx.createRadialGradient(760,95,4,760,95,130);
+  sun.addColorStop(0,'rgba(255,255,245,1)');sun.addColorStop(.24,'rgba(255,244,190,.82)');sun.addColorStop(1,'rgba(255,235,180,0)');
+  ctx.fillStyle=sun;ctx.fillRect(0,0,c.width,c.height);
+  const tex=new THREE.CanvasTexture(c);tex.mapping=THREE.EquirectangularReflectionMapping;tex.colorSpace=THREE.SRGBColorSpace;return tex;
+}
 function makeSky(scene){
   const fog=new THREE.FogExp2(0x896044,.00005);scene.fog=fog;
   const sun=new THREE.DirectionalLight(0xffbf7a,4.2);sun.position.set(-2600,4200,1900);
@@ -515,15 +525,15 @@ function dispose(root){
   root?.traverse?.(o=>{o.geometry?.dispose?.();if(Array.isArray(o.material))o.material.forEach(m=>m.dispose?.());else o.material?.dispose?.()});
 }
 
-export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lon=-115.1398,altitude_m=3658,heading=0,pitch=0,roll=0,speed=216,active=0,zoom=DEFAULT_ZOOM}={}){
+export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lon=-115.1398,altitude_m=3658,heading=0,pitch=0,roll=0,speed=216,active=0,zoom=DEFAULT_ZOOM,lightingMode='live'}={}){
   const canvas=document.createElement('canvas');canvas.id='terrain3d';canvas.setAttribute('aria-hidden','true');
   Object.assign(canvas.style,{position:'fixed',inset:'0',width:'100%',height:'100%',zIndex:'0',pointerEvents:'none'});
   host.prepend(canvas);
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
   const maxDpr=matchMedia('(max-width:800px)').matches?1.45:2;
   renderer.setPixelRatio(Math.min(devicePixelRatio||1,maxDpr));renderer.setSize(innerWidth,innerHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.setClearColor(0x010207,1);
-  const scene=new THREE.Scene(),environmentTexture=makeEnvironmentTexture();scene.environment=environmentTexture;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=lightingMode==='daylight'?1.32:1.08;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.setClearColor(lightingMode==='daylight'?0xcfeeff:0x010207,1);
+  const scene=new THREE.Scene(),environmentTexture=lightingMode==='daylight'?makeDaylightEnvironmentTexture():makeEnvironmentTexture();scene.environment=environmentTexture;
   const atmos=makeSky(scene),space=makeSpace(scene),camera=new THREE.PerspectiveCamera(47,innerWidth/innerHeight,.25,30000);
   const craftRoot=new THREE.Group(),fleet=makeFleet();fleet.forEach(m=>craftRoot.add(m));scene.add(craftRoot);
   const trailSystem=makeTrailSystem(scene),shadowTarget=new THREE.Object3D();scene.add(shadowTarget);atmos.sun.target=shadowTarget;
@@ -732,6 +742,16 @@ export async function createSkyrmionTerrain3D({host=document.body,lat=36.1699,lo
   let last=performance.now(),lastWorldLighting=0;
   function updateWorldLighting(now){
     if(now-lastWorldLighting<2000)return;lastWorldLighting=now;
+    if(lightingMode==='daylight'){
+      atmos.sun.intensity=5.4;atmos.hemi.intensity=3.25;
+      atmos.sun.color.set(0xfff4cf);atmos.hemi.color.set(0xdaf4ff);atmos.hemi.groundColor.set(0xb6976d);
+      atmos.fog.color.set(0xd7eff8);atmos.fog.density=.000022;
+      const u=atmos.sky.material.uniforms;
+      u.top.value.set(0x79c7ed);u.horizon.value.set(0xd9edf2);u.low.value.set(0xd8b986);
+      if(patch?.lights)patch.lights.visible=false;
+      dispatchEvent(new CustomEvent('city:world-lighting',{detail:{mode:'daylight-lock',daylight:1}}));
+      return;
+    }
     const solar=CITY_WORLD_ENGINE.solarState(Date.now(),flight.lat,flight.lon),d=solar.daylight;
     atmos.sun.intensity=.12+4.1*d;atmos.hemi.intensity=.28+2.2*d;
     const u=atmos.sky.material.uniforms;
