@@ -54,7 +54,7 @@ def test_threejs_vehicle_fleet():
     assert 'window.CITY_SKYRMION_TERRAIN3D=world' in html
     assert 'src="./runtime2/bootstrap.js"' in html
     assert 'CITY_SKYRMION_TERRAIN3D?.ready' in boot
-    assert "schema:'SKYRMION-TERRAIN-3D-6.2'" in terrain
+    assert "schema:'SKYRMION-TERRAIN-3D-6.3'" in terrain
 
 def test_high_detail_vehicle_systems():
     for token in ['physicalGlass','pivotSurface','landingGear','engineFlame','makeTrailSystem','updateCraftSystems','castShadow','receiveShadow','shadowTarget']:
@@ -132,7 +132,7 @@ def test_stable_flight_controls_and_yaw():
     runtime=(root/'website/interfaces/skyrmion/runtime2/runtime2.js').read_text()
     vehicles=(root/'website/interfaces/skyrmion/runtime2/vehicle-registry.js').read_text()
     boot=(root/'website/interfaces/skyrmion/runtime2/bootstrap.js').read_text()
-    assert 'SKYRMION-RUNTIME-2.2' in runtime
+    assert 'SKYRMION-RUNTIME-2.3' in runtime
     assert 'commandControls' in runtime
     conventional=(root/'website/interfaces/skyrmion/runtime2/conventional-model.js').read_text()
     assert 'ConventionalFlightModel' in runtime
@@ -147,7 +147,7 @@ def test_stable_flight_controls_and_yaw():
 def test_supabase_world_registry_pipeline():
     registry=(root/'website/interfaces/skyrmion/world-registry.js').read_text()
     world=json.loads((root/'website/interfaces/skyrmion/world-data.json').read_text())
-    assert 'SKYRMION-TERRAIN-3D-6.2' in terrain
+    assert 'SKYRMION-TERRAIN-3D-6.3' in terrain
     assert 'skyrmion-world-runtime' in registry
     assert 'SKYRMION-WORLD-RUNTIME-2.0' in registry
     assert 'loadWorldRegistry' in terrain

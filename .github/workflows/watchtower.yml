@@ -34,8 +34,9 @@ jobs:
           set -euo pipefail
           grep -Fq 'https://mathematicalcity.notion.site/?pvs=74' website/index.html
           grep -Fq 'https://github.com/nicholaskouns-create/E47-Kartekeya' website/index.html
-          grep -Fq 'Read the Research Atlas' website/index.html
-          grep -Fq 'HUMAN ATLAS ↔ EXECUTABLE CITY' website/index.html
+          grep -Fq '<title>The Mathematical City</title>' website/index.html
+          grep -Fq 'Presentation never upgrades evidence class.' website/index.html
+          grep -Fq 'interfaces/external-agents/' website/index.html
 
       - name: Probe public entry surfaces
         shell: bash
