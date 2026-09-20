@@ -12,6 +12,8 @@ Run these existing commands from the repository root. Python commands use the in
 | Regenerate E47 certificate | `python scripts/generate_validation_certificate.py` |
 | Compile spectral certificate and passport | `python scripts/compile_spectral_kernel.py --spin 2 --copies 3 --select 2 5` |
 | Website and E47 bridge | `node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs` |
+| Watchtower surface contract | `node --test scripts/check_watchtower_surfaces.cjs` |
+| Watchtower live probes | `node scripts/watchtower_probe.mjs` |
 | CITY 125 runtime | `node --test scripts/check_city_125_runtime.mjs` |
 | Matrix/CITY 125/AETHERIS integration | `node --test scripts/check_matrix_city125_aetheris.mjs` |
 | Matrix MPS worker | `node --test scripts/check_matrix_mps_worker.mjs` |

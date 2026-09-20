@@ -1,0 +1,58 @@
+{
+  "schema": "CITY-WATCHTOWER-SURFACES-1.0",
+  "contract": "User-site root and City subpath are distinct public surfaces. Identity is per surface, not one shared title.",
+  "surfaces": [
+    {
+      "id": "personal-site-root",
+      "name": "Personal site root",
+      "url": "https://nicholaskouns-create.github.io/",
+      "kind": "github-pages-user-root",
+      "identity": "Nicholas Kouns · Personal site",
+      "must_contain": [
+        "Nicholas Kouns · Personal site",
+        "/E47-Kartekeya/"
+      ],
+      "points_to": "executable-city"
+    },
+    {
+      "id": "executable-city",
+      "name": "Executable City",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/",
+      "kind": "github-pages-project-subpath",
+      "identity": "The Mathematical City",
+      "must_contain": [
+        "The Mathematical City",
+        "https://github.com/nicholaskouns-create/E47-Kartekeya"
+      ]
+    },
+    {
+      "id": "research-atlas",
+      "name": "Research Atlas",
+      "url": "https://mathematicalcity.notion.site/?pvs=74",
+      "kind": "notion-atlas",
+      "must_contain": []
+    },
+    {
+      "id": "eidolon-bound-city-shell",
+      "name": "EIDOLON · bound City shell",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/",
+      "kind": "github-pages-project-subpath",
+      "must_contain": ["EIDOLON"]
+    },
+    {
+      "id": "eidolon-source-app",
+      "name": "EIDOLON · source app",
+      "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site",
+      "kind": "external-runtime",
+      "must_contain": []
+    },
+    {
+      "id": "eidolon-flight-shell-binding",
+      "name": "EIDOLON · flight-shell binding",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/flight-shell.js",
+      "kind": "github-pages-project-subpath",
+      "must_contain": ["aetheris-flight-binding.js"],
+      "retry": { "attempts": 24, "delay_ms": 5000 }
+    }
+  ]
+}

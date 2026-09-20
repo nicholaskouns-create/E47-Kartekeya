@@ -26,7 +26,7 @@ jobs:
           node-version: "22"
 
       - name: Re-run City validators
-        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs scripts/check_watchtower_surfaces.cjs
 
       - name: Verify source handshake contract
         shell: bash
@@ -38,48 +38,8 @@ jobs:
           grep -Fq 'Presentation never upgrades evidence class.' website/index.html
           grep -Fq 'interfaces/external-agents/' website/index.html
 
-      - name: Probe public entry surfaces
-        shell: bash
-        run: |
-          set -euo pipefail
-          : > watchtower.tsv
-
-          probe() {
-            name="$1"
-            url="$2"
-            out="$3"
-            code=$(curl -L \
-              -A 'Mozilla/5.0 Mathematical-City-Watchtower/1.0' \
-              --silent --show-error --fail-with-body \
-              --retry 2 --retry-delay 2 --max-time 35 \
-              --output "$out" --write-out '%{http_code}' "$url")
-            printf '%s\t%s\t%s\n' "$name" "$code" "$url" | tee -a watchtower.tsv
-          }
-
-          probe 'Executable City' 'https://nicholaskouns-create.github.io/E47-Kartekeya/' live-city.html
-          probe 'Research Atlas' 'https://mathematicalcity.notion.site/?pvs=74' notion-atlas.html
-          probe 'EIDOLON · bound City shell' 'https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/' eidolon-bound.html
-          probe 'EIDOLON · source app' 'https://eidolon-flight-lab.nicholaskouns.chatgpt.site' eidolon-source.html
-
-          grep -Fq 'EIDOLON' eidolon-bound.html
-
-          # A push can start Watchtower before the Pages publish workflow finishes.
-          # Retry the live binding check so propagation latency is not reported as a City failure.
-          binding_url='https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/flight-shell.js'
-          binding_ready=false
-          for attempt in $(seq 1 24); do
-            if curl -fsSL --max-time 20 "$binding_url" | grep -Fq 'aetheris-flight-binding.js'; then
-              echo "Receipt-bound EIDOLON flight shell verified on attempt $attempt."
-              binding_ready=true
-              break
-            fi
-            echo "Attempt $attempt: receipt binding not live yet; waiting for Pages propagation..."
-            sleep 5
-          done
-          test "$binding_ready" = true
-
-          grep -Fq 'The Mathematical City' live-city.html
-          grep -Fq 'https://mathematicalcity.notion.site/?pvs=74' live-city.html
+      - name: Probe named public surfaces
+        run: node scripts/watchtower_probe.mjs
 
       - name: Publish watchtower summary
         if: always()
@@ -100,5 +60,6 @@ jobs:
               echo 'Public probes did not complete.'
             fi
             echo
+            echo 'Named surfaces: personal-site root ≠ executable City subpath.'
             echo 'Source contract: Notion atlas ↔ executable City ↔ repository.'
           } >> "$GITHUB_STEP_SUMMARY"
