@@ -1,3 +1,5 @@
+import {N, DIM_E47, OMEGA_C, EPS} from "../shared/e47-lock.js";
+
 export const SKYRMION_WORLD_RUNTIME=Object.freeze({
  schema:"SKYRMION-WORLD-RUNTIME-2.0",
  worldEngine:{id:"CITY-WORLD-ENGINE",version:"1.0.0",module:"../shared/world-engine/world-engine.js",fallback:"deterministic procedural terrain"},
@@ -7,6 +9,6 @@ export const SKYRMION_WORLD_RUNTIME=Object.freeze({
  defaultSpawn:{lng:-115.1398,lat:36.1699,altitudeM:3600},fixedStepHz:120,
  vehicles:{conventional:["F-16","SR-71","X-15"],experimentalSimulation:["EIDOLON","MANTA","SKYRMION","SYNTAX JACOB"]},
  graphics:{preferred:"webgpu",fallback:["webgl2","webgl1"],adaptiveDpr:true,terrainLod:true},
- e47:{carrierDimension:125,kernelDimension:47,omegaC:47/125,epsilon:1/99144},
+ e47:{carrierDimension:N,kernelDimension:DIM_E47,omegaC:OMEGA_C,epsilon:EPS},
  evidenceBoundary:"Conventional aircraft use aerodynamic 6DOF models. EIDOLON, MANTA, SKYRMION and Syntax Jacob are explicitly separated experimental simulation adapters; no experimental propulsion claim is implied by runtime behavior."
 });
