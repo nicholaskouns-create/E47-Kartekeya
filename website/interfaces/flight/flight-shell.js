@@ -2,6 +2,7 @@ import {installCityCinemaCodec} from './city-cinema-codec.js';
 import {installCityGps,drawGpsOverlay} from '../shared/city-gps-runtime.js';
 import {installStargateInvariantBridge} from '../shared/stargate-invariants.js';
 import {installWorldBinding,readWorldState} from '../shared/world-engine/world-binding.js';
+import {installCanonicalE47Binding} from '../shared/e47-kernel-binding.js';
 const body=document.body;
 const source=body.dataset.source;
 const mode=body.dataset.mode||'Flight mode';
@@ -62,6 +63,13 @@ const stargate=installStargateInvariantBridge({
   })
 });
 window.CITY_STARGATE=stargate;
+
+const e47Binding=installCanonicalE47Binding({
+  surface:`FLIGHT/${mode}`,
+  container:document.querySelector('.hud .top .cluster'),
+  postTarget:sim
+}).catch(()=>null);
+window.CITY_E47_BINDING=e47Binding;
 
 let receiptFlightBinding=null;
 let receiptChip=null;
