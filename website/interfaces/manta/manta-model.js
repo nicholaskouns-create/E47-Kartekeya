@@ -22,17 +22,17 @@ export const REFERENCE=Object.freeze({
   dryMassKg:6000,
   fuelKg:1200,
   wing:{area:46,span:18,chord:3.05,sweepRad:0.48},
-  inertia:[15000,23000,26000],
+  inertia:[68000,90000,125000],
   maxThrustN:145000,
   aero:{CL0:0.16,CLa:4.25,CD0:0.026,k:0.075,Cm0:0.018,Cma:-0.58,Clp:-0.38,Cnr:-0.25},
   limits:{alpha:0.58,beta:0.35}
 });
 
 export function missionCommand(t){
-  if(t<8) return {throttle:.78,pitch:.06,roll:0,yaw:0,morph:{span:.05,sweep:.03,camber:.08,twist:.02,thickness:0,stiffness:.58},phase:'CLIMB'};
-  if(t<16) return {throttle:.82,pitch:.05,roll:.28,yaw:.03,morph:{span:.14,sweep:-.08,camber:.14,twist:.08,thickness:.03,stiffness:.78},phase:'TURN'};
-  if(t<26) return {throttle:.94,pitch:-.015,roll:0,yaw:0,morph:{span:-.08,sweep:.28,camber:-.04,twist:-.03,thickness:-.04,stiffness:.84},phase:'DASH'};
-  if(t<36) return {throttle:.88,pitch:.20,roll:-.18,yaw:-.02,morph:{span:.20,sweep:-.12,camber:.18,twist:.12,thickness:.06,stiffness:.92},phase:'PULL'};
+  if(t<8) return {throttle:.78,pitch:.018,roll:0,yaw:0,morph:{span:.05,sweep:.03,camber:.08,twist:.02,thickness:0,stiffness:.58},phase:'CLIMB'};
+  if(t<16) return {throttle:.82,pitch:.012,roll:.08,yaw:.01,morph:{span:.14,sweep:-.08,camber:.14,twist:.08,thickness:.03,stiffness:.78},phase:'TURN'};
+  if(t<26) return {throttle:.90,pitch:-.008,roll:0,yaw:0,morph:{span:-.08,sweep:.28,camber:-.04,twist:-.03,thickness:-.04,stiffness:.84},phase:'DASH'};
+  if(t<36) return {throttle:.86,pitch:.055,roll:-.05,yaw:-.008,morph:{span:.20,sweep:-.12,camber:.18,twist:.12,thickness:.06,stiffness:.92},phase:'PULL'};
   return {throttle:.74,pitch:0,roll:0,yaw:0,morph:{span:0,sweep:0,camber:0,twist:0,thickness:0,stiffness:.62},phase:'RECOVER'};
 }
 
@@ -110,7 +110,7 @@ export class MantaABRuntime{
     const stall=Math.max(0,Math.cos(alpha))**2;
     const CL=(a.CL0+(a.CLa*(1+.16*s.span-.11*s.sweep))*al+.88*state.controls.pitch+1.15*s.camber+.54*s.twist)*stall;
     const CD=a.CD0*(1-.08*s.sweep+.07*s.thickness)+a.k*CL*CL+.035*beta*beta+0.034*Math.abs(s.sweep)+0.020*Math.abs(r.span)+0.016*Math.abs(r.camber)+1.05*Math.sin(alpha)**2;
-    const Cm=a.Cm0+a.Cma*al-.92*state.controls.pitch-.72*s.camber+.50*s.twist-.10*s.sweep-5.2*state.omegaBody[1]*g.chord/(2*V);
+    const Cm=a.Cm0+a.Cma*al+.92*state.controls.pitch-.30*s.camber+.34*s.twist-.06*s.sweep-5.2*state.omegaBody[1]*g.chord/(2*V);
     const [p,,rr]=state.omegaBody;
     const Cl=a.Clp*p*g.span/(2*V)+.13*state.controls.roll+.08*s.twist;
     const Cn=a.Cnr*rr*g.span/(2*V)+.16*state.controls.yaw-.06*s.sweep*beta;
