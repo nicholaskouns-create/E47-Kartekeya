@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
+import * as THREE from '../../vendor/three.module.js';
 import {MantaABRuntime,DT,MISSION_DURATION_S,REFERENCE} from './manta-model.js';
 
 const $=s=>document.querySelector(s);
@@ -187,7 +187,7 @@ function quatToThree(q){return new THREE.Quaternion(q[1],q[2],q[3],q[0])}
 function fmt(v,d=2){return Number.isFinite(v)?v.toFixed(d):'—'}
 
 function setCraftWorld(root,frame,lateral=0){
-  const p=frame.path.at(-1) || {x:0,y:0,z:0};
+  const p=frame.path.length?frame.path[frame.path.length-1]:{x:0,y:0,z:0};
   root.position.copy(pathPoint(p,lateral));
   root.quaternion.copy(quatToThree(frame.quaternion));
 }
