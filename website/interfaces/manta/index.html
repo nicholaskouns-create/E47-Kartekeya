@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#cbeeff">
 <meta name="description" content="MANTA programmable-matter 6DOF flight experience.">
+<meta name="instrument-version" content="1.0.0">
 <title>MANTA // Flight</title>
 <style>
 :root{
@@ -97,6 +98,10 @@ body{overscroll-behavior:none}
   </section>
 </div>
 <div id="fault" hidden></div>
+<script type="module">
+import {installInstrumentTelemetry} from '../shared/instrument-telemetry.js';
+installInstrumentTelemetry({componentId:'manta-flight-lab',version:'1.0.0'});
+</script>
 <script type="module" src="./app.js?v=prod-20260919-3"></script>
 </body>
 </html>

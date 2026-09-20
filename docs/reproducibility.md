@@ -10,7 +10,7 @@ Python 3.12 is the package baseline.
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-pip install -r requirements.txt -r requirements-dev.txt
+pip install -e . -r requirements.txt -r requirements-dev.txt
 ```
 
 Run the complete Python test suite:

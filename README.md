@@ -1,170 +1,89 @@
-# E47-Kartekeya
+# E47-Kartekeya · The Mathematical City
 
-**The Mathematical City · independent computational research software**
+Independent research software by **Nick Kouns**: finite-dimensional spectral mathematics, quantum instruments, flight simulations, and inspectable computational records.
+
+**[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Open the City](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[All instruments](docs/instruments.md)** · **[Documentation](docs/README.md)**
 
 [![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
 [![Pages](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml)
 
-E47-Kartekeya is a research codebase for finite-dimensional spectral computation, reproducible validation, interactive simulation, and provenance-preserving scientific interfaces.
+## Start here
 
-The repository deliberately separates **validated mathematical core**, **research runtimes**, and **experimental simulation**. Public interfaces may compose these systems, but presentation does not upgrade evidence class and no console becomes authority over the independent instruments.
-
-**Live laboratory:** https://nicholaskouns-create.github.io/E47-Kartekeya/
-
-## Research map
-
-| Layer | Path | Status | Role |
-|---|---|---|---|
-| E47 mathematical core | src/e47/ | validated core | SU(2) kernel, projector, contraction, semigroup, certificates |
-| AETHERIS | src/aetheris/ | research runtime | receipt-oriented state transitions |
-| MANTA | src/manta/ | experimental | vehicle / programmable-matter simulation |
-| SKYRMION | website/interfaces/skyrmion/ | research simulator | conventional + explicitly separated experimental craft models |
-| Syntax Jacob | website/interfaces/syntax-jacob/ | research simulator | 3I/ATLAS trajectory and coherence interface |
-| CITY CORE | website/interfaces/kouns-core/ | research console | cross-interface launch and inspection surface |
-| Visualizers | website/interfaces/visualizers/ | research instruments | independent scientific visualizers |
-
-The machine-readable version of this map is [lab-manifest.json](lab-manifest.json).
-
-## Canonical E47 object
-
-The validated finite-dimensional construction uses
-
-~~~text
-V = V₂ ⊗ V₂ ⊗ V₂
-dim(V) = 125
-
-K = (C - 6I)(C - 30I)
-E₄₇ = ker(K)
-dim(E₄₇) = 47
-~~~
-
-Canonical invariants:
-
-| Invariant | Value |
-|---|---:|
-| dim(V) | 125 |
-| dim(E₄₇) | 47 |
-| Coherence fraction | 47 / 125 |
-| K² spectral gap | 11664 |
-| K² max eigenvalue | 186624 |
-
-The package currently supports E0/E1 claims for the finite mathematical core where backed by exact construction and deterministic machine validation. Simulation surfaces remain separately typed.
-
-## Install
-
-Published package:
-
-~~~bash
-pip install e47-kartekeya
-~~~
-
-Local research checkout:
-
-~~~bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt -r requirements-dev.txt
-pip install -e .
-~~~
-
-## Reproduce
-
-Run the Python suite:
-
-~~~bash
-python -m pytest tests/ -v
-~~~
-
-Validate the repository architecture contract:
-
-~~~bash
-python scripts/check_lab_contract.py
-~~~
-
-Regenerate the E47 validation certificate:
-
-~~~bash
-python scripts/generate_validation_certificate.py
-~~~
-
-Compile a spectral-kernel certificate and passport:
-
-~~~bash
-python scripts/compile_spectral_kernel.py --spin 2 --copies 3 --select 2 5
-~~~
-
-Run browser/runtime checks with Node.js 22+:
-
-~~~bash
-node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs
-~~~
-
-See [docs/reproducibility.md](docs/reproducibility.md) for the complete path.
-
-## Repository architecture
-
-~~~text
-src/e47/                 finite mathematical core
-src/aetheris/            research runtime
-src/manta/               experimental simulation
-
-tests/                   executable invariants
-certificates/            committed machine certificates
-artifacts/               generated outputs
-scripts/                 validation and compilation tools
-
-website/                 canonical GitHub Pages root
-website/interfaces/      independent interactive instruments
-web/                     shared browser runtime library, not a second site
-
-docs/                    architecture, scope, provenance, reproducibility
-research/                open research lines
-lab-manifest.json        machine-readable component/evidence map
-~~~
-
-The canonical Pages source is **only** website/. The root-level web/ directory contains shared browser runtime code and is intentionally not deployable as a second homepage.
-
-## Evidence classes
-
-| Class | Meaning |
+| You want to… | Start with |
 |---|---|
-| **E0** | exact mathematics |
-| **E1** | deterministic machine reconstruction |
-| **E2** | numerical experiment / simulation |
-| **E3** | independent external replication |
-| **E4** | empirical / experimental evidence |
-| **H0** | hardware design or protocol |
+| Try the work | [EIDOLON flight](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight), then the [instrument directory](docs/instruments.md) |
+| Understand the mathematics | [E47 research notes](research/e47/README.md) and [Python implementation](src/e47/) |
+| Reproduce a result | [Reproducibility guide](docs/reproducibility.md), [tests](tests/), and [certificates](certificates/README.md) |
+| Develop an instrument | [Source map](src/README.md), [architecture](docs/lab_architecture.md), and [contributing](CONTRIBUTING.md) |
 
-See [docs/validation_scope.md](docs/validation_scope.md) for claim boundaries.
+## Open an instrument
 
-## Documentation
+| Instrument | Purpose | Source |
+|---|---|---|
+| [CITY CORE / EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight) | Flight entry and direct instrument navigation | [Core](website/interfaces/kouns-core/) · [EIDOLON binding](website/interfaces/flight/eidolon/) |
+| [MANTA](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manta/) | Morphing aircraft simulation with a fixed baseline | [Flight app](website/interfaces/manta/) · [Python model](src/manta/) |
+| [Syntax Jacob](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/) | 3I/ATLAS trajectory and propulsion interface | [Source and provenance](website/interfaces/syntax-jacob/) |
+| [THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) | Quantum circuit and statevector instrument | [Source](website/interfaces/matrix/) |
+| [CITY 125](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-125/) | Visual debugger for the 125-state runtime | [Runtime guide](docs/city_125_runtime.md) |
+| [Visualizers](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/visualizers/) | Independent scientific visualizer portals | [Source](website/interfaces/visualizers/) |
+| [SKYRMION](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/) | Conventional and experimental flight models | [Source](website/interfaces/skyrmion/) |
+| [Propulsion Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/propulsion/) | Flight and propulsion interface directory | [Source](website/interfaces/propulsion/) |
 
-- [docs/lab_architecture.md](docs/lab_architecture.md) — component and interface architecture\n- [docs/instrument_contracts.md](docs/instrument_contracts.md) — per-lab versions, smoke/benchmark entrypoints, provenance receipts, and failure telemetry
-- [docs/reproducibility.md](docs/reproducibility.md) — clean-checkout reproduction path
-- [docs/validation_scope.md](docs/validation_scope.md) — validated and open claim classes
-- [docs/provenance.md](docs/provenance.md) — implementation lineage and certificates
-- [docs/eidolon_flight_replay_ndjson.md](docs/eidolon_flight_replay_ndjson.md) — E2 trajectory NDJSON commit contract
-- [docs/aetheris_runtime.md](docs/aetheris_runtime.md) — AETHERIS runtime
-- [docs/city_125_runtime.md](docs/city_125_runtime.md) — City-125 runtime
-- [CONTRIBUTING.md](CONTRIBUTING.md) — local-component contribution pattern
+[Browse every interface, including companion views and external-app shells →](docs/instruments.md)
 
-## Public interfaces
+## Find the work
 
-Serve the canonical public surface locally:
+| Directory | Contents |
+|---|---|
+| [src/](src/README.md) | E47 mathematics, AETHERIS state transitions, MANTA Python model |
+| [website/](website/) | GitHub Pages source and independent browser instruments |
+| [web/](web/README.md) | Shared browser graphics modules |
+| [research/](research/README.md) | E47 theorem notes, open proof obligations, Stargate research |
+| [docs/](docs/README.md) | Guides grouped by task and instrument |
+| [scripts/](scripts/README.md) · [tests/](tests/) | Reproduction commands and executable checks |
+| [certificates/](certificates/README.md) · [trajectories/](trajectories/README.md) | Committed certificates and flight-replay records |
+| [contracts/](contracts/) · [lab-manifest.json](lab-manifest.json) | Existing component, receipt, and failure formats |
+| [city/external-agents/](city/external-agents/README.md) | External-worker integration and local contracts |
+
+Each instrument retains its own entry point, assumptions, evidence, and implementation. The [instrument directory](docs/instruments.md) is navigation; it does not replace those interfaces.
+
+## Run locally
+
+For the browser interfaces, serve the existing `website/` directory:
 
 ~~~bash
 python -m http.server 8000 --directory website
 ~~~
 
-Then open http://127.0.0.1:8000/.
+Open [localhost:8000](http://localhost:8000/). Interfaces that use external services still require those services.
 
-GitHub Pages deployment is performed by [.github/workflows/pages.yml](.github/workflows/pages.yml) after website validation succeeds.
+For Python development, use **Python 3.12+** from the repository root:
 
-## Development principle
+~~~bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e . -r requirements.txt -r requirements-dev.txt
+python -m pytest tests/ -v
+~~~
 
-The repository favors **additive, typed, independently testable instruments**.
+Use **Node.js 22+** for browser-runtime checks. See the [command directory](scripts/README.md) and [complete reproduction guide](docs/reproducibility.md).
 
-A component may be surfaced through the Mathematical City without surrendering its local contract. Contradictions, open questions, experimental branches, and failed tests remain visible rather than being collapsed into a single narrative.
+## Finite E47 core
 
-That separation is part of the research architecture.
+The construction uses `V = V₂ ⊗ V₂ ⊗ V₂`, total Casimir `C`, and `K = (C − 6I)(C − 30I)`. Its selected space is `E₄₇ = ker(K)`.
+
+| Invariant | Value |
+|---|---:|
+| Carrier dimension | 125 |
+| Kernel dimension | 47 |
+| Kernel fraction | 47 / 125 |
+| K² spectral gap | 11664 |
+| K² largest eigenvalue | 186624 |
+
+Exact mathematics, machine reconstruction, simulations, and empirical work have separate evidence labels. The [validation scope](docs/validation_scope.md), [provenance](docs/provenance.md), and each instrument's local record describe the supported claims.
+
+## Related repository
+
+[nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) contains the personal-site atlas and an earlier research-code snapshot. This repository contains the current E47 package and expanded instrument collection.
+
+[Research atlas on Notion](https://mathematicalcity.notion.site/?pvs=74) · [How to cite](CITATION.cff) · [License](LICENSE) · [Contribute](CONTRIBUTING.md)

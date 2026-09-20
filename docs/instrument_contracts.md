@@ -18,13 +18,16 @@ Current components:
 |---|---:|---|
 | E47 core | 0.1.0 | `python -m e47.smoke` |
 | AETHERIS | 0.1.0 | `python -m aetheris.smoke` |
-| MANTA | 0.1.0 | `python -m manta.smoke` |
-| SKYRMION Runtime 2 | 2.2.0 | `node website/interfaces/skyrmion/smoke.mjs` |
-| Syntax Jacob | 1.1.0 | `node website/interfaces/syntax-jacob/smoke.mjs` |
+| MANTA Python model | 0.1.0 | `python -m manta.smoke` |
+| MANTA flight interface | 1.0.0 | `node website/interfaces/manta/smoke.mjs` |
+| SKYRMION Runtime 2 | 2.3.0 | `node website/interfaces/skyrmion/smoke.mjs` |
+| Syntax Jacob | 1.2.0 | `node website/interfaces/syntax-jacob/smoke.mjs` |
 | CITY CORE | 0.1.0 | `node website/interfaces/kouns-core/smoke.mjs` |
 | Visualizer Portal | 0.1.0 | `node website/interfaces/visualizers/smoke.mjs` |
 
 Python commands assume the repository environment has been installed with `pip install -e .` or that `PYTHONPATH=src`.
+
+The MANTA flight command inspects the source and interface contract and emits the existing shared receipt format. It does not run a browser or certify rendered flight behavior.
 
 ## Provenance receipt
 
