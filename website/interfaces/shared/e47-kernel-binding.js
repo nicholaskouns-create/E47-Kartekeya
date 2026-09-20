@@ -1,23 +1,20 @@
-const DEFAULT_URL = new URL("../../data/e47-canonical-kernel.json", import.meta.url);
+import {E47_LOCK, DIM_E47, N, OMEGA_C} from "./e47-lock.js";
 
-export async function loadCanonicalE47(url = DEFAULT_URL) {
-  const response = await fetch(url, { cache: "no-store" });
-  if (!response.ok) throw new Error(`E47 canonical kernel unavailable: HTTP ${response.status}`);
-  const payload = await response.json();
-  const k = payload?.canonical;
+export function loadCanonicalE47() {
+  const k = E47_LOCK.canonical;
   const pass =
-    payload?.schema === "E47-CANONICAL-KERNEL-1.0" &&
-    payload?.authority === "src/e47/spectral_compilation.py" &&
-    payload?.kernel_source === "src/e47/su2_kernel.py" &&
+    E47_LOCK.schema === "E47-CANONICAL-KERNEL-1.0" &&
+    E47_LOCK.authority === "src/e47/spectral_compilation.py" &&
+    E47_LOCK.kernel_source === "src/e47/su2_kernel.py" &&
     k?.spin === 2 &&
     k?.copies === 3 &&
     JSON.stringify(k?.selected_spins) === "[2,5]" &&
     JSON.stringify(k?.casimir_roots) === "[6,30]" &&
-    k?.carrier_dimension === 125 &&
-    k?.kernel_dimension === 47 &&
+    k?.carrier_dimension === N &&
+    k?.kernel_dimension === DIM_E47 &&
     k?.coherence_fraction === "47/125";
   if (!pass) throw new Error("E47 canonical kernel contract MISS");
-  return Object.freeze({ ...payload, canonical: Object.freeze({ ...k }) });
+  return E47_LOCK;
 }
 
 export async function installCanonicalE47Binding({ surface = "CITY", container = null, postTarget = null } = {}) {
@@ -28,13 +25,13 @@ export async function installCanonicalE47Binding({ surface = "CITY", container =
     container.appendChild(chip);
   }
   try {
-    const contract = await loadCanonicalE47();
+    const contract = loadCanonicalE47();
     window.CITY_E47_CANONICAL = contract;
     document.dispatchEvent(new CustomEvent("city:e47-bound", { detail: { surface, contract } }));
     postTarget?.contentWindow?.postMessage?.({ type: "CITY_E47_CANONICAL", surface, contract }, "*");
     if (chip) {
       chip.classList.add("live");
-      chip.textContent = "E47 · BOUND · 47/125";
+      chip.textContent = `E47 · BOUND · ${contract.canonical.coherence_fraction}`;
     }
     return contract;
   } catch (error) {
@@ -46,3 +43,5 @@ export async function installCanonicalE47Binding({ surface = "CITY", container =
     throw error;
   }
 }
+
+export {E47_LOCK, OMEGA_C, N, DIM_E47};
