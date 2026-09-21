@@ -14,6 +14,7 @@ and of the SU(3) adjoint 512-dimensional singlet construction:
     Singlet = ker(C₂^tot),       dim = 2
 
 Public API includes operators, projectors, contractions, semigroups,
+the 29-dimensional intertwiner algebra A_inv ≅ M_5 ⊕ M_2,
 and aggregated validation infrastructure.
 
 Scope
@@ -68,6 +69,18 @@ from .spectral_compilation import (
     write_spectral_compilation,
 )
 
+from .intertwiners import (
+    DIM_E47,
+    DIM_REG,
+    N_UNITS,
+    IntertwinerLock,
+    lifted_units,
+    lock as lock_intertwiners,
+    register_units,
+    unit_names,
+    validate_units,
+)
+
 from .su3_adjoint import (
     SU3AdjointOperators,
     SU3Certificate,
@@ -114,6 +127,16 @@ __all__ = [
     "parse_spin",
     "spectral_passport",
     "write_spectral_compilation",
+    # 29-dimensional intertwiner algebra A_inv ≅ M_5 ⊕ M_2
+    "DIM_E47",
+    "DIM_REG",
+    "N_UNITS",
+    "IntertwinerLock",
+    "lifted_units",
+    "lock_intertwiners",
+    "register_units",
+    "unit_names",
+    "validate_units",
     # SU(3) 512-dim adjoint
     "SU3AdjointOperators",
     "SU3Certificate",
