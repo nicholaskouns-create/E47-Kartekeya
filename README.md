@@ -25,7 +25,7 @@ Independent research software by **Nick Kouns**: finite-dimensional spectral mat
 | [Syntax Jacob](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/) | 3I/ATLAS trajectory and propulsion interface | [Source and provenance](website/interfaces/syntax-jacob/) |
 | [THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) | Quantum circuit and statevector instrument | [Source](website/interfaces/matrix/) |
 | [CITY 125](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-125/) | Visual debugger for the 125-state runtime | [Runtime guide](docs/city_125_runtime.md) |
-| [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) | 5×5×5 packing ledger. One word per cell | [q5/](q5/) · [`host.py`](q5/host.py) |
+| [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) | 5×5×5 packing ledger with executable cube/torus navigation, live neighbors, slices, and concomitant topology panel | [q5/](q5/) · [`host.py`](q5/host.py) |
 | [Visualizers](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/visualizers/) | Independent scientific visualizer portals | [Source](website/interfaces/visualizers/) |
 | [SKYRMION](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/) | Conventional and experimental flight models | [Source](website/interfaces/skyrmion/) |
 | [Propulsion Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/propulsion/) | Flight and propulsion interface directory | [Source](website/interfaces/propulsion/) |
@@ -36,7 +36,7 @@ Independent research software by **Nick Kouns**: finite-dimensional spectral mat
 
 | Directory | Contents |
 |---|---|
-| [q5/](q5/) | Frozen 125-word packing ledger, codec, validator, one-pass `host.py` |
+| [q5/](q5/) | Frozen 125-word packing ledger, codec, cube/torus topology grammar, live panel, validator, one-pass `host.py` |
 | [src/](src/README.md) | E47 mathematics, AETHERIS state transitions, MANTA Python model |
 | [website/](website/) | GitHub Pages source and independent browser instruments |
 | [web/](web/README.md) | Shared browser graphics modules |
