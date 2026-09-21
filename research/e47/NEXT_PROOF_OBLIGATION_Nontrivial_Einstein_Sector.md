@@ -72,3 +72,17 @@ Existence depends on an explicit additional structure such as background curvatu
 Failure is evidence.
 
 A failed intertwiner must be retained with its residual and obstruction condition.
+
+
+## Current disposition — 2026-09-21
+
+**Outcome 3: Conditional construction — CONDITIONAL PASS.**
+
+The theorem plate is:
+[E47 Gauge-Inequivalent Einstein Conditional Construction](E47_Gauge_Inequivalent_Einstein_Conditional_Construction.md).
+
+Machine validation reconstructs the finite E47 side independently. The Mathematical City parity path uses a different SU(2) counting method and must agree on the carrier dimension, irrep multiplicities, kernel dimension, rank fraction, K² gap, K² maximum, and the identity (K^2|_{E_{47}}=0).
+
+The nonlinear Einstein gates remain explicit: exact background, local smoothness/linearization stability, a 47-dimensional physical tangent sector, and injective gauge-invariant curvature on that sector.
+
+The earlier pure-gauge candidate is retained as a failed predecessor with zero algebraic residual and zero physical rank after gauge quotient.
