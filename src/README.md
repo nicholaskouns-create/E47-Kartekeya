@@ -5,7 +5,7 @@
 | Package | Purpose | Start with |
 |---|---|---|
 | [e47](e47/) | SU(2) kernel, projector, contraction, semigroup, and spectral compilation | [Kernel construction](e47/su2_kernel.py) · [Public exports](e47/__init__.py) |
-| [aetheris](aetheris/) | State transitions, persistence, and computational receipts | [Runtime](aetheris/runtime.py) · [Guide](../docs/aetheris_runtime.md) |
+| [aetheris](aetheris/) | State transitions, persistence, computational receipts, and the typed flight/E47 witness boundary | [Runtime](aetheris/runtime.py) · [Flight boundary](aetheris/flight_runtime.py) · [Guide](../docs/aetheris_runtime.md) |
 | [manta](manta/) | Programmable-matter simulation model | [Model](manta/programmable_matter.py) · [Component record](manta/component.json) |
 
 The 5×5×5 packing ledger is not an `e47` package and is not identified with `ker K`. It lives in [q5/](../q5/).
