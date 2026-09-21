@@ -27,11 +27,13 @@ function installHud(surface,cameraModes){
 #city-flight-standard .cfs-reticle{position:absolute;left:50%;top:50%;width:34px;height:34px;transform:translate(-50%,-50%);opacity:.34}
 #city-flight-standard .cfs-reticle:before,#city-flight-standard .cfs-reticle:after{content:"";position:absolute;background:#dffaf3}.cfs-reticle:before{left:16px;top:0;width:1px;height:34px}.cfs-reticle:after{left:0;top:16px;width:34px;height:1px}
 #city-flight-standard .cfs-help{position:absolute;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:9px 13px;white-space:nowrap;color:rgba(232,250,246,.78)}
+#city-flight-standard .cfs-stick{position:absolute;right:max(18px,env(safe-area-inset-right));bottom:max(58px,calc(env(safe-area-inset-bottom) + 48px));width:96px;height:96px;border-radius:50%;border:1px solid rgba(156,235,220,.24);background:radial-gradient(circle,rgba(156,235,220,.08),rgba(5,10,12,.42));pointer-events:auto;touch-action:none;backdrop-filter:blur(10px)}
+#city-flight-standard .cfs-knob{position:absolute;left:50%;top:50%;width:34px;height:34px;border-radius:50%;transform:translate(-50%,-50%);border:1px solid rgba(220,255,248,.48);background:rgba(156,235,220,.16);box-shadow:0 0 24px rgba(117,239,215,.12)}
 @media(max-width:760px){#city-flight-standard .cfs-top{top:auto;bottom:58px}.cfs-help{font-size:7px!important;max-width:94vw;overflow:hidden;text-overflow:ellipsis}.cfs-chip:first-child{display:none}}
 `;document.head.appendChild(style);
   }
   const hud=document.createElement('div');hud.id='city-flight-standard';
-  hud.innerHTML=`<div class="cfs-top"><span class="cfs-chip cfs-live">${surface} · RT2.4</span><span class="cfs-chip" data-cfs-state>R 0.00 · P 0.00 · Y 0.00 · T 0%</span><span class="cfs-chip" data-cfs-camera>${cameraModes[0]}</span></div><div class="cfs-reticle"></div><div class="cfs-help">A/D BANK · W/S PITCH · Q/E RUDDER · SHIFT THRUST · C CAMERA · 1–7 FLEET</div>`;
+  hud.innerHTML=`<div class="cfs-top"><span class="cfs-chip cfs-live">${surface} · RT2.4</span><span class="cfs-chip" data-cfs-state>R 0.00 · P 0.00 · Y 0.00 · T 0%</span><span class="cfs-chip" data-cfs-camera>${cameraModes[0]}</span></div><div class="cfs-reticle"></div><div class="cfs-stick" data-cfs-stick><div class="cfs-knob" data-cfs-knob></div></div><div class="cfs-help">A/D BANK · W/S PITCH · Q/E RUDDER · SHIFT THRUST · C CAMERA · 1–7 FLEET</div>`;
   document.body.appendChild(hud);return hud;
 }
 
@@ -50,7 +52,17 @@ export function installFlightInteractionStandard({
   const state={roll:0,pitch:0,yaw:0,throttle:clamp(Number(baseThrottle)||0,0,1),boost:false,idle:false,engaged:false,cameraIndex:0,vehicleIndex:null};
   const pointer={roll:0,pitch:0,active:false};
   const hud=mountHud?installHud(surface,cameraModes):null;
-  let destroyed=false,last=performance.now();
+  const touchStick=hud?.querySelector('[data-cfs-stick]'),touchKnob=hud?.querySelector('[data-cfs-knob]');
+  let touchDrag=false,destroyed=false,last=performance.now();
+  const setTouch=(x,y)=>{
+    if(!touchStick)return;
+    const r=touchStick.getBoundingClientRect(),dx=clamp((x-r.left-r.width/2)/(r.width*.36),-1,1),dy=clamp((y-r.top-r.height/2)/(r.height*.36),-1,1);
+    pointer.roll=dx;pointer.pitch=-dy;pointer.active=true;state.engaged=true;
+    if(touchKnob)touchKnob.style.transform=`translate(calc(-50% + ${dx*27}px),calc(-50% + ${dy*27}px))`;
+  };
+  touchStick?.addEventListener('pointerdown',e=>{touchDrag=true;touchStick.setPointerCapture?.(e.pointerId);setTouch(e.clientX,e.clientY)});
+  touchStick?.addEventListener('pointermove',e=>{if(touchDrag)setTouch(e.clientX,e.clientY)});
+  for(const ev of ['pointerup','pointercancel','lostpointercapture'])touchStick?.addEventListener(ev,()=>{touchDrag=false;pointer.roll=pointer.pitch=0;pointer.active=false;if(touchKnob)touchKnob.style.transform='translate(-50%,-50%)'});
 
   const publish=(dt)=>{
     const detail={schema:CITY_FLIGHT_INTERACTION.schema,version:CITY_FLIGHT_INTERACTION.version,surface,dt,...state,camera:cameraModes[state.cameraIndex]};
@@ -92,7 +104,7 @@ export function installFlightInteractionStandard({
     state.pitch=approach(state.pitch,pitchTarget,rate(state.pitch,pitchTarget)*dt);
     state.yaw=approach(state.yaw,yawTarget,rate(state.yaw,yawTarget)*dt);
     state.boost=keys.has('shift');state.idle=keys.has('control');
-    state.throttle=state.boost?1:state.idle?.05:clamp(Number(typeof baseThrottle==='function'?baseThrottle():baseThrottle)||0,0,1);
+    state.throttle=state.boost?1:(state.idle?.05:clamp(Number(typeof baseThrottle==='function'?baseThrottle():baseThrottle)||0,0,1));
     publish(dt);requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
