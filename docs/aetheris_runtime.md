@@ -69,6 +69,22 @@ citadel.passport       evidence/provenance packaging
 city.persistence       optional persistence sink
 ```
 
+## Flight boundary and E47 witness
+
+The browser SKYRMION Runtime 2 remains the interactive 120 Hz 6DOF implementation. AETHERIS now ships a Python companion in [`src/aetheris/flight_runtime.py`](../src/aetheris/flight_runtime.py) that supplies the shared state contract, conventional ↔ experimental-simulation vehicle boundary, one compiled E47 witness, and deterministic receipts without duplicating the browser aerodynamics.
+
+The critical separation is:
+
+```text
+E47 projector/kernel witness     E1
+            |
+experimental adapter mapping     E2
+            |
+6DOF trajectory                  E2
+```
+
+See [AETHERIS Flight Boundary and E47 Witness](aetheris_flight_runtime.md) for the exact projector/capture/semigroup semantics and fleet contract.
+
 ## Persistence
 
 Persistence is deliberately optional. `InMemoryStore` and `JsonlStore` ship in the core. A Supabase adapter can implement the same single-method `ExecutionStore.append(result)` protocol without introducing Supabase as a runtime dependency.
