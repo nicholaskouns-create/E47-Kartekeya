@@ -1,6 +1,6 @@
 :root{
-  --bg:#06090b;--surface:#0b1013;--raised:#11181c;--line:#243138;
-  --fg:#edf2ef;--muted:#98a6a8;--faint:#657478;--cyan:#63d7cf;--mint:#b9e6c8;
+  --bg:#090b0d;--surface:#0b1013;--raised:#11181c;--line:#243138;
+  --fg:#edf2ef;--muted:#98a6a8;--faint:#657478;--cyan:#6edfd4;--mint:#c1e8ce;
   --bronze:#bc9c6c;--hot:#d87e74;--display:'Newsreader',Georgia,serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace
 }
