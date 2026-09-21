@@ -2,7 +2,7 @@
 
 Independent research software by **Nick Kouns**: finite-dimensional spectral mathematics, quantum instruments, flight simulations, and inspectable computational records.
 
-**[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Open the City](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[All instruments](docs/instruments.md)** · **[Documentation](docs/README.md)**
+**[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Open the City](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[Q5 cube](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/)** · **[All instruments](docs/instruments.md)** · **[Documentation](docs/README.md)**
 
 [![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
 [![Pages](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml)
@@ -25,6 +25,7 @@ Independent research software by **Nick Kouns**: finite-dimensional spectral mat
 | [Syntax Jacob](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/) | 3I/ATLAS trajectory and propulsion interface | [Source and provenance](website/interfaces/syntax-jacob/) |
 | [THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) | Quantum circuit and statevector instrument | [Source](website/interfaces/matrix/) |
 | [CITY 125](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-125/) | Visual debugger for the 125-state runtime | [Runtime guide](docs/city_125_runtime.md) |
+| [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) | 5×5×5 packing ledger. One word per cell | [q5/](q5/) · [`host.py`](q5/host.py) |
 | [Visualizers](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/visualizers/) | Independent scientific visualizer portals | [Source](website/interfaces/visualizers/) |
 | [SKYRMION](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/) | Conventional and experimental flight models | [Source](website/interfaces/skyrmion/) |
 | [Propulsion Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/propulsion/) | Flight and propulsion interface directory | [Source](website/interfaces/propulsion/) |
@@ -35,6 +36,7 @@ Independent research software by **Nick Kouns**: finite-dimensional spectral mat
 
 | Directory | Contents |
 |---|---|
+| [q5/](q5/) | Frozen 125-word packing ledger, codec, validator, one-pass `host.py` |
 | [src/](src/README.md) | E47 mathematics, AETHERIS state transitions, MANTA Python model |
 | [website/](website/) | GitHub Pages source and independent browser instruments |
 | [web/](web/README.md) | Shared browser graphics modules |
@@ -52,10 +54,16 @@ Each instrument retains its own entry point, assumptions, evidence, and implemen
 For the browser interfaces, serve the existing `website/` directory:
 
 ~~~bash
+python q5/host.py serve
+~~~
+
+That command validates `q5/cells.jsonl`, writes `website/interfaces/q5/` from the ledger, and hosts the City site including the cube. Equivalent static serve:
+
+~~~bash
 python -m http.server 8000 --directory website
 ~~~
 
-Open [localhost:8000](http://localhost:8000/). Interfaces that use external services still require those services.
+Open [localhost:8000](http://localhost:8000/) or [the cube](http://localhost:8000/interfaces/q5/). Interfaces that use external services still require those services.
 
 For Python development, use **Python 3.12+** from the repository root:
 

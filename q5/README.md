@@ -9,7 +9,13 @@ No wrapping layer. No new authority.
 
 ```
 python q5/validator.py
+python q5/host.py          # emit the Pages cube from this ledger
+python q5/host.py serve    # host website/ with the cube on :8000
 ```
+
+Live cube: [Q5 on GitHub Pages](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) · Notion slots: [Q5 · 125-word ledger](https://www.notion.so/3e246094fd308151966ae74dedb2976a)
+
+`host.py` is the one-pass host. It does not mint a credential. It copies `cells.jsonl` onto the existing Pages tree and serves `website/`.
 
 47 = 142₅ · 78 = 303₅ · 125 = 1000₅ · Ω_c = 47/125 = 0.142₅
 ε* = 1/99144 · ρ* = 15/17 · K² gap 11664 · K² max 186624

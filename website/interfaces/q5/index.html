@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#090b0d" />
+  <title>Q5 · 125-word ledger</title>
+  <meta name="description" content="5×5×5 packing map. π(x,y,z)=25x+5y+z. One word per cell." />
+  <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/" />
+  <script type="importmap">{"imports":{"three":"../../vendor/three.module.js"}}</script>
+  <style>
+    :root{--bg:#090b0d;--fg:#e7eee9;--muted:#8a9790;--line:#24302b;--live:#6edfd4;--lock:#c1e8ce}
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.4 "IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;overflow:hidden}
+    canvas{display:block;width:100%;height:100%}
+    .word{position:absolute;top:16px;left:16px;font:500 36px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em;color:var(--live)}
+    .bar{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;max-width:calc(100vw - 24px);overflow-x:auto;padding:8px}
+    button,a.chip{min-height:44px;border:1px solid var(--line);background:#111614;color:var(--fg);border-radius:10px;padding:8px 12px;font:500 12px "IBM Plex Mono",ui-monospace,monospace;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer}
+    button.on,a.chip.on{border-color:var(--live);color:var(--live)}
+    .links{position:absolute;top:16px;right:16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:48%}
+    a.quiet{color:var(--muted);font:12px "IBM Plex Mono",ui-monospace,monospace;text-decoration:none}
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div class="word" id="word">---</div>
+  <div class="links">
+    <a class="quiet" href="../../index.html">CITY</a>
+    <a class="quiet" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl">cells.jsonl</a>
+    <a class="quiet" href="https://www.notion.so/3e246094fd308151966ae74dedb2976a">Notion ledger</a>
+  </div>
+  <div class="bar">
+    <button type="button" id="walk">Walk</button>
+    <button type="button" id="peel">Peel</button>
+    <a class="chip" id="github" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl">GitHub</a>
+    <a class="chip" id="notion" href="https://www.notion.so/3e246094fd308151966ae74dedb2976a">Notion</a>
+  </div>
+  <script type="module" src="./lattice.js"></script>
+</body>
+</html>

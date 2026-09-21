@@ -24,6 +24,7 @@ This directory maps the browser interfaces present in the repository. A route id
 | [CITY CORE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight) | Instrument navigation and EIDOLON entry | [kouns-core/](../website/interfaces/kouns-core/) |
 | [THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) | Quantum circuit, statevector, and matrix-product-state tools | [matrix/](../website/interfaces/matrix/) |
 | [CITY 125](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-125/) | 125-state visual debugger | [city-125/](../website/interfaces/city-125/) |
+| [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) | 5×5×5 packing ledger · 125 words | [q5/](../website/interfaces/q5/) · [source](../q5/) |
 | [THE CUBE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/cube-platform/) | Modular Cube platform interface | [cube-platform/](../website/interfaces/cube-platform/) |
 | [Visualizers](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/visualizers/) | Portal for independent research visualizers | [visualizers/](../website/interfaces/visualizers/) |
 | [WebGL Lab](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/webgl/) | Browser graphics instrument | [webgl/](../website/interfaces/webgl/) |
@@ -49,4 +50,4 @@ These routes retain the existing linked or embedded applications and receipt bin
 
 ## Code behind the interfaces
 
-[E47 Python core](../src/e47/) · [AETHERIS](../src/aetheris/) · [MANTA Python model](../src/manta/) · [Shared graphics](../web/README.md) · [Shared world engine](../website/interfaces/shared/world-engine/) · [Component manifest](../lab-manifest.json)
+[E47 Python core](../src/e47/) · [AETHERIS](../src/aetheris/) · [MANTA Python model](../src/manta/) · [Q5 packing ledger](../q5/) · [Shared graphics](../web/README.md) · [Shared world engine](../website/interfaces/shared/world-engine/) · [Component manifest](../lab-manifest.json)
