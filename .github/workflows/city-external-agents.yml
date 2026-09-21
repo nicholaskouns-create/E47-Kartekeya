@@ -2,6 +2,12 @@ name: CITY External Agents
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "research/e47/**"
+      - "city/parity/**"
+      - ".github/workflows/city-external-agents.yml"
   schedule:
     - cron: "17 */6 * * *"
 
@@ -33,6 +39,24 @@ jobs:
         with: { node-version: "22" }
       - run: python scripts/check_instrument_contracts.py
       - run: node scripts/external_agents_smoke.mjs
+      - name: Reconstruct E47 Einstein candidate
+        run: |
+          mkdir -p artifacts
+          python research/e47/validation/e47_einstein_conditional_validation.py --out artifacts/e47-einstein-candidate.json
+      - name: Independent City parity reconstruction
+        run: |
+          python city/parity/e47_einstein_parity.py \
+            --candidate artifacts/e47-einstein-candidate.json \
+            --out artifacts/e47-einstein-city-parity.json
+      - name: Upload Einstein parity receipts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: e47-einstein-city-parity
+          path: |
+            artifacts/e47-einstein-candidate.json
+            artifacts/e47-einstein-city-parity.json
+          if-no-files-found: error
 
   mnemosyne-relay:
     name: Mnemosyne Relay · provenance continuity
