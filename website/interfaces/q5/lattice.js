@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {RADIX,DIM,CELLS as TOPO_CELLS,pi,neighbors,stepAxis,sliceCells} from './topology.mjs';
+import {createTopologyPanel} from './panel.js';
 
 const RAW = 'https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/q5/cells.jsonl';
 const HUB = 'https://www.notion.so/3e246094fd308151966ae74dedb2976a';
@@ -69,6 +70,7 @@ const sliceValueEl=document.getElementById('sliceValue');
 const stepButtons=[...document.querySelectorAll('[data-axis][data-dir]')];
 const gh=document.getElementById('github');
 const no=document.getElementById('notion');
+const topologyPanel=createTopologyPanel(document.getElementById('topologyPanel'));
 
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -122,6 +124,7 @@ function bind(cell){
   gh.href='https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl#L'+String(cell.i+1);
   no.href=slots[cell.word]||HUB;
   no.textContent='Notion '+cell.word;
+  topologyPanel.update({cell,topology,neighbors:ns,sliceAxis,sliceValue,cells});
   for(const button of stepButtons){
     const axis=button.dataset.axis;
     const dir=Number(button.dataset.dir);
