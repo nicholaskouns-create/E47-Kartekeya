@@ -4,7 +4,9 @@ on:
     paths:
       - 'website/interfaces/matrix/**'
       - 'scripts/check_matrix_mps_worker.mjs'
+      - 'scripts/validate_matrix_quantum_parity.py'
       - 'website/interfaces/cube-platform/**'
+      - '.github/workflows/matrix-mps-validation.yml'
   workflow_dispatch:
 jobs:
   validate:
@@ -14,4 +16,13 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
-      - run: node scripts/check_matrix_mps_worker.mjs
+      - name: Browser MATRIX MPS smoke
+        run: node scripts/check_matrix_mps_worker.mjs
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - name: Install independent quantum oracle
+        run: python -m pip install 'qiskit==2.5.0' 'qiskit-aer==0.17.2'
+      - name: Python + Qiskit Aer isomorphic parity
+        run: python scripts/validate_matrix_quantum_parity.py --require-qiskit
