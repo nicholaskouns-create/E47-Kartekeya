@@ -5,19 +5,23 @@ on:
     branches: ["main"]
     paths:
       - "website/**"
+      - "q5/**"
       - "certificates/**"
       - "scripts/check_website.cjs"
       - "scripts/check_e47_bridge.cjs"
       - "scripts/check_eidolon_receipt_binding.mjs"
+      - "scripts/check_q5_surface.mjs"
       - ".github/workflows/pages.yml"
   pull_request:
     branches: ["main"]
     paths:
       - "website/**"
+      - "q5/**"
       - "certificates/**"
       - "scripts/check_website.cjs"
       - "scripts/check_e47_bridge.cjs"
       - "scripts/check_eidolon_receipt_binding.mjs"
+      - "scripts/check_q5_surface.mjs"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -37,8 +41,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Check assets, certificates, rendering and E47 bridge contract
-        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs
+      - name: Check assets, certificates, rendering, E47 bridge and Q5 topology
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs scripts/check_q5_surface.mjs
 
   publish:
     name: Publish website root to gh-pages
