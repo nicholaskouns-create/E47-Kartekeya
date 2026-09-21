@@ -20,6 +20,7 @@
 | [Instrument directory](instruments.md) | Direct app links, source paths, companion views |
 | [AETHERIS](aetheris_runtime.md) | State transitions and receipt machinery |
 | [CITY 125](city_125_runtime.md) | The 125-state runtime and visual debugger |
+| [Q5 packing ledger](../q5/README.md) | 5×5×5 word map · one-pass host · not identified with ker K |
 | [THE MATRIX](matrix_quantum_simulator.md) | Quantum simulator architecture |
 | [Matrix → CITY 125 → E47 → AETHERIS](matrix_city125_e47_aetheris.md) | State translation and witness bindings |
 | [Cube platform map](cube_platform_map.md) | Cube interfaces and adapters |

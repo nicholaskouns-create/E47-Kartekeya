@@ -8,6 +8,8 @@
 | [aetheris](aetheris/) | State transitions, persistence, and computational receipts | [Runtime](aetheris/runtime.py) · [Guide](../docs/aetheris_runtime.md) |
 | [manta](manta/) | Programmable-matter simulation model | [Model](manta/programmable_matter.py) · [Component record](manta/component.json) |
 
+The 5×5×5 packing ledger is not an `e47` package and is not identified with `ker K`. It lives in [q5/](../q5/).
+
 Install from the repository root with Python 3.12+:
 
 ```bash

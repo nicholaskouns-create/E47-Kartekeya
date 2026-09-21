@@ -7,6 +7,8 @@ Run these existing commands from the repository root. Python commands use the in
 | Task | Command |
 |---|---|
 | Python suite | `python -m pytest tests/ -v` |
+| Q5 packing ledger | `python q5/validator.py` |
+| Q5 Pages cube | `python q5/host.py` |
 | Check component paths and labels | `python scripts/check_lab_contract.py` |
 | Check instrument versions and contracts | `python scripts/check_instrument_contracts.py` |
 | Regenerate E47 certificate | `python scripts/generate_validation_certificate.py` |
