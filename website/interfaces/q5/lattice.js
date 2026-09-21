@@ -168,7 +168,15 @@ function selectIndex(i){
 function move(axis,dir){
   const cell=cells[selected];
   const next=stepAxis(cell,axis,dir,topology==='torus');
-  if(next===selected&&topology==='cube')return;
+  const blocked=next===selected&&topology==='cube';
+  if(blocked){
+    topologyPanel.animate({from:cell,to:cell,axis,dir,blocked:true});
+    return;
+  }
+  const target=cells[next];
+  const raw=cell[axis]+dir;
+  const wrapped=topology==='torus'&&(raw<0||raw>=RADIX);
+  topologyPanel.animate({from:cell,to:target,axis,dir,wrapped});
   selected=next;
   if(sliceAxis===axis)sliceValue=cells[selected][axis];
   stopWalk();
@@ -262,8 +270,19 @@ function tick(t){
     acc+=dt;
     if(acc>0.9){
       acc=0;
-      selected=nextWalkIndex();
+      const from=cells[selected];
+      const next=nextWalkIndex();
+      const to=cells[next];
+      selected=next;
       layout();
+      if(from&&to){
+        const dx=to.x-from.x,dy=to.y-from.y,dz=to.z-from.z;
+        if(Math.abs(dx)+Math.abs(dy)+Math.abs(dz)===1){
+          const axis=dx?'x':dy?'y':'z';
+          const dir=(dx||dy||dz)>0?1:-1;
+          topologyPanel.animate({from,to,axis,dir});
+        }
+      }
     }
   }
   group.rotation.set(rx,ry,0);
