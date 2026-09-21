@@ -1,5 +1,7 @@
 # THE MATRIX Quantum Simulator
 
+![THE MATRIX Quantum Simulator](../website/assets/matrix/matrix-cover.jpg)
+
 [Open MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Machine certificate](../website/data/MC-MATRIX-PARITY-20260921-001.json) · [Python validator](../scripts/validate_matrix_quantum_parity.py)
 
 ## Status
