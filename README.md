@@ -27,7 +27,7 @@ Independent research software by **Nick Kouns**: finite-dimensional spectral mat
 | [CITY 125](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-125/) | Visual debugger for the 125-state runtime | [Runtime guide](docs/city_125_runtime.md) |
 | [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) | 5×5×5 packing ledger with executable cube/torus navigation, live neighbors, slices, and concomitant topology panel | [q5/](q5/) · [`host.py`](q5/host.py) |
 | [Visualizers](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/visualizers/) | Independent scientific visualizer portals | [Source](website/interfaces/visualizers/) |
-| [SKYRMION](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/) | Conventional and experimental flight models | [Source](website/interfaces/skyrmion/) |
+| [SKYRMION](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/) | Conventional and explicitly typed experimental-simulation flight models | [Browser runtime](website/interfaces/skyrmion/) · [Python boundary/witness](src/aetheris/flight_runtime.py) |
 | [Propulsion Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/propulsion/) | Flight and propulsion interface directory | [Source](website/interfaces/propulsion/) |
 
 [Browse every interface, including companion views and external-app shells →](docs/instruments.md)
@@ -37,7 +37,7 @@ Independent research software by **Nick Kouns**: finite-dimensional spectral mat
 | Directory | Contents |
 |---|---|
 | [q5/](q5/) | Frozen 125-word packing ledger, codec, cube/torus topology grammar, live panel, validator, one-pass `host.py` |
-| [src/](src/README.md) | E47 mathematics, AETHERIS state transitions, MANTA Python model |
+| [src/](src/README.md) | E47 mathematics, AETHERIS state transitions + flight witness boundary, MANTA Python model |
 | [website/](website/) | GitHub Pages source and independent browser instruments |
 | [web/](web/README.md) | Shared browser graphics modules |
 | [research/](research/README.md) | E47 theorem notes, open proof obligations, Stargate research |
