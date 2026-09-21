@@ -60,7 +60,8 @@ def main():
         "carrier_dimension","kernel_dimension","kernel_fraction",
         "positive_gap","positive_max","k2_annihilates_e47"
     ]
-    parity={k:city[k]==primary[k] for k in parity_keys}
+    normalize=lambda value: json.loads(json.dumps(value,sort_keys=True))
+    parity={k:normalize(city[k])==primary[k] for k in parity_keys}
 
     theorem_text=Path(a.theorem).read_text()
     theorem_contract={
