@@ -104,7 +104,7 @@ export function installFlightInteractionStandard({
     state.pitch=approach(state.pitch,pitchTarget,rate(state.pitch,pitchTarget)*dt);
     state.yaw=approach(state.yaw,yawTarget,rate(state.yaw,yawTarget)*dt);
     state.boost=keys.has('shift');state.idle=keys.has('control');
-    state.throttle=state.boost?1:(state.idle?.05:clamp(Number(typeof baseThrottle==='function'?baseThrottle():baseThrottle)||0,0,1));
+    state.throttle=state.boost?1:(state.idle ? .05:clamp(Number(typeof baseThrottle==='function'?baseThrottle():baseThrottle)||0,0,1));
     publish(dt);requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
