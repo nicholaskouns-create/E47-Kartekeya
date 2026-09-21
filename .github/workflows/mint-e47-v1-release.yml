@@ -1,0 +1,54 @@
+name: Mint E47-v1.0 release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["release/E47-v1.0"]
+    paths:
+      - "RELEASE.md"
+      - ".github/workflows/mint-e47-v1-release.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mint-e47-v1-0
+  cancel-in-progress: false
+
+jobs:
+  mint:
+    name: Tag and publish immutable E47-v1.0
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: release/E47-v1.0
+          fetch-depth: 0
+
+      - name: Create annotated tag if missing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if git rev-parse -q --verify "refs/tags/E47-v1.0" >/dev/null; then
+            echo "Tag E47-v1.0 already exists."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git tag -a E47-v1.0 -m "The Kartekeya Isolation Lock (E47-v1.0)"
+            git push origin refs/tags/E47-v1.0
+          fi
+
+      - name: Publish GitHub Release if missing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if gh release view E47-v1.0 >/dev/null 2>&1; then
+            echo "Release E47-v1.0 already exists."
+          else
+            gh release create E47-v1.0 \
+              --title "The Kartekeya Isolation Lock (E47-v1.0)" \
+              --notes-file RELEASE.md \
+              --latest
+          fi
