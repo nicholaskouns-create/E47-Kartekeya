@@ -1,6 +1,7 @@
 import {installCityCinemaCodec} from '../flight/city-cinema-codec.js';
 import {installStargateInvariantBridge} from '../shared/stargate-invariants.js';
 import {installWorldBinding,readWorldState} from '../shared/world-engine/world-binding.js';
+import {installFlightInteractionStandard} from '../shared/flight-interaction-standard.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -164,6 +165,17 @@ const keys=new Set();
 addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(e.target?.tagName))return;keys.add(e.key.toLowerCase());if(['w','a','s','d','q','e','arrowup','arrowdown','arrowleft','arrowright'].includes(e.key.toLowerCase()))perturbState(.012)});
 addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
 
+let cityFlightCommand=null;
+const cityFlight=installFlightInteractionStandard({
+  surface:'SYNTAX JACOB',
+  baseThrottle:()=>throttle,
+  cameraModes:['COMET','EARTH','SYSTEM','FREE'],
+  mountHud:true,
+  onControls:d=>{cityFlightCommand=d},
+  onCamera:mode=>setFocus(mode.toLowerCase())
+});
+window.CITY_SYNTAX_JACOB_FLIGHT_INPUT=cityFlight;
+
 function propulsionGain(){return propulsionMode==='coherence'?(.65+1.35*Math.max(0,Math.min(1,lastCapture))):propulsionMode==='inertial'?1:0}
 function setPropulsionMode(mode){
   propulsionMode=mode;
@@ -208,23 +220,27 @@ $('pulse-thrust').addEventListener('click',()=>{
 updateThrottle(35);setPropulsionMode('coherence');updateLabReadouts();
 
 function pilotStep(dt){
-  const input=new THREE.Vector3(
+  const legacyInput=new THREE.Vector3(
     (keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),
     (keys.has('q')?1:0)-(keys.has('e')?1:0),
     (keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0)
   );
+  const cmd=cityFlightCommand;
+  const input=cmd?.engaged?new THREE.Vector3(cmd.roll,-cmd.yaw,-cmd.pitch):legacyInput;
+  const effectiveThrottle=cmd?.engaged?cmd.throttle:throttle;
+  const magnitude=Math.min(1,input.length());
   let accel=0;
-  if(input.lengthSq()>0&&propulsionMode!=='coast'&&throttle>0){
-    input.normalize();accel=1.45*throttle*propulsionGain();velocity.addScaledVector(input,accel*dt);deltaV+=accel*dt;
+  if(magnitude>0&&propulsionMode!=='coast'&&effectiveThrottle>0){
+    input.normalize();accel=1.45*effectiveThrottle*propulsionGain()*magnitude;velocity.addScaledVector(input,accel*dt);deltaV+=accel*dt;
     const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,-1),input);craft.quaternion.slerp(q,1-Math.pow(.025,dt*60));
-    perturbState(.0018*throttle);
+    perturbState(.0018*effectiveThrottle);
   }
   lastAccel=accel;
   const drag=propulsionMode==='inertial' ? .9992 : propulsionMode==='coherence' ? .9965 : .9997;
   velocity.multiplyScalar(Math.pow(drag,dt*60));
   craftOffset.addScaledVector(velocity,dt*16);craftOffset.clampLength(2.5,28);
   if(feed&&focus!=='free')craft.position.lerp(cometGroup.position.clone().add(craftOffset),1-Math.pow(.003,dt));else craft.position.addScaledVector(velocity,dt*14);
-  const plumeTarget=accel>0?Math.min(.78,.16+throttle*.62):0;enginePlume.material.opacity+= (plumeTarget-enginePlume.material.opacity)*Math.min(1,dt*12);enginePlume.scale.set(1,.7+throttle*1.8,1);
+  const plumeTarget=accel>0?Math.min(.78,.16+effectiveThrottle*.62):0;enginePlume.material.opacity+= (plumeTarget-enginePlume.material.opacity)*Math.min(1,dt*12);enginePlume.scale.set(1,.7+effectiveThrottle*1.8,1);
   fieldShell.material.opacity=propulsionMode==='coherence' ? .12+.3*lastCapture : .08;fieldShell.rotation.z+=dt*(.25+throttle*1.8);
   updateLabReadouts();
 }
