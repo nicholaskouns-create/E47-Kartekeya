@@ -71,7 +71,7 @@ jobs:
         run: |
           mkdir -p artifacts
           printf '%s\n' '{"schema":"CITY-EXTERNAL-GITHUB-RECEIPT-1.0","contract":"CITY-EXTERNAL-AGENTS-1.0","workers":5,"citizen_runtime_invariant":15,"status":"pass"}' > artifacts/city-external-agents.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: city-external-agents-receipt
           path: artifacts/city-external-agents.json

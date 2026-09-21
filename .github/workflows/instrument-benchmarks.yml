@@ -27,7 +27,7 @@ jobs:
         run: python scripts/run_instrument_smokes.py --benchmark --receipt-dir artifacts/instrument-benchmarks
       - name: Upload benchmark provenance receipts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: instrument-benchmark-receipts
           path: artifacts/instrument-benchmarks/
