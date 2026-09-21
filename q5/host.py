@@ -70,11 +70,11 @@ INDEX_HTML = """<!doctype html>
     button:disabled{opacity:.32;cursor:not-allowed}
     span.chip{cursor:default;color:var(--muted)}
     .step{min-width:72px}
-    @media(max-width:700px){
+    .q5-panel{position:absolute;right:16px;top:64px;width:min(340px,42vw);padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);backdrop-filter:blur(14px);font:500 10px/1.35 "IBM Plex Mono",ui-monospace,monospace;color:var(--muted);z-index:4}\n    .q5p-head,.q5p-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.q5p-head{color:var(--live);font-size:11px}.q5p-mode{padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:var(--lock)}.q5p-mode.torus{border-color:var(--live);color:var(--live)}\n    .q5p-meta{margin-top:6px;flex-wrap:wrap}.q5p-graph{position:relative;height:178px;margin-top:4px}.q5p-graph svg{position:absolute;inset:0;width:100%;height:100%}.q5p-edge{stroke:#33544e;stroke-width:.8}.q5p-center{fill:#173531;stroke:#6edfd4;stroke-width:1}.q5p-traveler{fill:#6edfd4;opacity:.96}.q5p-center-label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--fg);font-size:12px}.q5p-node{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;min-width:42px;padding:4px 5px;border:1px solid var(--line);border-radius:8px;background:#111614;color:var(--lock)}.q5p-node small{font-size:8px;color:var(--muted)}\n    .q5p-slice{display:grid;grid-template-columns:auto 86px;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:8px}.q5p-grid{display:grid;grid-template-columns:repeat(5,12px);gap:3px}.q5p-cell{width:12px;height:12px;border:1px solid #29413b;border-radius:3px;background:#111614}.q5p-cell.hot{border-color:var(--live);background:#245d56}.q5p-transition{margin-top:8px;color:var(--live);min-height:14px}.q5-panel.wrapped{box-shadow:0 0 0 1px rgba(110,223,212,.45),0 0 28px rgba(110,223,212,.10)}.q5-panel.blocked{box-shadow:0 0 0 1px rgba(231,238,233,.25)}\n    @media(max-width:700px){
       .word{font-size:30px}
       .state{top:56px;max-width:calc(100vw - 32px);font-size:10px}
       .links{top:18px}.links a:not(:first-child){display:none}
-      .controls{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100vw - 12px);gap:4px}
+      .q5-panel{right:8px;top:132px;width:min(310px,calc(100vw - 16px));opacity:.96}\n      .controls{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100vw - 12px);gap:4px}
       .bar{padding:5px;gap:5px}
       button,a.chip,span.chip{min-height:40px;padding:7px 9px;font-size:10px}
       .step{min-width:66px}
@@ -91,7 +91,7 @@ INDEX_HTML = """<!doctype html>
     <span id="topologyReadout" class="live">topology = cube</span>
     <span id="neighborReadout" class="lock">neighbors = ---</span>
   </div>
-  <div class="links">
+  <aside class="q5-panel" id="topologyPanel" aria-label="Q5 live topology panel"></aside>\n  <div class="links">
     <a class="quiet" href="../../index.html">CITY</a>
     <a class="quiet" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl">cells.jsonl</a>
     <a class="quiet" href="https://www.notion.so/3e246094fd308151966ae74dedb2976a">Notion ledger</a>
@@ -124,6 +124,7 @@ INDEX_HTML = """<!doctype html>
 
 LATTICE_JS = r"""import * as THREE from 'three';
 import {RADIX,DIM,CELLS as TOPO_CELLS,pi,neighbors,stepAxis,sliceCells} from './topology.mjs';
+import {createTopologyPanel} from './panel.js';
 
 const RAW = 'https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/q5/cells.jsonl';
 const HUB = 'https://www.notion.so/3e246094fd308151966ae74dedb2976a';
@@ -193,6 +194,7 @@ const sliceValueEl=document.getElementById('sliceValue');
 const stepButtons=[...document.querySelectorAll('[data-axis][data-dir]')];
 const gh=document.getElementById('github');
 const no=document.getElementById('notion');
+const topologyPanel=createTopologyPanel(document.getElementById('topologyPanel'));
 
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -246,6 +248,7 @@ function bind(cell){
   gh.href='https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl#L'+String(cell.i+1);
   no.href=slots[cell.word]||HUB;
   no.textContent='Notion '+cell.word;
+  topologyPanel.update({cell,topology,neighbors:ns,sliceAxis,sliceValue,cells});
   for(const button of stepButtons){
     const axis=button.dataset.axis;
     const dir=Number(button.dataset.dir);
@@ -292,7 +295,15 @@ function selectIndex(i){
 function move(axis,dir){
   const cell=cells[selected];
   const next=stepAxis(cell,axis,dir,topology==='torus');
-  if(next===selected&&topology==='cube')return;
+  const blocked=next===selected&&topology==='cube';
+  if(blocked){
+    topologyPanel.animate({from:cell,to:cell,axis,dir,blocked:true});
+    return;
+  }
+  const target=cells[next];
+  const raw=cell[axis]+dir;
+  const wrapped=topology==='torus'&&(raw<0||raw>=RADIX);
+  topologyPanel.animate({from:cell,to:target,axis,dir,wrapped});
   selected=next;
   if(sliceAxis===axis)sliceValue=cells[selected][axis];
   stopWalk();
@@ -386,8 +397,19 @@ function tick(t){
     acc+=dt;
     if(acc>0.9){
       acc=0;
-      selected=nextWalkIndex();
+      const from=cells[selected];
+      const next=nextWalkIndex();
+      const to=cells[next];
+      selected=next;
       layout();
+      if(from&&to){
+        const dx=to.x-from.x,dy=to.y-from.y,dz=to.z-from.z;
+        if(Math.abs(dx)+Math.abs(dy)+Math.abs(dz)===1){
+          const axis=dx?'x':dy?'y':'z';
+          const dir=(dx||dy||dz)>0?1:-1;
+          topologyPanel.animate({from,to,axis,dir});
+        }
+      }
     }
   }
   group.rotation.set(rx,ry,0);
@@ -434,6 +456,7 @@ def emit(root: Path, slots_path: Path | None = None) -> Path:
 
     shutil.copyfile(cells_src, dest / "cells.jsonl")
     shutil.copyfile(HERE / "topology.mjs", dest / "topology.mjs")
+    shutil.copyfile(HERE / "panel.js", dest / "panel.js")
     shutil.copyfile(cells_src, data / "q5-cells.jsonl")
 
     slots_src = slots_path
