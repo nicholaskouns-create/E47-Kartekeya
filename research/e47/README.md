@@ -7,7 +7,8 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 - [E47 exact spectral core](E47_Core_Spectral_Certificate.md)
 - [Projection flow theorem](E47_Projection_Flow_Theorem.md)
 - [Linearized Einstein intertwiner candidate](E47_Linearized_Einstein_Intertwiner_Theorem.md)
-- [Next proof obligation: nontrivial Einstein sector](NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md)
+- [Gauge-inequivalent Einstein conditional construction](E47_Gauge_Inequivalent_Einstein_Conditional_Construction.md)
+- [Proof obligation ledger: nontrivial Einstein sector](NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md)
 
 ## Relationship to executable code
 
