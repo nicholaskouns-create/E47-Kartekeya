@@ -1,0 +1,38 @@
+{
+  "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
+  "id": "matrix",
+  "display_name": "THE MATRIX",
+  "version": "2.0.1",
+  "kind": "quantum-simulator",
+  "maturity": "research",
+  "evidence": ["E1", "E2"],
+  "entrypoint": "website/interfaces/matrix/index.html",
+  "smoke": {
+    "entrypoint": "scripts/check_matrix_mps_worker.mjs",
+    "command": "node scripts/check_matrix_mps_worker.mjs"
+  },
+  "validation": {
+    "entrypoint": "scripts/validate_matrix_quantum_parity.py",
+    "command": "python scripts/validate_matrix_quantum_parity.py --require-qiskit",
+    "certificate": "website/data/MC-MATRIX-PARITY-20260921-001.json"
+  },
+  "provenance": {
+    "receipt_schema": "MATRIX-ISOMORPHIC-PARITY-CERTIFICATE/1.0",
+    "sources": [
+      "website/interfaces/matrix/mps-worker.js",
+      "website/interfaces/matrix/matrix.js",
+      "scripts/validate_matrix_quantum_parity.py",
+      "website/data/MC-MATRIX-PARITY-20260921-001.json"
+    ]
+  },
+  "telemetry": {
+    "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0"
+  },
+  "boundaries": [
+    "THE MATRIX is a software quantum simulator; the certificate makes no hardware or experimental claim.",
+    "Untruncated MPS parity is checked against an independent dense statevector and Qiskit Aer.",
+    "The 2^n to 125 step is an explicit normalized feature map, not a Hilbert-space isomorphism.",
+    "E47 analysis begins only after the typed 125-state lift.",
+    "The 125 to 128 map is an isometric embedding with three invalid padding states."
+  ]
+}
