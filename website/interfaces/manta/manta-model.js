@@ -4,7 +4,7 @@ import {WorldEngine} from '../skyrmion/runtime2/world-engine.js';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const norm=v=>Math.hypot(...v);
 
-export const MANTA_VERSION='1.0.0';
+export const MANTA_VERSION='1.1.0';
 export const MISSION_DURATION_S=48;
 export const FIXED_STEP_HZ=120;
 export const DT=1/FIXED_STEP_HZ;

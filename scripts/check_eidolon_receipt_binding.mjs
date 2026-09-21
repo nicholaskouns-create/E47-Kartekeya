@@ -42,5 +42,5 @@ test('SKYRMION is public flagship while EIDOLON remains receipt-bound in CITY CO
   assert.match(shell,/createEidolonFlightReceiptBinding/);
   assert.match(shell,/receiptFlightBinding\?\.sample/);
   assert.match(shell,/EIDOLON:AETHERIS_STATE_TRANSITION|aetheris-flight-binding/);
-  assert.match(eidolon,/eidolon-flight-lab\.nicholaskouns\.chatgpt\.site/);
+  assert.match(eidolon,/skyrmion\/\?vehicle=eidolon/);
 });

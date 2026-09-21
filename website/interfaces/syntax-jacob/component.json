@@ -2,7 +2,7 @@
   "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
   "id": "syntax-jacob",
   "display_name": "Syntax Jacob",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "kind": "interactive-simulator",
   "maturity": "research",
   "evidence": [
@@ -33,5 +33,7 @@
     "Coherence, propulsion controls and spacecraft response remain model/simulation layers.",
     "Stargate invariants are attached to modeled receipts without promoting E47 capture, scalar lock, or display-space propulsion to physical wormhole evidence.",
     "Physical wormhole closure and hardware realization remain open."
-  ]
+  ],
+  "interaction_standard": "CITY-FLIGHT-INTERACTION/2.4",
+  "render_contract": "full-screen world + vehicle-in-world + glass HUD + reticle + camera cycle"
 }

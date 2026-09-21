@@ -61,7 +61,7 @@
         "E2"
       ],
       "contract": "website/interfaces/manta/component.json",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "smoke_entrypoint": "website/interfaces/manta/smoke.mjs"
     },
     {
@@ -74,7 +74,7 @@
         "E2"
       ],
       "contract": "website/interfaces/skyrmion/component.json",
-      "version": "2.3.0",
+      "version": "2.4.0",
       "smoke_entrypoint": "website/interfaces/skyrmion/smoke.mjs"
     },
     {
@@ -87,7 +87,7 @@
         "E2"
       ],
       "contract": "website/interfaces/syntax-jacob/component.json",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "smoke_entrypoint": "website/interfaces/syntax-jacob/smoke.mjs"
     },
     {

@@ -1,0 +1,37 @@
+name: Flight Interaction Standard
+
+on:
+  pull_request:
+    paths:
+      - 'website/interfaces/skyrmion/**'
+      - 'website/interfaces/manta/**'
+      - 'website/interfaces/flight/eidolon/**'
+      - 'website/interfaces/flight/aetheris-flight-binding.js'
+      - 'website/interfaces/syntax-jacob/**'
+      - 'website/interfaces/shared/flight-interaction-*'
+      - 'scripts/check_flight_interaction_standard.mjs'
+      - 'scripts/check_eidolon_receipt_binding.mjs'
+  push:
+    branches:
+      - city-flight-interaction-2.4
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Shared flight contract
+        run: node --test scripts/check_flight_interaction_standard.mjs scripts/check_eidolon_receipt_binding.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test runner
+        run: python -m pip install pytest
+      - name: SKYRMION surface regression
+        run: python -m pytest tests/test_skyrmion_surface.py -q

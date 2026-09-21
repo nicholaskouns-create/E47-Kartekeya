@@ -95,7 +95,8 @@ export function createEidolonFlightReceiptBinding({ sim, onApply } = {}) {
           state_before_digest: normalized.state_before_digest,
           state_after_digest: normalized.state_after_digest
         },
-        state_transition: normalized.state_transition
+        state_transition: normalized.state_transition,
+        control: deriveFlightControl(normalized.state_transition)
       }, "*");
     } catch {}
   };

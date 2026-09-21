@@ -1,0 +1,27 @@
+{
+  "schema": "CITY-FLIGHT-INTERACTION/2.4",
+  "version": "2.4.0",
+  "source_reference": "https://moon-shale-tulip-xenon.grok.me",
+  "invariant": "Shared interaction and presentation contract; vehicle-specific physics and evidence boundaries remain owned by each simulator.",
+  "controls": {
+    "bank": "A/D",
+    "pitch": "W/S",
+    "rudder": "Q/E",
+    "boost": "Shift",
+    "idle": "Control",
+    "camera": "C",
+    "fleet": "1-7"
+  },
+  "behavior": {
+    "axes": "held-key ramped, centered on release",
+    "camera": "surface-defined modes behind common C-cycle",
+    "rendering": "full-screen world + vehicle-in-world + glass HUD + reticle + live telemetry",
+    "fixed_step": "physics cadence remains engine-owned"
+  },
+  "adapters": {
+    "skyrmion": "SKYRMION Runtime 2 / 120 Hz / multi-vehicle 6DOF",
+    "manta": "MANTA A/B 6DOF / 120 Hz / morph plant preserved",
+    "eidolon": "GitHub flight shell -> EIDOLON source/AETHERIS state boundary",
+    "syntax_jacob": "JPL ephemeris + display-space propulsion + E47 coherence layer preserved"
+  }
+}
