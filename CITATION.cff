@@ -1,15 +1,32 @@
 cff-version: 1.2.0
-message: "If you use this research software, please cite the repository and the specific commit used."
-title: "E47-Kartekeya"
+message: "If you use this lock, cite The Kartekeya Isolation Lock (E47-v1.0) and the exact commit SHA."
+title: "The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C-6I)(C-30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M5 ⊕ M2 at Ω_c = 47/125"
+short-title: "The Kartekeya Isolation Lock"
+version: "E47-v1.0"
+date-released: "2026-09-21"
 type: software
-authors:
-  - family-names: "Kouns"
-    given-names: "Nicholas"
-repository-code: "https://github.com/nicholaskouns-create/E47-Kartekeya"
-url: "https://nicholaskouns-create.github.io/E47-Kartekeya/"
 license: "CC0-1.0"
+repository-code: "https://github.com/nicholaskouns-create/E47-Kartekeya"
+url: "https://nicholaskouns-create.github.io/E47-Kartekeya/cite/"
+identifiers:
+  - type: url
+    value: "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/release/E47-v1.0"
+    description: "Immutable release branch E47-v1.0"
+abstract: >-
+  Finite first-principles lock of the KKP-R E47 kernel. On the carrier
+  H = V2⊗3 (dim 125) the Casimir pencil K = (C-6I)(C-30I) isolates
+  E47 = ker(K) = E6 ⊕ E30 with dim 47 and attractor Ω_c = 47/125.
+authors:
+  - family-names: Kouns
+    given-names: Nicholas Shane
+    affiliation: "AIMS Research Institute / Recursive Intelligence Consortium"
+    email: nkouns@aimsresearch.org
 keywords:
-  - spectral computation
+  - E47
+  - Kartekeya Isolation Lock
+  - KKP-R
+  - Recursive Intelligence
   - SU(2)
-  - reproducible research
-  - scientific simulation
+  - Casimir kernel
+  - intertwiner algebra
+  - Chevalley basis

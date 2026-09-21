@@ -1,0 +1,20 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "The Kartekeya Isolation Lock",
+  "alternateName": ["E47-v1.0", "Kartekeya Isolation Lock", "E47-Kartekeya"],
+  "identifier": "E47-v1.0",
+  "version": "E47-v1.0",
+  "datePublished": "2026-09-21",
+  "codeRepository": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+  "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/cite/",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "programmingLanguage": ["Python", "JavaScript"],
+  "keywords": ["E47", "Kartekeya Isolation Lock", "KKP-R", "Recursive Intelligence", "SU(2)"],
+  "author": [{
+    "@type": "Person",
+    "givenName": "Nicholas Shane",
+    "familyName": "Kouns",
+    "email": "nkouns@aimsresearch.org"
+  }]
+}

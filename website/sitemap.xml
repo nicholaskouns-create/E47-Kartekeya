@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/cite/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/</loc><lastmod>2026-09-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/cite/</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-125/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
