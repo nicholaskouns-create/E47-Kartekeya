@@ -2,7 +2,7 @@
   "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
   "id": "skyrmion",
   "display_name": "SKYRMION Runtime 2",
-  "version": "2.4.0",
+  "version": "2.3.0",
   "kind": "interactive-simulator",
   "maturity": "research",
   "evidence": [
@@ -33,7 +33,5 @@
     "MANTA, EIDOLON, SKYRMION and Syntax Jacob experimental craft use explicitly separated experimental simulation models.",
     "Corrected Stargate formalism is exposed as E2 simulator telemetry; E47 capture is not treated as a validated physical wormhole threshold.",
     "Full nonlinear Einstein closure, Lorentzian stability, empirical NEC violation and hardware Stargate realization remain open."
-  ],
-  "interaction_standard": "CITY-FLIGHT-INTERACTION/2.4",
-  "render_contract": "full-screen world + vehicle-in-world + glass HUD + reticle + camera cycle"
+  ]
 }

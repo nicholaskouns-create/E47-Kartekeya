@@ -11,7 +11,7 @@ async function run(){
   const model=readFileSync(resolve(here,'manta-model.js'),'utf8');
   const contract=JSON.parse(readFileSync(contractPath,'utf8'));
   const checks=[
-    ['contract',contract.id==='manta-flight-lab'&&contract.version==='1.1.0'],
+    ['contract',contract.id==='manta-flight-lab'&&contract.version==='1.0.0'],
     ['6dof',model.includes('SixDOFPhysics')&&model.includes('FIXED_STEP_HZ=120')],
     ['aero-coupling',model.includes('const CL=')&&model.includes('const CD=')&&model.includes('const Cm=')],
     ['mass-properties',model.includes('inertia=[')&&model.includes('c.mdot=-fuelFlow')],

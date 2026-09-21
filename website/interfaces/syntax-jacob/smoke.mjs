@@ -21,7 +21,7 @@ async function run(benchmark){
     {name:'surface',pass:html.includes('Syntax Jacob'),observed:html.includes('Syntax Jacob'),expected:true},
     {name:'server_side_ephemeris',pass:app.includes('city-app-host/syntax-jacob-ephemeris'),observed:true,expected:true},
     {name:'no_direct_jpl_fetch',pass:!(/fetch\(['"]https:\/\/ssd(?:-api)?\.jpl\.nasa\.gov/.test(app)),observed:false,expected:false},
-    {name:'provenance_version',pass:prov.schema==='SYNTAX-JACOB-PROVENANCE-1.3',observed:prov.schema,expected:'SYNTAX-JACOB-PROVENANCE-1.3'},
+    {name:'provenance_version',pass:prov.schema==='SYNTAX-JACOB-PROVENANCE-1.2',observed:prov.schema,expected:'SYNTAX-JACOB-PROVENANCE-1.2'},
     {name:'physical_claim_boundary',pass:prov.runtime?.propulsion_lab?.physical_claim==='none',observed:prov.runtime?.propulsion_lab?.physical_claim,expected:'none'},
     {name:'stargate_receipt_binding',pass:app.includes('stargate:stargate.packet()')&&prov.runtime?.stargate_invariants?.physical_promotion===false,observed:true,expected:true},
     {name:'stargate_physical_gate',pass:stargate.includes('physicalWormholeValidated:false')&&stargate.includes('e47RankFractionIsPhysicalThreshold:false'),observed:true,expected:true}

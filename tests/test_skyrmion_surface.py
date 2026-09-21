@@ -141,9 +141,7 @@ def test_stable_flight_controls_and_yaw():
     assert '-r*(f.yawDamp??.8)' in conventional
     assert 'yawRate' in vehicles
     assert 'function shapeAxis' in boot
-    assert 'installFlightInteractionStandard' in boot
-    assert "yaw:shapeAxis(src.yaw||0" in boot
-    assert "cameraModes:['CHASE','WING','ORBIT']" in boot
+    assert 'keyYaw*.46' in boot
 
 
 def test_supabase_world_registry_pipeline():

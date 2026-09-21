@@ -19,9 +19,9 @@ Current components:
 | E47 core | 0.1.0 | `python -m e47.smoke` |
 | AETHERIS | 0.1.0 | `python -m aetheris.smoke` |
 | MANTA Python model | 0.1.0 | `python -m manta.smoke` |
-| MANTA flight interface | 1.1.0 | `node website/interfaces/manta/smoke.mjs` |
-| SKYRMION Runtime 2 | 2.4.0 | `node website/interfaces/skyrmion/smoke.mjs` |
-| Syntax Jacob | 1.3.0 | `node website/interfaces/syntax-jacob/smoke.mjs` |
+| MANTA flight interface | 1.0.0 | `node website/interfaces/manta/smoke.mjs` |
+| SKYRMION Runtime 2 | 2.3.0 | `node website/interfaces/skyrmion/smoke.mjs` |
+| Syntax Jacob | 1.2.0 | `node website/interfaces/syntax-jacob/smoke.mjs` |
 | CITY CORE | 0.1.0 | `node website/interfaces/kouns-core/smoke.mjs` |
 | Visualizer Portal | 0.1.0 | `node website/interfaces/visualizers/smoke.mjs` |
 

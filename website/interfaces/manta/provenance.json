@@ -1,26 +1,16 @@
 {
-  "schema": "CITY-INVARIANT/1.0",
-  "object": "MANTA programmable-matter 6DOF A/B flight lab",
-  "operator": "identical deterministic mission -> fixed-step RK4 6DOF -> morph-state coupling -> baseline comparison",
-  "evidence": "E2 simulation",
-  "version": "1.1.0",
-  "sources": [
+  "schema":"CITY-INVARIANT/1.0",
+  "object":"MANTA programmable-matter 6DOF A/B flight lab",
+  "operator":"identical deterministic mission -> fixed-step RK4 6DOF -> morph-state coupling -> baseline comparison",
+  "evidence":"E2 simulation",
+  "version":"1.0.0",
+  "sources":[
     "src/manta/programmable_matter.py",
     "website/interfaces/skyrmion/runtime2/physics-6dof.js",
     "website/interfaces/skyrmion/runtime2/world-engine.js",
     "website/interfaces/manta/manta-model.js"
   ],
-  "modeled_couplings": [
-    "CL",
-    "CD",
-    "Cm",
-    "Iij",
-    "mass",
-    "mass_flow",
-    "actuator_bounds",
-    "morph_energy"
-  ],
-  "comparison": "Morphing and fixed-geometry cases receive the same deterministic command schedule and timestep.",
-  "boundary": "No empirical or hardware promotion is implied.",
-  "interaction_standard": "CITY-FLIGHT-INTERACTION/2.4"
+  "modeled_couplings":["CL","CD","Cm","Iij","mass","mass_flow","actuator_bounds","morph_energy"],
+  "comparison":"Morphing and fixed-geometry cases receive the same deterministic command schedule and timestep.",
+  "boundary":"No empirical or hardware promotion is implied."
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "SYNTAX-JACOB-PROVENANCE-1.3",
+  "schema": "SYNTAX-JACOB-PROVENANCE-1.2",
   "title": "Syntax Jacob — Propulsion Lab",
   "author": "Nicholas Shane Kouns, DO",
   "original_work": true,
@@ -37,8 +37,7 @@
       "certificate": "MC-STARGATE-CORRECTED-20260919",
       "receipt_binding": "AETHERIS receipts include an E2 Stargate packet",
       "physical_promotion": false
-    },
-    "shared_pilot_contract": "held-key ramping + camera cycle + common HUD grammar; existing ephemeris/coherence propulsion model retained"
+    }
   },
   "astronomy_sources": [
     {
@@ -115,6 +114,5 @@
     "rendered": "nucleus morphology, coma, tails, display scaling, spacecraft and visual effects",
     "model": "E47 coherence state, propulsion control law, scalar lock/copilot behavior, witness interpretation, and all spacecraft response dynamics",
     "stargate": "Corrected Stargate formulas/invariants are attached as conditional mathematics and E2 simulator state. E47 capture, scalar lock and propulsion response are not physical wormhole evidence."
-  },
-  "interaction_standard": "CITY-FLIGHT-INTERACTION/2.4"
+  }
 }

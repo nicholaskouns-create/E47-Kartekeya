@@ -2,7 +2,6 @@
 import {SkyrmionRuntime2} from './runtime2.js';
 import {VEHICLE_ORDER,vehicle} from './vehicle-registry.js';
 import {showCraftMath} from './craft-math.js';
-import {installFlightInteractionStandard} from '../../shared/flight-interaction-standard.js';
 const rt=new SkyrmionRuntime2({fixedStepHz:120,spawn:{lat:36.1699,lon:-115.1398,altitudeM:3658,speedMps:216}});window.CITY_SKYRMION_RUNTIME2=rt;
 document.getElementById('startFlight')?.addEventListener('click',()=>document.body.classList.add('flight-started'));
 dispatchEvent(new CustomEvent('skyrmion:runtime2-boot-ready',{detail:{schema:rt.schema,fixedStepHz:rt.fixedStepHz}}));
@@ -54,48 +53,27 @@ if(root){
  }
 }
 loadCraftMath();syncButtons();
-let drag=false,stickRoll=0,stickPitch=0,keys={},receiptControl=null,receiptAt=0;
+let drag=false,stickRoll=0,stickPitch=0,keys={};
+function setStick(px,py){if(!stick)return;const r=stick.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(px-r.left-r.width/2)/(r.width*.34))),dy=Math.max(-1,Math.min(1,(py-r.top-r.height/2)/(r.height*.34)));stickRoll=dx;stickPitch=-dy;if(knob)knob.style.transform=`translate(${dx*32}px,${dy*32}px)`;}
+stick?.addEventListener('pointerdown',e=>{drag=true;stick.setPointerCapture(e.pointerId);setStick(e.clientX,e.clientY)});stick?.addEventListener('pointermove',e=>{if(drag)setStick(e.clientX,e.clientY)});for(const n of ['pointerup','pointercancel'])stick?.addEventListener(n,()=>{drag=false;stickRoll=stickPitch=0;if(knob)knob.style.transform='none'});
+addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=1;if(e.key>='1'&&e.key<='7')root?.querySelector(`[data-vehicle="${VEHICLE_ORDER[+e.key-1]}"]`)?.click()});addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=0});
+addEventListener('skyrmion:teleport',e=>rt.teleport({lat:e.detail?.lat,lon:e.detail?.lon,altitudeM:e.detail?.altitude_m}));addEventListener('skyrmion:manta-frame',e=>rt.mantaFrame=e.detail||null);
 function shapeAxis(v,{deadzone=.055,expo=.38,max=1}={}){
   const sign=Math.sign(v),a=Math.min(1,Math.abs(v));
   if(a<=deadzone)return 0;
   const n=(a-deadzone)/(1-deadzone),shaped=(1-expo)*n+expo*n*n*n;
   return sign*Math.min(max,shaped*max);
 }
-const flightInput=installFlightInteractionStandard({
-  surface:'SKYRMION',
-  baseThrottle:()=>rt.trim?.throttle??.72,
-  cameraModes:['CHASE','WING','ORBIT'],
-  mountHud:false,
-  onControls:d=>{
-    const receiptFresh=receiptControl&&(performance.now()-receiptAt)<2200&&!d.engaged;
-    const src=receiptFresh?receiptControl:d;
-    rt.setControls({
-      roll:shapeAxis(src.roll||0,{deadzone:.05,expo:.42,max:.92}),
-      pitch:shapeAxis(src.pitch||0,{deadzone:.05,expo:.44,max:.88}),
-      yaw:shapeAxis(src.yaw||0,{deadzone:.02,expo:.20,max:.52}),
-      throttle:receiptFresh?Math.max(.05,Math.min(1,Number(src.throttle)||0)):d.throttle
-    });
-  },
-  onFleet:i=>root?.querySelector(`[data-vehicle="${VEHICLE_ORDER[i]}"]`)?.click()
-});
-window.CITY_SKYRMION_FLIGHT_INPUT=flightInput;
-function setStick(px,py){
-  if(!stick)return;
-  const r=stick.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(px-r.left-r.width/2)/(r.width*.34))),dy=Math.max(-1,Math.min(1,(py-r.top-r.height/2)/(r.height*.34)));
-  stickRoll=dx;stickPitch=-dy;flightInput.setPointerAxes(stickRoll,stickPitch);
-  if(knob)knob.style.transform=`translate(${dx*32}px,${dy*32}px)`;
-}
-stick?.addEventListener('pointerdown',e=>{drag=true;stick.setPointerCapture(e.pointerId);setStick(e.clientX,e.clientY)});
-stick?.addEventListener('pointermove',e=>{if(drag)setStick(e.clientX,e.clientY)});
-for(const n of ['pointerup','pointercancel'])stick?.addEventListener(n,()=>{drag=false;stickRoll=stickPitch=0;flightInput.setPointerAxes(0,0);if(knob)knob.style.transform='none'});
-addEventListener('message',e=>{
-  const d=e.data;
-  if(d?.type!=='EIDOLON:AETHERIS_STATE_TRANSITION'||!d.control)return;
-  receiptControl=d.control;receiptAt=performance.now();
-});
-const requestedVehicle=new URLSearchParams(location.search).get('vehicle');
-if(requestedVehicle&&VEHICLE_ORDER.includes(requestedVehicle))root?.querySelector(`[data-vehicle="${requestedVehicle}"]`)?.click();
-
+function controls(){
+  const keyRoll=((keys.d||keys.arrowright)?1:0)-((keys.a||keys.arrowleft)?1:0);
+  const keyPitch=((keys.w||keys.arrowup)?1:0)-((keys.s||keys.arrowdown)?1:0);
+  const keyYaw=(keys.e?1:0)-(keys.q?1:0);
+  const roll=shapeAxis(stickRoll+keyRoll*.68,{deadzone:.05,expo:.42,max:.92});
+  const pitch=shapeAxis(stickPitch+keyPitch*.62,{deadzone:.05,expo:.44,max:.88});
+  const yaw=shapeAxis(keyYaw*.46,{deadzone:.02,expo:.20,max:.52});
+  const throttle=keys.shift?1:(keys.control ? .05 : (rt.trim?.throttle??.72));
+  rt.setControls({roll,pitch,yaw,throttle});
+  requestAnimationFrame(controls);
 }
 requestAnimationFrame(controls);
 addEventListener('blur',()=>{keys={};stickRoll=0;stickPitch=0;if(knob)knob.style.transform='none'});

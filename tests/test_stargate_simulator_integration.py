@@ -38,7 +38,7 @@ def test_syntax_jacob_stargate_receipt_binding():
     app=(SYNTAX/'app.js').read_text()
     component=json.loads((SYNTAX/'component.json').read_text())
     provenance=json.loads((SYNTAX/'provenance.json').read_text())
-    assert component["version"]=="1.3.0"
+    assert component["version"]=="1.2.0"
     assert "../shared/stargate-invariants.js" in app
     assert "stargate:stargate.packet()" in app
     assert provenance["runtime"]["stargate_invariants"]["physical_promotion"] is False
@@ -47,7 +47,7 @@ def test_skyrmion_stargate_telemetry_and_proof_binding():
     runtime=(SKYR/'runtime2/runtime2.js').read_text()
     bootstrap=(SKYR/'runtime2/bootstrap.js').read_text()
     component=json.loads((SKYR/'component.json').read_text())
-    assert component["version"]=="2.4.0"
+    assert component["version"]=="2.3.0"
     assert "SKYRMION-RUNTIME-2.3" in runtime
     assert "createStargatePacket" in runtime
     assert "stargate:d.stargate" in runtime
