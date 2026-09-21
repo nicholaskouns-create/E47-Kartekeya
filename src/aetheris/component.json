@@ -1,24 +1,38 @@
 {
-  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
-  "id":"aetheris",
-  "display_name":"AETHERIS Runtime",
-  "version":"0.1.0",
-  "kind":"research-runtime",
-  "maturity":"research",
-  "evidence":["E1","E2"],
-  "entrypoint":"aetheris.runtime:AetherisRuntime",
-  "smoke":{
-    "entrypoint":"src/aetheris/smoke.py",
-    "command":"PYTHONPATH=src python -m aetheris.smoke",
-    "benchmark_command":"PYTHONPATH=src python -m aetheris.smoke --benchmark"
+  "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
+  "id": "aetheris",
+  "display_name": "AETHERIS Runtime",
+  "version": "0.1.0",
+  "kind": "research-runtime",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "entrypoint": "aetheris.runtime:AetherisRuntime",
+  "smoke": {
+    "entrypoint": "src/aetheris/smoke.py",
+    "command": "PYTHONPATH=src python -m aetheris.smoke",
+    "benchmark_command": "PYTHONPATH=src python -m aetheris.smoke --benchmark"
   },
-  "provenance":{
-    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
-    "sources":["src/aetheris/","tests/test_aetheris_runtime.py","tests/test_aetheris_closed_loop.py"]
+  "provenance": {
+    "receipt_schema": "CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources": [
+      "src/aetheris/",
+      "src/aetheris/flight_runtime.py",
+      "tests/test_aetheris_runtime.py",
+      "tests/test_aetheris_closed_loop.py",
+      "tests/test_aetheris_flight_runtime.py",
+      "website/interfaces/skyrmion/runtime2/"
+    ]
   },
-  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
-  "boundaries":[
+  "telemetry": {
+    "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0"
+  },
+  "boundaries": [
     "Receipt-oriented compositional research runtime.",
-    "Module evidence classes remain local and are not promoted by orchestration."
+    "Module evidence classes remain local and are not promoted by orchestration.",
+    "E47 witness checks are E1; experimental force/moment mappings and trajectories remain E2.",
+    "The Python flight layer does not duplicate the browser SKYRMION 120 Hz 6DOF engine."
   ]
 }
