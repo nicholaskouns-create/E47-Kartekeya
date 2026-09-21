@@ -9,6 +9,8 @@ const live = readFileSync(resolve(root, 'website/interfaces/q5/lattice.js'), 'ut
 const page = readFileSync(resolve(root, 'website/interfaces/q5/index.html'), 'utf8');
 const sourceTopology = readFileSync(resolve(root, 'q5/topology.mjs'), 'utf8');
 const deployedTopology = readFileSync(resolve(root, 'website/interfaces/q5/topology.mjs'), 'utf8');
+const sourcePanel = readFileSync(resolve(root, 'q5/panel.js'), 'utf8');
+const deployedPanel = readFileSync(resolve(root, 'website/interfaces/q5/panel.js'), 'utf8');
 
 test('Q5 packing address remains exact', () => {
   assert.equal(pi(1, 4, 2), 47);
@@ -45,13 +47,19 @@ test('deployed topology module is the canonical browser copy', () => {
   assert.equal(deployedTopology, sourceTopology);
 });
 
+test('deployed Q5 panel is the canonical browser copy', () => {
+  assert.equal(deployedPanel, sourcePanel);
+});
+
 test('live cube exposes executable topology controls', () => {
   for (const token of [
     'Topology · cube',
     'data-axis="x"',
     'data-axis="y"',
     'data-axis="z"',
-    'Slice · all'
+    'Slice · all',
+    'id="topologyPanel"',
+    'q5-panel'
   ]) {
     assert.ok(page.includes(token), 'missing Q5 UI token: ' + token);
   }
@@ -59,7 +67,10 @@ test('live cube exposes executable topology controls', () => {
     "from './topology.mjs'",
     "neighbors(cell,topology)",
     "stepAxis(cell,axis,dir,topology==='torus')",
-    "sliceCells(sliceAxis,sliceValue)"
+    "sliceCells(sliceAxis,sliceValue)",
+    "from './panel.js'",
+    "topologyPanel.update",
+    "topologyPanel.animate"
   ]) {
     assert.ok(live.includes(token), 'missing Q5 runtime token: ' + token);
   }
