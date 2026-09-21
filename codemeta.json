@@ -1,0 +1,33 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "The Kartekeya Isolation Lock",
+  "alternateName": ["E47-v1.0", "Kartekeya Isolation Lock", "E47-Kartekeya"],
+  "identifier": "E47-v1.0",
+  "version": "E47-v1.0",
+  "dateCreated": "2026-07-21",
+  "dateModified": "2026-09-21",
+  "datePublished": "2026-09-21",
+  "description": "Finite first-principles lock of the KKP-R E47 kernel: H = V2\u22973 (dim 125), K = (C-6I)(C-30I), E47 = ker(K) with dim 47, Omega_c = 47/125, A_inv congruent to M5 + M2 (29 intertwiner units), and Chevalley sl(5)+sl(2) on those units.",
+  "codeRepository": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+  "downloadUrl": "https://github.com/nicholaskouns-create/E47-Kartekeya/archive/refs/heads/release/E47-v1.0.zip",
+  "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/cite/",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "programmingLanguage": ["Python", "JavaScript"],
+  "runtimePlatform": ["CPython 3.12"],
+  "operatingSystem": ["Linux", "macOS", "Windows"],
+  "applicationCategory": "Mathematics",
+  "keywords": ["E47", "Kartekeya Isolation Lock", "KKP-R", "Recursive Intelligence", "SU(2)", "Casimir kernel", "intertwiner algebra", "Chevalley basis"],
+  "author": [{
+    "@type": "Person",
+    "givenName": "Nicholas Shane",
+    "familyName": "Kouns",
+    "email": "nkouns@aimsresearch.org",
+    "affiliation": {"@type": "Organization", "name": "AIMS Research Institute / Recursive Intelligence Consortium"}
+  }],
+  "maintainer": {"@type": "Person", "givenName": "Nicholas Shane", "familyName": "Kouns"},
+  "isPartOf": {"@type": "SoftwareSourceCode", "name": "E47-Kartekeya \u2014 The Mathematical City", "codeRepository": "https://github.com/nicholaskouns-create/E47-Kartekeya"},
+  "softwareRequirements": "Python 3.12+",
+  "developmentStatus": "active",
+  "issueTracker": "https://github.com/nicholaskouns-create/E47-Kartekeya/issues"
+}
