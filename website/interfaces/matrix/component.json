@@ -31,8 +31,19 @@
       "website/data/MC-MATRIX-PARITY-20260921-001.json",
       "scripts/validate_e47_prism_matrix.py",
       "supabase/functions/matrix-cube-adapter/index.ts",
-      "website/data/MC-MATRIX-E47-PRISM-20260922-001.json"
-    ]
+      "website/data/MC-MATRIX-E47-PRISM-20260922-001.json",
+      "research/e47/E47_Prism_Spectral_Formalism.md"
+    ],
+    "cross_platform": {
+      "github": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md",
+      "notion": "https://app.notion.com/p/3e346094fd30818e99c1d04635983c62?pvs=204",
+      "google_drive": "https://docs.google.com/document/d/1wCmn5J4Tjo0qVV5AOoHUxD1tXComhPf7lU1ntzKtaMs/edit",
+      "site": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",
+      "receipt": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-MATRIX-E47-PRISM-20260922-001.json",
+      "supabase": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter",
+      "notion_formalism_id": "FRM-96",
+      "supabase_identity": "E47-PRISM-20260922"
+    }
   },
   "telemetry": {
     "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0"
@@ -44,5 +55,6 @@
     "E47 analysis begins only after the typed 125-state lift.",
     "The 125 to 128 map is an isometric embedding with three invalid padding states.",
     "The E47 prism panel resolves the typed 125-feature vector across Casimir eigenspaces; its band weights are state-dependent and the 47/125 rank fraction is not a universal state probability."
-  ]
+  ],
+  "formalism": "research/e47/E47_Prism_Spectral_Formalism.md"
 }
