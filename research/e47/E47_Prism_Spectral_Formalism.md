@@ -1,7 +1,7 @@
 # E47 Prism Spectral Formalism
 
-**Record:** \`E47-PRISM-FORMALISM-20260922\`  
-**Machine receipt:** \`MC-MATRIX-E47-PRISM-20260922-001\`  
+**Record:** `E47-PRISM-FORMALISM-20260922`  
+**Machine receipt:** `MC-MATRIX-E47-PRISM-20260922-001`  
 **Status:** exact spectral identities + E1 software/numerical parity  
 **Public instrument:** https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/
 
@@ -171,14 +171,14 @@ The E47 bands contribute zero to this energy because \(K(6)=K(30)=0\).
 
 ## 6. Machine parity
 
-The live Supabase \`matrix-cube-adapter@3\` independently resolves all seven bands from the typed 125-state vector.
+The live Supabase `matrix-cube-adapter@3` independently resolves all seven bands from the typed 125-state vector.
 
 Certified parity:
 
 - spectral-weight sum: \(1\) to floating precision
 - \(\max_\lambda |w_\lambda^{\rm Python}-w_\lambda^{\rm live}|=2.942091015256665\times10^{-15}\)
 - \(|w_{E47}^{P_{47}}-(w_6+w_{30})|=1.5543122344752192\times10^{-15}\)
-- receipt: \`MC-MATRIX-E47-PRISM-20260922-001\` PASS
+- receipt: `MC-MATRIX-E47-PRISM-20260922-001` PASS
 
 ## 7. Evidence boundary
 
@@ -191,17 +191,17 @@ Certified parity:
 
 ## 8. Reproduce
 
-\`\`\`bash
+```bash
 python scripts/validate_e47_prism_matrix.py
 python scripts/validate_e47_prism_matrix.py --live-adapter
-\`\`\`
+```
 
 Canonical implementation surfaces:
 
-- \`scripts/validate_e47_prism_matrix.py\`
-- \`website/interfaces/matrix/\`
-- \`supabase/functions/matrix-cube-adapter/index.ts\`
-- \`website/data/MC-MATRIX-E47-PRISM-20260922-001.json\`
+- `scripts/validate_e47_prism_matrix.py`
+- `website/interfaces/matrix/`
+- `supabase/functions/matrix-cube-adapter/index.ts`
+- `website/data/MC-MATRIX-E47-PRISM-20260922-001.json`
 
 ## 9. Cross-platform authorities
 
