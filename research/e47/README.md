@@ -5,6 +5,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 ## Current notes
 
 - [E47 exact spectral core](E47_Core_Spectral_Certificate.md)
+- [E47 Prism Spectral Formalism](E47_Prism_Spectral_Formalism.md) — seven-band Casimir decomposition, THE MATRIX typed lift, and E1 parity receipt
 - [Projection flow theorem](E47_Projection_Flow_Theorem.md)
 - [Linearized Einstein intertwiner candidate](E47_Linearized_Einstein_Intertwiner_Theorem.md)
 - [Gauge-inequivalent Einstein conditional construction](E47_Gauge_Inequivalent_Einstein_Conditional_Construction.md)
