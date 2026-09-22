@@ -1,10 +1,24 @@
 name: Matrix MPS validation
 on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'website/interfaces/matrix/**'
+      - 'supabase/functions/matrix-cube-adapter/**'
+      - 'scripts/check_matrix_mps_worker.mjs'
+      - 'scripts/validate_matrix_quantum_parity.py'
+      - 'scripts/validate_e47_prism_matrix.py'
+      - 'tests/test_matrix_e47_prism.py'
+      - 'website/interfaces/cube-platform/**'
+      - '.github/workflows/matrix-mps-validation.yml'
   pull_request:
     paths:
       - 'website/interfaces/matrix/**'
       - 'scripts/check_matrix_mps_worker.mjs'
       - 'scripts/validate_matrix_quantum_parity.py'
+      - 'scripts/validate_e47_prism_matrix.py'
+      - 'tests/test_matrix_e47_prism.py'
+      - 'supabase/functions/matrix-cube-adapter/**'
       - 'website/interfaces/cube-platform/**'
       - '.github/workflows/matrix-mps-validation.yml'
   workflow_dispatch:
@@ -26,3 +40,5 @@ jobs:
         run: python -m pip install 'qiskit==2.5.0' 'qiskit-aer==0.17.2'
       - name: Python + Qiskit Aer isomorphic parity
         run: python scripts/validate_matrix_quantum_parity.py --require-qiskit
+      - name: E47 prism parity against live MATRIX adapter
+        run: python scripts/validate_e47_prism_matrix.py --live-adapter
