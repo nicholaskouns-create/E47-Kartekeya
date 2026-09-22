@@ -8,21 +8,21 @@
 <dialog id="dock"><div class="bar"><b id="dockTitle">LAB</b><a id="external" target="_blank" rel="noopener">OPEN SOURCE ↗</a><button id="close">CLOSE ×</button></div><iframe id="frame" allow="fullscreen; autoplay; clipboard-read; clipboard-write"></iframe></dialog>
 <script>
 const LABS=[
-["KARTEKEYA","Canonical engine · K · P47 · K²","⬢","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/kartekeya/"],
-["SPECTRA","Eigenstructure of the same run","〰","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/spectra/"],
-["FOLD","Tracks what survives transformation","◎","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/fold/"],
-["MURMURATION","State evolution into collective motion","✦","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/murmuration/"],
-["EIDOLON","Enter the evolving field as observer","◢","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/eidolon/"],
-["MANTA","State-coupled geometry surface","⌁","../manta/"],
-["DENSITY","Observer-limited measurement","⌗","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/density/"],
-["MNEMOSYNE","Sealed predictions and recall","◉","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/mnemosyne/"],
-["HORIZON","Prospective next-state forecast","⟲","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/horizon/"],
-["SYNTAX JACOB","ATLAS 3I copilot · live JPL data","☄","../syntax-jacob/"],
-["WAVEFORGE","Sonify the mathematics","≋","https://garden-moss-cabin-forest.grok.me/"],
-["SEE / CITADEL","Coordination · evidence · provenance","♜","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/"]
+["KARTEKEYA","Canonical engine · K · P47 · K²","⬢","../kouns-core/?module=kartekeya","same"],
+["SPECTRA","Eigenstructure of the same run","〰","../visualizers/?lab=spectra","same"],
+["FOLD","Tracks what survives transformation","◎","../visualizers/?lab=fold","same"],
+["MURMURATION","State evolution into collective motion","✦","../visualizers/?lab=murmuration","same"],
+["EIDOLON","Enter the evolving field as observer","◢","../kouns-core/?module=eidolon#flight","same"],
+["MANTA","State-coupled geometry surface","⌁","../manta/","same"],
+["DENSITY","Observer-limited measurement","⌗","../visualizers/?lab=density","same"],
+["MNEMOSYNE","Sealed predictions and recall","◉","../visualizers/?lab=mnemosyne","same"],
+["HORIZON","Prospective next-state forecast","⟲","../visualizers/?lab=horizon","same"],
+["SYNTAX JACOB","ATLAS 3I copilot · live JPL data","☄","../syntax-jacob/","same"],
+["WAVEFORGE","Sonify the mathematics","≋","https://garden-moss-cabin-forest.grok.me/","external"],
+["SEE / CITADEL","Coordination · evidence · provenance","♜","https://orbit-coral-delta-fjord.grok.me/","external"]
 ];
 const labs=document.getElementById("labs"),dock=document.getElementById("dock"),frame=document.getElementById("frame"),title=document.getElementById("dockTitle"),external=document.getElementById("external"),packet=document.getElementById("packet");
-LABS.forEach(([n,d,i,u])=>{const a=document.createElement("article");a.className="lab";a.tabIndex=0;a.innerHTML='<div class="icon">'+i+'</div><div><b>'+n+'</b><p>'+d+'</p><span class="open">OPEN IN CITY ↗</span></div>';const open=()=>{title.textContent=n;external.href=u;frame.src=u;dock.showModal()};a.onclick=open;a.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}};labs.appendChild(a)});
+LABS.forEach(([n,d,i,u,mode])=>{const a=document.createElement("article");a.className="lab";a.tabIndex=0;a.innerHTML='<div class="icon">'+i+'</div><div><b>'+n+'</b><p>'+d+'</p><span class="open">'+(mode==="same"?"OPEN IN CITY ↗":"LAUNCH HOSTED ↗")+'</span></div>';const open=()=>{if(mode==="external"){window.open(u,"_blank","noopener,noreferrer");return}title.textContent=n;external.href=u;frame.src=u;dock.showModal()};a.onclick=open;a.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}};labs.appendChild(a)});
 document.getElementById("close").onclick=()=>{frame.src="about:blank";dock.close()};
 let raf=0,start=0,runId="idle",running=false;function tick(ts){if(!running)return;if(!start)start=ts;const t=(ts-start)/1000,p=Math.min(1,t/7),live={run_id:runId,t:+t.toFixed(3),state:p<1?"evolving":"settled",carrier:125,e47:47,complement:Math.max(0,Math.round(78*(1-p))),omega_c:.376,progress:+p.toFixed(4)};packet.textContent=JSON.stringify(live);window.CITY_LIVE_PUBLISH?.(live);if(p<1)raf=requestAnimationFrame(tick);else running=false}function begin(){cancelAnimationFrame(raf);start=0;runId="CITY-LIVE-"+Date.now().toString(36).toUpperCase();running=true;raf=requestAnimationFrame(tick)};run.onclick=begin;replay.onclick=begin;reset.onclick=()=>{running=false;cancelAnimationFrame(raf);start=0;runId="idle";packet.textContent='{"run_id":"idle","state":"ready","carrier":125,"e47":47,"complement":78}'};
 </script><script type="module">import{installCityPulse}from"../shared/city-pulse.js";const pulse=installCityPulse({surface:"CITY LIVE APP"});window.CITY_LIVE_PUBLISH=p=>pulse.publish(p);document.addEventListener("city:pulse",e=>{if(e.detail.source!=="CITY LIVE APP")packet.textContent=JSON.stringify(e.detail)});</script></body></html>
