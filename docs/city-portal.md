@@ -2,7 +2,7 @@
 
 Public route: https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/
 
-The portal presents the 22 destinations supplied on 22 September 2026. It uses
+The portal presents the 23 destinations supplied on 22 September 2026. It uses
 their actual page titles, distinguishes independent SKYRMION, Hover, and City
 editions, and preserves each supplied URL, including query strings and fragments.
 The homepage links directly to the portal.
@@ -16,7 +16,7 @@ The homepage links directly to the portal.
    the manifest and rendered page. Template changes belong in
    `scripts/templates/city-portal.html`.
 
-The page has no build or runtime package dependencies. All 22 destinations are
+The page has no build or runtime package dependencies. All 23 destinations are
 ordinary HTML links before JavaScript loads. JavaScript adds search, five category
 filters, alphabetical sorting, grid/list views, and shareable URL filter state.
 An unknown category falls back to the full collection. Search supports multiple
@@ -48,3 +48,7 @@ node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs \
 The website's existing GitHub Pages workflow publishes `website/` after its
 validation job succeeds. The mathematical core and all simulator code remain
 independent of this presentation change.
+
+## Computational Observatory addition · 2026-09-22
+
+The 23rd destination is **SAT → Newton — Basin Boundary · Box Dimension**, a native GitHub Pages instrument backed by the E1 certificate `MC-SAT-NEWTON-BOXDIM-20260922-001`. Its source, machine-readable result, Notion research record, and Supabase mirror are cross-linked from the instrument.
