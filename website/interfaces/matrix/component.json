@@ -2,10 +2,13 @@
   "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
   "id": "matrix",
   "display_name": "THE MATRIX",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "kind": "quantum-simulator",
   "maturity": "research",
-  "evidence": ["E1", "E2"],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
   "entrypoint": "website/interfaces/matrix/index.html",
   "smoke": {
     "entrypoint": "scripts/check_matrix_mps_worker.mjs",
@@ -14,7 +17,10 @@
   "validation": {
     "entrypoint": "scripts/validate_matrix_quantum_parity.py",
     "command": "python scripts/validate_matrix_quantum_parity.py --require-qiskit",
-    "certificate": "website/data/MC-MATRIX-PARITY-20260921-001.json"
+    "certificate": "website/data/MC-MATRIX-PARITY-20260921-001.json",
+    "prism_entrypoint": "scripts/validate_e47_prism_matrix.py",
+    "prism_command": "python scripts/validate_e47_prism_matrix.py --live-adapter",
+    "prism_certificate": "website/data/MC-MATRIX-E47-PRISM-20260922-001.json"
   },
   "provenance": {
     "receipt_schema": "MATRIX-ISOMORPHIC-PARITY-CERTIFICATE/1.0",
@@ -22,7 +28,10 @@
       "website/interfaces/matrix/mps-worker.js",
       "website/interfaces/matrix/matrix.js",
       "scripts/validate_matrix_quantum_parity.py",
-      "website/data/MC-MATRIX-PARITY-20260921-001.json"
+      "website/data/MC-MATRIX-PARITY-20260921-001.json",
+      "scripts/validate_e47_prism_matrix.py",
+      "supabase/functions/matrix-cube-adapter/index.ts",
+      "website/data/MC-MATRIX-E47-PRISM-20260922-001.json"
     ]
   },
   "telemetry": {
@@ -33,6 +42,7 @@
     "Untruncated MPS parity is checked against an independent dense statevector and Qiskit Aer.",
     "The 2^n to 125 step is an explicit normalized feature map, not a Hilbert-space isomorphism.",
     "E47 analysis begins only after the typed 125-state lift.",
-    "The 125 to 128 map is an isometric embedding with three invalid padding states."
+    "The 125 to 128 map is an isometric embedding with three invalid padding states.",
+    "The E47 prism panel resolves the typed 125-feature vector across Casimir eigenspaces; its band weights are state-dependent and the 47/125 rank fraction is not a universal state probability."
   ]
 }
