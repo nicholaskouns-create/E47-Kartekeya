@@ -81,9 +81,38 @@ def product(c):
     return dict(Lg_spectrum=[float(x) for x in le],dim_ker_Lg=int(Z.shape[1]),nullity=int(m.sum()),trace=float(np.trace(PP).real),PL_idem=float(np.linalg.norm(PL@PL-PL,2)),LPL=float(np.linalg.norm(L@PL,2)),P_idem=float(np.linalg.norm(PP@PP-PP,2)),ann=float(np.linalg.norm(A@PP,2)),gap=float(ae[~m].min()))
 
 def ppwave(c):
-    u,x,y=sp.symbols('u x y',real=True); F=sp.Function('F')(u); H=F*(x*x-y*y)
-    Ruu=sp.simplify(-(sp.diff(H,x,2)+sp.diff(H,y,2))/2); Rxx=sp.simplify(-sp.diff(H,x,2)/2); Ryy=sp.simplify(-sp.diff(H,y,2)/2)
-    return dict(vacuum=bool(Ruu==0),R_uxux=str(Rxx),R_uyuy=str(Ryy),independent_47=True,proj=float(np.linalg.norm(c['U']@c['P']-c['U'],2)),op=float(np.linalg.norm(c['U']@c['K2'],2)))
+    # Derive the Brinkmann connection, Ricci tensor and selected Riemann
+    # components directly from the metric, rather than inserting a known formula.
+    u,v,x,y=sp.symbols('u v x y',real=True); coords=[u,v,x,y]; n=4
+    H=sp.Function('H')(u,x,y)
+    g=sp.Matrix([[H,-1,0,0],[-1,0,0,0],[0,0,1,0],[0,0,0,1]])
+    gi=sp.simplify(g.inv())
+    Gamma=[[[sp.simplify(sum(gi[a,d]*(sp.diff(g[d,c0],coords[b])+sp.diff(g[d,b],coords[c0])-sp.diff(g[b,c0],coords[d])) for d in range(n))/2) for c0 in range(n)] for b in range(n)] for a in range(n)]
+    R=[[[[sp.Integer(0) for _ in range(n)] for _ in range(n)] for _ in range(n)] for _ in range(n)]
+    for a in range(n):
+        for b in range(n):
+            for c0 in range(n):
+                for d in range(n):
+                    e=sp.diff(Gamma[a][b][d],coords[c0])-sp.diff(Gamma[a][b][c0],coords[d])
+                    e+=sum(Gamma[a][c0][q]*Gamma[q][b][d]-Gamma[a][d][q]*Gamma[q][b][c0] for q in range(n))
+                    R[a][b][c0][d]=sp.simplify(e)
+    Ric=sp.MutableDenseMatrix(n,n,[0]*16)
+    for b in range(n):
+        for d in range(n): Ric[b,d]=sp.simplify(sum(R[a][b][a][d] for a in range(n)))
+    def rlow(a,b,c0,d): return sp.simplify(sum(g[a,q]*R[q][b][c0][d] for q in range(n)))
+    expected=-sp.diff(H,x,2)/2-sp.diff(H,y,2)/2
+    ricci_reduction=(sp.simplify(Ric[0,0]-expected)==0 and all(sp.simplify(Ric[i,j])==0 for i in range(4) for j in range(4) if (i,j)!=(0,0)))
+    F=sp.Function('F')(u); Hpw=F*(x*x-y*y)
+    Ricpw=Ric.applyfunc(lambda e: sp.simplify(e.subs(H,Hpw).doit()))
+    Rxx=sp.simplify(rlow(0,2,0,2).subs(H,Hpw).doit()); Ryy=sp.simplify(rlow(0,3,0,3).subs(H,Hpw).doit()); Rxy=sp.simplify(rlow(0,2,0,3).subs(H,Hpw).doit())
+    vacuum=all(sp.simplify(e)==0 for e in Ricpw)
+    # Residual affine Brinkmann gauge projector: subtract transverse 0th/1st jet.
+    A0,Ax,Ay,Qp,Qx=[sp.Function(z)(u) for z in ('A0','Ax','Ay','Qp','Qx')]
+    Htest=A0+Ax*x+Ay*y+Qp*(x*x-y*y)+2*Qx*x*y
+    def Pi(e): return sp.expand(e-e.subs({x:0,y:0})-x*sp.diff(e,x).subs({x:0,y:0})-y*sp.diff(e,y).subs({x:0,y:0}))
+    projected=sp.simplify(Pi(Htest))
+    phys=(sp.simplify(projected-(Qp*(x*x-y*y)+2*Qx*x*y))==0 and sp.simplify(Pi(projected)-projected)==0 and sp.simplify(Pi(Hpw)-Hpw)==0)
+    return dict(ricci_reduction=bool(ricci_reduction),vacuum=bool(vacuum),R_uxux=str(Rxx),R_uyuy=str(Ryy),R_uxuy=str(Rxy),physical_projector=bool(phys),independent_47=True,proj=float(np.linalg.norm(c['U']@c['P']-c['U'],2)),op=float(np.linalg.norm(c['U']@c['K2'],2)))
 
 def main():
     c=carrier(); ce=np.linalg.eigvalsh((c['C']+c['C'].conj().T)/2); q=np.rint(ce).astype(int); u,n=np.unique(q,return_counts=True); spec={int(a):int(b) for a,b in zip(u,n)}
@@ -97,7 +126,7 @@ def main():
       'gap_11664':abs(gap-11664)<1e-6,'norm_186624':abs(norm-186624)<1e-5,'eps_star':abs(2/(gap+norm)-1/99144)<1e-14,'rho_star':abs((norm-gap)/(norm+gap)-15/17)<1e-12,
       'Jz_5V2_plus_2V5':jm==expect,'commutant_dim_29':cr==29,'commutant_commutes':cc<1e-8,'matrix_unit_law':cm<1e-8,'Jz1_zero_mult_11':d['zero_mult']==11,
       'unitary_dynamics':d['unitary']<1e-12,'lift_preserves_P':d['comm']<1e-10,'zero_leakage':d['leak']<1e-10,'product_nullity_47':p['nullity']==47,'product_base_kernel':p['PL_idem']<1e-12 and p['LPL']<1e-12,'product_projector':p['P_idem']<1e-10,'product_annihilation':p['ann']<1e-7,
-      'ppwave_vacuum':w['vacuum'],'ppwave_curvature':w['R_uxux']=='-F(u)' and w['R_uyuy']=='F(u)','47_profiles_independent':w['independent_47'],'projector_intertwiner':w['proj']<1e-9,'Einstein_operator_intertwiner':w['op']<1e-7}
+      'ppwave_vacuum':w['ricci_reduction'] and w['vacuum'],'ppwave_curvature':w['R_uxux']=='-F(u)' and w['R_uyuy']=='F(u)' and w['R_uxuy']=='0' and w['physical_projector'],'47_profiles_independent':w['independent_47'],'projector_intertwiner':w['proj']<1e-9,'Einstein_operator_intertwiner':w['op']<1e-7}
     checks={k:bool(v) for k,v in checks.items()}
     cert={'schema':'MC-E47-EINSTEIN-FULL-CLOSURE/1.0','status':'PASS' if all(checks.values()) else 'FAIL','checks':checks,
       'e47':{'spectrum':spec,'kernel_dimension':47,'P_residual':float(np.linalg.norm(c['P']@c['P']-c['P'],2)),'KP_residual':float(np.linalg.norm(c['K']@c['P'],2)),'K2P_residual':float(np.linalg.norm(c['K2']@c['P'],2)),'gap':gap,'norm':norm,'epsilon_star':2/(gap+norm),'rho_star':(norm-gap)/(norm+gap),'Jz_multiplicity':{str(k):v for k,v in jm.items()},'decomposition':'5V_2 + 2V_5','commutant':'M_5(C) + M_2(C)','commutant_dimension':cr,'commutator_residual':cc,'matrix_unit_residual':cm},
