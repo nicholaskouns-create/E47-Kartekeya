@@ -37,6 +37,21 @@ research/e47/validation/e47_einstein_full_closure_certificate.py
 Machine receipt:
 artifacts/E47_EINSTEIN_FULL_CLOSURE_CERTIFICATE.json
 
+## Successor closure
+
+The two stronger obligations left open by this certificate are now addressed by
+[MC-E47-INTRINSIC-SPACETIME-UNMARKED/1.0](E47_Intrinsic_Lorentzian_Unmarked_Proof.md).
+
+Using the full locked tensor-cube datum, not the abstract rank-47 projector alone, the successor constructs
+\[
+\eta_E=2P_{47}-I,
+\]
+derives an intrinsic Lorentzian four-plane with pullback signature \((-+++ )\), and gives an injective 47-real-dimensional family
+\[
+E_{47}^{\mathbb R}\hookrightarrow \operatorname{Ein}_{\rm vac}(M_E)/\operatorname{Diff}(M_E).
+\]
+The machine certificate passes 24/24 checks.
+
 ## Boundary
 
-This closes the finite spectral theorem, representation decomposition, 29-dimensional commutant, invariant E₄₇ dynamics, explicit product-kernel witness, exact marked Brinkmann vacuum family, 47 curvature profiles, and both stated intertwiners in that sector. Intrinsic derivation of the Lorentzian manifold from E47 and injectivity in the completely unmarked full Einstein moduli space modulo all diffeomorphisms remain stronger separate obligations.
+This certificate remains the authority for the marked nonlinear Einstein construction. Its former intrinsic-spacetime and unmarked-moduli obligations have a successor certificate. The successor does not claim that bare \(P_{47}\) alone determines spacetime, nor that E47 parametrizes the entire Einstein moduli space.
