@@ -24,5 +24,15 @@
   "evidence_class": "E1",
   "scope": "software/numerical quantum-simulation parity; no hardware or experimental claim",
   "notion_page_id": "3dd46094-fd30-8072-b5c2-ef223460c15b",
-  "supabase_surface_code": "MATRIX-QUANTUM-SIMULATOR"
+  "supabase_surface_code": "MATRIX-QUANTUM-SIMULATOR",
+  "formalism": {
+    "code": "E47-PRISM-FORMALISM-20260922",
+    "github": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md",
+    "notion": "https://app.notion.com/p/3e346094fd30818e99c1d04635983c62?pvs=204",
+    "notion_formalism_id": "FRM-96",
+    "google_drive": "https://docs.google.com/document/d/1wCmn5J4Tjo0qVV5AOoHUxD1tXComhPf7lU1ntzKtaMs/edit",
+    "supabase": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter",
+    "supabase_identity": "E47-PRISM-20260922",
+    "certificate": "MC-MATRIX-E47-PRISM-20260922-001"
+  }
 }
