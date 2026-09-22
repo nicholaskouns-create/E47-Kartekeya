@@ -505,6 +505,25 @@
       "pageTitle": "SAT → Newton → Basin Boundary",
       "httpStatus": 200,
       "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "python-validation",
+      "number": 24,
+      "name": "Python Validation",
+      "edition": "Executable Corpus",
+      "category": "mathematics",
+      "description": "Browse the Mathematical City’s executable Python witnesses, validation scripts, certificates, and provenance routes.",
+      "role": "Executable research",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/validation",
+      "image": "../../assets/scientific-app-ecosystem-share.png",
+      "imageSource": {
+        "provider": "GitHub",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/validation",
+        "role": "Executable validation corpus"
+      },
+      "pageTitle": "Python Validation",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
     }
   ]
 }
