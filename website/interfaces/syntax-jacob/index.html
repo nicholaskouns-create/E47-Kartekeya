@@ -150,5 +150,14 @@ VZ —</pre>
 import {installInstrumentTelemetry} from "../shared/instrument-telemetry.js";
 installInstrumentTelemetry({componentId:"syntax-jacob",version:"1.2.0"});
 </script>
+<script type="module">
+import {installCityPulse} from "../shared/city-pulse.js";
+const cityPulse=installCityPulse({surface:"SYNTAX JACOB",onPulse(packet){
+ document.documentElement.dataset.cityPulse=packet.state||"live";
+ document.dispatchEvent(new CustomEvent("syntax-jacob:city-pulse",{detail:packet}));
+ const cap=document.getElementById("capture");if(cap&&Number.isFinite(packet.progress))cap.dataset.cityPulse=String(packet.progress);
+}});
+window.CITY_PULSE_BUS=cityPulse;
+</script>
 </body>
 </html>
