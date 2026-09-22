@@ -1,0 +1,23 @@
+{
+  "schema":"MATHEMATICAL-CITY-MACHINE-CERTIFICATE-1.0",
+  "certificate_code":"MC-SAT-NEWTON-BOXDIM-20260922-001",
+  "title":"SAT Newton Basin Boundary Box-Counting Certificate",
+  "evidence_class":"E1",
+  "valid":true,
+  "scope":"finite-resolution numerical geometry of a 2D initial-condition slice",
+  "measurement":{
+    "resolutions":[96,128,192,256,384,512],
+    "high_resolution_mean_dimension":1.1498975519417334,
+    "high_resolution_range":[1.1356637850327658,1.1588068411588979],
+    "distance_to_nearest_integer":0.14989755194173338,
+    "noninteger_across_high_resolution_range":true,
+    "all_unresolved_fractions_zero":true,
+    "minimum_fit_r2":0.9948629035710446,
+    "robustness":{"boundary_definitions":["4-neighbor","8-neighbor"],"resolutions":[256,384,512],"fit_window":"drop finest pixel scale","dimension_range":[1.1252727299408924,1.158806841158898],"mean_dimension":1.1422692825606162}
+  },
+  "result":{
+    "status":"PASS",
+    "statement":"The measured 2D basin boundary is numerically consistent with a noninteger box-counting dimension over the tested finite-resolution scaling window; the conclusion persists under 4-neighbor/8-neighbor boundary definitions and fit-window variation.",
+    "boundary":"Finite-resolution E1 numerical result for one explicit 3-SAT polynomial system and one 2-D initial-condition slice; not a proof of a universal fractal dimension or a polynomial-time SAT algorithm."
+  }
+}
