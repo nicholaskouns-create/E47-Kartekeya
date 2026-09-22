@@ -1,10 +1,12 @@
 # Instrument directory
 
-[Repository home](../README.md) · [Documentation](README.md) · [Open the City](https://nicholaskouns-create.github.io/E47-Kartekeya/)
+[Repository home](../README.md) · [Documentation](README.md) · [Open the City](https://nicholaskouns-create.github.io/E47-Kartekeya/) · **[Open the instrument portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/)**
 
 Start with **[EIDOLON flight](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)**. Every interface below also has its own direct route.
 
 This directory maps the browser interfaces present in the repository. A route identifies the interface and its source; external-service availability and browser rendering are separate runtime checks.
+
+The live portal at [`/interfaces/instruments/`](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) is the executable surface of this file. It does not replace [city-live](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/) (hosted workshop labs). Independent instruments remain independently addressable.
 
 ## Flight and propulsion
 
