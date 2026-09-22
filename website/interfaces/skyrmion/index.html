@@ -129,4 +129,13 @@ document.getElementById('startFlight')?.addEventListener('click',()=>document.bo
 import {installInstrumentTelemetry} from "../shared/instrument-telemetry.js";
 installInstrumentTelemetry({componentId:"skyrmion",version:"2.3.0"});
 </script>
+<script type="module">
+import {installCityPulse} from "../shared/city-pulse.js";
+const cityPulse=installCityPulse({surface:"SKYRMION",onPulse(packet){
+ document.documentElement.dataset.cityPulse=packet.state||"live";
+ document.dispatchEvent(new CustomEvent("skyrmion:city-pulse",{detail:packet}));
+ if(packet.state==="evolving")document.body.dataset.cityLive="1";else delete document.body.dataset.cityLive;
+}});
+window.CITY_PULSE_BUS=cityPulse;
+</script>
 </body></html>
