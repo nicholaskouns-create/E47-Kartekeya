@@ -2,8 +2,24 @@
 
 **Obligation:** E47-EIN-PHYS-001  
 **Decision:** Outcome 3 — conditional construction  
-**Status:** CONDITIONAL PASS  
+**Status:** CONDITIONAL PASS · explicit marked-Brinkmann executable PASS  
 **Scope:** exact finite E47 algebra + theorem-level conditional nonlinear Einstein construction
+
+## Executable upgrade
+
+The previously declared Einstein-side gates now have an explicit marked-sector realization. The certificate MC-E47-EINSTEIN-FULL-CLOSURE/1.0 constructs the Brinkmann family
+
+H_a(u,x,y)=u^a(x^2-y^2),  a=0,...,46,
+
+proves Ric(g)=0 exactly, verifies nonzero curvature, establishes 47 curvature-independent modes, and checks both intertwining identities numerically. It also adds the explicit product-kernel witness, the 5V_2 + 2V_5 decomposition, the 29-dimensional commutant with matrix units, and invariant E47 dynamics.
+
+Primary executable:
+research/e47/validation/e47_einstein_full_closure_certificate.py
+
+Machine receipt:
+artifacts/E47_EINSTEIN_FULL_CLOSURE_CERTIFICATE.json
+
+The completely unmarked quotient by all diffeomorphisms and intrinsic derivation of spacetime from E47 remain stronger separate obligations.
 
 ## 1. E47 side
 
@@ -164,7 +180,10 @@ That failure is not erased by this conditional construction.
 
 ## 8. Machine paths
 
-Primary reconstruction:
+Current full executable:
+`research/e47/validation/e47_einstein_full_closure_certificate.py`
+
+Retained predecessor:
 `research/e47/validation/e47_einstein_conditional_validation.py`
 
 Independent City parity reconstruction:
