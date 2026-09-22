@@ -486,6 +486,25 @@
       "pageTitle": "Density",
       "httpStatus": 200,
       "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "sat-newton-fractal",
+      "number": 23,
+      "name": "SAT → Newton",
+      "edition": "Basin Boundary · Box Dimension",
+      "category": "mathematics",
+      "description": "Measure the basin boundary of a clause-generated polynomial Gauss–Newton system across increasing resolution.",
+      "role": "Complexity geometry",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",
+      "image": "../../assets/scientific-app-ecosystem-share.png",
+      "imageSource": {
+        "provider": "GitHub Pages",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",
+        "role": "Mathematical City E1 computational observatory"
+      },
+      "pageTitle": "SAT → Newton → Basin Boundary",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
     }
   ]
 }
