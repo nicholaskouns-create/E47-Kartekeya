@@ -171,7 +171,7 @@ The E47 bands contribute zero to this energy because \(K(6)=K(30)=0\).
 
 ## 6. Machine parity
 
-The live Supabase \`matrix-cube-adapter@2\` independently resolves all seven bands from the typed 125-state vector.
+The live Supabase \`matrix-cube-adapter@3\` independently resolves all seven bands from the typed 125-state vector.
 
 Certified parity:
 
@@ -205,6 +205,15 @@ Canonical implementation surfaces:
 
 ## 9. Cross-platform authorities
 
-This record is the GitHub mathematical authority for the prism formalism. The Notion and Google Drive mirrors are linked here after promotion; Supabase carries the executable witness plus City registry rows.
+- GitHub mathematical authority: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md
+- Notion Formalism Registry: https://app.notion.com/p/3e346094fd30818e99c1d04635983c62?pvs=204 · `FRM-96`
+- Google Drive long-form mirror: https://docs.google.com/document/d/1wCmn5J4Tjo0qVV5AOoHUxD1tXComhPf7lU1ntzKtaMs/edit
+- Live MATRIX: https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/
+- Machine receipt: https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-MATRIX-E47-PRISM-20260922-001.json
+- Supabase executable witness: https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter · `matrix-cube-adapter@3`
+- Supabase City identity: `E47-PRISM-20260922`
+- Supabase machine certificate: `MC-MATRIX-E47-PRISM-20260922-001`
+
+The four surfaces are mirrors of one typed object, not independent claims. GitHub holds the mathematical authority, Notion holds the registry record, Drive holds the readable mirror, and Supabase holds the executable witness plus provenance registry.
 
 > A prism does not create the spectrum. It makes the hidden spectrum visible.
