@@ -2,7 +2,7 @@
 
 ![THE MATRIX Quantum Simulator](../website/assets/matrix/matrix-cover.jpg)
 
-[Open MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Machine certificate](../website/data/MC-MATRIX-PARITY-20260921-001.json) · [Python validator](../scripts/validate_matrix_quantum_parity.py)
+[Open MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Parity certificate](../website/data/MC-MATRIX-PARITY-20260921-001.json) · [E47 prism certificate](../website/data/MC-MATRIX-E47-PRISM-20260922-001.json) · [Prism formalism](../research/e47/E47_Prism_Spectral_Formalism.md) · [Python validator](../scripts/validate_matrix_quantum_parity.py)
 
 ## Status
 
@@ -83,7 +83,7 @@ or **37.50481713367275%** for this state. The rank fraction is (47/125=0.376), s
 
 That near numerical agreement is an observed property of this circuit/lift, not an identity for arbitrary states. The individual band weights are strongly non-uniform, so the result is not a flat dimension-proportional spectrum.
 
-The **E47 PRISM TEST** button runs the certified configuration, performs the documented 256→125 typed lift, requests the seven projectors from the live `matrix-cube-adapter@2`, and checks their sum and (P_6+P_{30}) parity.
+The **E47 PRISM TEST** button runs the certified configuration, performs the documented 256→125 typed lift, requests the seven projectors from the live `matrix-cube-adapter@3`, and checks their sum and (P_6+P_{30}) parity.
 
 Reproduce locally:
 
@@ -91,6 +91,9 @@ Reproduce locally:
 python scripts/validate_e47_prism_matrix.py
 python scripts/validate_e47_prism_matrix.py --live-adapter
 ```
+
+Cross-platform authority: [GitHub formalism](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md) · [Notion FRM-96](https://app.notion.com/p/3e346094fd30818e99c1d04635983c62?pvs=204) · [Drive mirror](https://docs.google.com/document/d/1wCmn5J4Tjo0qVV5AOoHUxD1tXComhPf7lU1ntzKtaMs/edit) · [live Supabase adapter](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter).
+
 
 ## Scientific boundary
 
