@@ -1,0 +1,89 @@
+{
+  "schema": "MC-E47-INTRINSIC-SPACETIME-UNMARKED/1.0",
+  "status": "PASS",
+  "checks": {
+    "carrier_125": true,
+    "casimir_spectrum": true,
+    "projector_rank_47": true,
+    "projector_real": true,
+    "eta_selfadjoint": true,
+    "eta_involution": true,
+    "eta_inertia_47_78": true,
+    "uniform_state_normalized": true,
+    "time_direction_nonzero": true,
+    "time_in_complement": true,
+    "cube_spatial_rank_3": true,
+    "cube_spatial_gram_positive": true,
+    "space_in_kernel": true,
+    "intrinsic_4frame_rank": true,
+    "lorentzian_pullback": true,
+    "lorentzian_determinant": true,
+    "canonical_real_basis_47": true,
+    "canonical_basis_orthonormal": true,
+    "canonical_basis_in_E47": true,
+    "brinkmann_ricci_derived": true,
+    "profile_tracefree_vacuum": true,
+    "profile_nonflat": true,
+    "anchor_coefficients_78_77_47": true,
+    "unmarked_affine_rigidity": true
+  },
+  "intrinsic_spacetime": {
+    "fundamental_symmetry": "eta = 2 P47 - I",
+    "eta_inertia": {
+      "positive": 47,
+      "negative": 78
+    },
+    "basepoint": "P47 Omega, Omega = 125^(-1/2) sum_cube |m1,m2,m3>",
+    "time_raw": "K^2 Omega",
+    "space_raw": [
+      "P47 Jz^(1) Omega",
+      "P47 Jz^(2) Omega",
+      "P47 Jz^(3) Omega"
+    ],
+    "spatial_gram_eigenvalues": [
+      0.011428571428571566,
+      1.5191887963574155,
+      1.5191887963574193
+    ],
+    "pullback_gram": [
+      [
+        -0.9999999999999999,
+        -3.2057079981741085e-16,
+        4.9501739180792477e-17,
+        1.8905254836985707e-16
+      ],
+      [
+        -2.1398204159205742e-16,
+        0.9999999999999949,
+        -4.771167209375357e-15,
+        -6.040842110197607e-15
+      ],
+      [
+        3.651669680335605e-17,
+        -4.736161058367201e-15,
+        0.9999999999999951,
+        -2.2674828601775748e-15
+      ],
+      [
+        2.6447065028879897e-17,
+        -6.036833712203806e-15,
+        -2.2472385879227435e-15,
+        0.9999999999999957
+      ]
+    ],
+    "pullback_residual_to_Minkowski": 1.3682514567976793e-14,
+    "determinant": -0.9999999999999856
+  },
+  "unmarked_moduli_embedding": {
+    "real_domain_dimension": 47,
+    "canonical_basis": "pivot Gram-Schmidt of columns P47 e_n in lexicographic cube basis",
+    "profile": "F_q(u)=u^78+u^47+sum_{a=0}^{46} c_a(q) u^a",
+    "metric": "g_q=-2 du dv+dx^2+dy^2+F_q(u)(x^2-y^2)du^2",
+    "rigidity_coeff_u78": "a**80*s",
+    "rigidity_coeff_u77": "78*a**79*b*s",
+    "rigidity_coeff_u47_before_b0": "a**49*s*(5325020998862991666240*b**31 + 1)",
+    "rigidity_conclusion": "isometry => s=1, a=1, b=0 => all c_a equal => q equal",
+    "correspondence": "E47_R bijects with its image M_E47 inside Ricci-flat Lorentzian metrics / Diff"
+  },
+  "boundary": "This is an injective correspondence onto a 47-real-dimensional plane-wave subfamily of the full unmarked vacuum Einstein moduli space, not a parametrization of the entire Einstein moduli space. The intrinsic spacetime uses the full locked tensor-cube datum (ordered V2^\u22973 product basis and factor generators), not the abstract projector P47 stripped of that structure."
+}
