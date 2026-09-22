@@ -56,6 +56,42 @@ After the typed 125-state lift, the independent Python reconstruction verifies:
 
 For the 125 → 128 embedding, both the isometry residual and the R47 intertwiner residual are exactly zero at the reported numerical precision, with zero population in padding states 125..127.
 
+
+## E47 prism experiment
+
+MATRIX 2.1 exposes the Casimir decomposition of the typed 125-feature vector as a seven-band spectral witness. The certified configuration is the same one used by the parity certificate: **8 qubits, 24 layers, χ = 16, φ = 0.7**, ideal brickwork evolution.
+
+Independent Python reconstruction gives:
+
+| Casimir λ | Multiplicity | State weight |
+|---:|---:|---:|
+| 0 | 1 | 0.003873208953955917 |
+| 2 | 9 | 0.06049575013782006 |
+| **6** | **25** | **0.12153223655298497** |
+| 12 | 28 | 0.17853315216187027 |
+| 20 | 27 | 0.17702406495212444 |
+| **30** | **22** | **0.25351593478374257** |
+| 42 | 13 | 0.2050256524575022 |
+
+The weights sum to (1) to floating-point precision. The two selected bands give
+
+[
+w_{E47}=w_6+w_{30}=0.3750481713367275,
+]
+
+or **37.50481713367275%** for this state. The rank fraction is (47/125=0.376), so this particular circuit state lies **0.095182866327248 percentage points below** the isotropic rank fraction.
+
+That near numerical agreement is an observed property of this circuit/lift, not an identity for arbitrary states. The individual band weights are strongly non-uniform, so the result is not a flat dimension-proportional spectrum.
+
+The **E47 PRISM TEST** button runs the certified configuration, performs the documented 256→125 typed lift, requests the seven projectors from the live `matrix-cube-adapter@2`, and checks their sum and (P_6+P_{30}) parity.
+
+Reproduce locally:
+
+```bash
+python scripts/validate_e47_prism_matrix.py
+python scripts/validate_e47_prism_matrix.py --live-adapter
+```
+
 ## Scientific boundary
 
 - THE MATRIX is a **software quantum simulator**, not a quantum computer.
