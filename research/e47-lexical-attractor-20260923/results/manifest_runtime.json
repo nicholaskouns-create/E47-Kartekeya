@@ -1,0 +1,336 @@
+{
+  "schema": "E47-LEXICAL-ATTRACTOR-1.0",
+  "normalization": "N(N(s))=N(s)",
+  "terms": [
+    {
+      "id": "grammar.ambient",
+      "namespace": "grammar",
+      "glyph": "Σ",
+      "python_name": "Σ",
+      "meaning": "Ambient state space",
+      "type": "Space[C,125]",
+      "aliases": [
+        "Sigma",
+        "ambient space"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.selector",
+      "namespace": "grammar",
+      "glyph": "K",
+      "python_name": "K",
+      "meaning": "(C−6I)(C−30I)",
+      "type": "End[C^125]",
+      "aliases": [
+        "kernel operator",
+        "selector"
+      ],
+      "sources": [
+        "kernel",
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.survivor",
+      "namespace": "grammar",
+      "glyph": "Ψ",
+      "python_name": "Ψ",
+      "meaning": "ker K; represented by a 125×47 orthonormal basis",
+      "type": "Subspace[C^125,47]",
+      "aliases": [
+        "Psi",
+        "E47",
+        "E₄₇",
+        "ker K"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.contraction",
+      "namespace": "grammar",
+      "glyph": "Γ",
+      "python_name": "Γ",
+      "meaning": "I−εK†K; equals I−εK² here",
+      "type": "End[C^125]",
+      "aliases": [
+        "Gamma",
+        "contraction"
+      ],
+      "sources": [
+        "contract",
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.projector",
+      "namespace": "grammar",
+      "glyph": "Λ",
+      "python_name": "Λ",
+      "meaning": "P47, the asymptotic projection",
+      "type": "End[C^125]",
+      "aliases": [
+        "Lambda",
+        "P47",
+        "P₄₇",
+        "projector"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.coherence",
+      "namespace": "grammar",
+      "glyph": "Ω",
+      "python_name": "Ω",
+      "meaning": "||P47 x||²/||x||² for nonzero x",
+      "type": "C^125\\{0} -> R",
+      "aliases": [
+        "Omega",
+        "coherence"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.interpretation",
+      "namespace": "grammar",
+      "glyph": "I",
+      "python_name": "I",
+      "meaning": "Caller-supplied interpretation/readout",
+      "type": "E47 -> J",
+      "aliases": [
+        "𝓘",
+        "𝕀",
+        "interpretation",
+        "readout"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.memory",
+      "namespace": "grammar",
+      "glyph": "M",
+      "python_name": "M",
+      "meaning": "Caller-supplied Mnemosyne regeneration",
+      "type": "J -> C^125",
+      "aliases": [
+        "𝓜",
+        "Mnemosyne",
+        "memory"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "grammar.next",
+      "namespace": "grammar",
+      "glyph": "Σ′",
+      "python_name": "Σ_next",
+      "meaning": "Regenerated state; next ambient carrier is C^125 in this implementation",
+      "type": "C^125",
+      "aliases": [
+        "Σ'",
+        "Σ’",
+        "Sigma_next",
+        "Sigma prime"
+      ],
+      "sources": [
+        "notiongrammar"
+      ]
+    },
+    {
+      "id": "algebra.identity",
+      "namespace": "algebra",
+      "glyph": "I",
+      "python_name": "I_identity",
+      "meaning": "125×125 identity matrix",
+      "type": "End[C^125]",
+      "aliases": [
+        "identity",
+        "I125"
+      ],
+      "sources": [
+        "kernel"
+      ]
+    },
+    {
+      "id": "algebra.ratio",
+      "namespace": "algebra",
+      "glyph": "Ω_c",
+      "python_name": "Omega_c",
+      "meaning": "Exact rank fraction 47/125",
+      "type": "Q",
+      "aliases": [
+        "OMEGA_C",
+        "omega_c"
+      ],
+      "sources": [
+        "kernel",
+        "attachment"
+      ]
+    },
+    {
+      "id": "block.cosmological",
+      "namespace": "block",
+      "glyph": "Λ",
+      "python_name": "Lambda",
+      "meaning": "R/2 in block Einstein closure",
+      "type": "R",
+      "aliases": [
+        "Lambda",
+        "Lambda_forced"
+      ],
+      "sources": [
+        "attachment"
+      ]
+    },
+    {
+      "id": "block.complement",
+      "namespace": "block",
+      "glyph": "Q",
+      "python_name": "Q",
+      "meaning": "I−P47",
+      "type": "End[C^125]",
+      "aliases": [
+        "complement projector"
+      ],
+      "sources": [
+        "attachment"
+      ]
+    },
+    {
+      "id": "geometry.connection",
+      "namespace": "geometry",
+      "glyph": "Γ",
+      "python_name": "Gamma",
+      "meaning": "Levi-Civita connection coefficients",
+      "type": "Tensor[4,4,4]",
+      "aliases": [
+        "Gamma",
+        "Gamma_r_mn"
+      ],
+      "sources": [
+        "research/e47-current-20260922/e47_bures_fisher_curvature_validation.py"
+      ]
+    },
+    {
+      "id": "geometry.seed",
+      "namespace": "geometry",
+      "glyph": "Ω",
+      "python_name": "Omega",
+      "meaning": "Normalized equal-amplitude cube state",
+      "type": "C^125",
+      "aliases": [
+        "uniform state"
+      ],
+      "sources": [
+        "intrinsic",
+        "drivecurrent"
+      ]
+    },
+    {
+      "id": "geometry.generators",
+      "namespace": "geometry",
+      "glyph": "M",
+      "python_name": "M",
+      "meaning": "Three first-factor generators in K² eigenbasis",
+      "type": "List[End[C^125]]",
+      "aliases": [
+        "fiber generators"
+      ],
+      "sources": [
+        "research/e47-current-20260922/e47_bures_fisher_curvature_validation.py"
+      ]
+    },
+    {
+      "id": "prior_snippet.evolution",
+      "namespace": "prior_snippet",
+      "glyph": "Ψ",
+      "python_name": "Ψ",
+      "meaning": "User-supplied state evolution in prior assistant snippet",
+      "type": "C^125 -> C^125",
+      "aliases": [
+        "Psi"
+      ],
+      "sources": [
+        "conversation:prior-assistant-code"
+      ]
+    },
+    {
+      "id": "prior_snippet.gate",
+      "namespace": "prior_snippet",
+      "glyph": "Ω",
+      "python_name": "Ω",
+      "meaning": "Boolean residual test in prior assistant snippet",
+      "type": "bool",
+      "aliases": [
+        "Omega"
+      ],
+      "sources": [
+        "conversation:prior-assistant-code"
+      ]
+    },
+    {
+      "id": "prior_snippet.state",
+      "namespace": "prior_snippet",
+      "glyph": "M",
+      "python_name": "M",
+      "meaning": "State vector in prior assistant snippet",
+      "type": "C^125",
+      "aliases": [
+        "state"
+      ],
+      "sources": [
+        "conversation:prior-assistant-code"
+      ]
+    },
+    {
+      "id": "prior_snippet.aggregate",
+      "namespace": "prior_snippet",
+      "glyph": "Σ",
+      "python_name": "Σ",
+      "meaning": "Sum of inputs in prior assistant snippet",
+      "type": "C^125",
+      "aliases": [
+        "Sigma"
+      ],
+      "sources": [
+        "conversation:prior-assistant-code"
+      ]
+    },
+    {
+      "id": "base5.carrier",
+      "namespace": "base5",
+      "glyph": "Σ",
+      "python_name": "BASE5_CARRIER",
+      "meaning": "Quinary carrier with separately typed five-tier register",
+      "type": "FiniteSet[125]",
+      "aliases": [
+        "Base 5 carrier",
+        "quinary carrier",
+        "Base-five pyramid",
+        "five-tier pyramid",
+        "5 x 5 x 5 carrier",
+        "125-state carrier",
+        "powers of five pyramid",
+        "Python Base 5 renderer",
+        "typed quinary object",
+        "the invariant Base 5 pyramid carrier"
+      ],
+      "sources": [
+        "drivelexical",
+        "lexicalrows"
+      ]
+    }
+  ]
+}
