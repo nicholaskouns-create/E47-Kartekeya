@@ -1,0 +1,74 @@
+{
+  "schema": "E47-INDEPENDENT-REPRODUCTION-20260922",
+  "status": "PASS",
+  "passed": 25,
+  "total": 25,
+  "checks": {
+    "carrier_dim_125": true,
+    "casimir_spectrum": true,
+    "kernel_dim_47": true,
+    "projector_rank_47": true,
+    "P_idempotent": true,
+    "KP_zero": true,
+    "K2P_zero": true,
+    "gap_11664": true,
+    "norm_186624": true,
+    "eps_star": true,
+    "rho_star": true,
+    "Jz_5V2_plus_2V5": true,
+    "commutant_dim_29": true,
+    "commutant_commutes": true,
+    "matrix_unit_law": true,
+    "Jz1_zero_mult_11": true,
+    "unitary_dynamics": true,
+    "lift_preserves_P": true,
+    "zero_leakage": true,
+    "product_nullity_47": true,
+    "product_base_kernel": true,
+    "product_projector": true,
+    "product_annihilation": true,
+    "ppwave_vacuum": true,
+    "ppwave_curvature": true
+  },
+  "e47": {
+    "spectrum": {
+      "0": 1,
+      "2": 9,
+      "6": 25,
+      "12": 28,
+      "20": 27,
+      "30": 22,
+      "42": 13
+    },
+    "kernel_dimension": 47,
+    "commutant_dimension": 29,
+    "commutator_residual": 4.726614442421719e-14,
+    "matrix_unit_residual": 7.840308108805288e-15,
+    "gap": 11663.999999999962,
+    "norm": 186624.00000000003,
+    "epsilon_star": 1.0086339062373921e-05,
+    "rho_star": 0.8823529411764709
+  },
+  "dynamics": {
+    "zero_mult": 11,
+    "unitary": 5.9695970170687376e-15,
+    "comm": 2.637778802627377e-15,
+    "leak": 8.419332608554168e-16
+  },
+  "product_kernel": {
+    "nullity": 47,
+    "trace": 47.00000000000003,
+    "PL_idem": 3.996261935027902e-16,
+    "LPL": 5.20740757162067e-16,
+    "P_idem": 2.356380988582954e-15,
+    "ann": 1.6568090045393484e-10,
+    "gap": 0.5857864375298685
+  },
+  "einstein_ppwave": {
+    "ricci_reduction": true,
+    "vacuum": true,
+    "R_uxux": "-F(u)",
+    "R_uyuy": "F(u)",
+    "R_uxuy": "0"
+  }
+}
