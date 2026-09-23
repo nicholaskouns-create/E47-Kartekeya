@@ -17,8 +17,18 @@ def load_stack() -> dict:
     from spectral_engine import SpectralEngine
     from intertwiners import N_UNITS, lock as lock_intertwiners
     from chevalley import FAIL, PASS, verify
-    from eidolon_engine import Craft, EidolonEngine, assert_lock
-    from tomographic_visualizer import TomographicVisualizer, _lock_spectrum
+    from eidolon_engine import (
+        Craft,
+        EidolonEngine,
+        assert_lock,
+        lambda_p47_matrix as eidolon_lambda_p47,
+    )
+    from tomographic_visualizer import (
+        TomographicVisualizer,
+        _lock_spectrum,
+        lambda_p47_matrix as tomographic_lambda_p47,
+    )
+    from e47.lexical_spine import Base5Carrier, canonical_lambda_matrix
 
     spec = SpectralEngine()
     spec.validate()
@@ -28,12 +38,22 @@ def load_stack() -> dict:
     PASS.clear()
     FAIL.clear()
     verify()
+    Lambda = canonical_lambda_matrix()
+    if tomographic_lambda_p47() is not Lambda or eidolon_lambda_p47() is not Lambda:
+        raise RuntimeError("Tomography and Eidolon must share the same canonical Lambda=P47 matrix")
+    base5 = Base5Carrier()
+    if [base5.index(*xyz) for xyz in base5.coordinates()] != list(range(125)):
+        raise RuntimeError("base5.carrier packing drift")
     return {
         "spectral": spec,
         "n_units": N_UNITS,
         "eidolon": EidolonEngine,
         "craft": Craft,
         "tomo": TomographicVisualizer,
+        "Lambda": Lambda,
+        "tomographic_P47_gate": Lambda,
+        "eidolon_lock_projector": Lambda,
+        "base5_carrier": base5,
         "omega_c": spec.omega_c,
         "dim_e47": spec.dim_kernel,
     }

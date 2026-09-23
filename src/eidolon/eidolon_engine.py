@@ -44,6 +44,19 @@ def assert_lock() -> None:
 
 assert_lock()
 
+
+def lambda_p47_matrix() -> np.ndarray:
+    """Full 125x125 Eidolon lock projector from the canonical Lambda binding."""
+    from e47.lexical_spine import canonical_lambda_matrix
+    return canonical_lambda_matrix()
+
+
+def project_e47_state(state) -> np.ndarray:
+    """Apply the canonical full-state Eidolon lock projector."""
+    from e47.lexical_spine import project_e47_state as _project
+    return _project(state)
+
+
 @dataclass
 class Craft:
     mass_kg: float = 1200.0
