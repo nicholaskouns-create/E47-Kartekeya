@@ -31,6 +31,18 @@ def _lock_spectrum() -> None:
     assert abs(OMEGA_C - 0.376) < 1e-12
     assert np.allclose(P_47(CASIMIR.astype(float)), [0, 0, 1, 0, 0, 1, 0])
 
+
+def lambda_p47_matrix() -> np.ndarray:
+    """Full 125x125 tomographic P47 gate from the canonical Lambda binding."""
+    from e47.lexical_spine import canonical_lambda_matrix
+    return canonical_lambda_matrix()
+
+
+def project_e47_state(state) -> np.ndarray:
+    """Apply the canonical full-state tomographic gate without changing ART logic."""
+    from e47.lexical_spine import project_e47_state as _project
+    return _project(state)
+
 def _grid2(n: int):
     c = (n - 1) / 2.0
     y, x = np.indices((n, n), dtype=float)
