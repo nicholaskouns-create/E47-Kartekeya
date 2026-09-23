@@ -8,6 +8,14 @@ This directory maps the browser interfaces present in the repository. A route id
 
 The live portal at [`/interfaces/instruments/`](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) is the executable surface of this file. It does not replace [city-live](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/) (hosted workshop labs). Independent instruments remain independently addressable.
 
+Portal integrity is checked by `scripts/audit_portal_links.py` and the read-only **Portal audit** workflow. From a local clone, run:
+
+```bash
+python scripts/audit_portal_links.py --site-root website
+```
+
+See [PORTAL.md](PORTAL.md) for the catalog contract, evidence tags, and CI behavior.
+
 ## Flight and propulsion
 
 | Open | What it contains | Source |
