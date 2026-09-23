@@ -1,0 +1,23 @@
+{
+  "schema": "E47-CURRENT-BUNDLE-1.0",
+  "date": "2026-09-22",
+  "carrier_dimension": 125,
+  "kernel_dimension": 47,
+  "complement_dimension": 78,
+  "omega_c": "47/125",
+  "spectral_gap_K2": 11664,
+  "norm_K2": 186624,
+  "epsilon_star": "1/99144",
+  "rho_star": "15/17",
+  "contents": [
+    "kkp_e47_full_validation.py",
+    "kkp_e47_validation_report.md",
+    "kkp_e47_validation_certificate.json",
+    "e47_einstein_reproduction.json",
+    "e47_bures_fisher_curvature_validation.py",
+    "e47_bures_fisher_curvature_report.md",
+    "e47_bures_fisher_curvature_certificate.json",
+    "e47_curvature_reproducibility.txt",
+    "E47_CURRENT_FORMALISM_20260922.md"
+  ]
+}
