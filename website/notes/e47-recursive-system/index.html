@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#06090b">
-<meta name="description" content="E47 in Two Pages: K², why V₂ has dimension 5, recursive invariant selection, and the boundary of the claim.">
+<meta name="description" content="E47 in Two Pages: K², V₂, recursive invariant selection, and the residual-gated executable runtime.">
 <meta property="og:title" content="E47 in Two Pages">
-<meta property="og:description" content="The finite object, the recursive interpretation, and the boundary of the claim.">
+<meta property="og:description" content="The finite object, the recursive runtime, and the boundary of the claim.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/">
 <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/">
@@ -21,36 +21,37 @@ h1{font-size:clamp(3rem,8vw,6.3rem);line-height:.92;margin:.12em 0 .2em;font-wei
 .lede{max-width:760px;color:var(--muted);font-size:1.15rem}.links{display:flex;gap:16px;flex-wrap:wrap;margin:28px 0 46px}.links a{border:1px solid var(--line);padding:8px 12px;text-decoration:none}
 .page{background:linear-gradient(180deg,#0d1418,#080d10);border:1px solid var(--line);padding:clamp(26px,5vw,60px);margin:34px 0;min-height:76vh}
 .math{font:1rem/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#070b0d;border-left:2px solid var(--bronze);padding:14px 18px;margin:18px 0;overflow:auto}
-.core{border:1px solid #416756;background:#0a1611;padding:20px;margin-top:30px}.interpret{border:1px solid var(--line);padding:20px;margin-top:14px;color:var(--muted)}
+.core{border:1px solid #416756;background:#0a1611;padding:20px;margin-top:30px}.interpret{border:1px solid var(--line);padding:20px;margin-top:14px;color:var(--muted)}.runtime{border:1px solid #315663;background:#081216;padding:20px;margin-top:24px}
 ul{padding-left:1.35rem}.footer{color:var(--muted);font-size:.9rem;margin-top:42px}
-@media print{header,.links{display:none}body{background:white;color:#111}.page{background:white;border:0;break-after:page;min-height:auto}.math,.core,.interpret{background:white;color:#111}}
+@media print{header,.links{display:none}body{background:white;color:#111}.page{background:white;border:0;break-after:page;min-height:auto}.math,.core,.interpret,.runtime{background:white;color:#111}}
 </style>
 </head>
 <body>
-<header><nav><strong>THE MATHEMATICAL CITY</strong><a href="../../">Atlas</a><a href="#page1">Page 1</a><a href="#page2">Page 2</a></nav></header>
+<header><nav><strong>THE MATHEMATICAL CITY</strong><a href="../../">Atlas</a><a href="#page1">Page 1</a><a href="#page2">Page 2</a><a href="#runtime">Runtime</a></nav></header>
 <main>
-<p class="eyebrow">E47 Research Note · 2026-09-22</p>
+<p class="eyebrow">E47 Research Note · Updated 2026-09-23</p>
 <h1>E47 in Two Pages</h1>
-<p class="lede">Here is what K² is, why V₂ has dimension 5, what I think E47 is for in a recursive system, and what it is not claiming.</p>
-<div class="links"><a href="https://app.notion.com/p/3e446094fd30811ba779f8af95af5c02?pvs=204">Notion record ↗</a><a href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/e47-recursive-note">Supabase mirror ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/notes/e47-recursive-system.md">Source ↗</a></div>
+<p class="lede">K², V₂, recursive invariant selection, and the residual-gated executable runtime.</p>
+<div class="links"><a href="https://app.notion.com/p/3e446094fd30811ba779f8af95af5c02?pvs=204">Notion record ↗</a><a href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/e47-recursive-note">Supabase mirror ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/notes/e47-recursive-system.md">Note source ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/recursive_runtime.py">Runtime source ↗</a></div>
 <section class="page" id="page1">
 <p class="eyebrow">Page 1 · What the object is</p><h2>125 → K → 47</h2>
 <h3>Why V₂ has dimension 5</h3><p>The starting object is the spin-2 irreducible representation of SU(2), denoted V₂. A spin-j irreducible representation has dimension 2j+1. For j=2, dim V₂=5.</p>
-<div class="math">V = V₂⊗³ &nbsp;&nbsp; dim V = 5³ = 125</div><p>So 5 and 125 are representation-theoretic dimensions, not fitted parameters.</p>
-<h3>The Casimir selector</h3><p>Let C=J<sub>tot</sub>². Its eigenvalues on this carrier are {0,2,6,12,20,30,42}, with state multiplicities {1,9,25,28,27,22,13}. Define</p>
-<div class="math">K = (C − 6I)(C − 30I)</div><p>K vanishes precisely on the C=6 and C=30 sectors.</p>
-<div class="math">E₄₇ = ker K = E₆ ⊕ E₃₀ &nbsp;&nbsp; dim E₄₇ = 25 + 22 = 47</div><p>The orthogonal projector is P₄₇=P₆+P₃₀.</p>
-<h3>What K² is and why it matters</h3><p>K is Hermitian but has signed nonzero eigenvalues. Squaring it gives the positive-semidefinite operator K²=K†K while preserving exactly the same kernel.</p>
-<div class="math">Γε = I − εK² &nbsp;&nbsp; 0 &lt; ε &lt; 2/186624</div><p>On E₄₇, Γε acts as the identity. On E₄₇⊥, it contracts. Therefore Γεⁿ→P₄₇. The optimal uniform step is ε*=1/99144, with complement factor 15/17.</p>
-<div class="math">Ωc = rank(P₄₇)/dim(V) = 47/125 = 0.376</div><p>That is a dimension ratio. It is not a universal empirical constant and it is not the eventual normalized projected weight of every arbitrary state.</p>
+<div class="math">V = V₂⊗³ &nbsp;&nbsp; dim V = 5³ = 125</div>
+<h3>The Casimir selector</h3><p>Let C=J<sub>tot</sub>². Its eigenvalues on this carrier are {0,2,6,12,20,30,42}, with state multiplicities {1,9,25,28,27,22,13}. Define K=(C−6I)(C−30I).</p>
+<div class="math">E₄₇ = ker K = E₆ ⊕ E₃₀ &nbsp;&nbsp; dim E₄₇ = 47</div>
+<h3>What K² is and why it matters</h3><p>K²=K†K is positive semidefinite and preserves the same kernel.</p>
+<div class="math">Γε = I − εK² &nbsp;&nbsp; ε* = 1/99144 &nbsp;&nbsp; ρ* = 15/17</div>
+<div class="math">Ωc = 47/125 = 0.376</div>
 </section>
 <section class="page" id="page2">
-<p class="eyebrow">Page 2 · What I think it is for</p><h2>Recursive invariant selection</h2>
-<p>My interpretation is that E47 provides a finite, explicit model of recursive invariant selection. A state begins in a larger carrier. A positive operator suppresses components outside a selected kernel. The selected subspace is left unchanged. Repetition exposes the invariant.</p>
-<div class="math">x₀ → Γεx₀ → Γε²x₀ → ··· → P₄₇x₀</div><div class="math">state → selection → contraction → invariant → new state</div>
-<p>For a recursive system, the useful object is not merely the number 47. It is the combination of a declared carrier, an exact selector, a positive contraction generator, a projector limit, and an invariant that can be passed forward as the next state or as a constraint on the next transformation.</p>
-<h3>What this note is not claiming</h3><ul><li>47 is not asserted to be the universal dimensionality of nature.</li><li>47/125 is the exact rank fraction of this construction, not a universal measured constant.</li><li>The finite spectral theorem does not by itself establish gravity, spacetime, consciousness, biology, propulsion, particle physics, or quantum hardware.</li><li>A downstream application of E47 is an additional map whose validity must be established in the destination domain.</li><li>Similar dimensions, ratios, or visual structures do not identify another system with E47 without an explicit map or intertwiner.</li><li>The exact claim here is the finite algebraic object and its contraction behavior.</li></ul>
+<p class="eyebrow">Page 2 · Recursive execution</p><h2>Invariant selection becomes an executable cycle</h2>
+<div class="math">Σ → Ψ → Γⁿ → Ω → Λ → Σ′ → α → Σ</div>
+<div class="runtime" id="runtime"><strong>RESIDUAL-GATED RUNTIME.</strong><p>Ω is evaluated on the contracted pre-projection state. Only after ||KM<sub>pre</sub>||≤τ is satisfied is Λ applied. Reversing those operations would make KΛM≈0 by construction and render the gate tautological.</p>
+<div class="math">K=(C−6I)(C−30I)<br>Γ=I−K²/99144<br>Λ=P₆+P₃₀<br>Ω: ||KM<sub>pre</sub>|| ≤ 10⁻¹⁰</div>
+<ul><li>certificate PASS</li><li>rank Λ = 47</li><li>ρ⊥ = 15/17</li><li>252 contractions in the seeded smoke test</li><li>pre-projection residual = 9.353585941533422e−11</li><li>post-projection residual = 4.833244591885603e−12</li></ul>
+<p>SHA-256: <code>8ec779cbb5247f9dc733cd2f4e341c8378d5ec6acfc21d56d9d3da33b322e716</code></p></div>
+<h3>Claim boundary</h3><ul><li>47 is not asserted to be the universal dimensionality of nature.</li><li>47/125 is the exact rank fraction of this construction, not a universal measured constant.</li><li>The finite spectral theorem does not by itself establish downstream physical domains.</li><li>Downstream E47 applications require their own explicit maps and evidence.</li></ul>
 <div class="core"><strong>CORE EXACT CLAIM.</strong> V₂⊗³ is a 125-dimensional carrier. K=(C−6I)(C−30I) has a 47-dimensional kernel. K² generates a stable contraction whose powers converge to P₄₇ under the stated step-size bound.</div>
-<div class="interpret"><strong>INTERPRETATION.</strong> Use that exact finite mechanism as a model for recursive invariant selection: preserve what satisfies the kernel condition, contract what does not, and pass the invariant forward.</div>
+<div class="interpret"><strong>EXECUTABLE INTERPRETATION.</strong> Preserve what satisfies the kernel condition, contract what does not, evaluate certainty on the unprojected residual, then project and pass the invariant forward.</div>
 </section><p class="footer">E47 Research · The Mathematical City · Exact finite object separated from downstream interpretation.</p>
 </main></body></html>
