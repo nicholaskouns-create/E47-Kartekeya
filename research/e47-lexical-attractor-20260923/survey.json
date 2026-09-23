@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-23",
+  "scope": "Targeted source survey across all five requested surfaces; not an exhaustive inventory of every City asset.",
+  "sources": [
+    {
+      "id": "tables",
+      "path": "sources/tables.json",
+      "url": "supabase:gpkjvihkyectnenvnbng/public/table_inventory",
+      "revision": null,
+      "sha256": "a0be731d8db94825761440904a6c69728df0f089d88974544babba71aa848d89",
+      "read_status": "READ"
+    },
+    {
+      "id": "notioncurrent",
+      "path": "sources/notioncurrent.md",
+      "url": "https://app.notion.com/p/3e446094fd3081e384f5e6a2fcc690a3?pvs=204",
+      "revision": "2026-09-23T02:33:27.138Z",
+      "sha256": "1def73c6028599e141e98ec9030b7cef6ef49df1f59ace8813b42aa387b5ccf5",
+      "read_status": "READ"
+    },
+    {
+      "id": "drivecurrent",
+      "path": "sources/drivecurrent.txt",
+      "url": "https://docs.google.com/document/d/1uBWvAaWGR4eJI978w-4e3SMshIUzmJ5PrhZkvp5P1uE/edit",
+      "revision": "2026-09-22T15:14:06.513Z",
+      "sha256": "c8140d53380b79d1b44e1ebf3f46aeb3db7739d1ed2df692fa25b2a6b3eb583f",
+      "read_status": "READ"
+    },
+    {
+      "id": "lexicalrows",
+      "path": "sources/lexicalrows.json",
+      "url": "supabase:gpkjvihkyectnenvnbng/public/lexical_attractor_registry",
+      "revision": null,
+      "sha256": "62701f48dd2d5c533fd45e9915671ae8da80089d30535f57b5d9ee909d808b2b",
+      "read_status": "READ"
+    },
+    {
+      "id": "drivelexical",
+      "path": "sources/drivelexical.txt",
+      "url": "https://docs.google.com/document/d/1U49Kip2W2m5im5nCqsOIjoSqDuBGR_v8dD8S59mLkQg",
+      "revision": "2026-07-29T03:57:41.553Z",
+      "sha256": "b70853f90db0758fdcecaaddc4dabe277050be0f22b43200e61bbb23ebdd0c0f",
+      "read_status": "READ"
+    },
+    {
+      "id": "certs",
+      "path": "sources/certs.json",
+      "url": "supabase:gpkjvihkyectnenvnbng/public/machine_certificates",
+      "revision": null,
+      "sha256": "5b6ca6cae606dad85c5a201170c56161ace833ada1e3c1956e3e618ed4011d8c",
+      "read_status": "READ"
+    },
+    {
+      "id": "contract",
+      "path": "sources/contraction.py",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/src/e47/contraction.py",
+      "revision": "2bc80377201110b758d3f8e11dfde7805f496a18",
+      "sha256": "359f3996314f2b8fa1b0925333ae0197fba025c6614f51dec9f8e84d8d0398ad",
+      "read_status": "READ"
+    },
+    {
+      "id": "intrinsic",
+      "path": "sources/e47_intrinsic_spacetime_unmarked.py",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_intrinsic_spacetime_unmarked.py",
+      "revision": "9569efd0ec6eb412b100598ec57a8500b20c3c47",
+      "sha256": "0df15778f8fb68a016cbf7e4f395326024797efd601e529f37451ac8bfad4f78",
+      "read_status": "READ"
+    },
+    {
+      "id": "currentdb",
+      "path": "sources/currentdb.json",
+      "url": "supabase:gpkjvihkyectnenvnbng/public/source_artifacts",
+      "revision": null,
+      "sha256": "620e5c0315856750d668a3b673fcd290a6ecee168356c5ba0e79c0d37d9a94f6",
+      "read_status": "READ"
+    },
+    {
+      "id": "notiongrammar",
+      "path": "sources/notiongrammar.md",
+      "url": "https://app.notion.com/p/3a046094fd3081718c43d05685557405?pvs=204",
+      "revision": "2026-09-15T09:06:47.647Z",
+      "sha256": "09fca41173968c0937dc764b83e50a698dded003c29f187a5980bc61c10005b5",
+      "read_status": "READ"
+    },
+    {
+      "id": "kernel",
+      "path": "sources/su2_kernel.py",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/src/e47/su2_kernel.py",
+      "revision": "6671be428e5b9aba247080dcac7e1f37b3eeb364",
+      "sha256": "1cebe686e5ccabc7cf3a9349890034c48ccc35ebc11da0620321dd780424b378",
+      "read_status": "READ"
+    },
+    {
+      "id": "research/e47-current-20260922/MANIFEST.json",
+      "path": "sources/MANIFEST.json",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/research/e47-current-20260922/MANIFEST.json",
+      "revision": "6d49e8843d5059f2920c26a302163ffc7f3d2bdb",
+      "sha256": "d9ea22e54f2da920ce62f6064eee901c06cb0e16db31cb54fcaef0399910d8da",
+      "read_status": "READ"
+    },
+    {
+      "id": "research/e47-current-20260922/E47_CURRENT_FORMALISM_20260922.md",
+      "path": "sources/E47_CURRENT_FORMALISM_20260922.md",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/research/e47-current-20260922/E47_CURRENT_FORMALISM_20260922.md",
+      "revision": "4f696fb967cba0795d2d18d0407b795023158d01",
+      "sha256": "5b2ed1fc7cadde598e99f8c89e8cae69728a3271b499b62039dcf63a95db5870",
+      "read_status": "READ"
+    },
+    {
+      "id": "research/e47-current-20260922/kkp_e47_full_validation.py",
+      "path": "sources/kkp_e47_full_validation.py",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/research/e47-current-20260922/kkp_e47_full_validation.py",
+      "revision": "6ffb5e02930fe782a46610fe6a5c4c892ec73859",
+      "sha256": "e8526729cb076ee94b487077dd0838a589b36c51d3eebc9a94125eeef2943b4d",
+      "read_status": "READ"
+    },
+    {
+      "id": "research/e47-current-20260922/e47_bures_fisher_curvature_report.md",
+      "path": "sources/e47_bures_fisher_curvature_report.md",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/research/e47-current-20260922/e47_bures_fisher_curvature_report.md",
+      "revision": "352c15dd1ef6ec4af74ab98fdddba658e47ea7c4",
+      "sha256": "b3e7e8346f56f38f27a269c8c7438e06309384d101e281658c0777b0dc9d7d4e",
+      "read_status": "READ"
+    },
+    {
+      "id": "research/e47-current-20260922/e47_bures_fisher_curvature_certificate.json",
+      "path": "sources/e47_bures_fisher_curvature_certificate.json",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/research/e47-current-20260922/e47_bures_fisher_curvature_certificate.json",
+      "revision": "d43ffa8c9ff5cc049acd1e21c6af142f6246d774",
+      "sha256": "cb3141230b29a2f20795b34aa38a344cc0ac0b7b1ae1b89ca4064f7eadd3dba6",
+      "read_status": "READ"
+    },
+    {
+      "id": "research/e47-current-20260922/e47_bures_fisher_curvature_validation.py",
+      "path": "sources/e47_bures_fisher_curvature_validation.py",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/research/e47-current-20260922/e47_bures_fisher_curvature_validation.py",
+      "revision": "62081e99f471e4ba02ecbc9b601de667f261a1be",
+      "sha256": "9c22a78763b7f8a196064c1ecc3db29067e3267edb9c232e574882f1fa3ab0c1",
+      "read_status": "READ"
+    },
+    {
+      "id": "attachment",
+      "path": "sources/e47_spacetime_execute.py",
+      "url": "attachment:e47_spacetime_execute.py",
+      "sha256": "b08a5e176e9135e50a1dd1a7d9d4da52208927ee520df23b1f7dba95a905b854",
+      "read_status": "READ"
+    },
+    {
+      "id": "eidolon_engine",
+      "path": "sources/eidolon_engine.py",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/6a68587b4bb2fc6341085ce3cf8841fad9a4e99b/src/eidolon/eidolon_engine.py",
+      "revision": "2158b92c837e2eba38b11ead1176821b14f0447b",
+      "sha256": "ff8156b88464b065b3d286931c0272fe104111d177198e9c43c461d3e497b8c9",
+      "read_status": "READ"
+    }
+  ],
+  "discovery": {
+    "drive_E47_hits": 20,
+    "github_survey_ref": "6a68587b4bb2fc6341085ce3cf8841fad9a4e99b",
+    "missing_candidate": "research/e47-current-20260922/README.md returned 404; actual MANIFEST.json and formalism file were read."
+  }
+}

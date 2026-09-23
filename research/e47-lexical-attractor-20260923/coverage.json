@@ -1,0 +1,78 @@
+[
+  {
+    "source": "tables",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "notioncurrent",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "drivecurrent",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "lexicalrows",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "drivelexical",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "certs",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "contract",
+    "mode": "ORIGINAL_FUNCTIONS_EXECUTED"
+  },
+  {
+    "source": "intrinsic",
+    "mode": "ORIGINAL_SCRIPT_EXECUTED"
+  },
+  {
+    "source": "currentdb",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "notiongrammar",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "kernel",
+    "mode": "ORIGINAL_FUNCTIONS_EXECUTED"
+  },
+  {
+    "source": "research/e47-current-20260922/MANIFEST.json",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "research/e47-current-20260922/E47_CURRENT_FORMALISM_20260922.md",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "research/e47-current-20260922/kkp_e47_full_validation.py",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "research/e47-current-20260922/e47_bures_fisher_curvature_report.md",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "research/e47-current-20260922/e47_bures_fisher_curvature_certificate.json",
+    "mode": "SOURCE_READ"
+  },
+  {
+    "source": "research/e47-current-20260922/e47_bures_fisher_curvature_validation.py",
+    "mode": "FULL_EXECUTION_OUTPUT_PATH_RELOCATED"
+  },
+  {
+    "source": "attachment",
+    "mode": "FULL_EXECUTION_PATHS_RELOCATED"
+  },
+  {
+    "source": "eidolon_engine",
+    "mode": "ORIGINAL_DEPENDENCY_EXECUTED"
+  }
+]
