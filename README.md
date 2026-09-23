@@ -59,6 +59,8 @@ The construction uses `V = V₂ ⊗ V₂ ⊗ V₂`, total Casimir `C`, and `K = 
 | Kernel dimension | 47 |
 | Kernel fraction | 47 / 125 |
 | K² spectral gap | 11664 |
+| Recursive contraction | `Γ = I − K²/99144`, transient bound `15/17` |
+| Recursive runtime | [`src/e47/recursive_runtime.py`](src/e47/recursive_runtime.py) |
 | Intertwiner units | 29 |
 | Chevalley relations | 16 / 16 |
 
