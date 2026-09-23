@@ -1,0 +1,33 @@
+E47 curvature run
+=================
+Coordinates: q=(s,x,y,z), s=t*Delta, Delta=11664.0
+Point: q0=[0.35, 0.2, -0.15, 0.1]
+
+Direct route:
+  g_Bures = (1/4) F_SLD
+  F_mn = 2 sum_ij Re[(d_m rho)_ij (d_n rho)_ji]/(lambda_i+lambda_j)
+
+Connection:
+  Gamma^r_mn = 1/2 g^rl (d_m g_ln + d_n g_lm - d_l g_mn)
+
+Riemann convention:
+  R^r_smn = d_m Gamma^r_ns - d_n Gamma^r_ms
+             + Gamma^r_ml Gamma^l_ns - Gamma^r_nl Gamma^l_ms
+
+Ricci:
+  R_sn = R^r_srn
+Einstein:
+  G_mn = R_mn - 1/2 R g_mn
+
+Vacuum+Lambda optimum at one point:
+  Lambda* = R/4
+  E*_mn = G_mn + Lambda* g_mn
+
+Independent route:
+  Reconstruct rho(q) sector by sector.
+  Obtain d_mu rho by central finite differences (d=1e-5).
+  Recompute SLD/Bures metric without analytic tangent formulas.
+  Then rerun the complete connection/curvature calculation.
+
+QuTiP installed here: False
+QuTiP version: None
