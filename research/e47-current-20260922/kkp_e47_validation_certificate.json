@@ -1,0 +1,455 @@
+{
+  "schema": "KKP-E47-PYTHON-VALIDATION-1.0",
+  "numpy_version": "2.3.5",
+  "sympy_version": "1.14.0",
+  "summary": {
+    "PASS": 34,
+    "FAIL": 2,
+    "INFO": 1,
+    "CONDITIONAL": 1,
+    "NEEDS_INPUT_OR_EXPERIMENT": 9
+  },
+  "results": [
+    {
+      "claim": "dim V = 5^3 = 125",
+      "status": "PASS",
+      "value": 125,
+      "expected": 125,
+      "note": ""
+    },
+    {
+      "claim": "spec(C) = {0,2,6,12,20,30,42}",
+      "status": "PASS",
+      "value": [
+        0,
+        2,
+        6,
+        12,
+        20,
+        30,
+        42
+      ],
+      "expected": [
+        0,
+        2,
+        6,
+        12,
+        20,
+        30,
+        42
+      ],
+      "note": ""
+    },
+    {
+      "claim": "Casimir eigenspace dimensions = [1,9,25,28,27,22,13]",
+      "status": "PASS",
+      "value": [
+        1,
+        9,
+        25,
+        28,
+        27,
+        22,
+        13
+      ],
+      "expected": [
+        1,
+        9,
+        25,
+        28,
+        27,
+        22,
+        13
+      ],
+      "note": ""
+    },
+    {
+      "claim": "SU(2) irrep multiplicities J=0..6 = [1,3,5,4,3,2,1]",
+      "status": "PASS",
+      "value": [
+        1,
+        3,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "expected": [
+        1,
+        3,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "note": ""
+    },
+    {
+      "claim": "K=(C-6I)(C-30I) is self-adjoint",
+      "status": "PASS",
+      "value": 0.0,
+      "expected": 0.0,
+      "note": ""
+    },
+    {
+      "claim": "dim ker K = 47",
+      "status": "PASS",
+      "value": "47",
+      "expected": 47,
+      "note": ""
+    },
+    {
+      "claim": "rank K = dim im K = 78",
+      "status": "PASS",
+      "value": "78",
+      "expected": 78,
+      "note": ""
+    },
+    {
+      "claim": "Omega_c = 47/125 = 0.376",
+      "status": "PASS",
+      "value": "47/125 = 0.376000000000000",
+      "expected": "47/125 = 0.376",
+      "note": ""
+    },
+    {
+      "claim": "ker K \u2245 5 V_2 \u2295 2 V_5",
+      "status": "PASS",
+      "value": "5 V_2 + 2 V_5",
+      "expected": "5 V_2 + 2 V_5",
+      "note": ""
+    },
+    {
+      "claim": "P_47 is an orthogonal projector",
+      "status": "PASS",
+      "value": 3.517770542025983e-14,
+      "expected": "<1e-10",
+      "note": ""
+    },
+    {
+      "claim": "K P_47 = 0",
+      "status": "PASS",
+      "value": 1.5084648494913136e-11,
+      "expected": "<1e-9",
+      "note": ""
+    },
+    {
+      "claim": "tr(P_47)=rank(P_47)=47",
+      "status": "PASS",
+      "value": {
+        "trace": 46.99999999999987,
+        "rank": 47
+      },
+      "expected": 47,
+      "note": ""
+    },
+    {
+      "claim": "positive spectrum(K^2) = {11664,12544,19600,32400,186624}",
+      "status": "PASS",
+      "value": [
+        11664,
+        12544,
+        19600,
+        32400,
+        186624
+      ],
+      "expected": [
+        11664,
+        12544,
+        19600,
+        32400,
+        186624
+      ],
+      "note": ""
+    },
+    {
+      "claim": "spectral gap \u0394 = 11664",
+      "status": "PASS",
+      "value": 11664,
+      "expected": 11664,
+      "note": ""
+    },
+    {
+      "claim": "||K^2|| = 186624",
+      "status": "PASS",
+      "value": 186624,
+      "expected": 186624,
+      "note": ""
+    },
+    {
+      "claim": "stability interval 0<\u03b5<2/||K^2|| = 1/93312",
+      "status": "PASS",
+      "value": "1/93312",
+      "expected": "1/93312",
+      "note": ""
+    },
+    {
+      "claim": "optimal \u03b5* = 1/99144",
+      "status": "PASS",
+      "value": "1/99144",
+      "expected": "1/99144",
+      "note": ""
+    },
+    {
+      "claim": "optimal transverse contraction \u03c1*=15/17",
+      "status": "PASS",
+      "value": "15/17",
+      "expected": "15/17",
+      "note": ""
+    },
+    {
+      "claim": "\u0393^220 \u2248 P_47 for \u0393=I-\u03b5*K^2, \u03b5*=1/99144",
+      "status": "PASS",
+      "value": 1.1344513014760442e-12,
+      "expected": "<1e-10",
+      "note": ""
+    },
+    {
+      "claim": "A5 character of ker K on [e,5A,5B,3A,2A] = [47,2,2,-7,3]",
+      "status": "PASS",
+      "value": [
+        47,
+        2,
+        2,
+        -7,
+        3
+      ],
+      "expected": [
+        47,
+        2,
+        2,
+        -7,
+        3
+      ],
+      "note": ""
+    },
+    {
+      "claim": "A5 decomposition ker K = 2T1 \u2295 2T2 \u2295 7H",
+      "status": "PASS",
+      "value": {
+        "1": "0",
+        "T1": "2",
+        "T2": "2",
+        "G": "0",
+        "H": "7"
+      },
+      "expected": {
+        "1": "0",
+        "T1": "2",
+        "T2": "2",
+        "G": "0",
+        "H": "7"
+      },
+      "note": ""
+    },
+    {
+      "claim": "1 + 2 cos(2\u03c0/5) = \u03c6",
+      "status": "PASS",
+      "value": "1/2 + sqrt(5)/2",
+      "expected": "1/2 + sqrt(5)/2",
+      "note": ""
+    },
+    {
+      "claim": "\u0393_P=(1-\u03a9c)I+\u03a9cP has eigenvalues {78/125,1}",
+      "status": "PASS",
+      "value": [
+        0.624,
+        1.0
+      ],
+      "expected": [
+        0.624,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "claim": "scalar overlap recursion p_n=1-(1-p0)(1-\u03a9c)^n exceeds 99% by n=10 for p0=\u03a9c",
+      "status": "PASS",
+      "value": 0.9944149060052163,
+      "expected": ">0.99",
+      "note": ""
+    },
+    {
+      "claim": "Babylonian map R(x)=1/2(x+\u03c4/x) fixes x*=sqrt(\u03c4)",
+      "status": "PASS",
+      "value": "sqrt(tau)",
+      "expected": "sqrt(tau)",
+      "note": ""
+    },
+    {
+      "claim": "Babylonian map has quadratic local convergence: R'(sqrt \u03c4)=0",
+      "status": "PASS",
+      "value": "0",
+      "expected": "0",
+      "note": ""
+    },
+    {
+      "claim": "R''(sqrt \u03c4)=1/sqrt(\u03c4)",
+      "status": "PASS",
+      "value": "1/sqrt(tau)",
+      "expected": "1/sqrt(tau)",
+      "note": ""
+    },
+    {
+      "claim": "Claim \u03a9c = \u03c6^-5",
+      "status": "FAIL",
+      "value": {
+        "47/125": 0.376,
+        "phi^-5": 0.09016994374947422
+      },
+      "expected": "equality",
+      "note": ""
+    },
+    {
+      "claim": "Exponent n solving \u03c6^-n = 47/125",
+      "status": "INFO",
+      "value": 2.0327142531692477,
+      "expected": "not an integer; \u22482.0323",
+      "note": ""
+    },
+    {
+      "claim": "Fibonacci recurrence has dominant eigenvalue \u03c6",
+      "status": "PASS",
+      "value": [
+        "1/2 - sqrt(5)/2",
+        "1/2 + sqrt(5)/2"
+      ],
+      "expected": "1/2 + sqrt(5)/2",
+      "note": ""
+    },
+    {
+      "claim": "x^2-x-1 roots are {\u03c6,-1/\u03c6}",
+      "status": "PASS",
+      "value": [
+        "1/2 - sqrt(5)/2",
+        "1/2 + sqrt(5)/2"
+      ],
+      "expected": [
+        "1/2 + sqrt(5)/2",
+        "-1/(1/2 + sqrt(5)/2)"
+      ],
+      "note": ""
+    },
+    {
+      "claim": "V(\u03a9)=\u039b/4(\u03a9^2-\u03a9c^2)^2 gives dV/d\u03a9=\u039b\u03a9(\u03a9^2-\u03a9c^2)",
+      "status": "PASS",
+      "value": "Lambda*Omega*(Omega - Omega_c)*(Omega + Omega_c)",
+      "expected": "Lambda*Omega*(Omega^2-Omega_c^2)",
+      "note": ""
+    },
+    {
+      "claim": "Displayed recursive mass term has \u2202M/\u2202\u03a9 = 0 if N,\u03c7 are \u03a9-independent",
+      "status": "PASS",
+      "value": "0",
+      "expected": "0",
+      "note": ""
+    },
+    {
+      "claim": "Displayed \u03a9 field equation from the shown Lagrangian has no mass-source RHS unless N(\u03a9) or \u03c7(\u03a9) is supplied",
+      "status": "FAIL",
+      "value": "RHS = \u2202M/\u2202\u03a9 = 0 with the displayed definitions",
+      "expected": "nonzero mass-source requires additional \u03a9 dependence",
+      "note": "This is a structural test of the formula as printed, not of a modified model with N(\u03a9) or \u03c7(\u03a9)."
+    },
+    {
+      "claim": "m_eff = m_static(1-\u03a9)",
+      "status": "CONDITIONAL",
+      "value": "internally consistent as a constitutive definition",
+      "expected": "derivation from displayed Lagrangian",
+      "note": "The displayed Lagrangian does not contain this coupling explicitly."
+    },
+    {
+      "claim": "For PSD K_A,K_B,K_C: ker(K_A+K_B+K_C)=ker K_A \u2229 ker K_B \u2229 ker K_C",
+      "status": "PASS",
+      "value": {
+        "common_nullity": "2",
+        "individual_nullities": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      "expected": 2,
+      "note": "General proof: x*(\u03a3K_i)x=\u03a3 x*K_i x=0; PSD makes each term \u22650, hence each K_i^{1/2}x=0."
+    },
+    {
+      "claim": "1+3+12+20+42 = 78",
+      "status": "PASS",
+      "value": 78,
+      "expected": 78,
+      "note": "Arithmetic match only; it is not by itself a representation-theoretic derivation."
+    },
+    {
+      "claim": "1/\u03c6 \u2248 0.618",
+      "status": "PASS",
+      "value": 0.6180339887498948,
+      "expected": 0.6180339887498948,
+      "note": ""
+    },
+    {
+      "claim": "Collider resonance signatures / exact TeV targets",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Requires a fully specified interaction Hamiltonian/cross section and collider data."
+    },
+    {
+      "claim": "Vacuum interferometer phase shift",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "The formula can be simulated, but physical truth requires measured phase data and calibrated apparatus parameters."
+    },
+    {
+      "claim": "PCO resonator inertial-mass variation",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Requires measured mass/inertia response; no computation alone establishes the effect."
+    },
+    {
+      "claim": "Metric-propulsion thrust",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Requires a covariant stress-energy/metric solution and thrust data; the displayed proportionality is a prediction, not a proof."
+    },
+    {
+      "claim": "Exact particle mass spectrum",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Requires the complete (N,chi) assignments and comparison dataset; the plate alone is insufficient."
+    },
+    {
+      "claim": "Pyramid tangency K_p=phi",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Exact tangency equations/coordinates are not included in the supplied plate."
+    },
+    {
+      "claim": "Lindblad fidelity 0.9997 for four initial states",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Needs the explicit Hamiltonian, collapse operators, rates, time grid, and four initial states."
+    },
+    {
+      "claim": "13-pillar post-quantum security",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Functional code can be tested, but cryptographic security needs a precise adversary model and a reduction/proof or empirical cryptanalysis."
+    },
+    {
+      "claim": "E47 implies Einstein geometry / propulsion",
+      "status": "NEEDS_INPUT_OR_EXPERIMENT",
+      "value": null,
+      "expected": null,
+      "note": "Needs an explicit map from E47 states to a spacetime metric/stress tensor, then curvature and Einstein-residual computation."
+    }
+  ]
+}
