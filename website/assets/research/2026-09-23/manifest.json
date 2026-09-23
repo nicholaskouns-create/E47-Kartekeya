@@ -1,0 +1,15 @@
+{
+  "id": "CITY-VISUAL-ASSETS-20260923",
+  "date": "2026-09-23",
+  "count": 7,
+  "duplicate_input_omitted": "5E8256A5-2C2C-46DA-8A0B-273774148E52(1).jpeg",
+  "assets": [
+    {"file":"acoustic-resonant-metamaterials-transmedium.jpeg","sha256":"83adc816ef3350d95ab9f7cfc7a8dba280a8a4e674c687a01389bb5a456c436d"},
+    {"file":"word-magnet-base5-carrier.jpeg","sha256":"0c503822928780fe61d57dd9d6f7366e33c73c99bf4acb452ea061dda6dc84d8"},
+    {"file":"pip-one-kernel-nine-views.jpeg","sha256":"4a50acd63af385e0e7da796af5bb3e03f216fa04f6b33b591660fd172cad5f36"},
+    {"file":"historical-lineage-formal-correspondence-boundary.jpeg","sha256":"d6d151ca282a399834fd1ffca189f70f3eb3dfd349d4d0e53fb0b4376b683ce9"},
+    {"file":"mathematics-of-what-survives.jpeg","sha256":"598f4a737966618fcdcd2d68d041ea53400172b1d6da41e1008e6858781cfe75"},
+    {"file":"topological-syntax-0376-coherence-manifold.jpeg","sha256":"4b5e7694910e426f3933fd0994139bb41f10f53cbfe6ab36699e4b9180c5c15e"},
+    {"file":"spectral-transduction-pipeline.jpeg","sha256":"2f50d5d60a4d85f503a66a3cc78d3af90e89bb55c4a1c433634abadb64a0f696"}
+  ]
+}
