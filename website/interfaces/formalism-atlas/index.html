@@ -71,92 +71,175 @@ a{color:var(--cyan)}details{margin:8px 0}.diag{display:grid;grid-template-column
 </section>
 </main>
 <script>
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
-let A=null;
-const PLATFORM_LINKS=[
-["Mathematical City","https://nicholaskouns-create.github.io/E47-Kartekeya/","public"],
-["Notion Research Atlas","https://mathematicalcity.notion.site/?pvs=74","notion"],
-["GitHub Repository","https://github.com/nicholaskouns-create/E47-Kartekeya","github"],
-["Drive · 341-row Primary Source Atlas","https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit","drive"],
-["Drive · Machine Certificates","https://docs.google.com/spreadsheets/d/1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534/edit","drive"],
-["E47 in Two Pages","https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/","public"],
-["THE MATRIX","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/","public"],
-["Q5","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/","public"],
-["Syntax Jacob","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/","public"],
-["SAT → Newton → Basin Boundary","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/","public"],
-["Formalism Atlas JSON","../../data/formalism-atlas.json","machine"]
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+}[c]));
+const $ = id => document.getElementById(id);
+let A = null;
+
+const PLATFORM_LINKS = [
+  ["Mathematical City","https://nicholaskouns-create.github.io/E47-Kartekeya/","public"],
+  ["Notion Research Atlas","https://mathematicalcity.notion.site/?pvs=74","notion"],
+  ["GitHub Repository","https://github.com/nicholaskouns-create/E47-Kartekeya","github"],
+  ["Drive · 341-row Primary Source Atlas","https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit","drive"],
+  ["Drive · Machine Certificates","https://docs.google.com/spreadsheets/d/1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534/edit","drive"],
+  ["E47 in Two Pages","https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/","public"],
+  ["THE MATRIX","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/","public"],
+  ["Q5","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/","public"],
+  ["Syntax Jacob","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/","public"],
+  ["SAT → Newton → Basin Boundary","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/","public"],
+  ["Formalism Atlas JSON","../../data/formalism-atlas.json","machine"]
 ];
-const SURFACE_LINKS=[
-["DOC-E47-PRECISION-MONOGRAPH-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Monograph","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-MONOGRAPH-20260911",true],
-["DOC-E47-PRECISION-REGISTRY-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Registry Crosswalk","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-REGISTRY-20260911",true],
-["DOC-E47-PRECISION-THEOREM-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Theorem Sheet","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-THEOREM-20260911",true],
-["DOC-KKP-MANIFOLD","KKP Recursive Informational Manifold synthesis","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-KKP-MANIFOLD",true],
-["DRIVE-PY-MANIFEST-20260809","E47 / Recursive Intelligence Python Code","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DRIVE-PY-MANIFEST-20260809",true],
-["E47-TWO-PAGE-NOTE","E47 in Two Pages","https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/",true],
-["EIDOLON-FLIGHT","EIDOLON — GitHub Native Scalar Flight","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/",false],
-["HORIZON-PY-20260908","HORIZON — Prospective Forecast Console","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=HORIZON-PY-20260908",true],
-["LIG-CRED-DOC-20260808","Invariant-Grammar Projection Theorem credential","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-CRED-DOC-20260808",true],
-["LIG-SPECTRAL-BUS-JS-20260908","City Spectral Engine browser v2","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-JS-20260908",true],
-["LIG-SPECTRAL-BUS-PY-20260908","City Spectral Engine v2","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-PY-20260908",true],
-["LIG-UNIVERSAL-TRANSLATOR-PY-20260908","Linguistics Bureau Universal Translator v0.3.1","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-UNIVERSAL-TRANSLATOR-PY-20260908",true],
-["LIG-VALIDATE-PY-20260809","validate_lig_proof.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-VALIDATE-PY-20260809",true],
-["MANTA-FLIGHT-LAB","MANTA — Morphing Flight Lab","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manta/",false],
-["MATRIX-QUANTUM-SIMULATOR","THE MATRIX — Quantum Simulator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",true],
-["PY-E47-CORPUS-REPRO-20260912","E47 Corpus Blocker Closure Harness","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-CORPUS-REPRO-20260912",true],
-["PY-E47-MULTI-20260819","Revised E47 Multi-Branch Consolidated Validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-MULTI-20260819",true],
-["PY-E47-PLATE-SPINE","E47 Base-5 Carrier and Rubik-Laplacian cross-plate validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-PLATE-SPINE",true],
-["PY-E47-QCOH","Quantum-Coherence Mapping of the E47 Pipeline","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-QCOH",true],
-["PY-E47-VALLEE","Vallée Projector / E47 first-principles executable source","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE",true],
-["PY-MNE-EH-FOLD-GATE-20260908","mne_fold_gate.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-FOLD-GATE-20260908",true],
-["PY-MNE-EH-PREDICTOR-20260908","mnemosyne_event_horizon.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREDICTOR-20260908",true],
-["PY-MNE-EH-PREPARE-20260908","mne_challenge_prepare.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREPARE-20260908",true],
-["PY-MNE-EH-REVEAL-20260908","mne_challenge_reveal.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-REVEAL-20260908",true],
-["PY-PCUBE-EXACT-20260729","Professor’s Cube exact permutation/Laplacian validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-EXACT-20260729",true],
-["PY-PCUBE-S3-QSIM-20260812","Professor’s Cube S3 bridge and quantum validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-S3-QSIM-20260812",true],
-["PY-RUB5-ORBIT-20260819","Professor’s Cube Orbit Decomposition and Twist-Laplacian Validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-RUB5-ORBIT-20260819",true],
-["PY-SCALAR-E47-FIELD-20260910","SCALAR Algebraic Quantum Scalar Fields","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-SCALAR-E47-FIELD-20260910",true],
-["Q5-TOPOLOGY-PANEL-20260921","Q5 · Executable 125-state topology navigator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/",true],
-["SAT-NEWTON-FRACTAL","SAT → Newton → Basin Boundary","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",true],
-["SKYRMION-RUNTIME-2","SKYRMION — Runtime 2 Flight Simulator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/",false],
-["SYNTAX-JACOB-3I-20260918","Syntax Jacob — 3I/ATLAS Scalar Navigation Lab","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/",true]
+
+const SURFACE_LINKS = [
+  ["DOC-E47-PRECISION-MONOGRAPH-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Monograph","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-MONOGRAPH-20260911",true],
+  ["DOC-E47-PRECISION-REGISTRY-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Registry Crosswalk","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-REGISTRY-20260911",true],
+  ["DOC-E47-PRECISION-THEOREM-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Theorem Sheet","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-THEOREM-20260911",true],
+  ["DOC-KKP-MANIFOLD","KKP Recursive Informational Manifold synthesis","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-KKP-MANIFOLD",true],
+  ["DRIVE-PY-MANIFEST-20260809","E47 / Recursive Intelligence Python Code","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DRIVE-PY-MANIFEST-20260809",true],
+  ["E47-TWO-PAGE-NOTE","E47 in Two Pages","https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/",true],
+  ["EIDOLON-FLIGHT","EIDOLON — GitHub Native Scalar Flight","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/",false],
+  ["HORIZON-PY-20260908","HORIZON — Prospective Forecast Console","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=HORIZON-PY-20260908",true],
+  ["LIG-CRED-DOC-20260808","Invariant-Grammar Projection Theorem credential","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-CRED-DOC-20260808",true],
+  ["LIG-SPECTRAL-BUS-JS-20260908","City Spectral Engine browser v2","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-JS-20260908",true],
+  ["LIG-SPECTRAL-BUS-PY-20260908","City Spectral Engine v2","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-PY-20260908",true],
+  ["LIG-UNIVERSAL-TRANSLATOR-PY-20260908","Linguistics Bureau Universal Translator v0.3.1","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-UNIVERSAL-TRANSLATOR-PY-20260908",true],
+  ["LIG-VALIDATE-PY-20260809","validate_lig_proof.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-VALIDATE-PY-20260809",true],
+  ["MANTA-FLIGHT-LAB","MANTA — Morphing Flight Lab","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manta/",false],
+  ["MATRIX-QUANTUM-SIMULATOR","THE MATRIX — Quantum Simulator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",true],
+  ["PY-E47-CORPUS-REPRO-20260912","E47 Corpus Blocker Closure Harness","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-CORPUS-REPRO-20260912",true],
+  ["PY-E47-MULTI-20260819","Revised E47 Multi-Branch Consolidated Validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-MULTI-20260819",true],
+  ["PY-E47-PLATE-SPINE","E47 Base-5 Carrier and Rubik-Laplacian cross-plate validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-PLATE-SPINE",true],
+  ["PY-E47-QCOH","Quantum-Coherence Mapping of the E47 Pipeline","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-QCOH",true],
+  ["PY-E47-VALLEE","Vallée Projector / E47 first-principles executable source","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE",true],
+  ["PY-MNE-EH-FOLD-GATE-20260908","mne_fold_gate.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-FOLD-GATE-20260908",true],
+  ["PY-MNE-EH-PREDICTOR-20260908","mnemosyne_event_horizon.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREDICTOR-20260908",true],
+  ["PY-MNE-EH-PREPARE-20260908","mne_challenge_prepare.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREPARE-20260908",true],
+  ["PY-MNE-EH-REVEAL-20260908","mne_challenge_reveal.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-REVEAL-20260908",true],
+  ["PY-PCUBE-EXACT-20260729","Professor’s Cube exact permutation/Laplacian validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-EXACT-20260729",true],
+  ["PY-PCUBE-S3-QSIM-20260812","Professor’s Cube S3 bridge and quantum validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-S3-QSIM-20260812",true],
+  ["PY-RUB5-ORBIT-20260819","Professor’s Cube Orbit Decomposition and Twist-Laplacian Validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-RUB5-ORBIT-20260819",true],
+  ["PY-SCALAR-E47-FIELD-20260910","SCALAR Algebraic Quantum Scalar Fields","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-SCALAR-E47-FIELD-20260910",true],
+  ["Q5-TOPOLOGY-PANEL-20260921","Q5 · Executable 125-state topology navigator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/",true],
+  ["SAT-NEWTON-FRACTAL","SAT → Newton → Basin Boundary","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",true],
+  ["SKYRMION-RUNTIME-2","SKYRMION — Runtime 2 Flight Simulator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/",false],
+  ["SYNTAX-JACOB-3I-20260918","Syntax Jacob — 3I/ATLAS Scalar Navigation Lab","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/",true]
 ];
-async function boot(){
- const res=await fetch("../../data/formalism-atlas.json",{cache:"no-store"}); A=await res.json();
- const S=A.summary;
- document.getElementById("subtitle").textContent=`${S.live_records} live records · IDs 1–97 · missing ${S.missing_ids.join(", ")} · source commit ${A.build.github_main_commit.slice(0,10)}`;
- const stats=[["Records",S.live_records],["Canonical",S.canonical_records],["Identity nodes",S.identity_nodes],["Graph edges",S.theorem_edges],["Certificates",S.machine_certificates],["Source artifacts",S.source_artifacts],["Open discrepancies",S.open_discrepancies],["Stranded candidates",S.stranded_candidates]];
- document.getElementById("stats").innerHTML=stats.map(([k,v])=>`<div class=stat><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("");
- for(const d of [...new Set(A.registry.map(r=>r.domain))].sort()) domain.add(new Option(d,d));
- for(const s of [...new Set(A.registry.map(r=>r.claim_status))].sort()) status.add(new Option(s,s));
- [q,domain,status,canon].forEach(x=>x.addEventListener("input",renderRegistry)); renderRegistry();
- gq.addEventListener("input",renderNodes); renderNodes();
- diags.innerHTML=A.diagnostics.map(d=>`<div class="panel ${esc(d.status)}"><b>${esc(d.code)}</b><p><span class=badge>${esc(d.status)}</span></p><pre style="white-space:pre-wrap">${esc(JSON.stringify(d.observed,null,2))}</pre>${d.note?`<p>${esc(d.note)}</p>`:""}</div>`).join("");
- platformLinks.innerHTML=PLATFORM_LINKS.map(([label,url,kind])=>`<a class="linkcard" href="${esc(url)}" ${url.startsWith("http")?'target="_blank" rel="noopener"':''}><b>${esc(label)}</b><small>${esc(kind)} · ${esc(url)}</small></a>`).join("");
- const seen=new Set(), sourceRows=[];
- for(const r of A.registry) for(const src of (r.sources||[])){ const k=src.url; if(k&&!seen.has(k)){seen.add(k);sourceRows.push([r.id,r.formalism,src.role,k]);}}
- sourceLinks.innerHTML=sourceRows.map(([id,title,role,url])=>`<a class="linkcard" href="${esc(url)}" target="_blank" rel="noopener"><b>FRM-${id} · ${esc(role)} · ${esc(title)}</b><small>${esc(url)}</small></a>`).join("");
- surfaceLinks.innerHTML=SURFACE_LINKS.map(([code,title,url,active])=>`<a class="linkcard ${active?'':'off'}" href="${esc(url)}" target="_blank" rel="noopener"><b>${esc(title)}</b><small>${esc(code)} · ${active?'active':'historical/inactive'}</small></a>`).join("");
- prov.innerHTML=`<div class=kv><b>GitHub commit</b><span>${esc(A.build.github_main_commit)}</span><b>Notion records</b><span>${S.live_records}</span><b>Supabase identities</b><span>${S.identity_nodes}</span><b>Supabase edges</b><span>${S.theorem_edges}</span><b>Drive source rows</b><span>${S.drive_primary_source_rows}</span><b>Drive certificate rows</b><span>${S.drive_machine_certificate_rows}</span><b>Gmail evidence snapshot</b><span>${S.relevant_mail_snapshot} messages</span><b>Machine JSON</b><span><a href="../../data/formalism-atlas.json">formalism-atlas.json</a></span></div><details><summary>Evidence grammar</summary><pre>${esc(JSON.stringify(A.build.evidence_grammar,null,2))}</pre></details><details><summary>Core lock</summary><pre>${esc(JSON.stringify(A.core_lock,null,2))}</pre></details>`;
- document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".tabpane").forEach(x=>x.classList.add("hidden"));document.getElementById(b.dataset.tab).classList.remove("hidden")});
+
+function statusClass(s) {
+  if (s.startsWith("Exact")) return "canon";
+  if (s.startsWith("Structural")) return "struct";
+  if (s.startsWith("Engineering")) return "eng";
+  return "open";
 }
-function cls(s){return s.startsWith("Exact")?"canon":s.startsWith("Structural")?"struct":s.startsWith("Engineering")?"eng":"open"}
-function renderRegistry(){
- const term=q.value.toLowerCase(),d=domain.value,s=status.value,c=canon.value;
- const rs=A.registry.filter(r=>(!term||[r.formalism,r.summary,r.domain,r.claim_status,r.key].join(" ").toLowerCase().includes(term))&&(!d||r.domain===d)&&(!s||r.claim_status===s)&&(!c||String(+r.canonical)===c));
- registryCount.textContent=`${rs.length} / ${A.registry.length} records`;
- rows.innerHTML=rs.map(r=>`<tr id="FRM-${r.id}"><td class=id><a href="#FRM-${r.id}" class="anchorlink" title="Deep link">#${r.id}</a></td><td><b>${esc(r.formalism)}</b><details><summary>details</summary><p>${esc(r.summary)}</p>${r.identity_links?.length?`<p>Identities: ${r.identity_links.map(x=>`<span class=badge>${esc(x)}</span>`).join("")}</p>`:""}</details></td><td>${esc(r.domain)}</td><td class="${cls(r.claim_status)}">${r.canonical?"✓ ":""}${esc(r.claim_status)}</td><td><span class="badge e">${esc(r.evidence_band)}</span></td><td>${r.modalities.map(x=>`<span class=badge>${esc(x)}</span>`).join("")}</td><td>${r.sources.map(x=>`<a href="${esc(x.url)}" target=_blank rel=noopener>${esc(x.role)}</a>`).join(" · ")}</td></tr>`).join("");
+
+function renderRegistry() {
+  const qEl=$("q"), domainEl=$("domain"), statusEl=$("status"), canonEl=$("canon");
+  const term=(qEl?.value||"").toLowerCase();
+  const d=domainEl?.value||"", st=statusEl?.value||"", c=canonEl?.value||"";
+  const rs=(A.registry||[]).filter(r =>
+    (!term || [r.formalism,r.summary,r.domain,r.claim_status,r.key].join(" ").toLowerCase().includes(term)) &&
+    (!d || r.domain===d) && (!st || r.claim_status===st) && (!c || String(+r.canonical)===c)
+  );
+  $("registryCount").textContent=`${rs.length} / ${A.registry.length} records`;
+  $("rows").innerHTML=rs.map(r=>`<tr id="FRM-${r.id}">
+    <td class="id"><a href="#FRM-${r.id}" class="anchorlink" title="Deep link">#${r.id}</a></td>
+    <td><b>${esc(r.formalism)}</b><details><summary>details</summary><p>${esc(r.summary)}</p>
+    ${r.identity_links?.length?`<p>Identities: ${r.identity_links.map(x=>`<span class="badge">${esc(x)}</span>`).join("")}</p>`:""}</details></td>
+    <td>${esc(r.domain)}</td><td class="${statusClass(r.claim_status)}">${r.canonical?"✓ ":""}${esc(r.claim_status)}</td>
+    <td><span class="badge e">${esc(r.evidence_band)}</span></td>
+    <td>${(r.modalities||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join("")}</td>
+    <td>${(r.sources||[]).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.role)}</a>`).join(" · ")}</td>
+  </tr>`).join("");
 }
-function renderNodes(){
- const term=gq.value.toLowerCase();
- const ns=A.theorem_graph.identities.filter(n=>!term||[n.citizen_code,n.title,n.evidence_class,n.validation_status].join(" ").toLowerCase().includes(term)).slice(0,500);
- nodes.innerHTML=ns.map(n=>`<div class=node data-code="${esc(n.citizen_code)}"><b>${esc(n.citizen_code)}</b><br><span class=muted>${esc(n.title)}</span></div>`).join("");
- nodes.querySelectorAll(".node").forEach(el=>el.onclick=()=>showNode(el.dataset.code,el));
+
+function renderNodes() {
+  const term=($("gq")?.value||"").toLowerCase();
+  const ids=A.theorem_graph?.identities||[];
+  const ns=ids.filter(n=>!term||[n.citizen_code,n.title,n.evidence_class,n.validation_status].join(" ").toLowerCase().includes(term)).slice(0,500);
+  $("nodes").innerHTML=ns.length ? ns.map(n=>`<div class="node" data-code="${esc(n.citizen_code)}"><b>${esc(n.citizen_code)}</b><br><span class="muted">${esc(n.title)}</span></div>`).join("")
+    : '<div class="muted">No theorem nodes are embedded in the current published JSON snapshot.</div>';
+  $("nodes").querySelectorAll(".node").forEach(el=>el.onclick=()=>showNode(el.dataset.code,el));
 }
-function showNode(code,el){
- document.querySelectorAll(".node").forEach(x=>x.classList.remove("sel"));el?.classList.add("sel");
- const n=A.theorem_graph.identities.find(x=>x.citizen_code===code); if(!n)return;
- const incoming=A.theorem_graph.edges.filter(e=>e.target_code===code), outgoing=A.theorem_graph.edges.filter(e=>e.source_code===code);
- nodeDetail.innerHTML=`<h2>${esc(code)}</h2><h3>${esc(n.title)}</h3><p><span class=badge>${esc(n.evidence_class)}</span><span class=badge>${esc(n.validation_status)}</span></p><div class=kv><b>Parents declared</b><span>${(n.parent_identity_codes||[]).map(x=>`<span class=badge>${esc(x)}</span>`).join("")||"none"}</span><b>Incoming edges</b><span>${incoming.length}</span><b>Outgoing edges</b><span>${outgoing.length}</span><b>Boundary</b><span>${esc(n.boundary||"")}</span></div><details open><summary>Incoming</summary><pre>${esc(JSON.stringify(incoming,null,2))}</pre></details><details><summary>Outgoing</summary><pre>${esc(JSON.stringify(outgoing,null,2))}</pre></details>`;
+
+function showNode(code, el) {
+  document.querySelectorAll(".node").forEach(x=>x.classList.remove("sel"));
+  el?.classList.add("sel");
+  const ids=A.theorem_graph?.identities||[], edges=A.theorem_graph?.edges||[];
+  const n=ids.find(x=>x.citizen_code===code); if(!n)return;
+  const incoming=edges.filter(e=>e.target_code===code), outgoing=edges.filter(e=>e.source_code===code);
+  $("nodeDetail").innerHTML=`<h2>${esc(code)}</h2><h3>${esc(n.title)}</h3>
+  <p><span class="badge">${esc(n.evidence_class)}</span><span class="badge">${esc(n.validation_status)}</span></p>
+  <div class="kv"><b>Parents declared</b><span>${(n.parent_identity_codes||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join("")||"none"}</span>
+  <b>Incoming edges</b><span>${incoming.length}</span><b>Outgoing edges</b><span>${outgoing.length}</span><b>Boundary</b><span>${esc(n.boundary||"")}</span></div>
+  <details open><summary>Incoming</summary><pre>${esc(JSON.stringify(incoming,null,2))}</pre></details>
+  <details><summary>Outgoing</summary><pre>${esc(JSON.stringify(outgoing,null,2))}</pre></details>`;
 }
-boot().catch(e=>{document.body.innerHTML="<pre>"+esc(e.stack||e)+"</pre>"});
+
+function renderInterlinks() {
+  $("platformLinks").innerHTML=PLATFORM_LINKS.map(([label,url,kind])=>`<a class="linkcard" href="${esc(url)}" ${url.startsWith("http")?'target="_blank" rel="noopener"':''}><b>${esc(label)}</b><small>${esc(kind)} · ${esc(url)}</small></a>`).join("");
+  const seen=new Set(), sourceRows=[];
+  for(const r of A.registry||[]) for(const src of r.sources||[]) {
+    if(src.url && !seen.has(src.url)) { seen.add(src.url); sourceRows.push([r.id,r.formalism,src.role,src.url]); }
+  }
+  $("sourceLinks").innerHTML=sourceRows.map(([id,title,role,url])=>`<a class="linkcard" href="${esc(url)}" target="_blank" rel="noopener"><b>FRM-${id} · ${esc(role)} · ${esc(title)}</b><small>${esc(url)}</small></a>`).join("");
+  $("surfaceLinks").innerHTML=SURFACE_LINKS.map(([code,title,url,active])=>`<a class="linkcard ${active?'':'off'}" href="${esc(url)}" target="_blank" rel="noopener"><b>${esc(title)}</b><small>${esc(code)} · ${active?'active':'historical/inactive'}</small></a>`).join("");
+}
+
+function renderDiagnostics() {
+  const ds=A.diagnostics||[];
+  $("diags").innerHTML=ds.map(d=>`<div class="panel ${esc(d.status)}"><b>${esc(d.code)}</b><p><span class="badge">${esc(d.status)}</span></p>
+  <pre style="white-space:pre-wrap">${esc(JSON.stringify(d.observed,null,2))}</pre>${d.note?`<p>${esc(d.note)}</p>`:""}</div>`).join("");
+}
+
+function renderProvenance() {
+  const S=A.summary||{};
+  $("prov").innerHTML=`<div class="kv">
+    <b>GitHub commit</b><span>${esc(A.build?.github_main_commit||"")}</span>
+    <b>Notion records</b><span>${esc(S.live_records)}</span>
+    <b>Supabase identities</b><span>${esc(S.identity_nodes)}</span>
+    <b>Supabase edges</b><span>${esc(S.theorem_edges)}</span>
+    <b>Drive source rows</b><span>${esc(S.drive_primary_source_rows)}</span>
+    <b>Drive certificate rows</b><span>${esc(S.drive_machine_certificate_rows)}</span>
+    <b>Gmail evidence snapshot</b><span>${esc(S.relevant_mail_snapshot)} messages</span>
+    <b>Machine JSON</b><span><a href="../../data/formalism-atlas.json">formalism-atlas.json</a></span>
+  </div><details><summary>Evidence grammar</summary><pre>${esc(JSON.stringify(A.build?.evidence_grammar||{},null,2))}</pre></details>
+  <details><summary>Core lock</summary><pre>${esc(JSON.stringify(A.core_lock||{},null,2))}</pre></details>`;
+}
+
+async function boot() {
+  const res=await fetch("../../data/formalism-atlas.json",{cache:"no-store"});
+  if(!res.ok) throw new Error(`Atlas JSON HTTP ${res.status}`);
+  A=await res.json();
+  const S=A.summary||{};
+  $("subtitle").textContent=`${S.live_records} live records · IDs 1–97 · missing ${(S.missing_ids||[]).join(", ")} · source commit ${String(A.build?.github_main_commit||"").slice(0,10)}`;
+  const stats=[
+    ["Records",S.live_records],["Canonical",S.canonical_records],["Identity nodes",S.identity_nodes],
+    ["Graph edges",S.theorem_edges],["Certificates",S.machine_certificates],["Source artifacts",S.source_artifacts],
+    ["Open discrepancies",S.open_discrepancies],["Stranded candidates",S.stranded_candidates]
+  ];
+  $("stats").innerHTML=stats.map(([k,v])=>`<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("");
+
+  const domainEl=$("domain"), statusEl=$("status");
+  for(const d of [...new Set((A.registry||[]).map(r=>r.domain))].sort()) domainEl.add(new Option(d,d));
+  for(const st of [...new Set((A.registry||[]).map(r=>r.claim_status))].sort()) statusEl.add(new Option(st,st));
+  ["q","domain","status","canon"].forEach(id=>$(id).addEventListener("input",renderRegistry));
+  $("gq").addEventListener("input",renderNodes);
+
+  renderRegistry(); renderNodes(); renderDiagnostics(); renderProvenance(); renderInterlinks();
+
+  document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+    document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    document.querySelectorAll(".tabpane").forEach(x=>x.classList.add("hidden"));
+    $(b.dataset.tab).classList.remove("hidden");
+  });
+
+  if(location.hash.startsWith("#FRM-")) requestAnimationFrame(()=>document.querySelector(location.hash)?.scrollIntoView({block:"center"}));
+}
+
+boot().catch(e=>{
+  const msg = e && (e.stack || e.message) ? (e.stack || e.message) : String(e);
+  document.body.innerHTML='<main style="padding:24px"><h1>Formalism Atlas failed to boot</h1><pre style="white-space:pre-wrap;color:#ff9a9a">'+esc(msg)+'</pre><p><a href="../../data/formalism-atlas.json">Open machine JSON</a></p></main>';
+});
 </script></body></html>
