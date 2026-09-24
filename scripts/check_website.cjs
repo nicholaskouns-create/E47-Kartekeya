@@ -129,8 +129,8 @@ test("homepage JavaScript renders the curated lab index", () => {
     document: { getElementById: (id) => id === "lab-grid" ? grid : null }
   });
 
-  assert.equal((grid.innerHTML.match(/class="lab-card"/g) || []).length, 8);
-  for (const lab of ["SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "InvariFold"]) {
+  assert.equal((grid.innerHTML.match(/class="lab-card"/g) || []).length, 9);
+  for (const lab of ["SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "InvariFold", "MANIFOLD"]) {
     assert.ok(grid.innerHTML.includes(lab), `Curated lab missing from homepage: ${lab}`);
   }
 });
