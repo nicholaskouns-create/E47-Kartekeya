@@ -5,6 +5,7 @@ const LABS=[
 ["MURMURATION","State evolution into collective motion","✦","https://kite-glade-tiger-cabin.grok.me/","external"],
 ["EIDOLON","Enter the evolving field as observer","◢","../flight/eidolon/","same"],
 ["MANIFOLD","Locked spectral surfaces · Eidolon replay","▣","../manifold/","same"],
+["NEXUS","Pulse bus · operad · cinema · lock","◎","../nexus/","same"],
 ["MANTA","State-coupled geometry surface","⌁","../manta/","same"],
 ["DENSITY","Observer-limited measurement","⌗","https://winter-dawn-leaf-marble.grok.me/","external"],
 ["MNEMOSYNE","Sealed predictions and recall","◉","https://moon-clear-urban-nova.grok.me/","external"],
