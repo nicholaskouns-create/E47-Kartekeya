@@ -41,12 +41,12 @@ This repository does not, by itself, establish:
 
 Claims in this package are categorized as follows:
 
-- **E0:** Exact mathematical identities and symbolic proofs
-- **E1:** Deterministic machine reconstruction (floating-point arithmetic)
-- **E2:** Numerical or simulation evidence (QuTiP, Monte Carlo)
-- **E3:** External independent replication by other research groups
-- **H0:** Proposed hardware protocol (blueprint phase)
-- **H1:** Completed hardware test with experimental data
+- **E0:** Exact proof
+- **E1:** Executable reconstruction
+- **E2:** Simulation
+- **E3:** External benchmark
+- **E4:** Experiment
+- **H0:** Hardware
 
 The current package primarily supports **E0** and **E1** claims, with limited **E2** coverage through QuTiP and numerical validation.
 
@@ -107,6 +107,6 @@ It does **not** replace:
 
 ---
 
-**Scope document updated:** 2026-07-21  
+**Scope document updated:** 2026-09-23  
 **Validation package:** `src/e47/`  
 **Repository:** https://github.com/nicholaskouns-create/E47-Kartekeya
