@@ -1,0 +1,11 @@
+{
+  "path": ["SPECTRA", "Fold", "Density", "Murmuration", "Horizon", "Mnemosyne", "Wave", "Identity", "REVEAL"],
+  "run_id": "NEXUS-PULSE-20260924",
+  "horizon": {
+    "kind": "next_state",
+    "reads_seal": "89aad062380fbc4f444d3dc1f30c355bb4220cb3b1584a7874fd407f9cb79933",
+    "forecast": {"L": 0.9517734792475394, "omega": 0.4418288465851782, "complement": 4},
+    "invents_dynamics": false
+  },
+  "law": "Labs are morphisms. Composition never upgrades evidence class. Open slot if a child is down."
+}
