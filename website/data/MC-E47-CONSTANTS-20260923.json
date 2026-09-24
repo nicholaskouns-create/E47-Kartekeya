@@ -1,0 +1,84 @@
+{
+  "schema": "CITY-MACHINE-CERTIFICATE/1.0",
+  "certificate_code": "MC-E47-CONSTANTS-20260923",
+  "title": "E47 finite spectral constants and invariants — 19/19 checks PASS",
+  "evidence_class": "E1",
+  "valid": true,
+  "source": "scripts/e47_constant_validation.py",
+  "source_sha256": "97af74ede32869895504a3375ce7be854d009aaf92b1f3eb2d501181ae44f616",
+  "source_commit": "e3a4b0686263f4b4a7d3b90a75c7b71f707bd7a9",
+  "result": {
+    "pass_count": 19,
+    "fail_count": 0,
+    "ambient_dimension": 125,
+    "kernel_dimension": 47,
+    "complement_dimension": 78,
+    "omega_c": "47/125",
+    "omega_c_decimal": 0.376,
+    "mu": 18,
+    "tau": 468,
+    "variance": 144,
+    "sigma": 12,
+    "selected_sectors": [
+      6,
+      30
+    ],
+    "casimir_spectrum": [
+      0,
+      2,
+      6,
+      12,
+      20,
+      30,
+      42
+    ],
+    "multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "k_sector_values": [
+      180,
+      112,
+      0,
+      -108,
+      -140,
+      0,
+      432
+    ],
+    "k_norm": 432,
+    "k2_spectrum": [
+      0,
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
+    "k2_gap": 11664,
+    "k2_norm": 186624,
+    "epsilon_star": "1/99144",
+    "rho_star": "15/17",
+    "projector_rank": 47,
+    "projector_trace": 47,
+    "iterations": 252,
+    "gamma252_minus_p_op": 4.7049900678789936e-14,
+    "theoretical_bound_252": 2.0038679292982893e-14
+  },
+  "boundaries": [
+    "Finite-dimensional spin-2 SU(2) tensor-cube software verification.",
+    "The 256→125 MATRIX lift remains a typed feature map, not a Hilbert-space isomorphism.",
+    "No hardware, experimental, continuum, or physical-law claim is promoted by this certificate."
+  ],
+  "provenance": {
+    "notion": "https://mathematicalcity.notion.site/E47-Invariant-Kernel-Verification-252-Step-Spectral-Projector-Certificate-3e546094fd3081738c01e36b7b75e3af?pvs=149",
+    "drive_python": "https://drive.google.com/file/d/1Yu9petpWB2ZGTWqwOPyVGBi-vz4CcXrf/view?usp=drivesdk",
+    "drive_csv": "https://drive.google.com/file/d/1c1AH_on4c7qfVwITV6MjP14Rcv2lO4SP/view?usp=drivesdk",
+    "supabase_source": "SRC-E47-CONSTANT-VALIDATION-20260923",
+    "supabase_identity": "MC-E47-CONSTANT-FINGERPRINT-20260923"
+  }
+}
