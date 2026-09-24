@@ -1,0 +1,60 @@
+name: Portal audit
+
+on:
+  push:
+    paths:
+      - "website/interfaces/instruments/**"
+      - "website/interfaces/**"
+      - "docs/instruments.md"
+      - "scripts/audit_portal_links.py"
+      - "src/**"
+      - "q5/**"
+      - "web/**"
+      - "lab-manifest.json"
+      - ".github/workflows/portal-audit.yml"
+  pull_request:
+    paths:
+      - "website/interfaces/instruments/**"
+      - "website/interfaces/**"
+      - "docs/instruments.md"
+      - "scripts/audit_portal_links.py"
+      - "src/**"
+      - "q5/**"
+      - "web/**"
+      - "lab-manifest.json"
+      - ".github/workflows/portal-audit.yml"
+  workflow_dispatch:
+
+# Read-only diagnostic: it reports drift; it never mutates repository state.
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Verify every portal route resolves
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run portal audit
+        run: |
+          python scripts/audit_portal_links.py --site-root website
+
+      - name: Emit machine-readable report on failure
+        if: failure()
+        run: |
+          python scripts/audit_portal_links.py             --site-root website             --json > portal-audit.json || true
+
+      - name: Upload audit artifact on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-audit-report
+          path: portal-audit.json
+          retention-days: 14

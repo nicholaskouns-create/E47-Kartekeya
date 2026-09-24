@@ -90,6 +90,10 @@ h1 { font: 600 38px/1.08 var(--display); margin: 0 0 14px; max-width: 18ch; }
   padding: 3px 7px; letter-spacing: .04em;
 }
 .pill.sector { color: var(--mint); border-color: #315a59; }
+.pill.evidence.e0 { color: var(--mint); border-color: rgba(193,232,206,.34); }
+.pill.evidence.e1 { color: var(--cyan); border-color: rgba(110,223,212,.34); }
+.pill.evidence.e2 { color: var(--bronze); border-color: rgba(188,156,108,.38); }
+.pill.evidence.e3 { color: #b088ff; border-color: rgba(176,136,255,.36); }
 .links { display: flex; gap: 8px; margin-top: 8px; }
 .links a {
   border: 1px solid var(--line); padding: 6px 9px; font: 10px var(--mono);
