@@ -12,7 +12,8 @@
     "checks": "26/26 PASS",
     "intertwiner_residual": 1.5418039012522706e-15,
     "source_commit": "4dce2445e7d641682370f0a31190c1e947b9f095",
-    "github_blob_sha": "2ca49b175ec429c97ced7ddaf3b506690e2e1cd0"
+    "github_blob_sha": "2ca49b175ec429c97ced7ddaf3b506690e2e1cd0",
+    "source_sha256": "2c351037fc6bdbe13130ddd724428ae0ea4849ddae7d10879df4511f8e014324"
   },
   "github": {
     "validator": "research/e47/validation/e47_spacetime_prima_facie.py",
