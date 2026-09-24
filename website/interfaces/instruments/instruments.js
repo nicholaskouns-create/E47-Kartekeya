@@ -6,6 +6,7 @@
     { n: '01', name: 'MANTA', sector: 'flight', blurb: 'Morphing aircraft and fixed-baseline simulation.', evidence: 'e2', open: '/interfaces/manta/', source: '/website/interfaces/manta' },
     { n: '07', name: 'CITY CORE', sector: 'spectral', blurb: 'Instrument navigation and EIDOLON entry.', evidence: 'e1', open: '/interfaces/kouns-core/?module=eidolon#flight', source: '/website/interfaces/kouns-core' },
     { n: '25', name: 'MANIFOLD', sector: 'spectral', blurb: 'Locked spectral surfaces. EidolonEngine replay slider on the full L(t) series.', evidence: 'e2', open: '/interfaces/manifold/', source: '/website/interfaces/manifold' },
+    { n: '26', name: 'NEXUS', sector: 'spectral', blurb: 'Emergent composition. CITY_PULSE/1.0 bus, operad views, packet cinema, watchtower lock.', evidence: 'e2', open: '/interfaces/nexus/', source: '/website/interfaces/nexus' },
     { n: '08', name: 'THE MATRIX', sector: 'spectral', blurb: 'Quantum circuit, statevector, and matrix-product-state tools.', evidence: 'e1', open: '/interfaces/matrix/', source: '/website/interfaces/matrix' },
     { n: '10', name: 'Q5', sector: 'spectral', blurb: '5×5×5 packing ledger.', evidence: 'e0', open: '/interfaces/q5/', source: '/q5' },
     { n: '14', name: 'EIDOLON', sector: 'shell', blurb: 'EIDOLON flight shell.', evidence: 'e2', open: '/interfaces/flight/eidolon/', source: '/website/interfaces/flight/eidolon' },
