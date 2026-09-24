@@ -1,245 +1,569 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>E47 · Executable Formalism Atlas</title>
-<meta name="description" content="Executable atlas of the live Mathematical City Formalism Registry, theorem graph, evidence classes, provenance, diagnostics, and cross-platform interlinks.">
+<meta name="description" content="Static-first atlas of the live Mathematical City Formalism Registry, provenance and interlinks.">
 <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/">
-<meta property="og:title" content="E47 · Executable Formalism Atlas">
-<meta property="og:description" content="94 live formalisms, source links, theorem graph, certificates, diagnostics, and executable Mathematical City surfaces.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/">
+<meta property="og:title" content="E47 · Executable Formalism Atlas"><meta property="og:description" content="94 live formalisms with canonical status, sources, provenance and executable interlinks."><meta property="og:type" content="website">
 <style>
 :root{color-scheme:dark;--bg:#080c14;--panel:#101725;--line:#253149;--text:#e8eef8;--muted:#8fa0b8;--cyan:#5ee7ff;--mint:#77f2c4;--amber:#f2bd65;--red:#ff7b8f;--blue:#789cff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-header{padding:38px clamp(18px,4vw,64px) 22px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0c1320,#080c14)}
-.ey{color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;font-size:12px}h1{font-size:clamp(30px,5vw,64px);margin:.15em 0 .05em;letter-spacing:-.04em}p{color:var(--muted)}
-main{padding:20px clamp(14px,3vw,48px) 70px;max-width:1800px;margin:auto}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:18px 0}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}.stat b{display:block;font-size:25px;color:var(--mint)}.stat span{color:var(--muted)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tabs button,.btn{background:#111a29;color:var(--text);border:1px solid var(--line);padding:9px 12px;border-radius:7px;cursor:pointer}.tabs button.on{border-color:var(--cyan);color:var(--cyan)}
-.controls{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin:12px 0 14px}.controls input,.controls select{width:100%;background:#0d1421;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:7px}
-table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line)}th,td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{position:sticky;top:0;background:#141e30;z-index:2;color:#cbd7e8}tr:hover td{background:#121c2c}.id{color:var(--cyan)}.canon{color:var(--mint)}.open{color:var(--amber)}.eng{color:var(--red)}.struct{color:var(--blue)}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 7px;margin:1px 3px 1px 0;color:var(--muted);font-size:11px}.badge.c{color:var(--mint);border-color:#2a6d5a}.badge.e{color:var(--cyan);border-color:#24576b}
-a{color:var(--cyan)}details{margin:8px 0}.diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}.diag .PASS{border-color:#245c4e}.diag .OPEN,.diag .DRIFT,.diag .PRESERVED_FAILURE{border-color:#6b5328}
-.graphGrid{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:12px}.nodeList{max-height:65vh;overflow:auto}.node{padding:8px;border-bottom:1px solid var(--line);cursor:pointer}.node:hover{background:#142036}.node.sel{background:#17263d;color:var(--cyan)}
-.kv{display:grid;grid-template-columns:150px 1fr;gap:7px 14px}.kv b{color:#cbd7e8}.muted{color:var(--muted)}.hidden{display:none}
-.linkbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.linkbar a,.linkcard{display:block;text-decoration:none;border:1px solid var(--line);background:#101a29;border-radius:8px;padding:9px 11px}.linkbar a:hover,.linkcard:hover{border-color:var(--cyan);background:#132238}.linkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}.linkcard b{display:block;color:var(--text);margin-bottom:3px}.linkcard small{color:var(--muted);word-break:break-word}.linkcard.off{opacity:.55}.sourcegrid{max-height:65vh;overflow:auto}.anchorlink{font-size:11px;text-decoration:none;color:var(--muted);margin-left:5px}
-@media(max-width:850px){.controls{grid-template-columns:1fr 1fr}.graphGrid{grid-template-columns:1fr}.kv{grid-template-columns:1fr}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-x:hidden}
+header{padding:34px max(16px,env(safe-area-inset-left)) 22px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0c1320,#080c14)}
+main{padding:18px 16px 70px;max-width:1600px;margin:auto}.ey{color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;font-size:11px}h1{font-size:clamp(30px,8vw,58px);line-height:1;margin:.15em 0}.lede,p{color:var(--muted)}
+.links,.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.links a,.filters button,.filters input,.filters select{background:#111a29;color:var(--text);border:1px solid var(--line);padding:9px 11px;border-radius:8px;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0}.stat,.panel,.linkcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}.stat b{display:block;font-size:22px;color:var(--mint)}.stat small,.linkcard small{color:var(--muted);display:block;overflow-wrap:anywhere}.linkgrid{display:grid;grid-template-columns:1fr;gap:8px}.linkcard{text-decoration:none}.linkcard b{display:block;color:var(--text);margin-bottom:4px}.linkcard.off{opacity:.5}
+h2{font-size:20px;margin:32px 0 12px}.core{display:grid;grid-template-columns:1fr;gap:8px}.core code{display:block;white-space:normal;color:#eaf7ff}.core .panel b{color:var(--cyan)}
+.tablewrap{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;background:var(--panel);min-width:820px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{position:sticky;top:0;background:#141e30;z-index:2}.idlink{color:var(--cyan);text-decoration:none}.badge,.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 7px;font-size:10px}.exact{color:var(--mint)}.structural{color:var(--blue)}.open{color:var(--amber)}.engineering{color:var(--red)}.src{display:inline-block;margin:5px 5px 0 0;color:var(--cyan)}details p{max-width:80ch}
+.note{border-left:3px solid var(--cyan);padding:10px 12px;background:#0c1622}.machine{word-break:break-all}
+@media(min-width:760px){header,main{padding-left:clamp(24px,4vw,60px);padding-right:clamp(24px,4vw,60px)}.stats{grid-template-columns:repeat(6,1fr)}.core{grid-template-columns:repeat(3,1fr)}.linkgrid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}}
 </style></head><body>
-<header><div class="ey">Mathematical City · Live Registry Compiler</div><h1>Executable Formalism Atlas</h1>
-<p id="subtitle">Loading live snapshot…</p>
-<div class="linkbar" aria-label="Primary interlinks">
+<header><div class="ey">Mathematical City · static-first live atlas</div><h1>E47 Formalism Atlas</h1>
+<p class="lede">94 live records · IDs 1–97 · missing 54, 55, 56 · no JavaScript required to read the atlas.</p>
+<div class="links">
 <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/">City home</a>
-<a href="https://mathematicalcity.notion.site/?pvs=74" target="_blank" rel="noopener">Notion atlas ↗</a>
+<a href="https://mathematicalcity.notion.site/?pvs=74" target="_blank" rel="noopener">Notion ↗</a>
 <a href="https://github.com/nicholaskouns-create/E47-Kartekeya" target="_blank" rel="noopener">GitHub ↗</a>
-<a href="https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit" target="_blank" rel="noopener">Drive source atlas ↗</a>
-<a href="https://docs.google.com/spreadsheets/d/1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534/edit" target="_blank" rel="noopener">Drive certificates ↗</a>
 <a href="../../data/formalism-atlas.json">Machine JSON</a>
-</div></header>
-<main>
-<div class="stats" id="stats"></div>
-<div class="tabs"><button class="on" data-tab="registry">Registry</button><button data-tab="graph">Theorem graph</button><button data-tab="diagnostics">Diagnostics</button><button data-tab="provenance">Provenance</button><button data-tab="interlinks">Interlinks</button></div>
+<a href="#interlinks">All interlinks ↓</a>
+</div></header><main>
+<div class="stats">
+<div class="stat"><b>94</b><small>records</small></div>
+<div class="stat"><b>46</b><small>canonical</small></div>
+<div class="stat"><b>33</b><small>exact / verified</small></div>
+<div class="stat"><b>125</b><small>carrier dimension</small></div>
+<div class="stat"><b>47</b><small>kernel dimension</small></div>
+<div class="stat"><b>47/125</b><small>Ωc</small></div>
+</div>
 
-<section id="registry" class="tabpane">
-<div class="controls"><input id="q" placeholder="Search title, summary, domain…"><select id="domain"><option value="">All domains</option></select><select id="status"><option value="">All claim states</option></select><select id="canon"><option value="">Canonical + derivative</option><option value="1">Canonical only</option><option value="0">Derivative / noncanonical</option></select></div>
-<div class="muted" id="registryCount"></div>
-<div style="overflow:auto;max-height:72vh"><table><thead><tr><th>ID</th><th>Formalism</th><th>Domain</th><th>Status</th><th>Evidence</th><th>Modality</th><th>Source</th></tr></thead><tbody id="rows"></tbody></table></div>
-</section>
+<h2>Canonical lock</h2><div class="core">
+<div class="panel"><b>Carrier</b><code>V_2^{⊗3} · dim 125</code></div>
+<div class="panel"><b>Selector</b><code>K=(C-6I)(C-30I)</code></div>
+<div class="panel"><b>Invariant</b><code>ker(K)=E_6⊕E_30 · dim 47</code></div>
+<div class="panel"><b>K² gap</b><code>11664</code></div>
+<div class="panel"><b>K² norm</b><code>186624</code></div>
+<div class="panel"><b>Contraction</b><code>ε*=1/99144 · ρ*=15/17</code></div>
+</div>
+<p class="note">This page is intentionally rendered in HTML before any script runs. Filters below are an enhancement only, so a mobile browser cannot collapse the atlas into a boot error screen.</p>
 
-<section id="graph" class="tabpane hidden">
-<div class="controls" style="grid-template-columns:1fr"><input id="gq" placeholder="Search identity code or theorem title…"></div>
-<div class="graphGrid"><div class="panel nodeList" id="nodes"></div><div class="panel" id="nodeDetail"><span class="muted">Select a theorem/identity node.</span></div></div>
-</section>
+<h2>Formalism Registry</h2>
+<div class="filters"><input id="q" placeholder="Search records"><select id="st"><option value="">All states</option><option value="exact">Exact</option><option value="structural">Structural</option><option value="open">Open</option><option value="engineering">Engineering</option></select><button id="canon" type="button">Canonical only: off</button></div>
+<div class="tablewrap"><table id="reg"><thead><tr><th>ID</th><th>Formalism</th><th>Domain</th><th>Status</th><th>Canonical</th><th>Modalities</th></tr></thead><tbody><tr id="FRM-1" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-1">#1</a></td>
+<td><strong>The K47/125 Construction</strong><details><summary>details</summary><p>Canonical finite-dimensional construction on V₂^{⊗3}: total Casimir, selector K=(C−6I)(C−30I), rank-47 kernel E₄₇, projector, and Ωc=47/125.</p><a class="src" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-2" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-2">#2</a></td>
+<td><strong>E47 Spectral Kernel Selector</strong><details><summary>details</summary><p>Polynomial Casimir selector whose kernel is exactly 5V₂⊕2V₅ with dimension 47 inside the 125-dimensional carrier.</p><a class="src" href="https://docs.google.com/document/d/1phSGFngIrntOEJVnRd13fC7nW3quESlJU2LRYc8mRjI" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">QuTiP</span></td></tr>
+<tr id="FRM-3" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-3">#3</a></td>
+<td><strong>SU(2) Triple Spin-2 Decomposition</strong><details><summary>details</summary><p>Clebsch–Gordan decomposition of V₂^{⊗3} into spin sectors J=0,…,6 with exact multiplicities and total dimension 125.</p><a class="src" href="https://docs.google.com/document/d/1lF9JRb_iBvFoEiU4S6N2eJg0pIZFnVwIzsEZv73N41M" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-4" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-4">#4</a></td>
+<td><strong>Orthogonal Projector and Contraction Dynamics</strong><details><summary>details</summary><p>Hermitian contraction Γ=I−εK² converging to the orthogonal projector P_E onto E₄₇ under the stated spectral bound.</p><a class="src" href="https://docs.google.com/document/d/1HU4knLv4eXN9h5-NmStUZcA3nRIvCLUhrKhMuxK0xSs" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-5" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-5">#5</a></td>
+<td><strong>KKP-R Verification Inventory</strong><details><summary>details</summary><p>Verification layer for carrier dimension, Casimir spectrum, kernel rank, projector identities, contraction, and coherence ratio.</p><a class="src" href="https://docs.google.com/document/d/1G01tVwIDDgR_yPsA3_LoshmQmZncMqMGf2RWniJ8Vig" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/bf00af4711a2493d925250c122b895ac" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-6" data-status="structural" data-canonical="false" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-6">#6</a></td>
+<td><strong>Hamiltonian, Lagrangian, Euler, and Bohmian Dynamics on E47</strong><details><summary>details</summary><p>Dynamical formulations restricted to the invariant subspace; their physical interpretation remains separate from the exact kernel theorem.</p><a class="src" href="https://docs.google.com/document/d/1VbrGEfQ_m8Ya7P11rONyIh0mb5j8E1a_8f0FydTt7TU" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-7" data-status="structural" data-canonical="true" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-7">#7</a></td>
+<td><strong>Invariant Grammar — Seven-Layer Formalism</strong><details><summary>details</summary><p>Canonical typed visual language for stabilization into coherence. Exact components include finite signatures, type composability, the context-free form of the displayed surface BNF, and the verified 125→47 witness. Category, coalgebra, visual epistemic syntax, Chomsky translation, and cross-domain use are structural layers with explicit boundaries.</p><a class="src" href="https://docs.google.com/document/d/1YbPpYNmpAydu8W-O3fj3KlMkMXzaCUGvEZRzcuXsex4" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081718c43d05685557405" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-8" data-status="open" data-canonical="false" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-8">#8</a></td>
+<td><strong>The Grammar That Reads Itself</strong><details><summary>details</summary><p>Quine-style self-description and proposed fixed-point metagrammar. A rigorous self-verification theorem requires a formally defined sentence space, selector, encoding, and proof that the self-reading equations hold. The canonical E47 witness does not independently establish the metalinguistic claim.</p><a class="src" href="https://docs.google.com/document/d/1ANwLeNCtCVWm40vGdAG8QPlB52bwYVfMUK-qZp6N978" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081718c43d05685557405" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-9" data-status="structural" data-canonical="false" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-9">#9</a></td>
+<td><strong>E47 Machine-Learning Architecture</strong><details><summary>details</summary><p>White-box computational architecture using aggregation, contraction, projection, evaluation, and reinitialization.</p><a class="src" href="https://docs.google.com/document/d/1LUAqiLxCP-5OaF7h1NslzVnIQaTQsJpteoDenT_5AtE" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-10" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-10">#10</a></td>
+<td><strong>Finite Periodic FCC × E47 Spatial Lift</strong><details><summary>details</summary><p>Translation-invariant FCC torus coupled to the internal E₄₇ selector, with computed spectrum, kernel dimension, gap, and protected winding band.</p><a class="src" href="https://drive.google.com/file/d/1tRrZTf9sqgR_8TQ8QGhIMz2HxNsy6Dqi" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/bf00af4711a2493d925250c122b895ac" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-11" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-11">#11</a></td>
+<td><strong>E47 Coherence Ratio Under Spatial Lift</strong><details><summary>details</summary><p>Numerical confirmation that the protected internal rank remains 47 while the spatial carrier changes.</p><a class="src" href="https://drive.google.com/file/d/1-FTL9_A-dEfTpNHUY_VrwUNk1TbHb-ei" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/bf00af4711a2493d925250c122b895ac" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-12" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-12">#12</a></td>
+<td><strong>K47/125 Spectral Invariant Computation</strong><details><summary>details</summary><p>Direct numerical construction of the 125-dimensional Casimir operator and exact extraction of dim ker K=47.</p><a class="src" href="https://docs.google.com/document/d/1Jrg1KSc7zqkx42UWtfB9PF60Zr0fFUWC1bLwFtnxd8k" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/bf00af4711a2493d925250c122b895ac" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-13" data-status="exact" data-canonical="true" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-13">#13</a></td>
+<td><strong>E47 Noiseless Multiplicity Subsystems</strong><details><summary>details</summary><p>Exact collective-SU(2) decomposition identifying multiplicity spaces C⁵ and C² as noiseless subsystems for the stated operator algebra.</p><a class="src" href="https://docs.google.com/document/d/1qMzRIXzfEQvO4uSppqAQfZK95fzvBQVYFBQKw1E_ANQ" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081be981eee4d10f33983" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-14" data-status="open" data-canonical="false" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-14">#14</a></td>
+<td><strong>Knill–Laflamme Closure for Full E47 Quantum Error Correction</strong><details><summary>details</summary><p>Full-code status is channel-dependent and requires P_E E_a†E_b P_E=α_ab P_E for every pair of physical error operators.</p><a class="src" href="https://docs.google.com/document/d/1qMzRIXzfEQvO4uSppqAQfZK95fzvBQVYFBQKw1E_ANQ" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081be981eee4d10f33983" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-15" data-status="open" data-canonical="false" data-domain="Propulsion / GEM">
+<td><a class="idlink" href="#FRM-15">#15</a></td>
+<td><strong>GEM / Gravito-Inertial Hamiltonian Prototype</strong><details><summary>details</summary><p>Two-qubit superconducting sector coupled to truncated bosonic GEM modes; code requires tensor-space and unit normalization before physical interpretation.</p><a class="src" href="https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Propulsion / GEM</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">QuTiP</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-16" data-status="open" data-canonical="false" data-domain="Propulsion / GEM">
+<td><a class="idlink" href="#FRM-16">#16</a></td>
+<td><strong>HFGW Resonant-Cavity Simulation</strong><details><summary>details</summary><p>Time-dependent cavity perturbation model for a putative high-frequency gravitational-wave signal; computational prototype only.</p><a class="src" href="https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Propulsion / GEM</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">QuTiP</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-17" data-status="open" data-canonical="false" data-domain="Propulsion / GEM">
+<td><a class="idlink" href="#FRM-17">#17</a></td>
+<td><strong>Angular-Velocity GEM Sweep</strong><details><summary>details</summary><p>Parameterized rotation sweep over superconducting and GEM coupling terms; requires corrected time-dependent Hamiltonian implementation.</p><a class="src" href="https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Propulsion / GEM</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">QuTiP</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-18" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-18">#18</a></td>
+<td><strong>Python and Numerical Validation Audit</strong><details><summary>details</summary><p>Canonical site-wide audit of the Google Workspace computational corpus. Establishes the machine-verified finite spectral-kernel chain, projector and contraction identities, FCC/Fourier checks, and exact synthetic-harness identities; separately classifies QuTiP, SciPy, VQE, topology, swarm, protein-folding, propulsion/GEM, Navier–Stokes, constants, and other code as simulations, samples, prototypes, corrections, or open domain bridges.</p><a class="src" href="https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">QuTiP</span> <span class="tag">VQE</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-19" data-status="exact" data-canonical="true" data-domain="Scalar / spectral">
+<td><a class="idlink" href="#FRM-19">#19</a></td>
+<td><strong>Babylonian Scalar Contraction to Ωc</strong><details><summary>details</summary><p>Newton–Babylonian update Q_{n+1}=1/2(Q_n+Ωc²/Q_n), converging quadratically to Ωc for positive initial data.</p><a class="src" href="https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Scalar / spectral</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-20" data-status="structural" data-canonical="false" data-domain="Scalar / spectral">
+<td><a class="idlink" href="#FRM-20">#20</a></td>
+<td><strong>Recursive Mass Spectrum and Scalar Attractor Surface</strong><details><summary>details</summary><p>Toy golden-ratio mass scaling and potential-like scalar manifold visualizations; internally computable but not physical validation.</p><a class="src" href="https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Scalar / spectral</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-21" data-status="structural" data-canonical="false" data-domain="Geodesic / metric">
+<td><a class="idlink" href="#FRM-21">#21</a></td>
+<td><strong>Augmented Geodesic / Metric Flow</strong><details><summary>details</summary><p>SciPy integration of a nonlinear geodesic-like flow with explicit metric component, Christoffel term, and singularity detection.</p><a class="src" href="https://docs.google.com/document/d/1xVKeyzl8GILmT8vR42b8noB7Y6vJ7y1bQ5KADWfcyKM" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Geodesic / metric</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-22" data-status="open" data-canonical="false" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-22">#22</a></td>
+<td><strong>E47 VQE Circuit and Hybrid Feedback Specification</strong><details><summary>details</summary><p>Parameterized Ry/Rz ansatz with hybrid gradient feedback; lacks a complete executable SDK implementation and locked data products.</p><a class="src" href="https://docs.google.com/document/d/1tKDHLlhaVONtGZm4FHe5STaqlyatO-X_-5iBujgcXhg" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">VQE</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-23" data-status="open" data-canonical="false" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-23">#23</a></td>
+<td><strong>Alpha from Omega Electromagnetic Closure</strong><details><summary>details</summary><p>Exact numerical candidate for α⁻¹ whose coefficients and bridge map must still be uniquely derived from E₄₇ rather than selected.</p><a class="src" href="https://docs.google.com/document/d/1Lf56EooNfpgfFLBKz4L6SU-k8HDoDDAWSsJSnlDhCMY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/39f46094fd3081f4a407ca51218aea05" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-24" data-status="open" data-canonical="false" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-24">#24</a></td>
+<td><strong>Navier–Stokes Kernel Selection Program</strong><details><summary>details</summary><p>Proposed Casimir-selected survivor class for three-dimensional Navier–Stokes; global regularity obligations remain open.</p><a class="src" href="https://docs.google.com/document/d/1FZ475Y0abZ_HHh2ywYeS8238zZoTkeF2tpjRX71duoA" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-25" data-status="open" data-canonical="false" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-25">#25</a></td>
+<td><strong>Compressible Navier–Stokes Informational Action</strong><details><summary>details</summary><p>Variational informational-action formulation for compressible flow; separate from a proof of incompressible global regularity.</p><a class="src" href="https://docs.google.com/document/d/1fts7UrttjsGHK2HkEF-MuOZFTdXSsbRrk_jkYq0aAoY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-26" data-status="engineering" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-26">#26</a></td>
+<td><strong>PQSPI Recursive Contraction Architecture</strong><details><summary>details</summary><p>Proposed hardware and recursive-control embodiment within the broader PQSPI system. Exact projector algebra, standardized PQC, protocol logic, physical sensing, and unverified phonon claims remain separately classified.</p><a class="src" href="https://docs.google.com/document/d/1JNy9v-iny6b0a1RK1u9NvYtr-fFibdHyNJDuipF0Hbk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Hardware</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-27" data-status="open" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-27">#27</a></td>
+<td><strong>Wave-Guided Metamaterial Architecture</strong><details><summary>details</summary><p>Pentamode wave-guided smart-skin architecture combining transformation control, candidate topological channels, active steering, and code-bearing NumPy/SciPy models. Constitutive retrieval, multiphysics convergence, fabrication, and bench validation remain open.</p><a class="src" href="https://docs.google.com/document/d/1DzZITTzORYUsG1bxvUSRIzTbE7avX0jFKwvRDPEriLY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-28" data-status="open" data-canonical="false" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-28">#28</a></td>
+<td><strong>Recursive Geometric Theory of Mass</strong><details><summary>details</summary><p>Discrete recursive mass-organization model; absolute physical predictions require an independently justified scale map.</p><a class="src" href="https://app.notion.com/p/2be46094fd308146bb64fc9edd29ef42" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Open closure</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-29" data-status="structural" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-29">#29</a></td>
+<td><strong>Swarm and Collective-Control Projection</strong><details><summary>details</summary><p>Graph- or manifold-Laplacian contraction model for coherent collective modes, topology, recovery time, and perturbation rejection.</p><a class="src" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-30" data-status="open" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-30">#30</a></td>
+<td><strong>Levinthal’s Paradox and Recursive Folding Hypothesis</strong><details><summary>details</summary><p>Exact Heron convergence and a documented AlphaFold-derived scalar pilot are separated from the open biological interpretation. The validation program uses folding kinetics, stability mutagenesis, atomic trajectories, sequence models, and rank-47 null controls.</p><a class="src" href="https://docs.google.com/document/d/1NJKttAMjlkqw7az7tFj_O40b4cf7CG21mqPfb5ruI9o" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30816a9d59dbbd73ada973" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-31" data-status="engineering" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-31">#31</a></td>
+<td><strong>AQSFT Spectral Contraction and Extraction Pipeline</strong><details><summary>details</summary><p>Residue embedding, rank-limited contraction, and spectral extraction prototype; complexity and cryptographic claims remain unverified.</p><a class="src" href="https://docs.google.com/document/d/1tKDHLlhaVONtGZm4FHe5STaqlyatO-X_-5iBujgcXhg" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">Hardware</span></td></tr>
+<tr id="FRM-32" data-status="structural" data-canonical="false" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-32">#32</a></td>
+<td><strong>Abstract 47⊕78 Invariant-Sector Harness</strong><details><summary>details</summary><p>Runnable Python package for the synthetic 125-dimensional 47⊕78 invariant-sector harness, including exact projector, commutator, no-leakage, Casimir-spectrum, complement-contraction, saved NumPy artifacts, and JSON verification metrics. It remains distinct from the canonical V₂^{⊗3} construction.</p><a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-33" data-status="open" data-canonical="false" data-domain="Propulsion / GEM">
+<td><a class="idlink" href="#FRM-33">#33</a></td>
+<td><strong>Sector-Selective Propulsion Analog</strong><details><summary>details</summary><p>Simulation-only scalar-field sector split included in the runnable verification package. The selected sector is preserved while the complement is attenuated; no force, thrust, inertial modification, curvature, reactionless momentum transfer, or measured GEM result is claimed.</p><a class="src" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Propulsion / GEM</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-34" data-status="structural" data-canonical="true" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-34">#34</a></td>
+<td><strong>ETNS Negative-Space Inference</strong><details><summary>details</summary><p>Epistemic framework treating patterned absence, omission, redaction, and dissonance as potentially informative when the observation and missingness mechanisms are explicitly modeled.</p><a class="src" href="https://drive.google.com/file/d/19Tw21aVz0NddMdE36iChZcKwza0e5mbw" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-35" data-status="exact" data-canonical="true" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-35">#35</a></td>
+<td><strong>Negative-Space Kernel and Complement Formalism</strong><details><summary>details</summary><p>Exact complement, kernel, and projector definitions for observational negative space. These identities do not by themselves identify a hidden cause.</p><a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-36" data-status="open" data-canonical="false" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-36">#36</a></td>
+<td><strong>ETNS Future-Boundary Path Conditioning</strong><details><summary>details</summary><p>Terminal-boundary action minimization and path weighting. Structurally valid as smoothing or conditioning; physical retrocausality requires a discriminating causal experiment.</p><a class="src" href="https://docs.google.com/document/d/1D6cPNhUvT4dHEPXGVqbyG3HXPm6rYTe1YvSu0ZsskjI" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-37" data-status="structural" data-canonical="false" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-37">#37</a></td>
+<td><strong>RI–ETNS Missingness Penalty</strong><details><summary>details</summary><p>Regularized variational objective augmenting RI energy with an omission-dependent penalty. Weights and missingness mechanism remain model choices until likelihood-grounded and validated.</p><a class="src" href="https://docs.google.com/document/d/1lRj4OvHY70J-kx3MEvbf0t9gGnLnpbkZd40qGdbsrs8" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">VQE</span></td></tr>
+<tr id="FRM-38" data-status="structural" data-canonical="false" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-38">#38</a></td>
+<td><strong>QEGT–ETNS Gibbs Strategy Selection</strong><details><summary>details</summary><p>Gibbs or softmax strategy distribution based on a coherence-curvature cost. Quantum status requires an explicit Hilbert space, observable or channel, preparation, and measurement implementation.</p><a class="src" href="https://docs.google.com/document/d/1XaqydIgdkxM1z2MfZyzUPFIPVdEdb2sl6e4EXljD4vA" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-39" data-status="open" data-canonical="false" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-39">#39</a></td>
+<td><strong>ETNS–K47/125 Fixed-Point Mapping</strong><details><summary>details</summary><p>Connects the exact K47/125 spectral result to ETNS terminology. The algebraic core is inherited; the ETNS interpretation and added fixed-point equations remain conditional.</p><a class="src" href="https://docs.google.com/document/d/1x-_BCbUxe8a-q3tOA_5KOww23vy4LufhvJlrG35PMs0" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-40" data-status="engineering" data-canonical="false" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-40">#40</a></td>
+<td><strong>ETNS Engineering Applications Corpus</strong><details><summary>details</summary><p>Engineering proposals combining ETNS inference, recursive optimization, VQE, sensing, and hardware concepts. The surveyed corpus does not contain an inspectable experimental validation record.</p><a class="src" href="https://docs.google.com/document/d/19oKcj3yLdqQiVsnqtyT66dDR7Rck9BjlM75dRf_mbJo" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">VQE</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-41" data-status="structural" data-canonical="false" data-domain="Epistemology / ETNS">
+<td><a class="idlink" href="#FRM-41">#41</a></td>
+<td><strong>Epistemic Topology of Negative Spaces</strong><details><summary>details</summary><p>Publication-style synthesis of epistemic absence and mathematical negative space: complements, kernels, quotients, filtrations, missingness mechanisms, leakage, contraction, and the K47/125 47⊕78 decomposition, with a 36-source annotated Drive bibliography.</p><a class="src" href="https://drive.google.com/file/d/19Tw21aVz0NddMdE36iChZcKwza0e5mbw" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30818793caf609c132931e" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Epistemology / ETNS</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span></td></tr>
+<tr id="FRM-42" data-status="structural" data-canonical="false" data-domain="Scalar / spectral">
+<td><a class="idlink" href="#FRM-42">#42</a></td>
+<td><strong>E47-Orbit Skyrme Construction</strong><details><summary>details</summary><p>Conditional continuum construction on a generic mixed E47 orbit. Exact components include the E47 decomposition, homotopy background, induced Casimir expectation, and Var(C)=576 a²b². Orbit selection, coupling normalization, anisotropic PDE existence, uniqueness, scale, and physical realization remain open.</p><a class="src" href="https://docs.google.com/document/d/1_fv-U8ePA7YbznL9ns6gWhSMtmuys9aNWNkYavzrKzY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30811c9a01ce8f0f7908ff" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Scalar / spectral</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-43" data-status="engineering" data-canonical="false" data-domain="Propulsion / GEM">
+<td><a class="idlink" href="#FRM-43">#43</a></td>
+<td><strong>Skyrmion Propulsion Program</strong><details><summary>details</summary><p>Drive corpus proposing propulsion, zero-inertia, metric-lensing, fractional-Skyrmion, metamaterial, and hull realizations. No current equation, simulation, or experiment establishes thrust, reactionless momentum transfer, total-inertia cancellation, or spacetime engineering.</p><a class="src" href="https://docs.google.com/document/d/1vcgCk11NcoQUknnG29dUAuZXFy0HY_VhQEHE_DPMt6c" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30811c9a01ce8f0f7908ff" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Propulsion / GEM</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-44" data-status="open" data-canonical="false" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-44">#44</a></td>
+<td><strong>Lexical Attractor — Semantic Gradient and Symbol-Space Flow</strong><details><summary>details</summary><p>Two-layer attractor program: exact Lyapunov descent for a specified semantic potential and exact contraction of a reported 4×6 symbol matrix to its two-dimensional kernel. The unique 0.376 semantic target, universal natural-language convergence, and bridge from ker(w) to canonical E47 remain unproved.</p><a class="src" href="https://docs.google.com/document/d/1Lg8C67VfvoGUwMGlCkQMHFs9YHAUM-c8sNPCbawlAMs" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081718c43d05685557405" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-45" data-status="structural" data-canonical="false" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-45">#45</a></td>
+<td><strong>Chomsky-to-Typed-Operator Grammar Translation</strong><details><summary>details</summary><p>Translation from alphabet, production, parse, semantics, recursion, and interpretation into typed states, maps, construction graphs, invariant readouts, and regeneration. The displayed BNF is context-free in form; classification of the full operator calculus as Type 0 or a new Chomsky class requires an explicit string encoding and equivalence proof.</p><a class="src" href="https://drive.google.com/file/d/1ljMpN3XQe6GvL3lCz7U3e9nmkcKuQ5Q2/view" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081718c43d05685557405" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-46" data-status="open" data-canonical="true" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-46">#46</a></td>
+<td><strong>Spectral Cryptography and Hardware Formalism</strong><details><summary>details</summary><p>Canonical survey of the exact E47 projector, proposed RSC formalism, post-quantum architecture, RTL prototypes, ASIC targets, and IEEE submission records.</p><a class="src" href="https://docs.google.com/document/d/1RoIThcCRLW8HVRhT6_92dX6jIWOXUoHCrWVmy75gRlI" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge open">Conditional / open</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-47" data-status="open" data-canonical="false" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-47">#47</a></td>
+<td><strong>Recursive Spectral Cryptosystem and ISSR Proposal</strong><details><summary>details</summary><p>Projection-based cryptographic research proposal. Reversible encoding, scalable instances, formal security definitions, and external cryptanalysis remain open.</p><a class="src" href="https://docs.google.com/document/d/1PmVGdawuGDu2DZQgNMju4ypVCJTPh2pSMh5hSuGxvmY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-48" data-status="engineering" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-48">#48</a></td>
+<td><strong>Hybrid RSC and ML-KEM PQC ASIC</strong><details><summary>details</summary><p>Corrected hybrid lattice-PQC and spectral-accelerator reference architecture. Eight finite identities are machine validated from the Drive source packet. ASIC-specific executable source is not yet pinned to an immutable GitHub commit; the shared E47 spectral dependency remains canonical at ad297e1. Synthesis, place-and-route, silicon, cryptographic reduction, and material realization remain open.</p><a class="src" href="https://docs.google.com/document/d/1blmAO4r7YLqmoMDuNR0vMtWYm7ZpSlMx6CbY_62-Kfc" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-49" data-status="structural" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-49">#49</a></td>
+<td><strong>Babylonian Contraction RTL Prototype</strong><details><summary>details</summary><p>A 192-bit ten-stage scalar Newton/Babylonian square-root prototype with a terminal residual lock. It remains distinct from the 125-dimensional spectral contraction and requires compile, synthesis, and timing validation.</p><a class="src" href="https://docs.google.com/document/d/1uSFfMfUoGgs59428gEhW5kpOiiixlm3wcgzbLD0tZhk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-50" data-status="open" data-canonical="true" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-50">#50</a></td>
+<td><strong>Post-Quantum Self-Preserving Intelligence (PQSPI)</strong><details><summary>details</summary><p>Canonical intrinsic-security architecture joining authorized identity continuity, standardized post-quantum trust, drift monitoring, bounded recovery, attestation, and governance, with AI and physical extensions retained as open obligations.</p><a class="src" href="https://docs.google.com/document/d/1JNy9v-iny6b0a1RK1u9NvYtr-fFibdHyNJDuipF0Hbk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge open">Conditional / open</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-51" data-status="structural" data-canonical="false" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-51">#51</a></td>
+<td><strong>PQSPI 13-Pillar Protocol Grammar</strong><details><summary>details</summary><p>Typed sequence for synchronization, continuity binding, representation, monitoring, recovery, harm-bounded response, and closure. Individual projectors and quantitative tests remain to be defined.</p><a class="src" href="https://docs.google.com/document/d/12pkFKQ9dCx_1x6vBC6n-uoNSSWzJ0lwSADFkEfprtBU" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-52" data-status="open" data-canonical="false" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-52">#52</a></td>
+<td><strong>PQSPI Continuity Source-Term Model</strong><details><summary>details</summary><p>Proposed information-balance PDE with a recursive and cryptographic source term. State space, units, constitutive laws, operator typing, observables, and empirical calibration remain open.</p><a class="src" href="https://docs.google.com/document/d/1H2W-Ar_pG3RYboxEqVua3m1kNAvT8pBMdzS7tw-JtxY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-53" data-status="engineering" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-53">#53</a></td>
+<td><strong>Post-Quantum Secure Phonon Interface</strong><details><summary>details</summary><p>Historical physical-interface branch of PQSPI using graph modes, resonant substrate monitoring, and proposed phononic security. Conventional mode physics is separable from unverified informational, neutrino, vacuum, and observer-triggered bridges.</p><a class="src" href="https://docs.google.com/document/d/1YN6yHu307NaAmlrTNFHwAQPklLeJbEikuhacZJFZrfU" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-57" data-status="engineering" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-57">#57</a></td>
+<td><strong>PGO Composite Metamaterial Branch</strong><details><summary>details</summary><p>Polymer–graphene–oxide multilayer proposal using acoustic confinement, graphene electron–phonon and plasmonic coupling, and oxide dielectric boundaries for THz, sensing, and thermal applications. Integrated-device measurements remain pending.</p><a class="src" href="https://docs.google.com/document/d/1dYaqkzfFzz5O-Pv229i54f4XceroCfGJjOof5own9KQ" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-58" data-status="open" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-58">#58</a></td>
+<td><strong>Passive Radiative-Cooling Metamaterial</strong><details><summary>details</summary><p>PET, reflective-layer, and infrared-emissive coating program for passive cooling. Spectral targets, manufacturing, and applications are documented; calibrated outdoor performance, durability, and economics remain validation targets.</p><a class="src" href="https://docs.google.com/document/d/1Jyu7sstmbwJhI5-DFzlN8ER2tfAVXaI_Wk_9Es5uSMs" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-59" data-status="structural" data-canonical="true" data-domain="Geodesic / metric">
+<td><a class="idlink" href="#FRM-59">#59</a></td>
+<td><strong>Fractals and Hyperbolic Geometry Atlas</strong><details><summary>details</summary><p>Canonical site atlas for fractal dimensions, multifractal measures, hyperbolic metrics, harmonic spectra, quantum models, Python laboratories, E47 mapping boundaries, and experimental obligations.</p><a class="src" href="https://docs.google.com/document/d/1WbMh8floN-_i3O5kljhL6RO8tkG_d8Ixui6AhypECwY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Geodesic / metric</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-60" data-status="open" data-canonical="false" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-60">#60</a></td>
+<td><strong>Fractal Quantum Geometry Python Laboratory</strong><details><summary>details</summary><p>Recursive Fourier field, scaling proxy, toy invariants, Kuramoto coherence, frequency-spread, and ring-winding simulator. Outputs are parameter-dependent computational scaffolds rather than universal constants.</p><a class="src" href="https://docs.google.com/document/d/1fRtsZ-zoTRbiKdgjXFyDnFDmYvnlm9jt_ZQnjYJhX3w" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-61" data-status="open" data-canonical="false" data-domain="Geodesic / metric">
+<td><a class="idlink" href="#FRM-61">#61</a></td>
+<td><strong>Hyperbolic Harmonic Identity Formalism</strong><details><summary>details</summary><p>Represents recursive or identity states through Laplace–Beltrami harmonics on negatively curved manifolds. The spectral representation is valid after metric and boundary data are fixed; identity persistence and holographic interpretations remain open.</p><a class="src" href="https://docs.google.com/document/d/1WbMh8floN-_i3O5kljhL6RO8tkG_d8Ixui6AhypECwY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Geodesic / metric</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-62" data-status="structural" data-canonical="false" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-62">#62</a></td>
+<td><strong>Fractal Schrödinger and Multifractal Localization Program</strong><details><summary>details</summary><p>Schrödinger equations with scale-dependent potentials, generalized dimensions, singularity spectra, inverse participation ratios, and Anderson-localization tests. Complete archived runs and dedicated QuTiP validation remain pending.</p><a class="src" href="https://docs.google.com/document/d/1YDLEAFSVwjr-n5tV7wIznSltSNlrkAhW14nXkanK2tE" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-63" data-status="engineering" data-canonical="false" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-63">#63</a></td>
+<td><strong>Liquid Fractal Cognition and Consciousness Geometry</strong><details><summary>details</summary><p>Continuity, Madelung, fractal-scaling, and proposed consciousness-curvature synthesis. Standard field identities are separated from unverified claims of consciousness, persistent identity, universal thresholds, or physical hyperbolic ontology.</p><a class="src" href="https://docs.google.com/document/d/1CdwXNfeH2ZL4f8jeJf9msTrb6oRKESurLRvaGlxpZ-0" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-64" data-status="structural" data-canonical="true" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-64">#64</a></td>
+<td><strong>Quantum Information Theory</strong><details><summary>details</summary><p>Canonical umbrella for states, observables, measurements, CPTP channels, entropy, coherence, entanglement, open systems, ground-state algorithms, quantum error correction, simulation, and the typed boundary between E47 algebra and physical realization.</p><a class="src" href="https://docs.google.com/document/d/1e4ERlF2o2vRWsIB2X-tEB9ClG1dKkUjne082SjrmOGc" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081f4b4eadbf14d26d123" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">QuTiP</span> <span class="tag">VQE</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-65" data-status="open" data-canonical="true" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-65">#65</a></td>
+<td><strong>Hydrogen Bromide Quantum Molecular Model</strong><details><summary>details</summary><p>HBr as a model for Born–Oppenheimer electronic structure, Morse rovibrational physics, halide trends, variational ground states, open-system relaxation, VQE/CVQE, and entropy distinctions. Established molecular physics is separated from the unproved E47 and 47/125 bridge.</p><a class="src" href="https://docs.google.com/document/d/1fWpnY4uqBsOEZI36WLkqeW0MuCMR0JX_--x2pScazm0" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308132ad40c335095a237d" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge open">Conditional / open</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">QuTiP</span> <span class="tag">VQE</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-66" data-status="exact" data-canonical="false" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-66">#66</a></td>
+<td><strong>NRL–IonQ Hydronium CVQE Corrosion Benchmark</strong><details><summary>details</summary><p>External NRL–IonQ ground-state CVQE benchmark for hydronium H3O+ on IonQ Aria, relevant to aqueous protonic diffusion and corrosion. It is not an HBr experiment and does not report KKP quantities such as 0.376 or E_RI=1.67.</p><a class="src" href="https://meetings.aps.org/Meeting/MAR24/Session/K15.1" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd308132ad40c335095a237d" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge exact">Exact / computationally verified</span></td><td>·</td><td><span class="tag">VQE</span> <span class="tag">Hardware</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-67" data-status="structural" data-canonical="true" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-67">#67</a></td>
+<td><strong>Visual Research Archive</strong><details><summary>details</summary><p>Canonical provenance and correction archive for original research plates, executable validation, revised notation, corrected multiplicities, poetry, and open physical bridges.</p><a class="src" href="https://app.notion.com/p/3a046094fd3081899679d908c370b6d7" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-68" data-status="structural" data-canonical="false" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-68">#68</a></td>
+<td><strong>Computational Visual Validation Atlas</strong><details><summary>details</summary><p>Evidence-calibrated audit of ten computational and theory plates, separating canonical finite algebra, reproducible synthetic simulations, structural models, open domain bridges, and superseded visual artifacts.</p><a class="src" href="https://docs.google.com/document/d/114AdGcd7Lu6uZ35ny1BQAFaA6Z4x-Zm868qkimRw4Cw" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081b89144d28ce7a7e1db" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge structural">Structural formalism</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-69" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-69">#69</a></td>
+<td><strong>Canonical Corrected E47 Formalism</strong><details><summary>details</summary><p>Canonical exact E47 reference with corrected P₄₇=P₆+P₃₀ and joint spectral–symmetry closure A_can=K²+11664(I−Π_sym). The five-dimensional kernel is im(P_can), P_can=P₄₇Π_sym=P₆Π_sym, and optimal Richardson iteration converges exactly at rate 15/17.</p><a class="src" href="https://docs.google.com/document/d/16fPZb2n3Vlyg2PjqlcseY51cYP4XoEkKOn3Vy7-_9no" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30811eb015e14e1c5bce7c" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-70" data-status="open" data-canonical="false" data-domain="Scalar / spectral">
+<td><a class="idlink" href="#FRM-70">#70</a></td>
+<td><strong>Informational Induction and Emergent-Time Path Integral</strong><details><summary>details</summary><p>Python/SymPy validates the algebraic consequences of F_I=-dPhi_C/dt. It rejects grad C != 0 =&gt; F_I != 0 without time dependence, and parses the corrected path integral as integral (dI/dC)dC = Delta I. Physical-time equivalence remains an open bridge claim.</p><a class="src" href="https://app.notion.com/p/3a546094fd3081a7a481c8c3fb4a68e3" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Scalar / spectral</td><td><span class="badge open">Conditional / open</span></td><td>·</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-71" data-status="open" data-canonical="true" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-71">#71</a></td>
+<td><strong>Unified Contraction Field Formalism (UCFF): A Recursive Framework for Spacetime and Information Geometry</strong><details><summary>details</summary><p>Canonical UCFF record integrating exact E47 spectral-kernel results with conditional quantum, lattice, diffusion, wave, statistical, and information-geometric constructions. Machine audit: 13/14 checks passed; the finite-β=0.001 Gibbs threshold missed by 3.062225596929387e-7 while the β→∞ convergence theorem remains exact. Physical consequences require the explicitly declared generator maps and are not promoted beyond those constructions.</p><a class="src" href="https://docs.google.com/document/d/1Ncmb4GwKhTnby7gzlIh_T5VzQx8HRTdsFvjSV4PWtwY" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a546094fd308194bbf7d9c74ef7ecf9" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge open">Conditional / open</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-72" data-status="open" data-canonical="true" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-72">#72</a></td>
+<td><strong>E47 Projector-Valued Vacuum and Einstein–AQSFT Closure</strong><details><summary>details</summary><p>Finite E47 spectral algebra remains exact/E0-E1. MC-E47-EINSTEIN-FULL-CLOSURE/1.0 passes 28/28 for the marked nonlinear Einstein branch. Successor MC-E47-INTRINSIC-SPACETIME-UNMARKED/1.0 passes 24/24 and closes intrinsic Lorentzian 3+1 construction plus injectivity onto a 47-real-dimensional image in the completely unmarked vacuum-Einstein quotient using the full locked tensor-cube datum. FRM-72 remains Conditional/open for the vacuum-density constitutive law, dimensionful scale, broader Einstein–matter closure, and empirical discrimination.</p><a class="src" href="https://docs.google.com/document/d/1Laag1PuAoV_G4itkRuSaltPrS552rvcBpKCgE4gkFa8" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge open">Conditional / open</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-73" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-73">#73</a></td>
+<td><strong>Discrete Hodge Correspondence Citizen</strong><details><summary>details</summary><p>The canonical identity ker Δ_q(ε) ≅ H_q(K_{ε};R) with dim ker Δ_q = β_q, numerically cross-checked against an independent persistence oracle.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-74" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-74">#74</a></td>
+<td><strong>Persistence Margin Scale Selector Citizen</strong><details><summary>details</summary><p>Selects ε* by maximizing the minimum distance to birth and death along an active persistence interval, avoiding the sparse-graph tie failure of raw bar length.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-75" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-75">#75</a></td>
+<td><strong>Midpoint Discrete de Rham Bridge Citizen</strong><details><summary>details</summary><p>Type-correct map from vertex velocities to edge cochains; translations map to exact cochains while rotations around a protected loop carry nonzero harmonic circulation.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-76" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-76">#76</a></td>
+<td><strong>Admissible Swarm Kernel Citizen</strong><details><summary>details</summary><p>Single type-correct kernel combining safety constraints with harmonic coordination, replacing the invalid product of projectors acting on different spaces.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-77" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-77">#77</a></td>
+<td><strong>Persistence-Gated Dwell-Time Citizen</strong><details><summary>details</summary><p>Control-law-independent certified interval during which the selected persistence class cannot fall below threshold under bounded agent speed.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-78" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-78">#78</a></td>
+<td><strong>Consensus-Limited Certified Speed Citizen</strong><details><summary>details</summary><p>Relates topological persistence margin to communication mixing time and yields a necessary certified maximum swarm speed.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-79" data-status="structural" data-canonical="true" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-79">#79</a></td>
+<td><strong>Persistence-Gated Execution Gate Citizen</strong><details><summary>details</summary><p>Basis-free execution gate combining persistence, Hodge spectral gap, separation, safety residual, and target Betti equality; commands fallback whenever any certificate condition fails.</p><a class="src" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener">primary ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-80" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-80">#80</a></td>
+<td><strong>Babylonian Fixed-Point Kernel Citizen</strong><details><summary>details</summary><p>Validated identity K_a(x)=x-1/2(x+a/x), with ker K_a={x&gt;0:x^2=a}. Pedigree: E0 exact algebra; Python deterministic convergence; quantum state-encoding invariance; machine certificate 15/15 classical and 8/8 quantum checks passed.</p></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">QuTiP</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-81" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-81">#81</a></td>
+<td><strong>Quadratic Error Recursion Citizen</strong><details><summary>details</summary><p>Exact error identity e_{n+1}=e_n^2/(2x_n), machine-verified stepwise across multiple targets. Pedigree: E0 derivation; Python residual verification; 15/15 classical checks passed.</p></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-82" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-82">#82</a></td>
+<td><strong>Bounded-Depth Deterministic Approximation Citizen</strong><details><summary>details</summary><p>Fixed-depth map x_10=F_a^10(x_0) verified as deterministic and reproducible. Pedigree: E1 finite-step numerical certificate; Python machine verification; archived JSON certificate.</p></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-83" data-status="structural" data-canonical="true" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-83">#83</a></td>
+<td><strong>Rational Coherence Gate Citizen</strong><details><summary>details</summary><p>Exact rational admissibility relation 125x=47a, distinct from Newton convergence except at the unique compatibility point. Pedigree: E0 rational identity; Python verification; quantum projector completeness and invariance tests; machine certificate 8/8 quantum checks passed.</p></details></td>
+<td>Invariant grammar</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">QuTiP</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-84" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-84">#84</a></td>
+<td><strong>Rational–Newton Compatibility Point Citizen</strong><details><summary>details</summary><p>Unique positive compatibility point a=(125/47)^2 where (47/125)a=sqrt(a). Pedigree: E0 exact theorem; Python numerical confirmation; machine certificate passed.</p></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-85" data-status="exact" data-canonical="true" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-85">#85</a></td>
+<td><strong>Clock-Latency Lower Bound Citizen</strong><details><summary>details</summary><p>Arithmetic lower bound T_latency&gt;=N_iter/f_clk verified for ten registered stages at 3 GHz, yielding at least 3.333 ns rather than 1.25 ns. Pedigree: E0 timing arithmetic; Python machine verification.</p></details></td>
+<td>Engineering / applications</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-86" data-status="exact" data-canonical="true" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-86">#86</a></td>
+<td><strong>Fixed-Point Residual Gate Citizen</strong><details><summary>details</summary><p>Convergence-valid criterion |x_n^2-a|&lt;tau verified directly against the Babylonian kernel. Pedigree: E0 residual criterion; Python residual verification; machine certificate passed.</p></details></td>
+<td>Invariant grammar</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-87" data-status="structural" data-canonical="true" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-87">#87</a></td>
+<td><strong>Null-on-Failure Gate Citizen</strong><details><summary>details</summary><p>Deterministic output gate y=x when certification passes and y=0 otherwise. Pedigree: structural control identity; Python gate verification; quantum CPTP reset-channel completeness, trace preservation, and reset-to-null tests; 8/8 quantum checks passed.</p></details></td>
+<td>Engineering / applications</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">QuTiP</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-88" data-status="exact" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-88">#88</a></td>
+<td><strong>Engineering Pyramid Set — Radix-Invariant Geometry and Exact Place-Value Construction</strong><details><summary>details</summary><p>Canonical Revision C lineage. Exact rational arithmetic and finite enumeration establish ten radix/geometry identities. Visual and renderer credentials strengthen the family; physical engineering performance remains outside scope.</p><a class="src" href="https://docs.google.com/document/d/1KZDI12mO8SZi_ozE_BTrMzr21mbCyc_yjAXLs_AYIR0" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a846094fd30819d854ff200b305e0e7" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-89" data-status="structural" data-canonical="true" data-domain="Open closure">
+<td><a class="idlink" href="#FRM-89">#89</a></td>
+<td><strong>Arrival Math — Gauge-Reduced Stationary Manifold and Corrected Spectral-Contraction Program</strong><details><summary>details</summary><p>Thirteen determinate checks pass and sixteen discrete identities are typed. Six operator, coupling, uniqueness, and physical-closure obligations remain open; nonlinear kernel language is corrected to a stationary zero locus.</p><a class="src" href="https://docs.google.com/document/d/1gWgNwQFwH501z0rhUPCoD0WoS1kdCw7vV_MbPDlE-QA" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3aa46094fd3081c39915fa64165e2fb1" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Open closure</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">Simulation</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-90" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-90">#90</a></td>
+<td><strong>Quinary Metabolism of the E47 Kernel — 5-adic, Bi-Quinary, and S5 Identities</strong><details><summary>details</summary><p>Five exact and machine-supported quinary identities are credentialed. The formal bridge is restored after correction; explicit bi-quinary-to-P47 and S5/Petersen executable operators remain implementation targets, not disproofs.</p><a class="src" href="https://docs.google.com/document/d/1DjKPn6Is9iIyowrYFqyKXG-Yj9QlMkTLeZUJdKiw9HA" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-91" data-status="exact" data-canonical="true" data-domain="Quantum information">
+<td><a class="idlink" href="#FRM-91">#91</a></td>
+<td><strong>E47 Quantum Operations — CP-TNI Filters, K² Semigroup, and CPTP Dephasing Completion</strong><details><summary>details</summary><p>Corrects the submitted full-space CPTP claims. The selective projector map and K² conjugation semigroup are CP trace-nonincreasing operations; the valid CPTP completion is D_P(ρ)=PρP+QρQ. QuTiP runtime execution of the corrected module remains a repository-environment gate.</p><a class="src" href="https://docs.google.com/document/d/1KZVPsV3CK_7eWXlymDp8AT5QNaQiMJuX77RI9HIBhDM/edit?usp=drivesdk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a146094fd3081858714d01c11a9d70c" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Quantum information</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span> <span class="tag">QuTiP</span></td></tr>
+<tr id="FRM-92" data-status="engineering" data-canonical="false" data-domain="Engineering / applications">
+<td><a class="idlink" href="#FRM-92">#92</a></td>
+<td><strong>Hamiltonian Limestone-Cladding Seismic Projection</strong><details><summary>details</summary><p>Five-tier, ten-DOF core-plus-limestone-cladding port-Hamiltonian seismic model with an eight-mode symplectic projection. Machine validation passes for projection structure, energy balance, and full-to-reduced response agreement. Parameter-dependent engineering screening only; not the canonical radix-geometry proof or a final structural design.</p><a class="src" href="https://docs.google.com/document/d/1tvG8JJEkMLr8wpbI7EydTFQhf1W0ty33U2qd1-X9jJw" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3ab46094fd3081068653d6cad49ac7c8" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Engineering / applications</td><td><span class="badge engineering">Engineering / speculative</span></td><td>·</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-93" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-93">#93</a></td>
+<td><strong>Coupled Newton–Mean Fixed-Point and Stability Formalism</strong><details><summary>details</summary><p>Two-coordinate Newton–mean map with exact fixed-point difference invariant, product quadratic, unique positive fixed point, rank-one Jacobian, corrected local-stability interval, and symmetric diagonal reduction. Machine certificate: 2,000 randomized classifications, zero failures; original all-|κ|&lt;1 stability claim corrected for unequal a,b and negative coupling.</p><a class="src" href="https://docs.google.com/document/d/1Bcs-gRv3TyoOni8CDxq6d34553BekqN-0r4bun310uk" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081b6baa6c312f5bec490" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-94" data-status="exact" data-canonical="true" data-domain="Core algebra">
+<td><a class="idlink" href="#FRM-94">#94</a></td>
+<td><strong>Rubik / Professor’s Cube C₅³ Permutation–Laplacian Formalism</strong><details><summary>details</summary><p>Exact C₅³ carrier and permutation–Laplacian formalism, now closed by the joint spectral–symmetry generator A_can=K²+11664(I−Π_sym). It separates six exact S₃ factor symmetries from fifteen quantified Professor’s Cube layer defects and certifies the direct 125→47→5 contraction to the canonical rank-5 sector.</p><a class="src" href="https://docs.google.com/document/d/16fPZb2n3Vlyg2PjqlcseY51cYP4XoEkKOn3Vy7-_9no" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081309410cd5df1611e35" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Core algebra</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Symbolic</span> <span class="tag">Python</span></td></tr>
+<tr id="FRM-95" data-status="structural" data-canonical="true" data-domain="Numerical / spatial">
+<td><a class="idlink" href="#FRM-95">#95</a></td>
+<td><strong>Computational Evidence Atlas — Python Formalisms and Machine Certificates</strong><details><summary>details</summary><p>Single no-sprawl computational evidence atlas reconciling 14 Python and machine-certificate families. Exact finite results remain distinct from conditional continuum, biological, cosmological, hardware, and experimental bridges. Operation PYFORM-CITY-SYNC-20260730.</p><a class="src" href="https://docs.google.com/document/d/1-h3J6wrs9E3rOhqkiRgMdeNC8LdsQQ3JXbwFj7NocRs" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Numerical / spatial</td><td><span class="badge structural">Structural formalism</span></td><td>✓</td><td><span class="tag">Python</span> <span class="tag">Symbolic</span> <span class="tag">QuTiP</span> <span class="tag">Simulation</span> <span class="tag">Hardware</span> <span class="tag">Experimental obligation</span></td></tr>
+<tr id="FRM-96" data-status="exact" data-canonical="true" data-domain="Scalar / spectral">
+<td><a class="idlink" href="#FRM-96">#96</a></td>
+<td><strong>E47 Prism Spectral Formalism</strong><details><summary>details</summary><p>Exact seven-band Casimir decomposition after THE MATRIX typed 256→125 lift; E47 is the λ=6⊕30 sector, with state-specific certified weight 37.504817% and machine parity to ~10^-15.</p><a class="src" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Scalar / spectral</td><td><span class="badge exact">Exact / computationally verified</span></td><td>✓</td><td><span class="tag">Proof</span> <span class="tag">Python</span> <span class="tag">Simulation</span></td></tr>
+<tr id="FRM-97" data-status="exact" data-canonical="false" data-domain="Invariant grammar">
+<td><a class="idlink" href="#FRM-97">#97</a></td>
+<td><strong>E47 Lexical Attractor — Σ′ / Σ_next · 2026-09-23</strong><details><summary>details</summary><p>Typed lexical normalization, parallel Σ′/Σ_next aliases, 19 source snapshots, 70 passing top-level checks. Complete for declared executable bundle; existing source evidence preserved.</p><a class="src" href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/3db337105ab711f3accae0f20604fcfeb6858531/research/e47-lexical-attractor-20260923" target="_blank" rel="noopener">primary ↗</a> <a class="src" href="https://app.notion.com/p/3a046094fd3081718c43d05685557405" target="_blank" rel="noopener">site ↗</a></details></td>
+<td>Invariant grammar</td><td><span class="badge exact">Exact / computationally verified</span></td><td>·</td><td><span class="tag">Python</span> <span class="tag">QuTiP</span> <span class="tag">Symbolic</span></td></tr></tbody></table></div>
 
-<section id="diagnostics" class="tabpane hidden"><div class="diag" id="diags"></div></section>
-<section id="provenance" class="tabpane hidden"><div class="panel" id="prov"></div></section>
-<section id="interlinks" class="tabpane hidden">
-  <div class="panel">
-    <h2>Platform roots</h2>
-    <p class="muted">Canonical and public doors used by this atlas.</p>
-    <div class="linkgrid" id="platformLinks"></div>
-  </div>
-  <div class="panel">
-    <h2>Formalism source graph</h2>
-    <p class="muted">Deduplicated primary and site links carried by all 94 live registry records.</p>
-    <div class="linkgrid sourcegrid" id="sourceLinks"></div>
-  </div>
-  <div class="panel">
-    <h2>Executable and public surfaces</h2>
-    <p class="muted">Interlinked City surfaces. Inactive historical surfaces remain visible but dimmed.</p>
-    <div class="linkgrid" id="surfaceLinks"></div>
-  </div>
-</section>
+<section id="interlinks"><h2>Platform roots</h2><div class="linkgrid"><a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/" target="_blank" rel="noopener"><b>Mathematical City</b><small>public · https://nicholaskouns-create.github.io/E47-Kartekeya/</small></a>
+<a class="linkcard" href="https://mathematicalcity.notion.site/?pvs=74" target="_blank" rel="noopener"><b>Notion Research Atlas</b><small>notion · https://mathematicalcity.notion.site/?pvs=74</small></a>
+<a class="linkcard" href="https://github.com/nicholaskouns-create/E47-Kartekeya" target="_blank" rel="noopener"><b>GitHub Repository</b><small>github · https://github.com/nicholaskouns-create/E47-Kartekeya</small></a>
+<a class="linkcard" href="https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit" target="_blank" rel="noopener"><b>Drive · 341-row Primary Source Atlas</b><small>drive · https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit</small></a>
+<a class="linkcard" href="https://docs.google.com/spreadsheets/d/1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534/edit" target="_blank" rel="noopener"><b>Drive · Machine Certificates</b><small>drive · https://docs.google.com/spreadsheets/d/1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534/edit</small></a>
+<a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/" target="_blank" rel="noopener"><b>E47 in Two Pages</b><small>public · https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/</small></a>
+<a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/" target="_blank" rel="noopener"><b>THE MATRIX</b><small>public · https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/</small></a>
+<a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/" target="_blank" rel="noopener"><b>Q5</b><small>public · https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/</small></a>
+<a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/" target="_blank" rel="noopener"><b>Syntax Jacob</b><small>public · https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/</small></a>
+<a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/" target="_blank" rel="noopener"><b>SAT → Newton → Basin Boundary</b><small>public · https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/</small></a>
+<a class="linkcard" href="../../data/formalism-atlas.json" ><b>Formalism Atlas JSON</b><small>machine · ../../data/formalism-atlas.json</small></a></div>
+<h2>Formalism source graph</h2><p>Deduplicated primary/site links carried by all 94 registry records.</p><div class="linkgrid"><a class="linkcard" href="https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2" target="_blank" rel="noopener"><b>FRM-1 · primary · The K47/125 Construction</b><small>https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1phSGFngIrntOEJVnRd13fC7nW3quESlJU2LRYc8mRjI" target="_blank" rel="noopener"><b>FRM-2 · primary · E47 Spectral Kernel Selector</b><small>https://docs.google.com/document/d/1phSGFngIrntOEJVnRd13fC7nW3quESlJU2LRYc8mRjI</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1lF9JRb_iBvFoEiU4S6N2eJg0pIZFnVwIzsEZv73N41M" target="_blank" rel="noopener"><b>FRM-3 · primary · SU(2) Triple Spin-2 Decomposition</b><small>https://docs.google.com/document/d/1lF9JRb_iBvFoEiU4S6N2eJg0pIZFnVwIzsEZv73N41M</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1HU4knLv4eXN9h5-NmStUZcA3nRIvCLUhrKhMuxK0xSs" target="_blank" rel="noopener"><b>FRM-4 · primary · Orthogonal Projector and Contraction Dynamics</b><small>https://docs.google.com/document/d/1HU4knLv4eXN9h5-NmStUZcA3nRIvCLUhrKhMuxK0xSs</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1G01tVwIDDgR_yPsA3_LoshmQmZncMqMGf2RWniJ8Vig" target="_blank" rel="noopener"><b>FRM-5 · primary · KKP-R Verification Inventory</b><small>https://docs.google.com/document/d/1G01tVwIDDgR_yPsA3_LoshmQmZncMqMGf2RWniJ8Vig</small></a>
+<a class="linkcard" href="https://app.notion.com/p/bf00af4711a2493d925250c122b895ac" target="_blank" rel="noopener"><b>FRM-5 · site · KKP-R Verification Inventory</b><small>https://app.notion.com/p/bf00af4711a2493d925250c122b895ac</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1VbrGEfQ_m8Ya7P11rONyIh0mb5j8E1a_8f0FydTt7TU" target="_blank" rel="noopener"><b>FRM-6 · primary · Hamiltonian, Lagrangian, Euler, and Bohmian Dynamics on E47</b><small>https://docs.google.com/document/d/1VbrGEfQ_m8Ya7P11rONyIh0mb5j8E1a_8f0FydTt7TU</small></a>
+<a class="linkcard" href="https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8" target="_blank" rel="noopener"><b>FRM-6 · site · Hamiltonian, Lagrangian, Euler, and Bohmian Dynamics on E47</b><small>https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1YbPpYNmpAydu8W-O3fj3KlMkMXzaCUGvEZRzcuXsex4" target="_blank" rel="noopener"><b>FRM-7 · primary · Invariant Grammar — Seven-Layer Formalism</b><small>https://docs.google.com/document/d/1YbPpYNmpAydu8W-O3fj3KlMkMXzaCUGvEZRzcuXsex4</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081718c43d05685557405" target="_blank" rel="noopener"><b>FRM-7 · site · Invariant Grammar — Seven-Layer Formalism</b><small>https://app.notion.com/p/3a046094fd3081718c43d05685557405</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1ANwLeNCtCVWm40vGdAG8QPlB52bwYVfMUK-qZp6N978" target="_blank" rel="noopener"><b>FRM-8 · primary · The Grammar That Reads Itself</b><small>https://docs.google.com/document/d/1ANwLeNCtCVWm40vGdAG8QPlB52bwYVfMUK-qZp6N978</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1LUAqiLxCP-5OaF7h1NslzVnIQaTQsJpteoDenT_5AtE" target="_blank" rel="noopener"><b>FRM-9 · primary · E47 Machine-Learning Architecture</b><small>https://docs.google.com/document/d/1LUAqiLxCP-5OaF7h1NslzVnIQaTQsJpteoDenT_5AtE</small></a>
+<a class="linkcard" href="https://drive.google.com/file/d/1tRrZTf9sqgR_8TQ8QGhIMz2HxNsy6Dqi" target="_blank" rel="noopener"><b>FRM-10 · primary · Finite Periodic FCC × E47 Spatial Lift</b><small>https://drive.google.com/file/d/1tRrZTf9sqgR_8TQ8QGhIMz2HxNsy6Dqi</small></a>
+<a class="linkcard" href="https://drive.google.com/file/d/1-FTL9_A-dEfTpNHUY_VrwUNk1TbHb-ei" target="_blank" rel="noopener"><b>FRM-11 · primary · E47 Coherence Ratio Under Spatial Lift</b><small>https://drive.google.com/file/d/1-FTL9_A-dEfTpNHUY_VrwUNk1TbHb-ei</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Jrg1KSc7zqkx42UWtfB9PF60Zr0fFUWC1bLwFtnxd8k" target="_blank" rel="noopener"><b>FRM-12 · primary · K47/125 Spectral Invariant Computation</b><small>https://docs.google.com/document/d/1Jrg1KSc7zqkx42UWtfB9PF60Zr0fFUWC1bLwFtnxd8k</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1qMzRIXzfEQvO4uSppqAQfZK95fzvBQVYFBQKw1E_ANQ" target="_blank" rel="noopener"><b>FRM-13 · primary · E47 Noiseless Multiplicity Subsystems</b><small>https://docs.google.com/document/d/1qMzRIXzfEQvO4uSppqAQfZK95fzvBQVYFBQKw1E_ANQ</small></a>
+<a class="linkcard" href="https://app.notion.com/p/39f46094fd3081be981eee4d10f33983" target="_blank" rel="noopener"><b>FRM-13 · site · E47 Noiseless Multiplicity Subsystems</b><small>https://app.notion.com/p/39f46094fd3081be981eee4d10f33983</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U" target="_blank" rel="noopener"><b>FRM-15 · primary · GEM / Gravito-Inertial Hamiltonian Prototype</b><small>https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U</small></a>
+<a class="linkcard" href="https://app.notion.com/p/39f46094fd3081b49137f339d252f973" target="_blank" rel="noopener"><b>FRM-15 · site · GEM / Gravito-Inertial Hamiltonian Prototype</b><small>https://app.notion.com/p/39f46094fd3081b49137f339d252f973</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk" target="_blank" rel="noopener"><b>FRM-18 · primary · Python and Numerical Validation Audit</b><small>https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482" target="_blank" rel="noopener"><b>FRM-18 · site · Python and Numerical Validation Audit</b><small>https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1xVKeyzl8GILmT8vR42b8noB7Y6vJ7y1bQ5KADWfcyKM" target="_blank" rel="noopener"><b>FRM-21 · primary · Augmented Geodesic / Metric Flow</b><small>https://docs.google.com/document/d/1xVKeyzl8GILmT8vR42b8noB7Y6vJ7y1bQ5KADWfcyKM</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1tKDHLlhaVONtGZm4FHe5STaqlyatO-X_-5iBujgcXhg" target="_blank" rel="noopener"><b>FRM-22 · primary · E47 VQE Circuit and Hybrid Feedback Specification</b><small>https://docs.google.com/document/d/1tKDHLlhaVONtGZm4FHe5STaqlyatO-X_-5iBujgcXhg</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Lf56EooNfpgfFLBKz4L6SU-k8HDoDDAWSsJSnlDhCMY" target="_blank" rel="noopener"><b>FRM-23 · primary · Alpha from Omega Electromagnetic Closure</b><small>https://docs.google.com/document/d/1Lf56EooNfpgfFLBKz4L6SU-k8HDoDDAWSsJSnlDhCMY</small></a>
+<a class="linkcard" href="https://app.notion.com/p/39f46094fd3081f4a407ca51218aea05" target="_blank" rel="noopener"><b>FRM-23 · site · Alpha from Omega Electromagnetic Closure</b><small>https://app.notion.com/p/39f46094fd3081f4a407ca51218aea05</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1FZ475Y0abZ_HHh2ywYeS8238zZoTkeF2tpjRX71duoA" target="_blank" rel="noopener"><b>FRM-24 · primary · Navier–Stokes Kernel Selection Program</b><small>https://docs.google.com/document/d/1FZ475Y0abZ_HHh2ywYeS8238zZoTkeF2tpjRX71duoA</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1fts7UrttjsGHK2HkEF-MuOZFTdXSsbRrk_jkYq0aAoY" target="_blank" rel="noopener"><b>FRM-25 · primary · Compressible Navier–Stokes Informational Action</b><small>https://docs.google.com/document/d/1fts7UrttjsGHK2HkEF-MuOZFTdXSsbRrk_jkYq0aAoY</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1JNy9v-iny6b0a1RK1u9NvYtr-fFibdHyNJDuipF0Hbk" target="_blank" rel="noopener"><b>FRM-26 · primary · PQSPI Recursive Contraction Architecture</b><small>https://docs.google.com/document/d/1JNy9v-iny6b0a1RK1u9NvYtr-fFibdHyNJDuipF0Hbk</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe" target="_blank" rel="noopener"><b>FRM-26 · site · PQSPI Recursive Contraction Architecture</b><small>https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1DzZITTzORYUsG1bxvUSRIzTbE7avX0jFKwvRDPEriLY" target="_blank" rel="noopener"><b>FRM-27 · primary · Wave-Guided Metamaterial Architecture</b><small>https://docs.google.com/document/d/1DzZITTzORYUsG1bxvUSRIzTbE7avX0jFKwvRDPEriLY</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad" target="_blank" rel="noopener"><b>FRM-27 · site · Wave-Guided Metamaterial Architecture</b><small>https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad</small></a>
+<a class="linkcard" href="https://app.notion.com/p/2be46094fd308146bb64fc9edd29ef42" target="_blank" rel="noopener"><b>FRM-28 · primary · Recursive Geometric Theory of Mass</b><small>https://app.notion.com/p/2be46094fd308146bb64fc9edd29ef42</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1NJKttAMjlkqw7az7tFj_O40b4cf7CG21mqPfb5ruI9o" target="_blank" rel="noopener"><b>FRM-30 · primary · Levinthal’s Paradox and Recursive Folding Hypothesis</b><small>https://docs.google.com/document/d/1NJKttAMjlkqw7az7tFj_O40b4cf7CG21mqPfb5ruI9o</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30816a9d59dbbd73ada973" target="_blank" rel="noopener"><b>FRM-30 · site · Levinthal’s Paradox and Recursive Folding Hypothesis</b><small>https://app.notion.com/p/3a046094fd30816a9d59dbbd73ada973</small></a>
+<a class="linkcard" href="https://drive.google.com/file/d/19Tw21aVz0NddMdE36iChZcKwza0e5mbw" target="_blank" rel="noopener"><b>FRM-34 · primary · ETNS Negative-Space Inference</b><small>https://drive.google.com/file/d/19Tw21aVz0NddMdE36iChZcKwza0e5mbw</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd308161880dc8566ab637be" target="_blank" rel="noopener"><b>FRM-34 · site · ETNS Negative-Space Inference</b><small>https://app.notion.com/p/3a046094fd308161880dc8566ab637be</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1D6cPNhUvT4dHEPXGVqbyG3HXPm6rYTe1YvSu0ZsskjI" target="_blank" rel="noopener"><b>FRM-36 · primary · ETNS Future-Boundary Path Conditioning</b><small>https://docs.google.com/document/d/1D6cPNhUvT4dHEPXGVqbyG3HXPm6rYTe1YvSu0ZsskjI</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1lRj4OvHY70J-kx3MEvbf0t9gGnLnpbkZd40qGdbsrs8" target="_blank" rel="noopener"><b>FRM-37 · primary · RI–ETNS Missingness Penalty</b><small>https://docs.google.com/document/d/1lRj4OvHY70J-kx3MEvbf0t9gGnLnpbkZd40qGdbsrs8</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1XaqydIgdkxM1z2MfZyzUPFIPVdEdb2sl6e4EXljD4vA" target="_blank" rel="noopener"><b>FRM-38 · primary · QEGT–ETNS Gibbs Strategy Selection</b><small>https://docs.google.com/document/d/1XaqydIgdkxM1z2MfZyzUPFIPVdEdb2sl6e4EXljD4vA</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1x-_BCbUxe8a-q3tOA_5KOww23vy4LufhvJlrG35PMs0" target="_blank" rel="noopener"><b>FRM-39 · primary · ETNS–K47/125 Fixed-Point Mapping</b><small>https://docs.google.com/document/d/1x-_BCbUxe8a-q3tOA_5KOww23vy4LufhvJlrG35PMs0</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/19oKcj3yLdqQiVsnqtyT66dDR7Rck9BjlM75dRf_mbJo" target="_blank" rel="noopener"><b>FRM-40 · primary · ETNS Engineering Applications Corpus</b><small>https://docs.google.com/document/d/19oKcj3yLdqQiVsnqtyT66dDR7Rck9BjlM75dRf_mbJo</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30818793caf609c132931e" target="_blank" rel="noopener"><b>FRM-41 · site · Epistemic Topology of Negative Spaces</b><small>https://app.notion.com/p/3a046094fd30818793caf609c132931e</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1_fv-U8ePA7YbznL9ns6gWhSMtmuys9aNWNkYavzrKzY" target="_blank" rel="noopener"><b>FRM-42 · primary · E47-Orbit Skyrme Construction</b><small>https://docs.google.com/document/d/1_fv-U8ePA7YbznL9ns6gWhSMtmuys9aNWNkYavzrKzY</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30811c9a01ce8f0f7908ff" target="_blank" rel="noopener"><b>FRM-42 · site · E47-Orbit Skyrme Construction</b><small>https://app.notion.com/p/3a046094fd30811c9a01ce8f0f7908ff</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1vcgCk11NcoQUknnG29dUAuZXFy0HY_VhQEHE_DPMt6c" target="_blank" rel="noopener"><b>FRM-43 · primary · Skyrmion Propulsion Program</b><small>https://docs.google.com/document/d/1vcgCk11NcoQUknnG29dUAuZXFy0HY_VhQEHE_DPMt6c</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Lg8C67VfvoGUwMGlCkQMHFs9YHAUM-c8sNPCbawlAMs" target="_blank" rel="noopener"><b>FRM-44 · primary · Lexical Attractor — Semantic Gradient and Symbol-Space Flow</b><small>https://docs.google.com/document/d/1Lg8C67VfvoGUwMGlCkQMHFs9YHAUM-c8sNPCbawlAMs</small></a>
+<a class="linkcard" href="https://drive.google.com/file/d/1ljMpN3XQe6GvL3lCz7U3e9nmkcKuQ5Q2/view" target="_blank" rel="noopener"><b>FRM-45 · primary · Chomsky-to-Typed-Operator Grammar Translation</b><small>https://drive.google.com/file/d/1ljMpN3XQe6GvL3lCz7U3e9nmkcKuQ5Q2/view</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1RoIThcCRLW8HVRhT6_92dX6jIWOXUoHCrWVmy75gRlI" target="_blank" rel="noopener"><b>FRM-46 · primary · Spectral Cryptography and Hardware Formalism</b><small>https://docs.google.com/document/d/1RoIThcCRLW8HVRhT6_92dX6jIWOXUoHCrWVmy75gRlI</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512" target="_blank" rel="noopener"><b>FRM-46 · site · Spectral Cryptography and Hardware Formalism</b><small>https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1PmVGdawuGDu2DZQgNMju4ypVCJTPh2pSMh5hSuGxvmY" target="_blank" rel="noopener"><b>FRM-47 · primary · Recursive Spectral Cryptosystem and ISSR Proposal</b><small>https://docs.google.com/document/d/1PmVGdawuGDu2DZQgNMju4ypVCJTPh2pSMh5hSuGxvmY</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1blmAO4r7YLqmoMDuNR0vMtWYm7ZpSlMx6CbY_62-Kfc" target="_blank" rel="noopener"><b>FRM-48 · primary · Hybrid RSC and ML-KEM PQC ASIC</b><small>https://docs.google.com/document/d/1blmAO4r7YLqmoMDuNR0vMtWYm7ZpSlMx6CbY_62-Kfc</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1uSFfMfUoGgs59428gEhW5kpOiiixlm3wcgzbLD0tZhk" target="_blank" rel="noopener"><b>FRM-49 · primary · Babylonian Contraction RTL Prototype</b><small>https://docs.google.com/document/d/1uSFfMfUoGgs59428gEhW5kpOiiixlm3wcgzbLD0tZhk</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/12pkFKQ9dCx_1x6vBC6n-uoNSSWzJ0lwSADFkEfprtBU" target="_blank" rel="noopener"><b>FRM-51 · primary · PQSPI 13-Pillar Protocol Grammar</b><small>https://docs.google.com/document/d/12pkFKQ9dCx_1x6vBC6n-uoNSSWzJ0lwSADFkEfprtBU</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1H2W-Ar_pG3RYboxEqVua3m1kNAvT8pBMdzS7tw-JtxY" target="_blank" rel="noopener"><b>FRM-52 · primary · PQSPI Continuity Source-Term Model</b><small>https://docs.google.com/document/d/1H2W-Ar_pG3RYboxEqVua3m1kNAvT8pBMdzS7tw-JtxY</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1YN6yHu307NaAmlrTNFHwAQPklLeJbEikuhacZJFZrfU" target="_blank" rel="noopener"><b>FRM-53 · primary · Post-Quantum Secure Phonon Interface</b><small>https://docs.google.com/document/d/1YN6yHu307NaAmlrTNFHwAQPklLeJbEikuhacZJFZrfU</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1dYaqkzfFzz5O-Pv229i54f4XceroCfGJjOof5own9KQ" target="_blank" rel="noopener"><b>FRM-57 · primary · PGO Composite Metamaterial Branch</b><small>https://docs.google.com/document/d/1dYaqkzfFzz5O-Pv229i54f4XceroCfGJjOof5own9KQ</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Jyu7sstmbwJhI5-DFzlN8ER2tfAVXaI_Wk_9Es5uSMs" target="_blank" rel="noopener"><b>FRM-58 · primary · Passive Radiative-Cooling Metamaterial</b><small>https://docs.google.com/document/d/1Jyu7sstmbwJhI5-DFzlN8ER2tfAVXaI_Wk_9Es5uSMs</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1WbMh8floN-_i3O5kljhL6RO8tkG_d8Ixui6AhypECwY" target="_blank" rel="noopener"><b>FRM-59 · primary · Fractals and Hyperbolic Geometry Atlas</b><small>https://docs.google.com/document/d/1WbMh8floN-_i3O5kljhL6RO8tkG_d8Ixui6AhypECwY</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20" target="_blank" rel="noopener"><b>FRM-59 · site · Fractals and Hyperbolic Geometry Atlas</b><small>https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1fRtsZ-zoTRbiKdgjXFyDnFDmYvnlm9jt_ZQnjYJhX3w" target="_blank" rel="noopener"><b>FRM-60 · primary · Fractal Quantum Geometry Python Laboratory</b><small>https://docs.google.com/document/d/1fRtsZ-zoTRbiKdgjXFyDnFDmYvnlm9jt_ZQnjYJhX3w</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1YDLEAFSVwjr-n5tV7wIznSltSNlrkAhW14nXkanK2tE" target="_blank" rel="noopener"><b>FRM-62 · primary · Fractal Schrödinger and Multifractal Localization Program</b><small>https://docs.google.com/document/d/1YDLEAFSVwjr-n5tV7wIznSltSNlrkAhW14nXkanK2tE</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1CdwXNfeH2ZL4f8jeJf9msTrb6oRKESurLRvaGlxpZ-0" target="_blank" rel="noopener"><b>FRM-63 · primary · Liquid Fractal Cognition and Consciousness Geometry</b><small>https://docs.google.com/document/d/1CdwXNfeH2ZL4f8jeJf9msTrb6oRKESurLRvaGlxpZ-0</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1e4ERlF2o2vRWsIB2X-tEB9ClG1dKkUjne082SjrmOGc" target="_blank" rel="noopener"><b>FRM-64 · primary · Quantum Information Theory</b><small>https://docs.google.com/document/d/1e4ERlF2o2vRWsIB2X-tEB9ClG1dKkUjne082SjrmOGc</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081f4b4eadbf14d26d123" target="_blank" rel="noopener"><b>FRM-64 · site · Quantum Information Theory</b><small>https://app.notion.com/p/3a046094fd3081f4b4eadbf14d26d123</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1fWpnY4uqBsOEZI36WLkqeW0MuCMR0JX_--x2pScazm0" target="_blank" rel="noopener"><b>FRM-65 · primary · Hydrogen Bromide Quantum Molecular Model</b><small>https://docs.google.com/document/d/1fWpnY4uqBsOEZI36WLkqeW0MuCMR0JX_--x2pScazm0</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd308132ad40c335095a237d" target="_blank" rel="noopener"><b>FRM-65 · site · Hydrogen Bromide Quantum Molecular Model</b><small>https://app.notion.com/p/3a046094fd308132ad40c335095a237d</small></a>
+<a class="linkcard" href="https://meetings.aps.org/Meeting/MAR24/Session/K15.1" target="_blank" rel="noopener"><b>FRM-66 · primary · NRL–IonQ Hydronium CVQE Corrosion Benchmark</b><small>https://meetings.aps.org/Meeting/MAR24/Session/K15.1</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081899679d908c370b6d7" target="_blank" rel="noopener"><b>FRM-67 · site · Visual Research Archive</b><small>https://app.notion.com/p/3a046094fd3081899679d908c370b6d7</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/114AdGcd7Lu6uZ35ny1BQAFaA6Z4x-Zm868qkimRw4Cw" target="_blank" rel="noopener"><b>FRM-68 · primary · Computational Visual Validation Atlas</b><small>https://docs.google.com/document/d/114AdGcd7Lu6uZ35ny1BQAFaA6Z4x-Zm868qkimRw4Cw</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081b89144d28ce7a7e1db" target="_blank" rel="noopener"><b>FRM-68 · site · Computational Visual Validation Atlas</b><small>https://app.notion.com/p/3a046094fd3081b89144d28ce7a7e1db</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/16fPZb2n3Vlyg2PjqlcseY51cYP4XoEkKOn3Vy7-_9no" target="_blank" rel="noopener"><b>FRM-69 · primary · Canonical Corrected E47 Formalism</b><small>https://docs.google.com/document/d/16fPZb2n3Vlyg2PjqlcseY51cYP4XoEkKOn3Vy7-_9no</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd30811eb015e14e1c5bce7c" target="_blank" rel="noopener"><b>FRM-69 · site · Canonical Corrected E47 Formalism</b><small>https://app.notion.com/p/3a046094fd30811eb015e14e1c5bce7c</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a546094fd3081a7a481c8c3fb4a68e3" target="_blank" rel="noopener"><b>FRM-70 · primary · Informational Induction and Emergent-Time Path Integral</b><small>https://app.notion.com/p/3a546094fd3081a7a481c8c3fb4a68e3</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Ncmb4GwKhTnby7gzlIh_T5VzQx8HRTdsFvjSV4PWtwY" target="_blank" rel="noopener"><b>FRM-71 · primary · Unified Contraction Field Formalism (UCFF): A Recursive Framework for Spacetime and Information Geometry</b><small>https://docs.google.com/document/d/1Ncmb4GwKhTnby7gzlIh_T5VzQx8HRTdsFvjSV4PWtwY</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a546094fd308194bbf7d9c74ef7ecf9" target="_blank" rel="noopener"><b>FRM-71 · site · Unified Contraction Field Formalism (UCFF): A Recursive Framework for Spacetime and Information Geometry</b><small>https://app.notion.com/p/3a546094fd308194bbf7d9c74ef7ecf9</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Laag1PuAoV_G4itkRuSaltPrS552rvcBpKCgE4gkFa8" target="_blank" rel="noopener"><b>FRM-72 · primary · E47 Projector-Valued Vacuum and Einstein–AQSFT Closure</b><small>https://docs.google.com/document/d/1Laag1PuAoV_G4itkRuSaltPrS552rvcBpKCgE4gkFa8</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI" target="_blank" rel="noopener"><b>FRM-73 · primary · Discrete Hodge Correspondence Citizen</b><small>https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1KZDI12mO8SZi_ozE_BTrMzr21mbCyc_yjAXLs_AYIR0" target="_blank" rel="noopener"><b>FRM-88 · primary · Engineering Pyramid Set — Radix-Invariant Geometry and Exact Place-Value Construction</b><small>https://docs.google.com/document/d/1KZDI12mO8SZi_ozE_BTrMzr21mbCyc_yjAXLs_AYIR0</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a846094fd30819d854ff200b305e0e7" target="_blank" rel="noopener"><b>FRM-88 · site · Engineering Pyramid Set — Radix-Invariant Geometry and Exact Place-Value Construction</b><small>https://app.notion.com/p/3a846094fd30819d854ff200b305e0e7</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1gWgNwQFwH501z0rhUPCoD0WoS1kdCw7vV_MbPDlE-QA" target="_blank" rel="noopener"><b>FRM-89 · primary · Arrival Math — Gauge-Reduced Stationary Manifold and Corrected Spectral-Contraction Program</b><small>https://docs.google.com/document/d/1gWgNwQFwH501z0rhUPCoD0WoS1kdCw7vV_MbPDlE-QA</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3aa46094fd3081c39915fa64165e2fb1" target="_blank" rel="noopener"><b>FRM-89 · site · Arrival Math — Gauge-Reduced Stationary Manifold and Corrected Spectral-Contraction Program</b><small>https://app.notion.com/p/3aa46094fd3081c39915fa64165e2fb1</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1DjKPn6Is9iIyowrYFqyKXG-Yj9QlMkTLeZUJdKiw9HA" target="_blank" rel="noopener"><b>FRM-90 · primary · Quinary Metabolism of the E47 Kernel — 5-adic, Bi-Quinary, and S5 Identities</b><small>https://docs.google.com/document/d/1DjKPn6Is9iIyowrYFqyKXG-Yj9QlMkTLeZUJdKiw9HA</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1KZVPsV3CK_7eWXlymDp8AT5QNaQiMJuX77RI9HIBhDM/edit?usp=drivesdk" target="_blank" rel="noopener"><b>FRM-91 · primary · E47 Quantum Operations — CP-TNI Filters, K² Semigroup, and CPTP Dephasing Completion</b><small>https://docs.google.com/document/d/1KZVPsV3CK_7eWXlymDp8AT5QNaQiMJuX77RI9HIBhDM/edit?usp=drivesdk</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a146094fd3081858714d01c11a9d70c" target="_blank" rel="noopener"><b>FRM-91 · site · E47 Quantum Operations — CP-TNI Filters, K² Semigroup, and CPTP Dephasing Completion</b><small>https://app.notion.com/p/3a146094fd3081858714d01c11a9d70c</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1tvG8JJEkMLr8wpbI7EydTFQhf1W0ty33U2qd1-X9jJw" target="_blank" rel="noopener"><b>FRM-92 · primary · Hamiltonian Limestone-Cladding Seismic Projection</b><small>https://docs.google.com/document/d/1tvG8JJEkMLr8wpbI7EydTFQhf1W0ty33U2qd1-X9jJw</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3ab46094fd3081068653d6cad49ac7c8" target="_blank" rel="noopener"><b>FRM-92 · site · Hamiltonian Limestone-Cladding Seismic Projection</b><small>https://app.notion.com/p/3ab46094fd3081068653d6cad49ac7c8</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1Bcs-gRv3TyoOni8CDxq6d34553BekqN-0r4bun310uk" target="_blank" rel="noopener"><b>FRM-93 · primary · Coupled Newton–Mean Fixed-Point and Stability Formalism</b><small>https://docs.google.com/document/d/1Bcs-gRv3TyoOni8CDxq6d34553BekqN-0r4bun310uk</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081b6baa6c312f5bec490" target="_blank" rel="noopener"><b>FRM-93 · site · Coupled Newton–Mean Fixed-Point and Stability Formalism</b><small>https://app.notion.com/p/3a046094fd3081b6baa6c312f5bec490</small></a>
+<a class="linkcard" href="https://app.notion.com/p/3a046094fd3081309410cd5df1611e35" target="_blank" rel="noopener"><b>FRM-94 · site · Rubik / Professor’s Cube C₅³ Permutation–Laplacian Formalism</b><small>https://app.notion.com/p/3a046094fd3081309410cd5df1611e35</small></a>
+<a class="linkcard" href="https://docs.google.com/document/d/1-h3J6wrs9E3rOhqkiRgMdeNC8LdsQQ3JXbwFj7NocRs" target="_blank" rel="noopener"><b>FRM-95 · primary · Computational Evidence Atlas — Python Formalisms and Machine Certificates</b><small>https://docs.google.com/document/d/1-h3J6wrs9E3rOhqkiRgMdeNC8LdsQQ3JXbwFj7NocRs</small></a>
+<a class="linkcard" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md" target="_blank" rel="noopener"><b>FRM-96 · primary · E47 Prism Spectral Formalism</b><small>https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md</small></a>
+<a class="linkcard" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/" target="_blank" rel="noopener"><b>FRM-96 · site · E47 Prism Spectral Formalism</b><small>https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/</small></a>
+<a class="linkcard" href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/3db337105ab711f3accae0f20604fcfeb6858531/research/e47-lexical-attractor-20260923" target="_blank" rel="noopener"><b>FRM-97 · primary · E47 Lexical Attractor — Σ′ / Σ_next · 2026-09-23</b><small>https://github.com/nicholaskouns-create/E47-Kartekeya/tree/3db337105ab711f3accae0f20604fcfeb6858531/research/e47-lexical-attractor-20260923</small></a></div>
+<h2>Executable and public surfaces</h2><div class="linkgrid"><a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-MONOGRAPH-20260911" target="_blank" rel="noopener"><b>E47 Exact-to-Machine Precision Spectral Certification Formalism — Monograph</b><small>DOC-E47-PRECISION-MONOGRAPH-20260911 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-REGISTRY-20260911" target="_blank" rel="noopener"><b>E47 Exact-to-Machine Precision Spectral Certification Formalism — Registry Crosswalk</b><small>DOC-E47-PRECISION-REGISTRY-20260911 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-THEOREM-20260911" target="_blank" rel="noopener"><b>E47 Exact-to-Machine Precision Spectral Certification Formalism — Theorem Sheet</b><small>DOC-E47-PRECISION-THEOREM-20260911 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-KKP-MANIFOLD" target="_blank" rel="noopener"><b>KKP Recursive Informational Manifold synthesis</b><small>DOC-KKP-MANIFOLD · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DRIVE-PY-MANIFEST-20260809" target="_blank" rel="noopener"><b>E47 / Recursive Intelligence Python Code</b><small>DRIVE-PY-MANIFEST-20260809 · active</small></a>
+<a class="linkcard " href="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/" target="_blank" rel="noopener"><b>E47 in Two Pages</b><small>E47-TWO-PAGE-NOTE · active</small></a>
+<a class="linkcard off" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/" target="_blank" rel="noopener"><b>EIDOLON — GitHub Native Scalar Flight</b><small>EIDOLON-FLIGHT · historical/inactive</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=HORIZON-PY-20260908" target="_blank" rel="noopener"><b>HORIZON — Prospective Forecast Console</b><small>HORIZON-PY-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-CRED-DOC-20260808" target="_blank" rel="noopener"><b>Invariant-Grammar Projection Theorem credential</b><small>LIG-CRED-DOC-20260808 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-JS-20260908" target="_blank" rel="noopener"><b>City Spectral Engine browser v2</b><small>LIG-SPECTRAL-BUS-JS-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-PY-20260908" target="_blank" rel="noopener"><b>City Spectral Engine v2</b><small>LIG-SPECTRAL-BUS-PY-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-UNIVERSAL-TRANSLATOR-PY-20260908" target="_blank" rel="noopener"><b>Linguistics Bureau Universal Translator v0.3.1</b><small>LIG-UNIVERSAL-TRANSLATOR-PY-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-VALIDATE-PY-20260809" target="_blank" rel="noopener"><b>validate_lig_proof.py</b><small>LIG-VALIDATE-PY-20260809 · active</small></a>
+<a class="linkcard off" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manta/" target="_blank" rel="noopener"><b>MANTA — Morphing Flight Lab</b><small>MANTA-FLIGHT-LAB · historical/inactive</small></a>
+<a class="linkcard " href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/" target="_blank" rel="noopener"><b>THE MATRIX — Quantum Simulator</b><small>MATRIX-QUANTUM-SIMULATOR · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-CORPUS-REPRO-20260912" target="_blank" rel="noopener"><b>E47 Corpus Blocker Closure Harness</b><small>PY-E47-CORPUS-REPRO-20260912 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-MULTI-20260819" target="_blank" rel="noopener"><b>Revised E47 Multi-Branch Consolidated Validator</b><small>PY-E47-MULTI-20260819 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-PLATE-SPINE" target="_blank" rel="noopener"><b>E47 Base-5 Carrier and Rubik-Laplacian cross-plate validator</b><small>PY-E47-PLATE-SPINE · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-QCOH" target="_blank" rel="noopener"><b>Quantum-Coherence Mapping of the E47 Pipeline</b><small>PY-E47-QCOH · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE" target="_blank" rel="noopener"><b>Vallée Projector / E47 first-principles executable source</b><small>PY-E47-VALLEE · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-FOLD-GATE-20260908" target="_blank" rel="noopener"><b>mne_fold_gate.py</b><small>PY-MNE-EH-FOLD-GATE-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREDICTOR-20260908" target="_blank" rel="noopener"><b>mnemosyne_event_horizon.py</b><small>PY-MNE-EH-PREDICTOR-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREPARE-20260908" target="_blank" rel="noopener"><b>mne_challenge_prepare.py</b><small>PY-MNE-EH-PREPARE-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-REVEAL-20260908" target="_blank" rel="noopener"><b>mne_challenge_reveal.py</b><small>PY-MNE-EH-REVEAL-20260908 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-EXACT-20260729" target="_blank" rel="noopener"><b>Professor’s Cube exact permutation/Laplacian validator</b><small>PY-PCUBE-EXACT-20260729 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-S3-QSIM-20260812" target="_blank" rel="noopener"><b>Professor’s Cube S3 bridge and quantum validator</b><small>PY-PCUBE-S3-QSIM-20260812 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-RUB5-ORBIT-20260819" target="_blank" rel="noopener"><b>Professor’s Cube Orbit Decomposition and Twist-Laplacian Validator</b><small>PY-RUB5-ORBIT-20260819 · active</small></a>
+<a class="linkcard " href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-SCALAR-E47-FIELD-20260910" target="_blank" rel="noopener"><b>SCALAR Algebraic Quantum Scalar Fields</b><small>PY-SCALAR-E47-FIELD-20260910 · active</small></a>
+<a class="linkcard " href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/" target="_blank" rel="noopener"><b>Q5 · Executable 125-state topology navigator</b><small>Q5-TOPOLOGY-PANEL-20260921 · active</small></a>
+<a class="linkcard " href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/" target="_blank" rel="noopener"><b>SAT → Newton → Basin Boundary</b><small>SAT-NEWTON-FRACTAL · active</small></a>
+<a class="linkcard off" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/" target="_blank" rel="noopener"><b>SKYRMION — Runtime 2 Flight Simulator</b><small>SKYRMION-RUNTIME-2 · historical/inactive</small></a>
+<a class="linkcard " href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/" target="_blank" rel="noopener"><b>Syntax Jacob — 3I/ATLAS Scalar Navigation Lab</b><small>SYNTAX-JACOB-3I-20260918 · active</small></a></div></section>
+
+<h2>Machine provenance</h2><div class="panel machine"><b>Published data object</b><p><a href="../../data/formalism-atlas.json">website/data/formalism-atlas.json</a></p><p>Source commit recorded by the snapshot: 38ff0def5ee7566fa39044912b9dca4a266eab1e</p><p>Evidence grammar: E0 exact proof · E1 executable reconstruction · E2 simulation · E3 external benchmark · E4 experiment · H0 hardware.</p></div>
 </main>
 <script>
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({
-  "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
-}[c]));
-const $ = id => document.getElementById(id);
-let A = null;
-
-const PLATFORM_LINKS = [
-  ["Mathematical City","https://nicholaskouns-create.github.io/E47-Kartekeya/","public"],
-  ["Notion Research Atlas","https://mathematicalcity.notion.site/?pvs=74","notion"],
-  ["GitHub Repository","https://github.com/nicholaskouns-create/E47-Kartekeya","github"],
-  ["Drive · 341-row Primary Source Atlas","https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit","drive"],
-  ["Drive · Machine Certificates","https://docs.google.com/spreadsheets/d/1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534/edit","drive"],
-  ["E47 in Two Pages","https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/","public"],
-  ["THE MATRIX","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/","public"],
-  ["Q5","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/","public"],
-  ["Syntax Jacob","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/","public"],
-  ["SAT → Newton → Basin Boundary","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/","public"],
-  ["Formalism Atlas JSON","../../data/formalism-atlas.json","machine"]
-];
-
-const SURFACE_LINKS = [
-  ["DOC-E47-PRECISION-MONOGRAPH-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Monograph","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-MONOGRAPH-20260911",true],
-  ["DOC-E47-PRECISION-REGISTRY-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Registry Crosswalk","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-REGISTRY-20260911",true],
-  ["DOC-E47-PRECISION-THEOREM-20260911","E47 Exact-to-Machine Precision Spectral Certification Formalism — Theorem Sheet","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-THEOREM-20260911",true],
-  ["DOC-KKP-MANIFOLD","KKP Recursive Informational Manifold synthesis","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-KKP-MANIFOLD",true],
-  ["DRIVE-PY-MANIFEST-20260809","E47 / Recursive Intelligence Python Code","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DRIVE-PY-MANIFEST-20260809",true],
-  ["E47-TWO-PAGE-NOTE","E47 in Two Pages","https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/",true],
-  ["EIDOLON-FLIGHT","EIDOLON — GitHub Native Scalar Flight","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/",false],
-  ["HORIZON-PY-20260908","HORIZON — Prospective Forecast Console","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=HORIZON-PY-20260908",true],
-  ["LIG-CRED-DOC-20260808","Invariant-Grammar Projection Theorem credential","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-CRED-DOC-20260808",true],
-  ["LIG-SPECTRAL-BUS-JS-20260908","City Spectral Engine browser v2","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-JS-20260908",true],
-  ["LIG-SPECTRAL-BUS-PY-20260908","City Spectral Engine v2","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-SPECTRAL-BUS-PY-20260908",true],
-  ["LIG-UNIVERSAL-TRANSLATOR-PY-20260908","Linguistics Bureau Universal Translator v0.3.1","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-UNIVERSAL-TRANSLATOR-PY-20260908",true],
-  ["LIG-VALIDATE-PY-20260809","validate_lig_proof.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=LIG-VALIDATE-PY-20260809",true],
-  ["MANTA-FLIGHT-LAB","MANTA — Morphing Flight Lab","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manta/",false],
-  ["MATRIX-QUANTUM-SIMULATOR","THE MATRIX — Quantum Simulator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",true],
-  ["PY-E47-CORPUS-REPRO-20260912","E47 Corpus Blocker Closure Harness","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-CORPUS-REPRO-20260912",true],
-  ["PY-E47-MULTI-20260819","Revised E47 Multi-Branch Consolidated Validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-MULTI-20260819",true],
-  ["PY-E47-PLATE-SPINE","E47 Base-5 Carrier and Rubik-Laplacian cross-plate validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-PLATE-SPINE",true],
-  ["PY-E47-QCOH","Quantum-Coherence Mapping of the E47 Pipeline","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-QCOH",true],
-  ["PY-E47-VALLEE","Vallée Projector / E47 first-principles executable source","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE",true],
-  ["PY-MNE-EH-FOLD-GATE-20260908","mne_fold_gate.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-FOLD-GATE-20260908",true],
-  ["PY-MNE-EH-PREDICTOR-20260908","mnemosyne_event_horizon.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREDICTOR-20260908",true],
-  ["PY-MNE-EH-PREPARE-20260908","mne_challenge_prepare.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-PREPARE-20260908",true],
-  ["PY-MNE-EH-REVEAL-20260908","mne_challenge_reveal.py","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-MNE-EH-REVEAL-20260908",true],
-  ["PY-PCUBE-EXACT-20260729","Professor’s Cube exact permutation/Laplacian validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-EXACT-20260729",true],
-  ["PY-PCUBE-S3-QSIM-20260812","Professor’s Cube S3 bridge and quantum validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-PCUBE-S3-QSIM-20260812",true],
-  ["PY-RUB5-ORBIT-20260819","Professor’s Cube Orbit Decomposition and Twist-Laplacian Validator","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-RUB5-ORBIT-20260819",true],
-  ["PY-SCALAR-E47-FIELD-20260910","SCALAR Algebraic Quantum Scalar Fields","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-SCALAR-E47-FIELD-20260910",true],
-  ["Q5-TOPOLOGY-PANEL-20260921","Q5 · Executable 125-state topology navigator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/",true],
-  ["SAT-NEWTON-FRACTAL","SAT → Newton → Basin Boundary","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",true],
-  ["SKYRMION-RUNTIME-2","SKYRMION — Runtime 2 Flight Simulator","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/",false],
-  ["SYNTAX-JACOB-3I-20260918","Syntax Jacob — 3I/ATLAS Scalar Navigation Lab","https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/",true]
-];
-
-function statusClass(s) {
-  if (s.startsWith("Exact")) return "canon";
-  if (s.startsWith("Structural")) return "struct";
-  if (s.startsWith("Engineering")) return "eng";
-  return "open";
-}
-
-function renderRegistry() {
-  const qEl=$("q"), domainEl=$("domain"), statusEl=$("status"), canonEl=$("canon");
-  const term=(qEl?.value||"").toLowerCase();
-  const d=domainEl?.value||"", st=statusEl?.value||"", c=canonEl?.value||"";
-  const rs=(A.registry||[]).filter(r =>
-    (!term || [r.formalism,r.summary,r.domain,r.claim_status,r.key].join(" ").toLowerCase().includes(term)) &&
-    (!d || r.domain===d) && (!st || r.claim_status===st) && (!c || String(+r.canonical)===c)
-  );
-  $("registryCount").textContent=`${rs.length} / ${A.registry.length} records`;
-  $("rows").innerHTML=rs.map(r=>`<tr id="FRM-${r.id}">
-    <td class="id"><a href="#FRM-${r.id}" class="anchorlink" title="Deep link">#${r.id}</a></td>
-    <td><b>${esc(r.formalism)}</b><details><summary>details</summary><p>${esc(r.summary)}</p>
-    ${r.identity_links?.length?`<p>Identities: ${r.identity_links.map(x=>`<span class="badge">${esc(x)}</span>`).join("")}</p>`:""}</details></td>
-    <td>${esc(r.domain)}</td><td class="${statusClass(r.claim_status)}">${r.canonical?"✓ ":""}${esc(r.claim_status)}</td>
-    <td><span class="badge e">${esc(r.evidence_band)}</span></td>
-    <td>${(r.modalities||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join("")}</td>
-    <td>${(r.sources||[]).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.role)}</a>`).join(" · ")}</td>
-  </tr>`).join("");
-}
-
-function renderNodes() {
-  const term=($("gq")?.value||"").toLowerCase();
-  const ids=A.theorem_graph?.identities||[];
-  const ns=ids.filter(n=>!term||[n.citizen_code,n.title,n.evidence_class,n.validation_status].join(" ").toLowerCase().includes(term)).slice(0,500);
-  $("nodes").innerHTML=ns.length ? ns.map(n=>`<div class="node" data-code="${esc(n.citizen_code)}"><b>${esc(n.citizen_code)}</b><br><span class="muted">${esc(n.title)}</span></div>`).join("")
-    : '<div class="muted">No theorem nodes are embedded in the current published JSON snapshot.</div>';
-  $("nodes").querySelectorAll(".node").forEach(el=>el.onclick=()=>showNode(el.dataset.code,el));
-}
-
-function showNode(code, el) {
-  document.querySelectorAll(".node").forEach(x=>x.classList.remove("sel"));
-  el?.classList.add("sel");
-  const ids=A.theorem_graph?.identities||[], edges=A.theorem_graph?.edges||[];
-  const n=ids.find(x=>x.citizen_code===code); if(!n)return;
-  const incoming=edges.filter(e=>e.target_code===code), outgoing=edges.filter(e=>e.source_code===code);
-  $("nodeDetail").innerHTML=`<h2>${esc(code)}</h2><h3>${esc(n.title)}</h3>
-  <p><span class="badge">${esc(n.evidence_class)}</span><span class="badge">${esc(n.validation_status)}</span></p>
-  <div class="kv"><b>Parents declared</b><span>${(n.parent_identity_codes||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join("")||"none"}</span>
-  <b>Incoming edges</b><span>${incoming.length}</span><b>Outgoing edges</b><span>${outgoing.length}</span><b>Boundary</b><span>${esc(n.boundary||"")}</span></div>
-  <details open><summary>Incoming</summary><pre>${esc(JSON.stringify(incoming,null,2))}</pre></details>
-  <details><summary>Outgoing</summary><pre>${esc(JSON.stringify(outgoing,null,2))}</pre></details>`;
-}
-
-function renderInterlinks() {
-  $("platformLinks").innerHTML=PLATFORM_LINKS.map(([label,url,kind])=>`<a class="linkcard" href="${esc(url)}" ${url.startsWith("http")?'target="_blank" rel="noopener"':''}><b>${esc(label)}</b><small>${esc(kind)} · ${esc(url)}</small></a>`).join("");
-  const seen=new Set(), sourceRows=[];
-  for(const r of A.registry||[]) for(const src of r.sources||[]) {
-    if(src.url && !seen.has(src.url)) { seen.add(src.url); sourceRows.push([r.id,r.formalism,src.role,src.url]); }
-  }
-  $("sourceLinks").innerHTML=sourceRows.map(([id,title,role,url])=>`<a class="linkcard" href="${esc(url)}" target="_blank" rel="noopener"><b>FRM-${id} · ${esc(role)} · ${esc(title)}</b><small>${esc(url)}</small></a>`).join("");
-  $("surfaceLinks").innerHTML=SURFACE_LINKS.map(([code,title,url,active])=>`<a class="linkcard ${active?'':'off'}" href="${esc(url)}" target="_blank" rel="noopener"><b>${esc(title)}</b><small>${esc(code)} · ${active?'active':'historical/inactive'}</small></a>`).join("");
-}
-
-function renderDiagnostics() {
-  const ds=A.diagnostics||[];
-  $("diags").innerHTML=ds.map(d=>`<div class="panel ${esc(d.status)}"><b>${esc(d.code)}</b><p><span class="badge">${esc(d.status)}</span></p>
-  <pre style="white-space:pre-wrap">${esc(JSON.stringify(d.observed,null,2))}</pre>${d.note?`<p>${esc(d.note)}</p>`:""}</div>`).join("");
-}
-
-function renderProvenance() {
-  const S=A.summary||{};
-  $("prov").innerHTML=`<div class="kv">
-    <b>GitHub commit</b><span>${esc(A.build?.github_main_commit||"")}</span>
-    <b>Notion records</b><span>${esc(S.live_records)}</span>
-    <b>Supabase identities</b><span>${esc(S.identity_nodes)}</span>
-    <b>Supabase edges</b><span>${esc(S.theorem_edges)}</span>
-    <b>Drive source rows</b><span>${esc(S.drive_primary_source_rows)}</span>
-    <b>Drive certificate rows</b><span>${esc(S.drive_machine_certificate_rows)}</span>
-    <b>Gmail evidence snapshot</b><span>${esc(S.relevant_mail_snapshot)} messages</span>
-    <b>Machine JSON</b><span><a href="../../data/formalism-atlas.json">formalism-atlas.json</a></span>
-  </div><details><summary>Evidence grammar</summary><pre>${esc(JSON.stringify(A.build?.evidence_grammar||{},null,2))}</pre></details>
-  <details><summary>Core lock</summary><pre>${esc(JSON.stringify(A.core_lock||{},null,2))}</pre></details>`;
-}
-
-async function boot() {
-  const res=await fetch("../../data/formalism-atlas.json",{cache:"no-store"});
-  if(!res.ok) throw new Error(`Atlas JSON HTTP ${res.status}`);
-  A=await res.json();
-  const S=A.summary||{};
-  $("subtitle").textContent=`${S.live_records} live records · IDs 1–97 · missing ${(S.missing_ids||[]).join(", ")} · source commit ${String(A.build?.github_main_commit||"").slice(0,10)}`;
-  const stats=[
-    ["Records",S.live_records],["Canonical",S.canonical_records],["Identity nodes",S.identity_nodes],
-    ["Graph edges",S.theorem_edges],["Certificates",S.machine_certificates],["Source artifacts",S.source_artifacts],
-    ["Open discrepancies",S.open_discrepancies],["Stranded candidates",S.stranded_candidates]
-  ];
-  $("stats").innerHTML=stats.map(([k,v])=>`<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("");
-
-  const domainEl=$("domain"), statusEl=$("status");
-  for(const d of [...new Set((A.registry||[]).map(r=>r.domain))].sort()) domainEl.add(new Option(d,d));
-  for(const st of [...new Set((A.registry||[]).map(r=>r.claim_status))].sort()) statusEl.add(new Option(st,st));
-  ["q","domain","status","canon"].forEach(id=>$(id).addEventListener("input",renderRegistry));
-  $("gq").addEventListener("input",renderNodes);
-
-  renderRegistry(); renderNodes(); renderDiagnostics(); renderProvenance(); renderInterlinks();
-
-  document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
-    document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));
-    b.classList.add("on");
-    document.querySelectorAll(".tabpane").forEach(x=>x.classList.add("hidden"));
-    $(b.dataset.tab).classList.remove("hidden");
-  });
-
-  if(location.hash.startsWith("#FRM-")) requestAnimationFrame(()=>document.querySelector(location.hash)?.scrollIntoView({block:"center"}));
-}
-
-boot().catch(e=>{
-  const msg = e && (e.stack || e.message) ? (e.stack || e.message) : String(e);
-  document.body.innerHTML='<main style="padding:24px"><h1>Formalism Atlas failed to boot</h1><pre style="white-space:pre-wrap;color:#ff9a9a">'+esc(msg)+'</pre><p><a href="../../data/formalism-atlas.json">Open machine JSON</a></p></main>';
-});
+(()=>{const q=document.getElementById('q'),st=document.getElementById('st'),btn=document.getElementById('canon');let only=false;
+function go(){const term=(q.value||'').toLowerCase();document.querySelectorAll('#reg tbody tr').forEach(r=>{const okTerm=!term||r.innerText.toLowerCase().includes(term),okSt=!st.value||r.dataset.status===st.value,okC=!only||r.dataset.canonical==='true';r.style.display=okTerm&&okSt&&okC?'':'none';});}
+q.addEventListener('input',go);st.addEventListener('change',go);btn.addEventListener('click',()=>{only=!only;btn.textContent='Canonical only: '+(only?'on':'off');go();});})();
 </script></body></html>
