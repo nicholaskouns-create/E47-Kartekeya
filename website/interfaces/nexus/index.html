@@ -53,6 +53,18 @@
     .tape { font:11px/1.6 var(--mono); color:var(--mute); background:#031016; border:1px dashed #144650; border-radius:10px; padding:10px 12px; overflow:auto; }
     .seal { color:var(--ghost); word-break:break-all; }
     .open { border:1px dashed #3a4a3a; color:var(--mute); }
+    .product { font:13px/1.7 var(--mono); color:var(--ink); }
+    .product .on { color:var(--live); }
+    .product .sq { color:var(--ghost); border-bottom:1px dashed #e8b44f; }
+    .product .co { color:#9bb0b7; }
+    .product .law { color:#c1e8ce; }
+    .product .op { color:#24636a; }
+    .stages { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:10px 0 14px; font:11px var(--mono); }
+    .stage { border:1px solid #144650; border-radius:8px; padding:6px 8px; color:var(--mute); }
+    .stage.done { border-color:#24636a; color:var(--live); }
+    .stage.on { border-color:var(--lock); color:var(--lock); background:#062018; }
+    .stage.blocked { border-style:dashed; color:#4a5560; }
+    .arrow { color:#24636a; }
     footer { padding:8px 18px 24px; color:var(--mute); font:11px/1.5 var(--mono); }
     @media (max-width:900px) { .span-3,.span-4,.span-6,.span-8 { grid-column:span 12; } }
   </style>
