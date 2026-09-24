@@ -1,0 +1,44 @@
+{
+  "schema": "MC-FORMALISM-CROSSWALK-1.0",
+  "citizen_code": "E47-SPACETIME-CLOSURE-C01",
+  "title": "E47 Prima-Facie Spacetime Closure Theorem",
+  "date": "2026-09-24",
+  "evidence_class": "E0 + E1",
+  "validation_status": "machine_validated",
+  "statement": "g=B4†(P6-P0)B4=diag(-1,2,8,2); sig(g)=(-,+,+,+); R=0; G=diag(0,-1/2,1,-1/2)",
+  "supersedes_certificate": "MC-E47-SPACETIME-PRIMA-FACIE-20260924",
+  "validation": {
+    "certificate_code": "MC-E47-SPACETIME-PRIMA-FACIE-26-20260924",
+    "checks": "26/26 PASS",
+    "intertwiner_residual": 1.5418039012522706e-15,
+    "source_commit": "4dce2445e7d641682370f0a31190c1e947b9f095",
+    "github_blob_sha": "2ca49b175ec429c97ced7ddaf3b506690e2e1cd0"
+  },
+  "github": {
+    "validator": "research/e47/validation/e47_spacetime_prima_facie.py",
+    "formalism": "research/e47/E47_Prima_Facie_Spacetime_Closure_26.md",
+    "certificate": "artifacts/MC-E47-SPACETIME-PRIMA-FACIE-26-20260924.json",
+    "public_certificate": "website/data/MC-E47-SPACETIME-PRIMA-FACIE-26-20260924.json",
+    "graph": "website/data/formalism-graph.json"
+  },
+  "notion": {
+    "validator_page": "https://app.notion.com/p/3e546094fd3081ab9486c790f0968fe4",
+    "formalism_page": "https://app.notion.com/p/3e546094fd30812395a0e51a61bf8cf3",
+    "formalism_id": "FRM-99",
+    "citizen_page": "https://app.notion.com/p/3e546094fd30811883bac3cdea17b346",
+    "civic_id": "MC-349"
+  },
+  "supabase": {
+    "project_id": "gpkjvihkyectnenvnbng",
+    "source_artifact_id": "27480638-5e1d-414c-8f14-9397ef86e36b",
+    "source_logical_id": "SRC-E47-SPACETIME-PRIMA-FACIE-20260924",
+    "python_artifact_code": "PY-E47-SPACETIME-PRIMA-FACIE-20260924",
+    "certificate_code": "MC-E47-SPACETIME-PRIMA-FACIE-26-20260924",
+    "citizen_code": "E47-SPACETIME-CLOSURE-C01"
+  },
+  "parents": [
+    "E47-LOR-SIG-C01",
+    "E47-CASIMIR-SPECTRUM",
+    "E47-PRISM-20260922"
+  ]
+}
