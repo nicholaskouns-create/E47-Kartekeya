@@ -2,7 +2,7 @@
 
 ![THE MATRIX Quantum Simulator](../website/assets/matrix/matrix-cover.jpg)
 
-[Open MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Parity certificate](../website/data/MC-MATRIX-PARITY-20260921-001.json) · [E47 prism certificate](../website/data/MC-MATRIX-E47-PRISM-20260922-001.json) · [Prism formalism](../research/e47/E47_Prism_Spectral_Formalism.md) · [Python validator](../scripts/validate_matrix_quantum_parity.py)
+[Open MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Parity certificate](../website/data/MC-MATRIX-PARITY-20260921-001.json) · [E47 prism certificate](../website/data/MC-MATRIX-E47-PRISM-20260922-001.json) · [E47 constants certificate](../website/data/MC-E47-CONSTANTS-20260923.json) · [Prism formalism](../research/e47/E47_Prism_Spectral_Formalism.md) · [Parity validator](../scripts/validate_matrix_quantum_parity.py) · [E47 constant validator](../scripts/e47_constant_validation.py)
 
 ## Status
 
@@ -55,6 +55,18 @@ After the typed 125-state lift, the independent Python reconstruction verifies:
 - maximum K² eigenvalue = `186624`
 
 For the 125 → 128 embedding, both the isometry residual and the R47 intertwiner residual are exactly zero at the reported numerical precision, with zero population in padding states 125..127.
+
+## E47 finite-core constant certificate
+
+The standalone validator `scripts/e47_constant_validation.py` reconstructs the spin-2 tensor cube independently of the MATRIX browser runtime and records **19/19 PASS** for the finite E47 fingerprint:
+
+`125 · 47 · 78 · 47/125 · 18 · 12 · 6 · 30 · 108 · 432 · 11664 · 186624 · 1/99144 · 15/17`
+
+It verifies the Casimir spectrum and multiplicities, `rank(K)=78`, `nullity(K)=47`, projector rank/trace 47, `P²≈P`, `KP≈0`, the `K²` gap/norm, and the minimax contraction constants. At 252 iterations the direct floating-point operator error is `4.7049900678789936e-14`; the exact spectral worst-case factor is `(15/17)^252 = 2.0038679292982893e-14`.
+
+Authority: [machine certificate](../website/data/MC-E47-CONSTANTS-20260923.json) · [Python source](../scripts/e47_constant_validation.py) · [public Notion certificate](https://mathematicalcity.notion.site/E47-Invariant-Kernel-Verification-252-Step-Spectral-Projector-Certificate-3e546094fd3081738c01e36b7b75e3af?pvs=149).
+
+This certificate belongs to the typed **125-state E47 layer**. It does not alter the separate MATRIX qubit-parity certificate and does not identify the 256-dimensional qubit register with the 125-dimensional E47 carrier.
 
 
 ## E47 prism experiment
@@ -109,6 +121,7 @@ Cross-platform authority: [GitHub formalism](https://github.com/nicholaskouns-cr
 ```bash
 node scripts/check_matrix_mps_worker.mjs
 python scripts/validate_matrix_quantum_parity.py --require-qiskit
+python scripts/e47_constant_validation.py --csv E47_constant_validation.csv
 ```
 
 The GitHub Actions workflow `.github/workflows/matrix-mps-validation.yml` runs both the browser worker smoke and the independent Python/Qiskit Aer parity gate.
