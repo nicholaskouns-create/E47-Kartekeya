@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E47 · Executable Formalism Atlas</title>
+<meta name="description" content="Executable atlas of the live Mathematical City Formalism Registry, theorem graph, evidence classes, provenance, and diagnostics.">
+<style>
+:root{color-scheme:dark;--bg:#080c14;--panel:#101725;--line:#253149;--text:#e8eef8;--muted:#8fa0b8;--cyan:#5ee7ff;--mint:#77f2c4;--amber:#f2bd65;--red:#ff7b8f;--blue:#789cff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+header{padding:38px clamp(18px,4vw,64px) 22px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0c1320,#080c14)}
+.ey{color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;font-size:12px}h1{font-size:clamp(30px,5vw,64px);margin:.15em 0 .05em;letter-spacing:-.04em}p{color:var(--muted)}
+main{padding:20px clamp(14px,3vw,48px) 70px;max-width:1800px;margin:auto}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:18px 0}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}.stat b{display:block;font-size:25px;color:var(--mint)}.stat span{color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tabs button,.btn{background:#111a29;color:var(--text);border:1px solid var(--line);padding:9px 12px;border-radius:7px;cursor:pointer}.tabs button.on{border-color:var(--cyan);color:var(--cyan)}
+.controls{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;margin:12px 0 14px}.controls input,.controls select{width:100%;background:#0d1421;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:7px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line)}th,td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{position:sticky;top:0;background:#141e30;z-index:2;color:#cbd7e8}tr:hover td{background:#121c2c}.id{color:var(--cyan)}.canon{color:var(--mint)}.open{color:var(--amber)}.eng{color:var(--red)}.struct{color:var(--blue)}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 7px;margin:1px 3px 1px 0;color:var(--muted);font-size:11px}.badge.c{color:var(--mint);border-color:#2a6d5a}.badge.e{color:var(--cyan);border-color:#24576b}
+a{color:var(--cyan)}details{margin:8px 0}.diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}.diag .PASS{border-color:#245c4e}.diag .OPEN,.diag .DRIFT,.diag .PRESERVED_FAILURE{border-color:#6b5328}
+.graphGrid{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:12px}.nodeList{max-height:65vh;overflow:auto}.node{padding:8px;border-bottom:1px solid var(--line);cursor:pointer}.node:hover{background:#142036}.node.sel{background:#17263d;color:var(--cyan)}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:7px 14px}.kv b{color:#cbd7e8}.muted{color:var(--muted)}.hidden{display:none}
+@media(max-width:850px){.controls{grid-template-columns:1fr 1fr}.graphGrid{grid-template-columns:1fr}.kv{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="ey">Mathematical City · Live Registry Compiler</div><h1>Executable Formalism Atlas</h1>
+<p id="subtitle">Loading live snapshot…</p></header>
+<main>
+<div class="stats" id="stats"></div>
+<div class="tabs"><button class="on" data-tab="registry">Registry</button><button data-tab="graph">Theorem graph</button><button data-tab="diagnostics">Diagnostics</button><button data-tab="provenance">Provenance</button></div>
+
+<section id="registry" class="tabpane">
+<div class="controls"><input id="q" placeholder="Search title, summary, domain…"><select id="domain"><option value="">All domains</option></select><select id="status"><option value="">All claim states</option></select><select id="canon"><option value="">Canonical + derivative</option><option value="1">Canonical only</option><option value="0">Derivative / noncanonical</option></select></div>
+<div class="muted" id="registryCount"></div>
+<div style="overflow:auto;max-height:72vh"><table><thead><tr><th>ID</th><th>Formalism</th><th>Domain</th><th>Status</th><th>Evidence</th><th>Modality</th><th>Source</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
+
+<section id="graph" class="tabpane hidden">
+<div class="controls" style="grid-template-columns:1fr"><input id="gq" placeholder="Search identity code or theorem title…"></div>
+<div class="graphGrid"><div class="panel nodeList" id="nodes"></div><div class="panel" id="nodeDetail"><span class="muted">Select a theorem/identity node.</span></div></div>
+</section>
+
+<section id="diagnostics" class="tabpane hidden"><div class="diag" id="diags"></div></section>
+<section id="provenance" class="tabpane hidden"><div class="panel" id="prov"></div></section>
+</main>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+let A=null;
+async function boot(){
+ const res=await fetch("../../data/formalism-atlas.json",{cache:"no-store"}); A=await res.json();
+ const S=A.summary;
+ document.getElementById("subtitle").textContent=`${S.live_records} live records · IDs 1–97 · missing ${S.missing_ids.join(", ")} · source commit ${A.build.github_main_commit.slice(0,10)}`;
+ const stats=[["Records",S.live_records],["Canonical",S.canonical_records],["Identity nodes",S.identity_nodes],["Graph edges",S.theorem_edges],["Certificates",S.machine_certificates],["Source artifacts",S.source_artifacts],["Open discrepancies",S.open_discrepancies],["Stranded candidates",S.stranded_candidates]];
+ document.getElementById("stats").innerHTML=stats.map(([k,v])=>`<div class=stat><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("");
+ for(const d of [...new Set(A.registry.map(r=>r.domain))].sort()) domain.add(new Option(d,d));
+ for(const s of [...new Set(A.registry.map(r=>r.claim_status))].sort()) status.add(new Option(s,s));
+ [q,domain,status,canon].forEach(x=>x.addEventListener("input",renderRegistry)); renderRegistry();
+ gq.addEventListener("input",renderNodes); renderNodes();
+ diags.innerHTML=A.diagnostics.map(d=>`<div class="panel ${esc(d.status)}"><b>${esc(d.code)}</b><p><span class=badge>${esc(d.status)}</span></p><pre style="white-space:pre-wrap">${esc(JSON.stringify(d.observed,null,2))}</pre>${d.note?`<p>${esc(d.note)}</p>`:""}</div>`).join("");
+ prov.innerHTML=`<div class=kv><b>GitHub commit</b><span>${esc(A.build.github_main_commit)}</span><b>Notion records</b><span>${S.live_records}</span><b>Supabase identities</b><span>${S.identity_nodes}</span><b>Supabase edges</b><span>${S.theorem_edges}</span><b>Drive source rows</b><span>${S.drive_primary_source_rows}</span><b>Drive certificate rows</b><span>${S.drive_machine_certificate_rows}</span><b>Gmail evidence snapshot</b><span>${S.relevant_mail_snapshot} messages</span><b>Machine JSON</b><span><a href="../../data/formalism-atlas.json">formalism-atlas.json</a></span></div><details><summary>Evidence grammar</summary><pre>${esc(JSON.stringify(A.build.evidence_grammar,null,2))}</pre></details><details><summary>Core lock</summary><pre>${esc(JSON.stringify(A.core_lock,null,2))}</pre></details>`;
+ document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".tabpane").forEach(x=>x.classList.add("hidden"));document.getElementById(b.dataset.tab).classList.remove("hidden")});
+}
+function cls(s){return s.startsWith("Exact")?"canon":s.startsWith("Structural")?"struct":s.startsWith("Engineering")?"eng":"open"}
+function renderRegistry(){
+ const term=q.value.toLowerCase(),d=domain.value,s=status.value,c=canon.value;
+ const rs=A.registry.filter(r=>(!term||[r.formalism,r.summary,r.domain,r.claim_status,r.key].join(" ").toLowerCase().includes(term))&&(!d||r.domain===d)&&(!s||r.claim_status===s)&&(!c||String(+r.canonical)===c));
+ registryCount.textContent=`${rs.length} / ${A.registry.length} records`;
+ rows.innerHTML=rs.map(r=>`<tr><td class=id>${r.id}</td><td><b>${esc(r.formalism)}</b><details><summary>details</summary><p>${esc(r.summary)}</p>${r.identity_links?.length?`<p>Identities: ${r.identity_links.map(x=>`<span class=badge>${esc(x)}</span>`).join("")}</p>`:""}</details></td><td>${esc(r.domain)}</td><td class="${cls(r.claim_status)}">${r.canonical?"✓ ":""}${esc(r.claim_status)}</td><td><span class="badge e">${esc(r.evidence_band)}</span></td><td>${r.modalities.map(x=>`<span class=badge>${esc(x)}</span>`).join("")}</td><td>${r.sources.map(x=>`<a href="${esc(x.url)}" target=_blank rel=noopener>${esc(x.role)}</a>`).join(" · ")}</td></tr>`).join("");
+}
+function renderNodes(){
+ const term=gq.value.toLowerCase();
+ const ns=A.theorem_graph.identities.filter(n=>!term||[n.citizen_code,n.title,n.evidence_class,n.validation_status].join(" ").toLowerCase().includes(term)).slice(0,500);
+ nodes.innerHTML=ns.map(n=>`<div class=node data-code="${esc(n.citizen_code)}"><b>${esc(n.citizen_code)}</b><br><span class=muted>${esc(n.title)}</span></div>`).join("");
+ nodes.querySelectorAll(".node").forEach(el=>el.onclick=()=>showNode(el.dataset.code,el));
+}
+function showNode(code,el){
+ document.querySelectorAll(".node").forEach(x=>x.classList.remove("sel"));el?.classList.add("sel");
+ const n=A.theorem_graph.identities.find(x=>x.citizen_code===code); if(!n)return;
+ const incoming=A.theorem_graph.edges.filter(e=>e.target_code===code), outgoing=A.theorem_graph.edges.filter(e=>e.source_code===code);
+ nodeDetail.innerHTML=`<h2>${esc(code)}</h2><h3>${esc(n.title)}</h3><p><span class=badge>${esc(n.evidence_class)}</span><span class=badge>${esc(n.validation_status)}</span></p><div class=kv><b>Parents declared</b><span>${(n.parent_identity_codes||[]).map(x=>`<span class=badge>${esc(x)}</span>`).join("")||"none"}</span><b>Incoming edges</b><span>${incoming.length}</span><b>Outgoing edges</b><span>${outgoing.length}</span><b>Boundary</b><span>${esc(n.boundary||"")}</span></div><details open><summary>Incoming</summary><pre>${esc(JSON.stringify(incoming,null,2))}</pre></details><details><summary>Outgoing</summary><pre>${esc(JSON.stringify(outgoing,null,2))}</pre></details>`;
+}
+boot().catch(e=>{document.body.innerHTML="<pre>"+esc(e.stack||e)+"</pre>"});
+</script></body></html>
