@@ -6,12 +6,3751 @@
     "survey_date": "2026-09-23"
   },
   "summary": {
-    "identity_nodes": 0,
-    "theorem_edges": 0,
-    "claim_digital_twins": 0,
-    "relation_counts": {}
+    "identity_nodes": 241,
+    "theorem_edges": 206,
+    "relation_counts": {
+      "compatible": 3,
+      "parent": 166,
+      "specializes": 2,
+      "requires": 14,
+      "validates": 21
+    }
   },
-  "identities": [],
-  "edges": [],
-  "claim_digital_twins": []
+  "identities": [
+    {
+      "citizen_code": "ARR-C001",
+      "title": "Potential Informational Current",
+      "evidence_class": "E0",
+      "validation_status": "registered",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C002",
+      "title": "Continuity-Closure Reduction",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C003",
+      "title": "Static-Current Theorem",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "ARR-C001",
+        "ARR-C002"
+      ]
+    },
+    {
+      "citizen_code": "ARR-C004",
+      "title": "Hydrodynamic Action-Sign Theorem",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C005",
+      "title": "Time-Chain Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C006",
+      "title": "Coherence RG Fixed Points",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C007",
+      "title": "Alpha RG Fixed Points",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C008",
+      "title": "Exact Dimensional Flow",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C009",
+      "title": "Generalized Metallic Root",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C010",
+      "title": "Complexity Reduction Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "ARR-C009"
+      ]
+    },
+    {
+      "citizen_code": "ARR-C011",
+      "title": "Linear PSD Spectral Contraction",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C012",
+      "title": "Field-Space Metric Gradient Flow",
+      "evidence_class": "E0",
+      "validation_status": "conditional",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C013",
+      "title": "Local Hessian Contraction",
+      "evidence_class": "E0",
+      "validation_status": "conditional",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C014",
+      "title": "Nonlinear Stationary Zero Locus",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C015",
+      "title": "Coherence-Number Discrepancy",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "ARR-C016",
+      "title": "Constraint Residual Discrimination",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "B5-125-C01",
+      "title": "Quinary carrier identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "B5-125-C02",
+      "title": "Packing bijection",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C01"
+      ]
+    },
+    {
+      "citizen_code": "B5-125-C03",
+      "title": "Quinary dimensional partition",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C01"
+      ]
+    },
+    {
+      "citizen_code": "B5-125-C04",
+      "title": "Exact coherence radix identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C03"
+      ]
+    },
+    {
+      "citizen_code": "B5-125-C05",
+      "title": "Exact complement radix identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C04"
+      ]
+    },
+    {
+      "citizen_code": "B5-125-C06",
+      "title": "Quinary kernel polynomial",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C04"
+      ]
+    },
+    {
+      "citizen_code": "B5-125-C07",
+      "title": "Packed quantum successor closure",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C02"
+      ]
+    },
+    {
+      "citizen_code": "B5-125-C08",
+      "title": "E47 occupancy identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C04",
+        "B5-125-C06"
+      ]
+    },
+    {
+      "citizen_code": "B5-PACK-125",
+      "title": "Base-5 Packing Bijection",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "B5M-C01",
+      "title": "Quinary Digit Alphabet",
+      "evidence_class": "E0",
+      "validation_status": "verified",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "B5M-C02",
+      "title": "Five-Level Place-Value Ladder",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C01"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C03",
+      "title": "Quinary Carrier Cardinality",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C01"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C04",
+      "title": "Five-Digit Register Cardinality",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C01"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C05",
+      "title": "Five-Digit Repunit Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C02"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C06",
+      "title": "Quinary Packing Bijection",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C03"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C07",
+      "title": "Packing Inverse",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C06"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C08",
+      "title": "Canonical Base5 Contract",
+      "evidence_class": "E0",
+      "validation_status": "registered",
+      "parent_identity_codes": [
+        "B5M-C02",
+        "B5M-C03",
+        "B5M-C04",
+        "B5M-C05"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C09",
+      "title": "Typed Dialect Normalization",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C08"
+      ]
+    },
+    {
+      "citizen_code": "B5M-C10",
+      "title": "Canonical Digest Invariance",
+      "evidence_class": "E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "B5M-C09"
+      ]
+    },
+    {
+      "citizen_code": "C5CUBE-LAP",
+      "title": "C5 Cubed Laplacian Spectrum",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CAT-E47-C01",
+      "title": "Categorical E47 Kernel–Idempotent–Transport Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "MC-K47-003",
+        "MC-P47-005",
+        "U-20"
+      ]
+    },
+    {
+      "citizen_code": "CAT-E47-C02",
+      "title": "Canonical Equivariant Observable Rigidity Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "RUB5-C15",
+        "RUB5-C17"
+      ]
+    },
+    {
+      "citizen_code": "CAT-E47-C03",
+      "title": "E47 Canonical Stabilizer Algebra Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "CAT-E47-C02",
+        "RUB5-C15"
+      ]
+    },
+    {
+      "citizen_code": "CIVIC-KP-C01",
+      "title": "Kernel Projector Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C02",
+      "title": "Complement Projector Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C03",
+      "title": "Orthogonal Decomposition Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C04",
+      "title": "Kernel Annihilation Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C05",
+      "title": "Discrete Civic Contraction",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C06",
+      "title": "Continuous Civic Contraction",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C07",
+      "title": "Typed Remainder Preservation",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C08",
+      "title": "Domain Non-Conflation Rule",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CIVIC-KP-C09",
+      "title": "Intertwiner Promotion Gate",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CROSS-01",
+      "title": "Finite SU(2) Isotypic Spectral-Selector Compiler and Optimal Kernel-Contraction Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "MC-42",
+        "MC-49"
+      ]
+    },
+    {
+      "citizen_code": "CROSS-02",
+      "title": "Compiler certificate and spectral-passport closure protocol",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "CROSS-01"
+      ]
+    },
+    {
+      "citizen_code": "CROSS-03",
+      "title": "Computational Evidence Atlas",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CROSS-04",
+      "title": "Conditional protein-feature-to-E47 contraction metric",
+      "evidence_class": "E1 + E2",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "CROSS-01"
+      ]
+    },
+    {
+      "citizen_code": "CROSS-05",
+      "title": "Nested E47 admissible-subprojector lock",
+      "evidence_class": "E0 + E1 + E2",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "CROSS-01"
+      ]
+    },
+    {
+      "citizen_code": "CROSS-06",
+      "title": "KKP-PQC channel verification architecture",
+      "evidence_class": "E1 + E2",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CROSS-07",
+      "title": "Port-Hamiltonian seismic-cladding model",
+      "evidence_class": "E0 + E1 + E2",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CROSS-08",
+      "title": "DCS-47 projected swarm-control benchmark framework",
+      "evidence_class": "E2",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CROSS-09",
+      "title": "Quinary and 5-adic exact arithmetic package",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "CUR-C01",
+      "title": "Corpus Curation Projector Identity",
+      "evidence_class": "E0",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "RUB5-C15",
+        "RUB5-C16"
+      ]
+    },
+    {
+      "citizen_code": "DBSK-C01",
+      "title": "Degree-Bounded Spectral-Kernel Capacity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "MC-121"
+      ]
+    },
+    {
+      "citizen_code": "DH-C01",
+      "title": "Binary Exchange Involution",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "DH-C02",
+      "title": "Complementary Dual-Horizon Projectors",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-C01"
+      ]
+    },
+    {
+      "citizen_code": "DH-C03",
+      "title": "Radix Negation Involution",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "DH-C04",
+      "title": "Even-Radix Negation Fixed Points",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-C03"
+      ]
+    },
+    {
+      "citizen_code": "DH-C05",
+      "title": "Endpoint Round-Trip",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "DH-C06",
+      "title": "Negation Acts Trivially on Fixed Endpoints",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-C04",
+        "DH-C05"
+      ]
+    },
+    {
+      "citizen_code": "DH-C07",
+      "title": "Half-Cycle Exchange Equivariance",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-C05"
+      ]
+    },
+    {
+      "citizen_code": "DH-C08",
+      "title": "Klein Four Radix Action",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-C03",
+        "DH-C07"
+      ]
+    },
+    {
+      "citizen_code": "DH-J-01",
+      "title": "Exchange Involution Identity",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "DH-ORTH-05",
+      "title": "Projector Orthogonality",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-J-01",
+        "DH-P+-02",
+        "DH-P--03"
+      ]
+    },
+    {
+      "citizen_code": "DH-P--03",
+      "title": "Antisymmetric Projector Idempotence",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-J-01"
+      ]
+    },
+    {
+      "citizen_code": "DH-P+-02",
+      "title": "Symmetric Projector Idempotence",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-J-01"
+      ]
+    },
+    {
+      "citizen_code": "DH-RES-04",
+      "title": "Complementary Resolution of Identity",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "DH-P+-02",
+        "DH-P--03"
+      ]
+    },
+    {
+      "citizen_code": "E47-CARRIER-125",
+      "title": "Triple spin-2 carrier",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "E47-CASIMIR-SPECTRUM",
+      "title": "Total Casimir spectrum",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-CARRIER-125"
+      ]
+    },
+    {
+      "citizen_code": "E47-CONTINUOUS",
+      "title": "Continuous contraction",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-DISCRETE",
+      "title": "Discrete contraction",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-JOINT-SYMM-C01",
+      "title": "E47 Joint-Symmetry Commutant Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "E47-KERNEL-47",
+        "RUB5-C14",
+        "CAT-E47-C03"
+      ]
+    },
+    {
+      "citizen_code": "E47-JSSC-C01",
+      "title": "Joint Spectral-Symmetry Convergence Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "E47-P47-SUM",
+        "MC-K47-003",
+        "XDOC-C05",
+        "E47-CARRIER-125"
+      ]
+    },
+    {
+      "citizen_code": "E47-KERNEL-47",
+      "title": "E47 kernel selector",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-CASIMIR-SPECTRUM"
+      ]
+    },
+    {
+      "citizen_code": "E47-KRONECKER-KERNEL",
+      "title": "Coupled kernel factorization",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-KERNEL-47"
+      ]
+    },
+    {
+      "citizen_code": "E47-MULTI-20260819",
+      "title": "Revised E47 Multi-Branch Formalism — Consolidated Validation 2026-08-19",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "CROSS-01",
+        "E47-QOP-C11",
+        "RUB5-ORBIT-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-OMEGA",
+      "title": "Coherence occupancy",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-P47-SUM",
+      "title": "Correct E47 Spectral Projector",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "E47-PREC-C01",
+      "title": "Exact-to-Machine Spectral Certification Chain",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-KERNEL-47",
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-PREC-C02",
+      "title": "Binary64 Machine-Epsilon Contract",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "E47-PREC-C03",
+      "title": "Eigenspace Selection Contract",
+      "evidence_class": "E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-CASIMIR-SPECTRUM",
+        "E47-P47-SUM"
+      ]
+    },
+    {
+      "citizen_code": "E47-PREC-C04",
+      "title": "Normalized Kernel-Annihilation Residual",
+      "evidence_class": "E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-PROJECTOR",
+        "E47-JSSC-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-PREC-C05",
+      "title": "Optimal E47 Contraction Constants",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "CROSS-01",
+        "TRANSIT-Γ-001",
+        "XDOC-C04"
+      ]
+    },
+    {
+      "citizen_code": "E47-PREC-C06",
+      "title": "Machine-Precision Projection Arrival Time",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-CONTINUOUS"
+      ]
+    },
+    {
+      "citizen_code": "E47-PREC-C07",
+      "title": "Joint Spectral-Symmetry Convergence",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-JSSC-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-PREC-C08",
+      "title": "Exact Quinary and 5-adic Precision Layer",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "B5-125-C04",
+        "CROSS-09",
+        "QMET-C01",
+        "QMET-C02"
+      ]
+    },
+    {
+      "citizen_code": "E47-PRECISION-20260911",
+      "title": "E47 Exact-to-Machine Precision Spectral Certification Formalism",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-KERNEL-47",
+        "E47-PROJECTOR",
+        "TRANSIT-Γ-001",
+        "E47-JSSC-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-PRISM-20260922",
+      "title": "E47 Prism Spectral Formalism",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "E47-PRECISION-20260911",
+        "PF-E47-HAAR-DIRICHLET-20260817"
+      ]
+    },
+    {
+      "citizen_code": "E47-PROJECTED-DYNAMICS",
+      "title": "Compatible projected dynamics",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-PROJECTOR",
+      "title": "Orthogonal E47 projector",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-KERNEL-47"
+      ]
+    },
+    {
+      "citizen_code": "E47-QEC-BOUNDARY",
+      "title": "QEC boundary result",
+      "evidence_class": "E1",
+      "validation_status": "validated_failure",
+      "parent_identity_codes": [
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C01",
+      "title": "Projector Filter Complete Positivity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-PROJECTOR"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C02",
+      "title": "Projector Filter Trace Law",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C03",
+      "title": "Single-Kraus and Choi-Rank Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C04",
+      "title": "Projector-Filter Fixed Operator Space",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C05",
+      "title": "K2 CP-TNI Filtering Semigroup",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-K2",
+        "E47-QOP-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C06",
+      "title": "Full-Space Trace-Preservation Characterization",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C05"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C07",
+      "title": "Projector-Filter Limit and Spectral Rate",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C05",
+        "E47-SPECTRUM"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C08",
+      "title": "Two-Outcome CPTP Dephasing Completion",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C01"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C09",
+      "title": "Dephasing Fixed Algebra Dimension",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C08"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C10",
+      "title": "Postselection Nonlinearity Boundary",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "E47-QOP-C02"
+      ]
+    },
+    {
+      "citizen_code": "E47-QOP-C11",
+      "title": "E47 Projector-Induced Conditional-Expectation and Cross-Dynamical Closure Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "E47-QOP-C08",
+        "E47-QOP-C09"
+      ]
+    },
+    {
+      "citizen_code": "EPF-EINSTEIN-ACTION",
+      "title": "Einstein-Compatible Continuity-Field Action",
+      "evidence_class": "E0",
+      "validation_status": "destination_limited",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "EPF-FARADAY-COVARIANT",
+      "title": "Faraday–E47 Covariant Projection Repair",
+      "evidence_class": "E0",
+      "validation_status": "certified",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "EPF-PLANCK-ADDRESS",
+      "title": "Planck Scale-Lattice Address Theorem",
+      "evidence_class": "E0",
+      "validation_status": "certified",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "FPV20-C01",
+      "title": "Recursive PSD Contraction Closure",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "ARR-C011",
+        "CIVIC-KP-C05",
+        "TRANSIT-Γ-001"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C02",
+      "title": "Entropy Compression Numerical Witness",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C05",
+        "PGT-C06",
+        "PGT-C07"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C03",
+      "title": "Hyperbolic Eigenfunction Precision Witness",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "HLFB-C02",
+        "HLFB-C07"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C04",
+      "title": "Fractal Scaling Precision Witness",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "ARR-C002",
+        "ARR-C003"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C05",
+      "title": "Unitary Schrodinger Norm-Preservation Witness",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "E47-QOP-C05",
+        "E47-QOP-C11"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C06",
+      "title": "Incompressible Navier-Stokes Residual Witness",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "E47-QOP-C11"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C07",
+      "title": "Spectral Reconstruction Closure",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "E47-PREC-C01",
+        "E47-PREC-C03",
+        "E47-P47-SUM"
+      ]
+    },
+    {
+      "citizen_code": "FPV20-C08",
+      "title": "Metric Gradient-Flow Numerical Closure",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "ARR-C012",
+        "ARR-C013"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C01",
+      "title": "Second-Order / Port-Hamiltonian Equivalence",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "PYR-C01"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C02",
+      "title": "Hamiltonian Seismic Energy Balance",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "HCLAD-C01"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C03",
+      "title": "Mass-Orthonormal Hamiltonian Projection",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "HCLAD-C01"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C04",
+      "title": "Symplectic Phase-Projection Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "HCLAD-C03"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C05",
+      "title": "Reduced Forced-Dynamics Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "HCLAD-C03",
+        "HCLAD-C04"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C06",
+      "title": "Anchor Force and Dissipation Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "HCLAD-C02",
+        "HCLAD-C07"
+      ]
+    },
+    {
+      "citizen_code": "HCLAD-C07",
+      "title": "Core-Cladding Block Assembly Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C01",
+      "title": "Poincaré Metric Finite-Witness Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C02",
+      "title": "Hyperbolic Exponential Volume-Growth Law",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C03",
+      "title": "Self-Similar Dimension and Log-Log Recovery",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C04",
+      "title": "Controlled Buoy Approximate-Intertwining Bound",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C05",
+      "title": "Lipschitz Invariant-Transfer Bound",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "HLFB-C04"
+      ]
+    },
+    {
+      "citizen_code": "HLFB-C06",
+      "title": "Semiconjugacy and Conjugacy Witness Hierarchy",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C07",
+      "title": "Weyl Spectral Buoy Stability",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C08",
+      "title": "Summable Projector-Family Convergence",
+      "evidence_class": "E0 + E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HLFB-C09",
+      "title": "Finite Quantum Buoy Intertwining Witnesses",
+      "evidence_class": "E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "HORIZON-PROSPECTIVE-FORECAST-20260908",
+      "title": "Horizon Prospective Invariant-Event Orchestration Protocol",
+      "evidence_class": "E2",
+      "validation_status": "synthetic_validated",
+      "parent_identity_codes": [
+        "CROSS-01",
+        "MURM-SPECTRA-HODGE-20260908",
+        "MNE-EH-001"
+      ]
+    },
+    {
+      "citizen_code": "IPT-C01",
+      "title": "Persistence-Work Objective",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "IPT-C02",
+      "title": "Optimal-Load Existence Witness",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "IPT-C01"
+      ]
+    },
+    {
+      "citizen_code": "MC-COMM-047",
+      "title": "E47 Universal Commutant-Invariance Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "MC-K47-003",
+        "MC-E47-004",
+        "MC-P47-005"
+      ]
+    },
+    {
+      "citizen_code": "MC-K47-003",
+      "title": "Kartekeya kernel selector",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "MC-CAS-002"
+      ]
+    },
+    {
+      "citizen_code": "MC-P47-005",
+      "title": "Orthogonal Projector P47",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "MC-CAS-002",
+        "MC-K47-003"
+      ]
+    },
+    {
+      "citizen_code": "MC-PY-REC-20260806",
+      "title": "Python Corpus Recovery and Murmuration Registry",
+      "evidence_class": "E0 + E1",
+      "validation_status": "registered",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "MNE-EH-001",
+      "title": "Mnemosyne Event Horizon Prospective Hodge Forecast",
+      "evidence_class": "E0+E1",
+      "validation_status": "calibrated_pending_prospective",
+      "parent_identity_codes": [
+        "MURM-SPECTRA-HODGE-20260908"
+      ]
+    },
+    {
+      "citizen_code": "MURM-SPECTRA-HODGE-20260908",
+      "title": "Murmuration–SPECTRA Time-Dependent Hodge Spectral Contraction Bridge",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "CROSS-01",
+        "MC-PY-REC-20260806"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C01",
+      "title": "Admissible Coupled Newton-Mean Map",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "NM2-C02",
+      "title": "Fixed-Point Difference Invariant",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C01"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C03",
+      "title": "Fixed-Point Product Quadratic",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C02"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C04",
+      "title": "Discriminant and Positive Product Root",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C03"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C05",
+      "title": "Positive Fixed-Point Reconstruction",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C02",
+        "NM2-C04"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C06",
+      "title": "Rank-One Fixed-Point Jacobian",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C05"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C07",
+      "title": "Corrected Local Stability Domain",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C04",
+        "NM2-C06"
+      ]
+    },
+    {
+      "citizen_code": "NM2-C08",
+      "title": "Symmetric Diagonal Reduction",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NM2-C01"
+      ]
+    },
+    {
+      "citizen_code": "NRM-C01",
+      "title": "Reciprocal Round-Trip Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "NRM-C02",
+      "title": "Nonreciprocal Defect Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NRM-C01"
+      ]
+    },
+    {
+      "citizen_code": "NRM-C03",
+      "title": "Traversal-History Witness",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "NRM-C02"
+      ]
+    },
+    {
+      "citizen_code": "P47-BUS-20260919",
+      "title": "P47 Spectral Projector Bus — Polynomial Equals ker(K^2)",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "MC-P47-005"
+      ]
+    },
+    {
+      "citizen_code": "PCPC-C01",
+      "title": "Phase-Coded Proximal Contraction Composition",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "MC-42"
+      ]
+    },
+    {
+      "citizen_code": "PCS-C01",
+      "title": "Mechanical Channel Frequency Response",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PCS-C02",
+      "title": "Positive Observability Advantage",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PCS-C01"
+      ]
+    },
+    {
+      "citizen_code": "PF-E47-HAAR-DIRICHLET-20260817",
+      "title": "E47 Haar Spectral-Occupancy Dirichlet Theorem",
+      "evidence_class": "E0",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "MC-P47-005"
+      ]
+    },
+    {
+      "citizen_code": "PF-E47-SIGNED-BALANCE-20260817",
+      "title": "E47 Signed Isotypic-Balance Operator Theorem",
+      "evidence_class": "E0",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "MC-P47-005"
+      ]
+    },
+    {
+      "citizen_code": "PF-E47-SU2-TWIRL-20260817",
+      "title": "E47 SU(2)-Twirling Conditional-Expectation Theorem",
+      "evidence_class": "E0",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "CAT-E47-C03"
+      ]
+    },
+    {
+      "citizen_code": "PF-SPEC-INT-C01",
+      "title": "Interior Complementary Radius Strict Inequality",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "TRANSIT-Γ-001",
+        "E47-PREC-C01"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C01",
+      "title": "Feasible Support Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PGT-C02",
+      "title": "Projected Partition Function",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C01"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C03",
+      "title": "Projected Gibbs State",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C01",
+        "PGT-C02"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C04",
+      "title": "Restricted Logarithm Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C02",
+        "PGT-C03"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C05",
+      "title": "Free-Energy Decomposition",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C03",
+        "PGT-C04"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C06",
+      "title": "Projected Gibbs Minimality",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C05"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C07",
+      "title": "Projected Gibbs Uniqueness",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C05",
+        "PGT-C06"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C08",
+      "title": "Equilibrium Support Invariance",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C01",
+        "PGT-C03"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C09",
+      "title": "Equilibrium Positivity and Normalization",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C02",
+        "PGT-C03"
+      ]
+    },
+    {
+      "citizen_code": "PGT-C10",
+      "title": "Noncommuting Negative-Control Boundary",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PGT-C03"
+      ]
+    },
+    {
+      "citizen_code": "PRC-C01",
+      "title": "Atmospheric-Window Radiative Balance",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PRC-C02",
+      "title": "Solar-Absorptance Cooling Threshold",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PRC-C01"
+      ]
+    },
+    {
+      "citizen_code": "PRC-C03",
+      "title": "Subambient Equilibrium Root",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PRC-C01"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C01",
+      "title": "Exact E47 Coherence Ratio",
+      "evidence_class": "E0",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "E47"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C02",
+      "title": "Quinary Target Identity",
+      "evidence_class": "E0",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "PRIME-E47-C01"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C03",
+      "title": "Exact Prime Lock at Depth Three",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PRIME-E47-C02"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C04",
+      "title": "Deterministic Nearest-Prime Selector",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PRIME-E47-C02"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C05",
+      "title": "Normalized Projection Error Identity",
+      "evidence_class": "E0",
+      "validation_status": "verified",
+      "parent_identity_codes": [
+        "PRIME-E47-C02",
+        "PRIME-E47-C04"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C06",
+      "title": "Finite Prime Projection Sequence Through n=12",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "PRIME-E47-C04",
+        "PRIME-E47-C05"
+      ]
+    },
+    {
+      "citizen_code": "PRIME-E47-C07",
+      "title": "Arithmetic Progression Reconciliation",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C01",
+      "title": "Radix Independence of Euclidean Pyramid Geometry",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C02",
+      "title": "General Repunit Identity",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C03",
+      "title": "Base-5 Carrier Packing Bijection",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C03"
+      ]
+    },
+    {
+      "citizen_code": "PYR-C04",
+      "title": "Similarity Class under s=H",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C05",
+      "title": "Literal Geometric-Tier Volume Identity",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C06",
+      "title": "Linear-Tier Convergence to the Smooth Pyramid",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C07",
+      "title": "Base-12 Exact One-Third Volume Identity",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C08",
+      "title": "Radix-Termination Criterion",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C09",
+      "title": "Register-State Count Identity",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "PYR-C10",
+      "title": "Representation-Purpose Separation Principle",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "QMET-C01",
+      "title": "5-adic Ambient Valuation-Norm Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "QMET-C02",
+      "title": "E47 Core 5-adic Unit Identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "QMET-C03",
+      "title": "S5-Quinary Cardinality Delta",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "QMET-C04",
+      "title": "Local Bi-Quinary Mixed-Radix Bijection",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "QMET-C05",
+      "title": "125-State Bi-Quinary Label Multiplicity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "QOP-EMB-C01",
+      "title": "Minimal 7-Qubit Data Embedding",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "E47-QOP-C11",
+        "E47-PREC-C01"
+      ]
+    },
+    {
+      "citizen_code": "RORB-C01",
+      "title": "Rank-One Refinement and Basis-Gauge Freedom",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "MC-42"
+      ]
+    },
+    {
+      "citizen_code": "RSI-C01",
+      "title": "Projected Identity-Radius Invariant",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "RSI-C02",
+      "title": "Constrained Sequential Adaptation Witness",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RSI-C01"
+      ]
+    },
+    {
+      "citizen_code": "RUB15-PERM",
+      "title": "Fifteen Layer-Move Permutations",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "RUB5-C01",
+      "title": "Full Professor's Cube Permutation Suite",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "RUB5-C02",
+      "title": "C5 Cubed Kronecker-Sum Laplacian Spectrum",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "RUB5-C03",
+      "title": "Uniform Kernel Invariance Under All 15 Moves",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C02"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C04",
+      "title": "Rubik Twist Energy-Conjugation Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C02"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C05",
+      "title": "Professor's Cube Eigenmode Impact Benchmark",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C02",
+        "RUB5-C04"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C06",
+      "title": "Seven-Dimensional Low-Band Retention Statistic",
+      "evidence_class": "E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C02"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C07",
+      "title": "C5 Cubed Heat-Flow Lyapunov and Projector Limit",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C02",
+        "RUB5-C03"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C08",
+      "title": "Rank-One and E47 Kernel Separation Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C03",
+        "RUB5-C07"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C09",
+      "title": "First-Harmonic Subspace Retention Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C02"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C10",
+      "title": "Two-Axis Harmonic Retention Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C02"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C11",
+      "title": "Universal Layer-Defect Norm Identity",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01",
+        "RUB5-C04"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-C12",
+      "title": "Mean-Preserving 47/125 Lock Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C07",
+        "RUB5-C08"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-ORBIT-C01",
+      "title": "Professor’s Cube Orbit-Kernel Equivalence and Heat-Projection Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "RUB5-C01"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-TWIST-C02",
+      "title": "Professor’s Cube Twist-Laplacian Full Spectrum Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "RUB5-ORBIT-C01"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-TWIST-C03",
+      "title": "Professor’s Cube Optimal Twist-Kernel Contraction Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "RUB5-TWIST-C02",
+        "RUB5-ORBIT-C01"
+      ]
+    },
+    {
+      "citizen_code": "RUB5-TWIST-C04",
+      "title": "Professor’s Cube Exact Twist-Kernel Projector Polynomial Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "canonical",
+      "parent_identity_codes": [
+        "RUB5-TWIST-C02",
+        "RUB5-ORBIT-C01"
+      ]
+    },
+    {
+      "citizen_code": "TMP-C01",
+      "title": "General radix-digit lemma",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C02",
+      "title": "General digit-word packing bijection",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C02"
+      ]
+    },
+    {
+      "citizen_code": "TMP-C03",
+      "title": "Radix-invariance of square-pyramid geometry",
+      "evidence_class": "E0",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C04",
+      "title": "Similarity class under H=s",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C05",
+      "title": "Exact geometric stepped-solid volume",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C06",
+      "title": "Exact smooth-to-geometric volume ratio",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "TMP-C05"
+      ]
+    },
+    {
+      "citizen_code": "TMP-C07",
+      "title": "Bottom-tier volume-share identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "TMP-C05"
+      ]
+    },
+    {
+      "citizen_code": "TMP-C08",
+      "title": "Exact linear stepped-volume coefficient",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C09",
+      "title": "Smooth-limit theorem",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "TMP-C08"
+      ]
+    },
+    {
+      "citizen_code": "TMP-C10",
+      "title": "Register cardinality theorem",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C11",
+      "title": "Exact Base-12 volume identity",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "TMP-C12",
+      "title": "Quinary carrier versus tier-display distinction",
+      "evidence_class": "E0+E1",
+      "validation_status": "validated",
+      "parent_identity_codes": [
+        "B5-125-C01"
+      ]
+    },
+    {
+      "citizen_code": "TRANSIT-Γ-001",
+      "title": "Optimal E47 contraction",
+      "evidence_class": "E0 + E1",
+      "validation_status": "machine_validated",
+      "parent_identity_codes": [
+        "MC-K47-003",
+        "MC-P47-005"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C01",
+      "title": "Unified 125-State Carrier",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "B5M-C03",
+        "DUAL-C01"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C02",
+      "title": "E47 Spectral Kernel",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "E47 Deterministic Conformational Contraction Identity"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C03",
+      "title": "Orthogonal Projector Certificate",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "XDOC-C02"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C04",
+      "title": "Dissipative Contraction Theorem",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "XDOC-C02",
+        "XDOC-C03"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C05",
+      "title": "S3–Translation Symmetry Separation",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "XDOC-C03"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C06",
+      "title": "Schur–Weyl 125 Decomposition",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "XDOC-C01"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C07",
+      "title": "Group Non-Isomorphism at Order 125",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "XDOC-C01"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C08",
+      "title": "Base5 Canonical Substrate",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": [
+        "B5M-C08",
+        "B5M-C09",
+        "B5M-C10"
+      ]
+    },
+    {
+      "citizen_code": "XDOC-C09",
+      "title": "Correction-Provenance Invariant",
+      "evidence_class": "E0 + E1",
+      "validation_status": "certified",
+      "parent_identity_codes": []
+    },
+    {
+      "citizen_code": "XDOC-C10",
+      "title": "Biological Bridge Boundary",
+      "evidence_class": "E0",
+      "validation_status": "destination_limited",
+      "parent_identity_codes": [
+        "XDOC-C04"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "edge_code": "COMPAT:MC-P47-005:PGT-C03",
+      "source_code": "MC-P47-005",
+      "target_code": "PGT-C03",
+      "relation_type": "compatible",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "COMPAT:MC-P47-005:PGT-C08",
+      "source_code": "MC-P47-005",
+      "target_code": "PGT-C08",
+      "relation_type": "compatible",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "COMPAT:MC-P47-005:PGT-C09",
+      "source_code": "MC-P47-005",
+      "target_code": "PGT-C09",
+      "relation_type": "compatible",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-CAT-E47-C01-K47",
+      "source_code": "MC-K47-003",
+      "target_code": "CAT-E47-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-CAT-E47-C01-P47",
+      "source_code": "MC-P47-005",
+      "target_code": "CAT-E47-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-CAT-E47-C02-RUB5C15",
+      "source_code": "RUB5-C15",
+      "target_code": "CAT-E47-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-CAT-E47-C02-RUB5C17",
+      "source_code": "RUB5-C17",
+      "target_code": "CAT-E47-C02",
+      "relation_type": "specializes",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-CAT-E47-C03-C02",
+      "source_code": "CAT-E47-C02",
+      "target_code": "CAT-E47-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-CAT-E47-C03-RUB5C15",
+      "source_code": "RUB5-C15",
+      "target_code": "CAT-E47-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-HORIZON-CROSS01-20260908",
+      "source_code": "CROSS-01",
+      "target_code": "HORIZON-PROSPECTIVE-FORECAST-20260908",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E2"
+    },
+    {
+      "edge_code": "EDGE-HORIZON-MNE-20260908",
+      "source_code": "MNE-EH-001",
+      "target_code": "HORIZON-PROSPECTIVE-FORECAST-20260908",
+      "relation_type": "specializes",
+      "compatibility_status": "explicit",
+      "evidence_class": "E2"
+    },
+    {
+      "edge_code": "EDGE-HORIZON-MURM-20260908",
+      "source_code": "MURM-SPECTRA-HODGE-20260908",
+      "target_code": "HORIZON-PROSPECTIVE-FORECAST-20260908",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E2"
+    },
+    {
+      "edge_code": "EDGE-MC286-EPF001-20260814",
+      "source_code": "EPF-001",
+      "target_code": "MC-286",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-MULTI-CROSS-20260819",
+      "source_code": "E47-MULTI-20260819",
+      "target_code": "CROSS-01",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-MULTI-QOP-20260819",
+      "source_code": "E47-MULTI-20260819",
+      "target_code": "E47-QOP-C11",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-MULTI-RUB5-20260819",
+      "source_code": "E47-MULTI-20260819",
+      "target_code": "RUB5-ORBIT-C01",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-PF-HDIR-MCP47-20260817",
+      "source_code": "MC-P47-005",
+      "target_code": "PF-E47-HAAR-DIRICHLET-20260817",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-PF-SBAL-MCP47-20260817",
+      "source_code": "MC-P47-005",
+      "target_code": "PF-E47-SIGNED-BALANCE-20260817",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-PF-TWIRL-CATE47C03-20260817",
+      "source_code": "CAT-E47-C03",
+      "target_code": "PF-E47-SU2-TWIRL-20260817",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-QOP-C11-C08-20260819",
+      "source_code": "E47-QOP-C11",
+      "target_code": "E47-QOP-C08",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-QOP-C11-C09-20260819",
+      "source_code": "E47-QOP-C11",
+      "target_code": "E47-QOP-C09",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-RUB5-ORBIT-C01-PERM-20260819",
+      "source_code": "RUB5-ORBIT-C01",
+      "target_code": "RUB5-C01",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE-RUB5-ORBIT-TO-PROJ",
+      "source_code": "RUB5-ORBIT-C01",
+      "target_code": "RUB5-TWIST-C04",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "EDGE-RUB5-ORBIT-TO-TWIST-SPEC",
+      "source_code": "RUB5-ORBIT-C01",
+      "target_code": "RUB5-TWIST-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-RUB5-SPEC-TO-CONTRACT",
+      "source_code": "RUB5-TWIST-C02",
+      "target_code": "RUB5-TWIST-C03",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE-RUB5-SPEC-TO-PROJ",
+      "source_code": "RUB5-TWIST-C02",
+      "target_code": "RUB5-TWIST-C04",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE:CPF-NM-STABILITY-CORR-001",
+      "source_code": "DOCUMENTS:HIGHER-DIM-NEWTON-MEAN-20260808",
+      "target_code": "NM2-C07",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": "machine_validated_candidate"
+    },
+    {
+      "edge_code": "EDGE:E47-JSSC-C01:REQ:E47-CARRIER-125",
+      "source_code": "E47-JSSC-C01",
+      "target_code": "E47-CARRIER-125",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE:E47-JSSC-C01:REQ:E47-P47-SUM",
+      "source_code": "E47-JSSC-C01",
+      "target_code": "E47-P47-SUM",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE:E47-JSSC-C01:REQ:MC-K47-003",
+      "source_code": "E47-JSSC-C01",
+      "target_code": "MC-K47-003",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "EDGE:E47-JSSC-C01:REQ:XDOC-C05",
+      "source_code": "E47-JSSC-C01",
+      "target_code": "XDOC-C05",
+      "relation_type": "requires",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE:E47-JSSC-E1:VALIDATES:C01",
+      "source_code": "E47-JSSC-E1-20260813",
+      "target_code": "E47-JSSC-C01",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "EDGE:MC-P47-005:CPF-E47-EIN-LIN-001",
+      "source_code": "MC-P47-005",
+      "target_code": "CPF-E47-EIN-LIN-001",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:CIVIC-KERNEL-PROJECTOR-NOTION-CIT",
+      "source_code": "CIVIC-KERNEL-PROJECTOR-NOTION-CIT",
+      "target_code": "3a346094-fd30-816d-8010-fa3e6784545c",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:CIVIC-KERNEL-PROJECTOR-NOTION-CITADEL",
+      "source_code": "CIVIC-KERNEL-PROJECTOR-NOTION-CITADEL",
+      "target_code": "3a246094-fd30-8146-a357-c72c634d225c",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:CIVIC-KERNEL-PROJECTOR-NOTION-CONTROL",
+      "source_code": "CIVIC-KERNEL-PROJECTOR-NOTION-CONTROL",
+      "target_code": "3a346094-fd30-81da-80be-d76ac11c4d2e",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:CIVIC-KERNEL-PROJECTOR-NOTION-MC",
+      "source_code": "CIVIC-KERNEL-PROJECTOR-NOTION-MC",
+      "target_code": "3a146094-fd30-8145-a068-f4e3469104f6",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:CIVIC-KERNEL-PROJECTOR-NOTION-PY",
+      "source_code": "CIVIC-KERNEL-PROJECTOR-NOTION-PY",
+      "target_code": "3a046094-fd30-817b-b4a6-e317dd633482",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:E47-QOP-PYTHON-20260728",
+      "source_code": "E47-QOP-PYTHON-20260728",
+      "target_code": "3a046094-fd30-817b-b4a6-e317dd633482",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:HCLAD-AGENTS-20260728",
+      "source_code": "HCLAD-AGENTS-20260728",
+      "target_code": "3a346094-fd30-81da-80be-d76ac11c4d2e",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:HCLAD-CERT-20260728",
+      "source_code": "HCLAD-CERT-20260728",
+      "target_code": "HCLAD-PC-20260728",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:HCLAD-CITIZENS-20260728",
+      "source_code": "HCLAD-CITIZENS-20260728",
+      "target_code": "HCLAD-C01...HCLAD-C07",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:HCLAD-MONOGRAPH-20260728",
+      "source_code": "HCLAD-MONOGRAPH-20260728",
+      "target_code": "3ab46094-fd30-816d-a84a-e8a37a64fd09",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:HLFB-IND-20260730",
+      "source_code": "HLFB-IND-20260730",
+      "target_code": "HLFB-IND-20260730",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:HLFB-PY-20260730",
+      "source_code": "HLFB-PY-20260730",
+      "target_code": "HLFB-PY-20260730",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:PRIME-E47-20260802-CSV",
+      "source_code": "PRIME-E47-20260802-CSV",
+      "target_code": "PRIME-E47-C06",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:PUBLICATION-BUNDLE-GATE",
+      "source_code": "PUBLICATION-BUNDLE-COMPLETE-TUPLE",
+      "target_code": "publication_bundles.complete",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:SFR-ISO-LEDGER-20260729",
+      "source_code": "SFR-ISO-LEDGER-20260729",
+      "target_code": "poetic_isomorphisms",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:SFR-ISO-NOTION-REGISTRY-20260729",
+      "source_code": "SFR-ISO-NOTION-REGISTRY-20260729",
+      "target_code": "c47312dc48b84d5789a49c39422c5b8d",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "EDGE:TIGHTEN:20260814:SFR-ISO-PDF-20260729",
+      "source_code": "SFR-ISO-PDF-20260729",
+      "target_code": "1V26mukwK2xjG6Qz1J022DZW7AVyhqy3z",
+      "relation_type": "validates",
+      "compatibility_status": "explicit",
+      "evidence_class": ""
+    },
+    {
+      "edge_code": "PARENT:ARR-C001-ARR-C003",
+      "source_code": "ARR-C001",
+      "target_code": "ARR-C003",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:ARR-C002-ARR-C003",
+      "source_code": "ARR-C002",
+      "target_code": "ARR-C003",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:ARR-C009-ARR-C010",
+      "source_code": "ARR-C009",
+      "target_code": "ARR-C010",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C01-B5-125-C02",
+      "source_code": "B5-125-C01",
+      "target_code": "B5-125-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C01-B5-125-C03",
+      "source_code": "B5-125-C01",
+      "target_code": "B5-125-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C01-TMP-C12",
+      "source_code": "B5-125-C01",
+      "target_code": "TMP-C12",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C02-B5-125-C07",
+      "source_code": "B5-125-C02",
+      "target_code": "B5-125-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C02-TMP-C02",
+      "source_code": "B5-125-C02",
+      "target_code": "TMP-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C03-B5-125-C04",
+      "source_code": "B5-125-C03",
+      "target_code": "B5-125-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C03-PYR-C03",
+      "source_code": "B5-125-C03",
+      "target_code": "PYR-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C04-B5-125-C05",
+      "source_code": "B5-125-C04",
+      "target_code": "B5-125-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C04-B5-125-C06",
+      "source_code": "B5-125-C04",
+      "target_code": "B5-125-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C04-B5-125-C08",
+      "source_code": "B5-125-C04",
+      "target_code": "B5-125-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5-125-C06-B5-125-C08",
+      "source_code": "B5-125-C06",
+      "target_code": "B5-125-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C01-B5M-C02",
+      "source_code": "B5M-C01",
+      "target_code": "B5M-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C01-B5M-C03",
+      "source_code": "B5M-C01",
+      "target_code": "B5M-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C01-B5M-C04",
+      "source_code": "B5M-C01",
+      "target_code": "B5M-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C02-B5M-C05",
+      "source_code": "B5M-C02",
+      "target_code": "B5M-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C02-B5M-C08",
+      "source_code": "B5M-C02",
+      "target_code": "B5M-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:B5M-C03-B5M-C06",
+      "source_code": "B5M-C03",
+      "target_code": "B5M-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C03-B5M-C08",
+      "source_code": "B5M-C03",
+      "target_code": "B5M-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:B5M-C03-XDOC-C01",
+      "source_code": "B5M-C03",
+      "target_code": "XDOC-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C04-B5M-C08",
+      "source_code": "B5M-C04",
+      "target_code": "B5M-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:B5M-C05-B5M-C08",
+      "source_code": "B5M-C05",
+      "target_code": "B5M-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:B5M-C06-B5M-C07",
+      "source_code": "B5M-C06",
+      "target_code": "B5M-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C08-B5M-C09",
+      "source_code": "B5M-C08",
+      "target_code": "B5M-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C08-XDOC-C08",
+      "source_code": "B5M-C08",
+      "target_code": "XDOC-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C09-B5M-C10",
+      "source_code": "B5M-C09",
+      "target_code": "B5M-C10",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C09-XDOC-C08",
+      "source_code": "B5M-C09",
+      "target_code": "XDOC-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:B5M-C10-XDOC-C08",
+      "source_code": "B5M-C10",
+      "target_code": "XDOC-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:CROSS-01-CROSS-02",
+      "source_code": "CROSS-01",
+      "target_code": "CROSS-02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:CROSS-01-CROSS-04",
+      "source_code": "CROSS-01",
+      "target_code": "CROSS-04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1 + E2"
+    },
+    {
+      "edge_code": "PARENT:CROSS-01-CROSS-05",
+      "source_code": "CROSS-01",
+      "target_code": "CROSS-05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1 + E2"
+    },
+    {
+      "edge_code": "PARENT:DH-C01-DH-C02",
+      "source_code": "DH-C01",
+      "target_code": "DH-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-C03-DH-C04",
+      "source_code": "DH-C03",
+      "target_code": "DH-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-C03-DH-C08",
+      "source_code": "DH-C03",
+      "target_code": "DH-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-C04-DH-C06",
+      "source_code": "DH-C04",
+      "target_code": "DH-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-C05-DH-C06",
+      "source_code": "DH-C05",
+      "target_code": "DH-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-C05-DH-C07",
+      "source_code": "DH-C05",
+      "target_code": "DH-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-C07-DH-C08",
+      "source_code": "DH-C07",
+      "target_code": "DH-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:DH-J-01-DH-ORTH-05",
+      "source_code": "DH-J-01",
+      "target_code": "DH-ORTH-05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DH-J-01-DH-P--03",
+      "source_code": "DH-J-01",
+      "target_code": "DH-P--03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DH-J-01-DH-P+-02",
+      "source_code": "DH-J-01",
+      "target_code": "DH-P+-02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DH-P--03-DH-ORTH-05",
+      "source_code": "DH-P--03",
+      "target_code": "DH-ORTH-05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DH-P--03-DH-RES-04",
+      "source_code": "DH-P--03",
+      "target_code": "DH-RES-04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DH-P+-02-DH-ORTH-05",
+      "source_code": "DH-P+-02",
+      "target_code": "DH-ORTH-05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DH-P+-02-DH-RES-04",
+      "source_code": "DH-P+-02",
+      "target_code": "DH-RES-04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:DUAL-C01-XDOC-C01",
+      "source_code": "DUAL-C01",
+      "target_code": "XDOC-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:E47 Deterministic Conformational Contraction Identity-XDOC-C02",
+      "source_code": "E47 Deterministic Conformational Contraction Identity",
+      "target_code": "XDOC-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:E47-PRIME-E47-C01",
+      "source_code": "E47",
+      "target_code": "PRIME-E47-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:E47-CARRIER-125-E47-CASIMIR-SPECTRUM",
+      "source_code": "E47-CARRIER-125",
+      "target_code": "E47-CASIMIR-SPECTRUM",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-CASIMIR-SPECTRUM-E47-KERNEL-47",
+      "source_code": "E47-CASIMIR-SPECTRUM",
+      "target_code": "E47-KERNEL-47",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-K2-E47-QOP-C05",
+      "source_code": "E47-K2",
+      "target_code": "E47-QOP-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-KERNEL-47-E47-KRONECKER-KERNEL",
+      "source_code": "E47-KERNEL-47",
+      "target_code": "E47-KRONECKER-KERNEL",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-KERNEL-47-E47-PROJECTOR",
+      "source_code": "E47-KERNEL-47",
+      "target_code": "E47-PROJECTOR",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-PROJECTOR-E47-CONTINUOUS",
+      "source_code": "E47-PROJECTOR",
+      "target_code": "E47-CONTINUOUS",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-PROJECTOR-E47-DISCRETE",
+      "source_code": "E47-PROJECTOR",
+      "target_code": "E47-DISCRETE",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-PROJECTOR-E47-OMEGA",
+      "source_code": "E47-PROJECTOR",
+      "target_code": "E47-OMEGA",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:E47-PROJECTOR-E47-PROJECTED-DYNAMICS",
+      "source_code": "E47-PROJECTOR",
+      "target_code": "E47-PROJECTED-DYNAMICS",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-PROJECTOR-E47-QEC-BOUNDARY",
+      "source_code": "E47-PROJECTOR",
+      "target_code": "E47-QEC-BOUNDARY",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:E47-PROJECTOR-E47-QOP-C01",
+      "source_code": "E47-PROJECTOR",
+      "target_code": "E47-QOP-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C01-E47-QOP-C02",
+      "source_code": "E47-QOP-C01",
+      "target_code": "E47-QOP-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C01-E47-QOP-C03",
+      "source_code": "E47-QOP-C01",
+      "target_code": "E47-QOP-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C01-E47-QOP-C04",
+      "source_code": "E47-QOP-C01",
+      "target_code": "E47-QOP-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C01-E47-QOP-C05",
+      "source_code": "E47-QOP-C01",
+      "target_code": "E47-QOP-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C01-E47-QOP-C08",
+      "source_code": "E47-QOP-C01",
+      "target_code": "E47-QOP-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C02-E47-QOP-C10",
+      "source_code": "E47-QOP-C02",
+      "target_code": "E47-QOP-C10",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C05-E47-QOP-C06",
+      "source_code": "E47-QOP-C05",
+      "target_code": "E47-QOP-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C05-E47-QOP-C07",
+      "source_code": "E47-QOP-C05",
+      "target_code": "E47-QOP-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-QOP-C08-E47-QOP-C09",
+      "source_code": "E47-QOP-C08",
+      "target_code": "E47-QOP-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:E47-SPECTRUM-E47-QOP-C07",
+      "source_code": "E47-SPECTRUM",
+      "target_code": "E47-QOP-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C01-HCLAD-C02",
+      "source_code": "HCLAD-C01",
+      "target_code": "HCLAD-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C01-HCLAD-C03",
+      "source_code": "HCLAD-C01",
+      "target_code": "HCLAD-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C02-HCLAD-C06",
+      "source_code": "HCLAD-C02",
+      "target_code": "HCLAD-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C03-HCLAD-C04",
+      "source_code": "HCLAD-C03",
+      "target_code": "HCLAD-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C03-HCLAD-C05",
+      "source_code": "HCLAD-C03",
+      "target_code": "HCLAD-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C04-HCLAD-C05",
+      "source_code": "HCLAD-C04",
+      "target_code": "HCLAD-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HCLAD-C07-HCLAD-C06",
+      "source_code": "HCLAD-C07",
+      "target_code": "HCLAD-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:HLFB-C04-HLFB-C05",
+      "source_code": "HLFB-C04",
+      "target_code": "HLFB-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:IPT-C01-IPT-C02",
+      "source_code": "IPT-C01",
+      "target_code": "IPT-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-42-CROSS-01",
+      "source_code": "MC-42",
+      "target_code": "CROSS-01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-49-CROSS-01",
+      "source_code": "MC-49",
+      "target_code": "CROSS-01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-CAS-002-MC-K47-003",
+      "source_code": "MC-CAS-002",
+      "target_code": "MC-K47-003",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-CAS-002-MC-P47-005",
+      "source_code": "MC-CAS-002",
+      "target_code": "MC-P47-005",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-K47-003-MC-P47-005",
+      "source_code": "MC-K47-003",
+      "target_code": "MC-P47-005",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-K47-003-TRANSIT-Γ-001",
+      "source_code": "MC-K47-003",
+      "target_code": "TRANSIT-Γ-001",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:MC-P47-005-TRANSIT-Γ-001",
+      "source_code": "MC-P47-005",
+      "target_code": "TRANSIT-Γ-001",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C01-NM2-C02",
+      "source_code": "NM2-C01",
+      "target_code": "NM2-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C01-NM2-C08",
+      "source_code": "NM2-C01",
+      "target_code": "NM2-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C02-NM2-C03",
+      "source_code": "NM2-C02",
+      "target_code": "NM2-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C02-NM2-C05",
+      "source_code": "NM2-C02",
+      "target_code": "NM2-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C03-NM2-C04",
+      "source_code": "NM2-C03",
+      "target_code": "NM2-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C04-NM2-C05",
+      "source_code": "NM2-C04",
+      "target_code": "NM2-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C04-NM2-C07",
+      "source_code": "NM2-C04",
+      "target_code": "NM2-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C05-NM2-C06",
+      "source_code": "NM2-C05",
+      "target_code": "NM2-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NM2-C06-NM2-C07",
+      "source_code": "NM2-C06",
+      "target_code": "NM2-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NRM-C01-NRM-C02",
+      "source_code": "NRM-C01",
+      "target_code": "NRM-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:NRM-C02-NRM-C03",
+      "source_code": "NRM-C02",
+      "target_code": "NRM-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PCS-C01-PCS-C02",
+      "source_code": "PCS-C01",
+      "target_code": "PCS-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C01-PGT-C02",
+      "source_code": "PGT-C01",
+      "target_code": "PGT-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C01-PGT-C03",
+      "source_code": "PGT-C01",
+      "target_code": "PGT-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C01-PGT-C08",
+      "source_code": "PGT-C01",
+      "target_code": "PGT-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C02-PGT-C03",
+      "source_code": "PGT-C02",
+      "target_code": "PGT-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C02-PGT-C04",
+      "source_code": "PGT-C02",
+      "target_code": "PGT-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C02-PGT-C09",
+      "source_code": "PGT-C02",
+      "target_code": "PGT-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C03-PGT-C04",
+      "source_code": "PGT-C03",
+      "target_code": "PGT-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C03-PGT-C05",
+      "source_code": "PGT-C03",
+      "target_code": "PGT-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C03-PGT-C08",
+      "source_code": "PGT-C03",
+      "target_code": "PGT-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C03-PGT-C09",
+      "source_code": "PGT-C03",
+      "target_code": "PGT-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C03-PGT-C10",
+      "source_code": "PGT-C03",
+      "target_code": "PGT-C10",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C04-PGT-C05",
+      "source_code": "PGT-C04",
+      "target_code": "PGT-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C05-PGT-C06",
+      "source_code": "PGT-C05",
+      "target_code": "PGT-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C05-PGT-C07",
+      "source_code": "PGT-C05",
+      "target_code": "PGT-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PGT-C06-PGT-C07",
+      "source_code": "PGT-C06",
+      "target_code": "PGT-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PRC-C01-PRC-C02",
+      "source_code": "PRC-C01",
+      "target_code": "PRC-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PRC-C01-PRC-C03",
+      "source_code": "PRC-C01",
+      "target_code": "PRC-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C01-PRIME-E47-C02",
+      "source_code": "PRIME-E47-C01",
+      "target_code": "PRIME-E47-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C02-PRIME-E47-C03",
+      "source_code": "PRIME-E47-C02",
+      "target_code": "PRIME-E47-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C02-PRIME-E47-C04",
+      "source_code": "PRIME-E47-C02",
+      "target_code": "PRIME-E47-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C02-PRIME-E47-C05",
+      "source_code": "PRIME-E47-C02",
+      "target_code": "PRIME-E47-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C04-PRIME-E47-C05",
+      "source_code": "PRIME-E47-C04",
+      "target_code": "PRIME-E47-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C04-PRIME-E47-C06",
+      "source_code": "PRIME-E47-C04",
+      "target_code": "PRIME-E47-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:PRIME-E47-C05-PRIME-E47-C06",
+      "source_code": "PRIME-E47-C05",
+      "target_code": "PRIME-E47-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:PYR-C01-HCLAD-C01",
+      "source_code": "PYR-C01",
+      "target_code": "HCLAD-C01",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:RSI-C01-RSI-C02",
+      "source_code": "RSI-C01",
+      "target_code": "RSI-C02",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C03",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C04",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C05",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C06",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C09",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C10",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C10",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C01-RUB5-C11",
+      "source_code": "RUB5-C01",
+      "target_code": "RUB5-C11",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C03",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C04",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C05",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C06",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C07",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C09",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C02-RUB5-C10",
+      "source_code": "RUB5-C02",
+      "target_code": "RUB5-C10",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C03-RUB5-C07",
+      "source_code": "RUB5-C03",
+      "target_code": "RUB5-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C03-RUB5-C08",
+      "source_code": "RUB5-C03",
+      "target_code": "RUB5-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C04-RUB5-C05",
+      "source_code": "RUB5-C04",
+      "target_code": "RUB5-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C04-RUB5-C11",
+      "source_code": "RUB5-C04",
+      "target_code": "RUB5-C11",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C07-RUB5-C08",
+      "source_code": "RUB5-C07",
+      "target_code": "RUB5-C08",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C07-RUB5-C12",
+      "source_code": "RUB5-C07",
+      "target_code": "RUB5-C12",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:RUB5-C08-RUB5-C12",
+      "source_code": "RUB5-C08",
+      "target_code": "RUB5-C12",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:TMP-C05-TMP-C06",
+      "source_code": "TMP-C05",
+      "target_code": "TMP-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:TMP-C05-TMP-C07",
+      "source_code": "TMP-C05",
+      "target_code": "TMP-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:TMP-C08-TMP-C09",
+      "source_code": "TMP-C08",
+      "target_code": "TMP-C09",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0+E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C01-XDOC-C06",
+      "source_code": "XDOC-C01",
+      "target_code": "XDOC-C06",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C01-XDOC-C07",
+      "source_code": "XDOC-C01",
+      "target_code": "XDOC-C07",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C02-XDOC-C03",
+      "source_code": "XDOC-C02",
+      "target_code": "XDOC-C03",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C02-XDOC-C04",
+      "source_code": "XDOC-C02",
+      "target_code": "XDOC-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C03-XDOC-C04",
+      "source_code": "XDOC-C03",
+      "target_code": "XDOC-C04",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C03-XDOC-C05",
+      "source_code": "XDOC-C03",
+      "target_code": "XDOC-C05",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0 + E1"
+    },
+    {
+      "edge_code": "PARENT:XDOC-C04-XDOC-C10",
+      "source_code": "XDOC-C04",
+      "target_code": "XDOC-C10",
+      "relation_type": "parent",
+      "compatibility_status": "explicit",
+      "evidence_class": "E0"
+    }
+  ]
 }
