@@ -60,6 +60,8 @@ The construction uses `V = V₂ ⊗ V₂ ⊗ V₂`, total Casimir `C`, and `K = 
 | Kernel fraction | 47 / 125 |
 | K² spectral gap | 11664 |
 | Recursive contraction | `Γ = I − K²/99144`, transient bound `15/17` |
+| Constant certificate | **19 / 19 PASS** · [`MC-E47-CONSTANTS-20260923`](website/data/MC-E47-CONSTANTS-20260923.json) |
+| Standalone validator | [`scripts/e47_constant_validation.py`](scripts/e47_constant_validation.py) |
 | Recursive runtime | [`src/e47/recursive_runtime.py`](src/e47/recursive_runtime.py) |
 | Intertwiner units | 29 |
 | Chevalley relations | 16 / 16 |
