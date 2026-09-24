@@ -109,17 +109,57 @@ check("rank(A ↦ [A,Q]) = 3",
 check("spatial Gram = diag(2,8,2)",
       np.allclose(Gsp, expected_Gsp, atol=1e-12), Gsp.tolist())
 
-rank4 = np.linalg.matrix_rank(
-    np.column_stack([
-        np.r_[D[0].reshape(-1), 0.0],
-        np.r_[D[1].reshape(-1), 0.0],
-        np.r_[D[2].reshape(-1), 0.0],
-        np.r_[np.zeros(9), 1.0]
-    ])
-)
-check("rank(dX) = 4", rank4 == 4, rank4)
+# Explicit intertwiner Sym_0(3,R) -> W and 125D four-frame
+E1 = np.zeros((3,3)); E1[0,0] = 1; E1[1,1] = -1; E1 /= np.sqrt(2)
+E2 = np.zeros((3,3)); E2[0,0] = 1; E2[1,1] = 1; E2[2,2] = -2; E2 /= np.sqrt(6)
+E3 = np.zeros((3,3)); E3[0,1] = E3[1,0] = 1; E3 /= np.sqrt(2)
+E4 = np.zeros((3,3)); E4[0,2] = E4[2,0] = 1; E4 /= np.sqrt(2)
+E5 = np.zeros((3,3)); E5[1,2] = E5[2,1] = 1; E5 /= np.sqrt(2)
+Eb = [E1,E2,E3,E4,E5]
 
-gL = np.diag([-1.,2.,8.,2.])
+rho = np.array([
+    [[np.trace(Ea @ (Ai @ Eb_ - Eb_ @ Ai)) for Eb_ in Eb] for Ea in Eb]
+    for Ai in A
+])
+JW = [W.conj().T @ Jt @ W for Jt in (Jxt,Jyt,Jzt)]
+
+rows = []
+for i in range(3):
+    rows.append(np.kron(rho[i].T, np.eye(5)) +
+                np.kron(np.eye(5), 1j * JW[i]))
+Ms = np.vstack(rows)
+Gw = Ms.conj().T @ Ms
+gew, gev = np.linalg.eigh(Gw)
+assert gew[0] < 1e-10 and gew[1] > 1e-3, f"intertwiner nullity failure: {gew[:3]}"
+
+Phi = gev[:,0].reshape(5,5,order="F")
+phi_resid = max(np.linalg.norm(Phi @ rho[i] + 1j * JW[i] @ Phi) for i in range(3))
+assert phi_resid < 1e-8, f"intertwiner residual {phi_resid}"
+Phi = Phi * np.sqrt(5 / np.trace(Phi.conj().T @ Phi))
+
+dvecs = [np.array([np.trace(Ea @ Di) for Ea in Eb]) for Di in D]
+vs = [W @ (Phi @ dv) for dv in dvecs]
+X4 = np.column_stack(vs + [u])
+rank4 = np.linalg.matrix_rank(X4)
+check("rank(dX) = 4", rank4 == 4,
+      f"rank={rank4}, intertwiner_resid={phi_resid:.3e}")
+
+# Casimir-spectral Lorentzian form and its actual 125D pullback.
+V0 = U[:, np.isclose(ce, 0, atol=TOL)]
+V6 = U[:, np.isclose(ce, 6, atol=TOL)]
+
+P0 = V0 @ V0.conj().T
+P6 = V6 @ V6.conj().T
+eta125 = P6 - P0
+
+B4 = np.column_stack([u] + vs)
+gL = np.real_if_close(B4.conj().T @ eta125 @ B4)
+target_gL = np.diag([-1.,2.,8.,2.])
+
+check("Casimir pullback metric = diag(-1,2,8,2)",
+      np.allclose(gL, target_gL, atol=TOL),
+      gL.tolist())
+
 ge = np.linalg.eigvalsh(gL)
 signature = (int(np.sum(ge < 0)), int(np.sum(ge > 0)))
 check("Lorentzian signature = (-+++)", signature == (1,3), ge.tolist())
@@ -211,7 +251,7 @@ print("\n--- DERIVED OBJECTS ---")
 print("spec(C) multiplicities =", spec)
 print("dim E47 =", int(mask47.sum()))
 print("G_spatial =", Gsp)
-print("g_L invariant frame = diag(-1, 2, 8, 2)")
+print("g_L = B4† (P6-P0) B4 =", gL)
 print("sectional curvatures =", (K12,K23,K31))
 print("Ricci_orthonormal =", Ric4)
 print("R =", Rscalar)
