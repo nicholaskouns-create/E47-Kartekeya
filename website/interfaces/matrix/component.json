@@ -2,7 +2,7 @@
   "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
   "id": "matrix",
   "display_name": "THE MATRIX",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "kind": "quantum-simulator",
   "maturity": "research",
   "evidence": [
@@ -20,7 +20,10 @@
     "certificate": "website/data/MC-MATRIX-PARITY-20260921-001.json",
     "prism_entrypoint": "scripts/validate_e47_prism_matrix.py",
     "prism_command": "python scripts/validate_e47_prism_matrix.py --live-adapter",
-    "prism_certificate": "website/data/MC-MATRIX-E47-PRISM-20260922-001.json"
+    "prism_certificate": "website/data/MC-MATRIX-E47-PRISM-20260922-001.json",
+    "constant_entrypoint": "scripts/e47_constant_validation.py",
+    "constant_command": "python scripts/e47_constant_validation.py --csv E47_constant_validation.csv",
+    "constant_certificate": "website/data/MC-E47-CONSTANTS-20260923.json"
   },
   "provenance": {
     "receipt_schema": "MATRIX-ISOMORPHIC-PARITY-CERTIFICATE/1.0",
@@ -32,7 +35,9 @@
       "scripts/validate_e47_prism_matrix.py",
       "supabase/functions/matrix-cube-adapter/index.ts",
       "website/data/MC-MATRIX-E47-PRISM-20260922-001.json",
-      "research/e47/E47_Prism_Spectral_Formalism.md"
+      "research/e47/E47_Prism_Spectral_Formalism.md",
+      "scripts/e47_constant_validation.py",
+      "website/data/MC-E47-CONSTANTS-20260923.json"
     ],
     "cross_platform": {
       "github": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md",
@@ -42,7 +47,9 @@
       "receipt": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-MATRIX-E47-PRISM-20260922-001.json",
       "supabase": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter",
       "notion_formalism_id": "FRM-96",
-      "supabase_identity": "E47-PRISM-20260922"
+      "supabase_identity": "E47-PRISM-20260922",
+      "e47_constant_certificate": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-E47-CONSTANTS-20260923.json",
+      "e47_constant_notion": "https://mathematicalcity.notion.site/E47-Invariant-Kernel-Verification-252-Step-Spectral-Projector-Certificate-3e546094fd3081738c01e36b7b75e3af?pvs=149"
     }
   },
   "telemetry": {
@@ -54,7 +61,8 @@
     "The 2^n to 125 step is an explicit normalized feature map, not a Hilbert-space isomorphism.",
     "E47 analysis begins only after the typed 125-state lift.",
     "The 125 to 128 map is an isometric embedding with three invalid padding states.",
-    "The E47 prism panel resolves the typed 125-feature vector across Casimir eigenspaces; its band weights are state-dependent and the 47/125 rank fraction is not a universal state probability."
+    "The E47 prism panel resolves the typed 125-feature vector across Casimir eigenspaces; its band weights are state-dependent and the 47/125 rank fraction is not a universal state probability.",
+    "The 19-check E47 constant certificate validates only the finite 125-state spectral core and remains separate from MATRIX qubit-state parity."
   ],
   "formalism": "research/e47/E47_Prism_Spectral_Formalism.md"
 }
