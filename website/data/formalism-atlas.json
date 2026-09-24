@@ -1,0 +1,3699 @@
+{
+  "schema": "MC-FORMALISM-ATLAS-1.0",
+  "build": {
+    "survey_date": "2026-09-23",
+    "repository": "nicholaskouns-create/E47-Kartekeya",
+    "github_main_commit": "38ff0def5ee7566fa39044912b9dca4a266eab1e",
+    "github_tree_sha": "12ce1f7c2dc7098efccc1baa1c28029343d1388a",
+    "evidence_grammar": {
+      "E0": "exact proof",
+      "E1": "executable reconstruction",
+      "E2": "simulation",
+      "E3": "external benchmark",
+      "E4": "experiment",
+      "H0": "hardware"
+    },
+    "evidence_band_note": "Formalism Registry claim_status is authoritative at the registry level. evidence_band is a display hint only; exact E-class is taken from linked Mathematical City identities and machine certificates."
+  },
+  "core_lock": {
+    "carrier": "V_2^{⊗3}",
+    "dim_V": 125,
+    "casimir_spectrum": [
+      0,
+      2,
+      6,
+      12,
+      20,
+      30,
+      42
+    ],
+    "multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "kernel": "K=(C-6I)(C-30I)",
+    "E47": "ker(K)=E_6⊕E_30",
+    "dim_E47": 47,
+    "Omega_c": "47/125",
+    "K2_gap": 11664,
+    "K2_norm": 186624,
+    "epsilon_star": "1/99144",
+    "rho_star": "15/17"
+  },
+  "summary": {
+    "live_records": 94,
+    "id_range": [
+      1,
+      97
+    ],
+    "missing_ids": [
+      54,
+      55,
+      56
+    ],
+    "canonical_records": 46,
+    "current_records": 94,
+    "status_counts": {
+      "Exact / computationally verified": 33,
+      "Structural formalism": 25,
+      "Conditional / open": 27,
+      "Engineering / speculative": 9
+    },
+    "domain_counts": {
+      "Core algebra": 16,
+      "Invariant grammar": 11,
+      "Numerical / spatial": 13,
+      "Quantum information": 10,
+      "Propulsion / GEM": 5,
+      "Scalar / spectral": 5,
+      "Geodesic / metric": 3,
+      "Open closure": 8,
+      "Engineering / applications": 15,
+      "Epistemology / ETNS": 8
+    },
+    "identity_nodes": 0,
+    "theorem_edges": 0,
+    "relation_counts": {},
+    "claim_digital_twins": 0,
+    "machine_certificates": 0,
+    "invalid_certificates": [],
+    "source_artifacts": 0,
+    "corrections": 0,
+    "failure_records": 0,
+    "cross_platform_discrepancies": 0,
+    "open_discrepancies": 0,
+    "stranded_math_records": 0,
+    "stranded_candidates": 0,
+    "python_corpus_entries": 0,
+    "python_paths_present_in_github": 0,
+    "interactive_surfaces": 0,
+    "active_interactive_surfaces": 0,
+    "drive_primary_source_rows": 341,
+    "drive_machine_certificate_rows": 277,
+    "relevant_mail_snapshot": 50
+  },
+  "registry": [
+    {
+      "id": 1,
+      "key": "FRM-1",
+      "formalism": "The K47/125 Construction",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Canonical finite-dimensional construction on V₂^{⊗3}: total Casimir, selector K=(C−6I)(C−30I), rank-47 kernel E₄₇, projector, and Ωc=47/125.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 2,
+      "key": "FRM-2",
+      "formalism": "E47 Spectral Kernel Selector",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "QuTiP"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-08-13",
+      "summary": "Polynomial Casimir selector whose kernel is exactly 5V₂⊕2V₅ with dimension 47 inside the 125-dimensional carrier.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1phSGFngIrntOEJVnRd13fC7nW3quESlJU2LRYc8mRjI"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 3,
+      "key": "FRM-3",
+      "formalism": "SU(2) Triple Spin-2 Decomposition",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Clebsch–Gordan decomposition of V₂^{⊗3} into spin sectors J=0,…,6 with exact multiplicities and total dimension 125.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1lF9JRb_iBvFoEiU4S6N2eJg0pIZFnVwIzsEZv73N41M"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 4,
+      "key": "FRM-4",
+      "formalism": "Orthogonal Projector and Contraction Dynamics",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Hermitian contraction Γ=I−εK² converging to the orthogonal projector P_E onto E₄₇ under the stated spectral bound.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1HU4knLv4eXN9h5-NmStUZcA3nRIvCLUhrKhMuxK0xSs"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 5,
+      "key": "FRM-5",
+      "formalism": "KKP-R Verification Inventory",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Verification layer for carrier dimension, Casimir spectrum, kernel rank, projector identities, contraction, and coherence ratio.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1G01tVwIDDgR_yPsA3_LoshmQmZncMqMGf2RWniJ8Vig"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/bf00af4711a2493d925250c122b895ac"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 6,
+      "key": "FRM-6",
+      "formalism": "Hamiltonian, Lagrangian, Euler, and Bohmian Dynamics on E47",
+      "domain": "Core algebra",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Dynamical formulations restricted to the invariant subspace; their physical interpretation remains separate from the exact kernel theorem.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1VbrGEfQ_m8Ya7P11rONyIh0mb5j8E1a_8f0FydTt7TU"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 7,
+      "key": "FRM-7",
+      "formalism": "Invariant Grammar — Seven-Layer Formalism",
+      "domain": "Invariant grammar",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Canonical typed visual language for stabilization into coherence. Exact components include finite signatures, type composability, the context-free form of the displayed surface BNF, and the verified 125→47 witness. Category, coalgebra, visual epistemic syntax, Chomsky translation, and cross-domain use are structural layers with explicit boundaries.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1YbPpYNmpAydu8W-O3fj3KlMkMXzaCUGvEZRzcuXsex4"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081718c43d05685557405"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 8,
+      "key": "FRM-8",
+      "formalism": "The Grammar That Reads Itself",
+      "domain": "Invariant grammar",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Quine-style self-description and proposed fixed-point metagrammar. A rigorous self-verification theorem requires a formally defined sentence space, selector, encoding, and proof that the self-reading equations hold. The canonical E47 witness does not independently establish the metalinguistic claim.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1ANwLeNCtCVWm40vGdAG8QPlB52bwYVfMUK-qZp6N978"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081718c43d05685557405"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 9,
+      "key": "FRM-9",
+      "formalism": "E47 Machine-Learning Architecture",
+      "domain": "Invariant grammar",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "White-box computational architecture using aggregation, contraction, projection, evaluation, and reinitialization.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1LUAqiLxCP-5OaF7h1NslzVnIQaTQsJpteoDenT_5AtE"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 10,
+      "key": "FRM-10",
+      "formalism": "Finite Periodic FCC × E47 Spatial Lift",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Translation-invariant FCC torus coupled to the internal E₄₇ selector, with computed spectrum, kernel dimension, gap, and protected winding band.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://drive.google.com/file/d/1tRrZTf9sqgR_8TQ8QGhIMz2HxNsy6Dqi"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/bf00af4711a2493d925250c122b895ac"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 11,
+      "key": "FRM-11",
+      "formalism": "E47 Coherence Ratio Under Spatial Lift",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Numerical confirmation that the protected internal rank remains 47 while the spatial carrier changes.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://drive.google.com/file/d/1-FTL9_A-dEfTpNHUY_VrwUNk1TbHb-ei"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/bf00af4711a2493d925250c122b895ac"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 12,
+      "key": "FRM-12",
+      "formalism": "K47/125 Spectral Invariant Computation",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Direct numerical construction of the 125-dimensional Casimir operator and exact extraction of dim ker K=47.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Jrg1KSc7zqkx42UWtfB9PF60Zr0fFUWC1bLwFtnxd8k"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/bf00af4711a2493d925250c122b895ac"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 13,
+      "key": "FRM-13",
+      "formalism": "E47 Noiseless Multiplicity Subsystems",
+      "domain": "Quantum information",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Exact collective-SU(2) decomposition identifying multiplicity spaces C⁵ and C² as noiseless subsystems for the stated operator algebra.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1qMzRIXzfEQvO4uSppqAQfZK95fzvBQVYFBQKw1E_ANQ"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081be981eee4d10f33983"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 14,
+      "key": "FRM-14",
+      "formalism": "Knill–Laflamme Closure for Full E47 Quantum Error Correction",
+      "domain": "Quantum information",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Full-code status is channel-dependent and requires P_E E_a†E_b P_E=α_ab P_E for every pair of physical error operators.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1qMzRIXzfEQvO4uSppqAQfZK95fzvBQVYFBQKw1E_ANQ"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081be981eee4d10f33983"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 15,
+      "key": "FRM-15",
+      "formalism": "GEM / Gravito-Inertial Hamiltonian Prototype",
+      "domain": "Propulsion / GEM",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "QuTiP",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Two-qubit superconducting sector coupled to truncated bosonic GEM modes; code requires tensor-space and unit normalization before physical interpretation.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 16,
+      "key": "FRM-16",
+      "formalism": "HFGW Resonant-Cavity Simulation",
+      "domain": "Propulsion / GEM",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "QuTiP",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Time-dependent cavity perturbation model for a putative high-frequency gravitational-wave signal; computational prototype only.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 17,
+      "key": "FRM-17",
+      "formalism": "Angular-Velocity GEM Sweep",
+      "domain": "Propulsion / GEM",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "QuTiP",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Parameterized rotation sweep over superconducting and GEM coupling terms; requires corrected time-dependent Hamiltonian implementation.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1pxzTNle8Z8F7ie0GIvZb4gvkYx0NyoylXwAnw6ctP3U"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 18,
+      "key": "FRM-18",
+      "formalism": "Python and Numerical Validation Audit",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "QuTiP",
+        "VQE",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Canonical site-wide audit of the Google Workspace computational corpus. Establishes the machine-verified finite spectral-kernel chain, projector and contraction identities, FCC/Fourier checks, and exact synthetic-harness identities; separately classifies QuTiP, SciPy, VQE, topology, swarm, protein-folding, propulsion/GEM, Navier–Stokes, constants, and other code as simulations, samples, prototypes, corrections, or open domain bridges.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 19,
+      "key": "FRM-19",
+      "formalism": "Babylonian Scalar Contraction to Ωc",
+      "domain": "Scalar / spectral",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Newton–Babylonian update Q_{n+1}=1/2(Q_n+Ωc²/Q_n), converging quadratically to Ωc for positive initial data.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 20,
+      "key": "FRM-20",
+      "formalism": "Recursive Mass Spectrum and Scalar Attractor Surface",
+      "domain": "Scalar / spectral",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Toy golden-ratio mass scaling and potential-like scalar manifold visualizations; internally computable but not physical validation.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1EZJhWTShM2POXYWb8x4bcydqjXr2xLWoBTOQVkqorrk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 21,
+      "key": "FRM-21",
+      "formalism": "Augmented Geodesic / Metric Flow",
+      "domain": "Geodesic / metric",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "SciPy integration of a nonlinear geodesic-like flow with explicit metric component, Christoffel term, and singularity detection.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1xVKeyzl8GILmT8vR42b8noB7Y6vJ7y1bQ5KADWfcyKM"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 22,
+      "key": "FRM-22",
+      "formalism": "E47 VQE Circuit and Hybrid Feedback Specification",
+      "domain": "Quantum information",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "VQE",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Parameterized Ry/Rz ansatz with hybrid gradient feedback; lacks a complete executable SDK implementation and locked data products.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1tKDHLlhaVONtGZm4FHe5STaqlyatO-X_-5iBujgcXhg"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 23,
+      "key": "FRM-23",
+      "formalism": "Alpha from Omega Electromagnetic Closure",
+      "domain": "Open closure",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Exact numerical candidate for α⁻¹ whose coefficients and bridge map must still be uniquely derived from E₄₇ rather than selected.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Lf56EooNfpgfFLBKz4L6SU-k8HDoDDAWSsJSnlDhCMY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/39f46094fd3081f4a407ca51218aea05"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 24,
+      "key": "FRM-24",
+      "formalism": "Navier–Stokes Kernel Selection Program",
+      "domain": "Open closure",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Proposed Casimir-selected survivor class for three-dimensional Navier–Stokes; global regularity obligations remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1FZ475Y0abZ_HHh2ywYeS8238zZoTkeF2tpjRX71duoA"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 25,
+      "key": "FRM-25",
+      "formalism": "Compressible Navier–Stokes Informational Action",
+      "domain": "Open closure",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Variational informational-action formulation for compressible flow; separate from a proof of incompressible global regularity.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1fts7UrttjsGHK2HkEF-MuOZFTdXSsbRrk_jkYq0aAoY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 26,
+      "key": "FRM-26",
+      "formalism": "PQSPI Recursive Contraction Architecture",
+      "domain": "Engineering / applications",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Hardware",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Proposed hardware and recursive-control embodiment within the broader PQSPI system. Exact projector algebra, standardized PQC, protocol logic, physical sensing, and unverified phonon claims remain separately classified.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1JNy9v-iny6b0a1RK1u9NvYtr-fFibdHyNJDuipF0Hbk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 27,
+      "key": "FRM-27",
+      "formalism": "Wave-Guided Metamaterial Architecture",
+      "domain": "Engineering / applications",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Pentamode wave-guided smart-skin architecture combining transformation control, candidate topological channels, active steering, and code-bearing NumPy/SciPy models. Constitutive retrieval, multiphysics convergence, fabrication, and bench validation remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1DzZITTzORYUsG1bxvUSRIzTbE7avX0jFKwvRDPEriLY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 28,
+      "key": "FRM-28",
+      "formalism": "Recursive Geometric Theory of Mass",
+      "domain": "Open closure",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Discrete recursive mass-organization model; absolute physical predictions require an independently justified scale map.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/2be46094fd308146bb64fc9edd29ef42"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 29,
+      "key": "FRM-29",
+      "formalism": "Swarm and Collective-Control Projection",
+      "domain": "Engineering / applications",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Graph- or manifold-Laplacian contraction model for coherent collective modes, topology, recovery time, and perturbation rejection.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 30,
+      "key": "FRM-30",
+      "formalism": "Levinthal’s Paradox and Recursive Folding Hypothesis",
+      "domain": "Engineering / applications",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Exact Heron convergence and a documented AlphaFold-derived scalar pilot are separated from the open biological interpretation. The validation program uses folding kinetics, stability mutagenesis, atomic trajectories, sequence models, and rank-47 null controls.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1NJKttAMjlkqw7az7tFj_O40b4cf7CG21mqPfb5ruI9o"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30816a9d59dbbd73ada973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 31,
+      "key": "FRM-31",
+      "formalism": "AQSFT Spectral Contraction and Extraction Pipeline",
+      "domain": "Engineering / applications",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Hardware"
+      ],
+      "evidence_band": "OPEN_ENGINEERING",
+      "last_reviewed": "2026-07-16",
+      "summary": "Residue embedding, rank-limited contraction, and spectral extraction prototype; complexity and cryptographic claims remain unverified.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1tKDHLlhaVONtGZm4FHe5STaqlyatO-X_-5iBujgcXhg"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/0c77285e545d44dbaed491b8d08317d8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 32,
+      "key": "FRM-32",
+      "formalism": "Abstract 47⊕78 Invariant-Sector Harness",
+      "domain": "Numerical / spatial",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Runnable Python package for the synthetic 125-dimensional 47⊕78 invariant-sector harness, including exact projector, commutator, no-leakage, Casimir-spectrum, complement-contraction, saved NumPy artifacts, and JSON verification metrics. It remains distinct from the canonical V₂^{⊗3} construction.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 33,
+      "key": "FRM-33",
+      "formalism": "Sector-Selective Propulsion Analog",
+      "domain": "Propulsion / GEM",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Simulation-only scalar-field sector split included in the runnable verification package. The selected sector is preserved while the complement is attenuated; no force, thrust, inertial modification, curvature, reactionless momentum transfer, or measured GEM result is claimed.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/39f46094fd3081b49137f339d252f973"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 34,
+      "key": "FRM-34",
+      "formalism": "ETNS Negative-Space Inference",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Epistemic framework treating patterned absence, omission, redaction, and dissonance as potentially informative when the observation and missingness mechanisms are explicitly modeled.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://drive.google.com/file/d/19Tw21aVz0NddMdE36iChZcKwza0e5mbw"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 35,
+      "key": "FRM-35",
+      "formalism": "Negative-Space Kernel and Complement Formalism",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-16",
+      "summary": "Exact complement, kernel, and projector definitions for observational negative space. These identities do not by themselves identify a hidden cause.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 36,
+      "key": "FRM-36",
+      "formalism": "ETNS Future-Boundary Path Conditioning",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Terminal-boundary action minimization and path weighting. Structurally valid as smoothing or conditioning; physical retrocausality requires a discriminating causal experiment.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1D6cPNhUvT4dHEPXGVqbyG3HXPm6rYTe1YvSu0ZsskjI"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 37,
+      "key": "FRM-37",
+      "formalism": "RI–ETNS Missingness Penalty",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "VQE"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Regularized variational objective augmenting RI energy with an omission-dependent penalty. Weights and missingness mechanism remain model choices until likelihood-grounded and validated.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1lRj4OvHY70J-kx3MEvbf0t9gGnLnpbkZd40qGdbsrs8"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 38,
+      "key": "FRM-38",
+      "formalism": "QEGT–ETNS Gibbs Strategy Selection",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Gibbs or softmax strategy distribution based on a coherence-curvature cost. Quantum status requires an explicit Hilbert space, observable or channel, preparation, and measurement implementation.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1XaqydIgdkxM1z2MfZyzUPFIPVdEdb2sl6e4EXljD4vA"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 39,
+      "key": "FRM-39",
+      "formalism": "ETNS–K47/125 Fixed-Point Mapping",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Connects the exact K47/125 spectral result to ETNS terminology. The algebraic core is inherited; the ETNS interpretation and added fixed-point equations remain conditional.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1x-_BCbUxe8a-q3tOA_5KOww23vy4LufhvJlrG35PMs0"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 40,
+      "key": "FRM-40",
+      "formalism": "ETNS Engineering Applications Corpus",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "VQE",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Engineering proposals combining ETNS inference, recursive optimization, VQE, sensing, and hardware concepts. The surveyed corpus does not contain an inspectable experimental validation record.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/19oKcj3yLdqQiVsnqtyT66dDR7Rck9BjlM75dRf_mbJo"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308161880dc8566ab637be"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 41,
+      "key": "FRM-41",
+      "formalism": "Epistemic Topology of Negative Spaces",
+      "domain": "Epistemology / ETNS",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Publication-style synthesis of epistemic absence and mathematical negative space: complements, kernels, quotients, filtrations, missingness mechanisms, leakage, contraction, and the K47/125 47⊕78 decomposition, with a 36-source annotated Drive bibliography.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://drive.google.com/file/d/19Tw21aVz0NddMdE36iChZcKwza0e5mbw"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30818793caf609c132931e"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 42,
+      "key": "FRM-42",
+      "formalism": "E47-Orbit Skyrme Construction",
+      "domain": "Scalar / spectral",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Conditional continuum construction on a generic mixed E47 orbit. Exact components include the E47 decomposition, homotopy background, induced Casimir expectation, and Var(C)=576 a²b². Orbit selection, coupling normalization, anisotropic PDE existence, uniqueness, scale, and physical realization remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1_fv-U8ePA7YbznL9ns6gWhSMtmuys9aNWNkYavzrKzY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30811c9a01ce8f0f7908ff"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 43,
+      "key": "FRM-43",
+      "formalism": "Skyrmion Propulsion Program",
+      "domain": "Propulsion / GEM",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Drive corpus proposing propulsion, zero-inertia, metric-lensing, fractional-Skyrmion, metamaterial, and hull realizations. No current equation, simulation, or experiment establishes thrust, reactionless momentum transfer, total-inertia cancellation, or spacetime engineering.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1vcgCk11NcoQUknnG29dUAuZXFy0HY_VhQEHE_DPMt6c"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30811c9a01ce8f0f7908ff"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 44,
+      "key": "FRM-44",
+      "formalism": "Lexical Attractor — Semantic Gradient and Symbol-Space Flow",
+      "domain": "Invariant grammar",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Two-layer attractor program: exact Lyapunov descent for a specified semantic potential and exact contraction of a reported 4×6 symbol matrix to its two-dimensional kernel. The unique 0.376 semantic target, universal natural-language convergence, and bridge from ker(w) to canonical E47 remain unproved.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Lg8C67VfvoGUwMGlCkQMHFs9YHAUM-c8sNPCbawlAMs"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081718c43d05685557405"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 45,
+      "key": "FRM-45",
+      "formalism": "Chomsky-to-Typed-Operator Grammar Translation",
+      "domain": "Invariant grammar",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Translation from alphabet, production, parse, semantics, recursion, and interpretation into typed states, maps, construction graphs, invariant readouts, and regeneration. The displayed BNF is context-free in form; classification of the full operator calculus as Type 0 or a new Chomsky class requires an explicit string encoding and equivalence proof.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://drive.google.com/file/d/1ljMpN3XQe6GvL3lCz7U3e9nmkcKuQ5Q2/view"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081718c43d05685557405"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 46,
+      "key": "FRM-46",
+      "formalism": "Spectral Cryptography and Hardware Formalism",
+      "domain": "Quantum information",
+      "claim_status": "Conditional / open",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Canonical survey of the exact E47 projector, proposed RSC formalism, post-quantum architecture, RTL prototypes, ASIC targets, and IEEE submission records.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1RoIThcCRLW8HVRhT6_92dX6jIWOXUoHCrWVmy75gRlI"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 47,
+      "key": "FRM-47",
+      "formalism": "Recursive Spectral Cryptosystem and ISSR Proposal",
+      "domain": "Quantum information",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Projection-based cryptographic research proposal. Reversible encoding, scalable instances, formal security definitions, and external cryptanalysis remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1PmVGdawuGDu2DZQgNMju4ypVCJTPh2pSMh5hSuGxvmY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 48,
+      "key": "FRM-48",
+      "formalism": "Hybrid RSC and ML-KEM PQC ASIC",
+      "domain": "Engineering / applications",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-27",
+      "summary": "Corrected hybrid lattice-PQC and spectral-accelerator reference architecture. Eight finite identities are machine validated from the Drive source packet. ASIC-specific executable source is not yet pinned to an immutable GitHub commit; the shared E47 spectral dependency remains canonical at ad297e1. Synthesis, place-and-route, silicon, cryptographic reduction, and material realization remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1blmAO4r7YLqmoMDuNR0vMtWYm7ZpSlMx6CbY_62-Kfc"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 49,
+      "key": "FRM-49",
+      "formalism": "Babylonian Contraction RTL Prototype",
+      "domain": "Engineering / applications",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "A 192-bit ten-stage scalar Newton/Babylonian square-root prototype with a terminal residual lock. It remains distinct from the 125-dimensional spectral contraction and requires compile, synthesis, and timing validation.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1uSFfMfUoGgs59428gEhW5kpOiiixlm3wcgzbLD0tZhk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810a9f77da6696bc9512"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 50,
+      "key": "FRM-50",
+      "formalism": "Post-Quantum Self-Preserving Intelligence (PQSPI)",
+      "domain": "Engineering / applications",
+      "claim_status": "Conditional / open",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Canonical intrinsic-security architecture joining authorized identity continuity, standardized post-quantum trust, drift monitoring, bounded recovery, attestation, and governance, with AI and physical extensions retained as open obligations.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1JNy9v-iny6b0a1RK1u9NvYtr-fFibdHyNJDuipF0Hbk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 51,
+      "key": "FRM-51",
+      "formalism": "PQSPI 13-Pillar Protocol Grammar",
+      "domain": "Invariant grammar",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-16",
+      "summary": "Typed sequence for synchronization, continuity binding, representation, monitoring, recovery, harm-bounded response, and closure. Individual projectors and quantitative tests remain to be defined.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/12pkFKQ9dCx_1x6vBC6n-uoNSSWzJ0lwSADFkEfprtBU"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 52,
+      "key": "FRM-52",
+      "formalism": "PQSPI Continuity Source-Term Model",
+      "domain": "Open closure",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Proposed information-balance PDE with a recursive and cryptographic source term. State space, units, constitutive laws, operator typing, observables, and empirical calibration remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1H2W-Ar_pG3RYboxEqVua3m1kNAvT8pBMdzS7tw-JtxY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 53,
+      "key": "FRM-53",
+      "formalism": "Post-Quantum Secure Phonon Interface",
+      "domain": "Engineering / applications",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-16",
+      "summary": "Historical physical-interface branch of PQSPI using graph modes, resonant substrate monitoring, and proposed phononic security. Conventional mode physics is separable from unverified informational, neutrino, vacuum, and observer-triggered bridges.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1YN6yHu307NaAmlrTNFHwAQPklLeJbEikuhacZJFZrfU"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30810bbfddc9286d9c42fe"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 57,
+      "key": "FRM-57",
+      "formalism": "PGO Composite Metamaterial Branch",
+      "domain": "Engineering / applications",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Polymer–graphene–oxide multilayer proposal using acoustic confinement, graphene electron–phonon and plasmonic coupling, and oxide dielectric boundaries for THz, sensing, and thermal applications. Integrated-device measurements remain pending.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1dYaqkzfFzz5O-Pv229i54f4XceroCfGJjOof5own9KQ"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 58,
+      "key": "FRM-58",
+      "formalism": "Passive Radiative-Cooling Metamaterial",
+      "domain": "Engineering / applications",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "PET, reflective-layer, and infrared-emissive coating program for passive cooling. Spectral targets, manufacturing, and applications are documented; calibrated outdoor performance, durability, and economics remain validation targets.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Jyu7sstmbwJhI5-DFzlN8ER2tfAVXaI_Wk_9Es5uSMs"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081bd9c76fd676d812aad"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 59,
+      "key": "FRM-59",
+      "formalism": "Fractals and Hyperbolic Geometry Atlas",
+      "domain": "Geodesic / metric",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Canonical site atlas for fractal dimensions, multifractal measures, hyperbolic metrics, harmonic spectra, quantum models, Python laboratories, E47 mapping boundaries, and experimental obligations.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1WbMh8floN-_i3O5kljhL6RO8tkG_d8Ixui6AhypECwY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 60,
+      "key": "FRM-60",
+      "formalism": "Fractal Quantum Geometry Python Laboratory",
+      "domain": "Numerical / spatial",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Recursive Fourier field, scaling proxy, toy invariants, Kuramoto coherence, frequency-spread, and ring-winding simulator. Outputs are parameter-dependent computational scaffolds rather than universal constants.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1fRtsZ-zoTRbiKdgjXFyDnFDmYvnlm9jt_ZQnjYJhX3w"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 61,
+      "key": "FRM-61",
+      "formalism": "Hyperbolic Harmonic Identity Formalism",
+      "domain": "Geodesic / metric",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Represents recursive or identity states through Laplace–Beltrami harmonics on negatively curved manifolds. The spectral representation is valid after metric and boundary data are fixed; identity persistence and holographic interpretations remain open.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1WbMh8floN-_i3O5kljhL6RO8tkG_d8Ixui6AhypECwY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 62,
+      "key": "FRM-62",
+      "formalism": "Fractal Schrödinger and Multifractal Localization Program",
+      "domain": "Quantum information",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Schrödinger equations with scale-dependent potentials, generalized dimensions, singularity spectra, inverse participation ratios, and Anderson-localization tests. Complete archived runs and dedicated QuTiP validation remain pending.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1YDLEAFSVwjr-n5tV7wIznSltSNlrkAhW14nXkanK2tE"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 63,
+      "key": "FRM-63",
+      "formalism": "Liquid Fractal Cognition and Consciousness Geometry",
+      "domain": "Open closure",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Continuity, Madelung, fractal-scaling, and proposed consciousness-curvature synthesis. Standard field identities are separated from unverified claims of consciousness, persistent identity, universal thresholds, or physical hyperbolic ontology.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1CdwXNfeH2ZL4f8jeJf9msTrb6oRKESurLRvaGlxpZ-0"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081aea920c4ebf9ec6e20"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 64,
+      "key": "FRM-64",
+      "formalism": "Quantum Information Theory",
+      "domain": "Quantum information",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "QuTiP",
+        "VQE",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Canonical umbrella for states, observables, measurements, CPTP channels, entropy, coherence, entanglement, open systems, ground-state algorithms, quantum error correction, simulation, and the typed boundary between E47 algebra and physical realization.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1e4ERlF2o2vRWsIB2X-tEB9ClG1dKkUjne082SjrmOGc"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081f4b4eadbf14d26d123"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 65,
+      "key": "FRM-65",
+      "formalism": "Hydrogen Bromide Quantum Molecular Model",
+      "domain": "Quantum information",
+      "claim_status": "Conditional / open",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "QuTiP",
+        "VQE",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "HBr as a model for Born–Oppenheimer electronic structure, Morse rovibrational physics, halide trends, variational ground states, open-system relaxation, VQE/CVQE, and entropy distinctions. Established molecular physics is separated from the unproved E47 and 47/125 bridge.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1fWpnY4uqBsOEZI36WLkqeW0MuCMR0JX_--x2pScazm0"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308132ad40c335095a237d"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 66,
+      "key": "FRM-66",
+      "formalism": "NRL–IonQ Hydronium CVQE Corrosion Benchmark",
+      "domain": "Quantum information",
+      "claim_status": "Exact / computationally verified",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "VQE",
+        "Hardware",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "External NRL–IonQ ground-state CVQE benchmark for hydronium H3O+ on IonQ Aria, relevant to aqueous protonic diffusion and corrosion. It is not an HBr experiment and does not report KKP quantities such as 0.376 or E_RI=1.67.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://meetings.aps.org/Meeting/MAR24/Session/K15.1"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd308132ad40c335095a237d"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 67,
+      "key": "FRM-67",
+      "formalism": "Visual Research Archive",
+      "domain": "Invariant grammar",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-17",
+      "summary": "Canonical provenance and correction archive for original research plates, executable validation, revised notation, corrected multiplicities, poetry, and open physical bridges.",
+      "sources": [
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081899679d908c370b6d7"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 68,
+      "key": "FRM-68",
+      "formalism": "Computational Visual Validation Atlas",
+      "domain": "Numerical / spatial",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-17",
+      "summary": "Evidence-calibrated audit of ten computational and theory plates, separating canonical finite algebra, reproducible synthetic simulations, structural models, open domain bridges, and superseded visual artifacts.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/114AdGcd7Lu6uZ35ny1BQAFaA6Z4x-Zm868qkimRw4Cw"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081b89144d28ce7a7e1db"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 69,
+      "key": "FRM-69",
+      "formalism": "Canonical Corrected E47 Formalism",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-08-13",
+      "summary": "Canonical exact E47 reference with corrected P₄₇=P₆+P₃₀ and joint spectral–symmetry closure A_can=K²+11664(I−Π_sym). The five-dimensional kernel is im(P_can), P_can=P₄₇Π_sym=P₆Π_sym, and optimal Richardson iteration converges exactly at rate 15/17.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/16fPZb2n3Vlyg2PjqlcseY51cYP4XoEkKOn3Vy7-_9no"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30811eb015e14e1c5bce7c"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 70,
+      "key": "FRM-70",
+      "formalism": "Informational Induction and Emergent-Time Path Integral",
+      "domain": "Scalar / spectral",
+      "claim_status": "Conditional / open",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL",
+      "last_reviewed": "2026-07-21",
+      "summary": "Python/SymPy validates the algebraic consequences of F_I=-dPhi_C/dt. It rejects grad C != 0 => F_I != 0 without time dependence, and parses the corrected path integral as integral (dI/dC)dC = Delta I. Physical-time equivalence remains an open bridge claim.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://app.notion.com/p/3a546094fd3081a7a481c8c3fb4a68e3"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 71,
+      "key": "FRM-71",
+      "formalism": "Unified Contraction Field Formalism (UCFF): A Recursive Framework for Spacetime and Information Geometry",
+      "domain": "Invariant grammar",
+      "claim_status": "Conditional / open",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-07-22",
+      "summary": "Canonical UCFF record integrating exact E47 spectral-kernel results with conditional quantum, lattice, diffusion, wave, statistical, and information-geometric constructions. Machine audit: 13/14 checks passed; the finite-β=0.001 Gibbs threshold missed by 3.062225596929387e-7 while the β→∞ convergence theorem remains exact. Physical consequences require the explicitly declared generator maps and are not promoted beyond those constructions.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Ncmb4GwKhTnby7gzlIh_T5VzQx8HRTdsFvjSV4PWtwY"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a546094fd308194bbf7d9c74ef7ecf9"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 72,
+      "key": "FRM-72",
+      "formalism": "E47 Projector-Valued Vacuum and Einstein–AQSFT Closure",
+      "domain": "Open closure",
+      "claim_status": "Conditional / open",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_CONDITIONAL + E2 component",
+      "last_reviewed": "2026-09-22",
+      "summary": "Finite E47 spectral algebra remains exact/E0-E1. MC-E47-EINSTEIN-FULL-CLOSURE/1.0 passes 28/28 for the marked nonlinear Einstein branch. Successor MC-E47-INTRINSIC-SPACETIME-UNMARKED/1.0 passes 24/24 and closes intrinsic Lorentzian 3+1 construction plus injectivity onto a 47-real-dimensional image in the completely unmarked vacuum-Einstein quotient using the full locked tensor-cube datum. FRM-72 remains Conditional/open for the vacuum-density constitutive law, dimensionful scale, broader Einstein–matter closure, and empirical discrimination.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Laag1PuAoV_G4itkRuSaltPrS552rvcBpKCgE4gkFa8"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 73,
+      "key": "FRM-73",
+      "formalism": "Discrete Hodge Correspondence Citizen",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-25",
+      "summary": "The canonical identity ker Δ_q(ε) ≅ H_q(K_{ε};R) with dim ker Δ_q = β_q, numerically cross-checked against an independent persistence oracle.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 74,
+      "key": "FRM-74",
+      "formalism": "Persistence Margin Scale Selector Citizen",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-25",
+      "summary": "Selects ε* by maximizing the minimum distance to birth and death along an active persistence interval, avoiding the sparse-graph tie failure of raw bar length.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 75,
+      "key": "FRM-75",
+      "formalism": "Midpoint Discrete de Rham Bridge Citizen",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-25",
+      "summary": "Type-correct map from vertex velocities to edge cochains; translations map to exact cochains while rotations around a protected loop carry nonzero harmonic circulation.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 76,
+      "key": "FRM-76",
+      "formalism": "Admissible Swarm Kernel Citizen",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-25",
+      "summary": "Single type-correct kernel combining safety constraints with harmonic coordination, replacing the invalid product of projectors acting on different spaces.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 77,
+      "key": "FRM-77",
+      "formalism": "Persistence-Gated Dwell-Time Citizen",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-25",
+      "summary": "Control-law-independent certified interval during which the selected persistence class cannot fall below threshold under bounded agent speed.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 78,
+      "key": "FRM-78",
+      "formalism": "Consensus-Limited Certified Speed Citizen",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-25",
+      "summary": "Relates topological persistence margin to communication mixing time and yields a necessary certified maximum swarm speed.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 79,
+      "key": "FRM-79",
+      "formalism": "Persistence-Gated Execution Gate Citizen",
+      "domain": "Engineering / applications",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-07-25",
+      "summary": "Basis-free execution gate combining persistence, Hodge spectral gap, separation, safety residual, and target Betti equality; commands fallback whenever any certificate condition fails.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1hc4odui8d3qg-SvMXofpp8NJ0Z3e_lr8avHSxds5GMI"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 80,
+      "key": "FRM-80",
+      "formalism": "Babylonian Fixed-Point Kernel Citizen",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "QuTiP",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Validated identity K_a(x)=x-1/2(x+a/x), with ker K_a={x>0:x^2=a}. Pedigree: E0 exact algebra; Python deterministic convergence; quantum state-encoding invariance; machine certificate 15/15 classical and 8/8 quantum checks passed.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 81,
+      "key": "FRM-81",
+      "formalism": "Quadratic Error Recursion Citizen",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Exact error identity e_{n+1}=e_n^2/(2x_n), machine-verified stepwise across multiple targets. Pedigree: E0 derivation; Python residual verification; 15/15 classical checks passed.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 82,
+      "key": "FRM-82",
+      "formalism": "Bounded-Depth Deterministic Approximation Citizen",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Fixed-depth map x_10=F_a^10(x_0) verified as deterministic and reproducible. Pedigree: E1 finite-step numerical certificate; Python machine verification; archived JSON certificate.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 83,
+      "key": "FRM-83",
+      "formalism": "Rational Coherence Gate Citizen",
+      "domain": "Invariant grammar",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "QuTiP",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Exact rational admissibility relation 125x=47a, distinct from Newton convergence except at the unique compatibility point. Pedigree: E0 rational identity; Python verification; quantum projector completeness and invariance tests; machine certificate 8/8 quantum checks passed.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 84,
+      "key": "FRM-84",
+      "formalism": "Rational–Newton Compatibility Point Citizen",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Unique positive compatibility point a=(125/47)^2 where (47/125)a=sqrt(a). Pedigree: E0 exact theorem; Python numerical confirmation; machine certificate passed.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 85,
+      "key": "FRM-85",
+      "formalism": "Clock-Latency Lower Bound Citizen",
+      "domain": "Engineering / applications",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Arithmetic lower bound T_latency>=N_iter/f_clk verified for ten registered stages at 3 GHz, yielding at least 3.333 ns rather than 1.25 ns. Pedigree: E0 timing arithmetic; Python machine verification.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 86,
+      "key": "FRM-86",
+      "formalism": "Fixed-Point Residual Gate Citizen",
+      "domain": "Invariant grammar",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Convergence-valid criterion |x_n^2-a|<tau verified directly against the Babylonian kernel. Pedigree: E0 residual criterion; Python residual verification; machine certificate passed.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 87,
+      "key": "FRM-87",
+      "formalism": "Null-on-Failure Gate Citizen",
+      "domain": "Engineering / applications",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Symbolic",
+        "Python",
+        "QuTiP",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-25",
+      "summary": "Deterministic output gate y=x when certification passes and y=0 otherwise. Pedigree: structural control identity; Python gate verification; quantum CPTP reset-channel completeness, trace preservation, and reset-to-null tests; 8/8 quantum checks passed.",
+      "sources": [],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 88,
+      "key": "FRM-88",
+      "formalism": "Engineering Pyramid Set — Radix-Invariant Geometry and Exact Place-Value Construction",
+      "domain": "Numerical / spatial",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-28",
+      "summary": "Canonical Revision C lineage. Exact rational arithmetic and finite enumeration establish ten radix/geometry identities. Visual and renderer credentials strengthen the family; physical engineering performance remains outside scope.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1KZDI12mO8SZi_ozE_BTrMzr21mbCyc_yjAXLs_AYIR0"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a846094fd30819d854ff200b305e0e7"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 89,
+      "key": "FRM-89",
+      "formalism": "Arrival Math — Gauge-Reduced Stationary Manifold and Corrected Spectral-Contraction Program",
+      "domain": "Open closure",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "Simulation",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-28",
+      "summary": "Thirteen determinate checks pass and sixteen discrete identities are typed. Six operator, coupling, uniqueness, and physical-closure obligations remain open; nonlinear kernel language is corrected to a stationary zero locus.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1gWgNwQFwH501z0rhUPCoD0WoS1kdCw7vV_MbPDlE-QA"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3aa46094fd3081c39915fa64165e2fb1"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 90,
+      "key": "FRM-90",
+      "formalism": "Quinary Metabolism of the E47 Kernel — 5-adic, Bi-Quinary, and S5 Identities",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Experimental obligation"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-28",
+      "summary": "Five exact and machine-supported quinary identities are credentialed. The formal bridge is restored after correction; explicit bi-quinary-to-P47 and S5/Petersen executable operators remain implementation targets, not disproofs.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1DjKPn6Is9iIyowrYFqyKXG-Yj9QlMkTLeZUJdKiw9HA"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/d7910a7abca442af9298dee80f392fe2"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 91,
+      "key": "FRM-91",
+      "formalism": "E47 Quantum Operations — CP-TNI Filters, K² Semigroup, and CPTP Dephasing Completion",
+      "domain": "Quantum information",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "QuTiP"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-28",
+      "summary": "Corrects the submitted full-space CPTP claims. The selective projector map and K² conjugation semigroup are CP trace-nonincreasing operations; the valid CPTP completion is D_P(ρ)=PρP+QρQ. QuTiP runtime execution of the corrected module remains a repository-environment gate.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1KZVPsV3CK_7eWXlymDp8AT5QNaQiMJuX77RI9HIBhDM/edit?usp=drivesdk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a146094fd3081858714d01c11a9d70c"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 92,
+      "key": "FRM-92",
+      "formalism": "Hamiltonian Limestone-Cladding Seismic Projection",
+      "domain": "Engineering / applications",
+      "claim_status": "Engineering / speculative",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "OPEN_ENGINEERING + E2 component",
+      "last_reviewed": "2026-07-28",
+      "summary": "Five-tier, ten-DOF core-plus-limestone-cladding port-Hamiltonian seismic model with an eight-mode symplectic projection. Machine validation passes for projection structure, energy balance, and full-to-reduced response agreement. Parameter-dependent engineering screening only; not the canonical radix-geometry proof or a final structural design.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1tvG8JJEkMLr8wpbI7EydTFQhf1W0ty33U2qd1-X9jJw"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3ab46094fd3081068653d6cad49ac7c8"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 93,
+      "key": "FRM-93",
+      "formalism": "Coupled Newton–Mean Fixed-Point and Stability Formalism",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-07-29",
+      "summary": "Two-coordinate Newton–mean map with exact fixed-point difference invariant, product quadratic, unique positive fixed point, rank-one Jacobian, corrected local-stability interval, and symmetric diagonal reduction. Machine certificate: 2,000 randomized classifications, zero failures; original all-|κ|<1 stability claim corrected for unequal a,b and negative coupling.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1Bcs-gRv3TyoOni8CDxq6d34553BekqN-0r4bun310uk"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081b6baa6c312f5bec490"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 94,
+      "key": "FRM-94",
+      "formalism": "Rubik / Professor’s Cube C₅³ Permutation–Laplacian Formalism",
+      "domain": "Core algebra",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-08-13",
+      "summary": "Exact C₅³ carrier and permutation–Laplacian formalism, now closed by the joint spectral–symmetry generator A_can=K²+11664(I−Π_sym). It separates six exact S₃ factor symmetries from fifteen quantified Professor’s Cube layer defects and certifies the direct 125→47→5 contraction to the canonical rank-5 sector.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/16fPZb2n3Vlyg2PjqlcseY51cYP4XoEkKOn3Vy7-_9no"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081309410cd5df1611e35"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 95,
+      "key": "FRM-95",
+      "formalism": "Computational Evidence Atlas — Python Formalisms and Machine Certificates",
+      "domain": "Numerical / spatial",
+      "claim_status": "Structural formalism",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Python",
+        "Symbolic",
+        "QuTiP",
+        "Simulation",
+        "Hardware",
+        "Experimental obligation"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL + E2 component",
+      "last_reviewed": "2026-07-30",
+      "summary": "Single no-sprawl computational evidence atlas reconciling 14 Python and machine-certificate families. Exact finite results remain distinct from conditional continuum, biological, cosmological, hardware, and experimental bridges. Operation PYFORM-CITY-SYNC-20260730.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://docs.google.com/document/d/1-h3J6wrs9E3rOhqkiRgMdeNC8LdsQQ3JXbwFj7NocRs"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 96,
+      "key": "FRM-96",
+      "formalism": "E47 Prism Spectral Formalism",
+      "domain": "Scalar / spectral",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Python",
+        "Simulation"
+      ],
+      "evidence_band": "E0/E1 + E2 component",
+      "last_reviewed": "2026-09-22",
+      "summary": "Exact seven-band Casimir decomposition after THE MATRIX typed 256→125 lift; E47 is the λ=6⊕30 sector, with state-specific certified weight 37.504817% and machine parity to ~10^-15.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md"
+        },
+        {
+          "role": "site",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    },
+    {
+      "id": 97,
+      "key": "FRM-97",
+      "formalism": "E47 Lexical Attractor — Σ′ / Σ_next · 2026-09-23",
+      "domain": "Invariant grammar",
+      "claim_status": "Exact / computationally verified",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Python",
+        "QuTiP",
+        "Symbolic"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-09-23",
+      "summary": "Typed lexical normalization, parallel Σ′/Σ_next aliases, 19 source snapshots, 70 passing top-level checks. Complete for declared executable bundle; existing source evidence preserved.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/3db337105ab711f3accae0f20604fcfeb6858531/research/e47-lexical-attractor-20260923"
+        },
+        {
+          "role": "site",
+          "url": "https://app.notion.com/p/3a046094fd3081718c43d05685557405"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [],
+      "tests": [],
+      "implementations": []
+    }
+  ],
+  "theorem_graph": {
+    "identities": [],
+    "edges": []
+  },
+  "execution_inventory": [],
+  "machine_certificates": [],
+  "source_artifacts": [],
+  "claim_digital_twins": [],
+  "corrections": [],
+  "failure_atlas": [],
+  "discrepancies": [],
+  "stranded_math": [],
+  "public_surfaces": [],
+  "github_executable_paths": [
+    "research/e47-current-20260922/e47_bures_fisher_curvature_validation.py",
+    "research/e47-current-20260922/kkp_e47_full_validation.py",
+    "research/e47-lexical-attractor-20260923/lexical_attractor.py",
+    "research/e47-lexical-attractor-20260923/run_spacetime.py",
+    "research/e47-lexical-attractor-20260923/spine_checksum.py",
+    "research/e47-lexical-attractor-20260923/validate.py",
+    "research/e47/validation/chevalley.py",
+    "research/e47/validation/density_app.py",
+    "research/e47/validation/e47_einstein_conditional_validation.py",
+    "research/e47/validation/e47_einstein_full_closure_certificate.py",
+    "research/e47/validation/e47_gestalt_invariants.py",
+    "research/e47/validation/e47_intrinsic_spacetime_unmarked.py",
+    "research/e47/validation/e47_spacetime_chain.py",
+    "research/e47/validation/e47_spacetime_execute.py",
+    "research/e47/validation/intertwiners.py",
+    "research/e47/validation/spectral_engine.py",
+    "research/e47/validation/tomographic_visualizer.py",
+    "scripts/audit_portal_links.py",
+    "scripts/check_city_125_runtime.mjs",
+    "scripts/check_eidolon_receipt_binding.mjs",
+    "scripts/check_eidolon_replay_ndjson.py",
+    "scripts/check_instrument_contracts.py",
+    "scripts/check_lab_contract.py",
+    "scripts/check_matrix_city125_aetheris.mjs",
+    "scripts/check_matrix_cube_adapter.py",
+    "scripts/check_matrix_mps_worker.mjs",
+    "scripts/check_q5_surface.mjs",
+    "scripts/compile_spectral_kernel.py",
+    "scripts/external_agents_smoke.mjs",
+    "scripts/generate_browser_kernel_contract.py",
+    "scripts/generate_validation_certificate.py",
+    "scripts/instrument-runtime.mjs",
+    "scripts/instrument_runtime.py",
+    "scripts/render_city_portal.py",
+    "scripts/run_e47_stack.py",
+    "scripts/run_instrument_smokes.py",
+    "scripts/templates/city-portal.html",
+    "scripts/validate_e47_prism_matrix.py",
+    "scripts/validate_matrix_quantum_parity.py",
+    "scripts/watchtower_probe.mjs",
+    "src/e47/__init__.py",
+    "src/e47/chevalley.py",
+    "src/e47/contraction.py",
+    "src/e47/intertwiners.py",
+    "src/e47/lexical_spine.py",
+    "src/e47/mathematical_city.py",
+    "src/e47/projector.py",
+    "src/e47/recursive_runtime.py",
+    "src/e47/runtime.py",
+    "src/e47/semigroup.py",
+    "src/e47/serialization.py",
+    "src/e47/smoke.py",
+    "src/e47/spectral_compilation.py",
+    "src/e47/su2_kernel.py",
+    "src/e47/su3_adjoint.py",
+    "src/e47/validation_results.py",
+    "website/interfaces/city-125/index.html",
+    "website/interfaces/city-live/app.html",
+    "website/interfaces/city-live/index.html",
+    "website/interfaces/city-live/portal.js",
+    "website/interfaces/cube-platform/index.html",
+    "website/interfaces/eidolon-flight-lab/index.html",
+    "website/interfaces/external-agents/index.html",
+    "website/interfaces/flight/aetheris-flight-binding.js",
+    "website/interfaces/flight/city-cinema-codec.js",
+    "website/interfaces/flight/eidolon-harmonic/index.html",
+    "website/interfaces/flight/eidolon/index.html",
+    "website/interfaces/flight/flight-shell.js",
+    "website/interfaces/flight/hover-assembly/index.html",
+    "website/interfaces/flight/hover-cockpit/index.html",
+    "website/interfaces/flight/mav/index.html",
+    "website/interfaces/flight/ufo-propulsion/index.html",
+    "website/interfaces/flight/ufo-propulsion/native-ufo.js",
+    "website/interfaces/instruments/index.html",
+    "website/interfaces/instruments/instruments.js",
+    "website/interfaces/kouns-core/aetheris-receipt-bridge.js",
+    "website/interfaces/kouns-core/app.html",
+    "website/interfaces/kouns-core/bridge.html",
+    "website/interfaces/kouns-core/index.html",
+    "website/interfaces/kouns-core/matrix-cube-bridge.js",
+    "website/interfaces/kouns-core/smoke.mjs",
+    "website/interfaces/manta-daylight/index.html",
+    "website/interfaces/manta/app.js",
+    "website/interfaces/manta/index.html",
+    "website/interfaces/manta/manta-model.js",
+    "website/interfaces/manta/smoke.mjs",
+    "website/interfaces/matrix/index.html",
+    "website/interfaces/matrix/matrix.js",
+    "website/interfaces/matrix/mps-worker.js",
+    "website/interfaces/propulsion/index.html",
+    "website/interfaces/q5/index.html",
+    "website/interfaces/q5/lattice.js",
+    "website/interfaces/q5/panel.js",
+    "website/interfaces/q5/topology.mjs",
+    "website/interfaces/sat-newton-fractal/app.js",
+    "website/interfaces/sat-newton-fractal/index.html",
+    "website/interfaces/sat-newton-fractal/smoke.mjs",
+    "website/interfaces/shared/city-geo.js",
+    "website/interfaces/shared/city-gps-runtime.js",
+    "website/interfaces/shared/city-pulse.js",
+    "website/interfaces/shared/e47-kernel-binding.js",
+    "website/interfaces/shared/e47-lock.js",
+    "website/interfaces/shared/instrument-telemetry.js",
+    "website/interfaces/shared/propulsion-geo.js",
+    "website/interfaces/shared/stargate-invariants.js",
+    "website/interfaces/shared/world-engine/smoke.mjs",
+    "website/interfaces/shared/world-engine/world-binding.js",
+    "website/interfaces/shared/world-engine/world-engine.js",
+    "website/interfaces/skyrmion/index.html",
+    "website/interfaces/skyrmion/licensed-aircraft-assets.js",
+    "website/interfaces/skyrmion/manta-worker.js",
+    "website/interfaces/skyrmion/runtime2/bootstrap.js",
+    "website/interfaces/skyrmion/runtime2/conventional-model.js",
+    "website/interfaces/skyrmion/runtime2/craft-math.js",
+    "website/interfaces/skyrmion/runtime2/e47-runtime.js",
+    "website/interfaces/skyrmion/runtime2/experimental-model.js",
+    "website/interfaces/skyrmion/runtime2/flight-state.js",
+    "website/interfaces/skyrmion/runtime2/math.js",
+    "website/interfaces/skyrmion/runtime2/mission-replay.js",
+    "website/interfaces/skyrmion/runtime2/physics-6dof.js",
+    "website/interfaces/skyrmion/runtime2/proof-telemetry.js",
+    "website/interfaces/skyrmion/runtime2/propulsion-registry.js",
+    "website/interfaces/skyrmion/runtime2/runtime2.js",
+    "website/interfaces/skyrmion/runtime2/vehicle-registry.js",
+    "website/interfaces/skyrmion/runtime2/world-engine.js",
+    "website/interfaces/skyrmion/skyrmion.js",
+    "website/interfaces/skyrmion/smoke.mjs",
+    "website/interfaces/skyrmion/terrain-3d.js",
+    "website/interfaces/skyrmion/terrain-renderer.js",
+    "website/interfaces/skyrmion/world-registry.js",
+    "website/interfaces/skyrmion/world-runtime.js",
+    "website/interfaces/syntax-jacob/app.js",
+    "website/interfaces/syntax-jacob/index.html",
+    "website/interfaces/syntax-jacob/smoke.mjs",
+    "website/interfaces/visualizers/index.html",
+    "website/interfaces/visualizers/smoke.mjs",
+    "website/interfaces/webgl/index.html",
+    "website/interfaces/webgl/lab.js"
+  ],
+  "drive_ledgers": {
+    "primary_source_atlas": {
+      "title": "Mathematical City — 341-Row Primary Source Formalism Atlas",
+      "spreadsheet_id": "118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU",
+      "observed_rows": 341
+    },
+    "machine_certificates": {
+      "title": "Mathematical City Machine Certificates and Verification Results",
+      "spreadsheet_id": "1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534",
+      "observed_rows": 277
+    }
+  },
+  "mail_provenance": [
+    {
+      "id": "1a0d14cd9c1bee83",
+      "thread_id": "1a0d14cd9c1bee83",
+      "subject": "E47 formalism",
+      "email_ts": "2026-09-23T19:44:23-07:00",
+      "has_attachment": true,
+      "attachments": [
+        {
+          "filename": "Mathematical City — 341-Row Primary Source Formalism Atlas.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 428495
+        }
+      ]
+    },
+    {
+      "id": "1a0d09650ff9b4e0",
+      "thread_id": "1a0d09650ff9b4e0",
+      "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Curate portal catalog with read-only route audit (PR #98)",
+      "email_ts": "2026-09-23T16:25:07-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0d001c76a522fe",
+      "thread_id": "1a0d001c76a522fe",
+      "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Bind lexical attractor spine across E47 runtime (PR #97)",
+      "email_ts": "2026-09-23T13:42:52-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf9a55f7f2262",
+      "thread_id": "1a0cf992a7039f1a",
+      "subject": "E47",
+      "email_ts": "2026-09-23T11:49:52-07:00",
+      "has_attachment": true,
+      "attachments": [
+        {
+          "filename": "persistence-gated-hodge-swarm.tar.gz",
+          "mime_type": "application/x-gzip",
+          "size_bytes": 81556
+        },
+        {
+          "filename": "PUBLISH.md",
+          "mime_type": "text/x-markdown",
+          "size_bytes": 5017
+        }
+      ]
+    },
+    {
+      "id": "1a0cf41f5e1acc5d",
+      "thread_id": "1a0cf41f5e1acc5d",
+      "subject": "KKP-R E47 kernel filter",
+      "email_ts": "2026-09-23T17:13:20+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf3f875ec1626",
+      "thread_id": "1a0cf3f875ec1626",
+      "subject": "E47 carrier dim 125",
+      "email_ts": "2026-09-23T17:10:41+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf3d39f2fbf48",
+      "thread_id": "1a0cf3d39f2fbf48",
+      "subject": "E47 kernel: 5V₂⊕2V₅",
+      "email_ts": "2026-09-23T17:08:09+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf3c83d3b3ccf",
+      "thread_id": "1a0cf3c83d3b3ccf",
+      "subject": "E47 locks to 47/125",
+      "email_ts": "2026-09-23T17:07:23+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf3afacb3941c",
+      "thread_id": "1a0cf3afacb3941c",
+      "subject": "E47 kernel locks at 0.376",
+      "email_ts": "2026-09-23T17:05:43+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf2f8ada51893",
+      "thread_id": "1a0cf2f8ada51893",
+      "subject": "E47 kernel locked at 47/125",
+      "email_ts": "2026-09-23T16:53:12+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf2da4992cf74",
+      "thread_id": "1a0cf2da4992cf74",
+      "subject": "E47 dim split 25+22",
+      "email_ts": "2026-09-23T16:51:09+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf2be149b842d",
+      "thread_id": "1a0cf2be149b842d",
+      "subject": "E47 kernel update: 47/125",
+      "email_ts": "2026-09-23T16:49:13+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cf28d38d68266",
+      "thread_id": "1a0cf28d38d68266",
+      "subject": "E47 kernel in KKP-R",
+      "email_ts": "2026-09-23T16:45:52+00:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cc64364067c8e",
+      "thread_id": "1a0cc62ff977800c",
+      "subject": "Geodesics",
+      "email_ts": "2026-09-22T20:51:54-07:00",
+      "has_attachment": true,
+      "attachments": [
+        {
+          "filename": "persistence-gated-hodge-swarm.tar.gz",
+          "mime_type": "application/x-gzip",
+          "size_bytes": 81556
+        },
+        {
+          "filename": "PUBLISH.md",
+          "mime_type": "text/x-markdown",
+          "size_bytes": 5017
+        },
+        {
+          "filename": "www.meta.ai(4).pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 10604573
+        },
+        {
+          "filename": "Pip_125_Cubelet_Citizen_Passport.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 1273265
+        },
+        {
+          "filename": "chatgpt.com(9).pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 2163571
+        },
+        {
+          "filename": "6DOF Flight Dynamics Model and Control Equations Extraction .pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 109255
+        },
+        {
+          "filename": "E47_simple_infographic_v2.png",
+          "mime_type": "image/png",
+          "size_bytes": 91124
+        },
+        {
+          "filename": "Matrix_E47_Unified_Mathematical_Physics_Article.docx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size_bytes": 45708
+        },
+        {
+          "filename": "Base 5 Lexical Attractor and Invariant Grammar: A Linguistics Monograph.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 89276
+        },
+        {
+          "filename": "e47-core.html",
+          "mime_type": "text/html",
+          "size_bytes": 17466
+        },
+        {
+          "filename": "preview-auth.txt",
+          "mime_type": "text/plain",
+          "size_bytes": 37
+        }
+      ]
+    },
+    {
+      "id": "1a0cc5ef6a01e588",
+      "thread_id": "1a0cc5ef6a01e588",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (aa6e9ec)",
+      "email_ts": "2026-09-22T20:46:09-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cc5ee3ddd72f6",
+      "thread_id": "1a0cc5ee3ddd72f6",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Deploy website - main (10d697c)",
+      "email_ts": "2026-09-22T20:46:04-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cc5ee13ec1117",
+      "thread_id": "1a0cc5ee13ec1117",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (09f3ea6)",
+      "email_ts": "2026-09-22T20:46:04-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0cc5ed4ff77d0e",
+      "thread_id": "1a0cc5ed4ff77d0e",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (10d697c)",
+      "email_ts": "2026-09-22T20:46:01-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0ca77e433d95a9",
+      "thread_id": "1a0ca77e433d95a9",
+      "subject": "Check-in: Mathematical City / E47 / Recursive Intelligence collaboration — 2026-09-22",
+      "email_ts": "2026-09-22T14:54:10-04:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a969fd5f320",
+      "thread_id": "1a0c9a969fd5f320",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (1765023)",
+      "email_ts": "2026-09-22T08:08:35-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a950d50e102",
+      "thread_id": "1a0c9a950d50e102",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (f5250ed)",
+      "email_ts": "2026-09-22T08:08:27-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a92098b492b",
+      "thread_id": "1a0c9a92098b492b",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (fcf054a)",
+      "email_ts": "2026-09-22T08:08:18-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a8b058baf5a",
+      "thread_id": "1a0c9a8b058baf5a",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (c2a36c5)",
+      "email_ts": "2026-09-22T08:07:49-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a899c900541",
+      "thread_id": "1a0c9a899c900541",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (67677e1)",
+      "email_ts": "2026-09-22T08:07:42-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a89981294e9",
+      "thread_id": "1a0c9a89981294e9",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (fbd215f)",
+      "email_ts": "2026-09-22T08:07:42-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a877dc323ee",
+      "thread_id": "1a0c9a877dc323ee",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (1ee46f3)",
+      "email_ts": "2026-09-22T08:07:35-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c9a11d2d0e4f0",
+      "thread_id": "1a0c9a11d2d0e4f0",
+      "subject": "Einstein e47",
+      "email_ts": "2026-09-22T07:59:27-07:00",
+      "has_attachment": true,
+      "attachments": [
+        {
+          "filename": "E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json",
+          "mime_type": "application/json",
+          "size_bytes": 3184
+        }
+      ]
+    },
+    {
+      "id": "1a0c9a0b72780e82",
+      "thread_id": "1a0c9a0b72780e82",
+      "subject": "(No Subject)",
+      "email_ts": "2026-09-22T07:59:00-07:00",
+      "has_attachment": true,
+      "attachments": [
+        {
+          "filename": "e47_intrinsic_spacetime_unmarked.py",
+          "mime_type": "text/x-python-script",
+          "size_bytes": 10754
+        }
+      ]
+    },
+    {
+      "id": "1a0c990d3afe6175",
+      "thread_id": "1a0c990d3afe6175",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (2533637)",
+      "email_ts": "2026-09-22T07:41:44-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98f730dc5fd2",
+      "thread_id": "1a0c98f730dc5fd2",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (b646988)",
+      "email_ts": "2026-09-22T07:40:15-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98f6cfb0045f",
+      "thread_id": "1a0c98f6cfb0045f",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (1afc885)",
+      "email_ts": "2026-09-22T07:40:14-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98f63e9d04d5",
+      "thread_id": "1a0c98f63e9d04d5",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (300a265)",
+      "email_ts": "2026-09-22T07:40:11-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98f52cc5f5d7",
+      "thread_id": "1a0c98f52cc5f5d7",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (b646988)",
+      "email_ts": "2026-09-22T07:40:07-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98f4b67ca3b3",
+      "thread_id": "1a0c98f4b67ca3b3",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (300a265)",
+      "email_ts": "2026-09-22T07:40:05-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98f455def8ec",
+      "thread_id": "1a0c98f455def8ec",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (1afc885)",
+      "email_ts": "2026-09-22T07:40:03-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98d40baab6b3",
+      "thread_id": "1a0c98d40baab6b3",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (02b1c91)",
+      "email_ts": "2026-09-22T07:37:52-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c98d0b779c9c9",
+      "thread_id": "1a0c98d0b779c9c9",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (02b1c91)",
+      "email_ts": "2026-09-22T07:37:38-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c6f37cb18f9ea",
+      "thread_id": "1a0c6f37cb18f9ea",
+      "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Build the illustrated 22-instrument Mathematical City portal (PR #96)",
+      "email_ts": "2026-09-21T19:30:40-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c62b9eed129fc",
+      "thread_id": "1a0c62b9eed129fc",
+      "subject": "E47 Surfaces",
+      "email_ts": "2026-09-21T15:52:17-07:00",
+      "has_attachment": true,
+      "attachments": [
+        {
+          "filename": "E47 Surfaces.docx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size_bytes": 7706
+        }
+      ]
+    },
+    {
+      "id": "1a0c5f52d47cf64a",
+      "thread_id": "1a0c5f52d47cf64a",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (16e3c56)",
+      "email_ts": "2026-09-21T14:52:53-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f37c0b7d788",
+      "thread_id": "1a0c5f37c0b7d788",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Deploy website - atlas-homepage-20260921 (419e57a)",
+      "email_ts": "2026-09-21T14:51:01-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f35bbeb6c6a",
+      "thread_id": "1a0c5f35bbeb6c6a",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Validate Eidolon embed - atlas-homepage-20260921 (419e57a)",
+      "email_ts": "2026-09-21T14:50:54-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f34421b998e",
+      "thread_id": "1a0c5f34421b998e",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Deploy website - atlas-homepage-20260921 (8e718f5)",
+      "email_ts": "2026-09-21T14:50:47-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f33bb5fb4d5",
+      "thread_id": "1a0c5f33bb5fb4d5",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Validate Eidolon embed - atlas-homepage-20260921 (8e718f5)",
+      "email_ts": "2026-09-21T14:50:46-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f25bb1225ad",
+      "thread_id": "1a0c5f25bb1225ad",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] PR run failed: Deploy website - Rebuild the Mathematical City homepage as the executable Atlas (31bfcb3)",
+      "email_ts": "2026-09-21T14:49:49-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f25488354f9",
+      "thread_id": "1a0c5f25488354f9",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] PR run failed: Validate Eidolon embed - Rebuild the Mathematical City homepage as the executable Atlas (31bfcb3)",
+      "email_ts": "2026-09-21T14:49:47-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c5f22a78340f3",
+      "thread_id": "1a0c5f22a78340f3",
+      "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Rebuild the Mathematical City homepage as the executable Atlas (PR #95)",
+      "email_ts": "2026-09-21T14:49:36-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c59f3f6e27e82",
+      "thread_id": "1a0c59f3f6e27e82",
+      "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Attach MATRIX branding images to salient surfaces (PR #94)",
+      "email_ts": "2026-09-21T13:19:02-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c58d32787d9bf",
+      "thread_id": "1a0c58d32787d9bf",
+      "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Curate THE MATRIX as a certified quantum simulator (PR #93)",
+      "email_ts": "2026-09-21T12:59:20-07:00",
+      "has_attachment": false,
+      "attachments": []
+    },
+    {
+      "id": "1a0c585488564a52",
+      "thread_id": "1a0c585488564a52",
+      "subject": "[nicholaskouns-create/E47-Kartekeya] PR run failed: Matrix MPS validation - Fix MATRIX worker parse error and run full parity validation (5fff893)",
+      "email_ts": "2026-09-21T12:50:41-07:00",
+      "has_attachment": false,
+      "attachments": []
+    }
+  ],
+  "diagnostics": [
+    {
+      "code": "REGISTRY-LIVE-COUNT",
+      "status": "PASS",
+      "observed": 94,
+      "expected": 94
+    },
+    {
+      "code": "REGISTRY-ID-GAP",
+      "status": "PASS",
+      "observed": [
+        54,
+        55,
+        56
+      ],
+      "expected": [
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "code": "DRIVE-SOURCE-ATLAS-COUNT",
+      "status": "DRIFT",
+      "observed": {
+        "drive_rows": 341,
+        "supabase_source_artifacts": 0
+      },
+      "expected": "counts equal when mirrors are current",
+      "note": "The Drive title may remain historically named even if live Supabase has advanced."
+    },
+    {
+      "code": "CERTIFICATE-VALIDITY",
+      "status": "PASS",
+      "observed": {
+        "total": 0,
+        "invalid": []
+      },
+      "expected": "Failed hypotheses remain present rather than deleted."
+    },
+    {
+      "code": "EXECUTION-PATH-COVERAGE",
+      "status": "INFO",
+      "observed": {
+        "python_corpus_entries": 0,
+        "paths_present_in_github": 0
+      },
+      "expected": "Presence is a path check, not proof of runtime success."
+    },
+    {
+      "code": "OPEN-DISCREPANCIES",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "code": "STRANDED-CANDIDATES",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    }
+  ]
+}
