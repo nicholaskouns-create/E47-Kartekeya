@@ -26,6 +26,8 @@ Engines imported, not re-derived: SpectralEngine, EidolonEngine, TomographicVisu
 
 Eidolon HUD has no targeting or payload controls.
 
+Replay slider reads the full EidolonEngine series (`data/series.json`, n=1081, dt=1/30, duration=36 s). CITY LIVE lab grid card: `interfaces/city-live/` → MANIFOLD.
+
 ## Embed
 
 Notion / City pages:
