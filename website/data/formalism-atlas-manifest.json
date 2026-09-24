@@ -1,0 +1,30 @@
+{
+  "schema": "MC-FORMALISM-ATLAS-MANIFEST-1.0",
+  "route": "interfaces/formalism-atlas/",
+  "survey_date": "2026-09-23",
+  "components": [
+    {
+      "role": "registry",
+      "path": "data/formalism-registry.json",
+      "schema": "MC-FORMALISM-REGISTRY-1.0"
+    },
+    {
+      "role": "graph",
+      "path": "data/formalism-graph.json",
+      "schema": "MC-FORMALISM-GRAPH-1.0"
+    },
+    {
+      "role": "provenance",
+      "path": "data/formalism-provenance.json",
+      "schema": "MC-FORMALISM-PROVENANCE-1.0"
+    },
+    {
+      "role": "source_snapshot",
+      "path": "data/formalism-source-snapshot.json",
+      "schema": "MC-FORMALISM-SOURCE-SNAPSHOT-1.0"
+    }
+  ],
+  "interface": "interfaces/formalism-atlas/index.html",
+  "validator": "scripts/validate_formalism_atlas.py",
+  "documentation": "research/formalism-atlas/README.md"
+}
