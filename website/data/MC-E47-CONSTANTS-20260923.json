@@ -76,9 +76,10 @@
   ],
   "provenance": {
     "notion": "https://mathematicalcity.notion.site/E47-Invariant-Kernel-Verification-252-Step-Spectral-Projector-Certificate-3e546094fd3081738c01e36b7b75e3af?pvs=149",
-    "drive_python": "https://drive.google.com/file/d/1Yu9petpWB2ZGTWqwOPyVGBi-vz4CcXrf/view?usp=drivesdk",
-    "drive_csv": "https://drive.google.com/file/d/1c1AH_on4c7qfVwITV6MjP14Rcv2lO4SP/view?usp=drivesdk",
+    "drive_python": "https://drive.google.com/file/d/1-Qd0oH_pYAy9_aEzcBW7YbTIz5FtCBGa/view?usp=drivesdk",
+    "drive_csv": "https://drive.google.com/file/d/1fFUXVOQ5LB0B5qeWWI9lL91DzXDd7CtF/view?usp=drivesdk",
     "supabase_source": "SRC-E47-CONSTANT-VALIDATION-20260923",
-    "supabase_identity": "MC-E47-CONSTANT-FINGERPRINT-20260923"
+    "supabase_identity": "MC-E47-CONSTANT-FINGERPRINT-20260923",
+    "csv_sha256": "0597ce08a2f9e6b1e7928876de031b5e7dbe424ef7047ec81c8b49a2d9f631ab"
   }
 }
