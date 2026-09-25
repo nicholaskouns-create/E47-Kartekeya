@@ -317,12 +317,27 @@
         "E1",
         "STRUCTURAL"
       ],
-      "summary": "CIRP consent, QEGT strategy selection, Ubuntu viability and fail-closed Murmuration rescue bound to one contract digest.",
+      "summary": "Root CIRP contract plus executable implementation profile: explicit consent, QEGT selection, Ubuntu viability, and fail-closed Murmuration rescue.",
       "surfaces": [
         {
-          "label": "Contract",
+          "label": "Live interface",
+          "substrate": "github",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/"
+        },
+        {
+          "label": "Root contract",
           "substrate": "github",
           "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/coherence-runtime-1.0.contract.json"
+        },
+        {
+          "label": "Implementation profile",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/coherence_runtime_1_0.json"
+        },
+        {
+          "label": "RI/PQSPI Python",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/coherence_runtime/ri_pqspi.py"
         },
         {
           "label": "QEGT Python",
@@ -340,14 +355,14 @@
           "url": "https://app.notion.com/p/3e646094fd3081a79d0ac473cd838c95?pvs=204"
         },
         {
-          "label": "Executable bundle",
+          "label": "Validated bundle",
           "substrate": "drive",
           "url": "https://drive.google.com/file/d/1yWv-Nnoo-PheAypw1eVOfI9SRvLXeIIs/view?usp=drivesdk"
         },
         {
-          "label": "Registry",
+          "label": "Runtime API",
           "substrate": "supabase",
-          "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/"
+          "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime"
         }
       ]
     }
@@ -366,7 +381,11 @@
     },
     "coherence_contract": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/contracts/coherence-runtime-1.0.contract.json",
     "coherence_notion": "https://app.notion.com/p/3e646094fd3081a79d0ac473cd838c95?pvs=204",
-    "coherence_bundle": "https://drive.google.com/file/d/1yWv-Nnoo-PheAypw1eVOfI9SRvLXeIIs/view?usp=drivesdk"
+    "coherence_bundle": "https://drive.google.com/file/d/1yWv-Nnoo-PheAypw1eVOfI9SRvLXeIIs/view?usp=drivesdk",
+    "coherence_root_contract": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/contracts/coherence-runtime-1.0.contract.json",
+    "coherence_implementation_profile": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/contracts/coherence_runtime_1_0.json",
+    "coherence_projection": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/coherence-runtime-contract.json",
+    "coherence_api": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime"
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
