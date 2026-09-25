@@ -37,7 +37,7 @@ Every local/componentwise RI/QEGT invariant passed. The sole failed predicate wa
 
 ## Publication closure
 
-The finished report was then written to GitHub, Notion, Google Drive and Supabase, and a Google Calendar publication record was created. The Calendar record contains live links to the GitHub report/certificate/validator, Notion page, Drive mirror, and Supabase logical ID. Those links were then recorded in `public.sync_registry`.
+The finished report was then written to GitHub, Notion, Google Drive and Supabase, and a Google Calendar publication record was created. The Calendar record contains live links to the GitHub report/certificates/validator, Notion page, Drive mirror, and Supabase logical IDs. Those links were then recorded in `public.sync_registry`.
 
 Recomputing the graph from this actual post-publication topology produced:
 
@@ -75,6 +75,8 @@ GitHub report: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/r
 
 GitHub pre certificate: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/ri-qegt-live-graph-20260925/MC-RI-QEGT-LIVE-GRAPH-PRE-20260925.json
 
+GitHub post certificate: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/ri-qegt-live-graph-20260925/MC-RI-QEGT-LIVE-GRAPH-POST-20260925.json
+
 GitHub validator: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/ri-qegt-live-graph-20260925/ri_qegt_live_cross_platform_graph_20260925.py
 
 Notion: https://app.notion.com/p/3e646094fd3081f8ab4fd8facd48d7b4?pvs=204
@@ -83,4 +85,4 @@ Google Drive: https://docs.google.com/document/d/1akV583EFaSUqs-K_lFz5MBokGk90nq
 
 Calendar event ID: `4bjln3pee3gqe6ojm6gur9lfq0`
 
-Supabase logical ID: `RI-QEGT-LIVE-GRAPH-20260925`
+Supabase logical IDs: `RI-QEGT-LIVE-GRAPH-20260925` and `RI-QEGT-LIVE-GRAPH-POST-20260925`
