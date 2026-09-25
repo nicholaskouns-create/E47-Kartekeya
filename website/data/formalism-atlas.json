@@ -46,21 +46,21 @@
     "rho_star": "15/17"
   },
   "summary": {
-    "live_records": 94,
+    "live_records": 96,
     "id_range": [
       1,
-      97
+      99
     ],
     "missing_ids": [
       54,
       55,
       56
     ],
-    "canonical_records": 46,
-    "current_records": 94,
+    "canonical_records": 47,
+    "current_records": 96,
     "status_counts": {
-      "Exact / computationally verified": 33,
-      "Structural formalism": 25,
+      "Exact / computationally verified": 34,
+      "Structural formalism": 26,
       "Conditional / open": 27,
       "Engineering / speculative": 9
     },
@@ -68,7 +68,7 @@
       "Core algebra": 16,
       "Invariant grammar": 11,
       "Numerical / spatial": 13,
-      "Quantum information": 10,
+      "Quantum information": 12,
       "Propulsion / GEM": 5,
       "Scalar / spectral": 5,
       "Geodesic / metric": 3,
@@ -2974,6 +2974,80 @@
       "dependencies": [],
       "tests": [],
       "implementations": []
+    },
+    {
+      "id": 98,
+      "key": "FRM-98",
+      "formalism": "Native Variational Eigensolver — Corrected General Variational Theorem",
+      "domain": "Quantum information",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-09-25",
+      "summary": "Error-corrected NVE scaffold: compactness/continuity imply existence of a minimizer and the Rayleigh bound holds for a declared self-adjoint operator, but restricted-ansatz stationarity does not imply an eigenstate and gradient descent does not imply global convergence without additional hypotheses.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/native_variational_eigensolver_corrected.md"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [
+        "FRM-4"
+      ],
+      "tests": [
+        "tests/test_native_variational_eigensolver.py"
+      ],
+      "implementations": [
+        "src/e47/native_variational_eigensolver.py"
+      ]
+    },
+    {
+      "id": 99,
+      "key": "FRM-99",
+      "formalism": "E47 Native Variational Eigensolver — K² Ground-Space Theorem",
+      "domain": "Quantum information",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "QuTiP"
+      ],
+      "evidence_band": "E0/E1",
+      "last_reviewed": "2026-09-25",
+      "summary": "Exact specialization H_NVE=K² on V₂^{⊗3}. E_NVE(ψ)=<ψ|K²|ψ>=||Kψ||²≥0, with ground space exactly ker K=E₄₇, dimension 47. Continuous e^{-tK²} and certified discrete Γ*=I−K²/99144 converge to P₄₇.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/native_variational_eigensolver_corrected.md"
+        },
+        {
+          "role": "implementation",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/native_variational_eigensolver.py"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [
+        "FRM-2",
+        "FRM-4"
+      ],
+      "tests": [
+        "tests/test_native_variational_eigensolver.py"
+      ],
+      "implementations": [
+        "src/e47/native_variational_eigensolver.py"
+      ]
     }
   ],
   "theorem_graph": {
