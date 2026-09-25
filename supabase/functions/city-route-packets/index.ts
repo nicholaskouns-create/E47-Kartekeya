@@ -74,6 +74,16 @@ async function rest(table: string, params: string): Promise<any[]> {
   return await res.json();
 }
 
+async function safeRest(table: string, params: string, warnings: Array<{table:string,error:string}>): Promise<any[]> {
+  try {
+    return await rest(table, params);
+  } catch (error) {
+    warnings.push({ table, error: String(error) });
+    console.error("route-packet source degraded", table, String(error));
+    return [];
+  }
+}
+
 function compact(packet: Packet): Packet {
   packet.surfaces.sort((a, b) => {
     const order: Record<string, number> = { github: 0, notion: 1, drive: 2, supabase: 3, aims: 4, external: 5, internal: 6 };
@@ -95,13 +105,14 @@ Deno.serve(async (req: Request) => {
     const wantedSubstrate = (u.searchParams.get("substrate") ?? "").trim().toLowerCase();
     const limit = Math.min(Math.max(Number(u.searchParams.get("limit") ?? 250) || 250, 1), 500);
 
+    const warnings: Array<{table:string,error:string}> = [];
     const [surfaces, bundles, artifacts, identities, certificates, syncs] = await Promise.all([
-      rest("city_interactive_surfaces", "select=surface_code,title,surface_type,route,lay_guide,egghead_reference,updated_at&active=eq.true&order=updated_at.desc&limit=500"),
-      rest("publication_bundles", "select=bundle_code,citizen_code,monograph_ref,json_certificate_ref,python_validator_ref,notion_ref,database_identity_ref,visualization_refs,provenance_hash,bundle_status,updated_at&access_scope=eq.public&order=updated_at.desc&limit=500"),
-      rest("source_artifacts", "select=id,logical_id,title,source_system,canonical_url,evidence_class,artifact_type,status,metadata,content_hash,updated_at&access_scope=eq.public&status=eq.active&order=updated_at.desc&limit=500"),
-      rest("mathematical_identities", "select=citizen_code,title,evidence_class,validation_status,source_artifact_id,boundary,metadata,updated_at&access_scope=eq.public&order=updated_at.desc&limit=500"),
-      rest("machine_certificates", "select=certificate_code,title,source_artifact_id,commit_sha,evidence_class,valid,result,updated_at&access_scope=eq.public&valid=eq.true&order=updated_at.desc&limit=500"),
-      rest("sync_registry", "select=logical_id,source_system,source_external_id,destination_system,destination_external_id,canonical,content_hash,sync_status,last_synced_at,metadata&access_scope=eq.public&sync_status=eq.synced&order=last_synced_at.desc&limit=1000"),
+      safeRest("city_interactive_surfaces", "select=surface_code,title,surface_type,route,lay_guide,egghead_reference,updated_at&active=eq.true&order=updated_at.desc&limit=500", warnings),
+      safeRest("publication_bundles", "select=bundle_code,citizen_code,monograph_ref,json_certificate_ref,python_validator_ref,notion_ref,database_identity_ref,visualization_refs,provenance_hash,bundle_status,updated_at&access_scope=eq.public&order=updated_at.desc&limit=500", warnings),
+      safeRest("source_artifacts", "select=id,logical_id,title,source_system,canonical_url,evidence_class,artifact_type,status,metadata,content_hash,updated_at&access_scope=eq.public&status=eq.active&order=updated_at.desc&limit=500", warnings),
+      safeRest("mathematical_identities", "select=citizen_code,title,evidence_class,validation_status,source_artifact_id,boundary,metadata,updated_at&access_scope=eq.public&order=updated_at.desc&limit=500", warnings),
+      safeRest("machine_certificates", "select=certificate_code,title,source_artifact_id,commit_sha,evidence_class,valid,result,updated_at&access_scope=eq.public&valid=eq.true&order=updated_at.desc&limit=500", warnings),
+      safeRest("sync_registry", "select=logical_id,source_system,source_external_id,destination_system,destination_external_id,canonical,content_hash,sync_status,last_synced_at,metadata&access_scope=eq.public&sync_status=eq.synced&order=last_synced_at.desc&limit=1000", warnings),
     ]);
 
     const packets = new Map<string, Packet>();
@@ -225,6 +236,7 @@ Deno.serve(async (req: Request) => {
         public_synced_routes: syncs.length,
         surfaces_by_substrate: substrateCounts,
       },
+      warnings,
       packets: list,
     }, null, 2), { headers: cors });
   } catch (error) {
