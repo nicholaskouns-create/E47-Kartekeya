@@ -1,0 +1,29 @@
+{
+  "certificate_id": "MC-RI-QEGT-LIVE-GRAPH-POST-20260925",
+  "snapshot": "post-publication",
+  "date": "2026-09-25",
+  "evidence_class": "E1",
+  "topology_prescribed": false,
+  "publication_note": "Post-publication topology includes the actual Google Calendar record linking the GitHub, Notion, Google Drive and Supabase artifacts. It is an integration closure, not retroactive evidence for the frozen pre-publication test.",
+  "graph": {
+    "nodes": 101,
+    "edges": 157,
+    "connected_components": 1,
+    "kernel_dimension": 1
+  },
+  "spectrum": {
+    "spectral_gap": 0.40775585784689994,
+    "lambda_max": 38.02909622331191,
+    "epsilon": 0.02366608963607971,
+    "measured_contraction_factor": 0.9903500133185587,
+    "iterations": 2135
+  },
+  "ri_qegt": {
+    "kernel_convergence_residual": 5.335118796558469e-12
+  },
+  "result": {
+    "checks_passed": 13,
+    "checks_total": 13,
+    "unique_global_attractor": true
+  }
+}
