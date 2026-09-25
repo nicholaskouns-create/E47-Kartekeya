@@ -1,7 +1,7 @@
 # Coherence, Runtime 1.0
 
 **Contract:** `CIRP-COHERENCE-RUNTIME-1.0`  
-**SHA-256:** `c00731fba841bd88a34cb05e251db57a0f489aa08b1b55984f551ed0cd67d7fa`
+**SHA-256:** `f71c9628b8b1b002336fae1cd2104354890fd9b054a2f4e28bf4f72c234da60e`
 
 This is the executable CIRP / Quantum Ubuntu / QEGT / Murmuration governance layer.
 
