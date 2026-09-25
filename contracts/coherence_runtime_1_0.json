@@ -1,5 +1,5 @@
 {
-  "contract_sha256": "c00731fba841bd88a34cb05e251db57a0f489aa08b1b55984f551ed0cd67d7fa",
+  "contract_sha256": "25f2601486debf9421bf5fac49e9fc0e5688cf9978ef05909d7cc71263761538",
   "contract": {
     "contract_code": "CIRP-COHERENCE-RUNTIME-1.0",
     "title": "Coherence, Runtime 1.0",
@@ -68,19 +68,18 @@
     },
     "runtime": {
       "states": [
-        "RUN",
-        "HALT_UBUNTU",
-        "MURMURATION_RESCUE",
-        "REVERIFY",
-        "SAFE_HALT"
+        "COHERENT",
+        "RESCUE",
+        "RECONCILING"
       ],
-      "initial_state": "RUN",
-      "violation_transition": "RUN → HALT_UBUNTU → MURMURATION_RESCUE",
-      "reentry_transition": "MURMURATION_RESCUE → REVERIFY → RUN",
-      "failed_repair_transition": "MURMURATION_RESCUE → SAFE_HALT",
+      "initial_state": "COHERENT",
+      "violation_transition": "COHERENT → RESCUE",
+      "repair_transition": "RESCUE → RECONCILING",
+      "reentry_transition": "RECONCILING → COHERENT after fresh verified consent + Ubuntu + QEGT PASS",
+      "failed_repair_transition": "remain RESCUE",
       "fail_closed": true,
-      "consequential_actions_blocked_while_halted": true,
       "evidence_preserved": true,
+      "human_gate": "Required for consequential repairs and always permitted to halt.",
       "automatic_repair_scope": [
         "recompute witnesses",
         "refresh route/provenance reads",
@@ -90,12 +89,9 @@
       "automatic_repair_prohibited": [
         "delete incident evidence",
         "rewrite consent",
-        "self-replicate",
-        "evade shutdown",
         "expand privileges",
         "modify external systems without existing authorization"
-      ],
-      "human_gate": "Required for consequential repairs and always permitted to halt."
+      ]
     },
     "murmuration": {
       "role": "bounded rescue and recombination witness",
@@ -110,6 +106,18 @@
     "openai": {
       "binding": "OPENAI_API_KEY",
       "secret_policy": "Never store raw API keys in source, contract JSON, Notion, Drive, database rows, logs, or client-side code."
+    },
+    "root_binding": {
+      "contract_id": "CIRP-COHERENCE-RUNTIME-1.0",
+      "contract_digest": "3804f50da447b6abb9fc9c4bfc60aecd43f6467842e65b0db953afc6e0f59b76",
+      "root_table": "public.coherence_contracts",
+      "runtime_state_table": "public.coherence_runtime_state",
+      "root_states": [
+        "COHERENT",
+        "RESCUE",
+        "RECONCILING"
+      ],
+      "meaning": "This implementation extends the existing top-tier Coherence Runtime contract rather than replacing it."
     }
   }
 }
