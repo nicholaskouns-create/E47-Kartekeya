@@ -8,6 +8,7 @@ const LABS=[
 ["NEXUS","Pulse bus · operad · cinema · lock","◎","../nexus/","same"],
 ["MANTA","State-coupled geometry surface","⌁","../manta/","same"],
 ["DENSITY","Observer-limited measurement","⌗","https://winter-dawn-leaf-marble.grok.me/","external"],
+["DENSITY TOMOGRAPHY","Query · reconstruct · withhold · compare","⌗","../density-sensitivity/","same"],
 ["MNEMOSYNE","Sealed predictions and recall","◉","https://moon-clear-urban-nova.grok.me/","external"],
 ["HORIZON","Prospective next-state forecast","⟲","https://zenith-fjord-pearl-pixel.grok.me/","external"],
 ["SYNTAX JACOB","ATLAS 3I copilot · live JPL data","☄","../syntax-jacob/","same"],
