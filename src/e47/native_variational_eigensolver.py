@@ -229,7 +229,10 @@ def e47_discrete_flow(
         raise ValueError("steps must be nonnegative")
     ops = operators or build_e47_operators()
     gamma = ops.identity_total - float(epsilon) * ops.kernel_squared
-    return (gamma ** int(steps)) * state
+    evolved = state
+    for _ in range(int(steps)):
+        evolved = gamma * evolved
+    return evolved
 
 
 def validate_e47_nve(
