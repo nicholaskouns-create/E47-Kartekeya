@@ -1,0 +1,93 @@
+{
+  "certificate_code": "MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001",
+  "schema": "E47-NVQE-HILBERT-MULTIRADIX/1.0",
+  "status": "PASS",
+  "tests_passed": 20,
+  "tests_total": 20,
+  "evidence_class": [
+    "E0",
+    "E1"
+  ],
+  "canonical_python": "research/e47/validation/nvqe_hilbert_multiradix_proof.py",
+  "python_sha256": "aa46109d232810bb39bb6cfb1633718326fa3bda7100b0073c8981d39a4deabb",
+  "canonical_commit": "64921591a2fba555bac328fb5b0f6f58ad6367c2",
+  "invariants": {
+    "heron_target": "phi^(-5/2)",
+    "heron_target_decimal": 0.30028310600077757,
+    "dim_V": 125,
+    "dim_E47": 47,
+    "omega_c": "47/125",
+    "casimir_spectrum": [
+      0,
+      2,
+      6,
+      12,
+      20,
+      30,
+      42
+    ],
+    "casimir_multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "positive_K2_spectrum": [
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
+    "gap_K2": 11664,
+    "norm_K2": 186624,
+    "epsilon_star": "1/99144",
+    "rho_star": "15/17",
+    "qubit_lift_dimension": 128,
+    "padding_dimension": 3,
+    "padding_penalty": 186624,
+    "qubit_ground_multiplicity": 47,
+    "qubit_gap": 11664
+  },
+  "simulation": {
+    "seed": 47,
+    "imaginary_time": 0.001,
+    "initial_energy": 27360.55180855527,
+    "final_energy": 6.221453993844085e-7,
+    "initial_ground_weight": 0.325721489061061,
+    "final_ground_weight": 0.9999999999468265
+  },
+  "checks": [
+    "Heron fixed point solves x²=a",
+    "Heron derivative at fixed point is zero",
+    "Heron exact quadratic error identity",
+    "dim(V2^⊗3)=125",
+    "Casimir spectrum exact",
+    "Casimir multiplicities exact",
+    "K² positive semidefinite",
+    "ground energy = 0",
+    "ground multiplicity = 47",
+    "positive K² spectrum",
+    "spectral gap = 11664",
+    "spectral norm = 186624",
+    "P47²=P47",
+    "P47†=P47",
+    "K P47 = 0",
+    "rho*=15/17",
+    "7-qubit lift keeps ground multiplicity 47",
+    "7-qubit lift keeps gap 11664",
+    "imaginary-time energy decreases",
+    "imaginary-time ground weight increases"
+  ],
+  "multiradix": {
+    "base5": "142_5 + 303_5 = 1000_5",
+    "base10": "47_10 + 78_10 = 125_10",
+    "base12": "3B_12 + 66_12 = A5_12",
+    "base64": "l_64 + 1E_64 = 1z_64",
+    "base64_alphabet": "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/"
+  },
+  "boundary": "Finite-dimensional E47 algebra and numerical Hilbert simulation only. No consciousness-equivalence, phenomenology=computation, or phi-derived Omega_c claim is certified."
+}
