@@ -1,128 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#080b0d" />
-<meta name="description" content="Mathematical City visualizer portal for E47 research instruments." />
-<title>Visualizer Portal | Mathematical City</title>
-<style>
-:root{--bg:#080b0d;--panel:#0d1215;--panel2:#11181c;--line:#243138;--fg:#edf1ed;--muted:#8d9ba0;--faint:#5f6e73;--live:#63d7cf;--mint:#b9e6c8;--bronze:#bc9c6c;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--display:Georgia,"Times New Roman",serif}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:var(--sans)}body{overflow:hidden}a{color:inherit}button{font:inherit}.top{height:58px;display:flex;align-items:center;gap:12px;padding:8px 12px;border-bottom:1px solid var(--line);background:rgba(8,11,13,.97);backdrop-filter:blur(14px)}.sigil{width:32px;height:32px;border:1px solid var(--live);border-radius:50%;display:grid;place-items:center;color:var(--live);font:9px var(--mono);flex:0 0 auto}.brand{min-width:0}.brand strong{display:block;font:600 10px var(--mono);letter-spacing:.14em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.brand small{display:block;margin-top:2px;color:var(--muted);font:8px var(--mono);letter-spacing:.08em}.actions{margin-left:auto;display:flex;gap:6px;align-items:center}.actions a,.actions button{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);text-decoration:none;padding:7px 9px;font:8px var(--mono);cursor:pointer;white-space:nowrap}.actions a:hover,.actions button:hover{border-color:#3b5b5d;color:var(--live)}.actions .primary{border-color:#315a59;color:var(--live)}.layout{height:calc(100vh - 58px);display:grid;grid-template-columns:218px minmax(0,1fr)}.rail{border-right:1px solid var(--line);background:#0a0e10;overflow:auto;padding:10px}.rail-head{padding:8px 9px 12px;color:var(--faint);font:8px var(--mono);letter-spacing:.15em;text-transform:uppercase}.rail button{width:100%;display:grid;grid-template-columns:26px 1fr;gap:8px;text-align:left;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--muted);padding:9px;cursor:pointer}.rail button:hover{background:var(--panel);color:var(--fg)}.rail button.active{border-color:#315a59;background:var(--panel2);color:var(--fg)}.rail .n{font:8px var(--mono);color:var(--faint);padding-top:2px}.rail .name{font:600 9px var(--mono);letter-spacing:.08em}.rail .role{display:block;margin-top:3px;color:var(--faint);font:7px var(--mono);text-transform:uppercase}.workspace{min-width:0;display:grid;grid-template-rows:auto minmax(0,1fr);background:#050708}.meta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end;padding:16px 18px 13px;border-bottom:1px solid var(--line);background:var(--panel)}.eyebrow{color:var(--live);font:8px var(--mono);letter-spacing:.16em;text-transform:uppercase}.meta h1{margin:4px 0 3px;font:500 clamp(26px,3vw,42px)/1 var(--display);letter-spacing:-.025em}.question{margin:0;color:#b0b9bb;font:italic 14px/1.45 var(--display)}.meta-right{text-align:right}.role-pill{display:inline-block;border:1px solid #315a59;border-radius:999px;color:var(--mint);padding:6px 8px;font:8px var(--mono);text-transform:uppercase;letter-spacing:.08em}.detail{display:none;margin-top:8px;max-width:560px;color:var(--muted);font:10px/1.5 var(--mono)}body.details .detail{display:block}.viewport{position:relative;min-height:0}.viewport iframe{display:block;width:100%;height:100%;border:0;background:#050708}.frame-note{display:none}.frame-note b{color:var(--mint)}.actions a,.actions button,.rail button{min-height:36px;touch-action:manipulation}
-@media(max-width:800px){
-html,body{height:100dvh;overflow:hidden;overflow-x:clip}
-.top{position:relative;z-index:10;height:48px;min-height:48px;flex-wrap:nowrap;padding:6px 8px;padding-top:max(6px,env(safe-area-inset-top))}
-.actions{width:auto;margin-left:auto;overflow:auto;padding-bottom:0;gap:6px;flex-wrap:nowrap}
-.actions a,.actions button{min-height:36px;padding:0 10px;font-size:10px;display:inline-flex;align-items:center}
-.layout{height:calc(100dvh - 48px);min-height:0;display:grid;grid-template-rows:44px minmax(0,1fr);grid-template-columns:1fr}
-.rail{display:flex;gap:6px;border-right:0;border-bottom:1px solid var(--line);overflow:auto;padding:6px;position:relative;top:auto;z-index:1;height:44px}
-.rail-head{display:none}
-.rail button{width:auto;min-width:auto;min-height:32px;grid-template-columns:16px 1fr;padding:4px 8px}
-.rail .name{font-size:10px}
-.rail .role{display:none}
-.workspace{min-height:0;height:100%;grid-template-rows:minmax(0,1fr)}
-.meta{display:none}
-.viewport{min-height:0;height:100%}
-.viewport iframe{width:100%;height:100%;min-height:0}
-.frame-note{display:none}
-}
-@media(max-width:520px){.brand small{display:none}.actions a,.actions button{padding:0 8px;font-size:10px}}
-</style>
-
-<style id="city-touch">
-html,body{overflow-x:clip}
-button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-button:not(:disabled),a[href],[role=button]{cursor:pointer}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=../instruments/">
+<title>Legacy route retired · The Mathematical City</title>
+<script>location.replace('../instruments/');</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#070a0c;color:#eef4f2;font:16px Helvetica,Arial,sans-serif}main{max-width:640px;padding:32px}a{color:#63d9d0}</style>
 </head>
-<body>
-<header class="top">
-  <div class="sigil">47</div>
-  <div class="brand"><strong>VISUALIZER PORTAL</strong><small>MATHEMATICAL CITY · E47</small></div>
-  <div class="actions">
-    <a href="../../index.html#labs">CITY</a>
-    <a class="primary" href="../kouns-core/?module=eidolon#flight">CITY CORE</a>
-    <button id="details">DETAILS</button>
-    <a id="original" class="primary" href="#" target="_blank" rel="noopener noreferrer">OPEN ↗</a>
-  </div>
-</header>
-<div class="layout">
-  <nav class="rail" id="rail" aria-label="Visualizer districts"><div class="rail-head">Research instruments</div></nav>
-  <main class="workspace">
-    <section class="meta">
-      <div>
-        <div class="eyebrow" id="eyebrow">VISUALIZER · STRUCTURE</div>
-        <h1 id="title">SPECTRA</h1>
-        <p class="question" id="question">What structure is there?</p>
-        <p class="detail" id="description"></p>
-      </div>
-      <div class="meta-right"><span class="role-pill" id="role">Structure</span></div>
-    </section>
-    <section class="viewport">
-      <iframe id="viewer" title="Research visualizer" allow="fullscreen; gamepad; accelerometer; gyroscope; clipboard-read; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      <div class="frame-note"><b>City shell:</b> the source visualizer is preserved unchanged. Use OPEN ORIGINAL if the provider blocks embedded viewing.</div>
-    </section>
-  </main>
-</div>
-<script>
-const PARADIGM='https://monarch-sky-daisy-civic.grok.me/';
-const LABS=[
-{id:'spectra',name:'SPECTRA',role:'Structure',q:'What structure is there?',desc:'Inspect spectra, modes and invariant structure before interpretation.',url:'https://prairie-dream-glow-fire.grok.me/'},
-{id:'fold',name:'Fold',role:'Invariance',q:'What survives transformation?',desc:'Explore contraction geometry and what remains stable under transformation.',url:'https://giant-beacon-dawn-falcon.grok.me/'},
-{id:'murmuration',name:'Murmuration',role:'Dynamics',q:'How does structure move?',desc:'Watch many-body organization, topology and collective motion.',url:'https://kite-glade-tiger-cabin.grok.me/'},
-{id:'mnemosyne',name:'Mnemosyne',role:'Memory',q:'What did we know, and when?',desc:'Trace provenance, hashes, correction lineage and sealed forecasts.',url:'https://moon-clear-urban-nova.grok.me/'},
-{id:'density',name:'Density',role:'Measurement',q:'What can observation reconstruct?',desc:'Probe reconstruction from incomplete or noisy measurements.',url:'https://winter-dawn-leaf-marble.grok.me/'},
-{id:'horizon',name:'Horizon',role:'Prediction',q:'What invariant comes next?',desc:'Prospective and retrospective forecasting instruments with evidence boundaries intact.',url:'https://zenith-fjord-pearl-pixel.grok.me/'},
-{id:'wave',name:'Wave',role:'Flow',q:'How does coherent structure evolve?',desc:'Field and flow simulation surfaces, including WaveForge-related work.',url:'https://apex-star-crisp-blend.grok.me/'},
-{id:'identity',name:'Identity',role:'Persistence',q:'What remains the same?',desc:'Follow identity through change, transport and representation.',url:'https://mist-mint-branch-nova.grok.me/'},
-{id:'build',name:'BUILD',role:'Construction',q:'How does structure assemble?',desc:'Construction and programmable-matter style experiments around invariant targets.',url:'https://brave-ivory-pearl-ever.grok.me/'},
-{id:'soar',name:'SOAR',role:'Restoration',q:'Can an invariant be restored?',desc:'Control, recovery, transformation and restoration experiments.',url:'https://topaz-solar-iris-drift.grok.me/'},
-{id:'scalar',name:'SCALAR',role:'Field',q:'What scalar field survives the algebra?',desc:'Finite E47 spectral structure lifted into explicitly visualization-typed scalar-field scenes.',url:'https://heart-eagle-blade-hazel.grok.me/'},
-{id:'invarifold',name:'InvariFold',role:'Protein Cinema',q:'How does Fold expose geometry?',desc:'A cinematic geometry layer for the Fold instrument and deterministic payloads.',url:'https://giant-beacon-dawn-falcon.grok.me/'}
-];
-function paradigmSrc(lab){
-  const u=new URL(PARADIGM);
-  u.searchParams.set('lab', lab.id);
-  u.searchParams.set('district', lab.role.toLowerCase());
-  u.hash=lab.id;
-  return u.href;
-}
-const rail=document.getElementById('rail');
-const viewer=document.getElementById('viewer');
-const title=document.getElementById('title');
-const role=document.getElementById('role');
-const question=document.getElementById('question');
-const description=document.getElementById('description');
-const eyebrow=document.getElementById('eyebrow');
-const original=document.getElementById('original');
-let active='spectra';
-function renderRail(){
-  rail.querySelectorAll('button').forEach(x=>x.remove());
-  LABS.forEach((lab,i)=>{
-    const b=document.createElement('button');
-    b.type='button';b.dataset.id=lab.id;
-    b.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span><span><span class="name">${lab.name}</span><span class="role">${lab.role}</span></span>`;
-    b.addEventListener('click',()=>select(lab.id,true));rail.appendChild(b);
-  });
-}
-function select(id,push=false){
-  const lab=LABS.find(x=>x.id===id)||LABS[0];active=lab.id;
-  title.textContent=lab.name;role.textContent=lab.role;question.textContent=lab.q;description.textContent=lab.desc;
-  eyebrow.textContent=`VISUALIZER · ${lab.role.toUpperCase()}`;
-  original.href=lab.url;
-  viewer.src=paradigmSrc(lab);
-  viewer.title=`${lab.name} · SKYRMION paradigm interface`;
-  document.title=`${lab.name} | Visualizer Portal`;
-  rail.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.id===lab.id));
-  if(push){const u=new URL(location.href);u.searchParams.set('lab',lab.id);history.pushState({lab:lab.id},'',u)}
-}
-document.getElementById('details').addEventListener('click',()=>{document.body.classList.toggle('details');document.getElementById('details').textContent=document.body.classList.contains('details')?'HIDE DETAILS':'DETAILS'});
-window.addEventListener('popstate',()=>select(new URLSearchParams(location.search).get('lab')||'spectra'));
-window.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const i=LABS.findIndex(x=>x.id===active);const d=e.key==='ArrowRight'?1:-1;select(LABS[(i+d+LABS.length)%LABS.length].id,true)});
-renderRail();select(new URLSearchParams(location.search).get('lab')||'spectra');
-</script>
-<script type="module">
-import {installInstrumentTelemetry} from "../shared/instrument-telemetry.js";
-installInstrumentTelemetry({componentId:"visualizers",version:"0.1.0"});
-</script>
-</body>
+<body><main><h1>Legacy visualizer route retired.</h1><p>The old Mini AI Labs renderer is no longer part of the active City.</p><p><a href="../instruments/">Open the current instrument portal →</a></p></main></body>
 </html>
