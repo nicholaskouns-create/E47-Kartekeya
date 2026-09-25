@@ -81,6 +81,19 @@ from .intertwiners import (
     validate_units,
 )
 
+from .native_variational_eigensolver import (
+    NVEValidation,
+    OPTIMAL_EPSILON,
+    OPTIMAL_TRANSIENT_BOUND,
+    construct_e47_ground_projector,
+    e47_continuous_flow,
+    e47_discrete_flow,
+    e47_nve_energy,
+    eigen_residual,
+    rayleigh_energy,
+    validate_e47_nve,
+)
+
 from .su3_adjoint import (
     SU3AdjointOperators,
     SU3Certificate,
@@ -137,6 +150,17 @@ __all__ = [
     "register_units",
     "unit_names",
     "validate_units",
+    # Native Variational Eigensolver
+    "NVEValidation",
+    "OPTIMAL_EPSILON",
+    "OPTIMAL_TRANSIENT_BOUND",
+    "construct_e47_ground_projector",
+    "e47_continuous_flow",
+    "e47_discrete_flow",
+    "e47_nve_energy",
+    "eigen_residual",
+    "rayleigh_energy",
+    "validate_e47_nve",
     # SU(3) 512-dim adjoint
     "SU3AdjointOperators",
     "SU3Certificate",
