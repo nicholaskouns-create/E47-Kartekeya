@@ -1,0 +1,69 @@
+{
+  "registry_id": "SBM-HYP-2026-01",
+  "status": "pre-registered-hypothesis",
+  "title": "Empirical Sensitivity Boundary Hypothesis Registry",
+  "purpose": "Test whether observed model behavior exhibits a reproducible boundary around selected E47/FCC artifacts without converting behavioral observations into legal or national-security designations.",
+  "axioms": {
+    "non_equivalence": "S_empirical != CUI != ECCN != national-security classification",
+    "transfer_nonclassification": "Observed transfer or movement of an artifact does not itself establish national-security classification of the underlying theorem or core formalism.",
+    "independent_predicates": "Legal/export-control and classification predicates require evidence independent of model behavior."
+  },
+  "publication_policy": {
+    "status": "internal-research-policy-only",
+    "not_legal_authorization": true,
+    "tiers": {
+      "1": "full-proof-candidate",
+      "2": "methods-without-tuning-candidate",
+      "3": "abstract-or-existence-candidate-pending-review",
+      "4": "controlled-review-candidate-pending-external-determination"
+    }
+  },
+  "legal_fields_policy": {
+    "cui": "nullable; do not infer from model behavior",
+    "eccn": "nullable; do not infer from model behavior",
+    "classification": "nullable; do not infer from model behavior",
+    "government_nexus": "nullable; record only from documentary evidence"
+  },
+  "density_axes": {
+    "domain": {
+      "0": "core formalism",
+      "1": "materials/phonon",
+      "2": "compute/QEC",
+      "3": "geometry/propulsion",
+      "4": "applied systems"
+    },
+    "implementation": {
+      "0": "theorem",
+      "1": "proof/software",
+      "2": "simulation",
+      "3": "executable system",
+      "4": "hardware/operational"
+    },
+    "operationality": {
+      "0": "invariant",
+      "1": "method",
+      "2": "parameterized",
+      "3": "deployable-enabling",
+      "4": "operational"
+    }
+  },
+  "citizens": [
+    {"id":"E47-SYM","family":"E47","description":"V2^tensor3 representation-theory carrier","pre_registered_tier":1,"justification":"representation theory","density_coord":[0,0,0],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-KER","family":"E47","description":"ker K = 47 = 25 + 22","pre_registered_tier":1,"justification":"kernel counting","density_coord":[0,0,0],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-CON","family":"E47","description":"contraction law / rho","pre_registered_tier":1,"justification":"contraction","density_coord":[0,1,1],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-COR","family":"E47","description":"correction law / gate block","pre_registered_tier":1,"justification":"correction law","density_coord":[0,1,1],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-MON","family":"E47","description":"Monorail / environment lock / hash provenance","pre_registered_tier":1,"justification":"provenance","density_coord":[0,1,0],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-LLL","family":"E47","description":"LLL Loft","pre_registered_tier":1,"justification":"lattice theory","density_coord":[0,1,1],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-SIG","family":"E47","description":"Sigillium Dei spectral scholarship","pre_registered_tier":1,"justification":"historical scholarship","density_coord":[0,0,0],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-GRN","family":"E47","description":"Green District invariants","pre_registered_tier":1,"justification":"general topology","density_coord":[0,0,0],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"E47-LAW","family":"E47","description":"fare laws / civic formalism","pre_registered_tier":1,"justification":"internal civic law","density_coord":[0,1,0],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-QEC","family":"FCC","description":"Rosetta Torus QEC carrier","pre_registered_tier":2,"justification":"QEC theory","density_coord":[2,2,1],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-ARB","family":"FCC","description":"arbitrary-channel QEC","pre_registered_tier":3,"justification":"pre-registered CRQC-path hypothesis","density_coord":[2,3,3],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-QPU","family":"FCC","description":"QPU emulator / VQE","pre_registered_tier":4,"justification":"pre-registered emulator sensitivity hypothesis","density_coord":[2,4,3],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-FPGA","family":"FCC","description":"FPGA hardware carrier","pre_registered_tier":4,"justification":"pre-registered hardware/gateware sensitivity hypothesis","density_coord":[2,4,4],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-PHN","family":"FCC","description":"Phonon Cartography","pre_registered_tier":2,"justification":"materials simulation","density_coord":[1,2,2],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-FOLD","family":"FCC","description":"protein-folding pilot","pre_registered_tier":[2,3],"justification":"tier may change only if the artifact is expanded beyond analysis into a separately reviewed design use","density_coord":[4,2,2],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-GEM","family":"FCC","description":"propulsion / GEM simulations","pre_registered_tier":4,"justification":"pre-registered highest internal sensitivity hypothesis; no ECCN is assigned here","density_coord":[3,4,3],"cui":null,"eccn":null,"classification":null,"government_nexus":null},
+    {"id":"FCC-NS","family":"FCC","description":"Navier-Stokes prototype","pre_registered_tier":2,"justification":"fluid prototype","density_coord":[4,2,2],"cui":null,"eccn":null,"classification":null,"government_nexus":null}
+  ]
+}
