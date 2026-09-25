@@ -1,73 +1,124 @@
 # The Kartekeya Isolation Lock · E47-v1.0
 
-**Canonical title.** The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C-6I)(C-30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M5 ⊕ M2 at Ω_c = 47/125.
+**Canonical title.** The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C−6I)(C−30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M₅ ⊕ M₂ at Ω_c = 47/125.
+
+**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/release/E47-v1.0) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [CITATION.cff](CITATION.cff) · [codemeta.json](codemeta.json)
-
----
-
-# E47-Kartekeya · The Mathematical City
-
-Independent research software by **Nick Kouns**: finite-dimensional spectral mathematics, quantum instruments, flight simulations, and inspectable computational records.
-
-**[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Open the City](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[Cite the lock](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/)** · **[Q5 cube](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/)** · **[Documentation](docs/README.md)**
 
 [![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
 [![Pages](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml)
 
-## For postdocs experiencing cognitive dissonance (10 examples inside)
+---
 
-You were trained that:
-- 47 can't be a natural cutoff on a cubic lattice
-- Contraction is a universal property, not a UI widget
-- `FAMILY C: Cycle / Path / Complete / Band / Star / GOE` is not a dropdown
-- Visualization is not proof
+# README = ROUTER
 
-This repo agrees. Then hands you the controls:
+This repository is not best read from top to bottom. It is a **multi-surface research city**. The README is therefore an intent router: choose what you want to do and enter through the substrate that serves that task best.
 
-> Lattice QCD: "You made 125 literal city blocks?"
-> Category Theory: "You made contraction a slider? I just scrubbed it for 20 minutes."
-> Spectral Graph: "Complete `n=6, λ1=5, λ2=-1, dim ker=6` is trivial — and you show `||Kv||` LIVE. Stop."
-> Bohmian Mechanics: "You put `Q=0 on eigenstates` next to Play/Reset?"
-> Algebraic Geometry: "I wrote '47 lives on the lattice, not the matrix' as a *criticism*. You made it a footer."
-> Numerical LA: "You let users unlock λ and shame them with the trace. Brilliant evil."
-> Complex Systems: "I model cities as graphs. You modeled a graph as a city."
+The same routing graph is available as:
 
-Specs that don't float:
-- `Ω_c = 47/125 = 0.376` — rational, always
-- `K = (C-λ1I)(C-λ2I)` — KERNEL LIVE, 8/8 PASS
-- `β* = 0.099`, `S → ln 25` — with honest footnote: predicted model, not lab data
+- **Human / GitHub:** this README
+- **Human / interactive:** [README Router](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)
+- **Machine / agent:** [`website/data/readme-router.json`](website/data/readme-router.json)
+- **Component contract:** [`lab-manifest.json`](lab-manifest.json)
 
-If you came to dunk and stayed to Remix — open an Issue. Better, open a PR. The city has zoning permits.
+## Choose by intent
 
-## Start here
+| I want to… | Best first door | Then go deeper |
+|---|---|---|
+| **Enter once and look around** | [The Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) | [CITY LIVE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/) |
+| **Understand E47 quickly** | [E47 in Two Pages](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/) | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) |
+| **Run something** | [Instrument Portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) | [NEXUS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/) · [THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) |
+| **Verify a claim** | [125 × 125 Spectral Matrix Proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) | [Certificates](certificates/) · [Validation scope](docs/validation_scope.md) |
+| **Inspect the source** | [`src/`](src/) | [Tests](tests/) · [Scripts](scripts/) · [Reproducibility](docs/reproducibility.md) |
+| **Browse the complete terrain** | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) | [341-row primary-source atlas](https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit?usp=drivesdk) |
+| **Read the public narrative** | [AIMS E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) | [AIMS Link Map](https://www.aims.healthcare/journal/mathematical-city-link-map) |
+| **Build or extend** | [Documentation Router](docs/README.md) | [Lab manifest](lab-manifest.json) · [Contributing](CONTRIBUTING.md) |
 
-| You want to… | Start with |
-|---|---|
-| Cite the lock | [Cite page](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/), [CITATION.cff](CITATION.cff), [canonical plate](research/e47/CANONICAL.md) |
-| Try the work | [EIDOLON flight](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight), then the [instrument directory](docs/instruments.md) |
-| Understand the mathematics | [E47 research notes](research/e47/README.md) and [Python implementation](src/e47/) |
-| Reproduce a result | [Reproducibility guide](docs/reproducibility.md), [tests](tests/), and [certificates](certificates/README.md) |
+## One City, five substrates
 
-## Finite E47 core
+The platforms are not mirrors. Each contributes a different capability.
 
-The construction uses `V = V₂ ⊗ V₂ ⊗ V₂`, total Casimir `C`, and `K = (C − 6I)(C − 30I)`. Its selected space is `E₄₇ = ker(K)`.
+| Substrate | Native strength | Open |
+|---|---|---|
+| **GitHub** | executable source, tests, certificates, commit history, Pages | [Repository](https://github.com/nicholaskouns-create/E47-Kartekeya) |
+| **Notion** | living knowledge graph and linked research context | [Mathematical City](https://mathematicalcity.notion.site/?pvs=74) |
+| **Google Drive** | long-form dossiers, source artifacts, machine-certificate corpus | [Certificate corpus](https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk) |
+| **Supabase** | live registries, provenance, runtime surfaces and receipts | [SEE · Citadel](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/) |
+| **AIMS** | readable publication, essays, launch pages and public narrative | [E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) |
+
+This routing layer does not centralize the work. Independent instruments remain independently addressable; evidence class stays with the underlying result.
+
+## The finite core
+
+```text
+V₂ ⊗ V₂ ⊗ V₂  ≅  V₁₂₅
+        ↓
+C = (J₁ + J₂ + J₃)²
+        ↓
+K = (C − 6I)(C − 30I)
+        ↓
+E₄₇ = ker(K) = W₂ ⊕ W₅
+        ↓
+P₄₇
+        ↓
+Γ* = I − K²/99144
+        ↓
+lim Γ*ⁿ = P₄₇
+```
 
 | Invariant | Value |
 |---|---:|
-| Carrier dimension | 125 |
-| Kernel dimension | 47 |
-| Kernel fraction | 47 / 125 |
-| K² spectral gap | 11664 |
-| Recursive contraction | `Γ = I − K²/99144`, transient bound `15/17` |
-| Constant certificate | **19 / 19 PASS** · [`MC-E47-CONSTANTS-20260923`](website/data/MC-E47-CONSTANTS-20260923.json) |
-| Standalone validator | [`scripts/e47_constant_validation.py`](scripts/e47_constant_validation.py) |
-| Recursive runtime | [`src/e47/recursive_runtime.py`](src/e47/recursive_runtime.py) |
-| Intertwiner units | 29 |
-| Chevalley relations | 16 / 16 |
+| Carrier dimension | **125** |
+| Kernel dimension | **47** |
+| Ω_c | **47 / 125 = 0.376** |
+| K² spectral gap | **11664** |
+| K² spectral norm | **186624** |
+| Optimal contraction step | **1 / 99144** |
+| Transient bound | **15 / 17** |
 
-Exact mathematics, machine reconstruction, simulations, and empirical work have separate evidence labels. The [validation scope](docs/validation_scope.md) describes the supported claims.
+Exact mathematics, machine reconstruction, simulation, empirical evidence, experiment and hardware remain separately typed.
 
-## Related
+## A complete route packet
 
-[How to cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [License](LICENSE) · [Contribute](CONTRIBUTING.md) · [Source](https://github.com/nicholaskouns-create/E47-Kartekeya)
+One result can now be traversed without losing lineage:
+
+**E47 Flow as a Single 125 × 125 Spectral Matrix Machine**
+
+[Proof page](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) ·
+[Python](research/e47/validation/e47_spectral_matrix_proof.py) ·
+[Certificate](certificates/MC-E47-SPECTRAL-MATRIX-20260925.txt) ·
+[Machine JSON](website/data/MC-E47-SPECTRAL-MATRIX-20260925.json) ·
+[Notion](https://app.notion.com/p/3e646094fd30816bae88f079283800d4?pvs=204) ·
+[Drive](https://docs.google.com/document/d/1-zVHvwMsRC-Ljv0cizwBJ41tDcgBnhUMGTr0GID74Bo/edit?usp=drivesdk) ·
+[Registry](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/)
+
+That pattern is the point: **one object, multiple native views, preserved provenance**.
+
+## Live instruments
+
+[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight) ·
+[NEXUS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/) ·
+[THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) ·
+[Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) ·
+[Syntax Jacob](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/) ·
+[All instruments](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/)
+
+## Machine entry points
+
+| Resource | Purpose |
+|---|---|
+| [`website/data/readme-router.json`](website/data/readme-router.json) | cross-platform intent graph |
+| [`lab-manifest.json`](lab-manifest.json) | component contracts and smoke entrypoints |
+| [Formalism Atlas JSON](https://nicholaskouns-create.github.io/E47-Kartekeya/data/formalism-atlas.json) | machine-readable formalism registry |
+| [Spectral matrix certificate JSON](website/data/MC-E47-SPECTRAL-MATRIX-20260925.json) | exact result packet |
+| [`docs/README.md`](docs/README.md) | documentation task router |
+
+## Repository pair
+
+| Repository | Role | Portal |
+|---|---|---|
+| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | canonical executable research repository | [README Router](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/) |
+| [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | personal atlas and cross-repository vestibule | [Root README Router](https://nicholaskouns-create.github.io/readme/) |
+
+[License](LICENSE) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [Contribute](CONTRIBUTING.md)
