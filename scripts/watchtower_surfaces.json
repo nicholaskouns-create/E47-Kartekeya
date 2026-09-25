@@ -1,15 +1,15 @@
 {
   "schema": "CITY-WATCHTOWER-SURFACES-1.0",
-  "contract": "User-site root and City subpath are distinct public surfaces. Identity is per surface, not one shared title.",
+  "contract": "User-site root and executable City subpath remain distinct public roles even when they share the Mathematical City display identity.",
   "surfaces": [
     {
       "id": "personal-site-root",
       "name": "Personal site root",
       "url": "https://nicholaskouns-create.github.io/",
       "kind": "github-pages-user-root",
-      "identity": "Nicholas Kouns · Personal site",
+      "identity": "The Mathematical City · root atlas vestibule",
       "must_contain": [
-        "Nicholas Kouns · Personal site",
+        "The Mathematical City",
         "/E47-Kartekeya/"
       ],
       "points_to": "executable-city"
@@ -37,7 +37,9 @@
       "name": "EIDOLON · bound City shell",
       "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/",
       "kind": "github-pages-project-subpath",
-      "must_contain": ["EIDOLON"]
+      "must_contain": [
+        "EIDOLON"
+      ]
     },
     {
       "id": "eidolon-source-app",
@@ -51,8 +53,13 @@
       "name": "EIDOLON · flight-shell binding",
       "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/flight-shell.js",
       "kind": "github-pages-project-subpath",
-      "must_contain": ["aetheris-flight-binding.js"],
-      "retry": { "attempts": 24, "delay_ms": 5000 }
+      "must_contain": [
+        "aetheris-flight-binding.js"
+      ],
+      "retry": {
+        "attempts": 24,
+        "delay_ms": 5000
+      }
     }
   ]
 }
