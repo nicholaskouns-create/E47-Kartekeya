@@ -18,20 +18,20 @@
     "rho_star": "15/17"
   },
   "summary": {
-    "live_records": 94,
+    "live_records": 96,
     "id_range": [
       1,
-      97
+      99
     ],
     "missing_ids": [
       54,
       55,
       56
     ],
-    "canonical_records": 46,
+    "canonical_records": 47,
     "status_counts": {
-      "Exact / computationally verified": 33,
-      "Structural formalism": 25,
+      "Exact / computationally verified": 34,
+      "Structural formalism": 26,
       "Conditional / open": 27,
       "Engineering / speculative": 9
     },
@@ -39,7 +39,7 @@
       "Core algebra": 16,
       "Invariant grammar": 11,
       "Numerical / spatial": 13,
-      "Quantum information": 10,
+      "Quantum information": 12,
       "Propulsion / GEM": 5,
       "Scalar / spectral": 5,
       "Geodesic / metric": 3,
@@ -2831,6 +2831,100 @@
       "tests": [],
       "certificates": [],
       "implementations": []
+    },
+    {
+      "id": 98,
+      "key": "FRM-98",
+      "formalism": "Native Variational Quantum Eigensolver — Error-Corrected Hilbert-Space Scaffold",
+      "domain": "Quantum information",
+      "claim_status": "Structural formalism",
+      "canonical": false,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python"
+      ],
+      "evidence_band": "OPEN_STRUCTURAL",
+      "last_reviewed": "2026-09-25",
+      "summary": "Corrected N-VQE scaffold: the Heron map is classical with fixed point φ^(-5/2); quantum status requires an explicit Hilbert space and self-adjoint Hamiltonian. Restricted-ansatz stationarity does not imply an eigenstate, and generic descent does not imply global convergence.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/native_variational_eigensolver_corrected.md"
+        },
+        {
+          "role": "drive",
+          "url": "https://docs.google.com/document/d/1UV1q1PtbaeyIJyj85oaf940ya9HeV8yky92riv_ZHc0/edit"
+        },
+        {
+          "role": "notion",
+          "url": "https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb?pvs=204"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [],
+      "dependencies": [
+        "FRM-4"
+      ],
+      "tests": [
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
+      ],
+      "implementations": [
+        "src/e47/native_variational_eigensolver.py",
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
+      ]
+    },
+    {
+      "id": 99,
+      "key": "FRM-99",
+      "formalism": "E47 Native Variational Quantum Eigensolver — K² Ground-Space and 7-Qubit Lift",
+      "domain": "Quantum information",
+      "claim_status": "Exact / computationally verified",
+      "canonical": true,
+      "current": true,
+      "modalities": [
+        "Proof",
+        "Symbolic",
+        "Python",
+        "QuTiP"
+      ],
+      "evidence_band": "E0/E1 + E2 simulation",
+      "last_reviewed": "2026-09-25",
+      "summary": "Exact Hilbert-space specialization H_N-VQE=K² on V₂^{⊗3}: E(ψ)=||Kψ||²≥0 and Ground(H)=E₄₇, dim 47. The penalized 125→128 statevector lift preserves exactly 47 zero-energy states; deterministic imaginary-time simulation converges into the E47 ground sector.",
+      "sources": [
+        {
+          "role": "primary",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/native_variational_eigensolver_corrected.md"
+        },
+        {
+          "role": "implementation",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/native_variational_eigensolver.py"
+        },
+        {
+          "role": "drive",
+          "url": "https://docs.google.com/document/d/1UV1q1PtbaeyIJyj85oaf940ya9HeV8yky92riv_ZHc0/edit"
+        },
+        {
+          "role": "notion",
+          "url": "https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb?pvs=204"
+        }
+      ],
+      "identity_links": [],
+      "certificates": [
+        "MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001"
+      ],
+      "dependencies": [
+        "FRM-2",
+        "FRM-4"
+      ],
+      "tests": [
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
+      ],
+      "implementations": [
+        "src/e47/native_variational_eigensolver.py",
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
+      ]
     }
   ]
 }
