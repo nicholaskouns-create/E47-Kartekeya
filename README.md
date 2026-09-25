@@ -2,7 +2,7 @@
 
 **Canonical title.** The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C−6I)(C−30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M₅ ⊕ M₂ at Ω_c = 47/125.
 
-**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/release/E47-v1.0) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [CITATION.cff](CITATION.cff) · [codemeta.json](codemeta.json)
 
@@ -123,3 +123,14 @@ That pattern is the point: **one object, multiple native views, preserved proven
 | [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | personal atlas and cross-repository vestibule | [Root README Router](https://nicholaskouns-create.github.io/readme/) |
 
 [License](LICENSE) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [Contribute](CONTRIBUTING.md)
+
+
+## Coherence, Runtime 1.0
+
+[CIRP / Ubuntu / QEGT interface](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/) ·
+[canonical contract](contracts/coherence-runtime-1.0.contract.json) ·
+[RI/PQSPI Python](src/coherence_runtime/ri_pqspi.py) ·
+[Notion](https://app.notion.com/p/3e646094fd3081d9ba71ece2bd3c2b93?pvs=204) ·
+[Drive](https://docs.google.com/document/d/1kRbOFGTHfsuaDXX3nQ5F3q7BNOamTuz5x5JhSlNk5g8/edit?usp=drivesdk)
+
+Root runtime states: `COHERENT → RESCUE → RECONCILING → COHERENT`. The RI/PQSPI module is E1 software / E2 simulation and does not promote stronger physical or consciousness claims.
