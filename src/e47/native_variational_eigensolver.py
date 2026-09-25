@@ -146,14 +146,10 @@ def validate_e47_nve(
     projector = construct_e47_ground_projector(ops, tolerance=tolerance)
     projector_residual = float((ops.kernel_squared * projector).norm())
 
-    gamma = ops.identity_total - OPTIMAL_EPSILON * ops.kernel_squared
-    gamma_eigs = np.real(gamma.eigenenergies())
-    transient = [
-        abs(float(value))
-        for value, k2_value in zip(gamma_eigs, eigenvalues)
-        if abs(float(k2_value)) >= tolerance
-    ]
-    contraction_spectral_radius = max(transient)
+    contraction_spectral_radius = max(
+        abs(1.0 - OPTIMAL_EPSILON * float(value))
+        for value in positive
+    )
 
     checks = {
         "positive_semidefinite": ground_energy >= -tolerance,
