@@ -1,19 +1,19 @@
 const LABS=[
 ["KARTEKEYA","Canonical engine · K · P47 · K²","⬡","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/kartekeya","external"],
-["SPECTRA","Eigenstructure of the same run","〰","https://prairie-dream-glow-fire.grok.me/","external"],
-["FOLD","Tracks what survives transformation","◎","https://giant-beacon-dawn-falcon.grok.me/","external"],
-["MURMURATION","State evolution into collective motion","✦","https://kite-glade-tiger-cabin.grok.me/","external"],
+["SPECTRA","Eigenstructure of the same run","〰","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/spectra/","external"],
+["FOLD","Tracks what survives transformation","◎","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/fold/","external"],
+["MURMURATION","State evolution into collective motion","✦","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/murmuration/","external"],
 ["EIDOLON","Enter the evolving field as observer","◢","../flight/eidolon/","same"],
 ["MANIFOLD","Locked spectral surfaces · Eidolon replay","▣","../manifold/","same"],
 ["NEXUS","Pulse bus · operad · cinema · lock","◎","../nexus/","same"],
 ["MANTA","State-coupled geometry surface","⌁","../manta/","same"],
-["DENSITY","Observer-limited measurement","⌗","https://winter-dawn-leaf-marble.grok.me/","external"],
+["DENSITY","Observer-limited measurement","⌗","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/density/","external"],
 ["DENSITY TOMOGRAPHY","Query · reconstruct · withhold · compare","⌗","../density-sensitivity/","same"],
-["MNEMOSYNE","Sealed predictions and recall","◉","https://moon-clear-urban-nova.grok.me/","external"],
-["HORIZON","Prospective next-state forecast","⟲","https://zenith-fjord-pearl-pixel.grok.me/","external"],
+["MNEMOSYNE","Sealed predictions and recall","◉","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/mnemosyne/","external"],
+["HORIZON","Prospective next-state forecast","⟲","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/horizon/","external"],
 ["SYNTAX JACOB","ATLAS 3I copilot · live JPL data","☄","../syntax-jacob/","same"],
-["WAVEFORGE","Sonify the mathematics","≋","https://garden-moss-cabin-forest.grok.me/","external"],
-["SEE / CITADEL","Coordination · evidence · provenance","♜","https://orbit-coral-delta-fjord.grok.me/","external"]
+["WAVE","Field and flow evolution","≋","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/wave/","external"],
+["SEE / CITADEL","Coordination · evidence · provenance","♜","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/","external"]
 ];
 const labs=document.getElementById("labs"),packet=document.getElementById("packet");
 if(labs){
