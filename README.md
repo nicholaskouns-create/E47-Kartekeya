@@ -2,7 +2,7 @@
 
 **Canonical title.** The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C−6I)(C−30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M₅ ⊕ M₂ at Ω_c = 47/125.
 
-**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/release/E47-v1.0) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [CITATION.cff](CITATION.cff) · [codemeta.json](codemeta.json)
 
@@ -109,6 +109,7 @@ That pattern is the point: **one object, multiple native views, preserved proven
 | Resource | Purpose |
 |---|---|
 | [`website/data/readme-router.json`](website/data/readme-router.json) | cross-platform intent graph |
+| [Route Packet API](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets) | live projection of registered City objects |
 | [`lab-manifest.json`](lab-manifest.json) | component contracts and smoke entrypoints |
 | [Formalism Atlas JSON](https://nicholaskouns-create.github.io/E47-Kartekeya/data/formalism-atlas.json) | machine-readable formalism registry |
 | [Spectral matrix certificate JSON](website/data/MC-E47-SPECTRAL-MATRIX-20260925.json) | exact result packet |
