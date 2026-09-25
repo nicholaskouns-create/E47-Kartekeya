@@ -46,3 +46,21 @@ jobs:
             exit 1
           fi
           echo "SECRET HYGIENE PASS"
+
+      - name: Verify deployed Coherence API
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime"
+          curl -fsSL --retry 5 --retry-delay 2 --max-time 30 "$url" -o /tmp/coherence-runtime.json
+          python - <<'PY'
+          import json
+          d=json.load(open("/tmp/coherence-runtime.json",encoding="utf-8"))
+          assert d["contract"]["contract_sha256"]=="f71c9628b8b1b002336fae1cd2104354890fd9b054a2f4e28bf4f72c234da60e"
+          assert d["contract"]["root_contract"]["contract_digest"]=="3804f50da447b6abb9fc9c4bfc60aecd43f6467842e65b0db953afc6e0f59b76"
+          assert d["state"]["state"] in {"COHERENT","RESCUE","RECONCILING"}
+          print("LIVE COHERENCE API PASS")
+          print("state:",d["state"]["state"])
+          print("eligible runtime citizens:",len(d["eligible_citizens"]["runtime"]))
+          print("eligible quinary citizens:",len(d["eligible_citizens"]["quinary"]))
+          PY
