@@ -1,0 +1,89 @@
+# RI/QEGT Live Cross-Platform Object Graph — 2026-09-25
+
+**Certificate:** `MC-RI-QEGT-LIVE-GRAPH-PRE-20260925`  
+**Evidence class:** E1 machine validation  
+**Topology:** empirical pre-publication snapshot, not the earlier five-node biological template.
+
+## Live sources
+
+The graph was reconstructed from live GitHub, Notion, Google Drive, Supabase, and Google Calendar data. Cross-platform edges are the retrieved `public.sync_registry` rows for the E47 / MATRIX / RI / QEGT / Kartekeya / Atlas / spacetime corpus. Object-to-platform membership edges are derived from live platform ownership or parent metadata.
+
+The primary Google Calendar was searched across calendar year 2026 for `E47`, `Mathematical City`, `Kartekeya`, `MATRIX`, `RI`, and `QEGT`. No matching project event existed before this publication. Calendar therefore enters the frozen pre-publication graph as an isolated platform component.
+
+## Empirical operator
+
+For the undirected structural collapse of the observed graph:
+
+`K_live = D - A`
+
+Observed dimensions:
+
+- nodes: **96**
+- edges: **145**
+- live sync-registry edges: **54**
+- platform-membership edges: **91**
+- connected components: **2**
+- `dim ker(K_live)`: **2**
+
+Spectrum:
+
+- `lambda_gap = 0.3983961403474403`
+- `lambda_max = 37.02915764005643`
+- `epsilon = 0.9/lambda_max = 0.024305170772408326`
+- measured non-kernel contraction factor: `0.990316913773787`
+
+## RI/QEGT execution
+
+Recursive flow:
+
+`rho_(n+1) = (I - epsilon K_live) rho_n`
+
+Discrete information continuity:
+
+`(rho_(n+1) - rho_n)/epsilon + B J_n = 0`
+
+with `J_n = B^T rho_n` and `K_live = B B^T`.
+
+Operational coherence curvature and QEGT fitness:
+
+`kappa_n = ||K_live rho_n||_2`
+
+`Phi_n = 1/(kappa_n + delta)`.
+
+Iterations were selected from the measured spectrum rather than fixed in advance: **2131**.
+
+Final kernel-convergence residual:
+
+`||rho_N - P_ker(K) rho_0||_2 = 4.326632938746049e-12`
+
+Maximum continuity-equation residual:
+
+`5.307162750242716e-16`
+
+## Result
+
+**12/13 predicates PASS.**
+
+Every local/componentwise RI/QEGT invariant passes:
+
+- `K_live` symmetric and positive semidefinite
+- kernel dimension equals connected-component count
+- `K_live = B B^T`
+- stable contraction
+- conserved total informational mass
+- discrete continuity equation
+- monotone decrease of coherence curvature
+- monotone increase of inverse-curvature QEGT fitness
+- monotone compression of non-kernel energy
+- convergence to the kernel projector
+- preservation of componentwise attractor count
+
+The sole failed predicate is **unique global attractor**. This is not a numerical failure. The live pre-publication graph contains two components: the connected GitHub / Notion / Drive / Supabase research fabric and the project-empty Calendar surface.
+
+Therefore the live result is:
+
+`dim ker(K_live) = 2`
+
+before publication.
+
+Publication to Calendar is intentionally recorded only after this snapshot, so it cannot be used to manufacture the pre-publication result.
