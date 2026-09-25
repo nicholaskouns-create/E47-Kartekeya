@@ -42,7 +42,9 @@ jobs:
           data = json.load(open(p, encoding="utf-8"))
           assert data["schema"] == "CITY-ROUTE-PACKETS/1.0", data.get("schema")
           assert isinstance(data.get("packets"), list) and data["packets"], "no packets"
-          assert data.get("counts", {}).get("registered_active_surfaces", 0) > 0, data.get("counts")
+          counts = data.get("counts", {})
+          substrate_counts = counts.get("surfaces_by_substrate", {})
+          assert sum(int(v) for v in substrate_counts.values()) > 0, counts
           for packet in data["packets"]:
               assert packet.get("id")
               assert packet.get("title")
