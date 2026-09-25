@@ -1,5 +1,5 @@
 {
-  "contract_sha256": "25f2601486debf9421bf5fac49e9fc0e5688cf9978ef05909d7cc71263761538",
+  "contract_sha256": "f71c9628b8b1b002336fae1cd2104354890fd9b054a2f4e28bf4f72c234da60e",
   "contract": {
     "contract_code": "CIRP-COHERENCE-RUNTIME-1.0",
     "title": "Coherence, Runtime 1.0",
