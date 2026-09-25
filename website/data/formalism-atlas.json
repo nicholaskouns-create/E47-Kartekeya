@@ -3011,10 +3011,11 @@
         "FRM-4"
       ],
       "tests": [
-        "tests/test_native_variational_eigensolver.py"
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
       ],
       "implementations": [
-        "src/e47/native_variational_eigensolver.py"
+        "src/e47/native_variational_eigensolver.py",
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
       ]
     },
     {
@@ -3054,17 +3055,18 @@
       ],
       "identity_links": [],
       "certificates": [
-        "MC-NVQE-E47-HILBERT-20260925-001"
+        "MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001"
       ],
       "dependencies": [
         "FRM-2",
         "FRM-4"
       ],
       "tests": [
-        "tests/test_native_variational_eigensolver.py"
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
       ],
       "implementations": [
-        "src/e47/native_variational_eigensolver.py"
+        "src/e47/native_variational_eigensolver.py",
+        "research/e47/validation/nvqe_hilbert_multiradix_proof.py"
       ]
     }
   ],
