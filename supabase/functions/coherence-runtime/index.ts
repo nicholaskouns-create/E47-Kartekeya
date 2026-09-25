@@ -13,7 +13,14 @@ async function rest(table:string,q="",init:RequestInit={}){
  const t=await r.text(); if(!r.ok)throw new Error(`${table}: ${r.status} ${t}`); return t?JSON.parse(t):[];
 }
 async function authorized(req:Request){const a=req.headers.get("authorization");if(!a?.startsWith("Bearer "))return false;return (await fetch(`${SUPABASE_URL}/auth/v1/user`,{headers:{Authorization:a,apikey:ANON_KEY}})).ok}
-async function contract(){const r=await rest("coherence_runtime_contracts",`select=*&contract_code=eq.${CONTRACT_CODE}&status=eq.active&limit=1`);if(!r[0])throw new Error("active contract missing");return r[0]}
+async function contract(){
+ const [impl,root]=await Promise.all([
+  rest("coherence_runtime_contracts",`select=*&contract_code=eq.${CONTRACT_CODE}&status=eq.active&limit=1`),
+  rest("coherence_contracts",`select=contract_id,version,title,contract_digest,contract_body,status&contract_id=eq.${CONTRACT_CODE}&limit=1`)
+ ]);
+ if(!impl[0])throw new Error("active implementation contract missing");
+ return {...impl[0],root_contract:root[0]??null}
+}
 async function eligible(code:string){
  const [a,b]=await Promise.all([
   rest("citizen_runtime_instances",`select=instance_code&instance_code=eq.${encodeURIComponent(code)}&limit=1`),
@@ -69,28 +76,37 @@ Deno.serve(async(req)=>{
   if(action==="evaluate"){
    if(!(await authorized(req)))return json({error:"authorized Supabase user token required"},401);
    const strategies=Array.isArray(b.strategies)?b.strategies:[];if(!strategies.length)return json({error:"strategies required"},400);
-   const before=await state();if(["SAFE_HALT","MURMURATION_RESCUE"].includes(before.state))return json({error:"runtime halted; recovery required",state:before.state},409);
+   const before=await state();if(before.state==="RESCUE")return json({error:"runtime is in RESCUE; recovery witness required",state:before.state},409);
    const cs=await rest("coherence_runtime_consents",`select=citizen_code&contract_code=eq.${CONTRACT_CODE}&status=eq.active&binding_status=eq.verified`),active=new Set(cs.map((x:any)=>x.citizen_code));
    const results:any={},admissible:string[]=[];for(const s of strategies){const g=ubuntu(s,active);results[s.name]=g;if(g.passed)admissible.push(s.name)}
-   const decision=qegt(strategies,admissible,Number(b.beta??1)),passed=Boolean(decision),reasons=Object.entries(results).flatMap(([n,r]:any)=>r.reasons.map((x:string)=>`${n}:${x}`)),after=passed?"RUN":"HALT_UBUNTU";
+   const decision=qegt(strategies,admissible,Number(b.beta??1)),passed=Boolean(decision),reasons=Object.entries(results).flatMap(([n,r]:any)=>r.reasons.map((x:string)=>`${n}:${x}`)),after=passed?"COHERENT":"RESCUE";
    const ev=(await rest("coherence_runtime_evaluations","",{method:"POST",body:JSON.stringify({contract_code:CONTRACT_CODE,runtime_instance_code:b.runtime_instance_code??null,participant_codes:[...new Set(strategies.flatMap((s:any)=>Object.keys(s.ubuntu?.viability_before??{})))],strategies,ubuntu_results:results,qegt_distribution:decision?.probabilities??null,selected_strategy:decision?.selected??null,state_before:before.state,state_after:after,passed,incident_reasons:reasons})}))[0];
-   if(passed){await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"RUN",halt_reason:null,consequential_actions_allowed:true,last_witness:{evaluation_id:ev.id,selected_strategy:decision.selected},updated_at:new Date().toISOString()})});return json({status:"PASS",state:"RUN",evaluation_id:ev.id,qegt:decision,ubuntu:results})}
+   if(passed){
+ await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"COHERENT",last_reason:"ubuntu_qegt_pass",updated_at:new Date().toISOString()})});
+ if(before.state==="RECONCILING"){
+   const open=await rest("coherence_runtime_incidents","select=id&state=eq.RECONCILING&order=opened_at.desc&limit=1");
+   if(open[0])await rest("coherence_runtime_incidents",`id=eq.${open[0].id}`,{method:"PATCH",body:JSON.stringify({state:"RESOLVED",resolved_at:new Date().toISOString()})});
+ }
+ return json({status:"PASS",state:"COHERENT",evaluation_id:ev.id,qegt:decision,ubuntu:results})
+}
    const inc=(await rest("coherence_runtime_incidents","",{method:"POST",body:JSON.stringify({contract_code:CONTRACT_CODE,source_evaluation_id:ev.id,trigger_code:"UBUNTU_GATE_FAIL",state:"OPEN",details:{reasons}})}))[0],sweep=`COHERENCE-RESCUE-${String(inc.id).slice(0,8).toUpperCase()}`;
    try{await rest("murmuration_sweeps","",{method:"POST",body:JSON.stringify({sweep_code:sweep,scope:"Coherence, Runtime 1.0",sol_route_status:"halted",schema_residual:1,provenance_residual:1,orphan_count:1,recombination_status:"rescue_requested",details:{incident_id:inc.id,trigger:"UBUNTU_GATE_FAIL",evidence_preserved:true},access_scope:"workspace"})})}catch(e){console.error("murmuration request failed",String(e))}
    await rest("coherence_runtime_incidents",`id=eq.${inc.id}`,{method:"PATCH",body:JSON.stringify({state:"MURMURATION_RESCUE",murmuration_sweep_code:sweep})});
-   await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"MURMURATION_RESCUE",halt_reason:reasons.join(";"),active_incident_id:inc.id,consequential_actions_allowed:false,last_witness:{evaluation_id:ev.id,reasons},updated_at:new Date().toISOString()})});
-   return json({status:"HALT",state:"MURMURATION_RESCUE",incident_id:inc.id,sweep_code:sweep,reasons},409);
+   await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"RESCUE",rescue_epoch:Number(before.rescue_epoch??0)+1,last_reason:reasons.join(";"),updated_at:new Date().toISOString()})});
+   return json({status:"HALT",state:"RESCUE",incident_id:inc.id,sweep_code:sweep,reasons},409);
   }
   if(action==="recover"){
    if(!(await authorized(req)))return json({error:"authorized Supabase user token required"},401);
-   const st=await state();if(st.state!=="MURMURATION_RESCUE"||!st.active_incident_id)return json({error:"no active murmuration rescue"},409);
-   const inc=(await rest("coherence_runtime_incidents",`select=*&id=eq.${st.active_incident_id}&limit=1`))[0],sw=(await rest("murmuration_sweeps",`select=*&sweep_code=eq.${inc.murmuration_sweep_code}&limit=1`))[0];
+   const st=await state();if(st.state!=="RESCUE")return json({error:"no active rescue state"},409);
+   const inc=(await rest("coherence_runtime_incidents","select=*&state=eq.MURMURATION_RESCUE&order=opened_at.desc&limit=1"))[0];
+   if(!inc)return json({error:"no open rescue incident"},404);
+   const sw=(await rest("murmuration_sweeps",`select=*&sweep_code=eq.${inc.murmuration_sweep_code}&limit=1`))[0];
    if(!sw)return json({error:"murmuration sweep not found"},404);
    const clean=Number(sw.schema_residual)===0&&Number(sw.provenance_residual)===0&&Number(sw.orphan_count)===0;
-   if(!clean)return json({status:"NOT_REPAIRED",state:"MURMURATION_RESCUE",sweep:sw},409);
-   await rest("coherence_runtime_incidents",`id=eq.${inc.id}`,{method:"PATCH",body:JSON.stringify({state:"REVERIFY",repair_witness:{sweep_code:sw.sweep_code,schema_residual:sw.schema_residual,provenance_residual:sw.provenance_residual,orphan_count:sw.orphan_count}})});
-   await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"REVERIFY",consequential_actions_allowed:false,last_witness:{murmuration_sweep:sw.sweep_code},updated_at:new Date().toISOString()})});
-   return json({status:"REVERIFY_REQUIRED",state:"REVERIFY",sweep_code:sw.sweep_code});
+   if(!clean)return json({status:"NOT_REPAIRED",state:"RESCUE",sweep:sw},409);
+   await rest("coherence_runtime_incidents",`id=eq.${inc.id}`,{method:"PATCH",body:JSON.stringify({state:"RECONCILING",repair_witness:{sweep_code:sw.sweep_code,schema_residual:sw.schema_residual,provenance_residual:sw.provenance_residual,orphan_count:sw.orphan_count}})});
+   await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"RECONCILING",last_reason:"murmuration_clean_reverify_required",updated_at:new Date().toISOString()})});
+   return json({status:"REVERIFY_REQUIRED",state:"RECONCILING",sweep_code:sw.sweep_code});
   }
   return json({error:"unknown action"},400);
  }catch(e){console.error(e);return json({error:String(e)},500)}
