@@ -15,7 +15,6 @@ const html = read(resolve(site, "index.html"));
 const css = read(resolve(site, "css/styles.css"));
 const app = read(resolve(site, "js/app.js"));
 const visualizerPortalPath = resolve(site, "interfaces/visualizers/index.html");
-const visualizerPortal = read(visualizerPortalPath);
 const syntaxJacobApp = read(resolve(site, "interfaces/syntax-jacob/app.js"));
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
@@ -69,28 +68,27 @@ test("visual grammar remains coherent after homepage simplification", () => {
   }
 });
 
-test("homepage routes flagship experiences directly", () => {
+test("homepage routes only current flagship experiences", () => {
   for (const target of [
     'interfaces/skyrmion/',
     'interfaces/syntax-jacob/',
     'interfaces/kouns-core/?module=eidolon#flight',
-    'interfaces/visualizers/'
+    'interfaces/coherence-runtime/',
+    'interfaces/route-packets/',
+    'interfaces/formalism-atlas/'
   ]) {
-    assert.ok(html.includes(`href="${target}"`), `Missing public route: ${target}`);
+    assert.ok(html.includes(`href="${target}"`), `Missing current public route: ${target}`);
   }
+  assert.ok(!html.includes('interfaces/visualizers/?lab='), 'Legacy visualizer query route returned to homepage');
+  assert.ok(!app.includes('interfaces/visualizers/?lab='), 'Legacy visualizer query route returned to browser app');
 });
 
-test("visualizer portal retains the full research instrument set", () => {
+test("legacy visualizer route is retired into the current instrument portal", () => {
   assert.ok(existsSync(visualizerPortalPath));
-  for (const id of [
-    "spectra", "fold", "murmuration", "mnemosyne", "density", "horizon",
-    "wave", "identity", "build", "soar", "scalar", "invarifold"
-  ]) {
-    assert.ok(visualizerPortal.includes(`id:'${id}'`), `Visualizer portal missing instrument: ${id}`);
-  }
-  for (const token of ["VISUALIZER PORTAL", "OPEN ORIGINAL", "CITY CORE", "source visualizer is preserved unchanged"]) {
-    assert.ok(visualizerPortal.includes(token), `Visualizer portal missing shell contract: ${token}`);
-  }
+  const legacy = read(visualizerPortalPath);
+  assert.match(legacy, /Legacy visualizer route retired/);
+  assert.match(legacy, /\.\.\/instruments\//);
+  assert.doesNotMatch(legacy, /const LABS|OPEN ORIGINAL|Mini AI Labs workshop/);
 });
 
 test("browser JavaScript parses", () => {
@@ -120,24 +118,6 @@ test("local links and assets remain inside the GitHub Pages subpath", () => {
 
     const path = url.pathname.slice(base.pathname.length) || "index.html";
     assert.ok(existsSync(resolve(site, path)), `Missing local asset: ${target}`);
-  }
-});
-
-test("homepage JavaScript renders the curated lab index", () => {
-  const grid = { innerHTML: "" };
-  runInNewContext(app, {
-    document: { getElementById: (id) => id === "lab-grid" ? grid : null }
-  });
-
-  assert.equal((grid.innerHTML.match(/class="lab-card"/g) || []).length, 9);
-  for (const lab of ["SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "InvariFold", "MANIFOLD"]) {
-    assert.ok(grid.innerHTML.includes(lab), `Curated lab missing from homepage: ${lab}`);
-  }
-});
-
-test("homepage lab routes stay inside the local visualizer portal", () => {
-  for (const id of ["spectra", "fold", "murmuration", "mnemosyne", "density", "horizon", "wave", "invarifold"]) {
-    assert.ok(app.includes(`interfaces/visualizers/?lab=${id}`), `Curated lab does not route through local portal: ${id}`);
   }
 });
 
