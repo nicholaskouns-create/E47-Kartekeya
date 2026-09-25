@@ -178,6 +178,12 @@
           "url": "https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk",
           "substrate": "drive",
           "kind": "corpus"
+        },
+        {
+          "label": "Route Packet API",
+          "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets",
+          "substrate": "supabase",
+          "kind": "machine projection"
         }
       ]
     },
@@ -186,6 +192,12 @@
       "label": "BROWSE",
       "question": "Show me the whole terrain.",
       "routes": [
+        {
+          "label": "Route Packets",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/",
+          "substrate": "github",
+          "kind": "live object graph"
+        },
         {
           "label": "Instrument Directory",
           "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/",
@@ -290,7 +302,9 @@
   "machine": {
     "lab_manifest": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/lab-manifest.json",
     "formalism_atlas": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/formalism-atlas.json",
-    "spectral_matrix_certificate": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-E47-SPECTRAL-MATRIX-20260925.json"
+    "spectral_matrix_certificate": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-E47-SPECTRAL-MATRIX-20260925.json",
+    "route_packets": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets",
+    "route_packets_interface": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/"
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
