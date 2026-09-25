@@ -1,11 +1,17 @@
 import numpy as np
 
 from e47.native_variational_eigensolver import (
+    HERON_FIXED_POINT,
+    HERON_SEED,
     OPTIMAL_TRANSIENT_BOUND,
     construct_e47_ground_projector,
+    heron_error_identity_residual,
+    heron_step,
     e47_discrete_flow,
     e47_nve_energy,
     eigen_residual,
+    seven_qubit_hamiltonian,
+    simulate_seven_qubit_imaginary_time,
     validate_e47_nve,
 )
 from e47.su2_kernel import build_e47_operators
@@ -60,3 +66,33 @@ def test_native_flow_lowers_e47_energy():
     before = e47_nve_energy(psi, ops)
     after = e47_nve_energy(e47_discrete_flow(psi, 20, ops), ops)
     assert after < before
+
+
+def test_golden_heron_fixed_point_and_quadratic_error_identity():
+    target = HERON_FIXED_POINT
+    assert abs(target * target - HERON_SEED) < 1e-15
+    assert abs(heron_step(target) - target) < 1e-15
+    assert heron_error_identity_residual(1.0) < 1e-15
+
+
+def test_historical_phi_minus_five_fixed_point_claim_is_rejected():
+    assert abs(heron_step(HERON_SEED) - HERON_SEED) > 1e-3
+    assert abs(HERON_FIXED_POINT - 47.0 / 125.0) > 1e-2
+
+
+def test_seven_qubit_padding_preserves_exact_ground_dimension():
+    h = seven_qubit_hamiltonian().full()
+    values = np.linalg.eigvalsh(h)
+    assert int(np.sum(np.abs(values) < 1e-8)) == 47
+    assert abs(np.min(values[values > 1e-8]) - 11664.0) < 1e-8
+    assert abs(np.max(values) - 186624.0) < 1e-8
+
+
+def test_seven_qubit_imaginary_time_projects_into_ground_space():
+    samples = simulate_seven_qubit_imaginary_time()
+    energies = [s.energy for s in samples]
+    weights = [s.ground_weight for s in samples]
+    assert all(b <= a + 1e-8 for a, b in zip(energies, energies[1:]))
+    assert all(b >= a - 1e-12 for a, b in zip(weights, weights[1:]))
+    assert weights[-1] > 0.999999999
+    assert energies[-1] < 1e-5
