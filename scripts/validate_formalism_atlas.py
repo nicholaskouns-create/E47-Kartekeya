@@ -24,10 +24,10 @@ def main(path: str="website/data/formalism-atlas.json") -> int:
         if not ok: errors.append(msg)
 
     check(data.get("schema")=="MC-FORMALISM-ATLAS-1.0","schema mismatch")
-    check(len(reg)==94,f"registry count {len(reg)} != 94")
+    check(len(reg)==96,f"registry count {len(reg)} != 96")
     check(len(ids)==len(set(ids)),"duplicate formalism IDs")
-    check(min(ids)==1 and max(ids)==97,"ID range must be 1..97")
-    missing=[i for i in range(1,98) if i not in ids]
+    check(min(ids)==1 and max(ids)==99,"ID range must be 1..99")
+    missing=[i for i in range(1,100) if i not in ids]
     check(missing==EXPECTED_MISSING,f"missing IDs {missing} != {EXPECTED_MISSING}")
     check(all(r.get("current") is True for r in reg),"all live rows must be current")
     check(all(r.get("claim_status") in ALLOWED_STATUS for r in reg),"unknown claim status")
