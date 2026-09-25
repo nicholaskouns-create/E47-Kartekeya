@@ -304,7 +304,13 @@
     "formalism_atlas": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/formalism-atlas.json",
     "spectral_matrix_certificate": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-E47-SPECTRAL-MATRIX-20260925.json",
     "route_packets": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets",
-    "route_packets_interface": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/"
+    "route_packets_interface": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/",
+    "route_packet_examples": {
+      "all": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets",
+      "spectral_matrix": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets?id=E47-SPECTRAL-MATRIX-MACHINE-20260925",
+      "github_only": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets?substrate=github",
+      "search_matrix": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets?q=matrix"
+    }
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
