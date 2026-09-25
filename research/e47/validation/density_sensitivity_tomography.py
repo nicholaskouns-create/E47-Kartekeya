@@ -176,6 +176,67 @@ def reconstruct(observations: Iterable[Observation], holdout: float = 0.2, seed:
     }
 
 
+
+def robust_validate(observations: Iterable[Observation], holdout: float = 0.2, repeats: int = 100):
+    obs = [o for o in observations if not o.training_excluded]
+    a = np.vstack([design_row(o) for o in obs])
+    y = np.array([o.y for o in obs], dtype=float)
+    p47 = canonical_p47()
+
+    def evaluate(train, test):
+        raw = art(a[train], y[train])
+        gated = p47 @ raw
+        g_train = a[train] @ gated
+        alpha = float((g_train @ y[train]) / (g_train @ g_train + 1e-12))
+        gated = np.clip(alpha * gated, 0.0, 1.0)
+        return rmse(y[test], (a @ raw)[test]), rmse(y[test], (a @ gated)[test])
+
+    loo_raw, loo_p47 = [], []
+    for k in range(len(obs)):
+        train = np.array([i for i in range(len(obs)) if i != k], dtype=int)
+        rr, rg = evaluate(train, np.array([k], dtype=int))
+        loo_raw.append(rr)
+        loo_p47.append(rg)
+
+    repeated = []
+    for seed in range(repeats):
+        train, test = split_indices(len(obs), holdout=holdout, seed=seed)
+        rr, rg = evaluate(train, test)
+        repeated.append((rr, rg))
+
+    repeated = np.asarray(repeated, dtype=float)
+    collisions = []
+    by_coord = {}
+    for o in obs:
+        by_coord.setdefault((o.domain, o.implementation, o.operationality), []).append((o.epoch, o.y, o.id))
+    for coord, rows in by_coord.items():
+        if len({round(v, 12) for _, v, _ in rows}) > 1:
+            collisions.append({
+                "coordinate": list(coord),
+                "observations": [{"epoch": e, "target": v, "id": oid} for e, v, oid in rows],
+            })
+
+    loo_raw_rmse = float(np.sqrt(np.mean(np.square(loo_raw))))
+    loo_p47_rmse = float(np.sqrt(np.mean(np.square(loo_p47)))
+    )
+    return {
+        "loocv_raw_rmse": loo_raw_rmse,
+        "loocv_p47_rmse": loo_p47_rmse,
+        "repeated_holdout_splits": repeats,
+        "repeated_raw_mean_rmse": float(repeated[:, 0].mean()),
+        "repeated_p47_mean_rmse": float(repeated[:, 1].mean()),
+        "repeated_raw_median_rmse": float(np.median(repeated[:, 0])),
+        "repeated_p47_median_rmse": float(np.median(repeated[:, 1])),
+        "p47_wins": int(np.sum(repeated[:, 1] < repeated[:, 0])),
+        "p47_within_0_02": int(np.sum(repeated[:, 1] <= repeated[:, 0] + 0.02)),
+        "p47_robustly_useful": bool(
+            loo_p47_rmse <= loo_raw_rmse + 0.02
+            and repeated[:, 1].mean() <= repeated[:, 0].mean() + 0.02
+        ),
+        "temporal_coordinate_collisions": collisions,
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("input", type=Path, help="JSON array of observation objects")
@@ -187,6 +248,7 @@ def main():
     rows = json.loads(args.input.read_text())
     observations = [Observation(**row) for row in rows]
     result = reconstruct(observations, holdout=args.holdout, seed=args.seed)
+    result["robust_validation"] = robust_validate(observations, holdout=args.holdout, repeats=100)
     text = json.dumps(result, indent=2)
     if args.output:
         args.output.write_text(text)
