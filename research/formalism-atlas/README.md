@@ -8,7 +8,7 @@ The Atlas is a compiled view of the live Mathematical City across Notion, Supaba
 
 The interface is zero-dependency HTML/JavaScript. It loads four machine-readable snapshots:
 
-- `website/data/formalism-registry.json` — 94 live Notion Formalism Registry rows.
+- `website/data/formalism-registry.json` — 96 live Formalism Registry rows.
 - `website/data/formalism-graph.json` — 241 Mathematical City identity nodes and 206 typed theorem edges.
 - `website/data/formalism-provenance.json` — certificates, source artifacts, corrections, failures, discrepancies, stranded math, Python corpus, and public surfaces.
 - `website/data/formalism-source-snapshot.json` — GitHub workflow snapshot, Drive ledger row counts, and relevant Gmail metadata.
