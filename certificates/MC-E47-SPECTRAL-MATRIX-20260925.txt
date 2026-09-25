@@ -1,0 +1,40 @@
+E47 FLOW AS A SINGLE 125 × 125 SPECTRAL MATRIX MACHINE
+======================================================
+
+dim(V)                  = 125
+σ(C)                    = [0, 2, 6, 12, 20, 30, 42]
+multiplicities          = [1, 9, 25, 28, 27, 22, 13]
+K sector eigenvalues    = [180, 112, 0, -108, -140, 0, 432]
+Q sector eigenvalues    = [32400, 12544, 0, 11664, 19600, 0, 186624]
+dim ker(K)              = 47
+rank(P47)               = 47
+Ωc                      = 0.376000000000000
+ρ_min                   = 11664
+ρ_max                   = 186624
+ε*                      = 1.0086339062373921e-05 = 1/99144
+ρ*                      = 0.882352941176471 = 15/17
+||R^300 − P47||₂        = 5.612e-14
+
+VALIDATION
+[PASS] dim(V₂⊗V₂⊗V₂) = 125
+[PASS] σ(C) exact
+[PASS] Casimir multiplicities exact
+[PASS] K = (C−6I)(C−30I)
+[PASS] Q = K²
+[PASS] dim ker(K) = 47
+[PASS] rank(P₄₇) = 47
+[PASS] P₄₇² = P₄₇
+[PASS] P₄₇† = P₄₇
+[PASS] KP₄₇ = 0
+[PASS] QP₄₇ = 0
+[PASS] ρₘᵢₙ = 11664
+[PASS] ρₘₐₓ = 186624
+[PASS] ε★ = 1/99144
+[PASS] ρ★ = 15/17
+[PASS] ℛⁿ → P₄₇
+[PASS] Ωᶜ = 47/125
+
+OVERALL: PASS
+
+Core identity:
+lim n→∞ (I − εK²)^n = lim t→∞ exp(−tK²) = P47
