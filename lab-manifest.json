@@ -102,19 +102,6 @@
       "contract": "website/interfaces/kouns-core/component.json",
       "version": "0.1.0",
       "smoke_entrypoint": "website/interfaces/kouns-core/smoke.mjs"
-    },
-    {
-      "id": "visualizers",
-      "path": "website/interfaces/visualizers",
-      "kind": "research-instruments",
-      "maturity": "research",
-      "evidence": [
-        "E1",
-        "E2"
-      ],
-      "contract": "website/interfaces/visualizers/component.json",
-      "version": "0.1.0",
-      "smoke_entrypoint": "website/interfaces/visualizers/smoke.mjs"
     }
   ],
   "reproducibility": {
