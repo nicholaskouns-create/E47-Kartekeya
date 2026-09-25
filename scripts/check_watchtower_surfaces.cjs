@@ -19,11 +19,11 @@ test("Watchtower catalog keeps user-site root and City subpath as two named surf
   assert.notEqual(byId["personal-site-root"].identity, byId["executable-city"].identity);
 });
 
-test("each GitHub Pages surface has its own identity token", () => {
-  assert.ok(byId["personal-site-root"].must_contain.includes("Nicholas Kouns · Personal site"));
+test("each GitHub Pages surface has its current identity token and role", () => {
+  assert.ok(byId["personal-site-root"].must_contain.includes("The Mathematical City"));
   assert.ok(byId["personal-site-root"].must_contain.includes("/E47-Kartekeya/"));
-  assert.equal(byId["personal-site-root"].must_contain.includes("The Mathematical City"), false);
   assert.ok(byId["executable-city"].must_contain.includes("The Mathematical City"));
+  assert.notEqual(byId["personal-site-root"].identity, byId["executable-city"].identity);
   assert.equal(byId["personal-site-root"].points_to, "executable-city");
 });
 
