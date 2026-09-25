@@ -39,10 +39,9 @@ Important surfaces include:
 - `website/interfaces/skyrmion/` — flagship multi-domain flight simulator
 - `website/interfaces/syntax-jacob/` — 3I/ATLAS trajectory and coherence interface
 - `website/interfaces/kouns-core/` — cross-interface research console
-- `website/interfaces/visualizers/` — independent research visualizers
 - `website/interfaces/flight/` — flight runtime and EIDOLON/AETHERIS bindings
 
-The separate root-level `web/` directory is **not a second website**. It is a shared browser-runtime library containing graphics profiles, accelerator code, schemas, and worker contracts.
+The retired `website/interfaces/visualizers/` route is a forwarding tombstone only; current instruments are exposed through the active City surfaces and registry.\n\nThe separate root-level `web/` directory is **not a second website**. It is a shared browser-runtime library containing graphics profiles, accelerator code, schemas, and worker contracts.
 
 ## 5. Evidence artifacts
 
