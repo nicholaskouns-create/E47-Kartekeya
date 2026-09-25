@@ -1,0 +1,300 @@
+{
+  "schema": "CITY-README-ROUTER/1.0",
+  "updated": "2026-09-25",
+  "title": "The Mathematical City · README Router",
+  "principle": "One object, many substrates. Route by intent; preserve evidence class and independent lineage.",
+  "core": {
+    "carrier": "V₂⊗³",
+    "dimension": 125,
+    "selector": "K=(C−6I)(C−30I)",
+    "kernel": "E₄₇=ker(K)",
+    "kernel_dimension": 47,
+    "omega_c": "47/125 = 0.376",
+    "contraction": "Γ*=I−K²/99144",
+    "transient_bound": "15/17"
+  },
+  "substrates": [
+    {
+      "id": "github",
+      "label": "GitHub",
+      "role": "EXECUTE · VERIFY · SOURCE",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+      "note": "Code, tests, certificates, history, releases, Pages."
+    },
+    {
+      "id": "notion",
+      "label": "Notion",
+      "role": "KNOWLEDGE GRAPH",
+      "url": "https://mathematicalcity.notion.site/?pvs=74",
+      "note": "Living atlas, linked research pages, working context."
+    },
+    {
+      "id": "drive",
+      "label": "Google Drive",
+      "role": "CORPUS · DOSSIERS",
+      "url": "https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk",
+      "note": "Long-form source artifacts, certificates, monographs and working documents."
+    },
+    {
+      "id": "supabase",
+      "label": "Supabase",
+      "role": "REGISTRY · RUNTIME · PROVENANCE",
+      "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/",
+      "note": "Live City surfaces, receipts, registries, evidence metadata."
+    },
+    {
+      "id": "aims",
+      "label": "AIMS",
+      "role": "PUBLICATION · NARRATIVE",
+      "url": "https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory",
+      "note": "Readable public essays, launch pages, root directory and explanatory publishing."
+    }
+  ],
+  "intents": [
+    {
+      "id": "enter",
+      "label": "ENTER",
+      "question": "Give me one doorway.",
+      "routes": [
+        {
+          "label": "Open the City",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/",
+          "substrate": "github",
+          "kind": "portal"
+        },
+        {
+          "label": "README Router",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/",
+          "substrate": "github",
+          "kind": "router"
+        },
+        {
+          "label": "AIMS Root Directory",
+          "url": "https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory",
+          "substrate": "aims",
+          "kind": "narrative"
+        }
+      ]
+    },
+    {
+      "id": "understand",
+      "label": "UNDERSTAND",
+      "question": "Explain the object and its structure.",
+      "routes": [
+        {
+          "label": "E47 in Two Pages",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/",
+          "substrate": "github",
+          "kind": "note"
+        },
+        {
+          "label": "Formalism Atlas",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/",
+          "substrate": "github",
+          "kind": "atlas"
+        },
+        {
+          "label": "Notion City",
+          "url": "https://mathematicalcity.notion.site/?pvs=74",
+          "substrate": "notion",
+          "kind": "knowledge"
+        },
+        {
+          "label": "AIMS E47 Lock",
+          "url": "https://www.aims.healthcare/journal/e47-lock",
+          "substrate": "aims",
+          "kind": "explanation"
+        }
+      ]
+    },
+    {
+      "id": "run",
+      "label": "RUN",
+      "question": "Let me touch the machinery.",
+      "routes": [
+        {
+          "label": "CITY LIVE",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/",
+          "substrate": "github",
+          "kind": "apps"
+        },
+        {
+          "label": "NEXUS",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/",
+          "substrate": "github",
+          "kind": "composition"
+        },
+        {
+          "label": "THE MATRIX",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",
+          "substrate": "github",
+          "kind": "quantum"
+        },
+        {
+          "label": "Q5",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/",
+          "substrate": "github",
+          "kind": "topology"
+        },
+        {
+          "label": "EIDOLON Flight",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight",
+          "substrate": "github",
+          "kind": "flight"
+        }
+      ]
+    },
+    {
+      "id": "verify",
+      "label": "VERIFY",
+      "question": "Show me the proof, code and receipts.",
+      "routes": [
+        {
+          "label": "125×125 Spectral Matrix Proof",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/",
+          "substrate": "github",
+          "kind": "proof"
+        },
+        {
+          "label": "Certificates",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/certificates",
+          "substrate": "github",
+          "kind": "evidence"
+        },
+        {
+          "label": "Validation Scope",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/validation_scope.md",
+          "substrate": "github",
+          "kind": "boundary"
+        },
+        {
+          "label": "SEE · Citadel",
+          "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/",
+          "substrate": "supabase",
+          "kind": "registry"
+        },
+        {
+          "label": "Machine Certificate Corpus",
+          "url": "https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk",
+          "substrate": "drive",
+          "kind": "corpus"
+        }
+      ]
+    },
+    {
+      "id": "browse",
+      "label": "BROWSE",
+      "question": "Show me the whole terrain.",
+      "routes": [
+        {
+          "label": "Instrument Directory",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/",
+          "substrate": "github",
+          "kind": "directory"
+        },
+        {
+          "label": "Formalism Atlas",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/",
+          "substrate": "github",
+          "kind": "atlas"
+        },
+        {
+          "label": "341-row Primary Source Atlas",
+          "url": "https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit?usp=drivesdk",
+          "substrate": "drive",
+          "kind": "sheet"
+        },
+        {
+          "label": "AIMS Link Map",
+          "url": "https://www.aims.healthcare/journal/mathematical-city-link-map",
+          "substrate": "aims",
+          "kind": "index"
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "label": "BUILD",
+      "question": "I want source, contracts and extension points.",
+      "routes": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+          "substrate": "github",
+          "kind": "source"
+        },
+        {
+          "label": "Lab Manifest",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/lab-manifest.json",
+          "substrate": "github",
+          "kind": "contract"
+        },
+        {
+          "label": "Documentation Router",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/README.md",
+          "substrate": "github",
+          "kind": "docs"
+        },
+        {
+          "label": "Contributing",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/CONTRIBUTING.md",
+          "substrate": "github",
+          "kind": "contribute"
+        }
+      ]
+    }
+  ],
+  "packets": [
+    {
+      "id": "spectral-matrix",
+      "title": "E47 Flow as a Single 125 × 125 Spectral Matrix Machine",
+      "evidence": [
+        "E0",
+        "E1"
+      ],
+      "summary": "The same proof packet exposed as executable source, human proof page, certificate, knowledge-page and registry record.",
+      "surfaces": [
+        {
+          "label": "Proof page",
+          "substrate": "github",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/"
+        },
+        {
+          "label": "Python",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_spectral_matrix_proof.py"
+        },
+        {
+          "label": "Certificate",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-SPECTRAL-MATRIX-20260925.txt"
+        },
+        {
+          "label": "Notion",
+          "substrate": "notion",
+          "url": "https://app.notion.com/p/3e646094fd30816bae88f079283800d4?pvs=204"
+        },
+        {
+          "label": "Drive",
+          "substrate": "drive",
+          "url": "https://docs.google.com/document/d/1-zVHvwMsRC-Ljv0cizwBJ41tDcgBnhUMGTr0GID74Bo/edit?usp=drivesdk"
+        },
+        {
+          "label": "Registry",
+          "substrate": "supabase",
+          "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/"
+        }
+      ]
+    }
+  ],
+  "machine": {
+    "lab_manifest": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/lab-manifest.json",
+    "formalism_atlas": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/formalism-atlas.json",
+    "spectral_matrix_certificate": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-E47-SPECTRAL-MATRIX-20260925.json"
+  },
+  "context": {
+    "repo": "nicholaskouns-create/E47-Kartekeya",
+    "role": "canonical executable research repository",
+    "portal": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/"
+  }
+}
