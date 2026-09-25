@@ -2978,7 +2978,7 @@
     {
       "id": 98,
       "key": "FRM-98",
-      "formalism": "Native Variational Eigensolver — Corrected General Variational Theorem",
+      "formalism": "Native Variational Quantum Eigensolver — Error-Corrected Hilbert-Space Scaffold",
       "domain": "Quantum information",
       "claim_status": "Structural formalism",
       "canonical": false,
@@ -2990,11 +2990,19 @@
       ],
       "evidence_band": "OPEN_STRUCTURAL",
       "last_reviewed": "2026-09-25",
-      "summary": "Error-corrected NVE scaffold: compactness/continuity imply existence of a minimizer and the Rayleigh bound holds for a declared self-adjoint operator, but restricted-ansatz stationarity does not imply an eigenstate and gradient descent does not imply global convergence without additional hypotheses.",
+      "summary": "Corrected N-VQE scaffold: the Heron map is classical with fixed point φ^(-5/2); quantum status requires an explicit Hilbert space and self-adjoint Hamiltonian. Restricted-ansatz stationarity does not imply an eigenstate, and generic descent does not imply global convergence.",
       "sources": [
         {
           "role": "primary",
           "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/native_variational_eigensolver_corrected.md"
+        },
+        {
+          "role": "drive",
+          "url": "https://docs.google.com/document/d/1UV1q1PtbaeyIJyj85oaf940ya9HeV8yky92riv_ZHc0/edit"
+        },
+        {
+          "role": "notion",
+          "url": "https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb?pvs=204"
         }
       ],
       "identity_links": [],
@@ -3012,7 +3020,7 @@
     {
       "id": 99,
       "key": "FRM-99",
-      "formalism": "E47 Native Variational Eigensolver — K² Ground-Space Theorem",
+      "formalism": "E47 Native Variational Quantum Eigensolver — K² Ground-Space and 7-Qubit Lift",
       "domain": "Quantum information",
       "claim_status": "Exact / computationally verified",
       "canonical": true,
@@ -3023,9 +3031,9 @@
         "Python",
         "QuTiP"
       ],
-      "evidence_band": "E0/E1",
+      "evidence_band": "E0/E1 + E2 simulation",
       "last_reviewed": "2026-09-25",
-      "summary": "Exact specialization H_NVE=K² on V₂^{⊗3}. E_NVE(ψ)=<ψ|K²|ψ>=||Kψ||²≥0, with ground space exactly ker K=E₄₇, dimension 47. Continuous e^{-tK²} and certified discrete Γ*=I−K²/99144 converge to P₄₇.",
+      "summary": "Exact Hilbert-space specialization H_N-VQE=K² on V₂^{⊗3}: E(ψ)=||Kψ||²≥0 and Ground(H)=E₄₇, dim 47. The penalized 125→128 statevector lift preserves exactly 47 zero-energy states; deterministic imaginary-time simulation converges into the E47 ground sector.",
       "sources": [
         {
           "role": "primary",
@@ -3034,6 +3042,14 @@
         {
           "role": "implementation",
           "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/native_variational_eigensolver.py"
+        },
+        {
+          "role": "drive",
+          "url": "https://docs.google.com/document/d/1UV1q1PtbaeyIJyj85oaf940ya9HeV8yky92riv_ZHc0/edit"
+        },
+        {
+          "role": "notion",
+          "url": "https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb?pvs=204"
         }
       ],
       "identity_links": [],
