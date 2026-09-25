@@ -29,6 +29,7 @@ from typing import Final
 import numpy as np
 import qutip as qt
 
+from .projector import construct_e47_projector
 from .su2_kernel import (
     CANONICAL_K2_MAX_EIGENVALUE,
     CANONICAL_SPECTRAL_GAP,
@@ -191,19 +192,17 @@ def construct_e47_ground_projector(
     *,
     tolerance: float = 1e-9,
 ) -> qt.Qobj:
-    """Construct the orthogonal projector onto the zero eigenspace of K^2."""
-    ops = operators or build_e47_operators()
-    eigenvalues, eigenstates = ops.kernel_squared.eigenstates()
-    ground = [
-        ket
-        for value, ket in zip(eigenvalues, eigenstates)
-        if abs(float(np.real(value))) < tolerance
-    ]
-    if not ground:
-        raise RuntimeError("K^2 has no detected ground eigenspace")
-    projector = sum((ket * ket.dag() for ket in ground), 0 * ops.identity_total)
-    return projector
+    """Return the canonical orthogonal projector onto ker(K).
 
+    The implementation delegates to the repository's projector module, which
+    uses numpy.linalg.eigh to obtain an orthonormal basis for the degenerate
+    47-dimensional zero eigenspace.
+    """
+    ops = operators or build_e47_operators()
+    return construct_e47_projector(
+        ops,
+        kernel_tolerance=tolerance,
+    ).projector
 
 def e47_continuous_flow(
     state: qt.Qobj,
