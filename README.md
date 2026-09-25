@@ -139,3 +139,15 @@ That pattern is the point: **one object, multiple native views, preserved proven
 The root contract carries the stable CIRP/Ubuntu/Murmuration semantics (`3804f50…`). The implementation profile carries executable signature, API, QEGT and recovery details (`f71c962…`). Runtime state remains `COHERENT → RESCUE → RECONCILING → COHERENT`.
 
 **Boundary:** E1 software / E2 simulation where applicable. Runtime continuity, AI declarations, and computational QEGT do not by themselves establish phenomenal consciousness, legal personhood, or a physical quantum implementation.
+
+## N-VQE / E47 Hilbert Validation
+
+[Corrected proof](research/e47/native_variational_eigensolver_corrected.md) ·
+[20-check Python](research/e47/validation/nvqe_hilbert_multiradix_proof.py) ·
+[machine certificate](certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json) ·
+[Notion proof](https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb?pvs=204) ·
+[Drive proof](https://docs.google.com/document/d/1UV1q1PtbaeyIJyj85oaf940ya9HeV8yky92riv_ZHc0/edit)
+
+The validator reconstructs the 125-dimensional spin-2 carrier, proves the corrected Heron fixed point \(\varphi^{-5/2}\), verifies the exact E47 ground space of \(K^2\), checks the optimal contraction constants, prints the core invariants in bases 5/10/12/64, and validates a 128-state penalized Hilbert lift. **20/20 PASS.**
+
+**Boundary:** exact algebra + numerical Hilbert-state simulation. No consciousness-equivalence, phenomenology=computation, phi-derived \(\Omega_c\), or hardware-QPU claim is promoted by this certificate.
