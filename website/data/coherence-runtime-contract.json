@@ -1,0 +1,9 @@
+{
+  "schema": "COHERENCE-RUNTIME-PROJECTION/1.0",
+  "title": "Coherence, Runtime 1.0",
+  "canonical_contract": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/coherence_runtime_1_0.json",
+  "contract_sha256": "c00731fba841bd88a34cb05e251db57a0f489aa08b1b55984f551ed0cd67d7fa",
+  "python": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/coherence_runtime/ri_pqspi.py",
+  "api": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
+  "interface": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/"
+}

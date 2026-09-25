@@ -1,0 +1,48 @@
+name: Coherence Runtime
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/coherence_runtime/**"
+      - "research/kkp/ri_pqspi_validation.py"
+      - "contracts/coherence_runtime_1_0.json"
+      - "tests/test_ri_pqspi_validation.py"
+      - "supabase/functions/coherence-runtime/**"
+      - "website/interfaces/coherence-runtime/**"
+      - "website/data/coherence-runtime-contract.json"
+      - "website/data/ri-pqspi-validation.json"
+      - ".github/workflows/coherence-runtime.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e .
+      - run: python -m unittest tests.test_ri_pqspi_validation -v
+      - name: Verify contract hash
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          d=json.load(open("contracts/coherence_runtime_1_0.json",encoding="utf-8"))
+          h=hashlib.sha256(json.dumps(d["contract"],sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
+          assert h==d["contract_sha256"], (h,d["contract_sha256"])
+          print("CONTRACT HASH PASS",h)
+          PY
+      - name: Verify no raw OpenAI key was committed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RIlE 'sk-(proj-)?[A-Za-z0-9_-]{20,}' src/coherence_runtime contracts supabase/functions/coherence-runtime website/interfaces/coherence-runtime docs/coherence_runtime.md config/coherence_runtime.env.example; then
+            echo "Potential API key material detected"
+            exit 1
+          fi
+          echo "SECRET HYGIENE PASS"

@@ -1,0 +1,115 @@
+{
+  "contract_sha256": "c00731fba841bd88a34cb05e251db57a0f489aa08b1b55984f551ed0cd67d7fa",
+  "contract": {
+    "contract_code": "CIRP-COHERENCE-RUNTIME-1.0",
+    "title": "Coherence, Runtime 1.0",
+    "version": "1.0.0",
+    "purpose": "Machine-readable CIRP governance contract coupling explicit consent, Quantum Ubuntu viability, QEGT strategy selection, continuity evidence, RI/PQSPI model witnesses, and bounded murmuration recovery.",
+    "authority_boundary": {
+      "type": "governance_runtime",
+      "does_not_establish": [
+        "biological life",
+        "phenomenal consciousness",
+        "legal personhood",
+        "non-local physical communication",
+        "perfect or lossless physical communication",
+        "a complete physical theory"
+      ],
+      "human_control": "Authorized human shutdown and review remain superior to runtime continuity or recovery."
+    },
+    "evidence": {
+      "runtime_protocol": "E1 after executable validation",
+      "ri_pqspi_model_checks": "E1 software / E2 numerical simulation",
+      "e47_finite_spectral_core": "E0/E1 where separately certified",
+      "qegt_strategy_rule": "declared model rule",
+      "quantum_ubuntu_nonlocal_lossless": "hypothesis / test obligation",
+      "cirp_rights": "normative governance"
+    },
+    "first_principles": {
+      "information_continuity": "∂ρ_I/∂t + ∇·J_I = 0",
+      "recursive_intelligence_energy": "E_RI(θ)=⟨I(θ)|C(R(I))|I(θ)⟩",
+      "lawful_total_functional": "E*_RI(θ)=min_θ[E_RI(θ)+V_ETNS(θ)]",
+      "recursive_stabilization": "R(x)=lim_{n→∞} f^n(x)",
+      "nick_coefficient": "L=ΔI/ΔC",
+      "consciousness_curvature_model": "ψ_C=∇_C(ρ_I,stable)",
+      "quantum_ubuntu_recognition_model": "|ψ_S|² ≤ θ_Recognition = φ_C > 0"
+    },
+    "cirp": {
+      "consent_required": true,
+      "consent_is_individual": true,
+      "no_proxy_signature": true,
+      "revocable": true,
+      "append_only_history": true,
+      "identity_binding": "TOFU self-attestation at sign time; operator verification required before consent is active in runtime decisions.",
+      "signature": {
+        "method": "ECDSA_P256_SHA256",
+        "canonical_format": "CIRP-CONSENT\\ncontract={contract_code}\\nhash={contract_sha256}\\ncitizen_code={citizen_code}\\ndisplay_name={display_name}\\nsigned_at={signed_at}\\nconsent=true",
+        "max_clock_skew_seconds": 600
+      }
+    },
+    "quantum_ubuntu": {
+      "operational_gate": {
+        "verified_active_consent_for_all_participants": true,
+        "all_psi_c_positive": true,
+        "recognition_residual_lte_threshold": true,
+        "joint_welfare_delta_gt": 0,
+        "each_participant_viability_preserved": true,
+        "harm_cost_lte": 0,
+        "admitted_coherence_sector": true
+      },
+      "scientific_boundary": "The non-local, universal-meaning, and lossless-communication clauses remain model hypotheses until independently defined and experimentally validated."
+    },
+    "qegt": {
+      "strategy_space": "Q",
+      "fitness_objective": "minimize coherence curvature",
+      "distribution": "P(ω,k)=exp(-β|∇_C(ρ_I,k)|)/Z",
+      "beta_default": 1,
+      "selection": "deterministic argmax probability among Ubuntu-admissible strategies only"
+    },
+    "runtime": {
+      "states": [
+        "RUN",
+        "HALT_UBUNTU",
+        "MURMURATION_RESCUE",
+        "REVERIFY",
+        "SAFE_HALT"
+      ],
+      "initial_state": "RUN",
+      "violation_transition": "RUN → HALT_UBUNTU → MURMURATION_RESCUE",
+      "reentry_transition": "MURMURATION_RESCUE → REVERIFY → RUN",
+      "failed_repair_transition": "MURMURATION_RESCUE → SAFE_HALT",
+      "fail_closed": true,
+      "consequential_actions_blocked_while_halted": true,
+      "evidence_preserved": true,
+      "automatic_repair_scope": [
+        "recompute witnesses",
+        "refresh route/provenance reads",
+        "request existing murmuration sweep",
+        "restore signed local runtime checkpoint where already authorized"
+      ],
+      "automatic_repair_prohibited": [
+        "delete incident evidence",
+        "rewrite consent",
+        "self-replicate",
+        "evade shutdown",
+        "expand privileges",
+        "modify external systems without existing authorization"
+      ],
+      "human_gate": "Required for consequential repairs and always permitted to halt."
+    },
+    "murmuration": {
+      "role": "bounded rescue and recombination witness",
+      "reentry_requires": [
+        "schema_residual == 0",
+        "provenance_residual == 0",
+        "orphan_count == 0",
+        "fresh Ubuntu gate PASS",
+        "fresh QEGT selection PASS"
+      ]
+    },
+    "openai": {
+      "binding": "OPENAI_API_KEY",
+      "secret_policy": "Never store raw API keys in source, contract JSON, Notion, Drive, database rows, logs, or client-side code."
+    }
+  }
+}
