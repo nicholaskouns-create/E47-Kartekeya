@@ -3053,7 +3053,9 @@
         }
       ],
       "identity_links": [],
-      "certificates": [],
+      "certificates": [
+        "MC-NVQE-E47-HILBERT-20260925-001"
+      ],
       "dependencies": [
         "FRM-2",
         "FRM-4"
