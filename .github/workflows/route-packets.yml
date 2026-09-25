@@ -51,3 +51,24 @@ jobs:
           print("packets:", len(data["packets"]))
           print("counts:", data.get("counts"))
           PY
+
+      - name: Verify five-substrate README packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets?id=README-ROUTER-E47-20260925"
+          curl -fsSL --retry 5 --retry-delay 2 --max-time 30 "$url" -o /tmp/readme-packet.json
+          python - <<'PY'
+          import json
+          data = json.load(open("/tmp/readme-packet.json", encoding="utf-8"))
+          assert data["schema"] == "CITY-ROUTE-PACKETS/1.0"
+          assert len(data["packets"]) == 1, data["packets"]
+          packet = data["packets"][0]
+          assert packet["id"] == "README-ROUTER-E47-20260925"
+          substrates = {x["substrate"] for x in packet["surfaces"]}
+          expected = {"github", "notion", "drive", "supabase", "aims"}
+          assert expected <= substrates, (expected, substrates)
+          print("FIVE-SUBSTRATE PACKET PASS")
+          print("substrates:", sorted(substrates))
+          print("routes:", len(packet["surfaces"]))
+          PY
