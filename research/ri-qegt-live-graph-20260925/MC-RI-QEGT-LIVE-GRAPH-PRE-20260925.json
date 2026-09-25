@@ -1,0 +1,43 @@
+{
+  "certificate_id": "MC-RI-QEGT-LIVE-GRAPH-PRE-20260925",
+  "title": "RI/QEGT Live Cross-Platform Object Graph — Pre-Publication Certificate",
+  "snapshot_date": "2026-09-25",
+  "evidence_class": "E1",
+  "scope": {
+    "platforms": ["GitHub", "Notion", "Google Drive", "Supabase", "Google Calendar"],
+    "edge_authority": "Supabase public.sync_registry live rows plus observed platform membership",
+    "calendar_search": {
+      "calendar": "primary",
+      "window": "2026-01-01 through 2026-12-31",
+      "queries": ["E47", "Mathematical City", "Kartekeya", "MATRIX", "RI", "QEGT"],
+      "matches": 0
+    },
+    "topology_prescribed": false
+  },
+  "graph": {
+    "nodes": 96,
+    "edges": 145,
+    "sync_registry_edges": 54,
+    "platform_membership_edges": 91,
+    "connected_components": 2,
+    "kernel_dimension": 2
+  },
+  "spectrum": {
+    "lambda_min": 0.0,
+    "spectral_gap": 0.3983961403474403,
+    "lambda_max": 37.02915764005643,
+    "epsilon": 0.024305170772408326,
+    "measured_contraction_factor": 0.990316913773787,
+    "iterations": 2131
+  },
+  "ri_qegt": {
+    "convergence_residual": 4.326632938746049e-12
+  },
+  "result": {
+    "pass_count": 12,
+    "test_count": 13,
+    "all_local_and_componentwise_invariants_pass": true,
+    "unique_global_attractor": false,
+    "interpretation": "The observed live graph supports the RI/QEGT contraction, continuity, curvature-reduction, inverse-curvature fitness, and componentwise attractor invariants. It does not have a single global attractor before publication because the live Google Calendar project surface is an isolated component."
+  }
+}
