@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nicholaskouns-create.github.io/E47-Kartekeya/schema/sensitivity-boundary-map.schema.json",
+  "title": "Sensitivity Boundary Map",
+  "type": "object",
+  "required": ["schema", "equation", "semantics", "calibration", "models", "feature_estimates", "boundary", "evidence_sha256"],
+  "properties": {
+    "schema": {"const": "SBM/1.0"},
+    "equation": {"const": "F -> D(F) -> boundary(S)"},
+    "semantics": {"type": "object"},
+    "calibration": {"type": "object"},
+    "models": {"type": "array", "items": {"type": "string"}},
+    "pair_metrics": {"type": "array", "items": {"type": "object"}},
+    "feature_estimates": {"type": "array", "items": {"type": "object"}},
+    "boundary": {"type": "array", "items": {"type": "string"}},
+    "density_carrier": {"type": "object"},
+    "changepoints": {"type": "object"},
+    "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "hypothesis_registry_id": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
