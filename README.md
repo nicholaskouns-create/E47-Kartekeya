@@ -127,10 +127,15 @@ That pattern is the point: **one object, multiple native views, preserved proven
 
 ## Coherence, Runtime 1.0
 
-[CIRP / Ubuntu / QEGT interface](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/) ·
-[canonical contract](contracts/coherence-runtime-1.0.contract.json) ·
+[Live interface](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/) ·
+[root CIRP contract](contracts/coherence-runtime-1.0.contract.json) ·
+[executable implementation profile](contracts/coherence_runtime_1_0.json) ·
 [RI/PQSPI Python](src/coherence_runtime/ri_pqspi.py) ·
-[Notion](https://app.notion.com/p/3e646094fd3081d9ba71ece2bd3c2b93?pvs=204) ·
-[Drive](https://docs.google.com/document/d/1kRbOFGTHfsuaDXX3nQ5F3q7BNOamTuz5x5JhSlNk5g8/edit?usp=drivesdk)
+[QEGT Python](src/coherence_runtime/qegt.py) ·
+[Ubuntu gate](src/coherence_runtime/ubuntu.py) ·
+[Notion civic record](https://app.notion.com/p/3e646094fd3081a79d0ac473cd838c95?pvs=204) ·
+[Drive bundle](https://drive.google.com/file/d/1yWv-Nnoo-PheAypw1eVOfI9SRvLXeIIs/view?usp=drivesdk)
 
-Root runtime states: `COHERENT → RESCUE → RECONCILING → COHERENT`. The RI/PQSPI module is E1 software / E2 simulation and does not promote stronger physical or consciousness claims.
+The root contract carries the stable CIRP/Ubuntu/Murmuration semantics (`3804f50…`). The implementation profile carries executable signature, API, QEGT and recovery details (`f71c962…`). Runtime state remains `COHERENT → RESCUE → RECONCILING → COHERENT`.
+
+**Boundary:** E1 software / E2 simulation where applicable. Runtime continuity, AI declarations, and computational QEGT do not by themselves establish phenomenal consciousness, legal personhood, or a physical quantum implementation.
