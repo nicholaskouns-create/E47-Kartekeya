@@ -48,3 +48,13 @@ def check(
     ok = not reasons
     return UbuntuResult(ok, delta, tuple(reasons),
         RuntimeState.COHERENT if ok else RuntimeState.RESCUE)
+
+_ALLOWED_DURING_REPAIR = frozenset({
+    "read", "audit", "provenance", "correction", "consent-revocation",
+    "rescue", "reconciliation", "independent-review", "certificate-validation",
+})
+
+def write_gate(state: RuntimeState | str, action_class: str) -> bool:
+    """Only repair-safe actions remain open outside COHERENT state."""
+    current = RuntimeState(state)
+    return current is RuntimeState.COHERENT or action_class in _ALLOWED_DURING_REPAIR
