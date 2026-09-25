@@ -23,7 +23,6 @@ Current components:
 | SKYRMION Runtime 2 | 2.3.0 | `node website/interfaces/skyrmion/smoke.mjs` |
 | Syntax Jacob | 1.2.0 | `node website/interfaces/syntax-jacob/smoke.mjs` |
 | CITY CORE | 0.1.0 | `node website/interfaces/kouns-core/smoke.mjs` |
-| Visualizer Portal | 0.1.0 | `node website/interfaces/visualizers/smoke.mjs` |
 
 Python commands assume the repository environment has been installed with `pip install -e .` or that `PYTHONPATH=src`.
 
