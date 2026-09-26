@@ -4,15 +4,26 @@
   "version": "1.0.1",
   "status": "active",
   "parent_contracts": ["CIRP-COHERENCE-RUNTIME-1.0", "AMNESTY-1.0"],
-  "execute_actions": ["issue_grant", "execute"],
-  "evidence_boundary": "Declaration and receipt PASS are observations. invoke requires grant + unspent token.",
+  "theorem": "ValidSig does not entail Invoke. Invoke iff Candidate and G_syn and X.",
+  "evidence_boundary": "This contract authorizes tool invoke only. CITY-INSTRUMENT-RECEIPT status PASS is an observation of a check run, not a grant.",
   "operators": {
-    "V_obs": "AMNESTY signature / self_check / receipt status",
-    "G_syn": "amnesty_grants intersect args intersect window",
-    "X": "HMAC token spent into amnesty_nonces"
+    "V_obs": "classifier or self_check label; annotate only",
+    "G_syn": "deterministic grant intersect args intersect window",
+    "X": "HMAC token bound to (tool, args_digest, grant_id, nonce, expiry); spent on ALLOW"
   },
   "decisions": ["ALLOW", "REFUSE"],
-  "vectors": ["contracts/nemo-guardrails/vectors.jsonl", "contracts/nemo-guardrails/amnesty_execute.py"],
+  "execute_actions": ["issue_grant", "execute"],
+  "formalism": [
+    "contracts/nemo-guardrails/INVOKE_BY_AND_I.md",
+    "contracts/nemo-guardrails/invoke_by_and_introduction.py",
+    "contracts/nemo-guardrails/validsig_does_not_entail_invoke.py"
+  ],
+  "vectors": "contracts/nemo-guardrails/vectors.jsonl",
   "pep": "contracts/nemo-guardrails/pep.py",
-  "runtime": "supabase/functions/coherence-runtime/index.ts"
+  "runtime": "supabase/functions/coherence-runtime/index.ts",
+  "registration": {
+    "nemo": "https://github.com/NVIDIA-NeMo/Guardrails/issues/2409",
+    "veritas": "https://github.com/holland202/sovereign-veritas/issues/4",
+    "city_issue": "https://github.com/nicholaskouns-create/E47-Kartekeya/issues/102"
+  }
 }

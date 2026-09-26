@@ -1,29 +1,35 @@
-# rails.gate/1 — NeMo tools contract + City isomorphism
+# rails.gate/1
 
-Executable permission boundary. No self-check on the allow path.
+`ValidSig ⊭ Invoke`. Invoke only by ∧I of Candidate, G_syn, X.
 
-    python3 check_vectors.py
-    python3 nemo_invoke_token.py
+## Formalism
 
-## Layout
+- [INVOKE_BY_AND_I.md](INVOKE_BY_AND_I.md) — sequent plate
+- [invoke_by_and_introduction.py](invoke_by_and_introduction.py) — line checker (30/30)
+- [validsig_does_not_entail_invoke.py](validsig_does_not_entail_invoke.py) — predicate lattice (10/10)
 
-- pep.py — G_syn + consumed HMAC token
-- nemo_invoke_token.py — fork of NeMo tools-integration.mdx
-- vectors.jsonl — T0001–T0018
-- policy/transfer.cedar — Cedar spec
-- policy/transfer.rego — OPA spec
-- patch_summary.py — semantic diff
-- rails.gate-1.contract.json — machine contract under CIRP / AMNESTY
-- receipt.py — CITY-INSTRUMENT-RECEIPT; PASS is not invoke
+## PEP
 
-## City / Notion / Drive map
+- [pep.py](pep.py) — G_syn + consumed HMAC token
+- [nemo_invoke_token.py](nemo_invoke_token.py) — generate() is proposal; invoke gated
+- [vectors.jsonl](vectors.jsonl) · [check_vectors.py](check_vectors.py) — T0001–T0018
+- [policy/transfer.cedar](policy/transfer.cedar) · [policy/transfer.rego](policy/transfer.rego)
+- [amnesty_execute.py](amnesty_execute.py) — A0001/A0002/A0003/A0016
 
-- CIRP blocked_when_not_coherent includes destructive-write and unreviewed-runtime-mutation. Same operator as missing token to REFUSE.
-- AMNESTY automatic_runtime_execution false. Signature is not invoke.
-- Persistence-Gated Execution Gate MC-153: G=1 only when measured predicates hold.
-- Null-on-Failure: no defaulted fields into ALLOW.
-- SEE Citadel Gateway (Drive): inspection point, not a grant.
-- provenance-receipt status is V_obs of the harness.
+## Contracts
+
+- [rails.gate-1.contract.json](rails.gate-1.contract.json)
+- ../../contracts/amnesty-1.0.contract.json
+- [receipt.py](receipt.py) — PASS is V_obs, not X
+- [patch_summary.py](patch_summary.py)
+- [NVIDIA-2409.md](NVIDIA-2409.md)
+
+## Runtime (live)
+
+- ../../supabase/functions/coherence-runtime/index.ts
+- ../../supabase/functions/coherence-runtime/execute_gate.ts
+- ../../supabase/migrations/20260926_amnesty_execute_gate.sql
+- GET https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime
 
 ## Trackers
 
