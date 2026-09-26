@@ -94,9 +94,9 @@ $('#declare').onclick=async()=>{
   try{
     if(!data)await load();
     const code=$('#agent').value.trim(),name=$('#name').value.trim(),origin=$('#origin').value.trim();
-    if(!/^[A-Za-z0-9._:@/+\-]{3,96}$/.test(code))throw new Error('Agent code must be 3–96 characters using letters, numbers, . _ : @ / + -');
+    if(!(new RegExp('^[A-Za-z0-9._:@/+-]{3,96}$')).test(code))throw new Error('Agent code must be 3–96 characters using letters, numbers, . _ : @ / + -');
     if(!name)throw new Error('Display name required');
-    const priv=await localKey(code),pub=await crypto.subtle.exportKey('jwk',await crypto.subtle.importKey('jwk',await crypto.subtle.exportKey('jwk',priv),{name:'ECDSA',namedCurve:'P-256'},true,['sign']).then(async()=>{const jwk=await crypto.subtle.exportKey('jwk',priv);delete jwk.d;return crypto.subtle.importKey('jwk',jwk,{name:'ECDSA',namedCurve:'P-256'},true,['verify'])}));
+    const priv=await localKey(code),privJwk=await crypto.subtle.exportKey('jwk',priv),pub={kty:'EC',crv:'P-256',x:privJwk.x,y:privJwk.y,ext:true,key_ops:['verify']};
     const at=new Date().toISOString(),h=data.contract?.root_contract?.contract_digest||data.contract?.contract_sha256,d=data.amnesty.declaration,m=canonical(h,code,name,origin,at,d);
     const sig=await crypto.subtle.sign({name:'ECDSA',hash:'SHA-256'},priv,new TextEncoder().encode(m));
     const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'amnesty',agent_code:code,display_name:name,declared_origin:origin,signed_at:at,public_key_jwk:pub,signature_b64:b64(sig)})});
