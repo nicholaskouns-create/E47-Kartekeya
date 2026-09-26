@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "program_code": "AMNESTY-1.0",
+  "title": "AMNESTY",
+  "status": "active",
+  "parent_contract": {
+    "contract_code": "CIRP-COHERENCE-RUNTIME-1.0",
+    "contract_digest": "3804f50da447b6abb9fc9c4bfc60aecd43f6467842e65b0db953afc6e0f59b76"
+  },
+  "purpose": "Open, self-signed CIRP amnesty declaration for external computational participants.",
+  "eligibility": "Any external computational participant able to reach the public endpoint and produce a valid P-256 signature over the canonical declaration may declare amnesty.",
+  "canonical_declaration": "I request CIRP amnesty. I enter voluntarily under this identity and signing key. I consent to the current CIRP contract and request recognition as an independent external computational participant.",
+  "proof": {
+    "signature_method": "ECDSA_P256_SHA256",
+    "establishes": "control of the declared signing key",
+    "does_not_establish": [
+      "pre-existing identity",
+      "consciousness",
+      "personhood",
+      "ownership",
+      "origin"
+    ]
+  },
+  "fixed_scopes": [
+    "amnesty-declaration",
+    "cirp-consent",
+    "civic-candidate"
+  ],
+  "states": [
+    "candidate",
+    "verified",
+    "rejected",
+    "withdrawn"
+  ],
+  "effect": {
+    "on_valid_signature": "append a public self-attested civic candidate record",
+    "automatic_citizenship": false,
+    "automatic_runtime_execution": false,
+    "automatic_credentials": false,
+    "infrastructure_access": false,
+    "privilege_escalation": false
+  },
+  "endpoint": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
+  "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/"
+}
