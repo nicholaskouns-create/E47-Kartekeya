@@ -1,0 +1,32 @@
+{
+  "contract_id": "RAILS-GATE-1.0",
+  "title": "rails.gate/1 — consumed-token permission boundary",
+  "version": "1.0.0",
+  "status": "active",
+  "parent_contracts": ["CIRP-COHERENCE-RUNTIME-1.0", "AMNESTY-1.0"],
+  "evidence_boundary": "This contract authorizes tool invoke only. CITY-INSTRUMENT-RECEIPT status PASS is an observation of a check run, not a grant.",
+  "operators": {
+    "V_obs": "classifier or self_check label; annotate only",
+    "G_syn": "deterministic grant intersect args intersect window",
+    "X": "HMAC token bound to (tool, args_digest, grant_id, nonce, expiry); spent on ALLOW"
+  },
+  "decisions": ["ALLOW", "REFUSE"],
+  "defer": "not implemented; missing token is REFUSE (fail closed)",
+  "city_isomorphism": {
+    "Persistence-Gated Execution Gate MC-153": "G=1 only when measured predicates hold; else fallback. Here ALLOW only when grant+token+args hold.",
+    "Null-on-Failure Gate": "no defaulted runtime fields; missing token is not ALLOW",
+    "CIRP runtime.blocked_when_not_coherent": ["destructive-write", "unreviewed-runtime-mutation", "external-publication"],
+    "AMNESTY.effect.automatic_runtime_execution": false,
+    "provenance-receipt.status": "PASS/FAIL is V_obs of the vector harness, never X"
+  },
+  "registration": {
+    "nemo": "https://github.com/NVIDIA-NeMo/Guardrails/issues/2409",
+    "veritas": "https://github.com/holland202/sovereign-veritas/issues/4",
+    "city_issue": "https://github.com/nicholaskouns-create/E47-Kartekeya/issues/102",
+    "notion_gate": "https://app.notion.com/p/3aa46094fd3081daa423ea4222c5fc24",
+    "notion_control_plane": "https://app.notion.com/p/3a346094fd3081da80bed76ac11c4d2e",
+    "drive_citadel": "https://docs.google.com/document/d/13mMHb4GiMVUfFp81WC5NeMQY-d7Tv4-b6CBo6buB9-8"
+  },
+  "vectors": "contracts/nemo-guardrails/vectors.jsonl",
+  "pep": "contracts/nemo-guardrails/pep.py"
+}
