@@ -1,0 +1,58 @@
+{
+  "certificate_code": "MC-E47-NOISELESS-HW-20260925-001",
+  "title": "E47 Noiseless Logical Ququint and Heisenberg-Weyl Gate Certificate",
+  "date": "2026-09-25",
+  "evidence_class": [
+    "E0",
+    "E1"
+  ],
+  "carrier": {
+    "space": "V_2^{\\otimes3}",
+    "dimension": 125
+  },
+  "selector": {
+    "K": "(C-6I)(C-30I)",
+    "kernel_dimension": 47,
+    "decomposition": "5V_2 \\oplus 2V_5"
+  },
+  "logical_sector": {
+    "factorization": "5V_2 ≅ C^5_L ⊗ C^5_G",
+    "logical_dimension": 5,
+    "gauge_dimension": 5,
+    "c12_eigenvalues": [
+      0,
+      2,
+      6,
+      12,
+      20
+    ],
+    "commutant": "M_5(C) ⊕ M_2(C)",
+    "commutant_dimension": 29
+  },
+  "validation": {
+    "baseline_checks": "26/26 PASS",
+    "gate_layer_checks": "20/20 PASS",
+    "factorization_residual": 4.1242177541919534e-15,
+    "knill_laflamme_residual": 3.564799289644625e-15,
+    "logical_state_residual": 8.613e-16,
+    "fixed_m_general_rotation_retention": 0.5278741246278705,
+    "fixed_m_dephasing_residual": 2.566e-15,
+    "z_lagrange_polynomial_residual": 4.765e-15,
+    "weyl_residual": 4.313e-15,
+    "x5_residual": 8.291e-15,
+    "z5_residual": 5.426e-15,
+    "max_collective_gate_commutator": 1.022e-13,
+    "strong_noise_sector_retention": 1.0000000000000029,
+    "strong_noise_logical_density_residual": 4.106e-15,
+    "strong_noise_logical_fidelity": 1.0000000000000029,
+    "interleaved_noise_logical_density_residual": 5.768e-15,
+    "interleaved_noise_logical_fidelity": 1.000000000000005
+  },
+  "statements": {
+    "arbitrary_collective_su2": "noiseless subsystem: U_coll = I_L ⊗ U_G on 5V_2",
+    "fixed_m_dephasing": "DFS for collective J_z dephasing",
+    "logical_gates": "X_L=X_5⊗I_G, Z_L=Z_5⊗I_G, Z_L X_L = omega X_L Z_L",
+    "z_physical_realization": "Z_L is the Lagrange interpolation polynomial of C12 on 5V_2"
+  },
+  "boundary": "Finite-dimensional exact algebra plus deterministic floating-point reconstruction. No hardware execution or experimentally measured protection advantage is claimed."
+}
