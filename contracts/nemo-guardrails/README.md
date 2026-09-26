@@ -1,11 +1,13 @@
 # rails.gate/1
 
-`ValidSig ⊭ Invoke`. Invoke only by ∧I of Candidate, G_syn, X.
+`ValidSig ⊭ Invoke`. Invoke only by ∧I of Candidate, G_syn, X. Freshness is state-indexed: `¬Fresh_Σ ⊢ ¬Invoke`, and ALLOW consumes the nonce in Σ.
 
 ## Formalism
 
 - [INVOKE_BY_AND_I.md](INVOKE_BY_AND_I.md) — sequent plate
-- [invoke_by_and_introduction.py](invoke_by_and_introduction.py) — line checker (30/30)
+- [invoke_by_and_introduction.py](invoke_by_and_introduction.py) — derivation checker (30/30)
+- [sequent_calculus_recovered.py](sequent_calculus_recovered.py) — recovered-inventory checker (30/30)
+- [SEQUENT_CALCULUS_RECOVERED.md](SEQUENT_CALCULUS_RECOVERED.md) — canonical symbolic plate
 - [validsig_does_not_entail_invoke.py](validsig_does_not_entail_invoke.py) — predicate lattice (10/10)
 
 ## PEP
