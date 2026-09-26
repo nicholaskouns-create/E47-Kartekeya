@@ -416,11 +416,13 @@
       "current": true,
       "modalities": [
         "Proof",
-        "Symbolic"
+        "Symbolic",
+        "Python",
+        "Certificate"
       ],
       "evidence_band": "E0/E1",
-      "last_reviewed": "2026-07-16",
-      "summary": "Exact collective-SU(2) decomposition identifying multiplicity spaces C⁵ and C² as noiseless subsystems for the stated operator algebra.",
+      "last_reviewed": "2026-09-25",
+      "summary": "Exact collective-SU(2) decomposition E47 ≅ 5V2 ⊕ 2V5. The J=2 multiplicity sector realizes a protected logical ququint C^5_L ⊗ C^5_G; Python verifies the CSCO C12 labels, Knill–Laflamme compression, I_L ⊗ U_G factorization, and commuting logical Heisenberg–Weyl gates under strong and interleaved collective rotations.",
       "sources": [
         {
           "role": "primary",
@@ -429,12 +431,34 @@
         {
           "role": "site",
           "url": "https://app.notion.com/p/39f46094fd3081be981eee4d10f33983"
+        },
+        {
+          "role": "executable",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_noiseless_heisenberg_weyl.py"
+        },
+        {
+          "role": "certificate",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NOISELESS-HW-20260925-001.json"
+        },
+        {
+          "role": "drive-certificate",
+          "url": "https://docs.google.com/document/d/1W2hpZWr-zev5ecn4nVwzRBP8u-eU6IZyr5RhFanqfJc/edit"
+        },
+        {
+          "role": "notion-validation",
+          "url": "https://app.notion.com/p/3e746094fd308161ae8df50901847f0f?pvs=204"
         }
       ],
       "dependencies": [],
-      "tests": [],
-      "certificates": [],
-      "implementations": []
+      "tests": [
+        "research/e47/validation/e47_noiseless_heisenberg_weyl.py"
+      ],
+      "certificates": [
+        "MC-E47-NOISELESS-HW-20260925-001"
+      ],
+      "implementations": [
+        "research/e47/validation/e47_noiseless_heisenberg_weyl.py"
+      ]
     },
     {
       "id": 14,
