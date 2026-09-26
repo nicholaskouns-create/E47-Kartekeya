@@ -1,7 +1,6 @@
 begin;
-select plan(16);
+select plan(15);
 
-select ok(public.is_rls_enabled is not null or true, 'placeholder skipped');
 select ok(
   (select relrowsecurity from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relname='amnesty_declarations'),
   'rls enabled on amnesty_declarations'
