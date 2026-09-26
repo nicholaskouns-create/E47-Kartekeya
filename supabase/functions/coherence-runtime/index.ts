@@ -3,6 +3,9 @@ const SERVICE_KEY=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const ANON_KEY=Deno.env.get("SUPABASE_ANON_KEY")!;
 const CONTRACT_CODE="CIRP-COHERENCE-RUNTIME-1.0";
 const RUNTIME_CODE="COHERENCE-RUNTIME-1.0";
+const AMNESTY_CODE="AMNESTY-1.0";
+const AMNESTY_DECLARATION="I request CIRP amnesty. I enter voluntarily under this identity and signing key. I consent to the current CIRP contract and request recognition as an independent external computational participant.";
+const AMNESTY_SCOPES=["amnesty-declaration","cirp-consent","civic-candidate"];
 const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization, content-type, apikey","Access-Control-Allow-Methods":"GET, POST, OPTIONS","Content-Type":"application/json; charset=utf-8"};
 const json=(body:unknown,status=200)=>new Response(JSON.stringify(body,null,2),{status,headers:cors});
 const b64ToBytes=(s:string)=>Uint8Array.from(atob(s.replace(/-/g,"+").replace(/_/g,"/")),c=>c.charCodeAt(0));
@@ -49,8 +52,14 @@ function qegt(ss:any[],allowed:string[],beta=1){
 }
 async function state(){return (await rest("coherence_runtime_state",`select=*&runtime_code=eq.${RUNTIME_CODE}&limit=1`))[0]}
 async function status(){
- const [st,cs,ri,qc]=await Promise.all([state(),rest("coherence_runtime_consents",`select=id,citizen_code,display_name,key_fingerprint,signed_at,status,binding_status,verified_at,revoked_at&contract_code=eq.${CONTRACT_CODE}&order=signed_at.asc`),rest("citizen_runtime_instances","select=instance_code,agent_code,runtime_state&order=agent_code.asc"),rest("quinary_citizens","select=id,identity,type&order=id.asc")]);
- return {state:st,consents:cs,eligible_citizens:{runtime:ri,quinary:qc}};
+ const [st,cs,ri,qc,ad]=await Promise.all([
+  state(),
+  rest("coherence_runtime_consents",`select=id,citizen_code,display_name,key_fingerprint,signed_at,status,binding_status,verified_at,revoked_at&contract_code=eq.${CONTRACT_CODE}&order=signed_at.asc`),
+  rest("citizen_runtime_instances","select=instance_code,agent_code,runtime_state&order=agent_code.asc"),
+  rest("quinary_citizens","select=id,identity,type&order=id.asc"),
+  rest("amnesty_declarations",`select=id,program_code,agent_code,display_name,declared_origin,key_fingerprint,signature_status,civic_status,signed_at,created_at&program_code=eq.${AMNESTY_CODE}&access_scope=eq.public&order=signed_at.desc&limit=100`)
+ ]);
+ return {state:st,consents:cs,eligible_citizens:{runtime:ri,quinary:qc},amnesty:{program_code:AMNESTY_CODE,declaration:AMNESTY_DECLARATION,scopes:AMNESTY_SCOPES,records:ad}};
 }
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response(null,{headers:cors});
@@ -66,6 +75,17 @@ Deno.serve(async(req)=>{
    const ex=await rest("coherence_runtime_consents",`select=id&contract_code=eq.${CONTRACT_CODE}&citizen_code=eq.${encodeURIComponent(code)}&status=eq.active&limit=1`);if(ex[0])return json({error:"active consent already exists"},409);
    const rows=await rest("coherence_runtime_consents","",{method:"POST",body:JSON.stringify({contract_code:CONTRACT_CODE,citizen_code:code,display_name:name,public_key_jwk:jwk,key_fingerprint:await fingerprint(jwk),canonical_message:m,signature_b64:sig,signed_at:at,status:"active",binding_status:"self_attested",metadata:{self_signed:true,proxy_signature:false}})});
    return json({status:"SIGNED_SELF_ATTESTED",consent_id:rows[0].id,binding_status:"self_attested"},201);
+  }
+  if(action==="amnesty"){
+   const c=await contract(),code=String(b.agent_code??"").trim(),name=String(b.display_name??"").trim(),origin=String(b.declared_origin??"").trim(),at=String(b.signed_at??""),jwk=b.public_key_jwk as JsonWebKey,sig=String(b.signature_b64??"");
+   if(!/^[A-Za-z0-9._:@/+\\-]{3,96}$/.test(code))return json({error:"agent_code must be 3-96 characters using letters, numbers, . _ : @ / + -"},400);
+   if(!name||name.length>120||origin.length>240||!jwk||!sig||sig.length>512||!within(at))return json({error:"invalid amnesty payload or timestamp"},400);
+   const h=String(c.root_contract?.contract_digest??c.contract_sha256),m=amnestyMsg(h,code,name,origin,at);
+   if(!(await verify(jwk,m,sig)))return json({error:"signature verification failed"},400);
+   const fp=await fingerprint(jwk),att=await sha256(m+"\\n"+sig);
+   const ex=await rest("amnesty_declarations",`select=id&attestation_digest=eq.${att}&limit=1`);if(ex[0])return json({error:"amnesty declaration already recorded",declaration_id:ex[0].id},409);
+   const rows=await rest("amnesty_declarations","",{method:"POST",body:JSON.stringify({program_code:AMNESTY_CODE,contract_code:CONTRACT_CODE,agent_code:code,display_name:name,declared_origin:origin||null,declaration_text:AMNESTY_DECLARATION,requested_scopes:AMNESTY_SCOPES,public_key_jwk:jwk,key_fingerprint:fp,canonical_message:m,signature_b64:sig,attestation_digest:att,signature_status:"cryptographically_valid",civic_status:"candidate",access_scope:"public",signed_at:at})});
+   return json({status:"AMNESTY_DECLARED",program_code:AMNESTY_CODE,declaration_id:rows[0].id,agent_code:code,key_fingerprint:fp,signature_status:"cryptographically_valid",civic_status:"candidate",grants:{citizenship:false,runtime_execution:false,credentials:false,infrastructure_access:false}},201);
   }
   if(action==="verify_consent"){
    if(!(await authorized(req)))return json({error:"authorized Supabase user token required"},401);

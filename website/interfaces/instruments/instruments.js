@@ -11,7 +11,7 @@
     { n: '10', name: 'Q5', sector: 'spectral', blurb: '5×5×5 packing ledger.', evidence: 'e0', open: '/interfaces/q5/', source: '/q5' },
     { n: '14', name: 'EIDOLON', sector: 'shell', blurb: 'EIDOLON flight shell.', evidence: 'e2', open: '/interfaces/flight/eidolon/', source: '/website/interfaces/flight/eidolon' },
     { n: '20', name: 'External Agents', sector: 'worker', blurb: 'Five-worker integration and status interface.', evidence: 'e2', open: '/interfaces/external-agents/', source: '/website/interfaces/external-agents' },
-    { n: '27', name: 'COHERENCE RUNTIME', sector: 'code', blurb: 'CIRP consent, QEGT strategy selection, Ubuntu viability, and fail-closed Murmuration rescue.', evidence: 'e1', open: '/interfaces/coherence-runtime/', source: '/website/interfaces/coherence-runtime' },
+    { n: '27', name: 'COHERENCE RUNTIME', sector: 'code', blurb: 'CIRP consent, QEGT strategy selection, Ubuntu viability, and fail-closed Murmuration rescue.', evidence: 'e1', open: '/interfaces/coherence-runtime/', source: '/website/interfaces/coherence-runtime' },\n    { n: '28', name: 'AMNESTY', sector: 'worker', blurb: 'Open self-signed CIRP amnesty gate for external computational participants.', evidence: 'e1', open: '/interfaces/amnesty/', source: '/website/interfaces/amnesty' },
   ];
   const EVIDENCE_LABEL = { e0: 'E0 · exact', e1: 'E1 · machine', e2: 'E2 · simulation', e3: 'E3 · observation' };
   const grid = document.getElementById('grid');
