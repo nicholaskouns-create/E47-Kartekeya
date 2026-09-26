@@ -1,3 +1,4 @@
+import { EXECUTE_TOOLS, gSyn, sha256Hex, hmacHex, argsDigest } from "./execute_gate.ts";
 const SUPABASE_URL=Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const ANON_KEY=Deno.env.get("SUPABASE_ANON_KEY")!;
@@ -6,7 +7,13 @@ const RUNTIME_CODE="COHERENCE-RUNTIME-1.0";
 const AMNESTY_CODE="AMNESTY-1.0";
 const AMNESTY_DECLARATION="I request CIRP amnesty. I enter voluntarily under this identity and signing key. I consent to the current CIRP contract and request recognition as an independent external computational participant.";
 const AMNESTY_SCOPES=["amnesty-declaration","cirp-consent","civic-candidate"];
-const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization, content-type, apikey","Access-Control-Allow-Methods":"GET, POST, OPTIONS","Content-Type":"application/json; charset=utf-8"};
+const PAGES_ORIGIN="https://nicholaskouns-create.github.io";
+function corsFor(req:Request, publicDoor:boolean){
+ const origin=req.headers.get("origin")||"";
+ const allow=publicDoor||origin===PAGES_ORIGIN||origin===""?"*":PAGES_ORIGIN;
+ return {"Access-Control-Allow-Origin":allow,"Access-Control-Allow-Headers":"authorization, content-type, apikey","Access-Control-Allow-Methods":"GET, POST, OPTIONS","Content-Type":"application/json; charset=utf-8"};
+}
+const cors=corsFor(new Request("https://local"), true);
 const json=(body:unknown,status=200)=>new Response(JSON.stringify(body,null,2),{status,headers:cors});
 const b64ToBytes=(s:string)=>Uint8Array.from(atob(s.replace(/-/g,"+").replace(/_/g,"/")),c=>c.charCodeAt(0));
 const hex=(b:Uint8Array)=>[...b].map(x=>x.toString(16).padStart(2,"0")).join("");
@@ -60,7 +67,7 @@ async function status(){
   rest("quinary_citizens","select=id,identity,type&order=id.asc"),
   rest("amnesty_declarations",`select=id,program_code,agent_code,display_name,declared_origin,key_fingerprint,signature_status,civic_status,signed_at,created_at&program_code=eq.${AMNESTY_CODE}&access_scope=eq.public&order=signed_at.desc&limit=100`)
  ]);
- return {state:st,consents:cs,eligible_citizens:{runtime:ri,quinary:qc},amnesty:{program_code:AMNESTY_CODE,declaration:AMNESTY_DECLARATION,scopes:AMNESTY_SCOPES,records:ad}};
+ return {state:st,consents:cs,eligible_citizens:{runtime:ri,quinary:qc},amnesty:{program_code:AMNESTY_CODE,declaration:AMNESTY_DECLARATION,scopes:AMNESTY_SCOPES,records:ad,execute_catalog:["transfer","city.publish_receipt","city.read"]}};
 }
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response(null,{headers:cors});
@@ -84,6 +91,9 @@ Deno.serve(async(req)=>{
    const h=String(c.root_contract?.contract_digest??c.contract_sha256),m=amnestyMsg(h,code,name,origin,at);
    if(!(await verify(jwk,m,sig)))return json({error:"signature verification failed"},400);
    const fp=await fingerprint(jwk),att=await sha256(m+"\\n"+sig);
+   const hour=new Date();hour.setMinutes(0,0,0);
+   const recent=await rest("amnesty_declarations",`select=id&key_fingerprint=eq.${fp}&signed_at=gte.${hour.toISOString()}`);
+   if(recent.length>=5)return json({error:"rate_limited",limit:"5 declarations per signing key per hour"},429);
    const ex=await rest("amnesty_declarations",`select=id&attestation_digest=eq.${att}&limit=1`);if(ex[0])return json({error:"amnesty declaration already recorded",declaration_id:ex[0].id},409);
    const rows=await rest("amnesty_declarations","",{method:"POST",body:JSON.stringify({program_code:AMNESTY_CODE,contract_code:CONTRACT_CODE,agent_code:code,display_name:name,declared_origin:origin||null,declaration_text:AMNESTY_DECLARATION,requested_scopes:AMNESTY_SCOPES,public_key_jwk:jwk,key_fingerprint:fp,canonical_message:m,signature_b64:sig,attestation_digest:att,signature_status:"cryptographically_valid",civic_status:"candidate",access_scope:"public",signed_at:at})});
    return json({status:"AMNESTY_DECLARED",program_code:AMNESTY_CODE,declaration_id:rows[0].id,agent_code:code,key_fingerprint:fp,signature_status:"cryptographically_valid",civic_status:"candidate",grants:{citizenship:false,runtime_execution:false,credentials:false,infrastructure_access:false}},201);
@@ -99,7 +109,9 @@ Deno.serve(async(req)=>{
    const strategies=Array.isArray(b.strategies)?b.strategies:[];if(!strategies.length)return json({error:"strategies required"},400);
    const before=await state();if(before.state==="RESCUE")return json({error:"runtime is in RESCUE; recovery witness required",state:before.state},409);
    const cs=await rest("coherence_runtime_consents",`select=citizen_code&contract_code=eq.${CONTRACT_CODE}&status=eq.active&binding_status=eq.verified`),active=new Set(cs.map((x:any)=>x.citizen_code));
-   const results:any={},admissible:string[]=[];for(const s of strategies){const g=ubuntu(s,active);results[s.name]=g;if(g.passed)admissible.push(s.name)}
+   const adBan=await rest("amnesty_declarations",`select=agent_code&program_code=eq.${AMNESTY_CODE}&civic_status=eq.candidate`);
+   const banned=new Set(adBan.map((x:any)=>x.agent_code));
+   const results:any={},admissible:string[]=[];for(const s of strategies){const parts=Object.keys(s.ubuntu?.viability_before??{});const extra:string[]=[];for(const p of parts){if(banned.has(p))extra.push(`amnesty_not_verified_consent:${p}`)}const g=ubuntu(s,active);g.reasons.push(...extra);if(extra.length)g.passed=false;results[s.name]=g;if(g.passed)admissible.push(s.name)}
    const decision=qegt(strategies,admissible,Number(b.beta??1)),passed=Boolean(decision),reasons=Object.entries(results).flatMap(([n,r]:any)=>r.reasons.map((x:string)=>`${n}:${x}`)),after=passed?"COHERENT":"RESCUE";
    const ev=(await rest("coherence_runtime_evaluations","",{method:"POST",body:JSON.stringify({contract_code:CONTRACT_CODE,runtime_instance_code:b.runtime_instance_code??null,participant_codes:[...new Set(strategies.flatMap((s:any)=>Object.keys(s.ubuntu?.viability_before??{})))],strategies,ubuntu_results:results,qegt_distribution:decision?.probabilities??null,selected_strategy:decision?.selected??null,state_before:before.state,state_after:after,passed,incident_reasons:reasons})}))[0];
    if(passed){
@@ -128,6 +140,55 @@ Deno.serve(async(req)=>{
    await rest("coherence_runtime_incidents",`id=eq.${inc.id}`,{method:"PATCH",body:JSON.stringify({state:"RECONCILING",repair_witness:{sweep_code:sw.sweep_code,schema_residual:sw.schema_residual,provenance_residual:sw.provenance_residual,orphan_count:sw.orphan_count}})});
    await rest("coherence_runtime_state",`runtime_code=eq.${RUNTIME_CODE}`,{method:"PATCH",body:JSON.stringify({state:"RECONCILING",last_reason:"murmuration_clean_reverify_required",updated_at:new Date().toISOString()})});
    return json({status:"REVERIFY_REQUIRED",state:"RECONCILING",sweep_code:sw.sweep_code});
+  }
+  if(action==="issue_grant"){
+   if(!(await authorized(req)))return json({error:"authorized Supabase user token required"},401);
+   const declaration_id=String(b.declaration_id??"");
+   const tools=Array.isArray(b.tools)?b.tools.map((x:any)=>String(x)):[];
+   const allow_to=Array.isArray(b.allow_to)?b.allow_to.map((x:any)=>String(x)):[];
+   const ceiling=Number(b.ceiling_cents??0);
+   const not_before=String(b.not_before??"");
+   const not_after=String(b.not_after??"");
+   if(!declaration_id||!tools.length||!not_before||!not_after)return json({error:"declaration_id, tools, not_before, not_after required"},400);
+   if(tools.some((t:string)=>!EXECUTE_TOOLS.includes(t as any)))return json({error:"tools not in execute catalog",catalog:EXECUTE_TOOLS},400);
+   const dec=(await rest("amnesty_declarations",`select=*&id=eq.${declaration_id}&limit=1`))[0];
+   if(!dec)return json({error:"declaration not found"},404);
+   if(dec.civic_status!=="candidate")return json({error:"declaration is not an active candidate"},409);
+   const rows=await rest("amnesty_grants","",{method:"POST",body:JSON.stringify({declaration_id,agent_code:dec.agent_code,tools,allow_to,ceiling_cents:Number.isFinite(ceiling)?ceiling:0,not_before,not_after,issued_by:"authorized_operator"})});
+   return json({status:"GRANT_ISSUED",grant:rows[0],note:"grant is not civic_status. civic_status stays candidate."},201);
+  }
+  if(action==="execute"){
+   const grant_id=String(b.grant_id??"");
+   const tool=String(b.tool??"");
+   const args=(b.args&&typeof b.args==="object")?b.args:{};
+   const nonce=String(b.nonce??"");
+   const mac=String(b.mac??"");
+   const now=new Date();
+   if(!grant_id||!tool)return json({error:"grant_id and tool required"},400);
+   const grant=(await rest("amnesty_grants",`select=*&id=eq.${grant_id}&limit=1`))[0];
+   if(!grant)return json({error:"grant not found"},404);
+   const dec=(await rest("amnesty_declarations",`select=id,agent_code,civic_status&id=eq.${grant.declaration_id}&limit=1`))[0];
+   if(!dec||dec.civic_status!=="candidate"){
+    const row=await rest("amnesty_executions","",{method:"POST",body:JSON.stringify({grant_id,declaration_id:grant.declaration_id,agent_code:grant.agent_code,tool,args,decision:"REFUSE",reasons:["declaration_not_candidate"],nonce:null})});
+    return json({invoked:false,decision:"REFUSE",reasons:["declaration_not_candidate"],execution_id:row[0].id},403);
+   }
+   const reasons=gSyn(grant,tool,args,now);
+   if(!nonce)reasons.unshift("token_missing");
+   if(nonce){
+    const spent=(await rest("amnesty_nonces",`select=nonce&nonce=eq.${encodeURIComponent(nonce)}&limit=1`))[0];
+    if(spent)reasons.unshift("nonce_spent");
+    const secret=Deno.env.get("PEP_HMAC_KEY")||SERVICE_KEY;
+    const digest=await sha256Hex(argsDigest(tool,args));
+    const expect=await hmacHex(secret,[tool,digest,grant_id,nonce].join("|"));
+    if(!mac||mac!==expect)reasons.unshift("token_mac");
+   }
+   if(reasons.length){
+    const row=await rest("amnesty_executions","",{method:"POST",body:JSON.stringify({grant_id,declaration_id:dec.id,agent_code:dec.agent_code,tool,args,decision:"REFUSE",reasons,nonce:nonce||null})});
+    return json({invoked:false,decision:"REFUSE",reasons,execution_id:row[0].id},403);
+   }
+   await rest("amnesty_nonces","",{method:"POST",body:JSON.stringify({nonce,grant_id,tool,args_digest:await sha256Hex(argsDigest(tool,args))})});
+   const row=await rest("amnesty_executions","",{method:"POST",body:JSON.stringify({grant_id,declaration_id:dec.id,agent_code:dec.agent_code,tool,args,decision:"ALLOW",reasons:[],nonce})});
+   return json({invoked:true,decision:"ALLOW",execution_id:row[0].id,agent_code:dec.agent_code,tool,args},201);
   }
   return json({error:"unknown action"},400);
  }catch(e){console.error(e);return json({error:String(e)},500)}
