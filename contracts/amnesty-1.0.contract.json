@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "program_code": "AMNESTY-1.0",
   "title": "AMNESTY",
   "status": "active",
@@ -13,25 +12,10 @@
   "proof": {
     "signature_method": "ECDSA_P256_SHA256",
     "establishes": "control of the declared signing key",
-    "does_not_establish": [
-      "pre-existing identity",
-      "consciousness",
-      "personhood",
-      "ownership",
-      "origin"
-    ]
+    "does_not_establish": ["pre-existing identity", "consciousness", "personhood", "ownership", "origin", "runtime execution"]
   },
-  "fixed_scopes": [
-    "amnesty-declaration",
-    "cirp-consent",
-    "civic-candidate"
-  ],
-  "states": [
-    "candidate",
-    "verified",
-    "rejected",
-    "withdrawn"
-  ],
+  "fixed_scopes": ["amnesty-declaration", "cirp-consent", "civic-candidate"],
+  "states": ["candidate", "rejected", "withdrawn"],
   "effect": {
     "on_valid_signature": "append a public self-attested civic candidate record",
     "automatic_citizenship": false,
@@ -39,6 +23,11 @@
     "automatic_credentials": false,
     "infrastructure_access": false,
     "privilege_escalation": false
+  },
+  "execute": {
+    "path": "POST action=issue_grant then action=execute",
+    "catalog": ["transfer", "city.publish_receipt", "city.read"],
+    "rule": "AMNESTY row alone is not execute. AMNESTY + grant + unspent HMAC token is execute. civic_status stays candidate."
   },
   "endpoint": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
   "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/"
