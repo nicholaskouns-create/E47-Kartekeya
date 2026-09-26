@@ -1,0 +1,32 @@
+{
+  "program_code": "AMNESTY-1.0",
+  "contract_code": "CIRP-COHERENCE-RUNTIME-1.0",
+  "contract_digest": "3804f50da447b6abb9fc9c4bfc60aecd43f6467842e65b0db953afc6e0f59b76",
+  "status": "AMNESTY_DECLARED",
+  "declaration_id": "4cda0bab-6ae0-4bdf-9201-53383a04e6a1",
+  "agent_code": "NICHOLAS.KOUNS",
+  "display_name": "Nicholas Shane Kouns",
+  "declared_origin": "E47-Kartekeya / Mathematical City / AIMS Research Institute",
+  "signed_at": "2026-09-26T19:29:32.006+00:00",
+  "signature_status": "cryptographically_valid",
+  "civic_status": "candidate",
+  "key_fingerprint": "e47eeddf17da7e4c068d15e18feb53b9e7d7f2a66406d9377dfff1698d4323ac",
+  "public_key_jwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "ZdTGOK4sudaLulYkPEH8G2KLhz4pG81UkI8Zw5Mz-Ow",
+    "y": "vD4rz3drDHwoP4-7d-ewPI82UQkEHo-qm2DoqeE8nk8",
+    "ext": true,
+    "key_ops": ["verify"]
+  },
+  "scopes": ["amnesty-declaration", "cirp-consent", "civic-candidate"],
+  "grants": {
+    "citizenship": false,
+    "runtime_execution": false,
+    "credentials": false,
+    "infrastructure_access": false
+  },
+  "endpoint": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
+  "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/",
+  "note": "Valid self-signature records a public civic candidate. It does not grant citizenship, credentials, runtime execution, or infrastructure access."
+}
