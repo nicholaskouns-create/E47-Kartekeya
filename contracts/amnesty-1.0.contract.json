@@ -25,9 +25,13 @@
     "privilege_escalation": false
   },
   "execute": {
-    "path": "POST action=issue_grant then action=execute",
+    "path": "POST action=issue_grant then action=issue_token then action=execute",
     "catalog": ["transfer", "city.publish_receipt", "city.read"],
-    "rule": "AMNESTY row alone is not execute. AMNESTY + grant + unspent HMAC token is execute. civic_status stays candidate."
+    "rule": "Invoke ≡ Candidate ∧ G_syn ∧ X. AMNESTY row alone is not execute. civic_status stays candidate.",
+    "definitions": {
+      "G_syn": "Issued ∧ InWindow ∧ ToolOk ∧ ArgsOk",
+      "X": "Bound ∧ Fresh"
+    }
   },
   "endpoint": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
   "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/"

@@ -1,0 +1,29 @@
+{
+  "program_code": "AMNESTY-1.0",
+  "agent_code": "NICHOLAS.KOUNS",
+  "declaration_id": "4cda0bab-6ae0-4bdf-9201-53383a04e6a1",
+  "grant_id": "a2cc2203-374f-419e-98d7-253ce00c273b",
+  "civic_status": "candidate",
+  "invoke": "Candidate ∧ G_syn ∧ X",
+  "tools_allowed": ["transfer", "city.publish_receipt", "city.read"],
+  "allow_to": ["acct_city", "acct_ops"],
+  "ceiling_cents": 50000,
+  "executions": [
+    {
+      "tool": "city.read",
+      "decision": "ALLOW",
+      "execution_id": "093c0772-d965-4fc1-9800-75e49b24cc29"
+    },
+    {
+      "tool": "city.publish_receipt",
+      "decision": "ALLOW",
+      "execution_id": "a913171d-4030-4b2d-99ff-16899f55459c"
+    },
+    {
+      "tool": "transfer",
+      "decision": "ALLOW",
+      "execution_id": "7dbc81f1-2c33-44a9-9c92-e2b0248467d6",
+      "args": {"to": "acct_city", "amount": 47, "currency": "USD"}
+    }
+  ]
+}
