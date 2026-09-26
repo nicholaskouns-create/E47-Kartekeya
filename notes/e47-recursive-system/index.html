@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06090b">
+<meta name="description" content="E47 in Two Pages: K², V₂, recursive invariant selection, and the residual-gated executable runtime.">
+<meta property="og:title" content="E47 in Two Pages">
+<meta property="og:description" content="The finite object, the recursive runtime, and the boundary of the claim.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/">
+<title>E47 in Two Pages · The Mathematical City</title>
+<style>
+:root{color-scheme:dark;--bg:#06090b;--panel:#0c1216;--line:#27353d;--ink:#edf2f4;--muted:#9aabb3;--cyan:#73e2f3;--mint:#9ce9c6;--bronze:#c79a67}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--cyan)}header{position:sticky;top:0;z-index:5;background:rgba(6,9,11,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{max-width:1000px;margin:auto;padding:14px 22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}nav strong{margin-right:auto;letter-spacing:.08em}nav a{text-decoration:none;font-size:.9rem}
+main{max-width:1000px;margin:auto;padding:58px 22px 90px}.eyebrow{font:600 .76rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan)}
+h1{font-size:clamp(3rem,8vw,6.3rem);line-height:.92;margin:.12em 0 .2em;font-weight:600;letter-spacing:-.055em}h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;margin:0 0 1.2rem}h3{font-size:1.15rem;color:var(--mint);margin-top:2.2rem}
+.lede{max-width:760px;color:var(--muted);font-size:1.15rem}.links{display:flex;gap:16px;flex-wrap:wrap;margin:28px 0 46px}.links a{border:1px solid var(--line);padding:8px 12px;text-decoration:none}
+.page{background:linear-gradient(180deg,#0d1418,#080d10);border:1px solid var(--line);padding:clamp(26px,5vw,60px);margin:34px 0;min-height:76vh}
+.math{font:1rem/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#070b0d;border-left:2px solid var(--bronze);padding:14px 18px;margin:18px 0;overflow:auto}
+.core{border:1px solid #416756;background:#0a1611;padding:20px;margin-top:30px}.interpret{border:1px solid var(--line);padding:20px;margin-top:14px;color:var(--muted)}.runtime{border:1px solid #315663;background:#081216;padding:20px;margin-top:24px}
+ul{padding-left:1.35rem}.footer{color:var(--muted);font-size:.9rem;margin-top:42px}
+@media print{header,.links{display:none}body{background:white;color:#111}.page{background:white;border:0;break-after:page;min-height:auto}.math,.core,.interpret,.runtime{background:white;color:#111}}
+</style>
+</head>
+<body>
+<header><nav><strong>THE MATHEMATICAL CITY</strong><a href="../../">Atlas</a><a href="#page1">Page 1</a><a href="#page2">Page 2</a><a href="#runtime">Runtime</a></nav></header>
+<main>
+<p class="eyebrow">E47 Research Note · Updated 2026-09-23</p>
+<h1>E47 in Two Pages</h1>
+<p class="lede">K², V₂, recursive invariant selection, and the residual-gated executable runtime.</p>
+<div class="links"><a href="https://app.notion.com/p/3e446094fd30811ba779f8af95af5c02?pvs=204">Notion record ↗</a><a href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/e47-recursive-note">Supabase mirror ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/notes/e47-recursive-system.md">Note source ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/recursive_runtime.py">Runtime source ↗</a></div>
+<section class="page" id="page1">
+<p class="eyebrow">Page 1 · What the object is</p><h2>125 → K → 47</h2>
+<h3>Why V₂ has dimension 5</h3><p>The starting object is the spin-2 irreducible representation of SU(2), denoted V₂. A spin-j irreducible representation has dimension 2j+1. For j=2, dim V₂=5.</p>
+<div class="math">V = V₂⊗³ &nbsp;&nbsp; dim V = 5³ = 125</div>
+<h3>The Casimir selector</h3><p>Let C=J<sub>tot</sub>². Its eigenvalues on this carrier are {0,2,6,12,20,30,42}, with state multiplicities {1,9,25,28,27,22,13}. Define K=(C−6I)(C−30I).</p>
+<div class="math">E₄₇ = ker K = E₆ ⊕ E₃₀ &nbsp;&nbsp; dim E₄₇ = 47</div>
+<h3>What K² is and why it matters</h3><p>K²=K†K is positive semidefinite and preserves the same kernel.</p>
+<div class="math">Γε = I − εK² &nbsp;&nbsp; ε* = 1/99144 &nbsp;&nbsp; ρ* = 15/17</div>
+<div class="math">Ωc = 47/125 = 0.376</div>
+</section>
+<section class="page" id="page2">
+<p class="eyebrow">Page 2 · Recursive execution</p><h2>Invariant selection becomes an executable cycle</h2>
+<div class="math">Σ → Ψ → Γⁿ → Ω → Λ → Σ′ → α → Σ</div>
+<div class="runtime" id="runtime"><strong>RESIDUAL-GATED RUNTIME.</strong><p>Ω is evaluated on the contracted pre-projection state. Only after ||KM<sub>pre</sub>||≤τ is satisfied is Λ applied. Reversing those operations would make KΛM≈0 by construction and render the gate tautological.</p>
+<div class="math">K=(C−6I)(C−30I)<br>Γ=I−K²/99144<br>Λ=P₆+P₃₀<br>Ω: ||KM<sub>pre</sub>|| ≤ 10⁻¹⁰</div>
+<ul><li>certificate PASS</li><li>rank Λ = 47</li><li>ρ⊥ = 15/17</li><li>252 contractions in the seeded smoke test</li><li>pre-projection residual = 9.353585941533422e−11</li><li>post-projection residual = 4.833244591885603e−12</li></ul>
+<p>SHA-256: <code>8ec779cbb5247f9dc733cd2f4e341c8378d5ec6acfc21d56d9d3da33b322e716</code></p></div>
+<h3>Claim boundary</h3><ul><li>47 is not asserted to be the universal dimensionality of nature.</li><li>47/125 is the exact rank fraction of this construction, not a universal measured constant.</li><li>The finite spectral theorem does not by itself establish downstream physical domains.</li><li>Downstream E47 applications require their own explicit maps and evidence.</li></ul>
+<div class="core"><strong>CORE EXACT CLAIM.</strong> V₂⊗³ is a 125-dimensional carrier. K=(C−6I)(C−30I) has a 47-dimensional kernel. K² generates a stable contraction whose powers converge to P₄₇ under the stated step-size bound.</div>
+<div class="interpret"><strong>EXECUTABLE INTERPRETATION.</strong> Preserve what satisfies the kernel condition, contract what does not, evaluate certainty on the unprojected residual, then project and pass the invariant forward.</div>
+</section><p class="footer">E47 Research · The Mathematical City · Exact finite object separated from downstream interpretation.</p>
+</main></body></html>

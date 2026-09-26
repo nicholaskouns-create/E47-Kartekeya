@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#cbeeff">
+<meta name="description" content="MANTA programmable-matter 6DOF flight experience.">
+<meta name="instrument-version" content="1.0.0">
+<title>MANTA // Flight</title>
+<style>
+:root{
+  --ink:#0a1b22;--muted:#5d7179;--glass:rgba(250,254,255,.82);--glass2:rgba(250,254,255,.94);
+  --line:rgba(16,59,73,.16);--cyan:#00a9c5;--cyan2:#58e7f4;--orange:#d97925;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#cbeeff;color:var(--ink);font-family:var(--sans)}
+body{overscroll-behavior:none}
+#stage{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;background:linear-gradient(#bfe8fb 0 64%,#e8d2a7 64% 100%)}
+#fallback{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(#bfe8fb 0 64%,#e8d2a7 64% 100%);z-index:1;color:#0a1b22}
+#fallback[hidden]{display:none}
+.fallback-card{padding:18px 22px;border-radius:18px;background:var(--glass2);border:1px solid var(--line);box-shadow:0 24px 80px rgba(20,58,72,.12);text-align:center}
+.fallback-card b{display:block;font-size:28px;letter-spacing:-.04em}.fallback-card span{display:block;margin-top:6px;color:var(--muted);font:700 10px var(--mono);letter-spacing:.08em}
+.hud{position:fixed;inset:0;z-index:10;pointer-events:none}
+.top{position:absolute;left:12px;right:12px;top:max(10px,env(safe-area-inset-top));display:flex;align-items:center;gap:8px}
+.brand,.chip,.button,.flightbar,.drawer{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);box-shadow:0 12px 36px rgba(18,58,72,.10)}
+.brand{padding:9px 12px;border-radius:14px}.brand strong{display:block;font-size:17px;line-height:1;letter-spacing:-.035em}.brand small{display:block;margin-top:4px;color:#187d91;font:800 8px var(--mono);letter-spacing:.13em}
+.portal-link{pointer-events:auto;min-height:36px;border-radius:999px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);box-shadow:0 12px 36px rgba(18,58,72,.10);color:#007d91;font:900 9px var(--mono);text-decoration:none;white-space:nowrap}
+.topright{margin-left:auto;display:flex;gap:6px;align-items:center;pointer-events:auto}
+.chip,.button{min-height:36px;border-radius:999px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);font:800 9px var(--mono);white-space:nowrap;text-decoration:none}
+.chip.live{color:#007d91}
+.button{cursor:pointer;pointer-events:auto}.button.primary{background:#0a1b22;color:#f7ffff;border-color:#0a1b22}.button.active{background:#d9fbff;color:#006a7d;border-color:#7adce8}
+.crosshair{position:absolute;left:50%;top:50%;width:30px;height:30px;transform:translate(-50%,-50%);opacity:.34}
+.crosshair:before,.crosshair:after{content:"";position:absolute;background:#0a1b22}.crosshair:before{left:14px;top:0;width:1px;height:30px}.crosshair:after{left:0;top:14px;width:30px;height:1px}
+.bottom{position:absolute;left:12px;right:12px;bottom:max(11px,env(safe-area-inset-bottom));display:flex;align-items:flex-end;gap:8px}
+.controls{display:flex;gap:6px;flex-wrap:wrap;pointer-events:auto}
+.flightbar{margin-left:auto;border-radius:14px;padding:8px 11px;display:grid;grid-template-columns:auto auto auto;gap:3px 12px;align-items:center;font:800 9px var(--mono)}
+.flightbar span{color:var(--muted)}.flightbar b{font-size:12px}.flightbar .phase{color:#007d91}
+.morph-indicator{position:absolute;left:50%;bottom:73px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(250,254,255,.72);border:1px solid var(--line);backdrop-filter:blur(14px);font:800 8px var(--mono);color:var(--muted)}
+.morph-indicator i{display:block;width:58px;height:4px;border-radius:999px;background:#c4d6db;overflow:hidden}.morph-indicator i:after{content:"";display:block;width:var(--morph,30%);height:100%;background:linear-gradient(90deg,#00a9c5,#63eef6);border-radius:999px;transition:width .12s linear}
+.drawer{position:absolute;left:12px;right:12px;bottom:72px;max-height:min(48vh,430px);overflow:auto;border-radius:17px;background:var(--glass2);padding:11px;transform:translateY(calc(100% + 100px));opacity:0;pointer-events:none;transition:.22s}
+.show-data .drawer{transform:none;opacity:1;pointer-events:auto}
+.drawer-head{display:flex;align-items:center;gap:9px}.drawer-head strong{font:900 10px var(--mono);letter-spacing:.12em;color:#007d91}.drawer-head span{color:var(--muted);font:700 9px var(--mono)}.drawer-head .button{margin-left:auto}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:9px}.metric{border:1px solid var(--line);background:rgba(255,255,255,.7);border-radius:10px;padding:8px}.metric span{display:block;color:var(--muted);font:800 7px var(--mono);letter-spacing:.07em}.metric b{display:block;margin-top:4px;font:900 11px var(--mono)}
+#fault{position:fixed;z-index:40;left:50%;top:50%;transform:translate(-50%,-50%);max-width:min(88vw,540px);padding:16px 18px;border-radius:16px;background:#fff;border:1px solid #e6b0aa;color:#8a1d14;box-shadow:0 25px 80px rgba(80,20,10,.16);font:700 11px/1.5 var(--mono)}
+@media(max-width:760px){
+  .brand small{display:none}.brand{padding:9px 10px}.portal-link{display:inline-flex;padding:0 10px;font-size:8px}.topright .chip:nth-child(3){display:none}.topright a{display:none}
+  .flightbar{grid-template-columns:auto auto;gap:2px 8px;font-size:8px}.flightbar b{font-size:10px}
+  .controls #pause{display:none}.metrics{grid-template-columns:repeat(2,1fr)}.morph-indicator{bottom:65px}
+}
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<div id="fallback"><div class="fallback-card"><b>MANTA</b><span>INITIALIZING FLIGHT WORLD</span></div></div>
+
+<div class="hud">
+  <div class="top">
+    <div class="brand"><strong>MANTA</strong><small>PROGRAMMABLE-MATTER FLIGHT TESTBED</small></div>
+      <a class="portal-link" href="../kouns-core/?module=manta#labs">← CITY CORE</a>
+    <div class="topright">
+      <span id="status" class="chip live">BOOTING</span>
+      <span id="clock" class="chip">0.0 s</span>
+      <span id="phase" class="chip">CLIMB</span>
+      <a class="chip" href="../kouns-core/?module=manta#labs">CITY CORE</a>
+    </div>
+  </div>
+
+  <div class="crosshair"></div>
+  <div class="morph-indicator"><span>MORPH</span><i id="morphMeter"></i><span id="morphText">NEUTRAL</span></div>
+
+  <div class="bottom">
+    <div class="controls">
+      <button id="run" class="button primary">FLY</button>
+      <button id="pause" class="button">PAUSE</button>
+      <button id="view" class="button">CHASE</button>
+      <button id="baseline" class="button">BASELINE</button>
+      <button id="data" class="button">DATA</button>
+      <button id="reset" class="button">RESET</button>
+    </div>
+    <div class="flightbar">
+      <span>SPEED</span><b id="speed">—</b><span class="phase" id="speedDelta">Δ —</span>
+      <span>ALT</span><b id="altitude">—</b><span class="phase" id="altDelta">Δ —</span>
+    </div>
+  </div>
+
+  <section class="drawer">
+    <div class="drawer-head"><strong>LIVE FLIGHT DATA</strong><span>E2 SIMULATION</span><button id="closeData" class="button">CLOSE</button></div>
+    <div class="metrics">
+      <div class="metric"><span>CL</span><b id="cl">—</b></div>
+      <div class="metric"><span>CD</span><b id="cd">—</b></div>
+      <div class="metric"><span>Cm</span><b id="cm">—</b></div>
+      <div class="metric"><span>MASS</span><b id="mass">—</b></div>
+      <div class="metric"><span>MORPH ENERGY</span><b id="energy">—</b></div>
+      <div class="metric"><span>DYNAMIC Q</span><b id="qbar">—</b></div>
+    </div>
+  </section>
+</div>
+<div id="fault" hidden></div>
+<script type="module">
+import {installInstrumentTelemetry} from '../shared/instrument-telemetry.js';
+installInstrumentTelemetry({componentId:'manta-flight-lab',version:'1.0.0'});
+</script>
+<script type="module" src="./app.js?v=prod-20260919-3"></script>
+</body>
+</html>

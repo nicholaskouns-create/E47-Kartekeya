@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#090b0d" />
+  <title>Q5 · 125-word ledger</title>
+  <meta name="description" content="Interactive 5×5×5 Q5 packing map with cube/torus adjacency. π(x,y,z)=25x+5y+z." />
+  <meta property="og:title" content="Q5 · 125-word ledger" />
+  <meta property="og:description" content="Interactive 5×5×5 Q5 packing map with cube/torus adjacency. π(x,y,z)=25x+5y+z." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/" />
+  <meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Q5 · 125-word ledger" />
+  <meta name="twitter:description" content="Interactive 5×5×5 packing/address ledger for the Mathematical City." />
+  <meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg" />
+  <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/" />
+  <script type="importmap">{"imports":{"three":"../../vendor/three.module.js"}}</script>
+  <style>
+    :root{--bg:#090b0d;--panel:rgba(10,14,13,.88);--fg:#e7eee9;--muted:#8a9790;--line:#24302b;--live:#6edfd4;--lock:#c1e8ce}
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.4 "IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;overflow:hidden}
+    canvas{display:block;width:100%;height:100%}
+    .word{position:absolute;top:16px;left:16px;font:500 36px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em;color:var(--live);text-shadow:0 0 24px rgba(110,223,212,.18)}
+    .state{position:absolute;top:62px;left:16px;display:grid;gap:3px;max-width:min(720px,72vw);padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);backdrop-filter:blur(12px);font:500 11px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:var(--muted)}
+    .state .live{color:var(--live)} .state .lock{color:var(--lock)}
+    .links{position:absolute;top:16px;right:16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:48%}
+    a.quiet{color:var(--muted);font:12px "IBM Plex Mono",ui-monospace,monospace;text-decoration:none}
+    .controls{position:absolute;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);display:grid;gap:6px;width:min(1040px,calc(100vw - 20px))}
+    .bar{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:7px;border:1px solid var(--line);border-radius:12px;background:var(--panel);backdrop-filter:blur(12px);scrollbar-width:none}
+    .bar::-webkit-scrollbar{display:none}
+    button,a.chip,span.chip{min-height:42px;border:1px solid var(--line);background:#111614;color:var(--fg);border-radius:9px;padding:8px 11px;font:500 11px "IBM Plex Mono",ui-monospace,monospace;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;cursor:pointer}
+    button.on,a.chip.on{border-color:var(--live);color:var(--live)}
+    button:disabled{opacity:.32;cursor:not-allowed}
+    span.chip{cursor:default;color:var(--muted)}
+    .step{min-width:72px}
+    .q5-panel{position:absolute;right:16px;top:64px;width:min(340px,42vw);padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);backdrop-filter:blur(14px);font:500 10px/1.35 "IBM Plex Mono",ui-monospace,monospace;color:var(--muted);z-index:4}\n    .q5p-head,.q5p-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.q5p-head{color:var(--live);font-size:11px}.q5p-mode{padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:var(--lock)}.q5p-mode.torus{border-color:var(--live);color:var(--live)}\n    .q5p-meta{margin-top:6px;flex-wrap:wrap}.q5p-graph{position:relative;height:178px;margin-top:4px}.q5p-graph svg{position:absolute;inset:0;width:100%;height:100%}.q5p-edge{stroke:#33544e;stroke-width:.8}.q5p-center{fill:#173531;stroke:#6edfd4;stroke-width:1}.q5p-traveler{fill:#6edfd4;opacity:.96}.q5p-center-label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--fg);font-size:12px}.q5p-node{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;min-width:42px;padding:4px 5px;border:1px solid var(--line);border-radius:8px;background:#111614;color:var(--lock)}.q5p-node small{font-size:8px;color:var(--muted)}\n    .q5p-slice{display:grid;grid-template-columns:auto 86px;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:8px}.q5p-grid{display:grid;grid-template-columns:repeat(5,12px);gap:3px}.q5p-cell{width:12px;height:12px;border:1px solid #29413b;border-radius:3px;background:#111614}.q5p-cell.hot{border-color:var(--live);background:#245d56}.q5p-transition{margin-top:8px;color:var(--live);min-height:14px}.q5-panel.wrapped{box-shadow:0 0 0 1px rgba(110,223,212,.45),0 0 28px rgba(110,223,212,.10)}.q5-panel.blocked{box-shadow:0 0 0 1px rgba(231,238,233,.25)}\n    @media(max-width:700px){
+      .word{font-size:30px}
+      .state{top:56px;max-width:calc(100vw - 32px);font-size:10px}
+      .links{top:18px}.links a:not(:first-child){display:none}
+      .q5-panel{right:8px;top:132px;width:min(310px,calc(100vw - 16px));opacity:.96}\n      .controls{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100vw - 12px);gap:4px}
+      .bar{padding:5px;gap:5px}
+      button,a.chip,span.chip{min-height:40px;padding:7px 9px;font-size:10px}
+      .step{min-width:66px}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div class="word" id="word">---</div>
+  <div class="state" aria-live="polite">
+    <span id="indexReadout">i = ---</span>
+    <span id="coordReadout">xyz = ---</span>
+    <span id="magReadout">m = ---</span>
+    <span id="topologyReadout" class="live">topology = cube</span>
+    <span id="neighborReadout" class="lock">neighbors = ---</span>
+  </div>
+  <aside class="q5-panel" id="topologyPanel" aria-label="Q5 live topology panel"></aside>\n  <div class="links">
+    <a class="quiet" href="../../index.html">CITY</a>
+    <a class="quiet" href="../city-live/">CITY LIVE</a>
+    <a class="quiet" href="../instruments/">DIRECTORY</a>
+    <a class="quiet" href="../formalism-atlas/">ATLAS</a>
+    <a class="quiet" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl">cells.jsonl</a>
+    <a class="quiet" href="https://www.notion.so/3e246094fd308151966ae74dedb2976a">Notion ledger</a>
+  </div>
+  <div class="controls">
+    <div class="bar">
+      <button type="button" id="walk" class="on">Pause</button>
+      <button type="button" id="peel">Peel</button>
+      <button type="button" id="topology">Topology · cube</button>
+      <button type="button" class="step" data-axis="x" data-dir="-1">−X</button>
+      <button type="button" class="step" data-axis="x" data-dir="1">+X</button>
+      <button type="button" class="step" data-axis="y" data-dir="-1">−Y</button>
+      <button type="button" class="step" data-axis="y" data-dir="1">+Y</button>
+      <button type="button" class="step" data-axis="z" data-dir="-1">−Z</button>
+      <button type="button" class="step" data-axis="z" data-dir="1">+Z</button>
+    </div>
+    <div class="bar">
+      <button type="button" id="sliceAxis">Slice · all</button>
+      <button type="button" id="slicePrev" disabled>− slice</button>
+      <span class="chip" id="sliceValue">all</span>
+      <button type="button" id="sliceNext" disabled>+ slice</button>
+      <a class="chip" id="github" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/q5/cells.jsonl">GitHub</a>
+      <a class="chip" id="notion" href="https://www.notion.so/3e246094fd308151966ae74dedb2976a">Notion</a>
+    </div>
+  </div>
+  <script type="module" src="./lattice.js"></script>
+</body>
+</html>

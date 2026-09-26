@@ -1,0 +1,529 @@
+{
+  "schema": "CITY-PORTAL-1.0",
+  "version": "1.0.0",
+  "updated": "2026-09-22",
+  "title": "The Mathematical City",
+  "categories": [
+    {
+      "id": "all",
+      "label": "All instruments"
+    },
+    {
+      "id": "flight",
+      "label": "Flight & motion"
+    },
+    {
+      "id": "fields",
+      "label": "Fields & materials"
+    },
+    {
+      "id": "mathematics",
+      "label": "Mathematics"
+    },
+    {
+      "id": "biology",
+      "label": "Biology"
+    },
+    {
+      "id": "city",
+      "label": "City & worlds"
+    }
+  ],
+  "hero": {
+    "image": "../../assets/city-portal/city-workshop.webp",
+    "imageSource": {
+      "provider": "Notion",
+      "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+      "role": "Mathematical City instrument portal cover",
+      "localSha256": "4c57023b2ef039b305a4effdaefc88c21be17e526b8af5970b6053e4465e4b5f"
+    }
+  },
+  "sources": [
+    {
+      "provider": "Notion",
+      "title": "Mini AI Labs — Advanced Research Interface",
+      "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e"
+    },
+    {
+      "provider": "Google Drive",
+      "title": "Mini AI Labs brand artwork",
+      "url": "https://drive.google.com/drive/folders/1t6L0NS4D3IpYYgx9kOnPrnYt7CVfWa-z"
+    },
+    {
+      "provider": "Google Drive",
+      "title": "Mini AI Labs Unified Interface Registry",
+      "url": "https://docs.google.com/document/d/1qN5aQIaN8DJlBx16XepP1WG9i9wKFGbCgo27MqNyyow/edit"
+    },
+    {
+      "provider": "Supabase",
+      "title": "Mini AI Labs brand manifest",
+      "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/mini-lab-brand-assets"
+    }
+  ],
+  "apps": [
+    {
+      "id": "skyrmion-runtime",
+      "number": 1,
+      "name": "SKYRMION",
+      "edition": "Runtime 2",
+      "category": "flight",
+      "description": "Cinematic 6DOF flight over WGS84 terrain. Take the controls of F-16, SR-71, X-15, and EIDOLON.",
+      "role": "Flight simulation",
+      "url": "https://moon-shale-tulip-xenon.grok.me/",
+      "image": "../../assets/city-portal/skyrmion-runtime.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://moon-shale-tulip-xenon.grok.me/og.jpg",
+        "localSha256": "d8b0aff554cc713e6ccff400a5f85b7c58c80cc32af3b33784caf161cd845f97"
+      },
+      "pageTitle": "SKYRMION",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "eidolon-flight",
+      "number": 2,
+      "name": "EIDOLON",
+      "edition": "Flight Lab",
+      "category": "flight",
+      "description": "Fly, explore, and discover spectral fields in the Mathematical City’s open flight playground.",
+      "role": "Flight simulation",
+      "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site",
+      "image": "../../assets/city-portal/eidolon-flight.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site/assets/eidolon-cover.png",
+        "localSha256": "fbc674601814dfcc13c11891eb618a6b59b3fcbbea9cd5033e435b017b048741"
+      },
+      "pageTitle": "EIDOLON · Flight Lab",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "q5-lattice",
+      "number": 3,
+      "name": "Q5 Lattice",
+      "edition": "125-word packing map",
+      "category": "mathematics",
+      "description": "Explore a 5 × 5 × 5 word lattice, switch between cube and torus neighborhoods, and inspect residuals.",
+      "role": "Geometry & language",
+      "url": "https://kite-pixel-tiger-stone.grok.me/",
+      "image": "../../assets/city-portal/q5-lattice.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://kite-pixel-tiger-stone.grok.me/og.jpg",
+        "localSha256": "fb205484ad67ca4f72f3b70b27f70588caaac4146a33cb32977af2de44613390"
+      },
+      "pageTitle": "Q5 Lattice",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "hover-construction",
+      "number": 4,
+      "name": "Hover",
+      "edition": "Construction instrument",
+      "category": "flight",
+      "description": "Explore the hull, kernel, and geodesic hover controls of the KKP-R construction instrument.",
+      "role": "Craft construction",
+      "url": "https://leaf-vivid-bison-crisp.grok.me/",
+      "image": "../../assets/city-portal/hover-construction.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://leaf-vivid-bison-crisp.grok.me/og.jpg",
+        "localSha256": "c9c83f7a6dc5a0aff1f31811e4b0d42aec05c60663b1378866ef43307a536937"
+      },
+      "pageTitle": "Hover",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "skyrmion-domains",
+      "number": 5,
+      "name": "SKYRMION",
+      "edition": "Multi-domain simulator",
+      "category": "flight",
+      "description": "Move between atmospheric, orbital, and interstellar flight in the skyrmion field simulator.",
+      "role": "Flight simulation",
+      "url": "https://monarch-sky-daisy-civic.grok.me/",
+      "image": "../../assets/city-portal/skyrmion-domains.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://monarch-sky-daisy-civic.grok.me/og.jpg",
+        "localSha256": "4a05f0a1f1629ee86cc2b6b25e925d603f5eed8f8aded52463c25c41d206134c"
+      },
+      "pageTitle": "SKYRMION",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "city-atlas",
+      "number": 6,
+      "name": "Mathematical City",
+      "edition": "Executable atlas",
+      "category": "city",
+      "description": "Enter the City through its Citadel, certificates, Cube, and independent research laboratories.",
+      "role": "Research atlas",
+      "url": "https://flame-kind-fleet-blend.grok.me",
+      "image": "../../assets/city-portal/city-atlas.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://flame-kind-fleet-blend.grok.me/og.jpg",
+        "localSha256": "d2f876a5f787e094f867f0cc037fba992e0c17720a0ecccded6d584d7139b52c"
+      },
+      "pageTitle": "The Mathematical City",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "city-core-eidolon",
+      "number": 7,
+      "name": "CITY CORE",
+      "edition": "EIDOLON flight console",
+      "category": "flight",
+      "description": "Open the GitHub flight console at EIDOLON, with the City’s research instruments close at hand.",
+      "role": "Flight & instruments",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight",
+      "image": "../../assets/city-portal/city-core-eidolon.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/eidolon-social-share.jpg",
+        "localSha256": "5ac65f3986a1f3527c1d3fa2bdc121026bbd7c537df689529dce43513a93d9c1"
+      },
+      "pageTitle": "CITY CORE // MATHEMATICAL CITY",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "city-research",
+      "number": 8,
+      "name": "Mathematical City",
+      "edition": "Research atlas",
+      "category": "city",
+      "description": "Navigate the Recursive Intelligence, E47, and K47/125 atlas through its own visual front door.",
+      "role": "Research atlas",
+      "url": "https://apex-zinc-daisy-acre.grok.me",
+      "image": "../../assets/city-portal/city-research.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://apex-zinc-daisy-acre.grok.me/og.jpg",
+        "localSha256": "da23c337f296e593781c7f38ccfdad84b4b21416c90d2f7fb47223b4f3a59e1c"
+      },
+      "pageTitle": "Mathematical City",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "chimera-qegt",
+      "number": 9,
+      "name": "CHIMERA",
+      "edition": "HAR Codex · QEGT",
+      "category": "biology",
+      "description": "Explore Human Accelerated Regions and the proposed QEGT bridge in CHIMERA’s interactive atlas.",
+      "role": "Biology & field models",
+      "url": "https://zest-blade-turbo-rose.grok.me/qegt",
+      "image": "../../assets/city-portal/chimera-qegt.webp",
+      "imageSource": {
+        "provider": "Supabase",
+        "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/chimera/og.jpg",
+        "path": "city-apps/chimera/og.jpg",
+        "localSha256": "ec633c761120f52dd9fb6d50fb6548bc286b63b5b8df709c29ccea6874a53570"
+      },
+      "pageTitle": "CHIMERA — The HAR Codex",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "city-os",
+      "number": 10,
+      "name": "City OS",
+      "edition": "Composition console",
+      "category": "city",
+      "description": "Explore labs as operators, nine emergent machines, and experiment packets in the City OS console.",
+      "role": "Composition",
+      "url": "https://spark-maple-sail-tiger.grok.me",
+      "image": "../../assets/city-portal/city-os.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://spark-maple-sail-tiger.grok.me/og.jpg",
+        "localSha256": "c308de8e8ac9494bf7c59b6a1bf18d4859f55538dfea96064623ad532ba9cef2"
+      },
+      "pageTitle": "City OS",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "invarifold",
+      "number": 11,
+      "name": "InvariFold",
+      "edition": "Contraction cinema",
+      "category": "biology",
+      "description": "Follow sequence-to-geometry contraction and explore the Mathematical City Proof Forge.",
+      "role": "Molecular simulation",
+      "url": "https://sapphire-cabin-crystal-king.grok.me",
+      "image": "../../assets/city-portal/invarifold.webp",
+      "imageSource": {
+        "provider": "Notion",
+        "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+        "original_filename": "hub-invarifold.jpg",
+        "localSha256": "169076c6ac5dee025cdb0f2c849defc4d902793d527ae74111214c91fb4a86b4"
+      },
+      "pageTitle": "InvariFold",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "ufo-propulsion",
+      "number": 12,
+      "name": "UFO Propulsion Lab",
+      "edition": "Scalar fields & metamaterials",
+      "category": "flight",
+      "description": "Tune the scalar field and metamaterial parameters, inspect the warp-bubble model, and fly the craft.",
+      "role": "Propulsion simulation",
+      "url": "https://star-sage-atlas-rapid.grok.me/",
+      "image": "../../assets/city-portal/ufo-propulsion.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://star-sage-atlas-rapid.grok.me/og.jpg",
+        "localSha256": "f59a0870f8e129c6183c3280e6c231a0a70fdf98256a0b6518249167651809f7"
+      },
+      "pageTitle": "UFO Propulsion Lab",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "mav",
+      "number": 13,
+      "name": "MAV",
+      "edition": "Micro aerial vehicle",
+      "category": "flight",
+      "description": "Tune five spectral nodes toward Ωc = 47/125 in the Eidolon-class micro aerial vehicle console.",
+      "role": "Vehicle instrument",
+      "url": "https://glow-garden-brick-cedar.grok.me/",
+      "image": "../../assets/city-portal/mav.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://glow-garden-brick-cedar.grok.me/og.jpg",
+        "localSha256": "8c33262fb0a26b2e72c9f6f703c5a08f2e5f17d95d08867014490d2a462ac29a"
+      },
+      "pageTitle": "MAV",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "street",
+      "number": 14,
+      "name": "Street",
+      "edition": "Hash-driven world",
+      "category": "city",
+      "description": "Press the mill and watch a hash become the weather in this interactive street world.",
+      "role": "Interactive world",
+      "url": "https://iris-dove-dawn-silver.grok.me",
+      "image": "../../assets/city-portal/street.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://iris-dove-dawn-silver.grok.me/og.jpg",
+        "localSha256": "e527be97b5997b763224a98038c724a7809badb9b153e14e6dc088811f61db55"
+      },
+      "pageTitle": "Street",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "waveforge",
+      "number": 15,
+      "name": "WAVEFORGE",
+      "edition": "Metamaterial studio",
+      "category": "fields",
+      "description": "Design metamaterial lattices, watch waves interact with structure, and export the code.",
+      "role": "Waves & materials",
+      "url": "https://garden-moss-cabin-forest.grok.me/",
+      "image": "../../assets/city-portal/waveforge.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://garden-moss-cabin-forest.grok.me/og.jpg",
+        "localSha256": "32476620b557329dae66f740d9ef5836fbb2b58a332591e25b41e6c381403edc"
+      },
+      "pageTitle": "WAVEFORGE",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "hover-motion",
+      "number": 16,
+      "name": "Hover",
+      "edition": "Kernel-projected motion",
+      "category": "flight",
+      "description": "Explore geometric motion projected through the E47 kernel in this independent Hover simulation.",
+      "role": "Geometric motion",
+      "url": "https://zinc-crane-gem-pepper.grok.me/",
+      "image": "../../assets/city-portal/hover-motion.webp",
+      "imageSource": {
+        "provider": "Application",
+        "url": "https://zinc-crane-gem-pepper.grok.me/og.jpg",
+        "localSha256": "362e06e2e03249d3ca699ac86651536c258e2ed61eca859deca98903bbedebbf"
+      },
+      "pageTitle": "Hover",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "kartekeya",
+      "number": 17,
+      "name": "Kartekeya",
+      "edition": "Spectral coprocessor",
+      "category": "mathematics",
+      "description": "Watch contraction of the 125-state carrier onto the 47-dimensional invariant kernel.",
+      "role": "Spectral computation",
+      "url": "https://velvet-king-quiet-amber.grok.me",
+      "image": "../../assets/city-portal/kartekeya.webp",
+      "imageSource": {
+        "provider": "Notion",
+        "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+        "original_filename": "hub-kartekeya.jpg",
+        "localSha256": "4c505b76cf374370f66b2a8fed5f6ed468c0aeabf01ef4adf647b5eb06958fa7"
+      },
+      "pageTitle": "Kartekeya",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "identity",
+      "number": 18,
+      "name": "Identity",
+      "edition": "Transported Identity Projector",
+      "category": "mathematics",
+      "description": "Explore carrier geometry, Hodge structure, and harmonic-sector persistence across transformations.",
+      "role": "Topology & persistence",
+      "url": "https://mist-mint-branch-nova.grok.me",
+      "image": "../../assets/city-portal/identity.webp",
+      "imageSource": {
+        "provider": "Notion",
+        "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+        "original_filename": "hub-identity.jpg",
+        "localSha256": "85080ec0051a2ea3b553fb7c0f8409adb0369c4b6089d426f78d495bca56bcc7"
+      },
+      "pageTitle": "Identity",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "scalar",
+      "number": 19,
+      "name": "SCALAR",
+      "edition": "Algebraic quantum scalar fields",
+      "category": "fields",
+      "description": "Visualize the finite E47 spectral core and its deterministic lift into a scalar field.",
+      "role": "Field visualization",
+      "url": "https://heart-eagle-blade-hazel.grok.me",
+      "image": "../../assets/city-portal/scalar.webp",
+      "imageSource": {
+        "provider": "Google Drive",
+        "url": "https://drive.google.com/file/d/11qa30figOSTX2DvSAOCWcEYiZ-TGUgi2/view",
+        "name": "11-SCALAR-App-Icon.jpeg",
+        "localSha256": "9b6c37df03abb6945965c358a34193da590cbb944574a670922d6ff42fab2ff8"
+      },
+      "pageTitle": "SCALAR · Algebraic Quantum Scalar Fields",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "soar",
+      "number": 20,
+      "name": "SOAR",
+      "edition": "Control, programming & restoration",
+      "category": "mathematics",
+      "description": "Explore E47 state programming, control, and restoration of the selected invariant sector.",
+      "role": "Invariant restoration",
+      "url": "https://topaz-solar-iris-drift.grok.me/",
+      "image": "../../assets/city-portal/soar.webp",
+      "imageSource": {
+        "provider": "Notion",
+        "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+        "original_filename": "hub-soar.jpg",
+        "localSha256": "5ab7b11e6859cb08b29bdbb7b44ac8ad324f68fe3a06e92d88288f635527105b"
+      },
+      "pageTitle": "Soar",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "murmuration",
+      "number": 21,
+      "name": "Murmuration",
+      "edition": "Collective dynamics",
+      "category": "mathematics",
+      "description": "Explore collective motion and topology around the E47 kernel and the Mathematical City corpus.",
+      "role": "Dynamics & topology",
+      "url": "https://kite-glade-tiger-cabin.grok.me/",
+      "image": "../../assets/city-portal/murmuration.webp",
+      "imageSource": {
+        "provider": "Notion",
+        "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+        "original_filename": "hub-murmuration.jpg",
+        "localSha256": "877359418bc59d23337a6d4ffb8f75a3971dfeda0004b2a98517016669dc92a2"
+      },
+      "pageTitle": "Murmuration",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "density",
+      "number": 22,
+      "name": "Density",
+      "edition": "Quantum topological visualizer",
+      "category": "mathematics",
+      "description": "Explore tomography and the reconstruction of structure from incomplete observations.",
+      "role": "Measurement & reconstruction",
+      "url": "https://winter-dawn-leaf-marble.grok.me/",
+      "image": "../../assets/city-portal/density.webp",
+      "imageSource": {
+        "provider": "Notion",
+        "url": "https://app.notion.com/p/3d546094fd3081b58ce2e4881d47c17e",
+        "original_filename": "hub-density.jpg",
+        "localSha256": "9ab9fa9e06efd9574d88439e6a7eef7935cc65acf65c16ba8768ae69ddc0c614"
+      },
+      "pageTitle": "Density",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "sat-newton-fractal",
+      "number": 23,
+      "name": "SAT → Newton",
+      "edition": "Basin Boundary · Box Dimension",
+      "category": "mathematics",
+      "description": "Measure the basin boundary of a clause-generated polynomial Gauss–Newton system across increasing resolution.",
+      "role": "Complexity geometry",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",
+      "image": "../../assets/scientific-app-ecosystem-share.png",
+      "imageSource": {
+        "provider": "GitHub Pages",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/sat-newton-fractal/",
+        "role": "Mathematical City E1 computational observatory"
+      },
+      "pageTitle": "SAT → Newton → Basin Boundary",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "python-validation",
+      "number": 24,
+      "name": "Python Validation",
+      "edition": "Executable Corpus",
+      "category": "mathematics",
+      "description": "Browse the Mathematical City’s executable Python witnesses, validation scripts, certificates, and provenance routes.",
+      "role": "Executable research",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/validation",
+      "image": "../../assets/scientific-app-ecosystem-share.png",
+      "imageSource": {
+        "provider": "GitHub",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/validation",
+        "role": "Executable validation corpus"
+      },
+      "pageTitle": "Python Validation",
+      "httpStatus": 200,
+      "checkedOn": "2026-09-22"
+    }
+  ]
+}

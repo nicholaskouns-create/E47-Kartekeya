@@ -1,0 +1,69 @@
+{
+  "schema": "MATRIX-ISOMORPHIC-PARITY-CERTIFICATE/1.0",
+  "certificate_id": "MC-MATRIX-PARITY-20260921-001",
+  "status": "PASS",
+  "evidence_class": "E1",
+  "scope": "software/numerical quantum-simulation parity; no hardware or experimental claim",
+  "configuration": {
+    "qubits": 8,
+    "layers": 24,
+    "max_bond_chi": 16,
+    "phase_phi": 0.7
+  },
+  "browser_smoke": {
+    "status": "PASS",
+    "exact_registers": "n=2..8",
+    "tolerance": 1e-9,
+    "controlled_truncation_case": {
+      "qubits": 8,
+      "chi": 2,
+      "relative_l2": 0.5002909246784347,
+      "discarded_weight": 0.34506575201583783
+    }
+  },
+  "python_mps_dense": {
+    "phase_aligned_relative_l2": 6.9797841682435854e-15,
+    "fidelity": 1.0,
+    "observable_max_error": 4.163336342344337e-15,
+    "schmidt_spectrum_max_error": 1.6653345369377348e-15,
+    "discarded_weight": 5.241335934017881e-32,
+    "max_bond": 16
+  },
+  "qiskit_aer": {
+    "status": "PASS",
+    "qiskit": "2.5.0",
+    "qiskit_aer": "0.17.2",
+    "phase_aligned_relative_l2": 1.5030029036919424e-14,
+    "fidelity": 1.0000000000000004
+  },
+  "typed_feature_lift": {
+    "source_dimension": 256,
+    "target_dimension": 125,
+    "norm": 1.0,
+    "claim": "explicit normalized sampled-amplitude feature map; not Hilbert-space isomorphism"
+  },
+  "e47": {
+    "rank": 47,
+    "coherence_fraction": 0.376,
+    "projector_idempotence_fro": 5.541372953883602e-15,
+    "kernel_projector_fro": 4.996015056480395e-12,
+    "k2_spectrum": [0,11664,12544,19600,32400,186624],
+    "k2_gap": 11663.99999999992,
+    "k2_max": 186624.00000000006
+  },
+  "embedding_125_to_128": {
+    "kind": "isometric embedding",
+    "j_dagger_j_residual_fro": 0.0,
+    "invalid_state_population": 0.0,
+    "r47_intertwiner_residual_fro": 0.0
+  },
+  "source": {
+    "matrix_engine": "website/interfaces/matrix/mps-worker.js",
+    "matrix_ui": "website/interfaces/matrix/matrix.js",
+    "validator": "scripts/validate_matrix_quantum_parity.py",
+    "validated_head_sha": "ac0c3d8d5963308d41c16a15a245f5073e719e60",
+    "validated_merge_ref_sha": "0f8f924a9e7b09b14b2f337f93de77189ce8e300",
+    "main_merge_sha": "b2325c6246082f114474189b190dca21b6fed6b7",
+    "github_actions_run": 35647363625
+  }
+}

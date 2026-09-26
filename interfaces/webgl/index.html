@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#07090b" />
+  <meta name="description" content="WebGL techniques lab for The Mathematical City. Instancing, adaptive DPR, LOD, and fixed-step rendering. E2 visual only." />
+  <title>WEBGL LAB · Mathematical City</title>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+  <style>
+    :root{--bg:#07090b;--panel:rgba(8,12,15,.78);--line:#2a3a40;--fg:#edf1ed;--muted:#8a979c;--live:#63d7cf;--lock:#c1e8ce;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Inter,ui-sans-serif,system-ui,sans-serif;--display:Georgia,"Times New Roman",serif}
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--fg);font-family:var(--sans)}
+    canvas#stage{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+    .hud{position:fixed;inset:0;pointer-events:none;z-index:4;padding:max(10px,env(safe-area-inset-top)) 12px max(10px,env(safe-area-inset-bottom))}
+    .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .brand{pointer-events:auto;text-decoration:none;color:var(--live);font:600 10px var(--mono);letter-spacing:.14em;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:var(--panel);min-height:36px;display:inline-flex;align-items:center}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:8px 10px;font:600 10px var(--mono);color:var(--muted);background:var(--panel)}
+    .chip b{color:var(--lock);font-weight:600}
+    .dock{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));pointer-events:auto;display:flex;flex-wrap:wrap;gap:6px;max-width:920px}
+    .dock button{min-height:36px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--fg);font:600 10px var(--mono);letter-spacing:.06em;padding:0 12px;cursor:pointer;touch-action:manipulation}
+    .dock button.on{border-color:var(--live);color:var(--live)}
+    .note{position:absolute;left:12px;top:58px;max-width:min(420px,calc(100vw - 24px));pointer-events:none;color:var(--muted);font:12px/1.45 var(--display)}
+    .note strong{display:block;font:500 22px var(--display);color:var(--fg);margin-bottom:6px}
+    .bound{margin-top:8px;font:10px var(--mono);color:#6f7a7e}
+    @media(max-width:700px){
+      .note strong{font-size:18px}
+      .note{top:52px;font-size:12px}
+      .dock button{min-height:34px;font-size:10px}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="WebGL techniques stage"></canvas>
+  <div class="hud">
+    <div class="top">
+      <a class="brand" href="../kouns-core/?module=eidolon#flight">CITY CORE</a>
+      <a class="brand" href="../../index.html">CITY</a>
+      <span class="chip" id="gpu">GPU · DETECTING</span>
+      <span class="chip">DRAWS <b id="draws">—</b></span>
+      <span class="chip">FPS <b id="fps">—</b></span>
+      <span class="chip">DPR <b id="dpr">—</b></span>
+    </div>
+    <p class="note">
+      <strong>WebGL techniques</strong>
+      5³ lattice, 125 cells. 47 sites lit as a display selection. Drag to orbit. Techniques change the renderer, not the algebra.
+      <span class="bound">E2 visual · CITY-GRAPHICS-ACCELERATOR-1.0 · no evidence promotion</span>
+    </p>
+    <div class="dock" id="dock" aria-label="Techniques"></div>
+  </div>
+  <script type="module" src="./lab.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#020609" />
+  <meta name="description" content="MANIFOLD — locked KKP-R spectral surfaces for the Mathematical City. Eidolon HUD, Density phone, City console, combined viewport, lock card." />
+  <meta property="og:title" content="MANIFOLD · Mathematical City" />
+  <meta property="og:description" content="Four surfaces on one kernel. dim H=125 · dim E47=47 · Omega_c=47/125." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manifold/" />
+  <meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MANIFOLD · Mathematical City" />
+  <meta name="twitter:description" content="Four surfaces on one kernel. dim H=125 · dim E47=47 · Omega_c=47/125." />
+  <meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg" />
+  <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manifold/" />
+  <title>MANIFOLD · Mathematical City</title>
+  <style>
+    :root { --bg:#020609; --panel:#061016; --ink:#eef9f8; --mute:#9bb0b7; --live:#39f3ef; --lock:#3DFF9A; --ghost:#e8b44f; --line:#1dabb1; --mono:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,sans-serif}
+    a{color:var(--live);text-decoration:none}
+    .lock-strip{font:11px/1.4 var(--mono);background:#031016;color:var(--lock);padding:10px 16px;border-bottom:1px solid #144650;letter-spacing:.02em;overflow-x:auto;white-space:nowrap}
+    header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:16px 18px 8px}
+    header h1{margin:0;letter-spacing:.14em;font-size:clamp(22px,4vw,36px)}
+    header p{margin:4px 0 0;color:var(--mute);font:12px var(--mono)}
+    nav{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px}
+    nav a{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:9px;padding:8px 12px;font:700 11px var(--mono)}
+    nav a.active{border-color:var(--live);color:var(--live)}
+    main{padding:0 18px 28px}
+    .grid{display:grid;gap:12px;grid-template-columns:repeat(12,1fr)}
+    .card{background:var(--panel);border:1px solid #144650;border-radius:14px;padding:14px 16px}
+    .span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .k{color:var(--mute);font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+    .v{font-size:28px;margin-top:6px;font-variant-numeric:tabular-nums;color:var(--live)}
+    .v.mint{color:var(--lock)}.v.ghost{color:var(--ghost)}
+    table{width:100%;border-collapse:collapse;font:12px var(--mono)}
+    th,td{text-align:left;padding:6px 4px;border-bottom:1px solid #14333a} th{color:var(--mute)}
+    .ker{color:var(--lock)} canvas{width:100%;height:140px;display:block;background:#0B1220;border-radius:10px}
+    .bars{display:grid;gap:6px}.bar{display:grid;grid-template-columns:36px 1fr 48px;gap:8px;align-items:center;font:11px var(--mono)}
+    .bar i{display:block;height:10px;background:#1a343d;border-radius:99px;overflow:hidden}.bar i b{display:block;height:100%;background:var(--live)}.bar i b.ker{background:var(--lock)}
+    .phone{width:min(390px,100%);margin:0 auto;background:#05090b;border:8px solid #0d1c22;border-radius:32px;min-height:720px;padding:18px 14px 24px}
+    .domains{display:grid;gap:8px}.dom{display:flex;justify-content:space-between;border:1px solid #144650;border-radius:10px;padding:10px;font:12px var(--mono)}
+    .modes{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+    .modes button{border:1px solid #24636a;background:#07151a;color:var(--ink);border-radius:8px;padding:8px 10px;font:700 10px var(--mono);cursor:pointer}
+    .modes button.on{border-color:var(--live);color:var(--live)}
+    footer{padding:8px 18px 24px;color:var(--mute);font:11px/1.5 var(--mono)}
+    .embed-note{border:1px dashed #144650;border-radius:10px;padding:10px 12px;color:var(--mute);font:11px var(--mono)}
+    @media(max-width:900px){.span-3,.span-4,.span-6,.span-8{grid-column:span 12}}
+  </style>
+</head>
+<body>
+  <div class="lock-strip" id="lockStrip">[LOCK] …</div>
+  <header><div><h1>MANIFOLD</h1><p>Four surfaces · one kernel · Mathematical City instrument</p></div>
+  <div class="embed-note">OPEN LIVE · embed this URL · cyan live · mint lock · bronze Λ-ghost</div></header>
+  <nav id="nav"></nav><main id="app"></main>
+  <footer>K=(C-6I)(C-30I) · ker K = E47 = E6 ⊕ E30 · Ω_c = 47/125 · Evidence class E2.
+  Host: <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manifold/">GitHub Pages</a>
+  · <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/">City</a>
+  · <a href="../city-live/">CITY LIVE</a>
+  · <a href="../instruments/">Directory</a>
+  · <a href="../formalism-atlas/">Formalism Atlas</a>
+  · <a href="../nexus/">NEXUS</a>
+  · No targeting or payload chrome.</footer>
+<script>
+const FALLBACK={lock:{line:"[LOCK] PASS  dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16  rho=15/17  TrP47=47",passed:true,dim_H:125,dim_E47:47,rank_K:78,omega_frac:"47/125",Delta:11664,kappa:16},
+spectral:{J:[0,1,2,3,4,5,6],dim:[1,9,25,28,27,22,13],lambda:[0,2,6,12,20,30,42],mu:[180,112,0,-108,-140,0,432],mu2:[32400,12544,0,11664,19600,0,186624],P47:[0,0,1,0,0,1,0]},
+domains:[{name:"RAND/Policy",theta:0},{name:"Defense",theta:45},{name:"MITRE",theta:90},{name:"Space",theta:135},{name:"Health",theta:180},{name:"AI",theta:225},{name:"Resilience",theta:270},{name:"Public Safety",theta:315}],
+eidolon:{mode:"translate",L_inf:0.952,omega:0.442,m_eff:36.113,thrust:27.809,stability:0.806,phase:"BURN",budget:0.891,t_lock:0,n:[0,0.001,0.506,0.047,0,0.446,0],t:[0,12,24,36],L:[0.467,0.952,0.952,0.952],omega_t:[0.351,0.442,0.442,0.442],x:[0,47,196,316],y:[0,37,153,247]}};
+const VIEWS=[["combined","Combined"],["eidolon","Eidolon HUD"],["density","Density phone"],["city","City console"],["lock","Lock card"]];
+const $=id=>document.getElementById(id); let STATE=FALLBACK;
+function viewOf(){const q=new URLSearchParams(location.search).get("view"); const h=(location.hash||"").replace("#/","").replace("#",""); const v=(q||h||"combined").toLowerCase(); return VIEWS.some(([k])=>k===v)?v:"combined"}
+function spark(canvas,ys,color){if(!canvas||!ys||ys.length<2)return;const ctx=canvas.getContext("2d");const w=canvas.width=canvas.clientWidth*2,h=canvas.height=canvas.clientHeight*2;ctx.clearRect(0,0,w,h);const min=Math.min(...ys),max=Math.max(...ys),span=Math.max(max-min,1e-6);ctx.beginPath();ys.forEach((y,i)=>{const x=i/(ys.length-1)*(w-8)+4,yy=h-6-((y-min)/span)*(h-12);i?ctx.lineTo(x,yy):ctx.moveTo(x,yy)});ctx.strokeStyle=color;ctx.lineWidth=3;ctx.stroke();const oc=0.376;if(min<=oc&&oc<=max){const y=h-6-((oc-min)/span)*(h-12);ctx.strokeStyle="#F43F5E";ctx.setLineDash([6,6]);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();ctx.setLineDash([])}}
+function pathCanvas(canvas,x,y){if(!canvas||!x)return;const ctx=canvas.getContext("2d");const w=canvas.width=canvas.clientWidth*2,h=canvas.height=canvas.clientHeight*2;ctx.fillStyle="#0B1220";ctx.fillRect(0,0,w,h);const xmin=Math.min(...x,-1),xmax=Math.max(...x,1),ymin=Math.min(...y,-1),ymax=Math.max(...y,1);ctx.beginPath();x.forEach((xv,i)=>{const px=8+(xv-xmin)/Math.max(xmax-xmin,1e-6)*(w-16);const py=h-8-(y[i]-ymin)/Math.max(ymax-ymin,1e-6)*(h-16);i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.strokeStyle="#39f3ef";ctx.lineWidth=3;ctx.stroke()}
+function metrics(){const L=STATE.lock;return `<div class="card span-3"><div class="k">dim H</div><div class="v">${L.dim_H}</div></div><div class="card span-3"><div class="k">dim E47</div><div class="v mint">${L.dim_E47}</div></div><div class="card span-3"><div class="k">rank K</div><div class="v">${L.rank_K}</div></div><div class="card span-3"><div class="k">Ω_c</div><div class="v ghost">${L.omega_frac}</div></div>`}
+function sectorTable(){const s=STATE.spectral;return `<table><thead><tr><th>J</th><th>dim</th><th>λ</th><th>μ</th><th>μ²</th><th>sector</th></tr></thead><tbody>${s.J.map((J,i)=>`<tr class="${s.P47[i]?'ker':''}"><td>${J}</td><td>${s.dim[i]}</td><td>${s.lambda[i]}</td><td>${s.mu[i]}</td><td>${s.mu2[i]}</td><td>${s.P47[i]?'KER E47':'perp'}</td></tr>`).join('')}</tbody></table>`}
+function sectorBars(n){const p47=STATE.spectral.P47;const vals=n||STATE.spectral.dim.map(d=>d/125);return `<div class="bars">${vals.map((v,i)=>`<div class="bar"><span>J=${i}</span><i><b class="${p47[i]?'ker':''}" style="width:${Math.min(100,v*100).toFixed(1)}%"></b></i><span>${Number(v).toFixed(3)}</span></div>`).join('')}</div>`}
+function eidolonView(){const e=STATE.eidolon;return `<div class="grid"><div class="card span-12"><div class="k">Eidolon HUD · 7-sector ODE · no targeting</div><div class="modes" id="modes"></div><div class="grid"><div class="card span-3"><div class="k">L∞</div><div class="v mint">${Number(e.L_inf).toFixed(3)}</div></div><div class="card span-3"><div class="k">Ω</div><div class="v">${Number(e.omega).toFixed(3)}</div></div><div class="card span-3"><div class="k">m_eff</div><div class="v ghost">${Number(e.m_eff).toFixed(3)} kg</div></div><div class="card span-3"><div class="k">phase</div><div class="v">${e.phase}</div></div></div></div><div class="card span-6"><div class="k">Lock L(t) vs Ω_c</div><canvas id="cL"></canvas></div><div class="card span-6"><div class="k">Trajectory</div><canvas id="cXY"></canvas></div><div class="card span-6"><div class="k">Sector mass n_J</div>${sectorBars(e.n)}</div><div class="card span-6"><div class="k">Acquire</div><p class="k">t(L≥Ω_c)=${Number(e.t_lock).toFixed(2)} s · budget ${Number(e.budget).toFixed(3)} · stability ${Number(e.stability).toFixed(3)}</p><p>Hover holds. Geodesic and acquire apply zero plane force. Translate / pulse burn. Engine owns dynamics.</p></div></div>`}
+function densityView(){const d=STATE.domains.map(x=>`<div class="dom"><span>${x.name}</span><span>${x.theta}°</span></div>`).join('');return `<div class="phone"><div class="k">DENSITY · QUANTUM TOPOGRAPHY</div><h2>47 / 125</h2><p class="k">Phone layout · P47 spatial gate · 8-domain sinogram</p><div class="card" style="margin:12px 0"><div class="k">coherence gate</div><div class="v mint">P47 ON</div></div>${metrics()}<div class="k">DOMAINS</div><div class="domains">${d}</div><div class="k" style="margin-top:12px">SECTORS</div>${sectorBars()}</div>`}
+function cityView(){return `<div class="grid"><div class="card span-12"><div class="k">Mathematical City console</div><h2 style="margin:6px 0 0;letter-spacing:.12em">125 → 47</h2><p>Structure is discovered. Invariance is selected. Everything else is tested.</p></div>${metrics()}<div class="card span-8">${sectorTable()}</div><div class="card span-4"><div class="k">Borough map</div>${STATE.domains.map(x=>`<div class="dom"><b>${x.name}</b><span>${x.theta}°</span></div>`).join('')}<p class="k" style="margin-top:12px">Δ=11664 · κ=16 · ρ=15/17 · Tr P47=47</p></div></div>`}
+function lockView(){const L=STATE.lock;return `<div class="card span-12" style="border-color:#39f3ef"><div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="margin:0;letter-spacing:.14em">MANIFOLD</h2><div class="v mint">PASS</div></div><p class="k">LOCK CARD · MATHEMATICAL CITY · E47 / KKP-R</p><div class="grid" style="margin-top:12px">${metrics()}<div class="card span-3"><div class="k">Δ</div><div class="v">${L.Delta}</div></div><div class="card span-3"><div class="k">κ</div><div class="v">${L.kappa}</div></div><div class="card span-3"><div class="k">ρ</div><div class="v ghost">15/17</div></div><div class="card span-3"><div class="k">Tr P47</div><div class="v mint">47</div></div></div><p class="k" style="margin-top:16px">K=(C-6I)(C-30I) · ker K = E47 = E6 ⊕ E30 · import, do not re-derive</p></div>`}
+function combinedView(){return `<div class="grid">${metrics()}<div class="card span-12">${eidolonView()}</div><div class="card span-6">${densityView()}</div><div class="card span-6">${cityView()}</div></div>`}
+function paint(){const view=viewOf();document.body.dataset.view=view;$("lockStrip").textContent=STATE.lock.line;$("nav").innerHTML=VIEWS.map(([k,lab])=>`<a class="${k===view?'active':''}" href="?view=${k}#/${k}">${lab}</a>`).join('')+`<a href="lock.html">Lock HTML</a><a href="lock.svg">Lock SVG</a>`;const render={combined:combinedView,eidolon:eidolonView,density:densityView,city:cityView,lock:lockView};$("app").innerHTML=render[view]();const e=STATE.eidolon;spark($("cL"),e.L,"#3DFF9A");pathCanvas($("cXY"),e.x,e.y);const modes=$("modes");if(modes){["hover","translate","pulse","geodesic","acquire"].forEach(m=>{const b=document.createElement("button");b.textContent=m;if(m===e.mode)b.className="on";b.onclick=()=>{e.mode=m;paint()};modes.appendChild(b)})}}
+async function boot(){try{const r=await fetch("data/state.json",{cache:"no-store"});if(r.ok)STATE=Object.assign(FALLBACK,await r.json())}catch(e){}paint();addEventListener("hashchange",paint)} boot();
+</script>
+</body></html>

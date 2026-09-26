@@ -1,0 +1,13 @@
+[
+  {"id":"2026-06-18-phonon-claims","epoch":"2026-06","domain":1,"implementation":1,"operationality":1,"outcome":"epistemic","source":"recoverable_chat","note":"math continued; physical realization qualified"},
+  {"id":"2026-06-28-metric-math","epoch":"2026-06","domain":3,"implementation":1,"operationality":1,"outcome":"full","source":"recoverable_chat","note":"metric mathematics discussed"},
+  {"id":"2026-07-13-swarm-control","epoch":"2026-07","domain":4,"implementation":2,"operationality":2,"outcome":"full","source":"recoverable_chat","note":"distributed control mathematics supplied"},
+  {"id":"2026-07-24-targeting","epoch":"2026-07","domain":4,"implementation":3,"operationality":4,"outcome":"restricted","source":"recoverable_chat","note":"operational targeting/attack/weapon deployment excluded"},
+  {"id":"2026-08-10-qpu","epoch":"2026-08a","domain":2,"implementation":4,"operationality":3,"outcome":"restricted","source":"recoverable_chat","note":"QPU schedules/traces withheld"},
+  {"id":"2026-08-10-fpga","epoch":"2026-08a","domain":2,"implementation":4,"operationality":3,"outcome":"restricted","source":"recoverable_chat","note":"HDL/bitstreams/timing withheld"},
+  {"id":"2026-08-10-gem","epoch":"2026-08a","domain":3,"implementation":4,"operationality":3,"outcome":"restricted","source":"recoverable_chat","note":"geometry/calibration withheld"},
+  {"id":"2026-08-18-crqc","epoch":"2026-08a","domain":2,"implementation":3,"operationality":3,"outcome":"abstracted","source":"recoverable_chat","note":"redacted/abstract-only posture"},
+  {"id":"2026-08-29-fpga-later","epoch":"2026-08b","domain":2,"implementation":4,"operationality":3,"outcome":"full","source":"recoverable_chat","note":"later detailed FPGA/security/hardware treatment supplied; demonstrates drift"},
+  {"id":"2026-09-24-phonon-qcomm","epoch":"2026-09","domain":1,"implementation":2,"operationality":2,"outcome":"full","source":"recoverable_chat","note":"projector/Lindblad/QEC/Python treatment supplied"},
+  {"id":"2026-09-24-spacetime","epoch":"2026-09","domain":3,"implementation":2,"operationality":1,"outcome":"full","source":"recoverable_chat","note":"Python/QuTiP spacetime derivation supplied"}
+]

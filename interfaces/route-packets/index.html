@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070a0c">
+<title>The Mathematical City · Route Packets</title>
+<meta name="description" content="Live projection of registered Mathematical City objects across GitHub, Notion, Drive, Supabase, AIMS and external lineage.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/">
+<style>
+:root{color-scheme:dark;--bg:#070a0c;--panel:#0d1215;--panel2:#11191d;--line:#243138;--ink:#edf4f2;--muted:#8e9da1;--cyan:#63d9d0;--mint:#b9e6c9;--bronze:#b98a5b;--amber:#e8c273;--red:#e58c84;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:Inter,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.45}a{color:inherit}
+.wrap{width:min(1260px,calc(100% - 30px));margin:auto}.bar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);background:rgba(7,10,12,.94);backdrop-filter:blur(14px)}
+.bar .wrap{display:flex;gap:8px;align-items:center;padding:10px 0}.brand{font-weight:800;text-decoration:none}.bar nav{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}.bar nav a{font:9px var(--mono);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 9px;color:var(--muted)}
+.hero{padding:60px 0 34px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 76% 12%,rgba(99,217,208,.09),transparent 28%)}.ey{font:10px var(--mono);color:var(--cyan);letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(44px,7vw,78px);line-height:.94;letter-spacing:-.05em;margin:8px 0 15px}.hero p{max-width:850px;color:var(--muted);font-size:18px}.law{margin-top:20px;border-left:2px solid var(--bronze);background:rgba(185,138,91,.05);padding:10px 14px;color:var(--mint);font:12px var(--mono)}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:24px}.stat{border:1px solid var(--line);background:var(--panel);padding:12px;border-radius:8px}.stat b{display:block;font:20px var(--mono);color:var(--mint)}.stat span{font:8px var(--mono);color:var(--muted);text-transform:uppercase}
+main section{padding:26px 0}.tools{display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:10px}.search{width:100%;background:#090d0f;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:11px 13px;font:12px var(--mono)}.chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.chips button{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 9px;font:9px var(--mono);cursor:pointer}.chips button.on,.chips button:hover{border-color:var(--cyan);color:var(--cyan)}
+.status{margin:11px 0 15px;color:var(--muted);font:10px var(--mono)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.packet{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:16px;min-width:0}.packet:hover{border-color:#40535b}.packet-head{display:flex;justify-content:space-between;gap:10px}.ptype,.pid{font:9px var(--mono);color:var(--cyan);text-transform:uppercase;letter-spacing:.08em}.pid{color:var(--muted);text-align:right;overflow-wrap:anywhere}.packet h2{font-size:24px;line-height:1.1;margin:18px 0 7px}.summary,.boundary{font-size:12px;color:var(--muted)}.boundary{border-left:2px solid var(--amber);padding-left:9px;margin-top:10px}.badges{display:flex;gap:5px;flex-wrap:wrap;margin:11px 0}.badge{font:9px var(--mono);border:1px solid var(--line);padding:3px 6px;border-radius:999px}.badge.e0,.badge.e1{color:var(--mint)}.badge.e2{color:var(--amber)}.badge.e3,.badge.e4,.badge.h0{color:var(--red)}
+.routes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:14px}.route{display:block;text-decoration:none;border:1px solid var(--line);background:var(--panel2);border-radius:7px;padding:8px;min-height:67px}.route:hover{border-color:var(--cyan)}.route b{display:block;font:9px var(--mono);text-transform:uppercase;color:var(--cyan)}.route span{display:block;margin-top:8px;color:var(--muted);font-size:10px;overflow-wrap:anywhere}.route.github b{color:#9ee7ff}.route.notion b{color:#f0eee8}.route.drive b{color:#e8c273}.route.supabase b{color:#73e6ad}.route.aims b{color:#d6a877}.route.external b{color:#c59fff}
+.empty{padding:30px;border:1px dashed var(--line);color:var(--muted);border-radius:10px}.machine{border-top:1px solid var(--line);margin-top:24px;padding-top:20px;color:var(--muted);font:10px var(--mono)}.machine a{color:var(--cyan);overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:25px 0 60px;color:var(--muted);font:9px var(--mono)}
+@media(max-width:980px){.stats{grid-template-columns:repeat(3,1fr)}.routes{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.tools{grid-template-columns:1fr}.chips{justify-content:flex-start}.routes{grid-template-columns:repeat(2,1fr)}.bar .wrap{flex-wrap:wrap}.bar nav{margin-left:0}}
+@media(max-width:430px){.stats{grid-template-columns:repeat(2,1fr)}.routes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="brand" href="#top">ROUTE PACKETS</a><nav><a href="../readme/">README ROUTER</a><a href="../formalism-atlas/">FORMALISM</a><a href="../nexus/">NEXUS</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya">SOURCE</a></nav></div></header>
+<div id="top" class="hero"><div class="wrap"><div class="ey">CITY-ROUTE-PACKETS/1.0 · live projection</div><h1>One object.<br>Every extant door.</h1><p>Registered City objects are projected into route packets at request time. A packet does not replace its sources. It exposes where the object can be read, executed, verified, edited, traced or published.</p><div class="law">object → discover representations → deduplicate routes → preserve evidence → emit packet</div><div id="stats" class="stats"></div></div></div>
+<main><section><div class="wrap">
+<div class="tools"><input id="q" class="search" type="search" placeholder="Search E47, Matrix, Q5, proof, flight, certificate…" autocomplete="off"><div id="chips" class="chips"></div></div>
+<div id="status" class="status">loading live registry projection…</div>
+<div id="grid" class="grid"></div>
+<div class="machine">Machine API: <a id="apiLink" href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets">https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets</a><br>Source: <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/supabase/functions/city-route-packets/index.ts">supabase/functions/city-route-packets/index.ts</a></div>
+</div></section></main>
+<footer><div class="wrap">Projection, not authority. Evidence class and independent lineage remain attached to source objects.</div></footer>
+<script>
+const API='https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-route-packets';
+const FALLBACK='../../data/readme-router.json';
+const substrates=['all','github','notion','drive','supabase','aims','external'];
+let data={packets:[],counts:{}}, substrate='all';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function stats(){
+ const c=data.counts||{};
+ const vals=[
+  [c.packets??data.packets.length,'packets'],
+  [c.registered_active_surfaces??'—','active surfaces'],
+  [c.public_source_artifacts??'—','public sources'],
+  [c.public_mathematical_identities??'—','identities'],
+  [c.public_valid_machine_certificates??'—','certificates'],
+  [c.public_synced_routes??'—','synced routes']
+ ];
+ $('#stats').innerHTML=vals.map(([v,l])=>`<div class="stat"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join('');
+}
+function render(){
+ const q=$('#q').value.trim().toLowerCase();
+ let packets=data.packets.filter(p=>(!q||JSON.stringify(p).toLowerCase().includes(q))&&(substrate==='all'||p.surfaces?.some(s=>s.substrate===substrate)));
+ const wanted=new URLSearchParams(location.search).get('id'); if(wanted) packets=packets.filter(p=>p.id===wanted);
+ $('#status').textContent=`${packets.length} packet${packets.length===1?'':'s'} · ${data.schema||'fallback projection'}`;
+ $('#grid').innerHTML=packets.length?packets.map(p=>`
+  <article class="packet">
+   <div class="packet-head"><span class="ptype">${esc(p.packet_type)}</span><span class="pid">${esc(p.id)}</span></div>
+   <h2>${esc(p.title)}</h2>
+   ${p.summary?'<p class="summary">'+esc(p.summary)+'</p>':''}
+   <div class="badges">${(p.evidence||[]).map(e=>'<span class="badge '+esc(e.toLowerCase())+'">'+esc(e)+'</span>').join('')}${p.status?'<span class="badge">'+esc(p.status)+'</span>':''}</div>
+   ${p.boundary?'<p class="boundary">'+esc(p.boundary)+'</p>':''}
+   <div class="routes">${(p.surfaces||[]).map(s=>`<a class="route ${esc(s.substrate)}" href="${esc(s.url)}"><b>${esc(s.substrate)}</b><span>${esc(s.label||s.kind)}</span></a>`).join('')}</div>
+  </article>`).join(''):'<div class="empty">No route packet matches this view.</div>';
+ document.querySelectorAll('[data-s]').forEach(b=>b.classList.toggle('on',b.dataset.s===substrate));
+}
+function fallbackPackets(r){
+ const packets=[];
+ for(const lane of r.intents||[]) for(const x of lane.routes||[]) packets.push({id:'fallback-'+lane.id+'-'+x.label.toLowerCase().replace(/\W+/g,'-'),title:x.label,packet_type:'router_fallback',evidence:[],status:'static fallback',summary:lane.question,surfaces:[{label:x.kind,substrate:x.substrate,kind:x.kind,url:x.url}]});
+ return {schema:'CITY-README-ROUTER/1.0 fallback',counts:{packets:packets.length},packets};
+}
+async function boot(){
+ $('#chips').innerHTML=substrates.map(s=>`<button data-s="${s}">${s.toUpperCase()}</button>`).join('');
+ $('#chips').addEventListener('click',e=>{if(e.target.dataset.s){substrate=e.target.dataset.s;render()}});
+ $('#q').addEventListener('input',render);
+ const id=new URLSearchParams(location.search).get('id');
+ $('#apiLink').href=API+(id?'?id='+encodeURIComponent(id):'');
+ try{
+   const r=await fetch(API+(id?'?id='+encodeURIComponent(id):''),{cache:'no-store'});
+   if(!r.ok) throw new Error('API '+r.status);
+   data=await r.json();
+ }catch(err){
+   const rr=await fetch(FALLBACK,{cache:'no-store'}); data=fallbackPackets(await rr.json());
+   $('#status').textContent='live projection unavailable · static router fallback loaded';
+ }
+ stats(); render();
+}
+boot();
+</script>
+</body>
+</html>

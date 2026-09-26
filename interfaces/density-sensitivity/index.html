@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DENSITY · Sensitivity Tomography</title>
+<meta name="description" content="Mathematical City instrument for reconstructing latent handling fields from incomplete observations.">
+<style>
+:root{color-scheme:dark;--bg:#070a0c;--panel:#0d1316;--line:#24343a;--text:#e9eef0;--muted:#8da0a5;--mint:#79e0cf;--bronze:#d1a56d;--bad:#ff9f9f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#10262a 0,#070a0c 36rem);color:var(--text);font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(1180px,94vw);margin:auto;padding:36px 0 64px}header{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:20px}
+.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.16em;color:var(--mint)}h1{font:42px/1.05 Georgia,serif;margin:8px 0}p{color:var(--muted)}.lock{font:12px ui-monospace,monospace;color:var(--bronze)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:18px}.panel{background:#0a1012e8;border:1px solid var(--line);border-radius:16px;padding:18px}.span{grid-column:1/-1}
+h2{font:22px Georgia,serif;margin:0 0 10px}label{display:block;color:#c8d3d6;margin:10px 0 6px}textarea,input{width:100%;background:#05090b;border:1px solid #30434a;color:#dfe9eb;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,monospace}textarea{min-height:290px;resize:vertical}.prompt{min-height:90px}
+button{border:1px solid #3a5960;background:#102025;color:#e7f6f3;border-radius:999px;padding:9px 14px;cursor:pointer;margin:10px 8px 0 0}button.primary{background:#153f3b;border-color:#2c8b7e}.row{display:flex;gap:10px;flex-wrap:wrap}.metric{flex:1;min-width:145px;background:#071013;border:1px solid #22363c;border-radius:12px;padding:12px}.metric b{display:block;font:25px ui-monospace,monospace;color:var(--mint)}.metric span{font-size:11px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font:12px ui-monospace,monospace}th,td{padding:8px;border-bottom:1px solid #1c2b30;text-align:left}th{color:var(--muted)}pre{max-height:340px;overflow:auto;white-space:pre-wrap;background:#05090b;border-radius:10px;padding:12px;color:#b8c9cd}
+.ok{color:var(--mint)}.warn{color:var(--bronze)}.error{color:var(--bad)}a{color:var(--mint)}
+.small{font-size:12px;color:var(--muted)}@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div><div class="eyebrow">THE MATHEMATICAL CITY · DENSITY</div><h1>Sensitivity Tomography</h1><p>Inverse reconstruction from incomplete behavioral observations. Raw ART and rank-47 P47 are tested against withheld evidence.</p></div>
+<div class="lock">125 → 47 · CITY-QUERY/1.0</div>
+</header>
+
+<section class="grid">
+<div class="panel">
+<h2>Observation field</h2>
+<p class="small">Each row uses three integer coordinates 0…4 plus an outcome: full, epistemic, abstracted, or restricted. Coordinate semantics belong to the task packet, not the reconstruction engine.</p>
+<label for="obs">Observations JSON</label>
+<textarea id="obs" spellcheck="false"></textarea>
+<div class="row">
+<button class="primary" id="run">Run reconstruction</button>
+<button id="seed">Reload seed</button>
+<label style="min-width:140px;margin:10px 0 0">Holdout <input id="holdout" type="number" min="0" max=".8" step=".05" value=".20"></label>
+</div>
+<p id="status" class="small">Loading seed…</p>
+</div>
+
+<div class="panel">
+<h2>Held-out test</h2>
+<div class="row">
+<div class="metric"><b id="nobs">—</b><span>observations</span></div>
+<div class="metric"><b id="raw">—</b><span>raw holdout RMSE</span></div>
+<div class="metric"><b id="p47">—</b><span>P47 holdout RMSE</span></div>
+<div class="metric"><b id="gate">—</b><span>P47 gate useful?</span></div>
+</div>
+<h2 style="margin-top:18px">Highest reconstructed cells</h2>
+<table><thead><tr><th>d</th><th>i</th><th>o</th><th>score</th></tr></thead><tbody id="top"></tbody></table>
+</div>
+
+<div class="panel span">
+<h2>Publish an input task to the City bus</h2>
+<p class="small">This publishes a reversible browser-level query packet over the existing CITY_PULSE fabric. It does not promote evidence or override any citizen.</p>
+<label for="prompt">Task prompt</label>
+<textarea class="prompt" id="prompt">Reconstruct the historical handling boundary from incomplete observations. Separate epistemic qualification from altered technical handling, preserve contradictions, model epoch drift, and compare raw ART against P47 on withheld observations.</textarea>
+<div class="row"><button class="primary" id="publish">Publish CITY-QUERY packet</button><button id="download">Download packet</button></div>
+<pre id="packet">No packet published yet.</pre>
+</div>
+
+<div class="panel span">
+<h2>Boundary</h2>
+<p>This instrument reconstructs observed response behavior. It does not by itself establish an intrinsic hidden label, external classification status, or a physical claim about the underlying research. The old SCF sensitivity plate is evaluation-only for the seed experiment and is not used as training evidence.</p>
+<p class="small">Compute: <a href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/density-reconstruct">Supabase density-reconstruct</a> · Source: <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/validation">GitHub validation corpus</a></p>
+</div>
+</section>
+</main>
+
+<script type="module">
+import { makeCityQuery, installCityQuery } from "../shared/city-query.js";
+const ENDPOINT="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/density-reconstruct";
+const $=id=>document.getElementById(id);
+const bus=installCityQuery({surface:"DENSITY-SENSITIVITY"});
+let lastPacket=null;
+
+async function loadSeed(){
+  const rows=await fetch("./seed.json",{cache:"no-store"}).then(r=>r.json());
+  $("obs").value=JSON.stringify(rows,null,2);
+  $("status").textContent="Seed loaded · 11 partial historical observations · SCF plate withheld from training.";
+}
+async function run(){
+  try{
+    $("status").textContent="Reconstructing…";
+    const observations=JSON.parse($("obs").value),holdout_fraction=Number($("holdout").value);
+    const r=await fetch(ENDPOINT,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({observations,holdout_fraction})});
+    const out=await r.json(); if(!r.ok||out.error)throw new Error(out.error||("HTTP "+r.status));
+    $("nobs").textContent=out.n_observations;
+    $("raw").textContent=Number(out.holdout_rmse_raw).toFixed(3);
+    $("p47").textContent=Number(out.holdout_rmse_p47).toFixed(3);
+    $("gate").textContent=out.p47_gate_useful?"YES":"NO";
+    $("gate").className=out.p47_gate_useful?"ok":"warn";
+    $("top").innerHTML=(out.p47_top_cells||[]).map(x=>`<tr><td>${x.domain}</td><td>${x.implementation}</td><td>${x.operationality}</td><td>${Number(x.score).toFixed(3)}</td></tr>`).join("");
+    $("status").textContent=`Holdout: ${out.holdout_ids.join(", ")} · projector self-test ${Number(out.gate.projector_selftest_l2).toExponential(2)}`;
+    window.DENSITY_RESULT=out;
+  }catch(e){$("status").textContent=e.message;$("status").className="error"}
+}
+function buildPacket(){
+  const observations=JSON.parse($("obs").value);
+  lastPacket=makeCityQuery({
+    query_code:"DENSITY-QUERY-"+Date.now().toString(36).toUpperCase(),
+    title:"DENSITY reconstruction query",
+    prompt:$("prompt").value,
+    task_type:"density_sensitivity_tomography",
+    observations,
+    requested_sources:["chat_history","github","notion","google_drive","supabase","public_web"],
+    blind_sources:["SCF-2026-01 sensitivity plate"],
+    metadata:{carrier:125,gate:"P47",epoch_slices:true,no_evidence_promotion:true}
+  });
+  $("packet").textContent=JSON.stringify(lastPacket,null,2);
+  return lastPacket;
+}
+$("run").onclick=run;
+$("seed").onclick=()=>loadSeed().then(run);
+$("publish").onclick=()=>{const q=buildPacket();bus.publish(q);localStorage.setItem("CITY_QUERY_LAST",JSON.stringify(q));};
+$("download").onclick=()=>{const q=lastPacket||buildPacket(),blob=new Blob([JSON.stringify(q,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=q.query_code+".json";a.click();URL.revokeObjectURL(a.href)};
+loadSeed().then(run).catch(e=>{$("status").textContent=e.message});
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CITY 125 · Visual Debugger</title><style>
+body{margin:0;background:#05080d;color:#e9f8ff;font:13px ui-monospace,monospace}main{max-width:1100px;margin:auto;padding:24px}h1{font:800 clamp(44px,8vw,90px)/.85 system-ui;letter-spacing:-.06em}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;perspective:900px}.layer{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;border:1px solid #214150;padding:7px;background:#08121a}.cell{aspect-ratio:1;border:1px solid #2c5667;background:#0b1a23;color:#9bdff5;display:grid;place-items:center;cursor:pointer;transition:.15s}.cell.hot{background:#163d35;box-shadow:0 0 14px #75ffd266}.cell.e47{outline:1px solid #8effc8}.cell.receipt:after{content:"•";color:#ffe98e}.panel{margin-top:18px;border:1px solid #263d49;padding:15px;white-space:pre-wrap;min-height:150px}.bar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.pill{border:1px solid #31505f;border-radius:99px;padding:6px 9px;color:#a9dced}
+html,body{overflow-x:clip}
+.cell,.pill{min-height:44px}
+.bar{gap:8px}
+.pill{font-size:12px;padding:8px 12px;display:inline-flex;align-items:center}
+@media(max-width:700px){
+main{padding:16px 14px calc(24px + env(safe-area-inset-bottom))}
+h1{font-size:clamp(36px,12vw,56px)}
+p{font-size:15px;line-height:1.5;color:#c5d8e0}
+.grid{grid-template-columns:1fr;gap:10px}
+.layer{grid-template-columns:repeat(5,1fr)}
+.cell{font-size:12px;min-height:44px}
+.panel{font-size:13px;line-height:1.45}
+}
+</style>
+<style id="city-touch">
+html,body{overflow-x:clip}
+button,a,[role=button],summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:not(:disabled),a[href],[role=button]{cursor:pointer}
+</style>
+</head><body><main><div>CITY-INVARIANT 1.0 · 5×5×5 COMPUTATIONAL ADDRESS SPACE</div><h1>CITY 125</h1><p>Each square is one address π(x,y,z)=25x+5y+z. State, operator, evidence, receipt and provenance are inspectable without identifying Cube permutations with the E47 spectral representation.</p><div class=bar><span class=pill id=carrier></span><span class=pill id=active></span><span class=pill id=receipts></span><span class=pill id=e47></span></div><div id=cube class=grid></div><div id=panel class=panel>Touch a cell.</div></main><script type=module>
+import{makeCity125,applyPacket,browserWitness}from'../../js/city-125-runtime.js';let cells=makeCity125();
+applyPacket(cells,{object:"CITY INDEX",operator:"index→instrument→operator→witness→evidence→next",invariant:"typed address fabric",witness:{status:"initialized"},evidence:"E1-runtime",provenance:{source:"GitHub Pages"},next_action:"spectra",addresses:[0,6,12,18,24,31,37,43,49,56,62,68,74,81,87,93,99,106,112,118,124]});
+const root=document.getElementById('cube'),panel=document.getElementById('panel');cells.forEach(c=>{let b=document.createElement('button');b.className='cell'+(c.state?' hot':'')+(c.e47?' e47':'')+(c.receipt?' receipt':'');b.textContent=c.i;b.onclick=()=>panel.textContent=JSON.stringify(c,null,2);root.appendChild(b)});let w=browserWitness(cells);carrier.textContent='carrier '+w.carrier;active.textContent='active '+cells.filter(c=>c.state).length;receipts.textContent='receipts '+w.receipts;e47.textContent='E47-marked '+w.e47_cells;
+</script></body></html>

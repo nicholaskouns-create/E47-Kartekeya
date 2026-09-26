@@ -1,0 +1,25 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"manta-flight-lab",
+  "display_name":"MANTA · Morphing Flight",
+  "version":"1.0.0",
+  "kind":"interactive-simulator",
+  "maturity":"experimental",
+  "evidence":["E2"],
+  "entrypoint":"website/interfaces/manta/index.html",
+  "smoke":{
+    "entrypoint":"website/interfaces/manta/smoke.mjs",
+    "command":"node website/interfaces/manta/smoke.mjs",
+    "benchmark_command":"node website/interfaces/manta/smoke.mjs --benchmark"
+  },
+  "provenance":{
+    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources":["website/interfaces/manta/provenance.json","website/interfaces/manta/manta-model.js"]
+  },
+  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+  "boundary":"Morphing aerodynamics, mass properties, actuator bounds and energy are modeled quantities; physical validation remains open.",
+  "boundaries":[
+    "Morphing aerodynamics, mass properties, actuator bounds and energy are modeled quantities; physical validation remains open.",
+    "The smoke command checks source and interface contracts; browser rendering is a separate check."
+  ]
+}

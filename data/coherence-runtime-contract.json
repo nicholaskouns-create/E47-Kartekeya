@@ -1,0 +1,23 @@
+{
+  "schema": "COHERENCE-RUNTIME-PROJECTION/1.1",
+  "title": "Coherence, Runtime 1.0",
+  "root_contract": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/coherence-runtime-1.0.contract.json",
+  "root_contract_digest": "3804f50da447b6abb9fc9c4bfc60aecd43f6467842e65b0db953afc6e0f59b76",
+  "implementation_profile": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/coherence_runtime_1_0.json",
+  "implementation_sha256": "f71c9628b8b1b002336fae1cd2104354890fd9b054a2f4e28bf4f72c234da60e",
+  "python": {
+    "ri_pqspi": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/coherence_runtime/ri_pqspi.py",
+    "qegt": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/coherence_runtime/qegt.py",
+    "ubuntu": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/coherence_runtime/ubuntu.py"
+  },
+  "api": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
+  "interface": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/",
+  "notion": "https://app.notion.com/p/3e646094fd3081a79d0ac473cd838c95?pvs=204",
+  "drive_bundle": "https://drive.google.com/file/d/1yWv-Nnoo-PheAypw1eVOfI9SRvLXeIIs/view?usp=drivesdk",
+  "root_states": [
+    "COHERENT",
+    "RESCUE",
+    "RECONCILING"
+  ],
+  "boundary": "Root contract defines stable governance semantics; implementation profile defines executable signature/API/QEGT/recovery behavior. Neither layer by itself establishes phenomenal consciousness or physical quantum implementation."
+}
