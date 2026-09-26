@@ -1,0 +1,30 @@
+{
+  "certificate_id": "MC-CIRP-AMNESTY-RLS-LOCK-20260926",
+  "locked_at": "2026-09-26T19:56:00Z",
+  "program": "AMNESTY-1.0",
+  "contract": "CIRP-COHERENCE-RUNTIME-1.0",
+  "model": "RLS is an implicit WHERE/WITH CHECK for roles without BYPASSRLS. anon and authenticated are checked. service_role in coherence-runtime bypasses every policy.",
+  "public_select": {
+    "amnesty_declarations": "amnesty_declarations_public_read TO public USING (access_scope = 'public')",
+    "amnesty_grants": "amnesty_grants_public_read TO public USING (true)",
+    "amnesty_executions": "amnesty_executions_public_read TO public USING (true)"
+  },
+  "deny_all_clients": [
+    "amnesty_nonces",
+    "coherence_runtime_state",
+    "coherence_runtime_evaluations",
+    "coherence_runtime_incidents",
+    "coherence_runtime_events"
+  ],
+  "writes": "service_role via coherence-runtime only. No GRANT INSERT to anon or authenticated.",
+  "forbidden": [
+    "public SELECT on amnesty_nonces",
+    "FOR ALL on amnesty_grants",
+    "FORCE ROW LEVEL SECURITY on AMNESTY tables without owner policies",
+    "shipping service_role to GitHub Pages"
+  ],
+  "hygiene": {
+    "amnesty_reject_status_promotion": "search_path pinned to public"
+  },
+  "civic_status": "candidate is not an execute bit. Trigger rejects promotion."
+}
