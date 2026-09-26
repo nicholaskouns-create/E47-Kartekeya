@@ -1,11 +1,11 @@
 begin;
-select plan(6);
+select plan(5);
 
 select ok(
   (select relrowsecurity from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relname='coherence_runtime_state'),
   'rls enabled on coherence_runtime_state'
 );
-select policies_are('public', 'coherence_runtime_state', '{}');
+select policies_are('public', 'coherence_runtime_state', array[]::name[]);
 
 insert into public.coherence_runtime_state (
   runtime_code, state, contract_id, contract_digest, last_reason

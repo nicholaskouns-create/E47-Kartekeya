@@ -1,11 +1,11 @@
 begin;
-select plan(9);
+select plan(8);
 
 select ok(
   (select relrowsecurity from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relname='amnesty_nonces'),
   'rls enabled on amnesty_nonces'
 );
-select policies_are('public', 'amnesty_nonces', '{}');
+select policies_are('public', 'amnesty_nonces', array[]::name[]);
 select ok(not has_table_privilege('anon', 'public.amnesty_nonces', 'insert'), 'anon no insert grant');
 select ok(not has_table_privilege('authenticated', 'public.amnesty_nonces', 'insert'), 'authenticated no insert grant');
 

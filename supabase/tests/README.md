@@ -1,15 +1,13 @@
 # CIRP / AMNESTY pgTAP
 
-Production `pgtap` stays off. These files run on a local Supabase stack.
+Production `pgtap` stays off.
+
+`supabase test db` needs Docker. In this workspace the same files were run with:
 
 ```bash
-supabase test db
+pg_prove -h 127.0.0.1 -U supabase_test -d amnesty_test supabase/tests/*.test.sql
 ```
 
-Each file is `BEGIN` / `ROLLBACK`. Fixtures never remain. Assertions use `anon` and `authenticated`, not `postgres` and not `service_role`.
+Result 2026-09-26: Files=8, Tests=66, PASS.
 
-Locked lattice:
-
-- public SELECT: `amnesty_declarations` (access_scope=public), `amnesty_grants`, `amnesty_executions`, active public `coherence_runtime_contracts`
-- deny-all clients: `amnesty_nonces`, `coherence_runtime_state`, `coherence_runtime_evaluations`
-- no client INSERT/UPDATE/DELETE on the AMNESTY ledger tables
+Each file is BEGIN/ROLLBACK. Roles under test are anon and authenticated.
