@@ -1,0 +1,2 @@
+# Linked project. Run `supabase login` then `supabase link --project-ref gpkjvihkyectnenvnbng` on a machine with Docker.
+project_id = "gpkjvihkyectnenvnbng"
