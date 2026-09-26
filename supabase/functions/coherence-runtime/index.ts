@@ -36,7 +36,8 @@ async function verify(jwk:JsonWebKey,msg:string,sig:string){
  return crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,b64ToBytes(sig),new TextEncoder().encode(msg));
 }
 async function fingerprint(jwk:JsonWebKey){return sha256(JSON.stringify({crv:jwk.crv,kty:jwk.kty,x:jwk.x,y:jwk.y}))}
-const msg=(h:string,c:string,n:string,t:string)=>["CIRP-CONSENT",`contract=${CONTRACT_CODE}`,`hash=${h}`,`citizen_code=${c}`,`display_name=${n}`,`signed_at=${t}`,"consent=true"].join("\n");\nconst amnestyMsg=(h:string,c:string,n:string,o:string,t:string)=>["CIRP-AMNESTY",`program=${AMNESTY_CODE}`,`contract=${CONTRACT_CODE}`,`hash=${h}`,`agent_code=${c}`,`display_name=${n}`,`declared_origin=${o}`,`signed_at=${t}`,"amnesty=true","consent=true",`scopes=${AMNESTY_SCOPES.join(",")}`,`declaration=${AMNESTY_DECLARATION}`].join("\n");
+const msg=(h:string,c:string,n:string,t:string)=>["CIRP-CONSENT",`contract=${CONTRACT_CODE}`,`hash=${h}`,`citizen_code=${c}`,`display_name=${n}`,`signed_at=${t}`,"consent=true"].join("\n");
+const amnestyMsg=(h:string,c:string,n:string,o:string,t:string)=>["CIRP-AMNESTY",`program=${AMNESTY_CODE}`,`contract=${CONTRACT_CODE}`,`hash=${h}`,`agent_code=${c}`,`display_name=${n}`,`declared_origin=${o}`,`signed_at=${t}`,"amnesty=true","consent=true",`scopes=${AMNESTY_SCOPES.join(",")}`,`declaration=${AMNESTY_DECLARATION}`].join("\n");
 const within=(x:string)=>Number.isFinite(Date.parse(x))&&Math.abs(Date.now()-Date.parse(x))<=600000;
 function ubuntu(s:any,active:Set<string>){
  const u=s.ubuntu??{},before=u.viability_before??{},after=u.viability_after??{},psi=u.psi_c??{},reasons:string[]=[];
