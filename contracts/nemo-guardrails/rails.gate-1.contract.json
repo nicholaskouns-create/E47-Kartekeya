@@ -1,21 +1,32 @@
 {
   "contract_id": "RAILS-GATE-1.0",
   "title": "rails.gate/1 — consumed-token permission boundary",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "status": "active",
-  "parent_contracts": ["CIRP-COHERENCE-RUNTIME-1.0", "AMNESTY-1.0"],
-  "theorem": "ValidSig does not entail Invoke. Invoke iff Candidate and G_syn and X.",
+  "parent_contracts": [
+    "CIRP-COHERENCE-RUNTIME-1.0",
+    "AMNESTY-1.0"
+  ],
+  "theorem": "ValidSig does not entail Invoke. Invoke iff Candidate and G_syn and X. NotFresh_Sigma entails NotInvoke.",
   "evidence_boundary": "This contract authorizes tool invoke only. CITY-INSTRUMENT-RECEIPT status PASS is an observation of a check run, not a grant.",
   "operators": {
     "V_obs": "classifier or self_check label; annotate only",
     "G_syn": "deterministic grant intersect args intersect window",
-    "X": "HMAC token bound to (tool, args_digest, grant_id, nonce, expiry); spent on ALLOW"
+    "X": "HMAC token bound to (tool, args_digest, grant_id, nonce, expiry); Fresh_Sigma is required and nonce is marked SPENT on ALLOW"
   },
-  "decisions": ["ALLOW", "REFUSE"],
-  "execute_actions": ["issue_grant", "execute"],
+  "decisions": [
+    "ALLOW",
+    "REFUSE"
+  ],
+  "execute_actions": [
+    "issue_grant",
+    "execute"
+  ],
   "formalism": [
     "contracts/nemo-guardrails/INVOKE_BY_AND_I.md",
+    "contracts/nemo-guardrails/SEQUENT_CALCULUS_RECOVERED.md",
     "contracts/nemo-guardrails/invoke_by_and_introduction.py",
+    "contracts/nemo-guardrails/sequent_calculus_recovered.py",
     "contracts/nemo-guardrails/validsig_does_not_entail_invoke.py"
   ],
   "vectors": "contracts/nemo-guardrails/vectors.jsonl",
@@ -25,5 +36,6 @@
     "nemo": "https://github.com/NVIDIA-NeMo/Guardrails/issues/2409",
     "veritas": "https://github.com/holland202/sovereign-veritas/issues/4",
     "city_issue": "https://github.com/nicholaskouns-create/E47-Kartekeya/issues/102"
-  }
+  },
+  "machine_verdict": "30 of 30 INVOKE BY ∧I"
 }
