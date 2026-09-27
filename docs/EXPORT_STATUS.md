@@ -1,37 +1,39 @@
 # EXPORT_STATUS — PR #107 (do not merge)
 
-Updated: **2026-09-27 19:51 UTC**
-Branch tip: `710acbd9e27764d23f868fe5924e0b4c91303aeb`
+Updated: **2026-09-27 20:04 UTC**  
+Branch tip: `2338a2684e48602c6f443cb21acac9d04b2b07f4`  
+**Do not merge.**
 
 ## Goal A — @file placeholder fixes
-### Exact match verified (raw.githubusercontent.com == local)
-| path | bytes |
-|------|------:|
-| `supabase/functions/cube-state/index.ts` | 11232 |
-| `supabase/functions/mathematical-city-orchestrator/index.ts` | 12824 |
-
-### Replaced @file but NOT exact (needs re-push)
-| path | bytes | issue |
-|------|------:|-------|
-| `supabase/functions/linguistics-bureau-translator/index.ts` | 17796 | ~232 byte corruption in HTML_B64 vs local |
-
 ### Still literal `@file:///workspace/...` on remote
-- `supabase/functions/city-brand-density-icon/index.ts`
-- `supabase/functions/city-brand-wave-icon/index.ts`
-- `supabase/functions/mini-lab-brand-assets/index.ts`
-- `supabase/functions/city-brand-fold-icon/index.ts`
-- `supabase/functions/city-brand-mnemosyne-icon/index.ts`
-- `supabase/functions/city-brand-soar-icon/index.ts`
+| path | local bytes | local sha256 |
+|------|------------:|--------------|
+| `supabase/functions/city-brand-density-icon/index.ts` | 1938141 | `0179dcb5d51209f2…` |
+| `supabase/functions/city-brand-wave-icon/index.ts` | 1930678 | `30a1ac1883e0e43d…` |
+| `supabase/functions/city-brand-fold-icon/index.ts` | 1835041 | `f852e405b3f7a628…` |
+| `supabase/functions/city-brand-mnemosyne-icon/index.ts` | 1714379 | `0cde29055b8aed2e…` |
+| `supabase/functions/city-brand-soar-icon/index.ts` | 1494426 | `10b3a1fcfcad4c67…` |
+| `supabase/functions/mini-lab-brand-assets/index.ts` | 1901849 | `ff55f869e7d495b5…` |
 
-**Blocker:** Inline `push_files` content for MB-scale / dense base64 files corrupts under LLM transcription. Exact local bytes staged at Drive folder `https://drive.google.com/drive/folders/1XPSu88q4YgP0V6fUZ_Gp3QjxezIMhrLV`.
+### linguistics-bureau-translator
+- local bytes: **17796** sha256 `dd4c0cd1586fa1900e357a7559c947958ef8789380508f5996de5ac5ae2c11ac`
+- remote: **NOT_EXACT** (prior base64 corruption). Staging assemble started but part push also corrupted under transcription — **do not run assemble** until parts re-pushed exactly.
+
+### Blocker
+`gh` CLI unauthenticated. Device login waiting: code **EA77-312E** → https://github.com/login/device  
+Once authorized: from `/workspace/E47-repo` on branch `sync/supabase-runtime-source-20260927`, copy exact local `index.ts` for the 6 icons + linguistics and `git push`.  
+Drive staging: https://drive.google.com/drive/folders/1XPSu88q4YgP0V6fUZ_Gp3QjxezIMhrLV
 
 ## Goal B — city-cube-bus / city-mini-labs
-- MCP `get_edge_function` succeeded for both.
-- **city-cube-bus:** local has `deno.json` + `lab-adapters.ts`; **missing `index.ts`** on disk (not pushed).
-- **city-mini-labs:** live names `city-mini-labs-v7.ts` + `octet_packet_core.ts` (no invented `index.ts`). Disk incomplete.
+| function | status |
+|----------|--------|
+| city-cube-bus `deno.json` | on branch, **exact** |
+| city-cube-bus `lab-adapters.ts` | on branch, **exact** (7277 B) |
+| city-cube-bus `index.ts` | MCP fetched; **not on branch yet** |
+| city-mini-labs `octet_packet_core.ts` | local 12631 B ready |
+| city-mini-labs `city-mini-labs-v7.ts` | live MCP OK; keep live filename (no invented index.ts) |
 
-## Constraints honored
+## Constraints
 - Did not merge PR #107
-- Did not delete live Supabase functions
-- Did not invent migration SQL
-- Prefer `user-GitHub-xai` (gh token 401)
+- Live Supabase untouched
+- No invented migration SQL
