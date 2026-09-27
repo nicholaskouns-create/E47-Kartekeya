@@ -3,6 +3,17 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 const CORS={"access-control-allow-origin":"*","access-control-allow-headers":"authorization,content-type,x-agent-name","access-control-allow-methods":"GET,POST,OPTIONS"};
 const SPECTRUM=[0,2,6,12,20,30,42];
 const MULTIPLICITY:Record<number,number>={0:1,2:9,6:25,12:28,20:27,30:22,42:13};
+const FORMALISM={
+  id:"E47-PRISM-FORMALISM-20260922",
+  citizen_code:"E47-PRISM-20260922",
+  certificate_code:"MC-MATRIX-E47-PRISM-20260922-001",
+  github:"https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md",
+  notion:"https://app.notion.com/p/3e346094fd30818e99c1d04635983c62?pvs=204",
+  google_drive:"https://docs.google.com/document/d/1wCmn5J4Tjo0qVV5AOoHUxD1tXComhPf7lU1ntzKtaMs/edit",
+  site:"https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",
+  receipt:"https://nicholaskouns-create.github.io/E47-Kartekeya/data/MC-MATRIX-E47-PRISM-20260922-001.json",
+  evidence_boundary:"47/125 is the rank fraction / isotropic expectation; observed band weights are state-dependent after the typed 256-to-125 feature lift."
+} as const;
 type Matrix=number[][];
 
 function matrix(v:unknown):Matrix{
@@ -40,7 +51,7 @@ async function digest(v:unknown){const b=await crypto.subtle.digest("SHA-256",ne
 
 Deno.serve(async(req:Request)=>{
   if(req.method==="OPTIONS")return new Response(null,{status:204,headers:CORS});
-  if(req.method==="GET")return Response.json({service:"matrix-cube-adapter",version:2,input_basis:"spin2-tensor3-descending-m",carrier:125,output:"CITY-INVARIANT 1.0 typed E47/Cube witness + Casimir spectral bands",evidence:"numerical-demonstration",canonical_promotion:false},{headers:CORS});
+  if(req.method==="GET")return Response.json({service:"matrix-cube-adapter",version:3,formalism:FORMALISM,input_basis:"spin2-tensor3-descending-m",carrier:125,output:"CITY-INVARIANT 1.0 typed E47/Cube witness + Casimir spectral bands",evidence:"numerical-demonstration",canonical_promotion:false},{headers:CORS});
   try{
     if(req.method!=="POST")return Response.json({error:"use GET or POST"},{status:405,headers:CORS});
     const body=await req.json(), amplitudes=matrix(body.statevector??body.amplitudes);
@@ -56,7 +67,7 @@ Deno.serve(async(req:Request)=>{
       invariant:{e47_dimension:47,omega_c:47/125,spectrum:SPECTRUM,multiplicities:SPECTRUM.map(x=>MULTIPLICITY[x])},
       witness:{norm:Math.sqrt(n2),spectral_bands:bands,spectral_weight_sum:spectralWeightSum,e47_weight:e47Weight,e47_weight_from_bands:e47FromBands,e47_band_parity_residual:Math.abs(e47Weight-e47FromBands),complement_weight:norm2(leak)/n2,leakage_norm:Math.sqrt(norm2(leak)),k2_energy:norm2(k),k2_energy_normalized:norm2(k)/n2},
       evidence:"numerical-demonstration",
-      provenance:{source:"THE MATRIX",adapter:"matrix-cube-adapter@2",received_at:new Date().toISOString(),circuit:body.circuit??null},
+      provenance:{source:"THE MATRIX",adapter:"matrix-cube-adapter@3",formalism:FORMALISM,received_at:new Date().toISOString(),circuit:body.circuit??null},
       next_action:"Eligible for authenticated city-cube-bus binding/stage witness; no evidence or canonical promotion is implied."
     };
     return Response.json({ok:true,witness},{headers:{...CORS,"cache-control":"no-store"}});
