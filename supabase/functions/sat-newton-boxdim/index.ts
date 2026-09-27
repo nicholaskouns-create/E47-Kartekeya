@@ -1,1 +1,1 @@
-PLACEHOLDER_WILL_FAIL
+@file:///tmp/sat-newton-boxdim_content.ts
