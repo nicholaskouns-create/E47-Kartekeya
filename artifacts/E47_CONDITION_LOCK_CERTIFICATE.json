@@ -1,0 +1,108 @@
+{
+  "boundary": "Finite spectral statements about the fixed 125-dimensional carrier. They sharpen the existing contraction theorem (rate 15/17 at step 1/99144) and add no physical claim.",
+  "checks": {
+    "99144_eq_108sq_17_over_2": true,
+    "K_inertia_23_55_47": true,
+    "K_sector_values_exact": true,
+    "K_sector_values_machine": true,
+    "abs_K_set": true,
+    "casimir_spectrum": true,
+    "chebyshev_beats_richardson": true,
+    "chebyshev_closed_form": true,
+    "chebyshev_machine_bound": true,
+    "chebyshev_rate_3_5": true,
+    "condition_K2_16": true,
+    "condition_K_4": true,
+    "condition_K_machine": true,
+    "eps_1_over_99144": true,
+    "equioscillation_exact": true,
+    "equioscillation_machine": true,
+    "five_factor_projector_machine": true,
+    "five_factor_scalar_identity": true,
+    "five_step_richardson_exact": true,
+    "gamma_commutes_eta": true,
+    "gap_108sq": true,
+    "krylov_dimension_5": true,
+    "norm_16x108sq": true,
+    "rho_15_17": true,
+    "rho_from_kappa": true
+  },
+  "exact": {
+    "K2_eigenvalues_on_complement": [
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
+    "K_on_sectors": {
+      "0": 180,
+      "12": -108,
+      "2": 112,
+      "20": -140,
+      "30": 0,
+      "42": 432,
+      "6": 0
+    },
+    "abs_K_on_complement": [
+      108,
+      112,
+      140,
+      180,
+      432
+    ],
+    "chebyshev_bound": {
+      "1": "15/17",
+      "2": "225/353",
+      "3": "3375/8177",
+      "4": "50625/198593",
+      "5": "759375/4912337",
+      "6": "11390625/122336033",
+      "7": "170859375/3054149297",
+      "8": "2562890625/76315468673"
+    },
+    "chebyshev_closed_form": "1/T_n(17/15) = 2/((5/3)^n + (3/5)^n)",
+    "chebyshev_rate": "3/5",
+    "condition_number_K": "4",
+    "condition_number_K2": "16",
+    "constants_from_two_integers": "11664=108^2, 186624=16*108^2, 99144=108^2*17/2, 15/17=(16-1)/(16+1)",
+    "epsilon_star": "1/99144",
+    "evidence": "exact rational arithmetic from the Casimir values {0,2,6,12,20,30,42}",
+    "five_factor_projector": "P47 = prod_{lam in {108^2,112^2,140^2,180^2,432^2}} (I - K^2/lam)",
+    "gamma_on_complement": [
+      "15/17",
+      "10825/12393",
+      "9943/12393",
+      "103/153",
+      "-15/17"
+    ],
+    "rho_star": "15/17"
+  },
+  "machine": {
+    "K_inertia": {
+      "negative": 55,
+      "positive": 23,
+      "zero": 47
+    },
+    "chebyshev_norms": [
+      0.882,
+      0.637,
+      0.413,
+      0.255,
+      0.155,
+      0.0931,
+      0.0559,
+      0.0336
+    ],
+    "condition_number_K": 4.0,
+    "evidence": "float64 replay on the 125x125 carrier",
+    "five_factor_projector_residual": 8.24e-12,
+    "five_step_richardson_residual": 8.93e-12,
+    "gamma_complement_max": 0.882,
+    "gamma_complement_min": -0.882,
+    "gamma_eta_commutator": 1.2e-14,
+    "krylov_dimension": 5
+  },
+  "schema": "MC-E47-CONDITION-LOCK/1.0",
+  "status": "PASS"
+}
