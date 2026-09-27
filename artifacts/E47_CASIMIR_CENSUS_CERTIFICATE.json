@@ -1,0 +1,127 @@
+{
+  "boundary": "Finite census of the fixed 125-dimensional carrier. The uniqueness statement is about selections of whole Casimir sectors; other 47-dimensional subspaces exist.",
+  "checks": {
+    "all_127_selections_enumerated": true,
+    "casimir_multiplicities_machine": true,
+    "census_1_3_5_4_3_2_1": true,
+    "census_total_125": true,
+    "dim47_commutants_29_35": true,
+    "dim47_selections_exactly_two": true,
+    "dim47_selections_machine": true,
+    "e47_commutant_29": true,
+    "e47_dim_47": true,
+    "e47_unique_quadratic_selector": true,
+    "full_su2_commutant_65": true,
+    "sector_dims": true
+  },
+  "exact": {
+    "census": {
+      "casimir": [
+        0,
+        2,
+        6,
+        12,
+        20,
+        30,
+        42
+      ],
+      "multiplicity": [
+        1,
+        3,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "sector_dimension": [
+        1,
+        9,
+        25,
+        28,
+        27,
+        22,
+        13
+      ],
+      "spins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "decomposition": "V2\u2297V2\u2297V2 = V0 + 3V1 + 5V2 + 4V3 + 3V4 + 2V5 + V6",
+    "dimension_47_selections": [
+      {
+        "commutant": 29,
+        "spins": [
+          2,
+          5
+        ]
+      },
+      {
+        "commutant": 35,
+        "spins": [
+          1,
+          2,
+          6
+        ]
+      }
+    ],
+    "e47": {
+      "commutant": 29,
+      "dimension": 47,
+      "selection": [
+        2,
+        5
+      ]
+    },
+    "evidence": "exact character arithmetic: chi(q)^3, chi(q)=q^-2+...+q^2",
+    "full_su2_commutant": 65,
+    "selector_rule": "dim ker prod_S (C - j(j+1)I) = sum_S m_j(2j+1); SU(2) commutant dim = sum_S m_j^2",
+    "two_sector_dimensions": [
+      10,
+      14,
+      22,
+      23,
+      26,
+      28,
+      29,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38,
+      40,
+      41,
+      47,
+      49,
+      50,
+      52,
+      53,
+      55
+    ]
+  },
+  "machine": {
+    "casimir_multiplicities": {
+      "0": 1,
+      "12": 28,
+      "2": 9,
+      "20": 27,
+      "30": 22,
+      "42": 13,
+      "6": 25
+    },
+    "evidence": "float64 replay on the 125x125 carrier",
+    "nullity_of_dimension_47_selectors": {
+      "1,2,6": 47,
+      "2,5": 47
+    }
+  },
+  "schema": "MC-E47-CASIMIR-CENSUS/1.0",
+  "status": "PASS"
+}

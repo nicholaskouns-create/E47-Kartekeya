@@ -1,0 +1,150 @@
+{
+  "boundary": "The lemma uses only the dimension n of the parameter space, not the structure of E47. Injectivity into the moduli space modulo all diffeomorphisms is conditional on the imported fact.",
+  "checks": {
+    "brinkmann_ricci_reduction": true,
+    "coefficient_identities": true,
+    "e47_case_47_78_covered": true,
+    "even_n_counterexample": true,
+    "even_n_extra_solution": true,
+    "every_profile_vacuum": true,
+    "minimal_top_degree_suffices_47_50": true,
+    "odd_n_group_trivial": true,
+    "odd_n_injective": true
+  },
+  "conditional_on": [
+    "The plane-wave equivalence group F(u) -> s a^2 F(a u + b) exhausts isometries between the Brinkmann plane waves g_q."
+  ],
+  "even_grid": {
+    "2,6": {
+      "counterexample": true,
+      "solutions": [
+        [
+          1,
+          -1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "4,8": {
+      "counterexample": true,
+      "solutions": [
+        [
+          1,
+          -1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "46,78": {
+      "counterexample": true,
+      "solutions": [
+        [
+          1,
+          -1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "evidence": {
+    "A": "E0 (symbolic)",
+    "B": "E0 conditional on the imported fact",
+    "C": "E0 (explicit counterexample)"
+  },
+  "grid": {
+    "1,4": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "11,14": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "3,6": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "47,50": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "47,78": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "5,8": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    "7,10": {
+      "injective": true,
+      "solutions": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "lemma": {
+    "A_vacuum": "Ric = -(1/2)(H_xx + H_yy) du^2 for any H(u,x,y); H = F(u)(x^2 - y^2) is harmonic, so every g_q is Ricci-flat.",
+    "B_injectivity": "n odd, N even, N >= n+3: the equivalence group element relating two anchored profiles is (s,a,b) = (1,1,0), so q = q'.",
+    "C_parity_obstruction": "n even: (s,a,b) = (1,-1,0) relates q and q' with q'_a = (-1)^a q_a; the map is not injective.",
+    "e47_instance": "n = 47, N = 78 (used in e47_intrinsic_spacetime_unmarked.py); N = 50 would also do.",
+    "family": "g_q = -2 du dv + dx^2 + dy^2 + F_q(u)(x^2 - y^2) du^2, F_q = u^N + u^n + sum_{a<n} q_a u^a"
+  },
+  "schema": "MC-E47-PROFILE-INJECTION/1.0",
+  "status": "PASS"
+}
