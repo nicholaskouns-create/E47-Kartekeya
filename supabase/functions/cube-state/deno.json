@@ -1,1 +1,1 @@
-@file:///workspace/E47-repo/supabase/functions/cube-state/deno.json
+{"imports":{"postgres":"npm:postgres@3.4.3"}}
