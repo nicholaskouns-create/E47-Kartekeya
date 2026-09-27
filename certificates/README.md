@@ -7,9 +7,20 @@
 | [e47_pipeline.json](e47_pipeline.json) | E47 pipeline snapshot |
 | [qutip_validation.json](qutip_validation.json) | QuTiP validation snapshot |
 
+## September 27, 2026 · E47 certificates
+
+These committed records live in `artifacts/`; their theorem notes and executable validators are indexed in [E47 research notes](../research/e47/README.md).
+
+| Record | Result |
+|---|---|
+| [Condition lock](../artifacts/E47_CONDITION_LOCK_CERTIFICATE.json) | Optimal constant step, five-factor projector and five-step termination · 25/25 |
+| [Signature and symmetry](../artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json) | SU(2) × S₃ resolution, K inertia and Krein-form isometries · 28/28 |
+| [Casimir census](../artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json) | Multiplicity vector and unique quadratic 47-dimensional selector · 12/12 |
+| [Profile injection](../artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json) | Vacuum plane-wave family and conditional unmarked-moduli injectivity · 9/9 |
+
 These files are committed records. Their JSON content and Git history identify the recorded results; they do not assert that a new validation ran when this page was opened.
 
-The website carries copies in [website/data/](../website/data/). Existing website checks compare those copies with the corresponding certificate files.
+The website carries copies of the two snapshot records in [website/data/](../website/data/). Existing website checks compare those copies with the corresponding certificate files.
 
 Other records remain with their components:
 
