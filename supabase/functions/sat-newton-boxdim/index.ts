@@ -1,1 +1,1 @@
-@file:///tmp/sat-newton-boxdim_content.ts
+@file:///tmp/sat_for_mcp_content.txt
