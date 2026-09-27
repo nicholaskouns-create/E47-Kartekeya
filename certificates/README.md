@@ -17,6 +17,7 @@ These committed records live in `artifacts/`; their theorem notes and executable
 | [Signature and symmetry](../artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json) | SU(2) × S₃ resolution, K inertia and Krein-form isometries · 28/28 |
 | [Casimir census](../artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json) | Multiplicity vector and unique quadratic 47-dimensional selector · 12/12 |
 | [Profile injection](../artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json) | Vacuum plane-wave family and conditional unmarked-moduli injectivity · 9/9 |
+| [G_E47 machine status](MC-G-E47-MACHINE-STATUS-20260927.json) | Locked core, structural carrier, external L, and uninstantiated maps · 5/5; [scope note](MC-G-E47-MACHINE-STATUS-20260927.md) |
 
 These files are committed records. Their JSON content and Git history identify the recorded results; they do not assert that a new validation ran when this page was opened.
 
