@@ -1,36 +1,19 @@
-/** rails.gate/1 helpers for AMNESTY execute. Declaration is not this module. */
 export const EXECUTE_TOOLS = ["transfer", "city.publish_receipt", "city.read"] as const;
-export type ExecTool = (typeof EXECUTE_TOOLS)[number];
-
 const enc = new TextEncoder();
-
 export function canonicalArgs(tool: string, args: Record<string, unknown>) {
   if (tool === "transfer") return { to: args.to ?? null, amount: args.amount ?? null, currency: args.currency ?? null };
+  if (tool === "city.publish_receipt") return { title: args.title ?? null, body: args.body ?? null };
+  if (tool === "city.read") return { path: args.path ?? "amnesty" };
   return args;
 }
-
 export async function sha256Hex(s: string) {
   const b = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode(s)));
   return [...b].map((x) => x.toString(16).padStart(2, "0")).join("");
 }
-
 export function argsDigest(tool: string, args: Record<string, unknown>) {
   return JSON.stringify(canonicalArgs(tool, args));
 }
-
-export function gSyn(
-  grant: {
-    tools: string[];
-    allow_to: string[];
-    ceiling_cents: number;
-    not_before: string;
-    not_after: string;
-    revoked_at?: string | null;
-  },
-  tool: string,
-  args: Record<string, unknown>,
-  now: Date,
-): string[] {
+export function gSyn(grant: {tools: string[]; allow_to: string[]; ceiling_cents: number; not_before: string; not_after: string; revoked_at?: string | null;}, tool: string, args: Record<string, unknown>, now: Date): string[] {
   const reasons: string[] = [];
   if (grant.revoked_at) reasons.push("grant_revoked");
   if (!grant.tools.includes(tool)) reasons.push("grant_tools");
@@ -48,7 +31,6 @@ export function gSyn(
   }
   return reasons;
 }
-
 export async function hmacHex(secret: string, msg: string) {
   const key = await crypto.subtle.importKey("raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const mac = new Uint8Array(await crypto.subtle.sign("HMAC", key, enc.encode(msg)));
