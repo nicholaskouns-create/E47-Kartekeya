@@ -686,3 +686,65 @@ That is the error-corrected Native Variational Quantum Eigensolver theorem.
 - **E1:** numerical reconstruction of spectrum, projector, gap, norm, discrete contraction, and deterministic statevector simulation checks.
 - **E2:** statevector / imaginary-time simulation as a computational quantum model.
 - **Open:** biological N‑VQE, consciousness equivalence, phenomenology-computation isomorphism, universal golden-ratio coherence law, and physical quantum-hardware implementation.
+
+
+## Quadratic Golden-Root Convergence and Optimal E47 Spectral Projection
+
+**E0 exact theorem; E1 deterministic reconstruction — 66/66 PASS.**
+
+This supplementary validation expands the scalar convergence and finite spectral-projection checks. The earlier 20-check N-VQE certificate retains its separate Hilbert-lift scope.
+
+### E0: global scalar convergence and exact solution
+
+Let \(s=\varphi^{-5}=(5\sqrt5-11)/2>0\), \(a=\sqrt{s}=\varphi^{-5/2}\), and \(x_0>0\).
+For \(B_s(x)=(x+s/x)/2\),
+\[
+B_s(x)-a=\frac{(x-a)^2}{2x}\ge0,\qquad
+B_s(x)-x=\frac{a^2-x^2}{2x}.
+\]
+Thus \(a\le x_{n+1}\le x_n\) for \(n\ge1\); the limit solves \(\ell^2=s\) and equals \(a\).
+For \(q_n=(x_n-a)/(x_n+a)\),
+\[
+q_{n+1}=q_n^2,\quad |q_0|<1,\quad
+x_n=a\frac{1+q_0^{2^n}}{1-q_0^{2^n}}.
+\]
+The exact error law is \(e_{n+1}=e_n^2/(2x_n)\); for \(x_0\ne a\), its quadratic asymptotic coefficient is \(1/(2a)\).
+
+### E0: optimal operator-norm equality
+
+The Clebsch-Gordan decomposition is
+\[
+V_2^{\otimes3}\cong V_0\oplus3V_1\oplus5V_2\oplus4V_3\oplus3V_4\oplus2V_5\oplus V_6.
+\]
+With \(C=J_{\rm tot}^2\), \(K=(C-6I)(C-30I)\) and \(A=K^\dagger K=K^2\),
+\[
+\ker A=\ker K\cong5V_2\oplus2V_5,\qquad \dim\ker A=47.
+\]
+For \(P=\mathbf1_{\{0\}}(A)\), the spectral theorem gives
+\[
+\|(I-\varepsilon A)^n-P\|_2
+=\max_{\lambda\in\operatorname{spec}(A)\setminus\{0\}}|1-\varepsilon\lambda|^n.
+\]
+The positive endpoints are \(m=11664\), \(M=186624\). Any step has maximum endpoint modulus at least \((M-m)/(M+m)\); equality is attained by balancing \(1-\varepsilon m=-(1-\varepsilon M)\). Every intermediate eigenvalue lies between these endpoints. Hence
+\[
+\varepsilon_*=\frac2{m+M}=\frac1{99144},\qquad
+\|\Gamma_*^n-P\|_2=(15/17)^n,\qquad
+\Gamma_*^n\to P.
+\]
+The invariant component satisfies \(P\Gamma_*^n v=Pv\). The scalar attractor \(a\) and dimension ratio \(47/125\) remain distinct quantities.
+
+### E1: executed validation
+
+- Nine positive scalar starts, from \(10^{-12}\) to \(10^{12}\), using 100-digit Decimal arithmetic.
+- Exact bivariate polynomial, algebraic-number, integer multiplicity and rational constant checks.
+- Independent spin-2 generator construction, Casimir eigenspaces and Lagrange-polynomial projector reconstruction.
+- Matrix dtype complex128; NumPy 2.3.5; Python 3.12.14; random seed 470125.
+- Projector idempotence maximum-entry residual: \(5.551115123125783\times10^{-16}\).
+- At \(n=220\): measured operator 2-norm \(1.0999356172230354\times10^{-12}\); predicted \(1.0998014527879737\times10^{-12}\).
+
+[66-check Python](validation/golden_root_e47_convergence.py) · [Full residuals and tolerances](../../certificates/MC-GOLDEN-ROOT-E47-20260926-001.json) · [Drive bundle](https://drive.google.com/file/d/1l4CHA4yNFnYRIQWrmVOOjG9LHVhc_IU_/view?usp=drivesdk)
+
+Run from the repository root:
+```bash
+python research/e47/validation/golden_root_e47_convergence.py --output /tmp/golden_root_e47_results.json
+```

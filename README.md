@@ -151,3 +151,6 @@ The root contract carries the stable CIRP/Ubuntu/Murmuration semantics (`3804f50
 The validator reconstructs the 125-dimensional spin-2 carrier, proves the corrected Heron fixed point \(\varphi^{-5/2}\), verifies the exact E47 ground space of \(K^2\), checks the optimal contraction constants, prints the core invariants in bases 5/10/12/64, and validates a 128-state penalized Hilbert lift. **20/20 PASS.**
 
 **Boundary:** exact algebra + numerical Hilbert-state simulation. No consciousness-equivalence, phenomenology=computation, phi-derived \(\Omega_c\), or hardware-QPU claim is promoted by this certificate.
+
+
+**Expanded convergence validation — 66/66 PASS (E0 theorem / E1 reconstruction).** [Golden-root and optimal E47 projection proof](research/e47/native_variational_eigensolver_corrected.md#quadratic-golden-root-convergence-and-optimal-e47-spectral-projection) · [Python](research/e47/validation/golden_root_e47_convergence.py) · [Certificate](certificates/MC-GOLDEN-ROOT-E47-20260926-001.json) · [Drive bundle](https://drive.google.com/file/d/1l4CHA4yNFnYRIQWrmVOOjG9LHVhc_IU_/view?usp=drivesdk).

@@ -1,0 +1,628 @@
+{
+  "certificate_code": "MC-GOLDEN-ROOT-E47-20260926-001",
+  "title": "Quadratic Golden-Root Convergence and Optimal E47 Spectral Projection",
+  "evidence_class": "E1",
+  "theorem_evidence_class": "E0",
+  "evidence_assignment": {
+    "E0": "Analytic scalar convergence, exact identities, finite SU(2) decomposition, spectral projector and minimax contraction theorem.",
+    "E1": "Executed deterministic 66-check reconstruction with exact-arithmetic subchecks and recorded numerical tolerances."
+  },
+  "source_path": "research/e47/validation/golden_root_e47_convergence.py",
+  "proof_path": "research/e47/native_variational_eigensolver_corrected.md",
+  "related_certificate": "MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001",
+  "drive_bundle": "https://drive.google.com/file/d/1l4CHA4yNFnYRIQWrmVOOjG9LHVhc_IU_/view?usp=drivesdk",
+  "notion_url": "https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb",
+  "validation": {
+    "title": "Quadratic Golden-Root Convergence and Optimal E47 Spectral Projection",
+    "passed": 66,
+    "total": 66,
+    "environment": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scalar_precision": 100,
+      "matrix_dtype": "complex128",
+      "seed": 470125
+    },
+    "conventions": {
+      "matrix_identity_residual": "maximum absolute entry unless explicitly operator norm",
+      "operator_norm": "spectral 2-norm",
+      "rank_tolerance": 1e-7
+    },
+    "constants": {
+      "phi": "1.618033988749894848204586834365638117720309179805762862135448622705260462818902449707207204189391138",
+      "s": "0.09016994374947424102293417182819058860154589902881431067724311352630231409451224853603602094695568728",
+      "golden_root": "0.3002831060007776078866947099484263673306360738353502267131635576630665197085538155934415633285560124",
+      "quadratic_coefficient": "1.665095338392780607287201754658970956477169070758957867449091367589888599347223468686340659567714327"
+    },
+    "casimir_multiplicities": {
+      "0": 1,
+      "2": 9,
+      "6": 25,
+      "12": 28,
+      "20": 27,
+      "30": 22,
+      "42": 13
+    },
+    "tensor_multiplicities": {
+      "0": 1,
+      "1": 3,
+      "2": 5,
+      "3": 4,
+      "4": 3,
+      "5": 2,
+      "6": 1
+    },
+    "A_spectrum_multiplicities": {
+      "0": 47,
+      "11664": 28,
+      "12544": 9,
+      "19600": 27,
+      "32400": 1,
+      "186624": 13
+    },
+    "scalar_runs": [
+      {
+        "x0": "1e-12",
+        "iterations": 45,
+        "absolute_error": "0E-100"
+      },
+      {
+        "x0": "0.001",
+        "iterations": 15,
+        "absolute_error": "9.8759E-96"
+      },
+      {
+        "x0": "0.1",
+        "iterations": 9,
+        "absolute_error": "0E-100"
+      },
+      {
+        "x0": "0.3002831060007776078866947099484263673306360738353502267131635576630665197085538155934415633285560124",
+        "iterations": 1,
+        "absolute_error": "0E-100"
+      },
+      {
+        "x0": "0.5",
+        "iterations": 8,
+        "absolute_error": "0E-100"
+      },
+      {
+        "x0": "1",
+        "iterations": 9,
+        "absolute_error": "0E-100"
+      },
+      {
+        "x0": "2",
+        "iterations": 10,
+        "absolute_error": "0E-100"
+      },
+      {
+        "x0": "100",
+        "iterations": 15,
+        "absolute_error": "2.05095957321014E-86"
+      },
+      {
+        "x0": "1e12",
+        "iterations": 49,
+        "absolute_error": "0E-100"
+      }
+    ],
+    "matrix_power_runs": [
+      {
+        "n": 0,
+        "operator_error": 1.0000000000000004,
+        "theoretical_operator_error": 1,
+        "vector_error": 0.7729432413759755,
+        "vector_bound": 0.7729432413759755
+      },
+      {
+        "n": 1,
+        "operator_error": 0.8823529411764711,
+        "theoretical_operator_error": 0.8823529411764706,
+        "vector_error": 0.6575737166450142,
+        "vector_bound": 0.6820087423905665
+      },
+      {
+        "n": 2,
+        "operator_error": 0.7785467128027684,
+        "theoretical_operator_error": 0.7785467128027681,
+        "vector_error": 0.5625047298128412,
+        "vector_bound": 0.6017724197563823
+      },
+      {
+        "n": 10,
+        "operator_error": 0.28603776553915633,
+        "theoretical_operator_error": 0.2860377655391561,
+        "vector_error": 0.1813777981039292,
+        "vector_bound": 0.2210909576517766
+      },
+      {
+        "n": 50,
+        "operator_error": 0.0019147711877342296,
+        "theoretical_operator_error": 0.0019147711877340826,
+        "vector_error": 0.0011260309863286985,
+        "vector_bound": 0.0014800094483405082
+      },
+      {
+        "n": 100,
+        "operator_error": 0.0000036663487015265575,
+        "theoretical_operator_error": 0.000003666348701376589,
+        "vector_error": 0.00000211348574534079,
+        "vector_bound": 0.000002833879449256619
+      },
+      {
+        "n": 220,
+        "operator_error": 1.0999356172230354e-12,
+        "theoretical_operator_error": 1.0998014527879737e-12,
+        "vector_error": 6.273180289962802e-13,
+        "vector_bound": 8.500840997879433e-13
+      }
+    ],
+    "checks": [
+      {
+        "name": "Exact Newton update, cleared denominators",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact polynomial"
+      },
+      {
+        "name": "Exact error identity 2x(B-a)=(x-a)^2",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact polynomial"
+      },
+      {
+        "name": "Exact monotonicity identity 2x(B-x)=a^2-x^2",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact polynomial"
+      },
+      {
+        "name": "Exact q conjugacy, cleared denominators",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact polynomial"
+      },
+      {
+        "name": "Exact phi^-5=(5sqrt(5)-11)/2",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact algebraic"
+      },
+      {
+        "name": "Exact phi^2=phi+1",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact algebraic"
+      },
+      {
+        "name": "Golden seed numerical identity",
+        "passed": true,
+        "residual": "2.72E-99",
+        "tolerance": "1e-95",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 1e-12",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 0.001",
+        "passed": true,
+        "residual": "9.8759E-96",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 0.1",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 0.3002831060007776078866947099484263673306360738353502267131635576630665197085538155934415633285560124",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 0.5",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 1",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 2",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 100",
+        "passed": true,
+        "residual": "2.05095957321014E-86",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar convergence and monotonicity: 1e12",
+        "passed": true,
+        "residual": "0E-100",
+        "tolerance": "1e-80",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Closed scalar solution vs direct iteration",
+        "passed": true,
+        "residual": "7.116245933629999999999999358328504457158096870114226015949679602678338960242099393649989548129384161E-88",
+        "tolerance": "1e-75",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar error recurrence",
+        "passed": true,
+        "residual": "8.870070264313896448980012366073061496425236225912077327242255608144753413843739516505705808212999841E-100",
+        "tolerance": "1e-85",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Scalar q_(n+1)=q_n^2",
+        "passed": true,
+        "residual": "1.4E-99",
+        "tolerance": "1e-85",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Quadratic asymptotic coefficient",
+        "passed": true,
+        "residual": "5.54508497187473712051146708591409529429892633048687505779021E-40",
+        "tolerance": "1e-38",
+        "evidence": "numerical"
+      },
+      {
+        "name": "Local spin-2 Casimir",
+        "passed": true,
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Total su(2) commutator 0",
+        "passed": true,
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Total su(2) commutator 1",
+        "passed": true,
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Total su(2) commutator 2",
+        "passed": true,
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Casimir Hermiticity",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Casimir eigenvalues",
+        "passed": true,
+        "residual": 2.842170943040401e-14,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Exact tensor multiplicities",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact integer"
+      },
+      {
+        "name": "Exact carrier dimension",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact integer"
+      },
+      {
+        "name": "K Hermiticity",
+        "passed": true,
+        "residual": 2.1316282072803006e-14,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "K^dagger K=K^2",
+        "passed": true,
+        "residual": 7.275957614183426e-12,
+        "tolerance": 1e-8,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Full A spectrum with multiplicities",
+        "passed": true,
+        "residual": 3.4924596548080444e-10,
+        "tolerance": 1e-7,
+        "evidence": "numerical"
+      },
+      {
+        "name": "A positive semidefinite to roundoff",
+        "passed": true,
+        "residual": -3.239316233288858e-11,
+        "tolerance": 1e-7,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Rank P=47",
+        "passed": true,
+        "residual": 47,
+        "tolerance": null,
+        "evidence": "spectral rank"
+      },
+      {
+        "name": "Nullity K=nullity A=47",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "spectral rank"
+      },
+      {
+        "name": "P idempotent",
+        "passed": true,
+        "residual": 5.551115123125783e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "P Hermitian",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "AP=0",
+        "passed": true,
+        "residual": 4.881428594671888e-11,
+        "tolerance": 1e-7,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Polynomial projector vs eigenspace projector",
+        "passed": true,
+        "residual": 2.5118795932144167e-14,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Exact optimal step",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact rational"
+      },
+      {
+        "name": "Exact optimal minimax contraction",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact rational"
+      },
+      {
+        "name": "Exact balanced spectral endpoints",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact rational"
+      },
+      {
+        "name": "Exact coherence fraction",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact rational"
+      },
+      {
+        "name": "Exact contraction over positive spectrum",
+        "passed": true,
+        "residual": null,
+        "tolerance": null,
+        "evidence": "exact rational"
+      },
+      {
+        "name": "Gamma P=P",
+        "passed": true,
+        "residual": 5.551115123125783e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Quadratic form identity",
+        "passed": true,
+        "residual": 3.6662903532026344e-12,
+        "tolerance": 1e-8,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=0",
+        "passed": true,
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=0",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=0",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=1",
+        "passed": true,
+        "residual": 5.551115123125783e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=1",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=1",
+        "passed": true,
+        "residual": 8.783938091597279e-17,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=2",
+        "passed": true,
+        "residual": 3.3306690738754696e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=2",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=2",
+        "passed": true,
+        "residual": 8.441528768080323e-17,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=10",
+        "passed": true,
+        "residual": 2.220446049250313e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=10",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=10",
+        "passed": true,
+        "residual": 2.1578314501160543e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=50",
+        "passed": true,
+        "residual": 1.470178145890344e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=50",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=50",
+        "passed": true,
+        "residual": 6.25116937633408e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=100",
+        "passed": true,
+        "residual": 1.4996845386079476e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=100",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=100",
+        "passed": true,
+        "residual": 1.2642552344796202e-15,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Operator norm equality n=220",
+        "passed": true,
+        "residual": 1.3416443506171474e-16,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Vector contraction bound n=220",
+        "passed": true,
+        "residual": 0,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      },
+      {
+        "name": "Kernel component invariant n=220",
+        "passed": true,
+        "residual": 2.7247243709910414e-15,
+        "tolerance": 1e-10,
+        "evidence": "numerical"
+      }
+    ],
+    "interpretation": "Exact arithmetic verifies algebraic identities and constants. Numerical checks reconstruct the operators and validate finite iterations. Universal limits follow from the accompanying analytic identities and spectral theorem. The two mechanisms have distinct fixed objects and convergence rates; no identification of phi^(-5/2) with 47/125 is made.",
+    "source_sha256": "aad6f40316165073ae74ddba4b28ab2d34c2c294b0af6d8c40fe6c6ff1600966"
+  }
+}
