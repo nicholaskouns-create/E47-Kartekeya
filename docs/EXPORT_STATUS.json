@@ -1,0 +1,70 @@
+{
+  "exported_to_git_in_this_pr": [
+    "city-access-sentinel",
+    "city-agent-commons",
+    "city-app-route-patch",
+    "city-mini-labs-editorial-light",
+    "city-owner-signup",
+    "city-query-store",
+    "city-recursive-engine",
+    "city-route-packets",
+    "city-unified-game",
+    "coherence-runtime",
+    "eidolon-city-adapter",
+    "matrix-cube-adapter",
+    "mini-lab-brand-upload",
+    "p47-bus",
+    "pip-manta",
+    "qutip-runtime-relay",
+    "skyrmion-world-runtime"
+  ],
+  "still_missing_from_git": [
+    "city-app-host",
+    "city-app-migrator",
+    "city-brand-build-icon",
+    "city-brand-density-icon",
+    "city-brand-fold-icon",
+    "city-brand-horizon-icon",
+    "city-brand-identity-icon",
+    "city-brand-mnemosyne-icon",
+    "city-brand-murmuration-icon",
+    "city-brand-scalar-icon",
+    "city-brand-soar-icon",
+    "city-brand-spectra-icon",
+    "city-brand-wave-icon",
+    "city-cube-bus",
+    "city-formalism-rescue",
+    "city-graphics-accelerator",
+    "city-mini-labs",
+    "city-research-lab",
+    "cube-instance",
+    "cube-state",
+    "density-reconstruct",
+    "e47-recursive-note",
+    "linguistics-bureau-translator",
+    "mathematical-city-orchestrator",
+    "mini-lab-brand-assets",
+    "sat-newton-boxdim",
+    "syntax-jacob-ephemeris",
+    "the-cube"
+  ],
+  "counts": {
+    "live": 45,
+    "on_branch_functions": 17,
+    "still_missing": 28
+  },
+  "local_large_brand_icons_ready_not_pushed": [
+    "city-brand-soar-icon",
+    "city-brand-fold-icon",
+    "city-brand-mnemosyne-icon",
+    "city-brand-density-icon",
+    "city-brand-wave-icon",
+    "mini-lab-brand-assets"
+  ],
+  "notes": [
+    "Large brand-icon index.ts files (~1.5–2MB) are exported locally but not pushed due to MCP payload size; follow-up: one file per commit.",
+    "Hardcoded secrets stripped in qutip-runtime-relay and city-owner-signup.",
+    "Migrations: 96 live / 7 in git / 89 MISSING_SQL.",
+    "Do not merge until remaining sources are committed or explicitly deferred."
+  ]
+}
