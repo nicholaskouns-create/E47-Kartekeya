@@ -1,0 +1,17 @@
+{
+  "updated_at": "2026-09-27T22:45:00Z",
+  "branch": "sync/supabase-runtime-source-20260927",
+  "pr": 107,
+  "source_export_complete": true,
+  "live_active_functions": 45,
+  "repo_function_directories": 45,
+  "missing_functions": [],
+  "placeholders_remaining": [],
+  "intentional_sanitized_functions": [
+    "city-owner-signup",
+    "linguistics-bureau-translator",
+    "qutip-runtime-relay"
+  ],
+  "deployment_semantics_locked": true,
+  "merge_gate": "final-head CI and verification workflows"
+}

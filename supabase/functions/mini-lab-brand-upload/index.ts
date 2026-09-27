@@ -1,0 +1,1 @@
+Deno.serve(()=>new Response('Disabled. Canonical Mini AI Lab brand assets are read-only.',{status:410,headers:{'content-type':'text/plain; charset=utf-8'}}));

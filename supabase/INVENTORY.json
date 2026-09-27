@@ -1,0 +1,15 @@
+{
+  "schema": "SUPABASE-FUNCTIONS-INVENTORY-1.0",
+  "project_ref": "gpkjvihkyectnenvnbng",
+  "repo": "nicholaskouns-create/E47-Kartekeya",
+  "branch": "sync/supabase-runtime-source-20260927",
+  "pr": 107,
+  "updated_at": "2026-09-27T22:45:00Z",
+  "live_active_count": 45,
+  "exported_on_branch_count": 45,
+  "missing_count": 0,
+  "source_export_complete": true,
+  "placeholders_remaining": [],
+  "bundle_verification": "Live bundle parity verified; intentional secret-to-env substitutions retained for city-owner-signup, linguistics-bureau-translator, and qutip-runtime-relay.",
+  "deployment_semantics": "supabase/config.toml mirrors live verify_jwt settings and preserves the city-mini-labs custom entrypoint."
+}

@@ -1,2 +1,105 @@
-# Linked project. Run `supabase login` then `supabase link --project-ref gpkjvihkyectnenvnbng` on a machine with Docker.
+# Linked project. Runtime auth flags mirror the live Supabase project.
 project_id = "gpkjvihkyectnenvnbng"
+
+[functions.city-app-host]
+verify_jwt = false
+
+[functions.city-app-migrator]
+verify_jwt = false
+
+[functions.city-app-route-patch]
+verify_jwt = false
+
+[functions.city-brand-build-icon]
+verify_jwt = false
+
+[functions.city-brand-density-icon]
+verify_jwt = false
+
+[functions.city-brand-fold-icon]
+verify_jwt = false
+
+[functions.city-brand-horizon-icon]
+verify_jwt = false
+
+[functions.city-brand-identity-icon]
+verify_jwt = false
+
+[functions.city-brand-mnemosyne-icon]
+verify_jwt = false
+
+[functions.city-brand-murmuration-icon]
+verify_jwt = false
+
+[functions.city-brand-scalar-icon]
+verify_jwt = false
+
+[functions.city-brand-soar-icon]
+verify_jwt = false
+
+[functions.city-brand-spectra-icon]
+verify_jwt = false
+
+[functions.city-brand-wave-icon]
+verify_jwt = false
+
+[functions.city-formalism-rescue]
+verify_jwt = false
+
+[functions.city-graphics-accelerator]
+verify_jwt = false
+
+[functions.city-mini-labs]
+verify_jwt = false
+entrypoint = "./functions/city-mini-labs/city-mini-labs-v7.ts"
+
+[functions.city-mini-labs-editorial-light]
+verify_jwt = false
+
+[functions.city-owner-signup]
+verify_jwt = false
+
+[functions.city-route-packets]
+verify_jwt = false
+
+[functions.city-unified-game]
+verify_jwt = false
+
+[functions.coherence-runtime]
+verify_jwt = false
+
+[functions.cube-instance]
+verify_jwt = false
+
+[functions.density-reconstruct]
+verify_jwt = false
+
+[functions.e47-recursive-note]
+verify_jwt = false
+
+[functions.linguistics-bureau-translator]
+verify_jwt = false
+
+[functions.matrix-cube-adapter]
+verify_jwt = false
+
+[functions.mini-lab-brand-assets]
+verify_jwt = false
+
+[functions.pip-manta]
+verify_jwt = false
+
+[functions.qutip-runtime-relay]
+verify_jwt = false
+
+[functions.sat-newton-boxdim]
+verify_jwt = false
+
+[functions.skyrmion-world-runtime]
+verify_jwt = false
+
+[functions.syntax-jacob-ephemeris]
+verify_jwt = false
+
+[functions.the-cube]
+verify_jwt = false
