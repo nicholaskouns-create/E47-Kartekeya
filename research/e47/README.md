@@ -12,6 +12,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 - [E47 Casimir census](E47_Casimir_Census_Theorem.md) — census (1,3,5,4,3,2,1), selector rule, E47 as the unique quadratic selector of dimension 47 (12/12 PASS)
 - [Profile-injection lemma](E47_Profile_Injection_Lemma.md) — vacuum plane-wave family for any n; injective for odd n, parity obstruction for even n; conditional on one imported fact (9/9 PASS)
 - [Evidence monotonicity](Evidence_Monotonicity.md) — how evidence classes and assumptions propagate; enforced over an 18-claim [ledger](evidence_ledger.json)
+- [Cross-plate validation](validation/e47_extracted_invariants_validation.py) — 47/47 exact and NumPy checks across the supplied E47 plates; [receipt](../../artifacts/E47_EXTRACTED_INVARIANTS_CERTIFICATE.json) records image-derived observations and separate unvalidated claims.
 - [Linearized Einstein intertwiner candidate](E47_Linearized_Einstein_Intertwiner_Theorem.md)
 - [Gauge-inequivalent Einstein conditional construction](E47_Gauge_Inequivalent_Einstein_Conditional_Construction.md)
 - [Einstein full executable closure certificate](E47_Einstein_Full_Executable_Closure_Certificate.md)
