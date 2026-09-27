@@ -1,21 +1,51 @@
-# Supabase → GitHub export status (2026-09-27)
+# Supabase → GitHub export status
 
-Complementary sync: GitHub = source of truth for code/migrations; Supabase stays runtime.
+Updated: **2026-09-27 12:30 PT**
+PR: https://github.com/nicholaskouns-create/E47-Kartekeya/pull/107  
+Branch: `sync/supabase-runtime-source-20260927`  
+**Do not merge.**
 
-See `EXPORT_STATUS.json` for machine-readable lists.
+| Metric | Count |
+|--------|------:|
+| Live ACTIVE functions | 45 |
+| Exported on branch | **21** |
+| Still missing | **24** |
 
-## Counts
-- Live ACTIVE edge functions: **45**
-- Already in git before: **3** (`city-route-packets`, `coherence-runtime`, `matrix-cube-adapter`)
-- Exported onto this PR branch so far: **~17** function dirs (+ docs/workflow)
-- Still missing from git: **~28** (including large brand icons and host/cube/research bands)
+## This wave added
+- `city-app-migrator`
+- `city-graphics-accelerator`
+- `city-research-lab`
+- `syntax-jacob-ephemeris`
 
-## Migrations
-- Live: 96 · Git SQL files: 7 · Shared: 7 · Missing SQL in git: **89** (`MISSING_SQL` — do not invent)
+## Still missing (24)
+- `city-app-host`
+- `city-brand-build-icon`
+- `city-brand-density-icon`
+- `city-brand-fold-icon`
+- `city-brand-horizon-icon`
+- `city-brand-identity-icon`
+- `city-brand-mnemosyne-icon`
+- `city-brand-murmuration-icon`
+- `city-brand-scalar-icon`
+- `city-brand-soar-icon`
+- `city-brand-spectra-icon`
+- `city-brand-wave-icon`
+- `city-cube-bus`
+- `city-formalism-rescue`
+- `city-mini-labs`
+- `cube-instance`
+- `cube-state`
+- `density-reconstruct`
+- `e47-recursive-note`
+- `linguistics-bureau-translator`
+- `mathematical-city-orchestrator`
+- `mini-lab-brand-assets`
+- `sat-newton-boxdim`
+- `the-cube`
 
-## Deploy
-- Workflow: `.github/workflows/supabase-functions.yml`
-- Docs: `docs/CITY_RUNTIME_DEPLOY.md` (secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`)
-
-## Do not merge yet
-Remaining live function sources should land in follow-up commits on this branch (especially ~1.5–2MB brand icon `index.ts` files and host/cube/research functions already fetched via MCP).
+## Priority remaining
+1. Host: `city-app-host` (migrator+graphics done)
+2. Cube: `the-cube`, `cube-instance`, `cube-state`, `city-cube-bus`
+3. Labs: `city-mini-labs`, `mini-lab-brand-assets`
+4. Brand icons (11) — large; local copies may exist
+5. Research/util: orchestrator, formalism-rescue, linguistics (strip LAUNCH_KEY), density-reconstruct, e47-recursive-note, sat-newton-boxdim
