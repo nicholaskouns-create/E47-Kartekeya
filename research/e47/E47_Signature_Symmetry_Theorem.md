@@ -1,11 +1,11 @@
 # E47 Signature and Symmetry
 
-**Certificate:** `MC-E47-SIGNATURE-SYMMETRY/1.0` · 21/21 PASS
+**Certificate:** `MC-E47-SIGNATURE-SYMMETRY/1.0` · 28/28 PASS
 **Executable:** [`validation/e47_signature_symmetry_certificate.py`](validation/e47_signature_symmetry_certificate.py)
 **Record:** [`artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json`](../../artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json)
 **Evidence:** exact character arithmetic, replayed in float64 on the 125 × 125 carrier.
 
-This note states five results about how E47 sits inside \(V_2\otimes V_2\otimes V_2\): the sign pattern of \(K\), the indefinite form \(\eta=2P-I\), and the complete \(\mathrm{SU}(2)\times S_3\) resolution. The earlier [S₃ fingerprint script](../../certificates/e47_joint_su2_s3_fingerprint_certificate.py) asserts the S₃ dimensions \((5,0,42)\) numerically and states the character resolution in a comment. Here the resolution is derived.
+This note states six results about how E47 sits inside \(V_2\otimes V_2\otimes V_2\): the sign pattern of \(K\), the indefinite form \(\eta=2P-I\), and the complete \(\mathrm{SU}(2)\times S_3\) resolution. The earlier [S₃ fingerprint script](../../certificates/e47_joint_su2_s3_fingerprint_certificate.py) asserts the S₃ dimensions \((5,0,42)\) numerically and states the character resolution in a comment. Here the resolution is derived.
 
 ## Exact character table
 
@@ -68,9 +68,24 @@ and the trace fingerprint is \(\operatorname{tr}(P\,\sigma)=(47,5,-16)\) for \(\
 \operatorname{In}(K)=(1+9+13,\;28+27,\;25+22)=(23,55,47).
 \]
 
-## Theorem 6 — Krein structure
+## Theorem 6 — Krein form and its isometries
 
-\(\eta=2P-I\) is a self-adjoint involution with signature \((47,78)\). It is positive definite on \(E_{47}\) and negative definite on \(E_{47}^\perp\), so \((\mathbb C^{125},\langle\cdot,\eta\,\cdot\rangle)\) is a Krein space with \(E_{47}\) as its maximal positive subspace. \(\eta\) commutes with \(J_x,J_y,J_z\), all six \(S_3\) permutations, \(C\), \(K\), and \(\Gamma_*=I-K^2/99144\), so every symmetry and the contraction flow preserve the Krein form.
+\(\eta=2P-I\) is a self-adjoint involution with signature \((47,78)\). It is positive definite on \(E_{47}\) and negative definite on \(E_{47}^\perp\), so \((\mathbb C^{125},\langle\cdot,\eta\,\cdot\rangle)\) is a Krein space with \(E_{47}\) as its maximal positive subspace.
+
+Commuting with \(\eta\) and preserving the form are different conditions, so they are stated separately.
+
+1. **η-self-adjoint operators.** \(J_x,J_y,J_z\), \(C\), \(K\) and \(\Gamma_*=I-K^2/99144\) are Hermitian and commute with \(\eta\). Hence \(A^\dagger\eta=\eta A\), and each one maps \(E_{47}\) and \(E_{47}^\perp\) into themselves. This says nothing about preserving the form.
+2. **Isometries.** A unitary \(U\) that commutes with \(\eta\) satisfies \(U^\dagger\eta U=\eta\). This covers the \(\mathrm{SU}(2)\) rotations \(e^{-i\theta\,\hat n\cdot J}\) and all six \(S_3\) permutations, so these preserve the Krein form.
+3. **Γ\* is not an isometry.** Since \(\Gamma_*\) is Hermitian and commutes with \(\eta\),
+\[
+\Gamma_*^\dagger\eta\,\Gamma_*=\eta\,\Gamma_*^2\neq\eta .
+\]
+\(\Gamma_*\) is the identity on \(E_{47}\) and shrinks every vector outside it. On the spin-\(j\) sector it acts by \(g_j=1-k_j^2/99144\), and the smallest \(|g_j|\) off the kernel is \(g_0=103/153\) (spin 0). So
+\[
+\|\Gamma_*^\dagger\eta\,\Gamma_*-\eta\|=1-\left(\tfrac{103}{153}\right)^2=\tfrac{12800}{23409}\approx0.547 .
+\]
+
+The contraction preserves the positive and negative subspaces of the Krein form, but it is not an isometry of the form.
 
 ## Boundary
 

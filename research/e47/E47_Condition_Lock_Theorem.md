@@ -69,7 +69,7 @@ which is asymptotically \((3/5)^n\), where \(3/5=(\sqrt\kappa-1)/(\sqrt\kappa+1)
 ## Corollaries
 
 - **K inertia \((23,55,47)\).** \(K>0\) on \(c\in\{0,2,42\}\) (dimensions \(1+9+13\)), \(K<0\) on \(c\in\{12,20\}\) (\(28+27\)), and \(K=0\) on \(E_{47}\).
-- **Krein compatibility.** \(\Gamma_*\) commutes with \(\eta=2P-I\), so the flow preserves the signature-\((47,78)\) Krein structure.
+- **Krein compatibility.** \(\Gamma_*\) commutes with \(\eta=2P-I\), so it preserves \(E_{47}\) and \(E_{47}^\perp\), the positive and negative subspaces of the signature-\((47,78)\) Krein form. It is not an isometry of that form: \(\Gamma_*^\dagger\eta\Gamma_*=\eta\Gamma_*^2\neq\eta\). See [E47 signature and symmetry](E47_Signature_Symmetry_Theorem.md), Theorem 6.
 
 ## Boundary
 

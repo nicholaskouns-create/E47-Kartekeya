@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MC-E47-SIGNATURE-SYMMETRY/1.0 — K inertia, Krein structure, and the exact
+"""MC-E47-SIGNATURE-SYMMETRY/1.0 — K inertia, Krein form and its isometries, and the exact
 SU(2) x S3 resolution of E47 (fermion exclusion, bosonic slice, mixed core).
 
 Exact layer: the full SU(2) x S3 multiplicity table of V2⊗V2⊗V2 is derived from
@@ -15,6 +15,7 @@ from itertools import permutations
 from pathlib import Path
 import numpy as np
 import sympy as sp
+from scipy.linalg import expm
 
 ROOT=Path(__file__).resolve().parents[3] if len(Path(__file__).resolve().parents)>3 else Path.cwd()
 OUT=(ROOT/"artifacts"/"E47_SIGNATURE_SYMMETRY_CERTIFICATE.json") if (ROOT/"artifacts").exists() else Path(__file__).with_name("E47_SIGNATURE_SYMMETRY_CERTIFICATE.json")
@@ -48,7 +49,12 @@ def exact():
     inertia=(sum(casimir_mult[j]*(2*j+1) for j in SPINS if sign_k[j]>0),
              sum(casimir_mult[j]*(2*j+1) for j in SPINS if sign_k[j]<0),
              sum(casimir_mult[j]*(2*j+1) for j in SPINS if sign_k[j]==0))
+    # Gamma* = I - K^2/99144 acts on spin j by g_j; Gamma*^T eta Gamma* - eta = eta (Gamma*^2 - I)
+    g={j:1-sp.Rational(((j*(j+1)-6)*(j*(j+1)-30))**2,99144) for j in SPINS}
+    krein_defect=max(abs(1-g[j]**2) for j in SPINS)
+    defect_spin=[j for j in SPINS if abs(1-g[j]**2)==krein_defect]
     return dict(table=table,casimir_mult=casimir_mult,e47=e47,joint=joint,commutant=commutant,inertia=inertia,
+                g=g,krein_defect=krein_defect,defect_spin=defect_spin,
                 sym=[j for j in SPINS if table[j]['trivial']],alt=[j for j in SPINS if table[j]['sign']],
                 sym_dim=dim(SPINS,'trivial'),alt_dim=dim(SPINS,'sign'),
                 integral=all(v.is_integer and v>=0 for row in table.values() for v in row.values()),
@@ -81,17 +87,30 @@ def machine():
     # bosonic slice: range of P Ps is one spin-2 irrep
     w,V=np.linalg.eigh(P@Ps@P); Bs=V[:,w>.5]
     cas_slice=np.linalg.eigvalsh(Bs.T@C@Bs)
-    # Krein structure
+    # Krein form. Commuting with eta makes a Hermitian operator eta-self-adjoint and
+    # reduces E47 + E47^perp; only unitaries that commute with eta are isometries.
     eta=2*P-I; G=I-K@K/99144
     ev_eta=np.linalg.eigvalsh(eta)
-    comm=lambda A: np.linalg.norm(A@eta-eta@A,2)
-    sym_comm=max([comm(A) for A in J]+[comm(M) for M in S.values()]+[comm(C),comm(K),comm(G)])
+    esa=lambda A: np.linalg.norm(A.conj().T@eta-eta@A,2)
+    eta_sa_ops=max([esa(A) for A in J]+[esa(C),esa(K),esa(G)])
+    reduces=max(np.linalg.norm(P@A@(I-P),2) for A in J+[C,K,G])
+    rng=np.random.default_rng(47); rot=[]
+    for _ in range(4):
+        n=rng.standard_normal(3); n/=np.linalg.norm(n); th=rng.uniform(0,2*np.pi)
+        rot.append(expm(-1j*th*(n[0]*J[0]+n[1]*J[1]+n[2]*J[2])))
+    iso=lambda U: np.linalg.norm(U.conj().T@eta@U-eta,2)
+    rot_unitary=max(np.linalg.norm(U.conj().T@U-I,2) for U in rot)
+    rot_iso=max(iso(U) for U in rot); perm_iso=max(iso(M) for M in S.values())
+    gamma_identity=np.linalg.norm(G.T@eta@G-eta@G@G,2)
+    gamma_defect=iso(G); gamma_fix=np.linalg.norm(G@P-P,2)
     ke=np.linalg.eigvalsh(K)
     # eta-positive definite on E47, eta-negative definite on its complement
     Qp=np.linalg.eigh(P)[1][:,-47:]; Qn=np.linalg.eigh(I-P)[1][:,-78:]
     return dict(dims=dims,fp=fp,slice_dim=Bs.shape[1],cas_slice=cas_slice,
                 eta_inv=np.linalg.norm(eta@eta-I,2),eta_sa=np.linalg.norm(eta-eta.T,2),
-                eta_sig=(int((ev_eta>.5).sum()),int((ev_eta<-.5).sum())),sym_comm=sym_comm,
+                eta_sig=(int((ev_eta>.5).sum()),int((ev_eta<-.5).sum())),eta_sa_ops=eta_sa_ops,reduces=reduces,
+                rot_unitary=rot_unitary,rot_iso=rot_iso,perm_iso=perm_iso,gamma_identity=gamma_identity,
+                gamma_defect=gamma_defect,gamma_fix=gamma_fix,
                 eta_pos=np.linalg.eigvalsh(Qp.T@eta@Qp).min(),eta_neg=np.linalg.eigvalsh(Qn.T@eta@Qn).max(),
                 inertia=(int((ke>.5).sum()),int((ke<-.5).sum()),int((abs(ke)<.5).sum())),
                 sym_trace=tr(Ps),alt_trace=tr(Pa))
@@ -120,7 +139,14 @@ def main():
       'eta_involution':m['eta_inv']<1e-10 and m['eta_sa']<1e-10,
       'eta_signature_47_78':m['eta_sig']==(47,78),
       'eta_definite_split':m['eta_pos']>1-1e-10 and m['eta_neg']<-1+1e-10,
-      'eta_commutes_su2_s3_C_K_Gamma':m['sym_comm']<1e-9,
+      'eta_selfadjoint_J_C_K_Gamma':m['eta_sa_ops']<1e-9,
+      'J_C_K_Gamma_reduce_E47_split':m['reduces']<1e-9,
+      'krein_isometry_su2_rotations':m['rot_unitary']<1e-10 and m['rot_iso']<1e-9,
+      'krein_isometry_s3_permutations':m['perm_iso']<1e-12,
+      'gamma_identity_on_E47':m['gamma_fix']<1e-9,
+      'gamma_krein_identity_eta_gamma2':m['gamma_identity']<1e-10,
+      'gamma_not_krein_isometry_exact':e['krein_defect']==sp.Rational(12800,23409) and e['defect_spin']==[0],
+      'gamma_not_krein_isometry_machine':abs(m['gamma_defect']-12800/23409)<1e-10,
     }
     checks={k:bool(v) for k,v in checks.items()}
     cert={'schema':'MC-E47-SIGNATURE-SYMMETRY/1.0','status':'PASS' if all(checks.values()) else 'FAIL','checks':checks,
@@ -133,16 +159,22 @@ def main():
         'joint_commutant':'C + M_2(C) + C, dimension 6',
         'K_inertia':{'positive':e['inertia'][0],'negative':e['inertia'][1],'zero':e['inertia'][2],
                      'positive_spins':[0,1,6],'negative_spins':[3,4]},
+        'krein_isometries':'U^dagger eta U = eta for SU(2) rotations and S3 permutations (unitary and commuting with eta)',
+        'gamma_krein_relation':'Gamma*^dagger eta Gamma* = eta Gamma*^2 != eta',
+        'gamma_krein_defect':str(e['krein_defect']),
+        'gamma_krein_defect_origin':'1-(103/153)^2 on the spin-0 sector, where Gamma* = 103/153',
       },
       'machine':{
         'evidence':'float64 replay on the 125x125 carrier',
         'e47_s3_dimensions':dict(zip(IRREPS,m['dims'])),'trace_fingerprint':list(m['fp']),
         'bosonic_slice_casimir':r(float(np.mean(m['cas_slice']))),
         'eta_signature':{'positive':m['eta_sig'][0],'negative':m['eta_sig'][1]},
-        'eta_involution_residual':r(m['eta_inv']),'eta_symmetry_commutator':r(m['sym_comm']),
+        'eta_involution_residual':r(m['eta_inv']),'eta_selfadjoint_residual':r(m['eta_sa_ops']),
+        'krein_isometry_residual_rotations':r(m['rot_iso']),'krein_isometry_residual_permutations':r(m['perm_iso']),
+        'gamma_krein_defect':r(m['gamma_defect']),
         'K_inertia':{'positive':m['inertia'][0],'negative':m['inertia'][1],'zero':m['inertia'][2]},
       },
-      'boundary':'Finite representation-theoretic statements about the fixed 125-dimensional carrier. The Krein structure is the indefinite form eta = 2P - I; no physical interpretation is claimed.'}
+      'boundary':'Finite representation-theoretic statements about the fixed 125-dimensional carrier. The Krein structure is the indefinite form eta = 2P - I. Its isometries here are the unitary symmetries (SU(2) rotations, S3 permutations); J_a, C, K and Gamma* are eta-self-adjoint and preserve E47 and its complement, but are not isometries. No physical interpretation is claimed.'}
     OUT.write_text(json.dumps(cert,indent=2,sort_keys=True)+'\n'); print(json.dumps(cert,indent=2,sort_keys=True))
     if cert['status']!='PASS': raise SystemExit(1)
 if __name__=='__main__': main()

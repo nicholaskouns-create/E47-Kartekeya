@@ -28,7 +28,7 @@ def test_e47_signature_symmetry_certificate(tmp_path):
     cert = json.loads(receipt.read_text())
     assert cert["schema"] == "MC-E47-SIGNATURE-SYMMETRY/1.0"
     assert cert["status"] == "PASS"
-    assert len(cert["checks"]) == 21
+    assert len(cert["checks"]) == 28
     assert all(cert["checks"].values())
 
     exact = cert["exact"]
@@ -38,8 +38,12 @@ def test_e47_signature_symmetry_certificate(tmp_path):
     assert exact["K_inertia"]["positive"] == 23
     assert exact["K_inertia"]["negative"] == 55
     assert exact["K_inertia"]["zero"] == 47
+    assert exact["gamma_krein_defect"] == "12800/23409"
 
     machine = cert["machine"]
     assert machine["e47_s3_dimensions"] == exact["e47_s3_dimensions"]
     assert machine["trace_fingerprint"] == [47, 5, -16]
     assert machine["eta_signature"] == {"positive": 47, "negative": 78}
+    assert cert["checks"]["krein_isometry_su2_rotations"]
+    assert cert["checks"]["krein_isometry_s3_permutations"]
+    assert cert["checks"]["gamma_not_krein_isometry_machine"]

@@ -1,6 +1,7 @@
 {
-  "boundary": "Finite representation-theoretic statements about the fixed 125-dimensional carrier. The Krein structure is the indefinite form eta = 2P - I; no physical interpretation is claimed.",
+  "boundary": "Finite representation-theoretic statements about the fixed 125-dimensional carrier. The Krein structure is the indefinite form eta = 2P - I. Its isometries here are the unitary symmetries (SU(2) rotations, S3 permutations); J_a, C, K and Gamma* are eta-self-adjoint and preserve E47 and its complement, but are not isometries. No physical interpretation is claimed.",
   "checks": {
+    "J_C_K_Gamma_reduce_E47_split": true,
     "K_inertia_exact_23_55_47": true,
     "K_inertia_machine": true,
     "alt3_is_V1_V3": true,
@@ -9,13 +10,19 @@
     "casimir_multiplicities": true,
     "character_table_integral": true,
     "character_total_125": true,
-    "eta_commutes_su2_s3_C_K_Gamma": true,
     "eta_definite_split": true,
     "eta_involution": true,
+    "eta_selfadjoint_J_C_K_Gamma": true,
     "eta_signature_47_78": true,
     "fermion_exclusion_exact": true,
     "fermion_exclusion_machine": true,
+    "gamma_identity_on_E47": true,
+    "gamma_krein_identity_eta_gamma2": true,
+    "gamma_not_krein_isometry_exact": true,
+    "gamma_not_krein_isometry_machine": true,
     "joint_commutant_C_M2_C": true,
+    "krein_isometry_s3_permutations": true,
+    "krein_isometry_su2_rotations": true,
     "mixed_core_exact": true,
     "mixed_core_machine": true,
     "su2_s3_table": true,
@@ -46,7 +53,11 @@
       "trivial": 5
     },
     "evidence": "exact character arithmetic: chi(q)^3, chi(q^2)chi(q), chi(q^3), chi(q)=q^-2+...+q^2",
+    "gamma_krein_defect": "12800/23409",
+    "gamma_krein_defect_origin": "1-(103/153)^2 on the spin-0 sector, where Gamma* = 103/153",
+    "gamma_krein_relation": "Gamma*^dagger eta Gamma* = eta Gamma*^2 != eta",
     "joint_commutant": "C + M_2(C) + C, dimension 6",
+    "krein_isometries": "U^dagger eta U = eta for SU(2) rotations and S3 permutations (unitary and commuting with eta)",
     "su2_s3_multiplicities": {
       "0": {
         "sign": 0,
@@ -99,12 +110,15 @@
       "trivial": 5
     },
     "eta_involution_residual": 1e-14,
+    "eta_selfadjoint_residual": 2.8e-12,
     "eta_signature": {
       "negative": 78,
       "positive": 47
     },
-    "eta_symmetry_commutator": 2.8e-12,
     "evidence": "float64 replay on the 125x125 carrier",
+    "gamma_krein_defect": 0.547,
+    "krein_isometry_residual_permutations": 1.78e-14,
+    "krein_isometry_residual_rotations": 1.76e-14,
     "trace_fingerprint": [
       47,
       5,

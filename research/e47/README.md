@@ -8,7 +8,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 - [E47 Prism Spectral Formalism](E47_Prism_Spectral_Formalism.md) — seven-band Casimir decomposition, THE MATRIX typed lift, and E1 parity receipt
 - [Projection flow theorem](E47_Projection_Flow_Theorem.md)
 - [E47 condition lock](E47_Condition_Lock_Theorem.md) — condition-4 lock, equioscillation optimality of 15/17, five-factor exact projector, five-step termination, Chebyshev rate 3/5 (25/25 PASS)
-- [E47 signature and symmetry](E47_Signature_Symmetry_Theorem.md) — exact SU(2)×S₃ resolution, fermion exclusion, bosonic slice V₂, 42-dim mixed core, K inertia (23,55,47), Krein structure (21/21 PASS)
+- [E47 signature and symmetry](E47_Signature_Symmetry_Theorem.md) — exact SU(2)×S₃ resolution, fermion exclusion, bosonic slice V₂, 42-dim mixed core, K inertia (23,55,47), Krein form and its isometries (28/28 PASS)
 - [Linearized Einstein intertwiner candidate](E47_Linearized_Einstein_Intertwiner_Theorem.md)
 - [Gauge-inequivalent Einstein conditional construction](E47_Gauge_Inequivalent_Einstein_Conditional_Construction.md)
 - [Einstein full executable closure certificate](E47_Einstein_Full_Executable_Closure_Certificate.md)
