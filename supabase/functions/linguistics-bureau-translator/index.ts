@@ -1,1 +1,1 @@
-@file:///tmp/ling_push_content.ts
+@file:///workspace/E47-repo/supabase/functions/linguistics-bureau-translator/index.ts
