@@ -1,71 +1,17 @@
 {
-  "updated_at": "2026-09-27 20:04 UTC",
+  "updated_at": "2026-09-27T22:45:00Z",
   "branch": "sync/supabase-runtime-source-20260927",
   "pr": 107,
-  "tip_sha": "2338a2684e48602c6f443cb21acac9d04b2b07f4",
-  "do_not_merge": true,
-  "gh_cli_auth": false,
-  "device_login_code": "EA77-312E",
-  "device_login_url": "https://github.com/login/device",
-  "goal_a": {
-    "still_at_file_placeholder": [
-      "city-brand-density-icon",
-      "city-brand-wave-icon",
-      "city-brand-fold-icon",
-      "city-brand-mnemosyne-icon",
-      "city-brand-soar-icon",
-      "mini-lab-brand-assets"
-    ],
-    "local_bytes": {
-      "city-brand-density-icon": 1938141,
-      "city-brand-wave-icon": 1930678,
-      "city-brand-fold-icon": 1835041,
-      "city-brand-mnemosyne-icon": 1714379,
-      "city-brand-soar-icon": 1494426,
-      "mini-lab-brand-assets": 1901849
-    },
-    "local_sha256": {
-      "city-brand-density-icon": "0179dcb5d51209f221cfd9748c253524951c6f28175b1fda65d6ca00e911cf4a",
-      "city-brand-wave-icon": "30a1ac1883e0e43d2ee3a224e59b5d84330bc6ae259cea627586da5fb11c2c20",
-      "city-brand-fold-icon": "f852e405b3f7a62815a1486587c40a0a7308e2d99045532a25fbd05cb4ad912e",
-      "city-brand-mnemosyne-icon": "0cde29055b8aed2e92ea452fe50631082577d45b191d89a7471aa0a3e0ec75d8",
-      "city-brand-soar-icon": "10b3a1fcfcad4c673032fd3b3104e20c379364fe0c58a788de47d67f4d9b34f9",
-      "mini-lab-brand-assets": "ff55f869e7d495b5cf2f84fa0c040038595498181349680cf13832d89f4aee28"
-    },
-    "linguistics": {
-      "local_bytes": 17796,
-      "local_sha256": "dd4c0cd1586fa1900e357a7559c947958ef8789380508f5996de5ac5ae2c11ac",
-      "remote": "NOT_EXACT; needs path-based/git push of exact local"
-    },
-    "blocker": "Megabyte @file remotes need gh auth (git push) or path-based upload. Inline MCP transcription corrupts dense base64. Readable TS ~7KB (lab-adapters) verified exact via MCP.",
-    "drive_staging_folder": "https://drive.google.com/drive/folders/1XPSu88q4YgP0V6fUZ_Gp3QjxezIMhrLV"
-  },
-  "goal_b": {
-    "city-cube-bus": {
-      "on_branch": {
-        "deno.json": true,
-        "lab-adapters.ts": true,
-        "index.ts": false
-      },
-      "verified_exact": {
-        "lab-adapters.ts": "26c79f808aa4067564bdfc6a6621a9e5def2b935149d42205e85be1534aabaef",
-        "deno.json": "6dbcd127fc39d04f01301423f6be4234a2f401e3035134db652d1241e975f340"
-      },
-      "index_ts": "MCP get_edge_function OK; not yet on disk/branch"
-    },
-    "city-mini-labs": {
-      "live_filenames": [
-        "city-mini-labs-v7.ts",
-        "octet_packet_core.ts"
-      ],
-      "local_octet_sha256": "5edce5814b00b9f7203d640c418d3820539032bc184fb72aae3ee170292ac469",
-      "local_octet_bytes": 12631,
-      "v7": "live MCP fetched; Drive fallback incomplete vs live (missing BUILD/SEE)"
-    }
-  },
-  "this_session_commits": [
-    "b0574cde staging batch 0 (assemble workflow + ling manifest)",
-    "ae5a0592 staging batch 1 (CORRUPTED parts — do not assemble)",
-    "2338a268 city-cube-bus deno.json + lab-adapters.ts EXACT"
-  ]
+  "source_export_complete": true,
+  "live_active_functions": 45,
+  "repo_function_directories": 45,
+  "missing_functions": [],
+  "placeholders_remaining": [],
+  "intentional_sanitized_functions": [
+    "city-owner-signup",
+    "linguistics-bureau-translator",
+    "qutip-runtime-relay"
+  ],
+  "deployment_semantics_locked": true,
+  "merge_gate": "final-head CI and verification workflows"
 }
