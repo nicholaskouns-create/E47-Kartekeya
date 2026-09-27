@@ -9,7 +9,7 @@
 
 ## September 27, 2026 · E47 certificates
 
-These committed records live in `artifacts/`; their theorem notes and executable validators are indexed in [E47 research notes](../research/e47/README.md).
+The first four records below live in `artifacts/`. Their theorem notes and executable validators are indexed in [E47 research notes](../research/e47/README.md).
 
 | Record | Result |
 |---|---|
