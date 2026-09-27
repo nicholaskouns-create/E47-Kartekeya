@@ -1,0 +1,1 @@
+@file:///tmp/ling_push_content.ts
