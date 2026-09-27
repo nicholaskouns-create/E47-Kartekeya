@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from pathlib import Path
 
 import numpy as np
@@ -20,7 +21,7 @@ import sympy as sp
 
 TOL = 1e-9
 ROOT = Path.cwd()
-OUT = ROOT / "E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json"
+OUT = Path(os.environ.get("E47_CERT_OUT") or ROOT / "E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json")
 
 
 def spin2():

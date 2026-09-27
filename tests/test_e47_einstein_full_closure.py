@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -8,13 +9,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "research" / "e47" / "validation" / "e47_einstein_full_closure_certificate.py"
-RECEIPT = ROOT / "artifacts" / "E47_EINSTEIN_FULL_CLOSURE_CERTIFICATE.json"
+CERT_NAME = "E47_EINSTEIN_FULL_CLOSURE_CERTIFICATE.json"
 
 
-def test_e47_einstein_full_closure_certificate():
+def test_e47_einstein_full_closure_certificate(tmp_path):
+    receipt = tmp_path / CERT_NAME
     run = subprocess.run(
         [sys.executable, str(SCRIPT)],
         cwd=ROOT,
+        env={**os.environ, "E47_CERT_OUT": str(receipt)},
         text=True,
         capture_output=True,
         timeout=180,
@@ -22,7 +25,7 @@ def test_e47_einstein_full_closure_certificate():
     )
     assert run.returncode == 0, run.stdout + "\n" + run.stderr
 
-    cert = json.loads(RECEIPT.read_text())
+    cert = json.loads(receipt.read_text())
     assert cert["schema"] == "MC-E47-EINSTEIN-FULL-CLOSURE/1.0"
     assert cert["status"] == "PASS"
     assert len(cert["checks"]) == 28
