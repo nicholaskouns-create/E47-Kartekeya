@@ -1,39 +1,9 @@
 {
-  "exported_total": 21,
+  "exported_total": 22,
   "live_active": 45,
-  "still_missing": [
-    "city-app-host",
-    "city-brand-build-icon",
-    "city-brand-density-icon",
-    "city-brand-fold-icon",
-    "city-brand-horizon-icon",
-    "city-brand-identity-icon",
-    "city-brand-mnemosyne-icon",
-    "city-brand-murmuration-icon",
-    "city-brand-scalar-icon",
-    "city-brand-soar-icon",
-    "city-brand-spectra-icon",
-    "city-brand-wave-icon",
-    "city-cube-bus",
-    "city-formalism-rescue",
-    "city-mini-labs",
-    "cube-instance",
-    "cube-state",
-    "density-reconstruct",
-    "e47-recursive-note",
-    "linguistics-bureau-translator",
-    "mathematical-city-orchestrator",
-    "mini-lab-brand-assets",
-    "sat-newton-boxdim",
-    "the-cube"
-  ],
-  "still_missing_count": 24,
-  "updated_at_pt": "2026-09-27 12:30 PT",
+  "still_missing_count": 23,
+  "updated_at_pt": "2026-09-27 12:10 PT",
   "pr": "https://github.com/nicholaskouns-create/E47-Kartekeya/pull/107",
-  "this_wave_added": [
-    "city-app-migrator",
-    "city-graphics-accelerator",
-    "city-research-lab",
-    "syntax-jacob-ephemeris"
-  ]
+  "this_wave_added": ["city-app-migrator", "city-graphics-accelerator", "city-app-host", "city-research-lab", "syntax-jacob-ephemeris"],
+  "still_missing": ["city-brand-build-icon", "city-brand-density-icon", "city-brand-fold-icon", "city-brand-horizon-icon", "city-brand-identity-icon", "city-brand-mnemosyne-icon", "city-brand-murmuration-icon", "city-brand-scalar-icon", "city-brand-soar-icon", "city-brand-spectra-icon", "city-brand-wave-icon", "city-cube-bus", "city-formalism-rescue", "city-mini-labs", "cube-instance", "cube-state", "density-reconstruct", "e47-recursive-note", "linguistics-bureau-translator", "mathematical-city-orchestrator", "mini-lab-brand-assets", "sat-newton-boxdim", "the-cube"]
 }

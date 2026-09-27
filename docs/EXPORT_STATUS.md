@@ -1,6 +1,6 @@
 # Supabase → GitHub export status
 
-Updated: **2026-09-27 12:30 PT**
+Updated: **2026-09-27 12:10 PT**
 PR: https://github.com/nicholaskouns-create/E47-Kartekeya/pull/107  
 Branch: `sync/supabase-runtime-source-20260927`  
 **Do not merge.**
@@ -8,17 +8,14 @@ Branch: `sync/supabase-runtime-source-20260927`
 | Metric | Count |
 |--------|------:|
 | Live ACTIVE functions | 45 |
-| Exported on branch | **21** |
-| Still missing | **24** |
+| Exported on branch | **22** |
+| Still missing | **23** |
 
 ## This wave added
-- `city-app-migrator`
-- `city-graphics-accelerator`
-- `city-research-lab`
-- `syntax-jacob-ephemeris`
+- `city-app-migrator`, `city-graphics-accelerator`, `city-app-host` (**host band complete**)
+- `city-research-lab`, `syntax-jacob-ephemeris`
 
-## Still missing (24)
-- `city-app-host`
+## Still missing (23)
 - `city-brand-build-icon`
 - `city-brand-density-icon`
 - `city-brand-fold-icon`
@@ -44,8 +41,8 @@ Branch: `sync/supabase-runtime-source-20260927`
 - `the-cube`
 
 ## Priority remaining
-1. Host: `city-app-host` (migrator+graphics done)
+1. ~~Host~~ done
 2. Cube: `the-cube`, `cube-instance`, `cube-state`, `city-cube-bus`
 3. Labs: `city-mini-labs`, `mini-lab-brand-assets`
-4. Brand icons (11) — large; local copies may exist
+4. Brand icons (11) — large; local copies under E47-repo
 5. Research/util: orchestrator, formalism-rescue, linguistics (strip LAUNCH_KEY), density-reconstruct, e47-recursive-note, sat-newton-boxdim
