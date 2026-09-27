@@ -12,11 +12,15 @@ from fractions import Fraction as F
 from itertools import permutations, product
 import json
 import math
+import os
 from pathlib import Path
 
 import numpy as np
 
-OUT = Path(__file__).with_suffix(".json")
+ROOT = Path(__file__).resolve().parents[3] if len(Path(__file__).resolve().parents)>3 else Path.cwd()
+OUT = Path(os.environ.get("E47_CERT_OUT", str(ROOT / "artifacts" / "E47_EXTRACTED_INVARIANTS_CERTIFICATE.json")))
+if not (ROOT / "artifacts").exists() and "E47_CERT_OUT" not in os.environ:
+    OUT = Path(__file__).with_suffix(".json")
 checks: dict[str, bool] = {}
 observations: dict[str, object] = {}
 
