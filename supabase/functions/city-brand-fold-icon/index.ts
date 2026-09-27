@@ -1,0 +1,1 @@
+@file:///workspace/E47-repo/supabase/functions/city-brand-fold-icon/index.ts
