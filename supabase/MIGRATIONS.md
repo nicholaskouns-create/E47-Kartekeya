@@ -1,8 +1,19 @@
 # CIRP / AMNESTY migration continuity
 
 Live project: `gpkjvihkyectnenvnbng`.
-Git versions now match `supabase_migrations.schema_migrations`.
-Do not `db push` the deleted short-name files; they were aliases, not new versions.
+
+## Git vs live (2026-09-27 sync)
+
+See `MIGRATIONS_PARITY.json` for the machine-readable compare.
+
+| Scope | Count |
+|-------|------:|
+| Live migrations (`list_migrations`) | 96 |
+| SQL files in `supabase/migrations/` | 7 |
+| Shared version prefixes | 7 |
+| Live versions **missing SQL in git** | 89 (`MISSING_SQL`) |
+
+### Shared (SQL present in git)
 
 | Live version | Name |
 |---|---|
@@ -14,6 +25,12 @@ Do not `db push` the deleted short-name files; they were aliases, not new versio
 | 20260926195517 | amnesty_grants_executions_public_select |
 | 20260926195651 | lock_amnesty_rls_and_pin_search_path |
 
+### Missing SQL in git
+
+`list_migrations` returns **version + name only**. Bodies for the other 89 live versions are **not** available via the Supabase MCP tools used in this sync. They are flagged `MISSING_SQL` in `MIGRATIONS_PARITY.json` — **do not invent SQL**.
+
+To recover SQL later: export from the dashboard / `supabase db pull` / management API when available, then commit under `supabase/migrations/<version>_<name>.sql` using the live version id.
+
 Going forward:
 
 ```bash
@@ -24,4 +41,4 @@ git add supabase/migrations && git commit
 supabase db push
 ```
 
-No MCP DDL except emergencies. If MCP writes schema, pull that version into git the same day using the live version id. Do not repair the live table down to short date-only names. Skip a full `db pull --schema public` unless a City-wide baseline is required; that file is huge and is not an AMNESTY delta.
+No MCP DDL except emergencies. If MCP writes schema, pull that version into git the same day using the live version id.
