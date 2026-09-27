@@ -1,0 +1,128 @@
+{
+  "checks": {
+    "Babylonian_linear_example": true,
+    "Casimir_sector_dimensions": true,
+    "E47_dimension": true,
+    "Heron_double_exponent_0": true,
+    "Heron_double_exponent_1": true,
+    "Heron_double_exponent_2": true,
+    "Heron_double_exponent_3": true,
+    "Heron_double_exponent_4": true,
+    "Heron_double_exponent_5": true,
+    "K2_spectrum": true,
+    "K_inertia": true,
+    "K_sector_values": true,
+    "Krein_47_78": true,
+    "Krein_nonisometry_defect": true,
+    "Q4_28_rounding_bound": true,
+    "S3_5_0_42": true,
+    "SU2_commutant_29": true,
+    "bosonic_irrep": true,
+    "character_integrality_j0": true,
+    "character_integrality_j1": true,
+    "character_integrality_j2": true,
+    "character_integrality_j3": true,
+    "character_integrality_j4": true,
+    "character_integrality_j5": true,
+    "character_integrality_j6": true,
+    "chosen_Lorentzian_pullback": true,
+    "cube_address_bijection": true,
+    "decimal_exactness": true,
+    "electron_muon_plate_rounded": true,
+    "fermionic_exclusion": true,
+    "five_factor_projector": true,
+    "golden_irrational_extension": true,
+    "golden_polynomial": true,
+    "golden_polynomial_exact": true,
+    "joint_SU2_S3_table": true,
+    "joint_commutant_6": true,
+    "matrix_Casimir_spectrum": true,
+    "matrix_Gamma_not_eta_isometry": true,
+    "matrix_S3_decomposition": true,
+    "matrix_contraction_error": true,
+    "matrix_projector_rank_idempotence": true,
+    "minimum_qubits": true,
+    "optimal_Richardson": true,
+    "permutation_fingerprint": true,
+    "quadratic_selector_uniqueness": true,
+    "sevenfold_rotation": true,
+    "two_eta_forms_distinct": true
+  },
+  "observations": {
+    "casimir_multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "gamma_eigenvalues": [
+      "103/153",
+      "10825/12393",
+      "1",
+      "15/17",
+      "9943/12393",
+      "1",
+      "-15/17"
+    ],
+    "illustrative_mass_residuals": {
+      "electron": 0.03891048583230984,
+      "muon": -9.051769382379875e-05
+    },
+    "k_values": [
+      180,
+      112,
+      0,
+      -108,
+      -140,
+      0,
+      432
+    ],
+    "krein_defect": "12800/23409",
+    "numeric_residuals": {
+      "casimir": 2.842170943040401e-14,
+      "projector": 6.654705070535472e-15,
+      "s3_dimensions": [
+        5.000000000000001,
+        -3.3176586478056436e-17,
+        42.000000000000014
+      ]
+    },
+    "permutation_fingerprint": [
+      47,
+      5,
+      -16
+    ],
+    "unvalidated_claims": [
+      "physical particle-spectrum fit beyond the two displayed rounded inputs",
+      "acoustic speed as a measured material constant",
+      "FPGA implementation, resource counts, timing, and Q4.28 250-step error",
+      "Lorentzian geometry, curvature, stress-energy, and flight from E47 alone",
+      "Sevenfold historical interpretation and Turtle-Pace safety without a dynamical model",
+      "Standard Model action, renormalization, cosmology, or consciousness claims"
+    ],
+    "whole_sector_rank47_selectors": [
+      [
+        [
+          2,
+          5
+        ],
+        29
+      ],
+      [
+        [
+          1,
+          2,
+          6
+        ],
+        35
+      ]
+    ]
+  },
+  "passed": 47,
+  "status": "PASS",
+  "title": "E47 Extracted Invariants: Exact and Machine Validation",
+  "total": 47
+}
