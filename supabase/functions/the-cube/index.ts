@@ -1,0 +1,1 @@
+@file:///tmp/cube_push_content.ts
