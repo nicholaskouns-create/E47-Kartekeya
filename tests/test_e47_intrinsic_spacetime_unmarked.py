@@ -1,25 +1,28 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "research" / "e47" / "validation" / "e47_intrinsic_spacetime_unmarked.py"
-RECEIPT = ROOT / "artifacts" / "E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json"
+CERT_NAME = "E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json"
 
-def test_e47_intrinsic_spacetime_unmarked_certificate():
+def test_e47_intrinsic_spacetime_unmarked_certificate(tmp_path):
+    receipt = tmp_path / CERT_NAME
     run = subprocess.run(
         [sys.executable, str(SCRIPT)],
         cwd=ROOT,
+        env={**os.environ, "E47_CERT_OUT": str(receipt)},
         text=True,
         capture_output=True,
         timeout=180,
         check=False,
     )
     assert run.returncode == 0, run.stdout + "\n" + run.stderr
-    cert = json.loads(RECEIPT.read_text())
+    cert = json.loads(receipt.read_text())
     assert cert["schema"] == "MC-E47-INTRINSIC-SPACETIME-UNMARKED/1.0"
     assert cert["status"] == "PASS"
     assert len(cert["checks"]) == 24

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """MC-E47-EINSTEIN-FULL-CLOSURE/1.0 — executable proof certificate."""
 from __future__ import annotations
-import json, math
+import json, math, os
 from collections import Counter
 from pathlib import Path
 import numpy as np
@@ -9,6 +9,7 @@ import sympy as sp
 
 ROOT=Path(__file__).resolve().parents[3] if len(Path(__file__).resolve().parents)>3 else Path.cwd()
 OUT=(ROOT/"artifacts"/"E47_EINSTEIN_FULL_CLOSURE_CERTIFICATE.json") if (ROOT/"artifacts").exists() else Path(__file__).with_name("E47_EINSTEIN_FULL_CLOSURE_CERTIFICATE.json")
+if os.environ.get("E47_CERT_OUT"): OUT=Path(os.environ["E47_CERT_OUT"])
 
 def jmat(j=2.0):
     m=np.arange(j,-j-1,-1,dtype=float); n=len(m)
