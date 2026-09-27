@@ -2,11 +2,11 @@
 
 Live project: `gpkjvihkyectnenvnbng`
 
-Status as of 2026-09-27 12:30 PT on PR #107 (`sync/supabase-runtime-source-20260927`). `exported` = on branch; `pending export` = live ACTIVE not yet pushed.
+Status as of 2026-09-27 12:10 PT on PR #107 (`sync/supabase-runtime-source-20260927`). Host band complete. `exported` = on branch; `pending export` = live ACTIVE not yet pushed.
 
 | function slug | band | purpose | site/caller if known | status |
 |---|---|---|---|---|
-| `city-app-host` | host | Static app host + Syntax Jacob ephemeris proxy from storage | website/interfaces | pending export |
+| `city-app-host` | host | Static app host + Syntax Jacob ephemeris proxy from storage | website/interfaces | exported |
 | `city-app-migrator` | host | Crawl grok.me origins into city-apps storage bucket | — | exported |
 | `city-app-route-patch` | host | Patch SEE registry/suite routes into storage | — | exported |
 | `city-graphics-accelerator` | host | Graphics contract + adaptive canvas ES module | website/interfaces | exported |
