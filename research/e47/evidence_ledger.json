@@ -1,0 +1,155 @@
+{
+  "schema": "E47-EVIDENCE-LEDGER/1.0",
+  "rule": "research/e47/Evidence_Monotonicity.md",
+  "claims": [
+    {
+      "id": "census.decomposition",
+      "statement": "V2⊗V2⊗V2 = V0 + 3V1 + 5V2 + 4V3 + 3V4 + 2V5 + V6",
+      "evidence": "E0",
+      "record": "artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json",
+      "check": "census_1_3_5_4_3_2_1",
+      "depends_on": []
+    },
+    {
+      "id": "census.e47_unique_quadratic_selector",
+      "statement": "{2,5} is the only two-sector Casimir selection of dimension 47",
+      "evidence": "E0",
+      "record": "artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json",
+      "check": "e47_unique_quadratic_selector",
+      "depends_on": ["census.decomposition"]
+    },
+    {
+      "id": "lock.condition_4",
+      "statement": "|K| on the complement of E47 is {108,112,140,180,432}; condition number 4",
+      "evidence": "E0",
+      "record": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "check": "condition_K_4",
+      "depends_on": ["census.decomposition"]
+    },
+    {
+      "id": "lock.equioscillation",
+      "statement": "Gamma* takes the values -15/17 and +15/17 on the complement; step 1/99144 is optimal",
+      "evidence": "E0",
+      "record": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "check": "equioscillation_exact",
+      "depends_on": ["lock.condition_4"]
+    },
+    {
+      "id": "lock.five_factor_identity",
+      "statement": "prod (1 - x/lambda) over the five nonzero K^2 eigenvalues is 1 at 0 and vanishes on the complement spectrum",
+      "evidence": "E0",
+      "record": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "check": "five_factor_scalar_identity",
+      "depends_on": ["lock.condition_4"]
+    },
+    {
+      "id": "lock.five_step_termination",
+      "statement": "Krylov dimension of the complement is 5; five Richardson steps reach P exactly",
+      "evidence": "E1",
+      "record": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "check": "krylov_dimension_5",
+      "depends_on": ["lock.five_factor_identity"]
+    },
+    {
+      "id": "lock.chebyshev_rate",
+      "statement": "Chebyshev bound 1/T_n(17/15) = 2/((5/3)^n + (3/5)^n); rate 3/5",
+      "evidence": "E0",
+      "record": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "check": "chebyshev_closed_form",
+      "depends_on": ["lock.condition_4"]
+    },
+    {
+      "id": "symmetry.su2_s3_table",
+      "statement": "Exact SU(2) x S3 multiplicity table of V2⊗V2⊗V2",
+      "evidence": "E0",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "su2_s3_table",
+      "depends_on": ["census.decomposition"]
+    },
+    {
+      "id": "symmetry.fermion_exclusion",
+      "statement": "E47 ∩ Λ³V2 = 0",
+      "evidence": "E0",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "fermion_exclusion_exact",
+      "depends_on": ["symmetry.su2_s3_table"]
+    },
+    {
+      "id": "symmetry.bosonic_slice",
+      "statement": "E47 ∩ Sym³V2 is a single V2",
+      "evidence": "E0",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "bosonic_slice_exact",
+      "depends_on": ["symmetry.su2_s3_table"]
+    },
+    {
+      "id": "symmetry.mixed_core",
+      "statement": "47 = 5 + 42 + 0 (symmetric, mixed, antisymmetric)",
+      "evidence": "E0",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "mixed_core_exact",
+      "depends_on": ["symmetry.su2_s3_table"]
+    },
+    {
+      "id": "symmetry.k_inertia",
+      "statement": "In(K) = (23, 55, 47)",
+      "evidence": "E0",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "K_inertia_exact_23_55_47",
+      "depends_on": ["census.decomposition"]
+    },
+    {
+      "id": "symmetry.krein_isometries",
+      "statement": "SU(2) rotations and S3 permutations satisfy U^dagger eta U = eta (checked on sampled rotations)",
+      "evidence": "E1",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "krein_isometry_su2_rotations",
+      "depends_on": []
+    },
+    {
+      "id": "symmetry.gamma_not_isometry",
+      "statement": "||Gamma* eta Gamma* - eta|| = 12800/23409; Gamma* is not a Krein isometry",
+      "evidence": "E0",
+      "record": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "check": "gamma_not_krein_isometry_exact",
+      "depends_on": ["lock.condition_4"]
+    },
+    {
+      "id": "profile.vacuum",
+      "statement": "Every Brinkmann plane wave g_q with H = F(u)(x^2 - y^2) is Ricci-flat",
+      "evidence": "E0",
+      "record": "artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json",
+      "check": "every_profile_vacuum",
+      "depends_on": []
+    },
+    {
+      "id": "profile.injectivity",
+      "statement": "For odd n and even N >= n+3, q -> [g_q] is injective modulo plane-wave equivalence",
+      "evidence": "E0",
+      "record": "artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json",
+      "check": "odd_n_injective",
+      "depends_on": ["profile.vacuum"],
+      "conditional_on": ["plane-wave-equivalence-group-exhausts-isometries"]
+    },
+    {
+      "id": "profile.parity_obstruction",
+      "statement": "For even n, a = -1 identifies distinct profiles",
+      "evidence": "E0",
+      "record": "artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json",
+      "check": "even_n_counterexample",
+      "depends_on": []
+    },
+    {
+      "id": "einstein.unmarked_moduli_embedding",
+      "statement": "E47 (n = 47) injects into Ricci-flat Lorentzian metrics modulo diffeomorphism",
+      "evidence": "E0",
+      "record": "artifacts/E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json",
+      "check": "unmarked_affine_rigidity",
+      "depends_on": ["profile.injectivity"],
+      "conditional_on": ["plane-wave-equivalence-group-exhausts-isometries"]
+    }
+  ],
+  "assumptions": {
+    "plane-wave-equivalence-group-exhausts-isometries": "Imported from the plane-wave literature, not proved in this repository: the group F(u) -> s a^2 F(a u + b) exhausts isometries between the Brinkmann plane waves g_q."
+  }
+}
