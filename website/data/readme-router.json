@@ -227,6 +227,12 @@
           "url": "https://www.aims.healthcare/journal/mathematical-city-link-map",
           "substrate": "aims",
           "kind": "index"
+        },
+        {
+          "label": "Meta AI Shared Artifact Mirror",
+          "url": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
+          "substrate": "github",
+          "kind": "external artifact mirror"
         }
       ]
     },
@@ -450,7 +456,9 @@
     "nvqe_certificate": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json",
     "electroweak_repo": "https://github.com/nicholaskouns-create/E47-Electroweak-Identities",
     "foundry_repo": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection",
-    "electroweak_live": "https://nicholaskouns-create.github.io/electroweak/"
+    "electroweak_live": "https://nicholaskouns-create.github.io/electroweak/",
+    "meta_ai_artifact_mirror": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
+    "meta_ai_artifact_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/"
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
