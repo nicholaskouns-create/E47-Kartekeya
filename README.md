@@ -115,11 +115,13 @@ That pattern is the point: **one object, multiple native views, preserved proven
 | [Spectral matrix certificate JSON](website/data/MC-E47-SPECTRAL-MATRIX-20260925.json) | exact result packet |
 | [`docs/README.md`](docs/README.md) | documentation task router |
 
-## Repository pair
+## Repository constellation
 
 | Repository | Role | Portal |
 |---|---|---|
-| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | canonical executable research repository | [README Router](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/) |
+| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | canonical E47 kernel, certificates, tests, City runtime | [README Router](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/) |
+| [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | electroweak identity generator, mass-ladder audit, dedicated CI/Pages | [Electroweak instrument](https://nicholaskouns-create.github.io/E47-Electroweak-Identities/) |
+| [E47-Foundry-Lifetime-Intersection](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) | Foundry lifetime algebra plus repo-native 38-check E47 intersection validator | [Repository](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) |
 | [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | personal atlas and cross-repository vestibule | [Root README Router](https://nicholaskouns-create.github.io/readme/) |
 
 [License](LICENSE) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [Contribute](CONTRIBUTING.md)
