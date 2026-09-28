@@ -16,6 +16,8 @@ const css = read(resolve(site, "css/styles.css"));
 const app = read(resolve(site, "js/app.js"));
 const visualizerPortalPath = resolve(site, "interfaces/visualizers/index.html");
 const syntaxJacobApp = read(resolve(site, "interfaces/syntax-jacob/app.js"));
+const cityAppHost = read(resolve(root, "supabase/functions/city-app-host/index.ts"));
+const metaArtifactRegistry = json(resolve(root, "artifacts/external/META-AI-SHARE-B5FCBCF1-20260928.json"));
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
   test(`published ${name} matches the committed certificate`, () => {
@@ -26,6 +28,16 @@ for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
     );
   });
 }
+
+test("Meta AI artifact resolver redirects instead of proxying HTML through Edge Functions", () => {
+  assert.match(cityAppHost, /META-AI-ARTIFACT-RESOLVER-1\\.2/);
+  assert.match(cityAppHost, /live-resolved-redirect/);
+  assert.match(cityAppHost, /status:302/);
+  assert.match(cityAppHost, /metaaiusercontent\\.com/);
+  assert.doesNotMatch(metaArtifactRegistry.rendering, /returns it as text\\/html/i);
+  assert.match(metaArtifactRegistry.rendering, /302 redirect/i);
+  assert.equal(metaArtifactRegistry.transport.mode, "live-resolved-redirect");
+});
 
 test("Syntax Jacob uses the server-side JPL truth proxy", () => {
   assert.match(syntaxJacobApp, /city-app-host\/syntax-jacob-ephemeris/);
