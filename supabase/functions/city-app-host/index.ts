@@ -13,6 +13,33 @@ function rewrite(text:string,slug:string,ct:string,req:Request){const root=new U
  out=out.replaceAll('"/assets/',`"${base}/assets/`).replaceAll("'/assets/",`'${base}/assets/`).replaceAll('`/assets/',`\`${base}/assets/`).replaceAll('"/__grok/',`"${base}/__grok/`).replaceAll("'/__grok/",`'${base}/__grok/`).replaceAll('`/__grok/',`\`${base}/__grok/`).replaceAll("url(/assets/",`url(${base}/assets/`).replaceAll("url('/assets/",`url('${base}/assets/`).replaceAll('url("/assets/',`url("${base}/assets/`);
  return out}
 
+
+const META_SHARE_URL="https://www.meta.ai/share/a/b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2";
+async function metaSandboxUrl(){
+  const r=await fetch(META_SHARE_URL,{headers:{"accept":"text/html,application/xhtml+xml","user-agent":"Mathematical-City-Meta-Mirror/1.2"}});
+  if(!r.ok)throw new Error("Meta share HTTP "+r.status);
+  let share=await r.text();
+  share=share.replaceAll("\\\\u0026","&").replaceAll("\\\\/","/").replaceAll('\\\\\\\"','"');
+  const m=share.match(/"sandboxUrl"\\s*:\\s*"([^"]+)"/);
+  if(!m?.[1])throw new Error("Meta sandbox URL not found");
+  const sandbox=m[1];
+  const u=new URL(sandbox);
+  if(u.protocol!=="https:"||!u.hostname.endsWith(".metaaiusercontent.com"))throw new Error("Unexpected Meta sandbox host");
+  return sandbox;
+}
+async function metaArtifact(req:Request){
+  const wantsJson=new URL(req.url).searchParams.get("format")==="json";
+  try{
+    const sandbox=await metaSandboxUrl();
+    if(wantsJson)return Response.json({ok:true,schema:"META-AI-ARTIFACT-RESOLVER-1.2",mode:"live-resolved-redirect",share_url:META_SHARE_URL,sandbox_url:sandbox},{headers:{"cache-control":"no-store","access-control-allow-origin":"*","x-city-app":"meta-ai-artifact"}});
+    return new Response(null,{status:302,headers:{"location":sandbox,"cache-control":"no-store","access-control-allow-origin":"*","x-city-app":"meta-ai-artifact","x-meta-artifact-mode":"live-resolved-redirect","referrer-policy":"no-referrer"}});
+  }catch(e){
+    const error=e instanceof Error?e.message:String(e);
+    if(wantsJson)return Response.json({ok:false,schema:"META-AI-ARTIFACT-RESOLVER-1.2",mode:"share-fallback",share_url:META_SHARE_URL,error},{status:502,headers:{"cache-control":"no-store","access-control-allow-origin":"*","x-city-app":"meta-ai-artifact"}});
+    return new Response(null,{status:302,headers:{"location":META_SHARE_URL,"cache-control":"no-store","access-control-allow-origin":"*","x-city-app":"meta-ai-artifact","x-meta-artifact-mode":"share-fallback","referrer-policy":"no-referrer"}});
+  }
+}
+
 const SJ_AU_KM=149597870.7,SJ_DAY_S=86400;
 function sjQuote(v:string){return `'${v}'`}
 function sjNorm(v:number[]){return Math.hypot(...v)}
@@ -73,4 +100,4 @@ async function sjResponse(u:URL,head=false){
   }
 }
 
-Deno.serve(async(req)=>{if(!["GET","HEAD"].includes(req.method))return new Response("Method not allowed",{status:405});const u=new URL(req.url),marker="/city-app-host/",i=u.pathname.indexOf(marker),tail=i>=0?u.pathname.slice(i+marker.length):"",parts=tail.split("/").filter(Boolean),slug=parts.shift()||"",rest=parts.join("/");if(!slug||slug==="city-live")return Response.redirect("https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/",302);if(slug==="syntax-jacob-ephemeris")return sjResponse(u,req.method==="HEAD");if(!origins[slug])return Response.json({error:"Unknown app",available:Object.keys(origins)},{status:404});const path=pathFor(slug,rest);const{data,error}=await sb.storage.from(BUCKET).download(path);if(error||!data)return Response.json({error:"Not migrated or asset missing",app:slug,path},{status:404});const ct=mime(path,data.type||"");const h=new Headers({"content-type":ct,"cache-control":ct.includes("text/html")?"no-cache":"public, max-age=31536000, immutable","x-city-app":slug,"x-content-type-options":"nosniff","referrer-policy":"strict-origin-when-cross-origin","content-security-policy":"frame-ancestors *"});if(req.method==="HEAD")return new Response(null,{status:200,headers:h});if(/^(text\/|application\/(?:javascript|json|manifest\+json)|image\/svg\+xml)/.test(ct))return new Response(rewrite(await data.text(),slug,ct,req),{status:200,headers:h});return new Response(data.stream(),{status:200,headers:h})});
+Deno.serve(async(req)=>{if(!["GET","HEAD"].includes(req.method))return new Response("Method not allowed",{status:405});const u=new URL(req.url),marker="/city-app-host/",i=u.pathname.indexOf(marker),tail=i>=0?u.pathname.slice(i+marker.length):"",parts=tail.split("/").filter(Boolean),slug=parts.shift()||"",rest=parts.join("/");if(!slug||slug==="city-live")return Response.redirect("https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/",302);if(slug==="meta-ai-artifact")return metaArtifact(req);if(slug==="syntax-jacob-ephemeris")return sjResponse(u,req.method==="HEAD");if(!origins[slug])return Response.json({error:"Unknown app",available:Object.keys(origins)},{status:404});const path=pathFor(slug,rest);const{data,error}=await sb.storage.from(BUCKET).download(path);if(error||!data)return Response.json({error:"Not migrated or asset missing",app:slug,path},{status:404});const ct=mime(path,data.type||"");const h=new Headers({"content-type":ct,"cache-control":ct.includes("text/html")?"no-cache":"public, max-age=31536000, immutable","x-city-app":slug,"x-content-type-options":"nosniff","referrer-policy":"strict-origin-when-cross-origin","content-security-policy":"frame-ancestors *"});if(req.method==="HEAD")return new Response(null,{status:200,headers:h});if(/^(text\/|application\/(?:javascript|json|manifest\+json)|image\/svg\+xml)/.test(ct))return new Response(rewrite(await data.text(),slug,ct,req),{status:200,headers:h});return new Response(data.stream(),{status:200,headers:h})});
