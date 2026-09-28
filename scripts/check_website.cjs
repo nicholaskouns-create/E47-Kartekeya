@@ -34,7 +34,7 @@ test("Meta AI artifact resolver redirects instead of proxying HTML through Edge 
   assert.match(cityAppHost, /live-resolved-redirect/);
   assert.match(cityAppHost, /status:302/);
   assert.match(cityAppHost, /metaaiusercontent\\.com/);
-  assert.doesNotMatch(metaArtifactRegistry.rendering, /returns it as text\\/html/i);
+  assert.ok(!metaArtifactRegistry.rendering.includes("returns it as text/html"));
   assert.match(metaArtifactRegistry.rendering, /302 redirect/i);
   assert.equal(metaArtifactRegistry.transport.mode, "live-resolved-redirect");
 });
