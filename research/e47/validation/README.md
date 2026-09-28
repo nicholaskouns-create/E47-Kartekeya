@@ -19,3 +19,4 @@ Locked objects:
 - `Ω_c = 47/125`
 - `A_inv ≅ M5 ⊕ M2`, 29 units
 - Chevalley `sl(5)⊕sl(2)` on those units
+- [`e47_noiseless_subsystem_and_convergence_certificate.py`](e47_noiseless_subsystem_and_convergence_certificate.py) — certifies the first uniform `<1e-12` contraction step (`n=270`) and explicitly factors the E47 `5⊕2` multiplicity spaces as noiseless subsystems under collective SU(2) noise.
