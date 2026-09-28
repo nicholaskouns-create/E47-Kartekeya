@@ -6,6 +6,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 
 - [E47 exact spectral core](E47_Core_Spectral_Certificate.md)
 - [E47 Prism Spectral Formalism](E47_Prism_Spectral_Formalism.md) — seven-band Casimir decomposition, THE MATRIX typed lift, and E1 parity receipt
+- [E47 × KKP-RADAR spectral operator bridge](E47_KKP_RADAR_Spectral_Operator_Bridge.md) — explicit 5×5×5 complex I/Q → C^125 carrier map, seven-shell Casimir observables, isotropic-null 47/125 identity, and synthetic E1 benchmark; [validator](validation/e47_radar_bridge_validator.py) · [certificate](../../certificates/MC-E47-RADAR-BRIDGE-20260927-001.json) · [live proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-radar-bridge/)
 - [Projection flow theorem](E47_Projection_Flow_Theorem.md)
 - [E47 condition lock](E47_Condition_Lock_Theorem.md) — condition-4 lock, equioscillation optimality of 15/17, five-factor exact projector, five-step termination, Chebyshev rate 3/5 (25/25 PASS)
 - [E47 signature and symmetry](E47_Signature_Symmetry_Theorem.md) — exact SU(2)×S₃ resolution, fermion exclusion, bosonic slice V₂, 42-dim mixed core, K inertia (23,55,47), Krein form and its isometries (28/28 PASS)

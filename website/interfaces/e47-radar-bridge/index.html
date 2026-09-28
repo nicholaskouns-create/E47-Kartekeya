@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#06090b">
+<title>E47 × KKP-RADAR Spectral Operator Bridge</title>
+<meta name="description" content="Executable 5×5×5 complex radar I/Q to E47 Casimir-shell bridge with exact isotropic-null occupancy and synthetic validation.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-radar-bridge/">
+<style>
+:root{color-scheme:dark;--bg:#06090b;--panel:#0d1317;--line:#27363d;--ink:#edf3f4;--muted:#97a8af;--cyan:#68dff0;--mint:#92e8bf;--bronze:#c99b65}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:64px 22px 96px}a{color:var(--cyan)}.eyebrow{font:600 11px ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze)}
+h1{font-size:clamp(38px,7vw,76px);line-height:.98;letter-spacing:-.045em;margin:12px 0 18px}.lead{font-size:19px;color:var(--muted);max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:30px 0}.card{border:1px solid var(--line);background:var(--panel);padding:16px;border-radius:10px}.card b{display:block;color:var(--mint);font:26px ui-monospace,monospace}.card span{color:var(--muted);font-size:11px}
+pre{white-space:pre-wrap;border:1px solid var(--line);background:#090d10;padding:20px;border-radius:10px;overflow:auto;color:#dce7e8}h2{margin-top:42px}.pass{color:var(--mint)}
+table{width:100%;border-collapse:collapse;margin:20px 0}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:right}th:first-child,td:first-child{text-align:left}
+.callout{border-left:3px solid var(--cyan);background:var(--panel);padding:16px 18px;margin:24px 0}.links{display:flex;gap:10px;flex-wrap:wrap}.links a{border:1px solid var(--line);padding:8px 10px;border-radius:999px;text-decoration:none;font:11px ui-monospace,monospace}
+footer{margin-top:48px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px}@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><main>
+<div class="eyebrow">E47 · KKP-RADAR · MC-E47-RADAR-BRIDGE-20260927-001</div>
+<h1>E47 × KKP-RADAR<br>Spectral Operator Bridge</h1>
+<p class="lead">A calibrated 5×5×5 complex I/Q radar patch is vectorized directly into the existing 125-dimensional spin-2 triple tensor carrier. The unchanged E47 Casimir decomposition then produces seven measurable shell populations, an E47 occupancy, kernel residuals, and a calibrated anomaly statistic.</p>
+<div class="grid"><div class="card"><b>125</b><span>complex radar samples</span></div><div class="card"><b>47</b><span>E47 projector rank</span></div><div class="card"><b>0.376</b><span>isotropic-null E47 mean</span></div><div class="card"><b>PASS</b><span>finite bridge certificate</span></div></div>
+
+<h2>Operator chain</h2>
+<pre>X(a,r,t)=I+iQ,  a,r,t∈{-2,-1,0,1,2}
+        ↓ vec
+x ∈ C^125 ≅ V₂⊗V₂⊗V₂
+        ↓
+C = Jx² + Jy² + Jz²
+        ↓
+K = (C−6I)(C−30I)
+        ↓
+Pj , j=0…6
+        ↓
+qj = ||Pj x||² / ||x||²
+        ↓
+ηE = q₂ + q₅
+AE = (q−μ₀)ᵀ Σ₀⁺ (q−μ₀)</pre>
+
+<div class="callout"><b>Exact radar identity.</b> For isotropic calibrated complex noise, E[η<sub>E</sub>] = Tr(P<sub>E</sub>)/125 = 47/125 = 0.376. This is a null occupancy expectation, not an anomaly threshold.</div>
+
+<h2>Why seven shells, not one scalar?</h2>
+<p>The exact isotropic baseline is <code>(1,9,25,28,27,22,13)/125</code>. The full Casimir-shell vector records how radar energy redistributes across all irreducible sectors. In the synthetic benchmark it carries substantially more information than scalar deviation of E47 occupancy alone.</p>
+<table><thead><tr><th>SNR</th><th>seven-shell AUC</th><th>|ηE−0.376| AUC</th></tr></thead><tbody>
+<tr><td>−10 dB</td><td>0.539</td><td>0.501</td></tr><tr><td>−5 dB</td><td>0.695</td><td>0.534</td></tr><tr><td>0 dB</td><td>0.866</td><td>0.634</td></tr><tr><td>+5 dB</td><td>0.932</td><td>0.696</td></tr>
+</tbody></table>
+
+<h2>Contraction</h2>
+<pre>Tε = I − εK²
+ε* = 1/99144
+ρ* = 15/17
+lim n→∞ Tε*ⁿ = PE
+
+220-step relative error = 6.27e−13
+||PE²−PE||F = 6.59e−15
+||KPE||F = 1.82e−12
+null Monte Carlo mean = 0.375602
+exact null mean = 0.376</pre>
+
+<h2>Composite KKP-RADAR vector</h2>
+<pre>existing branch:
+X → ρ → Ω → κ → φ
+
+parallel E47 branch:
+X → vec(X) → {q0,…,q6}, ηE, RK, AE
+
+fusion:
+zRADAR-E47 =
+[ρ, Ω, κ, φ, SNR, Doppler,
+ q0,…,q6, ηE, RK, AE]</pre>
+
+<p class="pass"><b>Certificate PASS.</b> Exact finite algebra and synthetic numerical bridge validated.</p>
+<p><b>Evidence boundary:</b> no measured operational radar performance is claimed. The next empirical gate is a measured/public complex I/Q benchmark against prespecified CFAR, Doppler-threshold, and supervised baselines.</p>
+
+<div class="links">
+<a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_KKP_RADAR_Spectral_Operator_Bridge.md">THEOREM</a>
+<a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_radar_bridge_validator.py">PYTHON</a>
+<a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-RADAR-BRIDGE-20260927-001.json">CERTIFICATE</a>
+<a href="https://app.notion.com/p/3e946094fd30812d9fb0c18101f2e716?pvs=204">NOTION</a>
+<a href="https://nicholaskouns-create.github.io/E47-Kartekeya/">CITY</a>
+</div>
+<footer>One object, native radar view. Presentation does not upgrade evidence class.</footer>
+</main></body></html>

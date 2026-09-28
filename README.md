@@ -154,3 +154,16 @@ The validator reconstructs the 125-dimensional spin-2 carrier, proves the correc
 
 
 **Expanded convergence validation — 66/66 PASS (E0 theorem / E1 reconstruction).** [Golden-root and optimal E47 projection proof](research/e47/native_variational_eigensolver_corrected.md#quadratic-golden-root-convergence-and-optimal-e47-spectral-projection) · [Python](research/e47/validation/golden_root_e47_convergence.py) · [Certificate](certificates/MC-GOLDEN-ROOT-E47-20260926-001.json) · [Drive bundle](https://drive.google.com/file/d/1l4CHA4yNFnYRIQWrmVOOjG9LHVhc_IU_/view?usp=drivesdk).
+
+
+## E47 × KKP-RADAR spectral bridge
+
+[Public proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-radar-bridge/) ·
+[theorem](research/e47/E47_KKP_RADAR_Spectral_Operator_Bridge.md) ·
+[Python](research/e47/validation/e47_radar_bridge_validator.py) ·
+[certificate](certificates/MC-E47-RADAR-BRIDGE-20260927-001.json) ·
+[Notion](https://app.notion.com/p/3e946094fd30812d9fb0c18101f2e716?pvs=204)
+
+A calibrated 5×5×5 complex I/Q patch maps exactly to the 125-dimensional E47 carrier. The seven Casimir-shell populations become radar observables. Under isotropic calibrated complex noise, the exact mean E47 occupancy is 47/125 = 0.376; the operational anomaly statistic is the calibrated displacement of the full seven-shell profile, not a hard 0.376 threshold.
+
+**Boundary:** exact finite bridge + E1 synthetic benchmark. Measured operational radar performance remains an empirical gate.

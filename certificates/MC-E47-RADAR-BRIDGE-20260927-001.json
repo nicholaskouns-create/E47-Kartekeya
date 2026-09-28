@@ -1,0 +1,78 @@
+{
+  "certificate": "MC-E47-RADAR-BRIDGE-20260927-001",
+  "status": "PASS",
+  "evidence": {
+    "algebra": "exact identities checked numerically",
+    "radar_bridge": "synthetic numerical validation only",
+    "measured_radar": "not tested"
+  },
+  "bridge": {
+    "input": "calibrated/whitened 5x5x5 complex I/Q patch",
+    "carrier": "V_2^{⊗3} ≅ C^125",
+    "kernel": "K=(C-6I)(C-30I)",
+    "projector": "P_E=P_6+P_30, rank 47",
+    "E47_occupancy": "eta_E=||P_E x||^2/||x||^2",
+    "shell_profile": "q_j=||P_j x||^2/||x||^2, j=0,...,6"
+  },
+  "algebra": {
+    "casimir_multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "rank_P_E": 47,
+    "trace_P_E": 47.00000000000001,
+    "P2_minus_P_fro": 6.593765653209312e-15,
+    "Pdag_minus_P_fro": 0,
+    "K_P_fro": 1.8172763112225716e-12
+  },
+  "contraction": {
+    "positive_K2_spectrum": [
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
+    "epsilon_star": 0.000010086339062373921,
+    "rho_star": 0.8823529411764706,
+    "target_rho_star": 0.8823529411764706,
+    "relative_error_after_220": 6.273148729286141e-13
+  },
+  "isotropic_null": {
+    "theoretical_mean": 0.376,
+    "monte_carlo_mean": 0.37560221866972304,
+    "monte_carlo_sd": 0.043075655315985346,
+    "absolute_mean_error": 0.0003977813302769584
+  },
+  "synthetic_benchmark": [
+    {
+      "snr_db": -10,
+      "auc_full_7_shell_profile": 0.53874825,
+      "auc_abs_E47_occupancy_deviation": 0.500646,
+      "mean_eta_E_target_plus_noise": 0.3746461502204827
+    },
+    {
+      "snr_db": -5,
+      "auc_full_7_shell_profile": 0.69542575,
+      "auc_abs_E47_occupancy_deviation": 0.534037,
+      "mean_eta_E_target_plus_noise": 0.3742435812796155
+    },
+    {
+      "snr_db": 0,
+      "auc_full_7_shell_profile": 0.865593,
+      "auc_abs_E47_occupancy_deviation": 0.6340735,
+      "mean_eta_E_target_plus_noise": 0.3764217909477975
+    },
+    {
+      "snr_db": 5,
+      "auc_full_7_shell_profile": 0.93170925,
+      "auc_abs_E47_occupancy_deviation": 0.69565125,
+      "mean_eta_E_target_plus_noise": 0.3754365603929896
+    }
+  ]
+}
