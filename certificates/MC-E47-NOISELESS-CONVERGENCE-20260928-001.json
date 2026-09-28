@@ -1,0 +1,49 @@
+{
+  "certificate": "MC-E47-NOISELESS-CONVERGENCE-20260928-001",
+  "status": "PASS",
+  "carrier_dim": 125,
+  "casimir_spectrum": [0,2,6,12,20,30,42],
+  "sector_dimensions": [1,9,25,28,27,22,13],
+  "kernel_dim": 47,
+  "omega_c": 0.376,
+  "K2_gap": 11663.999999999936,
+  "K2_norm": 186624.00000000236,
+  "K_norm": 432.00000000000273,
+  "epsilon_star": 1.0086339062373804e-05,
+  "rho_star": 0.8823529411764726,
+  "uniform_threshold": {
+    "target": 1e-12,
+    "first_guaranteed_step": 270,
+    "step_minus_1_bound": 1.0310330384200082e-12,
+    "step_bound": 9.09735033900009e-13,
+    "direct_operator_norm_at_step": 9.254819133275309e-13,
+    "pass": true
+  },
+  "collective_cross_block_residual": 2.207941764220395e-15,
+  "noiseless_subsystems": {
+    "2": {
+      "multiplicity": 5,
+      "expected_multiplicity": 5,
+      "factor_dimension": [5,5],
+      "isometry_residual": 5.941577290378804e-15,
+      "generator_factorization_residuals": {"Jx":1.1398640489137913e-14,"Jy":8.06568454149278e-15,"Jz":7.156399340428816e-15},
+      "rotation_factorization_residual": 5.83874096024364e-15,
+      "random_unitary_channel_factorization_max_residual": 6.066877337705759e-15,
+      "logical_reduced_state_invariance_residual": 3.187221827943649e-16,
+      "pass": true
+    },
+    "5": {
+      "multiplicity": 2,
+      "expected_multiplicity": 2,
+      "factor_dimension": [2,11],
+      "isometry_residual": 6.015742101471581e-15,
+      "generator_factorization_residuals": {"Jx":2.98488745408502e-14,"Jy":2.639167706454413e-14,"Jz":1.4566173116615095e-14},
+      "rotation_factorization_residual": 5.9775411635312714e-15,
+      "random_unitary_channel_factorization_max_residual": 6.0938230844528574e-15,
+      "logical_reduced_state_invariance_residual": 8.184193561307264e-16,
+      "pass": true
+    }
+  },
+  "interpretation": "E47 decomposes as (C^5 tensor V2) direct-sum (C^2 tensor V5). The multiplicity factors C^5 and C^2 are noiseless subsystems for collective SU(2) noise.",
+  "source_sha256": "f757a1848535353c33f545375c1dcb86ca8ffe71a4652f4e3999a644852e01fb"
+}
