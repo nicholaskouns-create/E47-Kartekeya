@@ -1,0 +1,21 @@
+{
+  "certificate": "MC-E47-CONVERGENCE-NOISELESS-20260928-001",
+  "status": "PASS",
+  "evidence": "E1 numerical machine certificate; finite-dimensional representation identities",
+  "kernel": {"K":"(C-6I)(C-30I)","rank_P47":47,"epsilon_star":1.0086339062373921e-05,"rho_star":0.8823529411764706},
+  "uniform_convergence": {
+    "criterion":"||K Gamma^n (I-P47)||_2 < 1e-12",
+    "first_passing_n":270,
+    "bound_n_minus_1":1.0310330384194434e-12,
+    "bound_n":9.097350338995089e-13,
+    "direct_matrix_norm":9.29034627006331e-13
+  },
+  "noiseless_subsystems": {
+    "decomposition":"E47 ~= (C^5 tensor V_2) direct_sum (C^2 tensor V_5)",
+    "J2":{"J":2,"multiplicity":5,"sector_dimension":25,"orthonormality_residual":9.780183623325548e-16,"generator_factorization_residuals":{"Jx":1.7961508106849143e-15,"Jy":1.9543269765020398e-15,"Jz":1.3298405554115032e-15},"finite_rotation_residual":1.1818622753812046e-15,"pass":true},
+    "J5":{"J":5,"multiplicity":2,"sector_dimension":22,"orthonormality_residual":1.8704627808459886e-15,"generator_factorization_residuals":{"Jx":8.23053273251691e-15,"Jy":5.804398263574064e-15,"Jz":4.887810944240512e-15},"finite_rotation_residual":1.919705663459719e-15,"pass":true},
+    "interpretation":"Under collective SU(2), C^5 and C^2 are noiseless multiplicity subsystems; V_2 and V_5 carry the collective action."
+  },
+  "commutators_P47":{"Jx":1.727773596609132e-14,"Jy":1.6069520507692128e-14,"Jz":1.423161318135952e-14},
+  "checks":{"rank_P47":true,"uniform_threshold_crossed":true,"uniform_threshold_minimal":true,"direct_matrix_bound":true,"multiplicity_J2_is_5":true,"multiplicity_J5_is_2":true,"J2_noiseless_subsystem":true,"J5_noiseless_subsystem":true,"P47_collective_SU2_invariant":true}
+}

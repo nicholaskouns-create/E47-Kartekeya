@@ -19,6 +19,7 @@ The first four records below live in `artifacts/`. Their theorem notes and execu
 | [Profile injection](../artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json) | Vacuum plane-wave family and conditional unmarked-moduli injectivity · 9/9 |
 | [G_E47 machine status](MC-G-E47-MACHINE-STATUS-20260927.json) | Locked core, structural carrier, external L, and uninstantiated maps · 5/5; [scope note](MC-G-E47-MACHINE-STATUS-20260927.md) |
 | [E47 × KKP-RADAR bridge](MC-E47-RADAR-BRIDGE-20260927-001.json) | Exact 5×5×5 I/Q → E47 operator bridge; isotropic-null occupancy 47/125; synthetic seven-shell benchmark PASS; measured-radar validation not claimed |
+| [Convergence + noiseless multiplicities](MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) | Uniform `||K Γ*^n(I−P47)||₂ < 10⁻¹²` first at n=270; explicit `C⁵⊗V₂ ⊕ C²⊗V₅` collective-SU(2) noiseless-subsystem factorization PASS |
 
 These files are committed records. Their JSON content and Git history identify the recorded results; they do not assert that a new validation ran when this page was opened.
 
