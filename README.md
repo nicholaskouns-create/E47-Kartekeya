@@ -170,6 +170,6 @@ A calibrated 5×5×5 complex I/Q patch maps exactly to the 125-dimensional E47 c
 
 ## E47 convergence + noiseless subsystems
 
-[Python](research/e47/validation/e47_convergence_noiseless_validator.py) · [machine certificate](certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json)
+[Python](research/e47/validation/e47_convergence_noiseless_validator.py) · [machine certificate](certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) · [E47 Electroweak Identities instrument](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)
 
 For Γ* = I − K²/99144, the uniform projector error ||Γ*^n − P47||₂ first falls below 10⁻¹² at **n = 221**. The stronger kernel residual ||K Γ*^n (I−P47)||₂ first falls below 10⁻¹² at **n = 270**. The full 125×125 reconstruction also resolves E47 ≅ (C⁵⊗V₂) ⊕ (C²⊗V₅) and verifies that collective SU(2) acts as I₅⊗Jₐ and I₂⊗Jₐ, so the multiplicity factors C⁵ and C² are noiseless subsystems for collective SU(2) noise.
