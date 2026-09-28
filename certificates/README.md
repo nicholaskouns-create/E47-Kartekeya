@@ -7,6 +7,12 @@
 | [e47_pipeline.json](e47_pipeline.json) | E47 pipeline snapshot |
 | [qutip_validation.json](qutip_validation.json) | QuTiP validation snapshot |
 
+## September 28, 2026 · E47 closure certificate
+
+| Record | Result |
+|---|---|
+| [Noiseless-subsystem + uniform convergence](MC-E47-NOISELESS-CONVERGENCE-20260928-001.json) | Uniform worst-case `< 1e-12` threshold first guaranteed at `n=270`; `E47 ≅ (C^5 ⊗ V₂) ⊕ (C^2 ⊗ V₅)`; both multiplicity factors certified noiseless under collective SU(2) noise · [scope note](MC-E47-NOISELESS-CONVERGENCE-20260928-001.md) · [validator](../research/e47/validation/e47_noiseless_subsystem_and_convergence_certificate.py) |
+
 ## September 27, 2026 · E47 certificates
 
 The first four records below live in `artifacts/`. Their theorem notes and executable validators are indexed in [E47 research notes](../research/e47/README.md).
