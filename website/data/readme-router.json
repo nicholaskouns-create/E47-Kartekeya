@@ -235,10 +235,10 @@
           "kind": "index"
         },
         {
-          "label": "Meta AI Shared Artifact Mirror",
+          "label": "KARTEKEYA / E47 Quantum Core",
           "url": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
           "substrate": "github",
-          "kind": "external artifact mirror"
+          "kind": "interactive E47 quantum-core mirror"
         }
       ]
     },
@@ -466,7 +466,8 @@
     "meta_ai_artifact_mirror": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
     "meta_ai_artifact_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/",
     "amnesty_live": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/",
-    "amnesty_contract": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/amnesty-1.0.contract.json"
+    "amnesty_contract": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/amnesty-1.0.contract.json",
+    "meta_ai_artifact_social_image": "https://nicholaskouns-create.github.io/assets/kartekeya-e47-quantum-core-og.jpg"
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
