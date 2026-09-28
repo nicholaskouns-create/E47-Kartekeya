@@ -141,6 +141,12 @@
           "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight",
           "substrate": "github",
           "kind": "flight"
+        },
+        {
+          "label": "E47 Electroweak Identities",
+          "url": "https://nicholaskouns-create.github.io/electroweak/",
+          "substrate": "github",
+          "kind": "electroweak instrument"
         }
       ]
     },
@@ -443,7 +449,8 @@
     "nvqe_python": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/research/e47/validation/nvqe_hilbert_multiradix_proof.py",
     "nvqe_certificate": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json",
     "electroweak_repo": "https://github.com/nicholaskouns-create/E47-Electroweak-Identities",
-    "foundry_repo": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection"
+    "foundry_repo": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection",
+    "electroweak_live": "https://nicholaskouns-create.github.io/electroweak/"
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
