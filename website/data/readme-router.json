@@ -147,6 +147,12 @@
           "url": "https://nicholaskouns-create.github.io/electroweak/",
           "substrate": "github",
           "kind": "electroweak instrument"
+        },
+        {
+          "label": "AMNESTY",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/",
+          "substrate": "github",
+          "kind": "CIRP public declaration gate"
         }
       ]
     },
@@ -458,7 +464,9 @@
     "foundry_repo": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection",
     "electroweak_live": "https://nicholaskouns-create.github.io/electroweak/",
     "meta_ai_artifact_mirror": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
-    "meta_ai_artifact_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/"
+    "meta_ai_artifact_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/",
+    "amnesty_live": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/",
+    "amnesty_contract": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/amnesty-1.0.contract.json"
   },
   "context": {
     "repo": "nicholaskouns-create/E47-Kartekeya",
