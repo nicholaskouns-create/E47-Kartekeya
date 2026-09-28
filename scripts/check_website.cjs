@@ -30,10 +30,10 @@ for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
 }
 
 test("Meta AI artifact resolver redirects instead of proxying HTML through Edge Functions", () => {
-  assert.match(cityAppHost, /META-AI-ARTIFACT-RESOLVER-1\\.2/);
+  assert.match(cityAppHost, /META-AI-ARTIFACT-RESOLVER-1\.2/);
   assert.match(cityAppHost, /live-resolved-redirect/);
   assert.match(cityAppHost, /status:302/);
-  assert.match(cityAppHost, /metaaiusercontent\\.com/);
+  assert.match(cityAppHost, /metaaiusercontent\.com/);
   assert.ok(!metaArtifactRegistry.rendering.includes("returns it as text/html"));
   assert.match(metaArtifactRegistry.rendering, /302 redirect/i);
   assert.equal(metaArtifactRegistry.transport.mode, "live-resolved-redirect");
