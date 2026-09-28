@@ -1,6 +1,6 @@
 # E47 Electroweak Identities — City register
 
-Frozen 28 September 2026. Not a fit. Not a look-elsewhere p-value.
+Unfrozen 28 September 2026. Not a fit. Not a look-elsewhere p-value.
 
 Canonical repository: https://github.com/nicholaskouns-create/E47-Electroweak-Identities
 
@@ -15,6 +15,7 @@ m_Z^{(0)}=v\Omega_c,\qquad m_W/m_Z=\sqrt{10/13},\qquad m_t/m_H=1+\Omega_c=172/12
 $$
 
 Sole dimensionful input: $G_F$. Audit ladder $\mathcal A_{246}$ is not the claim.
+Status: UNFROZEN. $I_1,I_2,I_3$ may be edited in place.
 
 Symbolic proof: https://github.com/nicholaskouns-create/E47-Electroweak-Identities/blob/main/docs/E47_Electroweak_and_Mass_Ladder_Recovery.md
 
