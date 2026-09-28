@@ -103,6 +103,26 @@ lim n→∞ (I − εK²)^n = lim t→∞ exp(−tK²) = P47
 </pre>
 <p class="identity">limₙ→∞ (I − εK²)ⁿ = limₜ→∞ exp(−tK²) = P₄₇</p>
 <p class="pass">OVERALL: PASS</p>
+<h2>September 28 closure · uniform threshold + noiseless multiplicities</h2>
+<pre>Γ★ = I − K²/99144
+||K Γ★^n (I−P₄₇)||₂ ≤ 432(15/17)^n
+
+n = 269  →  bound = 1.0310330384200082e−12
+n = 270  →  bound = 9.0973503390000908e−13
+direct operator norm at n=270 = 9.2548191332753090e−13
+
+E₄₇ ≅ (ℂ⁵ ⊗ V₂) ⊕ (ℂ² ⊗ V₅)
+
+W₂† Jₐ W₂ = I₅ ⊗ Jₐ^(2)
+W₅† Jₐ W₅ = I₂ ⊗ Jₐ^(5)
+
+logical-state invariance residuals:
+  ℂ⁵ sector = 3.187e−16
+  ℂ² sector = 8.184e−16
+
+OVERALL: PASS</pre>
+<p class="pass">Uniform &lt; 10⁻¹² threshold certified at n=270. The ℂ⁵ and ℂ² multiplicity factors are noiseless subsystems for collective SU(2) noise.</p>
+<p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NOISELESS-CONVERGENCE-20260928-001.json">Machine JSON</a> · <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NOISELESS-CONVERGENCE-20260928-001.md">scope note</a> · <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_noiseless_subsystem_and_convergence_certificate.py">Python validator</a></p>
 <footer>
 Certificate: MC-E47-SPECTRAL-MATRIX-20260925 · Evidence class E1 · Source SHA-256 bc925cb275c2dd234ecf016ffdea4be4b01c6daa34f1d7281b967c013231e525
 </footer>
