@@ -1,7 +1,7 @@
 {
   "schema": "CITY-EXTERNAL-ARTIFACT/1.0",
   "logical_id": "META-AI-SHARE-B5FCBCF1-20260928",
-  "title": "Meta AI Shared HTML Artifact · b5fcbcf1",
+  "title": "KARTEKEYA / E47 Quantum Core · External Interactive Mirror",
   "source_provider": "Meta AI",
   "source_share_url": "https://www.meta.ai/share/a/b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2",
   "artifact_uuid": "b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2",
@@ -9,5 +9,11 @@
   "github_pages_mirror": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
   "supabase_live_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/",
   "provenance_note": "The original share wrapper issues temporary signed metaaiusercontent sandbox URLs. Those signed URLs are not canonicalized. The Supabase resolver refreshes the current sandbox URL from the durable Meta share page at request time.",
-  "evidence_scope": "External source/presentation artifact only. Registration does not promote or validate any scientific claim contained in the artifact."
+  "evidence_scope": "External source/presentation artifact only. Registration does not promote or validate any scientific claim contained in the artifact.",
+  "social_preview": {
+    "title": "KARTEKEYA / E47 Quantum Core",
+    "description": "125D carrier → 47D protected · J∈{2,5} · 7-qubit embed 128",
+    "image": "https://nicholaskouns-create.github.io/assets/kartekeya-e47-quantum-core-og.jpg"
+  },
+  "rendering": "Supabase city-app-host v6 resolves the durable Meta share, fetches the current signed artifact payload server-side, and returns it as text/html."
 }
