@@ -1,0 +1,13 @@
+{
+  "schema": "CITY-EXTERNAL-ARTIFACT/1.0",
+  "logical_id": "META-AI-SHARE-B5FCBCF1-20260928",
+  "title": "Meta AI Shared HTML Artifact · b5fcbcf1",
+  "source_provider": "Meta AI",
+  "source_share_url": "https://www.meta.ai/share/a/b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2",
+  "artifact_uuid": "b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2",
+  "captured_on": "2026-09-28",
+  "github_pages_mirror": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
+  "supabase_live_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/",
+  "provenance_note": "The original share wrapper issues temporary signed metaaiusercontent sandbox URLs. Those signed URLs are not canonicalized. The Supabase resolver refreshes the current sandbox URL from the durable Meta share page at request time.",
+  "evidence_scope": "External source/presentation artifact only. Registration does not promote or validate any scientific claim contained in the artifact."
+}
