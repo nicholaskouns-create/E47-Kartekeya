@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#06090b">
-<meta name="description" content="E47 in Two Pages: K², V₂, recursive invariant selection, and the residual-gated executable runtime.">
+<meta name="description" content="E47 in Two Pages: K², V₂, recursive invariant selection, induced algebra, and the fixed-point quantum channel.">
 <meta property="og:title" content="E47 in Two Pages">
-<meta property="og:description" content="The finite object, the recursive runtime, and the boundary of the claim.">
+<meta property="og:description" content="The finite object, recursive runtime, induced algebra, fixed-point channel, and claim boundary.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/">
 <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/">
@@ -21,18 +21,18 @@ h1{font-size:clamp(3rem,8vw,6.3rem);line-height:.92;margin:.12em 0 .2em;font-wei
 .lede{max-width:760px;color:var(--muted);font-size:1.15rem}.links{display:flex;gap:16px;flex-wrap:wrap;margin:28px 0 46px}.links a{border:1px solid var(--line);padding:8px 12px;text-decoration:none}
 .page{background:linear-gradient(180deg,#0d1418,#080d10);border:1px solid var(--line);padding:clamp(26px,5vw,60px);margin:34px 0;min-height:76vh}
 .math{font:1rem/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#070b0d;border-left:2px solid var(--bronze);padding:14px 18px;margin:18px 0;overflow:auto}
-.core{border:1px solid #416756;background:#0a1611;padding:20px;margin-top:30px}.interpret{border:1px solid var(--line);padding:20px;margin-top:14px;color:var(--muted)}.runtime{border:1px solid #315663;background:#081216;padding:20px;margin-top:24px}
+.core{border:1px solid #416756;background:#0a1611;padding:20px;margin-top:30px}.interpret{border:1px solid var(--line);padding:20px;margin-top:14px;color:var(--muted)}.runtime{border:1px solid #315663;background:#081216;padding:20px;margin-top:24px}.invariants{border:1px solid #4a4c70;background:#0b0d18;padding:20px;margin-top:24px}
 ul{padding-left:1.35rem}.footer{color:var(--muted);font-size:.9rem;margin-top:42px}
-@media print{header,.links{display:none}body{background:white;color:#111}.page{background:white;border:0;break-after:page;min-height:auto}.math,.core,.interpret,.runtime{background:white;color:#111}}
+@media print{header,.links{display:none}body{background:white;color:#111}.page{background:white;border:0;break-after:page;min-height:auto}.math,.core,.interpret,.runtime,.invariants{background:white;color:#111}}
 </style>
 </head>
 <body>
-<header><nav><strong>THE MATHEMATICAL CITY</strong><a href="../../">Atlas</a><a href="#page1">Page 1</a><a href="#page2">Page 2</a><a href="#runtime">Runtime</a></nav></header>
+<header><nav><strong>THE MATHEMATICAL CITY</strong><a href="../../">Atlas</a><a href="#page1">Page 1</a><a href="#page2">Page 2</a><a href="#runtime">Runtime</a><a href="#invariants">Invariants</a></nav></header>
 <main>
-<p class="eyebrow">E47 Research Note · Updated 2026-09-23</p>
+<p class="eyebrow">E47 Research Note · Updated 2026-09-29</p>
 <h1>E47 in Two Pages</h1>
-<p class="lede">K², V₂, recursive invariant selection, and the residual-gated executable runtime.</p>
-<div class="links"><a href="https://app.notion.com/p/3e446094fd30811ba779f8af95af5c02?pvs=204">Notion record ↗</a><a href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/e47-recursive-note">Supabase mirror ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/notes/e47-recursive-system.md">Note source ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/recursive_runtime.py">Runtime source ↗</a></div>
+<p class="lede">K², V₂, recursive invariant selection, induced operator algebra, and the fixed-point quantum channel.</p>
+<div class="links"><a href="https://app.notion.com/p/3e446094fd30811ba779f8af95af5c02?pvs=204">Notion record ↗</a><a href="https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/e47-recursive-note">Supabase mirror ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/notes/e47-recursive-system.md">Note source ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/recursive_runtime.py">Runtime source ↗</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_recursive_induced_algebra_quantum_channel_validator.py">Algebra/channel validator ↗</a></div>
 <section class="page" id="page1">
 <p class="eyebrow">Page 1 · What the object is</p><h2>125 → K → 47</h2>
 <h3>Why V₂ has dimension 5</h3><p>The starting object is the spin-2 irreducible representation of SU(2), denoted V₂. A spin-j irreducible representation has dimension 2j+1. For j=2, dim V₂=5.</p>
@@ -50,6 +50,16 @@ ul{padding-left:1.35rem}.footer{color:var(--muted);font-size:.9rem;margin-top:42
 <div class="math">K=(C−6I)(C−30I)<br>Γ=I−K²/99144<br>Λ=P₆+P₃₀<br>Ω: ||KM<sub>pre</sub>|| ≤ 10⁻¹⁰</div>
 <ul><li>certificate PASS</li><li>rank Λ = 47</li><li>ρ⊥ = 15/17</li><li>252 contractions in the seeded smoke test</li><li>pre-projection residual = 9.353585941533422e−11</li><li>post-projection residual = 4.833244591885603e−12</li></ul>
 <p>SHA-256: <code>8ec779cbb5247f9dc733cd2f4e341c8378d5ec6acfc21d56d9d3da33b322e716</code></p></div>
+
+<div class="invariants" id="invariants"><strong>INDUCED ALGEBRA + CHANNEL INVARIANTS.</strong>
+<div class="math">Φ(A)=P₄₇AP₄₇ &nbsp;&nbsp; Φ²=Φ<br>P₄₇M₁₂₅(ℂ)P₄₇ ≅ M₄₇(ℂ)<br>dim<sub>ℂ</sub> = 47² = 2209</div>
+<p>For I=V<sub>c</sub>† and M=V<sub>c</sub>, MI=P₄₇ and P₄₇Γⁿ=P₄₇, so MIP₄₇Γⁿ=P₄₇ for every n≥0. Γⁿ alone converges asymptotically; the explicit project/reconstruct recursion stabilizes after one cycle.</p>
+<div class="math">spec(Γ)|<sub>C={0,2,6,12,20,30,42}</sub><br>{103/153, 10825/12393, 1, 15/17, 9943/12393, 1, −15/17}<br>ρ(Γ|E₄₇⊥)=15/17</div>
+<ul><li>E₆: 5 symmetric + 20 mixed + 0 sign</li><li>E₃₀: 22 mixed + 0 symmetric + 0 sign</li><li>E₄₇ total: 5 symmetric + 42 mixed + 0 sign</li><li>End<sub>SU(2)</sub>(E₄₇) ≅ M₅(ℂ) ⊕ M₂(ℂ), dimension 29</li><li>End<sub>SU(2)×S₃</sub>(E₄₇) ≅ ℂ ⊕ M₂(ℂ) ⊕ ℂ, dimension 6</li></ul>
+<div class="math">𝓔(X)=P₄₇XP₄₇ + Tr((I−P₄₇)X)P₄₇/47<br>𝓔²=𝓔<br>Fix(𝓔)=P₄₇M₁₂₅(ℂ)P₄₇ ≅ M₄₇(ℂ)</div>
+<p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_recursive_induced_algebra_quantum_channel_validator.py">Open the validator source ↗</a></p>
+</div>
+
 <h3>Claim boundary</h3><ul><li>47 is not asserted to be the universal dimensionality of nature.</li><li>47/125 is the exact rank fraction of this construction, not a universal measured constant.</li><li>The finite spectral theorem does not by itself establish downstream physical domains.</li><li>Downstream E47 applications require their own explicit maps and evidence.</li></ul>
 <div class="core"><strong>CORE EXACT CLAIM.</strong> V₂⊗³ is a 125-dimensional carrier. K=(C−6I)(C−30I) has a 47-dimensional kernel. K² generates a stable contraction whose powers converge to P₄₇ under the stated step-size bound.</div>
 <div class="interpret"><strong>EXECUTABLE INTERPRETATION.</strong> Preserve what satisfies the kernel condition, contract what does not, evaluate certainty on the unprojected residual, then project and pass the invariant forward.</div>
