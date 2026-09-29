@@ -10,6 +10,7 @@ python3 research/e47/validation/spectral_engine.py
 python3 research/e47/validation/e47_noiseless_heisenberg_weyl.py
 python3 tests/test_e47_intertwiners.py
 python3 tests/test_e47_chevalley.py
+python3 research/e47/validation/e47_neutrino_flavor_advanced_simulation.py
 ```
 
 Locked objects:

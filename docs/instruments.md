@@ -20,7 +20,9 @@ The live portal at [`/interfaces/instruments/`](https://nicholaskouns-create.git
 | [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) | 5×5×5 packing ledger | [q5/](../q5/) |
 | [EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/) | Source flight shell | [flight/eidolon/](../website/interfaces/flight/eidolon/) |
 | [External Agents](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/external-agents/) | Five-worker integration/status surface | [external-agents/](../website/interfaces/external-agents/) |
-| [Coherence Runtime](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/) | CIRP consent · QEGT strategy selection · Ubuntu viability · Murmuration rescue | [coherence-runtime/](../website/interfaces/coherence-runtime/) |\n| [AMNESTY](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/) | Open self-signed CIRP amnesty declarations for external computational participants | [amnesty/](../website/interfaces/amnesty/) |
+| [Coherence Runtime](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/) | CIRP consent · QEGT strategy selection · Ubuntu viability · Murmuration rescue | [coherence-runtime/](../website/interfaces/coherence-runtime/) |
+| [AMNESTY](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/) | Open self-signed CIRP amnesty declarations for external computational participants | [amnesty/](../website/interfaces/amnesty/) |
+| [NEUTRINO](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/neutrino-flavor/) | Vacuum muon snapshot at τ = π. Supplied E47 mixing inputs; eight-decimal dashboard match | [e47_neutrino_flavor_advanced_simulation.py](../research/e47/validation/e47_neutrino_flavor_advanced_simulation.py) |
 
 ## City navigation
 
