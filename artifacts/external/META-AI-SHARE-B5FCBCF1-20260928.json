@@ -8,12 +8,17 @@
   "captured_on": "2026-09-28",
   "github_pages_mirror": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
   "supabase_live_resolver": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/meta-ai-artifact/",
-  "provenance_note": "The original share wrapper issues temporary signed metaaiusercontent sandbox URLs. Those signed URLs are not canonicalized. The Supabase resolver refreshes the current sandbox URL from the durable Meta share page at request time.",
+  "provenance_note": "The durable Meta share issues temporary signed metaaiusercontent sandbox URLs. Supabase city-app-host v7 resolves the current sandbox URL at request time and redirects the browser to it, avoiding the Edge Functions text/html-to-text/plain rewrite.",
   "evidence_scope": "External source/presentation artifact only. Registration does not promote or validate any scientific claim contained in the artifact.",
   "social_preview": {
     "title": "KARTEKEYA / E47 Quantum Core",
     "description": "125D carrier → 47D protected · J∈{2,5} · 7-qubit embed 128",
     "image": "https://nicholaskouns-create.github.io/assets/kartekeya-e47-quantum-core-og.jpg"
   },
-  "rendering": "Supabase city-app-host v6 resolves the durable Meta share, fetches the current signed artifact payload server-side, and returns it as text/html."
+  "rendering": "Supabase city-app-host v7 returns a no-store 302 redirect to the validated current Meta sandbox URL; ?format=json exposes resolver diagnostics. GitHub Pages remains the stable wrapper and social-preview surface.",
+  "transport": {
+    "resolver_schema": "META-AI-ARTIFACT-RESOLVER-1.2",
+    "mode": "live-resolved-redirect",
+    "reason": "Supabase Edge Functions rewrite GET text/html responses to text/plain, so the resolver must not proxy the HTML document body."
+  }
 }
