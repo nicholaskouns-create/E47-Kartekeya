@@ -1,0 +1,5 @@
+streamlit>=1.40,<2
+astropy>=7,<9
+plotly>=5.24,<8
+numpy>=1.26,<3
+jplephem>=2.22,<3

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "coordinate_comparisons": 48,
+  "max_angular_difference_degrees": 0.007862933563711256,
+  "comparison_tolerance_degrees": 0.1,
+  "streamlit_runs": [
+    "default",
+    "12 hours",
+    "12 days"
+  ],
+  "separation_checks": [
+    "azimuth wrap",
+    "zenith"
+  ],
+  "note": "Implementation comparison, not measured sky validation."
+}
