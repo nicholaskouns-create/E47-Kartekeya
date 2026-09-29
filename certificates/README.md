@@ -20,6 +20,7 @@ The first four records below live in `artifacts/`. Their theorem notes and execu
 | [G_E47 machine status](MC-G-E47-MACHINE-STATUS-20260927.json) | Locked core, structural carrier, external L, and uninstantiated maps · 5/5; [scope note](MC-G-E47-MACHINE-STATUS-20260927.md) |
 | [E47 × KKP-RADAR bridge](MC-E47-RADAR-BRIDGE-20260927-001.json) | Exact 5×5×5 I/Q → E47 operator bridge; isotropic-null occupancy 47/125; synthetic seven-shell benchmark PASS; measured-radar validation not claimed |
 | [Convergence + noiseless multiplicities](MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) | Uniform `||K Γ*^n(I−P47)||₂ < 10⁻¹²` first at n=270; explicit `C⁵⊗V₂ ⊕ C²⊗V₅` collective-SU(2) noiseless-subsystem factorization PASS · [related electroweak instrument](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) |
+| [Neutrino flavor snapshot](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/3159377e2b176c457e0a7ccf3cb3beb87f4d79fb/certificates/MC-E47-NEUTRINO-FLAVOR-20260929-001.json) | `MC-E47-NEUTRINO-FLAVOR-20260929-001` · E2 classical state-vector snapshot at `τ=π`; carrier 125, rank `P47=47`, slots `[10,11,12]`; probabilities reproduce `0.04720552, 0.00314068, 0.94965381` at 8 d.p.; normalization defect `1.1102230246251565e-16`; supplied mixing inputs are not derived from `C` |
 
 These files are committed records. Their JSON content and Git history identify the recorded results; they do not assert that a new validation ran when this page was opened.
 
