@@ -63,6 +63,64 @@ Validated seeded smoke test at tolerance 1e−10:
 
 Runtime source: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/e47/recursive_runtime.py
 
+### Induced algebra and fixed-point channel invariants
+
+The projector induces an idempotent operator compression
+
+**Φ(A)=P₄₇ A P₄₇**, with **Φ²=Φ**.
+
+Its image is the corner algebra
+
+**P₄₇ M₁₂₅(ℂ) P₄₇ ≅ M₄₇(ℂ)**,
+
+so the terminal operator-space dimension is **47² = 2209** and the unit of the corner algebra is P₄₇.
+
+For the canonical analysis/reconstruction pair I=V_c† and M=V_c,
+
+**MI=P₄₇**, and because P₄₇Γⁿ=P₄₇,
+
+**M I P₄₇ Γⁿ = P₄₇** for every n≥0.
+
+Thus Γⁿ alone converges asymptotically to P₄₇, while the explicit project/reconstruct recursion stabilizes exactly after one cycle.
+
+At ε*=1/99144 the Γ eigenvalues by Casimir sector are
+
+**{103/153, 10825/12393, 1, 15/17, 9943/12393, 1, −15/17}**
+
+for C={0,2,6,12,20,30,42}. The complement spectral radius is therefore exactly **15/17**.
+
+The S₃ decomposition inside E₄₇ is
+
+- E₆: 5 symmetric, 0 sign, 20 mixed
+- E₃₀: 0 symmetric, 0 sign, 22 mixed
+- total: **5 symmetric + 42 mixed + 0 sign**
+
+equivalently
+
+**E₄₇ ≅ (V₂⊗triv) ⊕ 2(V₂⊗std) ⊕ (V₅⊗std)**.
+
+Hence
+
+**End_SU(2)(E₄₇) ≅ M₅(ℂ) ⊕ M₂(ℂ)**, complex dimension **29**,
+
+while
+
+**End_{SU(2)×S₃}(E₄₇) ≅ ℂ ⊕ M₂(ℂ) ⊕ ℂ**, complex dimension **6**.
+
+A CPTP realization is
+
+**𝓔(X)=P₄₇ X P₄₇ + Tr((I−P₄₇)X)·P₄₇/47**.
+
+It is complex-linear, trace-preserving, completely positive, and idempotent:
+
+**𝓔²=𝓔**, with fixed operator algebra
+
+**Fix(𝓔)=P₄₇ M₁₂₅(ℂ) P₄₇ ≅ M₄₇(ℂ)**,
+
+again of complex dimension **2209**.
+
+Validator source: https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_recursive_induced_algebra_quantum_channel_validator.py
+
 ### Claim boundary
 
 - 47 is not asserted to be the universal dimensionality of nature.
