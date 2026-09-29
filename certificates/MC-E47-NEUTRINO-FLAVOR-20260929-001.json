@@ -1,0 +1,99 @@
+{
+  "certificate_id": "MC-E47-NEUTRINO-FLAVOR-20260929-001",
+  "title": "E47 Neutrino Flavor Snapshot at tau = pi",
+  "status": "PASS",
+  "evidence_class": "E2_simulation",
+  "issued_date": "2026-09-29",
+  "source": {
+    "repository": "nicholaskouns-create/E47-Kartekeya",
+    "snapshot_commit": "e238d2e7f0c6b4fb5db26d44387688ce7c9311db",
+    "source_mode_repair_commit": "ffd34bb6afcce52e677425aea908f4e56c0132a0",
+    "validator_path": "research/e47/validation/e47_neutrino_flavor_advanced_simulation.py",
+    "validator_git_blob_sha": "62a0167e4fa113d4f780d4da3529ed207bbff8bb"
+  },
+  "finite_core": {
+    "carrier_dimension": 125,
+    "casimir_eigenvalues": [
+      0,
+      2,
+      6,
+      12,
+      20,
+      30,
+      42
+    ],
+    "multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "selector": "K=(C-6I)(C-30I)",
+    "kernel_casimir_values": [
+      6,
+      30
+    ],
+    "projector_rank": 47,
+    "flavor_slot_addresses": [
+      10,
+      11,
+      12
+    ]
+  },
+  "supplied_inputs": {
+    "sin2_theta12": "15/49",
+    "sin2_theta23": "25/47",
+    "sin2_theta13": "1/47",
+    "delta_degrees": 192,
+    "dm21_eV2": 0.0000734449,
+    "dm31_eV2": 0.0025130169,
+    "tau": "pi",
+    "initial_flavor_state": [
+      0,
+      1,
+      0
+    ]
+  },
+  "evolution": {
+    "equation": "S(tau)=U diag(exp(-i phi_i tau)) U^dagger",
+    "phases": [
+      "0",
+      "dm21/dm31",
+      "1"
+    ],
+    "method": "exact matrix exponential for the autonomous 3x3 flavor Hamiltonian"
+  },
+  "checks": {
+    "carrier_census_sum": 125,
+    "projector_rank": 47,
+    "pmns_unitarity_frobenius_residual": 1.8605867706846942e-16,
+    "flavor_hamiltonian_hermiticity_frobenius_residual": 3.066587470304209e-19,
+    "probability_sum": 0.9999999999999999,
+    "normalization_defect": 1.1102230246251565e-16,
+    "probabilities_full_precision": {
+      "mu_to_e": 0.04720551527046795,
+      "mu_to_mu": 0.0031406756908493464,
+      "mu_to_tau": 0.9496538090386826
+    },
+    "probabilities_8dp": {
+      "mu_to_e": 0.04720552,
+      "mu_to_mu": 0.00314068,
+      "mu_to_tau": 0.94965381
+    },
+    "dashboard_match_at_8dp": true
+  },
+  "claim_boundary": [
+    "The mixing fractions and mass splittings are supplied inputs; this certificate does not derive them from the Casimir operator.",
+    "The 125-dimensional Casimir census and E47 rank-47 selector are bookkeeping for the carrier; the propagation calculation is the 3x3 flavor block.",
+    "The certificate records a classical complex state-vector calculation using the exact matrix exponential.",
+    "The dormant dop853_step placeholder in the source is not used to generate the certified snapshot.",
+    "This is not a quantum-hardware run and not experimental confirmation of the supplied mixing inputs."
+  ],
+  "public_routes": {
+    "github_pages": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/neutrino-flavor/",
+    "notion": "https://app.notion.com/p/3ea46094fd3081909ad1e0554b24a986?pvs=204"
+  }
+}
