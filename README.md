@@ -198,3 +198,14 @@ For Γ* = I − K²/99144, the uniform projector error ||Γ*^n − P47||₂ firs
 The coupled basis `|J,j12,m>` resolves all **47 E47 channels** as **25 states at J=2** plus **22 states at J=5**. A deterministic label-derived spherical embedding followed by polar dualization gives exactly **47 facets**. The Python validator reports **21/21 PASS** with dual topology **V=90, E=135, F=47, χ=2**.
 
 **Evidence boundary:** the coupled basis is canonical after fixing the coupling tree, Condon–Shortley phase convention, and ordering. The Euclidean 3D embedding is an explicit deterministic canonicalization convention, not a claim that SU(2) uniquely forces one Euclidean crystal.
+
+
+## Hyperbolic–Liquid Fractal Buoy · Run B reproduction
+
+[Live page](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/hyperbolic-liquid-fractal-buoy/) ·
+[Python](research/hyperbolic-liquid-fractal/validation/hyperbolic_liquid_fractal_validation_run_b.py) ·
+[certificate](certificates/MC-HLFB-RUN-B-REPRO-20260930-001.json) ·
+[Notion certificate registry](https://app.notion.com/p/3a146094fd308145a068f4e3469104f6) ·
+[Drive reconciliation monograph](https://docs.google.com/document/d/1ReLlwRxRw_cYeZ8EYj94b2hZ9KeJcfk7snUwPl8VHrs/edit)
+
+The September 30 executable reproduction closes the repository-source gap for historical Run B (`HLFB-IND-20260730`) while preserving the July record. It validates the typed finite Poincaré, H² growth, synthetic scaling, Kuramoto, finite buoy-residual, contraction-bound and Weyl checks. The buoy residual remains calibration, not a high-fidelity equivalence certificate.
