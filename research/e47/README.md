@@ -4,6 +4,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 
 ## Current notes
 
+- [E47 45-check harness correction](E47_45_Check_Harness_Correction_20260930.md) — preserves two first-run harness failures and their exact repairs: operator 2-norm contraction, exact Pell √5 identity, Lagrange denominators, 47/1/10 kernel separation, 8√3 twist defect, and the explicit finite-search E1 boundary; [machine record](../../certificates/MC-E47-HARNESS-CORRECTION-20260930-001.json)
 - [E47 exact spectral core](E47_Core_Spectral_Certificate.md)
 - [E47 Prism Spectral Formalism](E47_Prism_Spectral_Formalism.md) — seven-band Casimir decomposition, THE MATRIX typed lift, and E1 parity receipt
 - [E47 × KKP-RADAR spectral operator bridge](E47_KKP_RADAR_Spectral_Operator_Bridge.md) — explicit 5×5×5 complex I/Q → C^125 carrier map, seven-shell Casimir observables, isotropic-null 47/125 identity, and synthetic E1 benchmark; [validator](validation/e47_radar_bridge_validator.py) · [certificate](../../certificates/MC-E47-RADAR-BRIDGE-20260927-001.json) · [live proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-radar-bridge/)
