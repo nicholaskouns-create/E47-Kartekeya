@@ -472,6 +472,26 @@
           "label": "Channel map",
           "substrate": "github",
           "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/artifacts/e47_47facet_channel_map.csv"
+        },
+        {
+          "label": "Notion",
+          "substrate": "notion",
+          "url": "https://app.notion.com/p/3eb46094fd3081209faecbbc3b59a902?pvs=204"
+        },
+        {
+          "label": "Drive archive",
+          "substrate": "drive",
+          "url": "https://drive.google.com/drive/folders/1ANomvc6lm4TZAiIaAWwNBYA0RE8fkaEf"
+        },
+        {
+          "label": "Complete ZIP",
+          "substrate": "drive",
+          "url": "https://drive.google.com/file/d/1maMTsJWo0ybPNnnrxqKk3dFqHlXUyeWJ/view?usp=drivesdk"
+        },
+        {
+          "label": "Registry",
+          "substrate": "supabase",
+          "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/"
         }
       ]
     }
