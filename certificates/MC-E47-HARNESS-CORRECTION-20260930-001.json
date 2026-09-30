@@ -1,0 +1,72 @@
+{
+  "certificate_code": "MC-E47-HARNESS-CORRECTION-20260930-001",
+  "title": "E47 45-Check Harness Correction and Cross-Object Identity Record",
+  "date": "2026-09-30",
+  "status": "PASS",
+  "execution": {
+    "checks_total": 45,
+    "checks_passed": 45,
+    "exit_code": 0,
+    "source_sha_prefix": "a045a02f",
+    "source_sha_was_supplied_ellipsized": true
+  },
+  "corrections": [
+    {
+      "id": "spectral-norm",
+      "failed_first_run": true,
+      "original_check": "Frobenius norm used for a spectral-norm claim",
+      "corrected_check": "operator 2-norm",
+      "formalism": "Gamma = I - K^2/99144; ||Gamma^n-P_E||_2 = (15/17)^n",
+      "n_values": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "exact_values": [
+        0.882352941,
+        0.778546713,
+        0.606134984,
+        0.367399619
+      ],
+      "tolerance": 1e-9
+    },
+    {
+      "id": "sqrt5-limit",
+      "failed_first_run": true,
+      "original_check": "|m/u-sqrt(5)| < 1e-6 at finite u",
+      "corrected_check": "exact Pell identity plus monotonicity",
+      "formalism": "m^2-5u^2=-4 => (m/u)^2=5-4/u^2",
+      "witness_u": 233,
+      "witness_ratio": 2.2360515,
+      "sqrt5_display": 2.236068,
+      "difference_display": 0.000016
+    }
+  ],
+  "cross_object_checks": {
+    "lagrange_denominators": [
+      1741824,
+      -43545600
+    ],
+    "kernel_ranks": [
+      47,
+      1,
+      10
+    ],
+    "carrier_dimension": 125,
+    "twist_defect": "8*sqrt(3)",
+    "twist_defect_digits_claimed": 15
+  },
+  "evidence_boundary": {
+    "class": "E1 finite search for two exclusions; exact rational arithmetic elsewhere",
+    "finite_search_exclusions": [
+      25,
+      243
+    ],
+    "finite_search_s_max": 1000
+  },
+  "provenance": {
+    "ingest_mode": "supplied run record archived without altering the reported mathematics",
+    "note": "First-run harness failures are retained as correction history."
+  }
+}
