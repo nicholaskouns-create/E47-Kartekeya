@@ -579,4 +579,6 @@ h2{font-size:20px;margin:32px 0 12px}.core{display:grid;grid-template-columns:1f
 (()=>{const q=document.getElementById('q'),st=document.getElementById('st'),btn=document.getElementById('canon');let only=false;
 function go(){const term=(q.value||'').toLowerCase();document.querySelectorAll('#reg tbody tr').forEach(r=>{const okTerm=!term||r.innerText.toLowerCase().includes(term),okSt=!st.value||r.dataset.status===st.value,okC=!only||r.dataset.canonical==='true';r.style.display=okTerm&&okSt&&okC?'':'none';});}
 q.addEventListener('input',go);st.addEventListener('change',go);btn.addEventListener('click',()=>{only=!only;btn.textContent='Canonical only: '+(only?'on':'off');go();});})();
-</script></body></html>
+</script>
+<section style="max-width:1180px;margin:24px auto;padding:18px;border:1px solid #253138;border-radius:10px"><strong>E47 · 45-check harness correction</strong> · 45/45 PASS · spectral-norm correction · exact √5 identity · Lagrange denominators 1 741 824 / −43 545 600 · <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-harness-correction/">open formalism + machine record ↗</a></section>
+</body></html>
