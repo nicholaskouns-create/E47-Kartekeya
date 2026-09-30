@@ -67,7 +67,7 @@ The same run reconstructs the Lagrange interpolation denominators directly:
 1,741,824,qquad -43,545,600.
 ]
 
-These match the Rubik plate values, binding that plate and the theorem to the same interpolating object.
+These match the Rubik plate values from the interpolation itself. **That plate and the theorem are now identical.**
 
 Section D records, on the identical 125-state carrier,
 
