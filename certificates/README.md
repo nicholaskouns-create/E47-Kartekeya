@@ -23,6 +23,8 @@ The first four records below live in `artifacts/`. Their theorem notes and execu
 | [Neutrino flavor snapshot](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/3159377e2b176c457e0a7ccf3cb3beb87f4d79fb/certificates/MC-E47-NEUTRINO-FLAVOR-20260929-001.json) | `MC-E47-NEUTRINO-FLAVOR-20260929-001` · E2 classical state-vector snapshot at `τ=π`; carrier 125, rank `P47=47`, slots `[10,11,12]`; probabilities reproduce `0.04720552, 0.00314068, 0.94965381` at 8 d.p.; normalization defect `1.1102230246251565e-16`; supplied mixing inputs are not derived from `C` |
 | [Canonical 47-face dual crystal](MC-E47-CANONICAL-47FACE-CRYSTAL-20260930-001.json) | Coupled `|J,j12,m>` basis → 47 spherical channels → polar dual with exactly 47 facets; 21/21 PASS; V=90, E=135, F=47, χ=2 |
 
+| [45-check harness correction](MC-E47-HARNESS-CORRECTION-20260930-001.json) | 45/45 reported PASS · exit 0 · spectral-norm harness repaired to exact `(15/17)^n` · √5 limit replaced by exact Pell identity · Lagrange denominators `1741824, -43545600` · kernel ranks `47,1,10` · E1 finite-search boundary retained for n=25,243 through s≤1000 · [formalism note](../research/e47/E47_45_Check_Harness_Correction_20260930.md) |
+
 These files are committed records. Their JSON content and Git history identify the recorded results; they do not assert that a new validation ran when this page was opened.
 
 The website carries copies of the two snapshot records in [website/data/](../website/data/). Existing website checks compare those copies with the corresponding certificate files.
