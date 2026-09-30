@@ -175,3 +175,17 @@ A calibrated 5×5×5 complex I/Q patch maps exactly to the 125-dimensional E47 c
 [Python](research/e47/validation/e47_convergence_noiseless_validator.py) · [machine certificate](certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) · [E47 Electroweak Identities instrument](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)
 
 For Γ* = I − K²/99144, the uniform projector error ||Γ*^n − P47||₂ first falls below 10⁻¹² at **n = 221**. The stronger kernel residual ||K Γ*^n (I−P47)||₂ first falls below 10⁻¹² at **n = 270**. The full 125×125 reconstruction also resolves E47 ≅ (C⁵⊗V₂) ⊕ (C²⊗V₅) and verifies that collective SU(2) acts as I₅⊗Jₐ and I₂⊗Jₐ, so the multiplicity factors C⁵ and C² are noiseless subsystems for collective SU(2) noise.
+
+
+## E47 canonical 47-face dual crystal
+
+[Live page](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-47face-crystal/) ·
+[Python](research/e47/validation/e47_canonical_47face_crystal.py) ·
+[certificate](certificates/MC-E47-CANONICAL-47FACE-CRYSTAL-20260930-001.json) ·
+[channel map](artifacts/e47_47facet_channel_map.csv) ·
+[OBJ mesh](artifacts/e47_47facet_crystal.obj) ·
+[numerical model](artifacts/e47_47facet_crystal_data.npz)
+
+The coupled basis `|J,j12,m>` resolves all **47 E47 channels** as **25 states at J=2** plus **22 states at J=5**. A deterministic label-derived spherical embedding followed by polar dualization gives exactly **47 facets**. The Python validator reports **21/21 PASS** with dual topology **V=90, E=135, F=47, χ=2**.
+
+**Evidence boundary:** the coupled basis is canonical after fixing the coupling tree, Condon–Shortley phase convention, and ordering. The Euclidean 3D embedding is an explicit deterministic canonicalization convention, not a claim that SU(2) uniquely forces one Euclidean crystal.

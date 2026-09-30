@@ -1,6 +1,6 @@
 {
   "schema": "CITY-README-ROUTER/1.0",
-  "updated": "2026-09-28",
+  "updated": "2026-09-30",
   "title": "The Mathematical City · README Router",
   "principle": "One object, many substrates. Route by intent; preserve evidence class and independent lineage.",
   "core": {
@@ -161,6 +161,12 @@
       "label": "VERIFY",
       "question": "Show me the proof, code and receipts.",
       "routes": [
+        {
+          "label": "E47 Canonical 47-Face Crystal",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-47face-crystal/",
+          "substrate": "github",
+          "kind": "geometry"
+        },
         {
           "label": "125×125 Spectral Matrix Proof",
           "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/",
@@ -435,6 +441,37 @@
           "label": "Registry",
           "substrate": "supabase",
           "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/"
+        }
+      ]
+    },
+    {
+      "id": "e47-47face-crystal",
+      "title": "E47 Canonical 47-Face Dual Crystal",
+      "evidence": [
+        "E0",
+        "E1"
+      ],
+      "summary": "Canonical coupled-state labels |J,j12,m> map one-to-one to 47 exposed spherical channels; polar dualization yields a 47-facet convex crystal. Python validation 21/21 PASS.",
+      "surfaces": [
+        {
+          "label": "Live page",
+          "substrate": "github",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-47face-crystal/"
+        },
+        {
+          "label": "Python",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_canonical_47face_crystal.py"
+        },
+        {
+          "label": "Certificate",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-CANONICAL-47FACE-CRYSTAL-20260930-001.json"
+        },
+        {
+          "label": "Channel map",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/artifacts/e47_47facet_channel_map.csv"
         }
       ]
     }
