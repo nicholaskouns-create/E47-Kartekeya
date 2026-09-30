@@ -34,3 +34,7 @@ Other records remain with their components:
 - [Flight-replay records](../trajectories/README.md)
 
 Use the [validation scope](../docs/validation_scope.md) to interpret each claim.
+
+## Golden-ratio mass ladder · 19/19 PASS
+
+[Live validation and original image](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/omega-recursive/) · [Python](../research/omega-recursive/omega_recursive_closure_validator.py) · [Original certificate](../research/omega-recursive/omega_recursive_closure_certificate.json) · [Executed reproduction](../website/notes/omega-recursive/reproduction-20260929.json).

@@ -1,0 +1,26 @@
+{
+  "certificate_code": "MC-OMEGA-RECURSIVE-CLOSURE-20260927-001",
+  "title": "Omega Recursive Field System — Error-Corrected Algebraic Closure",
+  "date": "2026-09-27",
+  "status": "PASS",
+  "checks_passed": 19,
+  "checks_failed": 0,
+  "constants": {
+    "phi": 1.618033988749895,
+    "ln_phi": 0.48121182505960347,
+    "psi_star": 0.30028310600077757,
+    "m0_MeV": 0.511,
+    "lambda": 0.0030632655097738055
+  },
+  "max_residuals": {
+    "V_at_minima": 1.581629100969259e-26,
+    "mass_ratio_minus_phi": 2.220446049250313e-16,
+    "quantum_spectrum": 4.263256414560601e-14,
+    "quantum_unitarity": 3.753982314544006e-15,
+    "quantum_gap_ratio_minus_phi": 1.5543122344752192e-15
+  },
+  "artifact_sha256": {
+    "omega_recursive_closure_corrected.md": "0f4309272c1d2ec435f7a161e8163b08aef53f75536251c2f327e589ac2264e1",
+    "omega_recursive_closure_validator.py": "3beb7bf365b028134bdb3bb1fb7b78114a81df81c275fe5d14ae0cb8f68b9bb7"
+  }
+}

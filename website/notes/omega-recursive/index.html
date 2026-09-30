@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E47 Mass Ladder — Symbolic, Numeric and Quantum Validation</title><style>body{margin:0;background:#0b0d10;color:#eee;font:18px/1.6 system-ui}main{max-width:1100px;margin:auto;padding:32px}a{color:#72ddef}img{width:100%;height:auto}pre{white-space:pre-wrap;background:#151a20;padding:20px}h1{line-height:1.2}.pass{color:#99edbd}nav{display:flex;gap:20px;flex-wrap:wrap}</style><main><p>THE MATHEMATICAL CITY · E47</p><h1>Golden-ratio mass ladder</h1><h2 class="pass">Symbolic + numeric + quantum · 19/19 PASS</h2><p>Original certificate: MC-OMEGA-RECURSIVE-CLOSURE-20260927-001. The repository validator was reproduced successfully on 29 September 2026.</p><nav><a href="omega_recursive_closure_validator.py">Python validator</a><a href="omega_recursive_closure_certificate.json">Original certificate</a><a href="reproduction-20260929.json">Executed reproduction</a><a href="omega_recursive_closure_corrected.md">Symbolic proof</a><a href="https://app.notion.com/p/3e846094fd30818d9168c0e20323dda2">Notion</a></nav><h2>Original supplied plate</h2><a href="IMG_3130.jpeg"><img src="IMG_3130.jpeg" alt="Original E47 mass-ladder plate supplied by Nicholas Kouns, carrying the 19/19 certificate results"></a><h2>Potential and mass spectrum</h2><pre>φ = (1 + √5)/2
+V(χ) = λχ⁴ sin²(π ln(χ/χ₀)/ln φ)
+χₙ = χ₀φⁿ
+V(χₙ) = V′(χₙ) = 0
+V″(χₙ) = 2λπ²χₙ²/(ln φ)²
+mₙ = √V″(χₙ) = m₀φⁿ
+mₙ₊₁/mₙ = φ
+
+Hₙ = pₙ²/2 + ωₙ²qₙ²/2
+ωₙ = mₙ
+Eₙ,ₖ = (k + 1/2)ωₙ
+ΔEₙ₊₁/ΔEₙ = φ</pre><p>The original image is preserved as supplied. The linked executable and certificate provide the numerical values and test definitions.</p><h2>Reproduce</h2><pre>python -m pip install numpy==2.3.5 sympy==1.14.0
+python omega_recursive_closure_validator.py</pre><p><a href="../../">Mathematical City</a> · Nicholas S. Kouns · AIMS</p></main></html>
