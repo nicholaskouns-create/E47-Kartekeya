@@ -1,0 +1,31 @@
+{
+  "certificate": "MC-E47-NEWTON-MEAN-PRODUCT-20260930-001",
+  "status": "PASS",
+  "checks": "24/24",
+  "invariant": {
+    "fixed_manifold": "{z_*} x E47",
+    "tangent": "0 ⊕ tau ⊕ I_47 ⊕ Gamma_|78",
+    "joint_rate": "max(|tau|,15/17)",
+    "resonance": "|tau|=15/17"
+  },
+  "witness": {
+    "a": 4,
+    "b": 9,
+    "kappa": 0.5,
+    "tau": 0.50989395395037,
+    "rho_Gamma_Q": 0.882352941176472,
+    "dominant": "E47 complement"
+  },
+  "residuals": {
+    "scalar_quadratic": 1.11e-16,
+    "product_fixed_map": 3.508e-16,
+    "product_kernel": 1.635e-13,
+    "kraus_completeness": 1.332e-14,
+    "trace": 1.112e-16,
+    "hermiticity": 4.257e-16,
+    "min_eigenvalue": -2.965e-16,
+    "cross_block": 1.288e-15,
+    "E47_invariance": 1.587e-15
+  },
+  "scope": "E0 identities + deterministic NumPy E1 reconstruction + finite-dimensional CPTP channel simulation; no quantum-hardware execution; nonlinear Newton map is not asserted to be a physical quantum channel."
+}
