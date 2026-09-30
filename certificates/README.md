@@ -43,3 +43,5 @@ Use the [validation scope](../docs/validation_scope.md) to interpret each claim.
 ## Golden-ratio mass ladder · 19/19 PASS
 
 [Live validation and original image](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/omega-recursive/) · [Python](../research/omega-recursive/omega_recursive_closure_validator.py) · [Original certificate](../research/omega-recursive/omega_recursive_closure_certificate.json) · [Executed reproduction](../website/notes/omega-recursive/reproduction-20260929.json).
+
+| [Corrected consolidated E47 first-principles validator](../research/e47/first-principles/e47_first_principles_corrected_validator.py) | 37/37 executable assertions PASS WITH EXPLICIT SCOPE BOUNDARIES · corrected component inventory 272 · noncanonical 43-face illustrated layer census flagged · spectral 47⊕78 split · Γ complement radius 15/17 · CPTP P/Q dephasing distinguished from Γ contraction · Newton/Newton–Mean dynamics · scalar faceting model · ENU house frame |
