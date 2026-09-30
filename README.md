@@ -209,3 +209,14 @@ The coupled basis `|J,j12,m>` resolves all **47 E47 channels** as **25 states at
 [Drive reconciliation monograph](https://docs.google.com/document/d/1ReLlwRxRw_cYeZ8EYj94b2hZ9KeJcfk7snUwPl8VHrs/edit)
 
 The September 30 executable reproduction closes the repository-source gap for historical Run B (`HLFB-IND-20260730`) while preserving the July record. It validates the typed finite Poincaré, H² growth, synthetic scaling, Kuramoto, finite buoy-residual, contraction-bound and Weyl checks. The buoy residual remains calibration, not a high-fidelity equivalence certificate.
+
+
+## D5h/C90 Node-6 angular-distance certificate
+
+[Python](research/e47/validation/e47_c90_node6_angular_distance.py) · [Node overlay assets](docs/assets/c90-node6/)
+
+The supplied D5h/C90 shoulder coordinate is reconstructed analytically as
+`z6 = 1/sqrt(145 - 64*sqrt(5))`, which satisfies `545 z^4 - 290 z^2 + 1 = 0` and yields
+`phi6 = 46.6418024517684°`. Under the Danville meridian lock `Δlambda = 0`, the great-circle separation reduces to
+`theta = |phi6 - 37.6439°| = 8.9979024517684°`. With mean Earth radius `R = 6371.0088 km`, the spherical arc is
+`s = R theta_rad = 1000.522485057888 km`.
