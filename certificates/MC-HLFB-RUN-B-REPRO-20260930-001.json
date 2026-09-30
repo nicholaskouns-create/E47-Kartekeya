@@ -1,0 +1,31 @@
+{
+  "certificate": "MC-HLFB-RUN-B-REPRO-20260930-001",
+  "family": "HLFB-20260730",
+  "historical_run": "HLFB-IND-20260730",
+  "status": "PASS_WITH_CALIBRATION",
+  "checks": {
+    "poincare_metric_sample": "PASS",
+    "hyperbolic_exponential_growth": "PASS",
+    "synthetic_fractal_exponent_recovery": "PASS",
+    "kuramoto_order_parameter_and_locking": "PASS",
+    "buoy_residual_finite": "PASS",
+    "contraction_bound_finite_for_L_lt_1": "PASS",
+    "weyl_bound": "PASS"
+  },
+  "observed": {
+    "d12": 1.0986122886681098,
+    "triangle_rhs": 1.8400230665591462,
+    "growth_slope": 1.2655075511356761,
+    "alpha_est": 1.3575855993622747,
+    "alpha_rmse": 0.022268662528753525,
+    "kuramoto_final_R": 0.9868915072760309,
+    "buoy_max_residual": 0.35700440131927025,
+    "buoy_mean_residual": 0.2367778722829452,
+    "bound_n30": 2.3618679103901408,
+    "limsup_bound": 2.380029342128468,
+    "weyl_operator_norm": 0.01666047412549615,
+    "weyl_max_eigen_displacement": 0.016046054063072912
+  },
+  "source_sha256": "f20b8c014a835beb058098eb2f3a48cfa051597ab0d25e61cb7b592d0fa2c25e",
+  "evidence_boundary": "Finite typed mathematical/numerical witness. The buoy residual is finite calibration, not a high-fidelity equivalence certificate. No universal physical, consciousness, or propulsion identification."
+}
