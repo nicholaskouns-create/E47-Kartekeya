@@ -129,7 +129,7 @@ That pattern is the point: **one object, multiple native views, preserved proven
 
 ## 45-check harness correction · 2026-09-30
 
-[Live correction record](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-harness-correction/) · [formalism](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_45_Check_Harness_Correction_20260930.md) · [machine JSON](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-HARNESS-CORRECTION-20260930-001.json)
+[Live correction record](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-harness-correction/) · [formalism](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_45_Check_Harness_Correction_20260930.md) · [machine JSON](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-HARNESS-CORRECTION-20260930-001.json) · [Notion](https://app.notion.com/p/3eb46094fd3081d3a15eccdcda25e100?pvs=204) · [Drive](https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo)
 
 The reported 45-check run exits 0. Two first-run harness failures are retained as provenance: Frobenius norm was replaced by the claimed spectral norm, giving \(\|\Gamma^n-P_E\|_2=(15/17)^n\) exactly, and a finite floating-point √5 tolerance was replaced by \((m/u)^2=5-4/u^2\) plus monotonicity. The same record carries Lagrange denominators \(1{,}741{,}824\) and \(-43{,}545{,}600\), kernel ranks \(47,1,10\), twist defect \(8\sqrt3\), and the explicit E1 finite-search boundary for \(n=25,243\) through \(s\le1000\).
 
