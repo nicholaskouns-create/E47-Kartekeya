@@ -25,6 +25,7 @@ The first four records below live in `artifacts/`. Their theorem notes and execu
 | [HLFB Run B reproduction](MC-HLFB-RUN-B-REPRO-20260930-001.json) | Reproducible Poincaré / H² growth / synthetic scaling / Kuramoto / buoy residual / contraction-bound / Weyl witness; PASS_WITH_CALIBRATION; [Python](../research/hyperbolic-liquid-fractal/validation/hyperbolic_liquid_fractal_validation_run_b.py) |
 
 | [45-check harness correction](MC-E47-HARNESS-CORRECTION-20260930-001.json) | 45/45 reported PASS · exit 0 · spectral-norm harness repaired to exact `(15/17)^n` · √5 limit replaced by exact Pell identity · Lagrange denominators `1741824, -43545600` · kernel ranks `47,1,10` · E1 finite-search boundary retained for n=25,243 through s≤1000 · [formalism note](../research/e47/E47_45_Check_Harness_Correction_20260930.md) |
+| [Newton–Mean × E47 product kernel](MC-E47-NEWTON-MEAN-PRODUCT-20260930-001.json) | 24/24 PASS · fixed manifold `{z_*}×E47` · tangent split `0 ⊕ τ ⊕ I_47 ⊕ Γ|_78` · joint rate `max(|τ|,15/17)` · finite-dimensional CPTP block-dephasing simulation · [proof + Python](../research/e47/newton-e47-product/NEWTON_MEAN_E47_PRODUCT_PROOF.md) |
 
 These files are committed records. Their JSON content and Git history identify the recorded results; they do not assert that a new validation ran when this page was opened.
 
