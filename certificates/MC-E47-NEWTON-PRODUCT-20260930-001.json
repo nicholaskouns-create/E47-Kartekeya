@@ -1,0 +1,28 @@
+{
+  "certificate": "MC-E47-NEWTON-PRODUCT-20260930-001",
+  "status": "PASS",
+  "validation": "Python/NumPy finite-dimensional reconstruction + density-matrix quantum-channel simulation",
+  "results": {
+    "rank_P": 47.0,
+    "rank_Q": 78.0,
+    "rho_complement": 0.882352941176472,
+    "target_rho_15_17": 0.8823529411764706,
+    "joint_fixed_residual": 1.635e-13,
+    "product_map_fixed_residual": 3.508e-16,
+    "quadratic_identity_residual": 1.110e-16,
+    "quantum_trace_residual": 1.112e-16,
+    "quantum_hermiticity_residual": 4.257e-16,
+    "quantum_min_eigenvalue": -2.965e-16,
+    "quantum_cross_block_residual": 1.288e-15,
+    "quantum_kernel_invariance_residual": 1.587e-15
+  },
+  "spectral_norm_checks": {
+    "n1_abs_error": 4.441e-16,
+    "n2_abs_error": 3.331e-16,
+    "n5_abs_error": 2.220e-16,
+    "n10_abs_error": 0.0,
+    "n25_abs_error": 1.735e-16
+  },
+  "checks": "17/17 PASS",
+  "scope_boundary": "Finite-dimensional numerical and density-matrix quantum-channel validation only."
+}
