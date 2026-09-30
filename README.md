@@ -184,7 +184,10 @@ For Γ* = I − K²/99144, the uniform projector error ||Γ*^n − P47||₂ firs
 [certificate](certificates/MC-E47-CANONICAL-47FACE-CRYSTAL-20260930-001.json) ·
 [channel map](artifacts/e47_47facet_channel_map.csv) ·
 [OBJ mesh](artifacts/e47_47facet_crystal.obj) ·
-[numerical model](artifacts/e47_47facet_crystal_data.npz)
+[numerical model](artifacts/e47_47facet_crystal_data.npz) ·
+[Notion record](https://app.notion.com/p/3eb46094fd3081209faecbbc3b59a902?pvs=204) ·
+[Drive archive](https://drive.google.com/drive/folders/1ANomvc6lm4TZAiIaAWwNBYA0RE8fkaEf) ·
+[Supabase registry](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/)
 
 The coupled basis `|J,j12,m>` resolves all **47 E47 channels** as **25 states at J=2** plus **22 states at J=5**. A deterministic label-derived spherical embedding followed by polar dualization gives exactly **47 facets**. The Python validator reports **21/21 PASS** with dual topology **V=90, E=135, F=47, χ=2**.
 
