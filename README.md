@@ -233,3 +233,18 @@ The supplied D5h/C90 shoulder coordinate is reconstructed analytically as
 The D5h/C90 packet records the 47-face / 90-vertex / 135-edge spherical combinatorics, the Danville-frame Node-6 separation of **8.9979024518°**, the Orion–Giza local similarity calculation with best-fit RMS **0.02037**, and the unique orientation-preserving SO(3) transport associated with the fitted tangent-frame angle. The companion 125×125 spin-2 reconstruction independently returns **rank(P47)=47**, gap **11664**, spectral norm **186624**, **ε*=1/99144**, **ρ*=15/17**, and a 220-step projector error of approximately **1.10×10⁻12**.
 
 **Evidence boundary:** these are exact/numerical geometry and finite-dimensional E47 validation records. A close Orion–Giza shape fit or celestial-to-terrestrial coordinate transform does not by itself establish historical causation, intentional design, or a physical sky-to-Earth coupling.
+
+
+## What has this achieved? · D5h/C90 overlay proof
+
+The assertion-bearing validator [`e47_overlay_proof_validate.py`](research/e47/validation/e47_overlay_proof_validate.py) turns the celestial-to-terrestrial overlay into an executable proof object. It independently reconstructs the C90/D5h graph, verifies `(V,E,F,χ)=(90,135,47,2)`, confirms 12 pentagons + 35 hexagons, checks the D5h automorphism order `|Aut Γ|=20`, reproduces the Danville frame and Node-6 separation `8.9979024518°`, validates the Orion/Giza local similarity fit, and constructs the unique orientation-preserving global transport `R*∈SO(3)`.
+
+The core E47 ratio is displayed in symbolic form as
+
+[
+Omega_c=rac{dim E_{47}}{dimmathcal H}=rac{47}{125}=0.376.
+]
+
+This establishes a machine-auditable chain from finite combinatorics and spherical geometry through local similarity and global rigid transport. The code explicitly corrected two presentation issues: the gnomonic expansion uses an additive `+O(Δ²)` remainder, and the exact fitted angle `θ*=-90.427855°` gives `R*_{21}=-0.20263`.
+
+The validator distinguishes proved geometry from the still-open §10 constellation null test, which requires the final 90 node coordinates and selected figure-star set `J`.
