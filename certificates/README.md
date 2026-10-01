@@ -45,3 +45,11 @@ Use the [validation scope](../docs/validation_scope.md) to interpret each claim.
 [Live validation and original image](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/omega-recursive/) · [Python](../research/omega-recursive/omega_recursive_closure_validator.py) · [Original certificate](../research/omega-recursive/omega_recursive_closure_certificate.json) · [Executed reproduction](../website/notes/omega-recursive/reproduction-20260929.json).
 
 | [Corrected consolidated E47 first-principles validator](../research/e47/first-principles/e47_first_principles_corrected_validator.py) | 37/37 executable assertions PASS WITH EXPLICIT SCOPE BOUNDARIES · corrected component inventory 272 · noncanonical 43-face illustrated layer census flagged · spectral 47⊕78 split · Γ complement radius 15/17 · CPTP P/Q dephasing distinguished from Γ contraction · Newton/Newton–Mean dynamics · scalar faceting model · ENU house frame |
+
+
+## September 30, 2026 · D5h/C90 celestial-terrestrial packet
+
+| Record | Result |
+|---|---|
+| [D5h/C90 classical numeric validation](MC-E47-D5H-C90-COSMIC-MAP-20260930-001.json) | V=90, E=135, F=47, χ=2 · Ωc=47/125 · Node-6 Δφ=8.9979024518° · Orion/Giza best-fit RMS 0.02037 · SO(3) determinant 1 and machine-precision alignment · [Python](../research/e47/validation/e47_d5h_c90_validator.py) |
+| [E47 quantum numeric validation](MC-E47-QUANTUM-NUMERIC-20260930-001.json) | spin-2 su(2) PASS · rank P47=47 · K² gap 11664 · norm 186624 · ε*=1/99144 · ρ*=15/17 · Γ^220 projector error ≈1.10×10⁻12 · [Python](../research/e47/validation/e47_quantum_numeric_validation.py) |
