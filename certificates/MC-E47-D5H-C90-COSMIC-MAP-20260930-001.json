@@ -1,0 +1,28 @@
+{
+  "certificate_code": "MC-E47-D5H-C90-COSMIC-MAP-20260930-001",
+  "title": "E47 / D5h / C90 Celestial-Terrestrial Numeric Validation",
+  "passed": true,
+  "key_results": {
+    "F": 47,
+    "E": 135,
+    "V": 90,
+    "chi": 2,
+    "Omega_c": 0.376,
+    "epsilon_star": 1.0086339062373921e-05,
+    "rho_star": 0.8823529411764706,
+    "sphere_volume": 4.1887902047863905,
+    "poly_volume_input": 3.9392,
+    "void_poly": 4.0608,
+    "void_sphere": 3.8112097952136095,
+    "asymptotic_c": 2.800507796154612,
+    "node6_sep_deg": 8.997902451799995,
+    "orion_giza_best_fit_rms": 0.02037,
+    "orion_giza_scale_abs": 0.003082140048005716,
+    "orion_giza_rotation_deg": -90.428,
+    "kappa_delta_abs": 0.085355955586604,
+    "det_R_star": 1.0,
+    "R_star_alignment_max_abs": 2.7755575615628914e-16,
+    "R_star_orthogonality_max_abs": 1.1102230246251565e-16
+  },
+  "evidence_boundary": "Numerical validation of the supplied geometric construction. Pattern similarity and a fitted SO(3) transport do not by themselves establish historical causation or physical coupling between Orion, Giza, Earth, and the E47 lattice."
+}
