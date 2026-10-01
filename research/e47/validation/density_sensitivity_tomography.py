@@ -241,6 +241,7 @@ def robust_validate(
 
     random_loo = np.asarray(random_loo_rmse, dtype=float)
     p47_better_fraction = float(np.mean(loo_p47_rmse < random_loo))
+    p47_beats_random_median = bool(loo_p47_rmse < float(np.median(random_loo)))
 
     repeated = []
     for seed in range(repeats):
@@ -288,6 +289,7 @@ def robust_validate(
             "max_rmse": float(random_loo.max()),
             "p47_better_than_random_fraction": p47_better_fraction,
             "p47_better_than_random_count": int(np.sum(loo_p47_rmse < random_loo)),
+            "p47_beats_random_median": p47_beats_random_median,
         },
         "repeated_holdout_splits": repeats,
         "repeated_raw_mean_rmse": float(repeated[:, 0].mean()),
@@ -299,6 +301,7 @@ def robust_validate(
         "p47_robustly_useful": bool(
             loo_p47_rmse <= loo_raw_rmse + 0.02
             and repeated[:, 1].mean() <= repeated[:, 0].mean() + 0.02
+            and p47_beats_random_median
         ),
         "temporal_coordinate_collisions": collisions,
     }
