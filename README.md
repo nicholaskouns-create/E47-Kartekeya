@@ -237,6 +237,7 @@ The D5h/C90 packet records the 47-face / 90-vertex / 135-edge spherical combinat
 
 ## Cross-platform D5h/C90 validation packet
 
+[First-principles proof](research/e47/E47_D5h_C90_First_Principles_Proof_20260930.md) ·
 [Notion validation packet](https://app.notion.com/p/3ec46094fd30811e892efcbe1c2867dd?pvs=204) ·
 [classical Python](research/e47/validation/e47_d5h_c90_validator.py) ·
 [quantum Python](research/e47/validation/e47_quantum_numeric_validation.py) ·
