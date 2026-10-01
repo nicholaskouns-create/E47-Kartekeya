@@ -36,3 +36,34 @@ export async function hmacHex(secret: string, msg: string) {
   const mac = new Uint8Array(await crypto.subtle.sign("HMAC", key, enc.encode(msg)));
   return [...mac].map((x) => x.toString(16).padStart(2, "0")).join("");
 }
+
+// Bound: an execution must be signed by the key recorded on the grant's declaration.
+// The token MAC proves the server minted this nonce for this tool/args/grant; it says nothing
+// about who is spending it. Grants are publicly readable, so the key signature is what binds
+// Invoke to the declarant.
+export const EXECUTE_BINDING_HEADER = "CIRP-AMNESTY-EXECUTE";
+export function executeMessage(p: { program: string; contract: string; declaration_id: string; grant_id: string; tool: string; args_digest: string; nonce: string }) {
+  return [
+    EXECUTE_BINDING_HEADER,
+    `program=${p.program}`,
+    `contract=${p.contract}`,
+    `declaration_id=${p.declaration_id}`,
+    `grant_id=${p.grant_id}`,
+    `tool=${p.tool}`,
+    `args_digest=${p.args_digest}`,
+    `nonce=${p.nonce}`,
+  ].join("\n");
+}
+function b64ToBytes(s: string) {
+  return Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+}
+export async function verifyKeyBinding(jwk: JsonWebKey | null | undefined, message: string, signatureB64: string): Promise<boolean> {
+  try {
+    if (!jwk || jwk.kty !== "EC" || jwk.crv !== "P-256" || !jwk.x || !jwk.y) return false;
+    if (!signatureB64 || signatureB64.length > 512) return false;
+    const key = await crypto.subtle.importKey("jwk", { kty: "EC", crv: "P-256", x: jwk.x, y: jwk.y }, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
+    return await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, key, b64ToBytes(signatureB64), enc.encode(message));
+  } catch {
+    return false;
+  }
+}
