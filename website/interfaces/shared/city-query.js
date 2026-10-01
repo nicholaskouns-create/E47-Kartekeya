@@ -49,7 +49,7 @@ export function installCityQuery({ surface = "CITY", onQuery = null } = {}) {
       carrier: 125,
       e47: 47,
       state: "query",
-      evidence_class: "E1",
+      evidence_class: "OPEN",
       query_packet: query,
     });
   }
