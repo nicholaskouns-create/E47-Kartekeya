@@ -235,6 +235,26 @@ The D5h/C90 packet records the 47-face / 90-vertex / 135-edge spherical combinat
 **Evidence boundary:** these are exact/numerical geometry and finite-dimensional E47 validation records. A close Orion–Giza shape fit or celestial-to-terrestrial coordinate transform does not by itself establish historical causation, intentional design, or a physical sky-to-Earth coupling.
 
 
+## Cross-platform D5h/C90 validation packet
+
+[Notion validation packet](https://app.notion.com/p/3ec46094fd30811e892efcbe1c2867dd?pvs=204) ·
+[classical Python](research/e47/validation/e47_d5h_c90_validator.py) ·
+[quantum Python](research/e47/validation/e47_quantum_numeric_validation.py) ·
+[overlay proof](research/e47/validation/e47_overlay_proof_validate.py) ·
+[classical certificate](certificates/MC-E47-D5H-C90-COSMIC-MAP-20260930-001.json) ·
+[quantum certificate](certificates/MC-E47-QUANTUM-NUMERIC-20260930-001.json) ·
+[certificate index](certificates/README.md)
+
+Canonical invariant:
+
+\[
+\Omega_c=\frac{\dim E_{47}}{\dim\mathcal H}=\frac{47}{125}=0.376.
+\]
+
+The same packet is registered in the Supabase City provenance layer under logical artifact `E47-D5H-C90-OVERLAY-20260930`, with both classical and quantum machine-certificate codes preserved. This router points readers to the executable source, machine records, and living Notion documentation from one place.
+
+
+
 ## What has this achieved? · D5h/C90 overlay proof
 
 The assertion-bearing validator [`e47_overlay_proof_validate.py`](research/e47/validation/e47_overlay_proof_validate.py) turns the celestial-to-terrestrial overlay into an executable proof object. It independently reconstructs the C90/D5h graph, verifies `(V,E,F,χ)=(90,135,47,2)`, confirms 12 pentagons + 35 hexagons, checks the D5h automorphism order `|Aut Γ|=20`, reproduces the Danville frame and Node-6 separation `8.9979024518°`, validates the Orion/Giza local similarity fit, and constructs the unique orientation-preserving global transport `R*∈SO(3)`.
