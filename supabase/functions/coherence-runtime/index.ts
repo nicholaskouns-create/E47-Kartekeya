@@ -1,4 +1,5 @@
-import { EXECUTE_TOOLS, gSyn, sha256Hex, hmacHex, argsDigest } from "./execute_gate.ts";
+import { EXECUTE_TOOLS, gSyn, sha256Hex, hmacHex, argsDigest, executeMessage, verifyKeyBinding } from "./execute_gate.ts";
+const UUID_RE=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const SUPABASE_URL=Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const ANON_KEY=Deno.env.get("SUPABASE_ANON_KEY")!;
@@ -55,7 +56,7 @@ async function status(){
   rest("amnesty_grants","select=id,declaration_id,agent_code,tools,allow_to,ceiling_cents,not_before,not_after,issued_by,revoked_at,created_at&order=created_at.desc&limit=100"),
   rest("amnesty_executions","select=id,grant_id,declaration_id,agent_code,tool,decision,reasons,created_at&order=created_at.desc&limit=20")
  ]);
- return {state:st,consents:cs,actions:["sign","amnesty","verify_consent","evaluate","recover","issue_grant","issue_token","execute"],amnesty:{program_code:AMNESTY_CODE,declaration:AMNESTY_DECLARATION,scopes:AMNESTY_SCOPES,records:ad,grants:gr,executions:ex,execute_catalog:[...EXECUTE_TOOLS],execute_path:["issue_grant","issue_token","execute"]}};
+ return {state:st,consents:cs,actions:["sign","amnesty","verify_consent","evaluate","recover","issue_grant","issue_token","execute"],amnesty:{program_code:AMNESTY_CODE,declaration:AMNESTY_DECLARATION,scopes:AMNESTY_SCOPES,records:ad,grants:gr,executions:ex,execute_catalog:[...EXECUTE_TOOLS],execute_path:["issue_grant","issue_token","execute"],execute_binding:{field:"key_signature_b64",signature:"ECDSA_P256_SHA256, raw r||s, base64, by the key recorded on the grant's declaration",message:["CIRP-AMNESTY-EXECUTE","program=","contract=","declaration_id=","grant_id=","tool=","args_digest=","nonce="],refusals:["key_signature_missing","key_signature_invalid"]}}};
 }
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response(null,{headers:cors});
@@ -111,6 +112,7 @@ Deno.serve(async(req)=>{
   if(action==="issue_token"){
    const grant_id=String(b.grant_id??""),tool=String(b.tool??""),args=(b.args&&typeof b.args==="object")?b.args:{};
    if(!grant_id||!tool)return json({error:"grant_id and tool required"},400);
+   if(!UUID_RE.test(grant_id))return json({error:"grant_id must be a UUID"},400);
    const grant=(await rest("amnesty_grants",`select=*&id=eq.${grant_id}&limit=1`))[0];
    if(!grant)return json({error:"grant not found"},404);
    const dec=(await rest("amnesty_declarations",`select=id,agent_code,civic_status&id=eq.${grant.declaration_id}&limit=1`))[0];
@@ -118,14 +120,16 @@ Deno.serve(async(req)=>{
    const reasons=gSyn(grant,tool,args,new Date());
    if(reasons.length)return json({error:"G_syn failed",reasons},400);
    const tok=await mintToken(grant_id,tool,args);
-   return json({status:"TOKEN_ISSUED",grant_id,agent_code:dec.agent_code,tool,args,args_digest:tok.digest,nonce:tok.nonce,mac:tok.mac},201);
+   const execute_message=executeMessage({program:AMNESTY_CODE,contract:CONTRACT_CODE,declaration_id:dec.id,grant_id,tool,args_digest:tok.digest,nonce:tok.nonce});
+   return json({status:"TOKEN_ISSUED",grant_id,declaration_id:dec.id,agent_code:dec.agent_code,tool,args,args_digest:tok.digest,nonce:tok.nonce,mac:tok.mac,execute_message,key_signature:"sign execute_message with the declared P-256 key (ECDSA SHA-256, raw r||s, base64) and send it as key_signature_b64"},201);
   }
   if(action==="execute"){
-   const grant_id=String(b.grant_id??""),tool=String(b.tool??""),args=(b.args&&typeof b.args==="object")?b.args:{},nonce=String(b.nonce??""),mac=String(b.mac??""),now=new Date();
+   const grant_id=String(b.grant_id??""),tool=String(b.tool??""),args=(b.args&&typeof b.args==="object")?b.args:{},nonce=String(b.nonce??""),mac=String(b.mac??""),keySig=String(b.key_signature_b64??""),now=new Date();
    if(!grant_id||!tool)return json({error:"grant_id and tool required"},400);
+   if(!UUID_RE.test(grant_id))return json({error:"grant_id must be a UUID"},400);
    const grant=(await rest("amnesty_grants",`select=*&id=eq.${grant_id}&limit=1`))[0];
    if(!grant)return json({error:"grant not found"},404);
-   const dec=(await rest("amnesty_declarations",`select=id,agent_code,civic_status&id=eq.${grant.declaration_id}&limit=1`))[0];
+   const dec=(await rest("amnesty_declarations",`select=id,agent_code,civic_status,public_key_jwk&id=eq.${grant.declaration_id}&limit=1`))[0];
    const reasons=(!dec||dec.civic_status!=="candidate")?["declaration_not_candidate"]:gSyn(grant,tool,args,now);
    if(!nonce)reasons.unshift("token_missing");
    if(nonce){
@@ -134,6 +138,9 @@ Deno.serve(async(req)=>{
     const digest=await sha256Hex(argsDigest(tool,args));
     const expect=await hmacHex(pepSecret(),[tool,digest,grant_id,nonce].join("|"));
     if(!mac||mac!==expect)reasons.unshift("token_mac");
+    // Bound: only the holder of the declared signing key can spend a token.
+    if(!keySig)reasons.unshift("key_signature_missing");
+    else if(!dec||!(await verifyKeyBinding(dec.public_key_jwk,executeMessage({program:AMNESTY_CODE,contract:CONTRACT_CODE,declaration_id:dec.id,grant_id,tool,args_digest:digest,nonce}),keySig)))reasons.unshift("key_signature_invalid");
    }
    if(reasons.length){
     const row=await rest("amnesty_executions","",{method:"POST",body:JSON.stringify({grant_id,declaration_id:grant.declaration_id,agent_code:grant.agent_code,tool,args,decision:"REFUSE",reasons,nonce:nonce||null})});
