@@ -24,7 +24,8 @@
       "min_rmse": 0.3463696360198928,
       "max_rmse": 0.45507454833563904,
       "p47_better_than_random_count": 0,
-      "p47_better_than_random_fraction": 0
+      "p47_better_than_random_fraction": 0,
+      "p47_beats_random_median": false
     }
   },
   "conclusion": {
