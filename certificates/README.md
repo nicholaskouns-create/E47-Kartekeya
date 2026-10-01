@@ -53,3 +53,15 @@ Use the [validation scope](../docs/validation_scope.md) to interpret each claim.
 |---|---|
 | [D5h/C90 classical numeric validation](MC-E47-D5H-C90-COSMIC-MAP-20260930-001.json) | V=90, E=135, F=47, χ=2 · Ωc=47/125 · Node-6 Δφ=8.9979024518° · Orion/Giza best-fit RMS 0.02037 · SO(3) determinant 1 and machine-precision alignment · [Python](../research/e47/validation/e47_d5h_c90_validator.py) |
 | [E47 quantum numeric validation](MC-E47-QUANTUM-NUMERIC-20260930-001.json) | spin-2 su(2) PASS · rank P47=47 · K² gap 11664 · norm 186624 · ε*=1/99144 · ρ*=15/17 · Γ^220 projector error ≈1.10×10⁻12 · [Python](../research/e47/validation/e47_quantum_numeric_validation.py) |
+
+
+## D5h/C90 overlay first-principles proof
+- [Python proof validator](../research/e47/validation/e47_overlay_proof_validate.py)
+- Core invariant: `Ω_c=47/125=0.376`
+- Constructed geometry: `V=90, E=135, F=47, χ=2`
+- Face census: 12 pentagons + 35 hexagons
+- Symmetry: `|Aut Γ|=20=|D5h|`
+- Node-6 angular separation: `8.9979024518°`
+- Orion/Giza best local similarity: `RMS=0.0204`
+- Global extension: unique `R*∈SO(3)`, `det R*=1`
+- Corrections encoded: additive gnomonic remainder `+O(Δ²)`; exact `θ*=-90.427855°` gives `R*₂₁=-0.20263`
