@@ -100,6 +100,28 @@ def shell_score(Q):
     D = Q - mu
     return np.einsum("bi,ij,bj->b", D, cov_inv, D)
 
+CONTROL_SEED = 470126
+N_RANDOM_SPLITS = 5
+control_rng = np.random.default_rng(CONTROL_SEED)
+random_controls = []
+for _ in range(N_RANDOM_SPLITS):
+    Z = (
+        control_rng.normal(size=(125, 125))
+        + 1j * control_rng.normal(size=(125, 125))
+    ) / np.sqrt(2)
+    basis, R = np.linalg.qr(Z)
+    phases = np.diag(R)
+    phases = np.where(np.abs(phases) > 0, phases / np.abs(phases), 1.0)
+    basis = basis * phases.conj()[None, :]
+    Qc = random_split_profile(Xcal, basis)
+    muc = Qc.mean(axis=0)
+    cinv = np.linalg.pinv(np.cov(Qc, rowvar=False), rcond=1e-10)
+    random_controls.append((basis, muc, cinv))
+
+def random_shell_score(Q, muc, cinv):
+    D = Q - muc
+    return np.einsum("bi,ij,bj->b", D, cinv, D)
+
 def auc(y, score):
     order = np.argsort(score)
     ranks = np.empty_like(order, dtype=float)
@@ -107,6 +129,25 @@ def auc(y, score):
     n1 = int(np.sum(y))
     n0 = len(y) - n1
     return float((ranks[y == 1].sum() - n1 * (n1 + 1) / 2) / (n1 * n0))
+
+def fft_peak_score(X):
+    """Maximum 3-D FFT-bin power divided by total FFT power."""
+    F = np.fft.fftn(X.reshape(-1, 5, 5, 5), axes=(1, 2, 3))
+    power = np.abs(F) ** 2
+    power = power.reshape(len(X), -1)
+    return power.max(axis=1) / power.sum(axis=1)
+
+def random_split_profile(X, basis, dims=shell_dims):
+    """Energy fractions in a random orthonormal basis with the Casimir shell sizes."""
+    Z = X @ basis.conj()
+    energy = np.abs(Z) ** 2
+    total_energy = energy.sum(axis=1)
+    starts = np.cumsum(np.r_[0, dims[:-1]])
+    return np.stack(
+        [energy[:, start:start + dim].sum(axis=1) / total_energy
+         for start, dim in zip(starts, dims)],
+        axis=1,
+    )
 
 g = np.arange(-2, 3, dtype=float)
 A, R, TT = np.meshgrid(g, g, g, indexing="ij")
@@ -128,6 +169,11 @@ noise0 = (rng.normal(size=(NTEST, 125)) + 1j * rng.normal(size=(NTEST, 125))) / 
 Q0 = shell_profile(noise0)
 S0 = shell_score(Q0)
 eta0 = Q0[:, 2] + Q0[:, 5]
+fft0 = fft_peak_score(noise0)
+random0 = []
+for basis, muc, cinv in random_controls:
+    Qr0 = random_split_profile(noise0, basis)
+    random0.append(random_shell_score(Qr0, muc, cinv))
 target = make_targets(NTEST)
 
 bench = []
@@ -137,13 +183,37 @@ for snr_db in (-10, -5, 0, 5):
     Q1 = shell_profile(X1)
     S1 = shell_score(Q1)
     eta1 = Q1[:, 2] + Q1[:, 5]
+    fft1 = fft_peak_score(X1)
     y = np.r_[np.zeros(NTEST, dtype=int), np.ones(NTEST, dtype=int)]
+    random_aucs = []
+    for (basis, muc, cinv), sr0 in zip(random_controls, random0):
+        Qr1 = random_split_profile(X1, basis)
+        sr1 = random_shell_score(Qr1, muc, cinv)
+        random_aucs.append(auc(y, np.r_[sr0, sr1]))
     bench.append({
         "snr_db": snr_db,
         "auc_full_7_shell_profile": auc(y, np.r_[S0, S1]),
         "auc_abs_E47_occupancy_deviation": auc(y, np.r_[np.abs(eta0-47/125), np.abs(eta1-47/125)]),
+        "auc_fft_peak_over_total_energy": auc(y, np.r_[fft0, fft1]),
+        "auc_random_same_size_splits": random_aucs,
+        "random_same_size_auc_min": float(min(random_aucs)),
+        "random_same_size_auc_max": float(max(random_aucs)),
         "mean_eta_E_target_plus_noise": float(eta1.mean()),
     })
+
+random_control_max_deviation = max(
+    abs(v - 0.5)
+    for row in bench
+    for v in row["auc_random_same_size_splits"]
+)
+fft_beats_casimir_all_snr = all(
+    row["auc_fft_peak_over_total_energy"] > row["auc_full_7_shell_profile"]
+    for row in bench
+)
+casimir_beats_random_max_all_snr = all(
+    row["auc_full_7_shell_profile"] > row["random_same_size_auc_max"]
+    for row in bench
+)
 
 passed = (
     algebra["casimir_multiplicities"] == shell_dims.tolist()
@@ -153,6 +223,7 @@ passed = (
     and abs(contraction["rho_star"] - 15/17) < 1e-12
     and contraction["relative_error_after_220"] < 1e-10
     and null_test["absolute_mean_error"] < 0.002
+    and random_control_max_deviation < 0.04
 )
 
 certificate = {
@@ -174,6 +245,23 @@ certificate = {
     "algebra": algebra,
     "contraction": contraction,
     "isotropic_null": null_test,
+    "controls": {
+        "random_same_size_splits": {
+            "draws": N_RANDOM_SPLITS,
+            "seed": CONTROL_SEED,
+            "dimensions": shell_dims.tolist(),
+            "construction": "Haar-random complex orthonormal basis, contiguous groups with Casimir shell sizes",
+            "max_auc_deviation_from_chance": float(random_control_max_deviation),
+        },
+        "fft_peak_over_total_energy": {
+            "definition": "max(|FFT3(X)|^2) / sum(|FFT3(X)|^2)",
+            "kind": "standard spectral peak-to-total-energy baseline; CFAR-style statistic, not a full operational CFAR detector",
+        },
+        "comparative_result": {
+            "casimir_beats_random_same_size_max_at_every_snr": bool(casimir_beats_random_max_all_snr),
+            "fft_beats_casimir_at_every_snr": bool(fft_beats_casimir_all_snr),
+        },
+    },
     "synthetic_benchmark": bench,
 }
 print(json.dumps(certificate, indent=2))
