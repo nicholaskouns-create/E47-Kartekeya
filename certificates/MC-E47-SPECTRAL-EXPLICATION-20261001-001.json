@@ -1,0 +1,16 @@
+{
+  "certificate": "MC-E47-SPECTRAL-EXPLICATION-20261001-001",
+  "title": "E47 First-Principles Proof: Spectral Selection, Projector, and Recursive Contraction",
+  "evidence_class": "E0/E1",
+  "status": "PASS",
+  "carrier_dimension": 125,
+  "casimir_spectrum": [0,2,6,12,20,30,42],
+  "multiplicities": [1,9,25,28,27,22,13],
+  "selector": "K=(C-6I)(C-30I)",
+  "E47_dimension": 47,
+  "Omega_c": 0.376,
+  "K2_positive_spectrum": [11664,12544,19600,32400,186624],
+  "epsilon_star": "1/99144",
+  "rho_star": "15/17",
+  "scope": "Finite-dimensional spectral theorem. Bohmian implicate/explicate language is interpretive and not used as a premise."
+}
