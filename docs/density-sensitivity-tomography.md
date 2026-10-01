@@ -31,17 +31,30 @@ Epoch/model drift is represented by separate carrier slices. It is not hidden in
 8. Accept the gate only if it does not materially worsen held-out error.
 9. Preserve residuals and contradictions.
 
-## First seed
+## First seed and robust control
 
 The blind seed has 11 recoverable historical observations and excludes SCF-2026-01 from training.
+
+The original cold-start split remains preserved as a historical result:
 
 - holdout: 2026-08-18-crqc, 2026-08-29-fpga-later
 - raw ART holdout RMSE: 0.6764351752
 - P47-gated holdout RMSE: 0.4524218813
 - P47 rank: 47
-- seed gate criterion: PASS
+- original two-point seed criterion: PASS on that split only
 
-This is a cold-start result. The corpus is intentionally incomplete and must be expanded before substantive inference.
+That two-point result is **not** the canonical generalization gate. The September 30 control re-runs the seed with exhaustive leave-one-out across all 11 observations and with 47 deterministic random rank-47 orthogonal projectors as same-capacity controls.
+
+- leave-one-out raw ART RMSE: **0.4318927246**
+- leave-one-out P47 RMSE: **0.4993708025**
+- 47 random rank-47 controls: mean **0.4028903054**, median **0.4019151409**, range **0.3463696360–0.4550745483**
+- P47 beats random controls: **0 / 47**
+- 100 repeated 20% holdouts: mean raw **0.3603921369**, mean P47 **0.4549972051**
+- P47 wins repeated splits: **33 / 100**
+
+Therefore the stronger control **does not support a P47-specific reconstruction benefit on this 11-observation seed**. The canonical DENSITY gate remains **OPEN**. The result is finite and seed-specific; it does not establish a universal negative statement about P47.
+
+Machine record: `certificates/MC-DENSITY-RANK47-CONTROL-20260930-001.json`.
 
 ## Platform fabric
 
