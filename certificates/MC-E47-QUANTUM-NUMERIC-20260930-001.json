@@ -1,0 +1,22 @@
+{
+  "certificate_code": "MC-E47-QUANTUM-NUMERIC-20260930-001",
+  "title": "E47 Spin-2 Triple-Tensor Quantum Numeric Validation",
+  "passed": true,
+  "checks": {
+    "su2_j2": true,
+    "rank_P47": true,
+    "projector": true,
+    "kernel": true,
+    "gap_11664": true,
+    "norm_186624": true,
+    "eps_1_99144": true,
+    "rho_15_17": true,
+    "gamma_220_close": true
+  },
+  "rank": 47,
+  "Delta": 11663.99999999992,
+  "M": 186624.00000000006,
+  "epsilon": 1.0086339062373923e-05,
+  "rho_star": 0.8823529411764715,
+  "gamma220_spectral_error": 1.1000500141231391e-12
+}
