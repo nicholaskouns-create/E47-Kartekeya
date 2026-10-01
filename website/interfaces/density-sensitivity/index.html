@@ -40,15 +40,21 @@ table{width:100%;border-collapse:collapse;font:12px ui-monospace,monospace}th,td
 </div>
 
 <div class="panel">
-<h2>Held-out test</h2>
+<h2>Seed split test</h2>
 <div class="row">
 <div class="metric"><b id="nobs">—</b><span>observations</span></div>
 <div class="metric"><b id="raw">—</b><span>raw holdout RMSE</span></div>
 <div class="metric"><b id="p47">—</b><span>P47 holdout RMSE</span></div>
-<div class="metric"><b id="gate">—</b><span>P47 gate useful?</span></div>
+<div class="metric"><b id="gate">—</b><span>P47 useful on this split?</span></div>
 </div>
 <h2 style="margin-top:18px">Highest reconstructed cells</h2>
 <table><thead><tr><th>d</th><th>i</th><th>o</th><th>score</th></tr></thead><tbody id="top"></tbody></table>
+</div>
+
+<div class="panel span" style="border-color:#8b643f">
+<h2>Robust rank-47 control · canonical status OPEN</h2>
+<p class="small">The original two-point seed split is preserved above, but it is not sufficient to establish a P47-specific benefit. Exhaustive leave-one-out across all 11 observations gives raw ART RMSE <b>0.431893</b> and P47 RMSE <b>0.499371</b>. Across 47 deterministic random rank-47 projector controls, RMSE ranges <b>0.346370–0.455075</b>; P47 beats <b>0 / 47</b>. In 100 repeated 20% holdouts, mean RMSE is raw <b>0.360392</b> vs P47 <b>0.454997</b>.</p>
+<p class="small"><b>Result:</b> the stronger control does not support a P47-specific reconstruction benefit on this finite seed. This falsifies promotion of the original two-point PASS into a general gate. <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-DENSITY-RANK47-CONTROL-20260930-001.json">machine certificate</a></p>
 </div>
 
 <div class="panel span">
@@ -89,7 +95,7 @@ async function run(){
     $("nobs").textContent=out.n_observations;
     $("raw").textContent=Number(out.holdout_rmse_raw).toFixed(3);
     $("p47").textContent=Number(out.holdout_rmse_p47).toFixed(3);
-    $("gate").textContent=out.p47_gate_useful?"YES":"NO";
+    $("gate").textContent=out.p47_gate_useful?"SEED YES":"SEED NO";
     $("gate").className=out.p47_gate_useful?"ok":"warn";
     $("top").innerHTML=(out.p47_top_cells||[]).map(x=>`<tr><td>${x.domain}</td><td>${x.implementation}</td><td>${x.operationality}</td><td>${Number(x.score).toFixed(3)}</td></tr>`).join("");
     $("status").textContent=`Holdout: ${out.holdout_ids.join(", ")} · projector self-test ${Number(out.gate.projector_selftest_l2).toExponential(2)}`;
