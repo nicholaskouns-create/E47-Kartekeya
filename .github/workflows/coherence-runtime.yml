@@ -19,6 +19,16 @@ permissions:
   contents: read
 
 jobs:
+  execute-binding:
+    name: AMNESTY execute is bound to the declared key
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - run: node --experimental-strip-types --test supabase/functions/coherence-runtime/test/execute_binding.test.mjs
+
   test:
     runs-on: ubuntu-latest
     steps:
