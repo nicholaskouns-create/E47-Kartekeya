@@ -2,7 +2,7 @@
 
 **Canonical title.** The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C−6I)(C−30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M₅ ⊕ M₂ at Ω_c = 47/125.
 
-**[OPEN MATHEMATICAL CITY ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/mathematical-city/)** · **[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/release/E47-v1.0) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [CITATION.cff](CITATION.cff) · [codemeta.json](codemeta.json)
 
