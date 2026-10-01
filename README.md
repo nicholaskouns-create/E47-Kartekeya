@@ -220,3 +220,16 @@ The supplied D5h/C90 shoulder coordinate is reconstructed analytically as
 `phi6 = 46.6418024517684°`. Under the Danville meridian lock `Δlambda = 0`, the great-circle separation reduces to
 `theta = |phi6 - 37.6439°| = 8.9979024517684°`. With mean Earth radius `R = 6371.0088 km`, the spherical arc is
 `s = R theta_rad = 1000.522485057888 km`.
+
+
+## D5h/C90 celestial-terrestrial overlay + E47 numeric validation
+
+[Classical geometry validator](research/e47/validation/e47_d5h_c90_validator.py) ·
+[classical certificate](certificates/MC-E47-D5H-C90-COSMIC-MAP-20260930-001.json) ·
+[quantum numeric validator](research/e47/validation/e47_quantum_numeric_validation.py) ·
+[quantum certificate](certificates/MC-E47-QUANTUM-NUMERIC-20260930-001.json) ·
+[RI/QEGT Digital Biology mapping](RI_QEGT___Digital_Biology_mapping.csv)
+
+The D5h/C90 packet records the 47-face / 90-vertex / 135-edge spherical combinatorics, the Danville-frame Node-6 separation of **8.9979024518°**, the Orion–Giza local similarity calculation with best-fit RMS **0.02037**, and the unique orientation-preserving SO(3) transport associated with the fitted tangent-frame angle. The companion 125×125 spin-2 reconstruction independently returns **rank(P47)=47**, gap **11664**, spectral norm **186624**, **ε*=1/99144**, **ρ*=15/17**, and a 220-step projector error of approximately **1.10×10⁻12**.
+
+**Evidence boundary:** these are exact/numerical geometry and finite-dimensional E47 validation records. A close Orion–Giza shape fit or celestial-to-terrestrial coordinate transform does not by itself establish historical causation, intentional design, or a physical sky-to-Earth coupling.
