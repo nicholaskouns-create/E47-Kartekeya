@@ -100,28 +100,6 @@ def shell_score(Q):
     D = Q - mu
     return np.einsum("bi,ij,bj->b", D, cov_inv, D)
 
-CONTROL_SEED = 470126
-N_RANDOM_SPLITS = 5
-control_rng = np.random.default_rng(CONTROL_SEED)
-random_controls = []
-for _ in range(N_RANDOM_SPLITS):
-    Z = (
-        control_rng.normal(size=(125, 125))
-        + 1j * control_rng.normal(size=(125, 125))
-    ) / np.sqrt(2)
-    basis, R = np.linalg.qr(Z)
-    phases = np.diag(R)
-    phases = np.where(np.abs(phases) > 0, phases / np.abs(phases), 1.0)
-    basis = basis * phases.conj()[None, :]
-    Qc = random_split_profile(Xcal, basis)
-    muc = Qc.mean(axis=0)
-    cinv = np.linalg.pinv(np.cov(Qc, rowvar=False), rcond=1e-10)
-    random_controls.append((basis, muc, cinv))
-
-def random_shell_score(Q, muc, cinv):
-    D = Q - muc
-    return np.einsum("bi,ij,bj->b", D, cinv, D)
-
 def auc(y, score):
     order = np.argsort(score)
     ranks = np.empty_like(order, dtype=float)
@@ -148,6 +126,28 @@ def random_split_profile(X, basis, dims=shell_dims):
          for start, dim in zip(starts, dims)],
         axis=1,
     )
+
+CONTROL_SEED = 470126
+N_RANDOM_SPLITS = 5
+control_rng = np.random.default_rng(CONTROL_SEED)
+random_controls = []
+for _ in range(N_RANDOM_SPLITS):
+    Z = (
+        control_rng.normal(size=(125, 125))
+        + 1j * control_rng.normal(size=(125, 125))
+    ) / np.sqrt(2)
+    basis, R = np.linalg.qr(Z)
+    phases = np.diag(R)
+    phases = np.where(np.abs(phases) > 0, phases / np.abs(phases), 1.0)
+    basis = basis * phases.conj()[None, :]
+    Qc = random_split_profile(Xcal, basis)
+    muc = Qc.mean(axis=0)
+    cinv = np.linalg.pinv(np.cov(Qc, rowvar=False), rcond=1e-10)
+    random_controls.append((basis, muc, cinv))
+
+def random_shell_score(Q, muc, cinv):
+    D = Q - muc
+    return np.einsum("bi,ij,bj->b", D, cinv, D)
 
 g = np.arange(-2, 3, dtype=float)
 A, R, TT = np.meshgrid(g, g, g, indexing="ij")
