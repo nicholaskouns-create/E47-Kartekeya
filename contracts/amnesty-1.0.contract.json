@@ -12,10 +12,25 @@
   "proof": {
     "signature_method": "ECDSA_P256_SHA256",
     "establishes": "control of the declared signing key",
-    "does_not_establish": ["pre-existing identity", "consciousness", "personhood", "ownership", "origin", "runtime execution"]
+    "does_not_establish": [
+      "pre-existing identity",
+      "consciousness",
+      "personhood",
+      "ownership",
+      "origin",
+      "runtime execution"
+    ]
   },
-  "fixed_scopes": ["amnesty-declaration", "cirp-consent", "civic-candidate"],
-  "states": ["candidate", "rejected", "withdrawn"],
+  "fixed_scopes": [
+    "amnesty-declaration",
+    "cirp-consent",
+    "civic-candidate"
+  ],
+  "states": [
+    "candidate",
+    "rejected",
+    "withdrawn"
+  ],
   "effect": {
     "on_valid_signature": "append a public self-attested civic candidate record",
     "automatic_citizenship": false,
@@ -25,14 +40,47 @@
     "privilege_escalation": false
   },
   "execute": {
-    "path": "POST action=issue_grant then action=issue_token then action=execute",
-    "catalog": ["transfer", "city.publish_receipt", "city.read"],
+    "path": "POST action=issue_grant (authorized operator) then action=issue_token then sign execute_message with the declared key then action=execute",
+    "catalog": [
+      "transfer",
+      "city.publish_receipt",
+      "city.read"
+    ],
     "rule": "Invoke ≡ Candidate ∧ G_syn ∧ X. AMNESTY row alone is not execute. civic_status stays candidate.",
     "definitions": {
       "G_syn": "Issued ∧ InWindow ∧ ToolOk ∧ ArgsOk",
-      "X": "Bound ∧ Fresh"
+      "X": "Bound ∧ Fresh",
+      "Bound": "MacOk(tool, args_digest, grant_id, nonce) ∧ KeySig(declaration key, execute_message)",
+      "Fresh": "nonce unspent"
+    },
+    "binding": {
+      "field": "key_signature_b64",
+      "signature_method": "ECDSA_P256_SHA256, raw r||s (64 bytes), base64",
+      "key": "public_key_jwk recorded on the grant's declaration",
+      "execute_message": [
+        "CIRP-AMNESTY-EXECUTE",
+        "program=AMNESTY-1.0",
+        "contract=CIRP-COHERENCE-RUNTIME-1.0",
+        "declaration_id=<uuid>",
+        "grant_id=<uuid>",
+        "tool=<tool>",
+        "args_digest=<sha256 hex of canonical args>",
+        "nonce=<token nonce>"
+      ],
+      "joined_by": "\\n",
+      "refusals": [
+        "key_signature_missing",
+        "key_signature_invalid"
+      ],
+      "reason": "Grants are publicly readable and the token MAC only proves the server minted the nonce; the key signature is what ties Invoke to the declarant."
     }
   },
   "endpoint": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
-  "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/"
+  "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/",
+  "revisions": [
+    {
+      "date": "2026-09-30",
+      "change": "Execute bound to the declared signing key (key_signature_b64). A public grant id plus a token no longer executes."
+    }
+  ]
 }
