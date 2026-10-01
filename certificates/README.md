@@ -66,3 +66,10 @@ Use the [validation scope](../docs/validation_scope.md) to interpret each claim.
 - Orion/Giza best local similarity: `RMS=0.0204`
 - Global extension: unique `R*∈SO(3)`, `det R*=1`
 - Corrections encoded: additive gnomonic remainder `+O(Δ²)`; exact `θ*=-90.427855°` gives `R*₂₁=-0.20263`
+
+
+## October 1, 2026 · Twisted spectral geometry
+
+| Record | Result |
+|---|---|
+| [E47 twisted spectral triple](../research/e47/validation/e47_twisted_spectral_triple_validator.py) | Explicit finite `(A,H,D,σ)`: `A=C⊕C`, `Hgeo=E6⊕E0`, swap twist, `γ=P6−P0`, odd Dirac operator; twisted commutator vanishes; Lorentzian `diag(-1,2,8,2)` · 13/13 PASS |
