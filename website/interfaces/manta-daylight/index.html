@@ -27,7 +27,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 @media(max-width:700px){.brand small{display:none}.status .chip:nth-child(3){display:none}.status a{display:none}.readout{font-size:8px}.legend{bottom:61px}.controls #pause,.controls #reset{display:none}.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
-<body>
+<body><div data-evidence-class style="position:fixed;z-index:9999;left:10px;top:10px;max-width:min(92vw,760px);padding:7px 10px;border:1px solid #5d7b79;border-radius:9px;background:rgba(5,12,15,.92);color:#dff7f1;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.04em">E2 · SIMULATION · <span style="font-weight:500;color:#a9c1bd">Assumptions: embedded 6DOF/aero rules and morph schedule. Falsifier: predicted A/B telemetry must fail if held-out reference dynamics disagree beyond declared tolerances.</span></div>
 <canvas id="gl"></canvas>
 <div class="fallback" id="fallback">
   <div class="horizon"></div>
