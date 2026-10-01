@@ -56,6 +56,7 @@ Use the [validation scope](../docs/validation_scope.md) to interpret each claim.
 
 
 ## D5h/C90 overlay first-principles proof
+- [Canonical symbolic proof](../research/e47/E47_D5h_C90_First_Principles_Proof_20260930.md)
 - [Python proof validator](../research/e47/validation/e47_overlay_proof_validate.py)
 - Core invariant: `Ω_c=47/125=0.376`
 - Constructed geometry: `V=90, E=135, F=47, χ=2`
