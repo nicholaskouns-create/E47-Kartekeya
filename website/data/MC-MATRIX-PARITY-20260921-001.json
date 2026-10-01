@@ -23,7 +23,7 @@
   },
   "python_mps_dense": {
     "phase_aligned_relative_l2": 6.9797841682435854e-15,
-    "fidelity": 1.0,
+    "fidelity": 1,
     "observable_max_error": 4.163336342344337e-15,
     "schmidt_spectrum_max_error": 1.6653345369377348e-15,
     "discarded_weight": 5.241335934017881e-32,
@@ -39,7 +39,7 @@
   "typed_feature_lift": {
     "source_dimension": 256,
     "target_dimension": 125,
-    "norm": 1.0,
+    "norm": 1,
     "claim": "explicit normalized sampled-amplitude feature map; not Hilbert-space isomorphism"
   },
   "e47": {
@@ -47,15 +47,22 @@
     "coherence_fraction": 0.376,
     "projector_idempotence_fro": 5.541372953883602e-15,
     "kernel_projector_fro": 4.996015056480395e-12,
-    "k2_spectrum": [0,11664,12544,19600,32400,186624],
+    "k2_spectrum": [
+      0,
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
     "k2_gap": 11663.99999999992,
     "k2_max": 186624.00000000006
   },
   "embedding_125_to_128": {
     "kind": "isometric embedding",
-    "j_dagger_j_residual_fro": 0.0,
-    "invalid_state_population": 0.0,
-    "r47_intertwiner_residual_fro": 0.0
+    "j_dagger_j_residual_fro": 0,
+    "invalid_state_population": 0,
+    "r47_intertwiner_residual_fro": 0
   },
   "source": {
     "matrix_engine": "website/interfaces/matrix/mps-worker.js",
@@ -65,5 +72,24 @@
     "validated_merge_ref_sha": "0f8f924a9e7b09b14b2f337f93de77189ce8e300",
     "main_merge_sha": "b2325c6246082f114474189b190dca21b6fed6b7",
     "github_actions_run": 35647363625
-  }
+  },
+  "python_truncation_stress": {
+    "configuration": {
+      "qubits": 8,
+      "layers": 24,
+      "max_bond_chi": 4,
+      "phase_phi": 0.7
+    },
+    "truncation_exercised": true,
+    "discarded_weight": 0.35512560007046373,
+    "max_bond": 4,
+    "mps_norm": 0.8340360893489401,
+    "phase_aligned_relative_l2_vs_dense": 0.4390620589918332,
+    "fidelity_vs_dense": 0.8117012639608663,
+    "observable_max_error_vs_dense": 0.1917827380746352,
+    "schmidt_spectrum_max_error_vs_dense": 0.16910960422942561,
+    "qiskit_aer_required_in_ci": true,
+    "note": "Updated validator runs this deliberately truncated path against dense and Qiskit Aer when Aer is available; the control is intended to measure truncation error, not to satisfy the untruncated parity tolerance."
+  },
+  "amended_2026_09_30": "Added forced-chi=4 Python truncation stress so the parity suite exercises nonzero discarded Schmidt weight."
 }
