@@ -361,7 +361,8 @@ def test_f_d_not_parallel(operators):
     """|f⟩ and |d⟩ are linearly independent (span a 2-dim space)."""
     psi_f = f_state(operators.structure_constants_f)
     psi_d = d_state(operators.structure_constants_d)
-    overlap = abs(float(np.vdot(psi_f, psi_d)))
+    # Modulus of the complex overlap, normalized: Cauchy-Schwarz equality iff parallel up to phase.
+    overlap = abs(np.vdot(psi_f, psi_d)) / (np.linalg.norm(psi_f) * np.linalg.norm(psi_d))
     # Not parallel: |⟨f|d⟩| < 1
     assert overlap < 1.0 - 1e-6, (
         f"|⟨f|d⟩| = {overlap:.6f}, states appear parallel"
