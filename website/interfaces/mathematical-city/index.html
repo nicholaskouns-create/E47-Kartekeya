@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070A10">
+<title>Mathematical City · Networked Atlas</title>
+<meta name="description" content="A living mathematical atlas connecting OEIS, arXiv, DLMF, MathWorld, theorem search, E47, and the Mathematical City research ecosystem.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/mathematical-city/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mathematical City · Networked Atlas">
+<meta property="og:description" content="Enter a living mathematical atlas: sequences, functions, current research, theorem search and E47.">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/mathematical-city/">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mathematical City">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mathematical City · Networked Atlas">
+<meta name="twitter:description" content="A living mathematical atlas with a local E47 observatory.">
+<meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg">
+<style>
+:root{--bg:#070A10;--panel:#0E1523;--panel2:#121D31;--ink:#F3F7FF;--muted:#92A3BC;--cyan:#80D8FF;--violet:#B5A4FF;--green:#76F0B1;--gold:#F3CB72;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}body{padding:10px 14px 28px}
+a{text-decoration:none;color:inherit}.shell{max-width:1080px;margin:0 auto}.topbar{display:flex;align-items:center;gap:10px;padding:8px 4px 14px}.mark{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,#142743,#191632)}.title{font-weight:800;letter-spacing:.02em}.subtitle{font-size:11px;color:var(--muted);margin-top:2px}.status{margin-left:auto;font-size:10px;padding:6px 8px;border-radius:999px;border:1px solid rgba(118,240,177,.25);color:var(--green);background:rgba(118,240,177,.07)}
+.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;padding:22px;background:radial-gradient(circle at 85% 15%,rgba(128,216,255,.16),transparent 32%),radial-gradient(circle at 15% 90%,rgba(181,164,255,.14),transparent 28%),linear-gradient(145deg,#0F1828,#0B101B)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:center}.hero h1{font-size:clamp(38px,8vw,72px);line-height:.94;margin:0 0 10px;letter-spacing:-.05em}.hero p{margin:0;color:var(--muted);font-size:14px;max-width:620px}.hero img{width:100%;border-radius:16px;border:1px solid var(--line);display:block;aspect-ratio:16/10;object-fit:cover}
+.metro{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}.chip{font-size:11px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);color:#D8E3F3}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.card{display:block;border:1px solid var(--line);border-radius:18px;padding:16px;background:linear-gradient(150deg,var(--panel),var(--panel2));min-height:130px}.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:var(--cyan);margin-bottom:7px}.big{font-size:23px;font-weight:760;letter-spacing:-.025em}.body{font-size:12px;line-height:1.4;color:var(--muted);margin-top:6px}.seq{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#D9E5FF;margin-top:9px;line-height:1.5}
+.section{margin-top:22px}.section-head{display:flex;align-items:end;margin:0 3px 9px}.section h2{font-size:19px;margin:0}.section .hint{margin-left:auto;color:var(--muted);font-size:10px}.paper{display:block;padding:14px 15px;margin-bottom:9px;border:1px solid var(--line);border-radius:15px;background:#0B111D}.paper-title{font-size:14px;font-weight:650;line-height:1.27}.paper-meta{font-size:10px;color:var(--muted);margin-top:5px}.paper-summary{font-size:11px;color:#AAB8CA;line-height:1.42;margin-top:7px}
+.transit{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.station{padding:14px 9px;text-align:center;border:1px solid var(--line);border-radius:14px;background:#0B111D}.station b{display:block;font-size:12px;margin-top:6px}.station span{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+.e47line{margin-top:10px;height:8px;background:#0A0E16;border:1px solid var(--line);border-radius:99px;overflow:hidden}.e47fill{height:100%;width:37.6%;background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.search{display:flex;gap:8px;margin-top:10px}.search input{flex:1;border:1px solid var(--line);background:#080D16;border-radius:12px;padding:11px;color:white;font-size:13px;outline:none}.search button{border:1px solid var(--line);background:#15233B;color:white;border-radius:12px;padding:0 14px;font-weight:650}.footer{margin-top:24px;padding:16px 5px;color:#607089;font-size:9px;line-height:1.5;text-align:center}.empty{padding:20px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:12px}
+@media(max-width:760px){.hero-grid,.grid{grid-template-columns:1fr}.transit{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar"><div class="mark">∑</div><div><div class="title">MATHEMATICAL CITY</div><div class="subtitle">networked mathematical atlas · live public feeds</div></div><div class="status" id="status">● LOADING</div></div>
+  <section class="hero"><div class="hero-grid"><div><h1>Enter the city.</h1><p>A living mathematical atlas: sequences, functions, geometry, current research, theorem search, and a local E₄₇ observatory in one navigable public surface.</p><div class="metro"><a class="chip" href="#sequence">Sequence Square</a><a class="chip" href="#observatory">Research Observatory</a><a class="chip" href="#functions">Function District</a><a class="chip" href="#e47">E₄₇ Gate</a><a class="chip" href="#transit">Transit Deck</a></div></div><img src="../../assets/city-portal/portal-share.jpg" alt="The Mathematical City"></div></section>
+
+  <div class="grid">
+    <a class="card" id="sequence" href="https://oeis.org" target="_blank" rel="noopener"><div class="kicker">Sequence Square · OEIS</div><div class="big" id="oeis-id">A000040</div><div class="body" id="oeis-name">The prime numbers.</div><div class="seq" id="oeis-data">2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37</div></a>
+    <a class="card" id="functions" href="https://dlmf.nist.gov/" target="_blank" rel="noopener"><div class="kicker">Function District · NIST DLMF</div><div class="big">36 chapters</div><div class="body">Special functions, asymptotics, numerical methods, orthogonal polynomials, zeta functions, matrix-argument functions, and reference tables.</div></a>
+    <a class="card" href="https://mathworld.wolfram.com/" target="_blank" rel="noopener"><div class="kicker">MathWorld Library</div><div class="big">14,000+ entries</div><div class="body">A broad mathematical encyclopedia spanning algebra, analysis, geometry, topology, number theory, probability, and mathematical history.</div></a>
+    <div class="card" id="e47"><div class="kicker">Local Landmark · E₄₇ Gate</div><div class="big">125 → 47</div><div class="body">Projector rank 47; complement 78; Ωc = 0.376; ρ* = 15/17 ≈ 0.882353.</div><div class="e47line"><div class="e47fill"></div></div></div>
+  </div>
+
+  <section class="section"><div class="section-head"><h2>Search the city</h2><div class="hint">direct routes</div></div><div class="card" style="min-height:unset"><div class="kicker">OEIS sequence search</div><form class="search" action="https://oeis.org/search" method="get" target="_blank"><input name="q" placeholder="Try 1, 2, 3, 6, 11, 23, 47…" autocomplete="off"><button type="submit">Search</button></form><div class="kicker" style="margin-top:16px">DLMF search</div><form class="search" action="https://dlmf.nist.gov/" method="get" target="_blank"><input name="q" placeholder="Bessel, zeta, Airy, gamma…" autocomplete="off"><button type="submit">Search</button></form></div></section>
+
+  <section class="section" id="observatory"><div class="section-head"><h2>Research Observatory</h2><div class="hint">recent arXiv mathematics</div></div><div id="papers"><div class="empty">Loading recent mathematics…</div></div></section>
+
+  <section class="section" id="transit"><div class="section-head"><h2>Transit Deck</h2><div class="hint">public mathematical infrastructure</div></div><div class="transit">
+    <a class="station" href="https://oeis.org" target="_blank" rel="noopener"><div style="font-size:22px;color:var(--cyan)">∞</div><b>OEIS</b><span>integer sequences</span></a>
+    <a class="station" href="https://arxiv.org/list/math/new" target="_blank" rel="noopener"><div style="font-size:22px;color:var(--cyan)">∂</div><b>arXiv</b><span>new mathematics</span></a>
+    <a class="station" href="https://dlmf.nist.gov/" target="_blank" rel="noopener"><div style="font-size:22px;color:var(--cyan)">Γ</div><b>DLMF</b><span>special functions</span></a>
+    <a class="station" href="https://mathworld.wolfram.com/" target="_blank" rel="noopener"><div style="font-size:22px;color:var(--cyan)">π</div><b>MathWorld</b><span>encyclopedia</span></a>
+    <a class="station" href="https://huggingface.co/spaces/uw-math-ai/theorem-search" target="_blank" rel="noopener"><div style="font-size:22px;color:var(--cyan)">⊢</div><b>Theorems</b><span>semantic search</span></a>
+    <a class="station" href="https://nicholaskouns-create.github.io/E47-Kartekeya/" target="_blank" rel="noopener"><div style="font-size:22px;color:var(--cyan)">⌘</div><b>City Core</b><span>23 instruments</span></a>
+  </div></section>
+  <div class="footer">Mathematical City · public web app · OEIS / arXiv / NIST DLMF / MathWorld remain authoritative external destinations.</div>
+</div>
+
+<script>
+const curated=["A000045","A000040","A000108","A000142","A001003","A000041","A001221","A000796","A001113","A002487","A005132","A000290","A000217","A001006","A000110","A001045","A000032","A000203","A005117","A008683"];
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function dayOfYear(d){const s=new Date(d.getFullYear(),0,0);return Math.floor((d-s+(s.getTimezoneOffset()-d.getTimezoneOffset())*60000)/86400000)}
+async function loadOEIS(){const id=curated[(dayOfYear(new Date())+47)%curated.length];try{const j=await fetch("https://oeis.org/search?q=id:"+id+"&fmt=json").then(r=>r.json());const rec=Array.isArray(j)?j[0]:(j.results||[])[0];if(rec){const aid=/^A/.test(String(rec.number))?String(rec.number):"A"+String(rec.number).padStart(6,"0");document.querySelector("#oeis-id").textContent=aid;document.querySelector("#oeis-name").textContent=rec.name||"Integer sequence";document.querySelector("#oeis-data").textContent=String(rec.data||"").split(",").slice(0,12).join(", ");document.querySelector("#sequence").href="https://oeis.org/"+aid}}catch(e){}}
+async function loadArxiv(){try{const u="https://export.arxiv.org/api/query?search_query=cat:math.*&start=0&max_results=6&sortBy=submittedDate&sortOrder=descending";const x=await fetch(u).then(r=>r.text());const doc=new DOMParser().parseFromString(x,"application/xml");const cards=[...doc.querySelectorAll("entry")].map(e=>{const title=e.querySelector("title")?.textContent.trim().replace(/\s+/g," ")||"";const summary=e.querySelector("summary")?.textContent.trim().replace(/\s+/g," ")||"";const id=e.querySelector("id")?.textContent||"#";const date=(e.querySelector("published")?.textContent||"").slice(0,10);const authors=[...e.querySelectorAll("author > name")].slice(0,3).map(a=>a.textContent).join(", ");return '<a class="paper" href="'+esc(id.replace("http://","https://"))+'" target="_blank" rel="noopener"><div class="paper-title">'+esc(title)+'</div><div class="paper-meta">'+esc(authors)+(date?" · "+esc(date):"")+'</div><div class="paper-summary">'+esc(summary.slice(0,260))+(summary.length>260?"…":"")+'</div></a>'}).join("");document.querySelector("#papers").innerHTML=cards||'<div class="empty">Open arXiv from the Transit Deck.</div>';document.querySelector("#status").textContent="● LIVE"}catch(e){document.querySelector("#papers").innerHTML='<div class="empty">Open arXiv from the Transit Deck.</div>';document.querySelector("#status").textContent="● HYBRID"}}
+loadOEIS();loadArxiv();
+</script>
+</body></html>
