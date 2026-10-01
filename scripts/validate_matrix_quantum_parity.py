@@ -441,18 +441,56 @@ def validate(cfg: Config) -> dict:
     }
 
 
+def truncation_probe(cfg: Config) -> dict:
+    """Deliberately constrain chi so the MPS path must discard Schmidt weight."""
+    dense = dense_matrix_circuit(cfg)
+    mps, discarded, max_bond, _ = mps_matrix_circuit(cfg)
+    qiskit_state, qiskit_meta = qiskit_aer_state(cfg)
+
+    probe = {
+        "configuration": asdict(cfg),
+        "discarded_weight": float(discarded),
+        "max_bond": int(max_bond),
+        "mps_norm": float(np.linalg.norm(mps)),
+        "phase_aligned_relative_l2_vs_dense": phase_aligned_relative_l2(mps, dense),
+        "fidelity_vs_dense": fidelity(mps, dense),
+        "observable_max_error_vs_dense": observable_error(mps, dense, cfg.n),
+        "schmidt_spectrum_max_error_vs_dense": schmidt_spectrum_error(mps, dense, cfg.n),
+        "truncation_exercised": bool(discarded > 1e-12 and max_bond == cfg.chi),
+        "qiskit_aer": {"status": "NOT_EXECUTED", **qiskit_meta},
+    }
+    if qiskit_state is not None:
+        probe["qiskit_aer"] = {
+            "status": "PASS",
+            "mps_phase_aligned_relative_l2": phase_aligned_relative_l2(mps, qiskit_state),
+            "mps_fidelity": fidelity(mps, qiskit_state),
+            "dense_phase_aligned_relative_l2": phase_aligned_relative_l2(dense, qiskit_state),
+            "dense_fidelity": fidelity(dense, qiskit_state),
+            **qiskit_meta,
+        }
+    return probe
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path)
     parser.add_argument("--require-qiskit", action="store_true")
     args = parser.parse_args()
     cert = validate(Config())
+    stress = truncation_probe(Config(n=8, layers=24, chi=4, phi=0.7))
+    cert["truncation_stress"] = stress
+    cert["checks"]["truncation_stress_exercised"] = stress["truncation_exercised"]
+    if not stress["truncation_exercised"]:
+        cert["status"] = "FAIL"
     if (
         args.require_qiskit
         and cert["quantum_parity"]["qiskit_aer"]["status"] != "PASS"
     ):
         cert["status"] = "FAIL"
         cert["checks"]["qiskit_aer_required"] = False
+    if args.require_qiskit and stress["qiskit_aer"]["status"] != "PASS":
+        cert["status"] = "FAIL"
+        cert["checks"]["truncation_stress_qiskit_required"] = False
     text = json.dumps(cert, indent=2, sort_keys=True)
     print(text)
     if args.output:

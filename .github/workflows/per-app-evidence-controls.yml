@@ -1,0 +1,131 @@
+name: Per-app evidence controls
+
+on:
+  pull_request:
+    paths:
+      - 'research/e47/validation/e47_radar_bridge_validator.py'
+      - 'research/e47/validation/density_sensitivity_tomography.py'
+      - 'research/e47/validation/data/density_sensitivity_seed_20260925.json'
+      - 'certificates/MC-E47-RADAR-BRIDGE-20260927-001.json'
+      - 'certificates/MC-DENSITY-RANK47-CONTROL-20260930-001.json'
+      - 'website/interfaces/**'
+      - 'website/shared/**'
+      - 'docs/validation_scope.md'
+      - '.github/workflows/per-app-evidence-controls.yml'
+  push:
+    branches: [ main ]
+    paths:
+      - 'research/e47/validation/e47_radar_bridge_validator.py'
+      - 'research/e47/validation/density_sensitivity_tomography.py'
+      - 'research/e47/validation/data/density_sensitivity_seed_20260925.json'
+      - 'certificates/MC-E47-RADAR-BRIDGE-20260927-001.json'
+      - 'certificates/MC-DENSITY-RANK47-CONTROL-20260930-001.json'
+      - 'website/interfaces/**'
+      - 'website/shared/**'
+      - 'docs/validation_scope.md'
+      - '.github/workflows/per-app-evidence-controls.yml'
+  workflow_dispatch:
+
+jobs:
+  controls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - name: Install numerical dependency
+        run: python -m pip install numpy
+
+      - name: Radar controls
+        run: |
+          python research/e47/validation/e47_radar_bridge_validator.py > /tmp/radar.json
+          python - <<'PY'
+          import json
+          j=json.load(open('/tmp/radar.json'))
+          assert j['status']=='PASS'
+          rows=j['synthetic_benchmark']
+          assert len(rows)==4
+          assert all(r['auc_full_7_shell_profile'] > r['random_same_size_auc_max'] for r in rows)
+          assert all(r['auc_fft_peak_over_total_energy'] > r['auc_full_7_shell_profile'] for r in rows)
+          assert j['controls']['comparative_result']['casimir_beats_random_same_size_max_at_every_snr']
+          assert j['controls']['comparative_result']['fft_beats_casimir_at_every_snr']
+          print('radar controls PASS')
+          PY
+
+      - name: Density leave-one-out and same-rank controls
+        run: |
+          python research/e47/validation/density_sensitivity_tomography.py \
+            research/e47/validation/data/density_sensitivity_seed_20260925.json \
+            --output /tmp/density.json > /tmp/density.stdout
+          python - <<'PY'
+          import json, math
+          j=json.load(open('/tmp/density.json'))
+          r=j['robust_validation']
+          assert r['leave_one_out']['folds']==11
+          assert r['random_rank47_control']['draws']==47
+          assert r['random_rank47_control']['p47_better_than_random_count']==0
+          assert r['p47_robustly_useful'] is False
+          assert math.isclose(r['loocv_raw_rmse'],0.43189272460496075,rel_tol=0,abs_tol=1e-10)
+          assert math.isclose(r['loocv_p47_rmse'],0.49937080247849625,rel_tol=0,abs_tol=1e-10)
+          print('density controls PASS; canonical gate remains OPEN')
+          PY
+
+      - name: Evidence labels and E2 falsifiers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          labeled = [
+            'website/interfaces/e47-first-principles/index.html',
+            'website/interfaces/newton-e47-product/index.html',
+            'website/interfaces/e47-radar-bridge/index.html',
+            'website/interfaces/gaze/index.html',
+            'website/interfaces/hyperbolic-liquid-fractal-buoy/index.html',
+            'website/interfaces/q5/index.html',
+            'website/interfaces/density-sensitivity/index.html',
+            'website/interfaces/manta-daylight/index.html',
+            'website/interfaces/flight/eidolon/index.html',
+            'website/interfaces/flight/eidolon-harmonic/index.html',
+            'website/interfaces/flight/hover-assembly/index.html',
+            'website/interfaces/flight/hover-cockpit/index.html',
+            'website/interfaces/flight/mav/index.html',
+            'website/interfaces/propulsion/index.html',
+          ]
+          for p in labeled:
+              t=Path(p).read_text()
+              assert 'data-evidence-class' in t, p
+
+          e2 = [
+            'website/interfaces/flight/ufo-propulsion/index.html',
+            'website/interfaces/neutrino-flavor/index.html',
+            'website/interfaces/manta/index.html',
+            'website/interfaces/skyrmion/index.html',
+            'website/interfaces/manifold/index.html',
+            'website/interfaces/webgl/index.html',
+            'website/interfaces/pip-manta/index.html',
+            'website/interfaces/matrix/index.html',
+            'website/interfaces/kouns-core/index.html',
+            'website/interfaces/density-sensitivity/index.html',
+            'website/interfaces/manta-daylight/index.html',
+            'website/interfaces/flight/eidolon/index.html',
+            'website/interfaces/flight/eidolon-harmonic/index.html',
+            'website/interfaces/flight/hover-assembly/index.html',
+            'website/interfaces/flight/hover-cockpit/index.html',
+            'website/interfaces/flight/mav/index.html',
+          ]
+          for p in e2:
+              t=Path(p).read_text()
+              assert ('data-e2-contract' in t or 'Falsifier:' in t), p
+
+          query=Path('website/interfaces/shared/city-query.js').read_text()
+          assert 'evidence_class: "OPEN"' in query
+          assert 'evidence_class: "E1"' not in query
+
+          scope=Path('docs/validation_scope.md').read_text()
+          assert '**E3:** Observation' in scope
+          assert '**E4:** Experiment / hardware' in scope
+          assert '**OPEN:** Unresolved' in scope
+          print('evidence contract audit PASS')
+          PY

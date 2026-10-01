@@ -17,7 +17,7 @@ table{width:100%;border-collapse:collapse;margin:20px 0}th,td{border-bottom:1px 
 .callout{border-left:3px solid var(--cyan);background:var(--panel);padding:16px 18px;margin:24px 0}.links{display:flex;gap:10px;flex-wrap:wrap}.links a{border:1px solid var(--line);padding:8px 10px;border-radius:999px;text-decoration:none;font:11px ui-monospace,monospace}
 footer{margin-top:48px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px}@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}}
 </style></head>
-<body><main>
+<body><div data-evidence-class style="position:fixed;z-index:9999;left:10px;top:10px;max-width:min(92vw,760px);padding:7px 10px;border:1px solid #5d7b79;border-radius:9px;background:rgba(5,12,15,.92);color:#dff7f1;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.04em">E0 NULL / E2 SYNTHETIC BENCHMARK · <span style="font-weight:500;color:#a9c1bd">Assumption: calibrated/whitened 5×5×5 complex I/Q. Falsifier: prespecified controls match or exceed Casimir performance on the same benchmark.</span></div><main>
 <div class="eyebrow">E47 · KKP-RADAR · MC-E47-RADAR-BRIDGE-20260927-001</div>
 <h1>E47 × KKP-RADAR<br>Spectral Operator Bridge</h1>
 <p class="lead">A calibrated 5×5×5 complex I/Q radar patch is vectorized directly into the existing 125-dimensional spin-2 triple tensor carrier. The unchanged E47 Casimir decomposition then produces seven measurable shell populations, an E47 occupancy, kernel residuals, and a calibrated anomaly statistic.</p>
@@ -43,9 +43,13 @@ AE = (q−μ₀)ᵀ Σ₀⁺ (q−μ₀)</pre>
 
 <h2>Why seven shells, not one scalar?</h2>
 <p>The exact isotropic baseline is <code>(1,9,25,28,27,22,13)/125</code>. The full Casimir-shell vector records how radar energy redistributes across all irreducible sectors. In the synthetic benchmark it carries substantially more information than scalar deviation of E47 occupancy alone.</p>
-<table><thead><tr><th>SNR</th><th>seven-shell AUC</th><th>|ηE−0.376| AUC</th></tr></thead><tbody>
-<tr><td>−10 dB</td><td>0.539</td><td>0.501</td></tr><tr><td>−5 dB</td><td>0.695</td><td>0.534</td></tr><tr><td>0 dB</td><td>0.866</td><td>0.634</td></tr><tr><td>+5 dB</td><td>0.932</td><td>0.696</td></tr>
+<table><thead><tr><th>SNR</th><th>Casimir 7-shell AUC</th><th>random same-size splits</th><th>FFT peak / total energy</th><th>|ηE−0.376| AUC</th></tr></thead><tbody>
+<tr><td>−10 dB</td><td>0.539</td><td>0.491–0.513</td><td>0.623</td><td>0.501</td></tr>
+<tr><td>−5 dB</td><td>0.695</td><td>0.486–0.506</td><td>0.904</td><td>0.534</td></tr>
+<tr><td>0 dB</td><td>0.866</td><td>0.476–0.516</td><td>0.996</td><td>0.634</td></tr>
+<tr><td>+5 dB</td><td>0.932</td><td>0.466–0.517</td><td>1.000</td><td>0.696</td></tr>
 </tbody></table>
+<div class="callout"><b>Control result.</b> Five Haar-random orthogonal decompositions with the same dimensions <code>(1,9,25,28,27,22,13)</code> remain near chance at every SNR, while the Casimir seven-shell profile is above all five controls. The standard 3-D FFT peak-to-total-energy statistic is stronger than the Casimir profile at every tested SNR. At 0 dB: <code>0.996</code> vs <code>0.866</code>. This is a comparative synthetic benchmark, not evidence of operational radar superiority.</div>
 
 <h2>Contraction</h2>
 <pre>Tε = I − εK²
@@ -72,7 +76,7 @@ zRADAR-E47 =
  q0,…,q6, ηE, RK, AE]</pre>
 
 <p class="pass"><b>Certificate PASS.</b> Exact finite algebra and synthetic numerical bridge validated.</p>
-<p><b>Evidence boundary:</b> no measured operational radar performance is claimed. The next empirical gate is a measured/public complex I/Q benchmark against prespecified CFAR, Doppler-threshold, and supervised baselines.</p>
+<p><b>Evidence boundary:</b> no measured operational radar performance is claimed. Random same-size subspaces and the FFT peak/total-energy control are now recorded in the machine certificate; the FFT control wins on this synthetic benchmark. The next empirical gate is a measured/public complex I/Q benchmark against prespecified full CFAR, Doppler-threshold, and supervised baselines.</p>
 
 <div class="links">
 <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_KKP_RADAR_Spectral_Operator_Bridge.md">THEOREM</a>

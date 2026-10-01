@@ -44,9 +44,11 @@ Claims in this package are categorized as follows:
 - **E0:** Exact proof
 - **E1:** Executable reconstruction
 - **E2:** Simulation
-- **E3:** External benchmark
-- **E4:** Experiment
-- **H0:** Hardware
+- **E3:** Observation — empirical result with measurement context; observation remains separate from interpretation
+- **E4:** Experiment / hardware — physical realization; never implied by E0/E1 transit
+- **OPEN:** Unresolved proof, reproduction, test, or boundary obligation
+
+`H0` is retained only as a legacy alias in older artifacts; new hardware claims use **E4**, matching the landing-page constitution.
 
 The current package primarily supports **E0** and **E1** claims, with limited **E2** coverage through QuTiP and numerical validation.
 
@@ -107,6 +109,6 @@ It does **not** replace:
 
 ---
 
-**Scope document updated:** 2026-09-23  
+**Scope document updated:** 2026-09-30  
 **Validation package:** `src/e47/`  
 **Repository:** https://github.com/nicholaskouns-create/E47-Kartekeya

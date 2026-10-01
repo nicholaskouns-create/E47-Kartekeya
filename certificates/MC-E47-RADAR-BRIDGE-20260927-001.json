@@ -4,7 +4,8 @@
   "evidence": {
     "algebra": "exact identities checked numerically",
     "radar_bridge": "synthetic numerical validation only",
-    "measured_radar": "not tested"
+    "measured_radar": "not tested",
+    "radar_controls": "random same-size subspace controls + FFT peak/total-energy baseline"
   },
   "bridge": {
     "input": "calibrated/whitened 5x5x5 complex I/Q patch",
@@ -54,25 +55,90 @@
       "snr_db": -10,
       "auc_full_7_shell_profile": 0.53874825,
       "auc_abs_E47_occupancy_deviation": 0.500646,
-      "mean_eta_E_target_plus_noise": 0.3746461502204827
+      "mean_eta_E_target_plus_noise": 0.3746461502204827,
+      "auc_fft_peak_over_total_energy": 0.6229345,
+      "auc_random_same_size_splits": [
+        0.5016655,
+        0.506084,
+        0.4911625,
+        0.50705575,
+        0.51312925
+      ],
+      "random_same_size_auc_min": 0.4911625,
+      "random_same_size_auc_max": 0.51312925
     },
     {
       "snr_db": -5,
       "auc_full_7_shell_profile": 0.69542575,
       "auc_abs_E47_occupancy_deviation": 0.534037,
-      "mean_eta_E_target_plus_noise": 0.3742435812796155
+      "mean_eta_E_target_plus_noise": 0.3742435812796155,
+      "auc_fft_peak_over_total_energy": 0.90377,
+      "auc_random_same_size_splits": [
+        0.50205075,
+        0.50253425,
+        0.48550525,
+        0.50540875,
+        0.5056345
+      ],
+      "random_same_size_auc_min": 0.48550525,
+      "random_same_size_auc_max": 0.5056345
     },
     {
       "snr_db": 0,
       "auc_full_7_shell_profile": 0.865593,
       "auc_abs_E47_occupancy_deviation": 0.6340735,
-      "mean_eta_E_target_plus_noise": 0.3764217909477975
+      "mean_eta_E_target_plus_noise": 0.3764217909477975,
+      "auc_fft_peak_over_total_energy": 0.99614125,
+      "auc_random_same_size_splits": [
+        0.51638575,
+        0.5135655,
+        0.47609175,
+        0.49390325,
+        0.49149775
+      ],
+      "random_same_size_auc_min": 0.47609175,
+      "random_same_size_auc_max": 0.51638575
     },
     {
       "snr_db": 5,
       "auc_full_7_shell_profile": 0.93170925,
       "auc_abs_E47_occupancy_deviation": 0.69565125,
-      "mean_eta_E_target_plus_noise": 0.3754365603929896
+      "mean_eta_E_target_plus_noise": 0.3754365603929896,
+      "auc_fft_peak_over_total_energy": 0.99982425,
+      "auc_random_same_size_splits": [
+        0.5167085,
+        0.50960325,
+        0.46636025,
+        0.48222525,
+        0.49751475
+      ],
+      "random_same_size_auc_min": 0.46636025,
+      "random_same_size_auc_max": 0.5167085
     }
-  ]
+  ],
+  "controls": {
+    "random_same_size_splits": {
+      "draws": 5,
+      "seed": 470126,
+      "dimensions": [
+        1,
+        9,
+        25,
+        28,
+        27,
+        22,
+        13
+      ],
+      "construction": "Haar-random complex orthonormal basis, contiguous groups with Casimir shell sizes",
+      "max_auc_deviation_from_chance": 0.033639750000000024
+    },
+    "fft_peak_over_total_energy": {
+      "definition": "max(|FFT3(X)|^2) / sum(|FFT3(X)|^2)",
+      "kind": "standard spectral peak-to-total-energy baseline; CFAR-style statistic, not a full operational CFAR detector"
+    },
+    "comparative_result": {
+      "casimir_beats_random_same_size_max_at_every_snr": true,
+      "fft_beats_casimir_at_every_snr": true
+    }
+  }
 }

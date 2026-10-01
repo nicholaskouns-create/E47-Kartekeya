@@ -177,26 +177,71 @@ def reconstruct(observations: Iterable[Observation], holdout: float = 0.2, seed:
 
 
 
-def robust_validate(observations: Iterable[Observation], holdout: float = 0.2, repeats: int = 100):
+def robust_validate(
+    observations: Iterable[Observation],
+    holdout: float = 0.2,
+    repeats: int = 100,
+    random_rank47_draws: int = 47,
+    random_rank47_seed: int = 47047,
+):
+    """Cross-validate P47 and compare it with same-rank random projector controls.
+
+    The primary control is leave-one-out over every non-excluded observation.
+    Each random control is a deterministic Haar-like real rank-47 orthogonal
+    projector on the same 125-dimensional reconstruction carrier.  The scalar
+    amplitude is re-fit on training data only, exactly as for P47.
+    """
     obs = [o for o in observations if not o.training_excluded]
     a = np.vstack([design_row(o) for o in obs])
     y = np.array([o.y for o in obs], dtype=float)
     p47 = canonical_p47()
 
-    def evaluate(train, test):
-        raw = art(a[train], y[train])
-        gated = p47 @ raw
+    def gate_from_raw(raw, train, projector):
+        gated = projector @ raw
         g_train = a[train] @ gated
         alpha = float((g_train @ y[train]) / (g_train @ g_train + 1e-12))
-        gated = np.clip(alpha * gated, 0.0, 1.0)
-        return rmse(y[test], (a @ raw)[test]), rmse(y[test], (a @ gated)[test])
+        return np.clip(alpha * gated, 0.0, 1.0)
 
-    loo_raw, loo_p47 = [], []
+    def evaluate(train, test, projector=p47):
+        raw = art(a[train], y[train])
+        gated = gate_from_raw(raw, train, projector)
+        return (
+            rmse(y[test], (a @ raw)[test]),
+            rmse(y[test], (a @ gated)[test]),
+        )
+
+    # Exhaustive leave-one-out: every available observation is held out once.
+    loo_raw, loo_p47, loo_cache = [], [], []
     for k in range(len(obs)):
         train = np.array([i for i in range(len(obs)) if i != k], dtype=int)
-        rr, rg = evaluate(train, np.array([k], dtype=int))
+        test = np.array([k], dtype=int)
+        raw = art(a[train], y[train])
+        gated = gate_from_raw(raw, train, p47)
+        rr = rmse(y[test], (a @ raw)[test])
+        rg = rmse(y[test], (a @ gated)[test])
         loo_raw.append(rr)
         loo_p47.append(rg)
+        loo_cache.append((raw, train, test))
+
+    loo_raw_rmse = float(np.sqrt(np.mean(np.square(loo_raw))))
+    loo_p47_rmse = float(np.sqrt(np.mean(np.square(loo_p47))))
+
+    # Same-rank null: random 47-dimensional orthogonal subspaces in R^125.
+    control_rng = np.random.default_rng(random_rank47_seed)
+    random_loo_rmse = []
+    for _ in range(random_rank47_draws):
+        q, _ = np.linalg.qr(control_rng.normal(size=(N, 47)))
+        projector = q @ q.T
+        errors = []
+        for raw, train, test in loo_cache:
+            gated = gate_from_raw(raw, train, projector)
+            pred = a @ gated
+            errors.extend((y[test] - pred[test]).tolist())
+        random_loo_rmse.append(float(np.sqrt(np.mean(np.square(errors)))))
+
+    random_loo = np.asarray(random_loo_rmse, dtype=float)
+    p47_better_fraction = float(np.mean(loo_p47_rmse < random_loo))
+    p47_beats_random_median = bool(loo_p47_rmse < float(np.median(random_loo)))
 
     repeated = []
     for seed in range(repeats):
@@ -208,20 +253,44 @@ def robust_validate(observations: Iterable[Observation], holdout: float = 0.2, r
     collisions = []
     by_coord = {}
     for o in obs:
-        by_coord.setdefault((o.domain, o.implementation, o.operationality), []).append((o.epoch, o.y, o.id))
+        by_coord.setdefault(
+            (o.domain, o.implementation, o.operationality), []
+        ).append((o.epoch, o.y, o.id))
     for coord, rows in by_coord.items():
         if len({round(v, 12) for _, v, _ in rows}) > 1:
             collisions.append({
                 "coordinate": list(coord),
-                "observations": [{"epoch": e, "target": v, "id": oid} for e, v, oid in rows],
+                "observations": [
+                    {"epoch": e, "target": v, "id": oid}
+                    for e, v, oid in rows
+                ],
             })
 
-    loo_raw_rmse = float(np.sqrt(np.mean(np.square(loo_raw))))
-    loo_p47_rmse = float(np.sqrt(np.mean(np.square(loo_p47)))
-    )
     return {
+        "leave_one_out": {
+            "folds": len(obs),
+            "raw_rmse": loo_raw_rmse,
+            "p47_rmse": loo_p47_rmse,
+            "held_out_ids": [o.id for o in obs],
+        },
+        # Backward-compatible top-level fields:
         "loocv_raw_rmse": loo_raw_rmse,
         "loocv_p47_rmse": loo_p47_rmse,
+        "random_rank47_control": {
+            "draws": random_rank47_draws,
+            "seed": random_rank47_seed,
+            "carrier_dimension": N,
+            "projector_rank": 47,
+            "construction": "QR orthonormalized Gaussian real subspaces",
+            "loocv_rmse": random_loo_rmse,
+            "mean_rmse": float(random_loo.mean()),
+            "median_rmse": float(np.median(random_loo)),
+            "min_rmse": float(random_loo.min()),
+            "max_rmse": float(random_loo.max()),
+            "p47_better_than_random_fraction": p47_better_fraction,
+            "p47_better_than_random_count": int(np.sum(loo_p47_rmse < random_loo)),
+            "p47_beats_random_median": p47_beats_random_median,
+        },
         "repeated_holdout_splits": repeats,
         "repeated_raw_mean_rmse": float(repeated[:, 0].mean()),
         "repeated_p47_mean_rmse": float(repeated[:, 1].mean()),
@@ -232,10 +301,10 @@ def robust_validate(observations: Iterable[Observation], holdout: float = 0.2, r
         "p47_robustly_useful": bool(
             loo_p47_rmse <= loo_raw_rmse + 0.02
             and repeated[:, 1].mean() <= repeated[:, 0].mean() + 0.02
+            and p47_beats_random_median
         ),
         "temporal_coordinate_collisions": collisions,
     }
-
 
 def main():
     ap = argparse.ArgumentParser()

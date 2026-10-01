@@ -1,0 +1,38 @@
+{
+  "certificate": "MC-DENSITY-RANK47-CONTROL-20260930-001",
+  "status": "PASS",
+  "evidence_class": "E2",
+  "purpose": "Cross-validation and same-rank projector control for the DENSITY sensitivity-tomography seed.",
+  "data": {
+    "non_excluded_observations": 11,
+    "leave_one_out_folds": 11
+  },
+  "results": {
+    "loocv_raw_rmse": 0.43189272460496075,
+    "loocv_p47_rmse": 0.49937080247849625,
+    "repeated_100_split_raw_mean_rmse": 0.3603921368862744,
+    "repeated_100_split_p47_mean_rmse": 0.4549972051273793,
+    "repeated_100_split_raw_median_rmse": 0.38551280072462835,
+    "repeated_100_split_p47_median_rmse": 0.4942498269633804,
+    "repeated_100_split_p47_wins": 33,
+    "repeated_100_split_p47_within_0_02": 42,
+    "random_rank47": {
+      "draws": 47,
+      "seed": 47047,
+      "mean_rmse": 0.4028903054322944,
+      "median_rmse": 0.40191514089633235,
+      "min_rmse": 0.3463696360198928,
+      "max_rmse": 0.45507454833563904,
+      "p47_better_than_random_count": 0,
+      "p47_better_than_random_fraction": 0,
+      "p47_beats_random_median": false
+    }
+  },
+  "conclusion": {
+    "original_two_point_holdout": "PASS on the original cold-start split only (raw 0.6764351752 vs P47 0.4524218813).",
+    "robust_generalization": "NOT_SUPPORTED",
+    "reason": "Under exhaustive leave-one-out, P47 RMSE is worse than raw ART and worse than every one of the 47 deterministic same-rank random-projector controls.",
+    "canonical_gate_status": "OPEN"
+  },
+  "scope": "Finite 11-observation seed only. This result does not establish a universal statement about P47; it invalidates treating the original two-point split as sufficient evidence of a P47-specific benefit."
+}
