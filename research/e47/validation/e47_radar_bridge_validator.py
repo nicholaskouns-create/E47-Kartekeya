@@ -265,3 +265,5 @@ certificate = {
     "synthetic_benchmark": bench,
 }
 print(json.dumps(certificate, indent=2))
+if not passed:
+    raise SystemExit(1)
