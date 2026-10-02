@@ -1,0 +1,26 @@
+{
+  "certificate_code": "MC-E47-GEOGRAPHIC-CLOSURE-20261001-001",
+  "title": "E47 Geographic Closure",
+  "valid": true,
+  "evidence_class": "E1",
+  "inputs": {
+    "dim_H": 125,
+    "dim_E47": 47,
+    "phi_birth": 37.6439,
+    "lambda_birth": -84.7729,
+    "phi_node6": 46.6418024518,
+    "lambda_node6": -84.7729,
+    "house_bearing": 351
+  },
+  "result": {
+    "Omega_c": 0.376,
+    "Omega_percent": 37.6,
+    "theta_geo_deg": 8.9979024518,
+    "theta_house_deg": 9,
+    "residual_deg": 0.0020975482,
+    "residual_arcsec": 7.55117352,
+    "p": 2.272727272727273e-8,
+    "Z_one_sided": 5.468232479484609
+  },
+  "boundary": "5.468σ is conditional on the stipulated p=1/44,000,000 null probability."
+}
