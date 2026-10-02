@@ -1,0 +1,29 @@
+{
+  "certificate_code": "MC-E47-GEOMETRIC-HOLOGRAPHY-20261001-001",
+  "title": "Geometric Holography — Numerical and Quantum Phase Validation",
+  "valid": true,
+  "evidence_class": "E1",
+  "inputs": {
+    "dim_H": 125,
+    "dim_E47": 47,
+    "phi_birth": 37.6439,
+    "lambda_birth": -84.7729,
+    "phi_node6": 46.6418024518,
+    "lambda_node6": -84.7729,
+    "house_bearing": 351,
+    "p_stipulated": 2.272727272727273e-8
+  },
+  "results": {
+    "Omega_c": 0.376,
+    "Omega_percent": 37.6,
+    "theta_geo_deg": 8.9979024518,
+    "theta_house_deg": 9,
+    "residual_deg": 0.0020975482,
+    "residual_arcsec": 7.55117352,
+    "predicted_house_bearing_deg": 351.0020975482,
+    "Z_one_sided": 5.468232479484609,
+    "quantum_phase_fidelity": 0.999999999664943,
+    "trace_distance": 0.000018304558753
+  },
+  "boundary": "The quantum result validates a phase-state encoding of the angular closure; it does not by itself establish a physical quantum or holographic mechanism."
+}
