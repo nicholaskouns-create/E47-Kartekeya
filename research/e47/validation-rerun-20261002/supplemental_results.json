@@ -1,0 +1,170 @@
+{
+  "mode": "independent reconstruction of stated identities",
+  "checks": [
+    {
+      "family": "Hodge",
+      "name": "boundary_squared",
+      "passed": true,
+      "value": 0.0
+    },
+    {
+      "family": "Hodge",
+      "name": "cycle_betti",
+      "passed": true,
+      "value": 1
+    },
+    {
+      "family": "Hodge",
+      "name": "cycle_tensor_kernel_rank",
+      "passed": true,
+      "value": 47
+    },
+    {
+      "family": "Hodge",
+      "name": "cycle_projector_factorization",
+      "passed": true,
+      "value": 3.5977167416556e-11
+    },
+    {
+      "family": "Hodge",
+      "name": "cycle_annihilation",
+      "passed": true,
+      "value": 1.6377467386011281e-10
+    },
+    {
+      "family": "Hodge",
+      "name": "cycle_semigroup_factorization",
+      "passed": true,
+      "value": 2.714260310620708e-14
+    },
+    {
+      "family": "Hodge",
+      "name": "cycle_long_time_limit",
+      "passed": true,
+      "value": 2.1279001608192436e-10
+    },
+    {
+      "family": "Hodge",
+      "name": "filled_triangle_betti",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "family": "Hodge",
+      "name": "filled_triangle_tensor_kernel_rank",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "family": "Hodge",
+      "name": "filled_triangle_projector_factorization",
+      "passed": true,
+      "value": 0.0
+    },
+    {
+      "family": "Hodge",
+      "name": "filled_triangle_annihilation",
+      "passed": true,
+      "value": 0.0
+    },
+    {
+      "family": "Hodge",
+      "name": "filled_triangle_semigroup_factorization",
+      "passed": true,
+      "value": 1.968387458125445e-14
+    },
+    {
+      "family": "Hodge",
+      "name": "filled_triangle_long_time_limit",
+      "passed": true,
+      "value": 9.357622970322338e-14
+    },
+    {
+      "family": "Newton",
+      "name": "product_quadratic_symbolic",
+      "passed": true,
+      "value": "0"
+    },
+    {
+      "family": "Newton",
+      "name": "jacobian_determinant_symbolic",
+      "passed": true,
+      "value": null
+    },
+    {
+      "family": "Newton",
+      "name": "jacobian_trace_symbolic",
+      "passed": true,
+      "value": null
+    },
+    {
+      "family": "Newton",
+      "name": "2000_fixed_points",
+      "passed": true,
+      "value": 4.987250353603669e-13
+    },
+    {
+      "family": "Newton",
+      "name": "2000_difference_invariants",
+      "passed": true,
+      "value": 3.4638958368304884e-14
+    },
+    {
+      "family": "Newton",
+      "name": "2000_jacobian_spectra",
+      "passed": true,
+      "value": 1.2855494446739613e-11
+    },
+    {
+      "family": "Newton",
+      "name": "2000_stability_classifications",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "family": "Swarm",
+      "name": "reserved_dwell",
+      "passed": true,
+      "value": 0.125
+    },
+    {
+      "family": "Swarm",
+      "name": "certified_speed",
+      "passed": true,
+      "value": 12.5
+    },
+    {
+      "family": "Swarm",
+      "name": "mixing_within_dwell",
+      "passed": true,
+      "value": null
+    },
+    {
+      "family": "Swarm",
+      "name": "fallback_exponential_identity",
+      "passed": true,
+      "value": 0.0
+    },
+    {
+      "family": "Swarm",
+      "name": "fallback_kernel_invariance",
+      "passed": true,
+      "value": 0.0
+    },
+    {
+      "family": "Swarm",
+      "name": "nonautonomous_unrolling",
+      "passed": true,
+      "value": 1.3877787807814457e-17
+    },
+    {
+      "family": "Swarm",
+      "name": "matched_endpoint_drift_bound",
+      "passed": true,
+      "value": null
+    }
+  ],
+  "passed": 27,
+  "total": 27,
+  "limitations": "Hodge: cycle and filled-triangle witnesses. Swarm: algebraic witnesses under stated assumptions, not trajectory-level topology preservation."
+}

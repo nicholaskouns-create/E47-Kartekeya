@@ -1,0 +1,25 @@
+E47 FLOW AS A SINGLE 125 × 125 SPECTRAL MATRIX MACHINE
+======================================================
+[PASS] dim V = 125
+[PASS] Casimir spectrum
+[PASS] Casimir multiplicities
+[PASS] K blocks
+[PASS] Q blocks
+[PASS] rank P47 = 47
+[PASS] P47 idempotent
+[PASS] K P47 = 0
+[PASS] rho_min = 11664
+[PASS] rho_max = 186624
+[PASS] eps* = 1/99144
+[PASS] rho* = 15/17
+[PASS] R^n -> P47
+[PASS] Omega_c = 47/125
+
+K blocks = [180, 112, 0, -108, -140, 0, 432]
+Q blocks = [32400, 12544, 0, 11664, 19600, 0, 186624]
+rho_min = 11664
+rho_max = 186624
+eps* = 1.0086339062373921e-05 = 1/99144
+rho* = 0.8823529411764706 = 15/17
+||R^300 - P47||_2 = 5.6121665676893966e-14
+OVERALL: PASS

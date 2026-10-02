@@ -1,0 +1,24 @@
+=== E47 NOISELESS + HEISENBERG-WEYL CERTIFICATE ===
+PASS dim_kernel_47
+PASS decomposition_5V2_2V5
+PASS c12_spectrum
+PASS factorization
+PASS knill_laflamme
+PASS z_polynomial
+PASS weyl_relation
+PASS x5
+PASS z5
+PASS collective_commutation
+PASS sector_retention
+PASS logical_density_invariance
+PASS logical_fidelity
+factorization_residual 4.1242177541919534e-15
+knill_laflamme_residual 3.564799289644625e-15
+z_polynomial_residual 3.3788683737717597e-15
+weyl_residual 3.0495823011369447e-15
+x5_residual 4.5114856488488266e-15
+z5_residual 6.7338988436173685e-15
+max_collective_commutator 5.041844500989733e-14
+sector_retention 1.0000000000000033
+logical_density_residual 4.466330808781477e-15
+logical_fidelity 1.0000000000000036

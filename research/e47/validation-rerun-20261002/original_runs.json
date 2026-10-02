@@ -1,0 +1,51 @@
+[
+  {
+    "name": "spectral_core",
+    "exit_code": 0,
+    "sha256": "e379b1fe86e58eb125f0c9add1d9df172a5d0fe4c9e2c2740902b7ed27c9341e",
+    "source": "/workspace/scratch/d675601cec55/e47-repo/research/e47/first-principles/e47_spectral_explication_proof.py",
+    "log": "spectral_core.log"
+  },
+  {
+    "name": "spectral_matrix",
+    "exit_code": 0,
+    "sha256": "bc925cb275c2dd234ecf016ffdea4be4b01c6daa34f1d7281b967c013231e525",
+    "source": "/workspace/scratch/d675601cec55/e47-repo/research/e47/validation/e47_spectral_matrix_proof.py",
+    "log": "spectral_matrix.log"
+  },
+  {
+    "name": "signature_symmetry",
+    "exit_code": 0,
+    "sha256": "e01f02dfcbc1cdf850e483f78069c33a0815b0e258d290c1c9354273049b3420",
+    "source": "/workspace/scratch/d675601cec55/e47-repo/research/e47/validation/e47_signature_symmetry_certificate.py",
+    "log": "signature_symmetry.log"
+  },
+  {
+    "name": "noiseless_ququint",
+    "exit_code": 0,
+    "sha256": "4d456b459bc66668019fe067058b3009a709ea122326698aaf93d1fded1c72c4",
+    "source": "/workspace/scratch/d675601cec55/e47-repo/research/e47/validation/e47_noiseless_heisenberg_weyl.py",
+    "log": "noiseless_ququint.log"
+  },
+  {
+    "name": "newton_product",
+    "exit_code": 0,
+    "sha256": "6e2dbc099d33cda0cf3f2610e04740781d87dd1495cf9fbefaef59a15cf3c768",
+    "source": "/workspace/scratch/d675601cec55/e47-repo/research/e47/newton-e47-product/newton_mean_e47_product_validator.py",
+    "log": "newton_product.log"
+  },
+  {
+    "name": "spacetime",
+    "exit_code": 0,
+    "sha256": "02df3e155cc81102bc4a0954bebe0f1ce35a15b04bf715b6c0cfee4294cdd5a4",
+    "source": "/workspace/scratch/d675601cec55/validation/spacetime_original.py",
+    "log": "spacetime.log"
+  },
+  {
+    "name": "twisted_triple",
+    "exit_code": 0,
+    "sha256": "d8088a8df2ea7e12bc7fcc8bff1a1fc7af43fca8ecc3b4c2492edbf1030c17b8",
+    "source": "/workspace/scratch/d675601cec55/validation/twisted_original.py",
+    "log": "twisted_triple.log"
+  }
+]

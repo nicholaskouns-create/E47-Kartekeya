@@ -1,0 +1,139 @@
+{
+  "title": "E47 First-Principles Proof: Spectral Selection, Projector, and Recursive Contraction",
+  "certificate": "MC-E47-SPECTRAL-EXPLICATION-20261001-001",
+  "evidence_class": "E0/E1",
+  "carrier_dimension": 125,
+  "casimir_spectrum": [
+    0,
+    2,
+    6,
+    12,
+    20,
+    30,
+    42
+  ],
+  "multiplicities": [
+    1,
+    9,
+    25,
+    28,
+    27,
+    22,
+    13
+  ],
+  "E47_dimension": 47,
+  "Omega_c": 0.376,
+  "K2_positive_spectrum": [
+    11664,
+    12544,
+    19600,
+    32400,
+    186624
+  ],
+  "epsilon_star": 1.0086339062373921e-05,
+  "rho_star": 0.882352941176472,
+  "Gamma220_projector_spectral_norm": 1.0999475265219277e-12,
+  "checks": {
+    "spin2_su2_commutators": {
+      "pass": true,
+      "value": [
+        5.551115123125783e-16,
+        0.0,
+        0.0
+      ]
+    },
+    "spin2_casimir": {
+      "pass": true,
+      "value": null
+    },
+    "carrier_dimension": {
+      "pass": true,
+      "value": [
+        125,
+        125
+      ]
+    },
+    "C_hermitian": {
+      "pass": true,
+      "value": null
+    },
+    "casimir_spectrum_multiplicities": {
+      "pass": true,
+      "value": {
+        "0": 1,
+        "2": 9,
+        "6": 25,
+        "12": 28,
+        "20": 27,
+        "30": 22,
+        "42": 13
+      }
+    },
+    "multiplicity_sum": {
+      "pass": true,
+      "value": 125
+    },
+    "E47_rank": {
+      "pass": true,
+      "value": 47
+    },
+    "P_idempotent": {
+      "pass": true,
+      "value": 2.0311660956902365e-15
+    },
+    "P_hermitian": {
+      "pass": true,
+      "value": null
+    },
+    "KP_zero": {
+      "pass": true,
+      "value": 7.782642357677317e-13
+    },
+    "Omega_c": {
+      "pass": true,
+      "value": 0.3760000000000001
+    },
+    "K2_positive_spectrum": {
+      "pass": true,
+      "value": [
+        11664,
+        12544,
+        19600,
+        32400,
+        186624
+      ]
+    },
+    "epsilon_star": {
+      "pass": true,
+      "value": 1.0086339062373921e-05
+    },
+    "rho_star": {
+      "pass": true,
+      "value": 0.882352941176472
+    },
+    "Gamma_fixes_E47": {
+      "pass": true,
+      "value": null
+    },
+    "Gamma220_to_P": {
+      "pass": true,
+      "value": 1.0999475265219277e-12
+    },
+    "state_decomposition": {
+      "pass": true,
+      "value": null
+    },
+    "preserved_component": {
+      "pass": true,
+      "value": null
+    },
+    "contracted_component": {
+      "pass": true,
+      "value": null
+    }
+  },
+  "status": "PASS",
+  "scope": "Finite-dimensional spectral theorem only. Bohmian implicate/explicate language is an interpretive analogy, not used in the proof."
+}
+
+19/19 CHECKS PASS

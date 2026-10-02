@@ -1,0 +1,43 @@
+PASS  dim(V2^⊗3)=125
+PASS  Casimir spectrum/multiplicities | {0: 1, 2: 9, 6: 25, 12: 28, 20: 27, 30: 22, 42: 13}
+PASS  dim ker K = 47 | 47
+PASS  P47^2 = P47 | resid=6.655e-15
+PASS  K P47 = 0 | resid=1.821e-12
+PASS  K^2 gap = 11664 | 11664
+PASS  ||K^2|| = 186624 | 186624
+PASS  W†W = I5
+PASS  C W = 6 W | resid=3.105e-15
+PASS  K^2 W = 0 | resid=1.283e-11
+PASS  C u = 0 | resid=1.694e-14
+PASS  K^2 u = 32400 u | resid=5.925e-11
+PASS  u ⟂ W | overlap=2.684e-16
+PASS  rank(A ↦ [A,Q]) = 3
+PASS  spatial Gram = diag(2,8,2) | [[2.0, 0.0, 0.0], [0.0, 8.0, 0.0], [0.0, 0.0, 2.0]]
+PASS  rank(dX) = 4 | 4
+PASS  Lorentzian signature = (-+++) | [-1.0, 2.0, 2.0, 8.0]
+PASS  sectional K12 = 1/2 | 1/2
+PASS  sectional K23 = 1/2 | 1/2
+PASS  sectional K31 = -1 | -1
+PASS  Ricci_spatial = diag(-1/2,1,-1/2) | Matrix([[-1/2, 0, 0], [0, 1, 0], [0, 0, -1/2]])
+PASS  scalar curvature R = 0 | 0
+PASS  Einstein tensor exact | Matrix([[0, 0, 0, 0], [0, -1/2, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1/2]])
+PASS  tr(8πG T_E47) = 0 | 0
+PASS  ∇^a T^(E47)_ab = 0 | [0, 0, 0]
+
+--- DERIVED OBJECTS ---
+spec(C) multiplicities = {0: 1, 2: 9, 6: 25, 12: 28, 20: 27, 30: 22, 42: 13}
+dim E47 = 47
+G_spatial = [[2. 0. 0.]
+ [0. 8. 0.]
+ [0. 0. 2.]]
+g_L invariant frame = diag(-1, 2, 8, 2)
+sectional curvatures = (1/2, 1/2, -1)
+Ricci_orthonormal = Matrix([[0, 0, 0, 0], [0, -1/2, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1/2]])
+R = 0
+G_orthonormal = Matrix([[0, 0, 0, 0], [0, -1/2, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1/2]])
+8π G_N T_E47 = Matrix([[0, 0, 0, 0], [0, -1/2, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1/2]])
+T_E47 = (1/(8π G_N)) * diag(0,-1/2,1,-1/2)
+covariant divergence = [0, 0, 0]
+
+PRIMA_FACIE_SPACETIME_PASS
+25/25 checks PASS
