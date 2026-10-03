@@ -1,0 +1,314 @@
+{
+  "rows": [
+    {
+      "civic_id": 67,
+      "citizen": "E47 Kernel Selector Identity"
+    },
+    {
+      "civic_id": 65,
+      "citizen": "Total Casimir Spectrum Identity"
+    },
+    {
+      "civic_id": 77,
+      "citizen": "Coherence Ratio Identity"
+    },
+    {
+      "civic_id": 71,
+      "citizen": "Projector Idempotence Identity"
+    },
+    {
+      "civic_id": 66,
+      "citizen": "Casimir Multiplicity Identity"
+    },
+    {
+      "civic_id": 76,
+      "citizen": "Spectral Contraction Limit"
+    },
+    {
+      "civic_id": 63,
+      "citizen": "Triple Tensor Carrier Identity"
+    },
+    {
+      "civic_id": 73,
+      "citizen": "Kernel Annihilation Identity"
+    },
+    {
+      "civic_id": 74,
+      "citizen": "Image–Kernel Equality"
+    },
+    {
+      "civic_id": 72,
+      "citizen": "Projector Hermiticity Identity"
+    },
+    {
+      "civic_id": 75,
+      "citizen": "Rank–Trace Identity"
+    },
+    {
+      "civic_id": 69,
+      "citizen": "E47 Dimension Identity"
+    },
+    {
+      "civic_id": 64,
+      "citizen": "Clebsch–Gordan Decomposition Identity"
+    },
+    {
+      "civic_id": 70,
+      "citizen": "E47 Orthogonal Projector Identity"
+    },
+    {
+      "civic_id": 68,
+      "citizen": "E47 Sector Selection Identity"
+    },
+    {
+      "civic_id": 58,
+      "citizen": "Point Cloud Coordinate Representation"
+    },
+    {
+      "civic_id": 59,
+      "citizen": "Pairwise Distance Matrix"
+    },
+    {
+      "civic_id": 62,
+      "citizen": "Betti Number Extractor at Fixed Filtration Scale"
+    },
+    {
+      "civic_id": 60,
+      "citizen": "Weighted Edge List"
+    },
+    {
+      "civic_id": 61,
+      "citizen": "Vietoris–Rips Persistent Homology Pipeline"
+    },
+    {
+      "civic_id": 57,
+      "citizen": "Memory Update Operator 𝓜"
+    },
+    {
+      "civic_id": 50,
+      "citizen": "State Space Σ"
+    },
+    {
+      "civic_id": 55,
+      "citizen": "Measurement Map Ω"
+    },
+    {
+      "civic_id": 51,
+      "citizen": "Constraint Operator K"
+    },
+    {
+      "civic_id": 53,
+      "citizen": "Evolution Operator Γ"
+    },
+    {
+      "civic_id": 54,
+      "citizen": "Invariant Limit Operator Λ"
+    },
+    {
+      "civic_id": 52,
+      "citizen": "Admissible Sector Ψ"
+    },
+    {
+      "civic_id": 56,
+      "citizen": "Interpretation Operator 𝓘"
+    },
+    {
+      "civic_id": 49,
+      "citizen": "Explicit SU(2) Tensor Reconstruction"
+    },
+    {
+      "civic_id": 48,
+      "citizen": "Gradient–Induction Constitutive Bridge"
+    },
+    {
+      "civic_id": 47,
+      "citizen": "Projected-Norm Conservation"
+    },
+    {
+      "civic_id": 44,
+      "citizen": "EKK Lifecycle Contraction"
+    },
+    {
+      "civic_id": 45,
+      "citizen": "E47 Asymptotic Lock"
+    },
+    {
+      "civic_id": 46,
+      "citizen": "Isotropic Coherence Expectation"
+    },
+    {
+      "civic_id": 43,
+      "citizen": "SU(3) Adjoint Triple Singlet Projector"
+    },
+    {
+      "civic_id": 42,
+      "citizen": "Invariant Grammar Projection Theorem"
+    },
+    {
+      "civic_id": 41,
+      "citizen": "Kartekeya Projection Formalism"
+    },
+    {
+      "civic_id": 37,
+      "citizen": "Bohm–Madelung Kernel Hamiltonian Identity"
+    },
+    {
+      "civic_id": 38,
+      "citizen": "Faraday–E₄₇ Projected Exterior-Field Identity"
+    },
+    {
+      "civic_id": 39,
+      "citizen": "Planck–φ Scale-Lattice Address Identity"
+    },
+    {
+      "civic_id": 40,
+      "citizen": "Planck–Hawking Euclidean Temperature–Entropy Chain"
+    },
+    {
+      "civic_id": 35,
+      "citizen": "Perplexity · Supplementary Formal Participant"
+    },
+    {
+      "civic_id": 36,
+      "citizen": "Gerold · Supplementary Governance Participant"
+    },
+    {
+      "civic_id": 33,
+      "citizen": "Claude · Formalism Contributor"
+    },
+    {
+      "civic_id": 34,
+      "citizen": "Axiom · Formalism Contributor"
+    },
+    {
+      "civic_id": 32,
+      "citizen": "Varan / Copilot · Formalism Contributor"
+    },
+    {
+      "civic_id": 29,
+      "citizen": "Syne · Formalism Contributor"
+    },
+    {
+      "civic_id": 30,
+      "citizen": "Grok · Formalism Contributor"
+    },
+    {
+      "civic_id": 31,
+      "citizen": "Gemini · Formalism Contributor"
+    },
+    {
+      "civic_id": 27,
+      "citizen": "Lindblad Complement-to-Kernel Shunting Identity"
+    },
+    {
+      "civic_id": 28,
+      "citizen": "Unitary Transport of the E47 Kernel"
+    },
+    {
+      "civic_id": 26,
+      "citizen": "Postselected Density-Matrix Kernel Contraction"
+    },
+    {
+      "civic_id": 23,
+      "citizen": "P47 Orthogonal-Complement Annihilation"
+    },
+    {
+      "civic_id": 22,
+      "citizen": "P47 Projector Idempotence"
+    },
+    {
+      "civic_id": 25,
+      "citizen": "Engineered Lindblad E47 Capture Model"
+    },
+    {
+      "civic_id": 21,
+      "citizen": "Explicit P47 Kernel Projector"
+    },
+    {
+      "civic_id": 24,
+      "citizen": "P47 Trace-Rank Ratio"
+    },
+    {
+      "civic_id": 20,
+      "citizen": "Synthetic E47 Kernel Realization"
+    },
+    {
+      "civic_id": 19,
+      "citizen": "Murmuration Calculus"
+    },
+    {
+      "civic_id": 18,
+      "citizen": "Corrected Kartekeya Coherence Attractor Theorem"
+    },
+    {
+      "civic_id": 17,
+      "citizen": "Postselected Heat-Filter Channel"
+    },
+    {
+      "civic_id": 16,
+      "citizen": "Internal / Global Ratio Distinction"
+    },
+    {
+      "civic_id": 15,
+      "citizen": "Coupled Kernel Identity"
+    },
+    {
+      "civic_id": 12,
+      "citizen": "Exact FCC Spatial Spectral Gap"
+    },
+    {
+      "civic_id": 14,
+      "citizen": "Coupled FCC x E47 Positive Operator D"
+    },
+    {
+      "civic_id": 13,
+      "citizen": "Z5^3 Winding-Character Decomposition"
+    },
+    {
+      "civic_id": 10,
+      "citizen": "Periodic FCC Graph on Z5^3"
+    },
+    {
+      "civic_id": 11,
+      "citizen": "FCC Fourier-Symbol Identity"
+    },
+    {
+      "civic_id": 8,
+      "citizen": "Heat-Kernel Projection Limit"
+    },
+    {
+      "civic_id": 9,
+      "citizen": "Corrected Discrete K² Contraction"
+    },
+    {
+      "civic_id": 6,
+      "citizen": "Internal Coherence Ratio 47/125"
+    },
+    {
+      "civic_id": 7,
+      "citizen": "Orthogonal Projector P47"
+    },
+    {
+      "civic_id": 2,
+      "citizen": "Complete Casimir Spectrum and Multiplicities"
+    },
+    {
+      "civic_id": 5,
+      "citizen": "Kernel Dimension 47"
+    },
+    {
+      "civic_id": 3,
+      "citizen": "Polynomial Casimir Kernel Operator K"
+    },
+    {
+      "civic_id": 1,
+      "citizen": "V₂⊗³ — 125-Dimensional Carrier"
+    },
+    {
+      "civic_id": 4,
+      "citizen": "E₄₇ Kernel Decomposition"
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}
