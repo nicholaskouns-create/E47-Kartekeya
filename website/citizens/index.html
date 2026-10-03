@@ -39,9 +39,8 @@ function render(){
  ${x.notion_url?`<div class=links><a href="${esc(x.notion_url)}">Notion record ↗</a></div>`:''}
  </article>`).join(''):'<div class=empty>No citizens match this view.</div>'
 }
-fetch('./citizens.json').then(r=>r.json()).then(async m=>{
- const parts=await Promise.all(m.shards.map(s=>fetch('./'+s).then(r=>r.json())));
- rows=parts.flatMap(p=>p.rows||[]).map(normalize).sort((a,b)=>(a.civic_id||0)-(b.civic_id||0));
+fetch('./citizens.json').then(r=>r.json()).then(m=>{
+ rows=(m.citizens||[]).map(normalize).sort((a,b)=>(a.civic_id||0)-(b.civic_id||0));
  population.textContent=rows.length;
  q.oninput=render;filter.onchange=render;render();
 }).catch(e=>{list.innerHTML='<div class=empty>Registry load failed.</div>';console.error(e)});
