@@ -1,10 +1,10 @@
 # The Kartekeya Isolation Lock · E47-v1.0
 
-> **Mathematical City:** [Networked Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/) · verified by the E47-Kartekeya Pages deployment.
+> **Main entry portal:** [The Mathematical City](https://nicholaskouns-create.github.io/website/) — explore the districts, interactive labs, and research index.
 
 **Canonical title.** The Kartekeya Isolation Lock: Finite Spectral Isolation of E47 = ker((C−6I)(C−30I)) with 29-Unit Intertwiner Algebra A_inv ≅ M₅ ⊕ M₂ at Ω_c = 47/125.
 
-**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE README ROUTER](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/)** · **[OPEN THE MAIN PORTAL](https://nicholaskouns-create.github.io/website/)** · **[FORMALISM ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/release/E47-v1.0) · [Cite](https://nicholaskouns-create.github.io/E47-Kartekeya/cite/) · [CITATION.cff](CITATION.cff) · [codemeta.json](codemeta.json)
 
@@ -28,7 +28,7 @@ The same routing graph is available as:
 
 | I want to… | Best first door | Then go deeper |
 |---|---|---|
-| **Enter once and look around** | [The Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) | [CITY LIVE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/) |
+| **Enter once and look around** | [The Mathematical City — main portal](https://nicholaskouns-create.github.io/website/) | [CITY LIVE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/) |
 | **Understand E47 quickly** | [E47 in Two Pages](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-recursive-system/) | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) |
 | **Run something** | [Instrument Portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) | [NEXUS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/) · [THE MATRIX](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/) · [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) |
 | **Verify a claim** | [125 × 125 Spectral Matrix Proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) | [Certificate index, including September 27 results](certificates/README.md) · [Validation scope](docs/validation_scope.md) |
