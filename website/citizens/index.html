@@ -1,13 +1,14 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Citizens · Mathematical City</title><style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#07090d;color:#eef4f8;font:14px ui-monospace,SFMono-Regular,Menlo,monospace}main{max-width:1280px;margin:auto;padding:28px}h1{font:800 clamp(44px,8vw,96px)/.86 system-ui;letter-spacing:-.06em;margin:.35em 0 .2em}p{line-height:1.5}.top,.stats,.meta{display:flex;gap:9px;flex-wrap:wrap}.pill,.tag{border:1px solid #31404d;border-radius:99px;padding:7px 11px}.stats{margin:18px 0}.stat{border:1px solid #27303a;background:#0d1118;border-radius:12px;padding:11px 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}input,select{background:#0d1118;color:#eef4f8;border:1px solid #31404d;border-radius:10px;padding:11px 12px;font:inherit}input{flex:1;min-width:220px}.card{border:1px solid #27303a;padding:15px;margin:9px 0;border-radius:12px;background:#0d1118}.row{display:flex;justify-content:space-between;gap:12px}.code{color:#70e8ff}.b{color:#aab5c2}.links a,a{color:#9cdcff;text-decoration:none}.g2{border-color:#375b55}.empty{padding:30px;text-align:center;color:#8795a1}@media(max-width:700px){main{padding:16px 14px 28px}.row{display:block}h1{font-size:clamp(38px,13vw,58px)}}button,a,input,select{touch-action:manipulation}button{background:#0d1118;color:#eef4f8;border:1px solid #31404d;border-radius:10px;padding:11px 12px;font:inherit}button:disabled{opacity:.4}
-.formal{margin:12px 0 4px;padding:12px;border-left:2px solid #70e8ff;background:#090d13}.formal b{color:#d8e7ef}.formal .eq{color:#8cffc8;margin-top:7px}.lineage{margin-top:9px;padding-top:9px;border-top:1px solid #27303a}.lineage a{margin-right:12px}.tiny{font-size:12px;color:#8193a2}
+.formal{margin:12px 0 4px;padding:12px;border-left:2px solid #70e8ff;background:#090d13}.formal b{color:#d8e7ef}.formal .eq{color:#8cffc8;margin-top:7px}.lineage{margin-top:9px;padding-top:9px;border-top:1px solid #27303a}.lineage a{margin-right:12px}.tiny{font-size:12px;color:#8193a2}#codepanel{display:none;border:1px solid #27303a;background:#090d13;border-radius:12px;padding:12px;margin:-6px 0 16px}#codepanel.open{display:block}#codepanel pre{white-space:pre-wrap;overflow:auto;max-height:420px;color:#8cffc8}#codepanel .tabs{display:flex;gap:8px;margin-bottom:10px}
 </style></head><body><main>
 <div class="top"><span class="pill">MATHEMATICAL CITY</span><span class="pill">COMPLETE ACTIVE NOTION ROLL</span><span class="pill">377 CITIZENS</span></div>
 <h1>CITIZENS</h1>
 <p>Complete active mirror of the <a href="https://mathematicalcity.notion.site/be16a65a0eb44f8faa866e1c62b7c097?v=1aafa2ad38234c59886fa69c764d6a1b">Roll of Mathematical Citizens</a>. The Notion roll is the source registry; this page mirrors the full active census without adding a parallel hierarchy. Formalism Atlas links are explicit locks only. Token overlap is not a crosswalk.</p>
 <div class="stats"><div class="stat"><b id="population">377</b><br><span class="b">citizens</span></div><div class="stat"><b id="shown">…</b><br><span class="b">shown</span></div><div class="stat"><b id="locked">…</b><br><span class="b">atlas locks</span></div></div>
 <div class="toolbar"><input id="q" placeholder="Search citizen, identity, borough…"><select id="filter"><option value="all">All citizens</option><option value="validated">Machine validated</option><option value="g2">Generation II</option><option value="locked">Atlas-locked</option></select></div>
-<div class="toolbar"><button id="prev" type="button">Previous</button><button id="next" type="button">Next</button><select id="size"><option>10</option><option selected>20</option><option>50</option><option>100</option></select><span class="b" id="cutlabel">…</span><a href="./keyset.js">keyset.js</a><a href="./keyset.py">keyset.py</a></div>
+<div class="toolbar"><button id="prev" type="button">Previous</button><button id="next" type="button">Next</button><select id="size"><option>10</option><option selected>20</option><option>50</option><option>100</option></select><span class="b" id="cutlabel">…</span><button id="viewcode" type="button">View code</button></div>
+<div id="codepanel"><div class="tabs"><button type="button" id="tabjs">keyset.js</button><button type="button" id="tabpy">keyset.py</button></div><pre id="codesrc">Loading…</pre></div>
 <div id="list"><div class="empty">Loading complete registry…</div></div>
 <script src="./keyset.js"></script>
 <script>
@@ -116,5 +117,18 @@ Promise.all([fetch('./citizens.json').then(r=>r.json()),fetch('../data/formalism
  }
  render();
  if(location.hash){const el=document.querySelector(location.hash); if(el) el.scrollIntoView()}
+const sources={};
+async function showCode(which){
+ codepanel.classList.add('open');
+ viewcode.textContent='Hide code';
+ if(!sources[which]) sources[which]=await fetch('./'+which).then(r=>r.text());
+ codesrc.textContent=sources[which];
+}
+viewcode.onclick=()=>{
+ if(codepanel.classList.contains('open')){codepanel.classList.remove('open');viewcode.textContent='View code';return}
+ showCode('keyset.js');
+};
+tabjs.onclick=()=>showCode('keyset.js');
+tabpy.onclick=()=>showCode('keyset.py');
 }).catch(e=>{list.innerHTML='<div class=empty>Registry load failed.</div>';console.error(e)});
 </script></main></body></html>
