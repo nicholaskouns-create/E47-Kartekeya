@@ -53,6 +53,7 @@ footer{border-top:1px solid #24486e;padding:22px 0 30px;color:#b7c7dc;font:9px u
 body.embed header{display:none}
 body.embed [data-e2-contract]{position:static;display:block;margin:10px auto 0;width:min(1160px,calc(100% - 24px));max-width:none}
 body.embed .poster{margin-top:10px}
+body.embed{overflow-x:hidden}body.embed .w{width:min(1160px,calc(100% - 16px))}
 @media(max-width:800px){.poster-top,.stage,.grid,.split{grid-template-columns:1fr}.chain{grid-template-columns:repeat(3,1fr)}.shells{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
@@ -104,6 +105,12 @@ body.embed .poster{margin-top:10px}
 (function(){
 "use strict";
 if(location.search.indexOf("embed=1")>=0)document.body.classList.add("embed");
+function reportEmbed(){
+  if(window.parent===window) return;
+  var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+  try{window.parent.postMessage({source:"pip-manta",type:"resize",height:h,beat:beat,omega:cap()},"*")}catch(err){}
+}
+
 var S=[{l:0,m:1,k:180,k2:32400},{l:2,m:9,k:112,k2:12544},{l:6,m:25,k:0,k2:0,t:1},{l:12,m:28,k:-108,k2:11664},{l:20,m:27,k:-140,k2:19600},{l:30,m:22,k:0,k2:0,t:1},{l:42,m:13,k:432,k2:186624}],eps=1/99144,G=S.map(function(s){return 1-eps*s.k2}),p=S.map(function(s){return s.m/125}),steps=0,mode="MANEUVER",beat=0,playing=true,timer=0;
 var BEATS=[
  {t:"1 Lattice",d:"125 states",say:"Think of this as a big box of 125 possible states. H = V2⊗3."},
@@ -187,6 +194,7 @@ function render(){
   $("gResBar").style.width=(100*Math.min(1,rk/400))+"%";
   drawLattice($("story"),morphed(),v("morph"));
   drawField();
+  reportEmbed();
 }
 function go(n){beat=(n+9)%9;applyBeat();render()}
 $("beats").onclick=function(e){var b=e.target.closest("[data-b]");if(!b)return;playing=false;$("play").textContent="PLAY EXPLAINER";go(+b.dataset.b)};
@@ -202,6 +210,7 @@ $("project").onclick=function(){project();render()};
 ["pitch","roll","yaw","morph","throttle"].forEach(function(id){$(id).oninput=render});
 $("modes").onclick=function(e){var b=e.target.closest("button[data-m]");if(!b)return;mode=b.dataset.m;document.querySelectorAll("#modes button").forEach(function(x){x.classList.toggle("on",x===b)});render()};
 addEventListener("resize",render);
+if(window.ResizeObserver)new ResizeObserver(reportEmbed).observe(document.body);
 applyBeat();render();
 timer=setInterval(function(){if(playing)go(beat+1)},4200);
 })();
