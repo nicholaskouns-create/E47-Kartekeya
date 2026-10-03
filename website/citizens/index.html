@@ -9,7 +9,7 @@
 <div class="toolbar"><input id="q" placeholder="Search citizen, identity, borough…"><select id="filter"><option value="all">All citizens</option><option value="validated">Machine validated</option><option value="g2">Generation II</option><option value="locked">Atlas-locked</option></select></div>
 <div id="list"><div class="empty">Loading complete registry…</div></div>
 <script>
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&','<':'<','>':'>','"':'"',"'":'&#39;'}[m]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 let rows=[],formalism=[],g2=[],byKey={};
 const ATLAS='../interfaces/formalism-atlas/';
 const GH='https://github.com/nicholaskouns-create/E47-Kartekeya';
