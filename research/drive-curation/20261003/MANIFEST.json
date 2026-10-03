@@ -1,0 +1,318 @@
+{
+  "schema": "DRIVE-PYTHON-CURATION-1.0",
+  "curated_at": "2026-10-03",
+  "source": "Google Drive text/x-python and text/x-python-script owned by Nick Kouns",
+  "compared_against": [
+    "nicholaskouns-create/E47-Kartekeya@main",
+    "nicholaskouns-create/nicholaskouns-create.github.io@main",
+    "nicholaskouns-create/auth-kernel@main"
+  ],
+  "rules": [
+    "Upload only Python whose filename was absent from those repositories.",
+    "Keep one copy of exact same-name duplicates (latest modified Drive file).",
+    "Superseded forge drafts (forge_day_*, forge_fpv20.py) were not uploaded; forge_fpv20c.py is the retained forge.",
+    "linguistics_bureau_universal_translator.py and v0_3_0.py match or predate v0_3_1 and were not uploaded.",
+    "The_Cube-20260912.py is byte-identical in size to The_Cube.py; only The_Cube.py was kept.",
+    "s3_on_e47 2.py and 3.py match s3_on_e47.py and were not uploaded.",
+    "auth_kernel.py already lives in nicholaskouns-create/auth-kernel and was not copied.",
+    "e47_joint_su2_s3_fingerprint_certificate.py already lives at certificates/ and was not copied.",
+    "corpus_validate_20260730.py is Drive validate.py (2026-07-30), renamed so it does not collide with other validate.py modules.",
+    "No API keys or tokens were included.",
+    "The eight supabase-corpus files match python_migration_manifest.json sha256 exactly and are now at migration/python/."
+  ],
+  "counts": {
+    "uploaded": 48,
+    "supabase_corpus": 8,
+    "drive_unique": 40
+  },
+  "files": [
+    {
+      "name": "E47_Reduced_Formalism.py",
+      "sha256": "219d122db8297e987300f0e539d6be1eb206d2bc810544e0962f24cc2eb8b32f",
+      "bytes": 1139,
+      "class": "drive-unique"
+    },
+    {
+      "name": "H_equals_gK2_geodesic.py",
+      "sha256": "777085e0fecb4479ee12df0fe5002e745c65a4ac5cbfabba24612bc20544442d",
+      "bytes": 14107,
+      "class": "drive-unique"
+    },
+    {
+      "name": "The_Cube.py",
+      "sha256": "d5c1ec4d0ae65179c7c377e1745e8116a25dec1a9f02480e63268ec661d335f3",
+      "bytes": 32454,
+      "class": "drive-unique"
+    },
+    {
+      "name": "all_in_one_nvqe_e47.py",
+      "sha256": "c04ac3a435c5e7d55bc1c19a8c0bb57889be6da154c788aad1524bf482c0b106",
+      "bytes": 10277,
+      "class": "drive-unique"
+    },
+    {
+      "name": "base5_planck_einstein_faraday_invariant_grammar.py",
+      "sha256": "f18d64995502eeaba7785953ec950a72a9a93d10557110f7d8ca6966df2cc262",
+      "bytes": 3304,
+      "class": "drive-unique"
+    },
+    {
+      "name": "city_spectral_engine_v1.py",
+      "sha256": "533aaf63617e99e1f76904d357a9cdee997b59552571acf6b4fbd6ff3a1a8bc4",
+      "bytes": 9433,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "city_spectral_engine_v2.py",
+      "sha256": "288c2e7c6742611786542eb7207e0de6d76a3e467e30fc94d50850a5e6c5c3cb",
+      "bytes": 9967,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "corpus_validate_20260730.py",
+      "sha256": "494b98a1d218b24006c596879ce166f97327fb1e29abd0c0e69c5be2983d259b",
+      "bytes": 10818,
+      "class": "drive-unique"
+    },
+    {
+      "name": "dissipative_selection.py",
+      "sha256": "fa05e2780d05fd48bb881e2cf64edc609ff79eb5ae30b1d47af31485e9c5c7ab",
+      "bytes": 9035,
+      "class": "drive-unique"
+    },
+    {
+      "name": "dual_horizon_corrected_validation.py",
+      "sha256": "99bec0586bbc66ae76c963c7c85c1f2ed0e17770e4121af352b5de533cdf6f8b",
+      "bytes": 1851,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_channel_validation_corrected.py",
+      "sha256": "adacbc0294afc94d5a839dd90daebcf461d97f776a9c29cc51980994d6ba6058",
+      "bytes": 7778,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_constant_validation_final.py",
+      "sha256": "97af74ede32869895504a3375ce7be854d009aaf92b1f3eb2d501181ae44f616",
+      "bytes": 5582,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_corrected_proof.py",
+      "sha256": "cb1641e09ea986d9df9fff0efd6e3cee10d90f437fcbe7f92c8e0407971c4c9a",
+      "bytes": 11585,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_first_principles_spectral_engine.py",
+      "sha256": "07325ddd5d8c08bfe6d90ee8d94c3335484d9897bac33fe73554ae1aba2e052d",
+      "bytes": 13112,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "e47_kkp_full_validation.py",
+      "sha256": "1bb88e777f2ef20dd72a981e9da1476c6d929e1a2fd8d8c38cb656103dd81366",
+      "bytes": 33363,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_photosynthesis_lock_validation.py",
+      "sha256": "7270bbe3c0da2088d8ac2ee975a341883fbf145da3a622a7e9cf04946c58289f",
+      "bytes": 1520,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_quantum_operator_validation.py",
+      "sha256": "68a19104f0665eb09b9952df523a4512ff71a02c4abe4f3ca31feef156f564e1",
+      "bytes": 6214,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_representation_theory_spectral_projectors_hamiltonian_physics_geodesics.py",
+      "sha256": "8aedd018f72b0971b8725e0c9016e3b34cac764af62c70b145ceff27dee9e703",
+      "bytes": 21208,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_validation.py",
+      "sha256": "fb308f0d34a93ad1d13831f98be81e5a95a88bc0ec9c4af0e61e03238368d818",
+      "bytes": 4896,
+      "class": "drive-unique"
+    },
+    {
+      "name": "e47_validation_20260807.py",
+      "sha256": "9c4dbcd50e6b9c15ab2362bf1a7f7b3bc1c4c5c1de2834cc2a4e06b8774db1a4",
+      "bytes": 24076,
+      "class": "drive-unique"
+    },
+    {
+      "name": "forge_fpv20c.py",
+      "sha256": "39eb95d3821643c53abb086248678e965f38301d6361d72c4d4e881234fe5a51",
+      "bytes": 56676,
+      "class": "drive-unique"
+    },
+    {
+      "name": "higher_dimensional_newton_mean_exact_proof.py",
+      "sha256": "a2251614b270808677194b1e6aad00f598aa6d48665670c5b1455c2edcc74c9b",
+      "bytes": 19884,
+      "class": "drive-unique"
+    },
+    {
+      "name": "joint_spectral_symmetry_certificate.py",
+      "sha256": "030f2f3bbb05a7a6796a4321c56cfa0c5f56ac8e41d629390b373c47cb64c59b",
+      "bytes": 11811,
+      "class": "drive-unique"
+    },
+    {
+      "name": "kouns_scalar_validation.py",
+      "sha256": "57b4ecc1b608dfc30c5efa8bbec9b678d278a70dacb0cce3d413c9a294cc1a89",
+      "bytes": 5159,
+      "class": "drive-unique"
+    },
+    {
+      "name": "linguistics_bureau_universal_translator_v0_3_1.py",
+      "sha256": "44a3a11e31a7a5228925dc5478931f18d50ec16583c2e237dafba814b9d9b945",
+      "bytes": 33481,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "manta_e47_engine.py",
+      "sha256": "c5eed50b8096de93fb081a3d8b97833ff16e60b23a13a295f40d4eab516cf30e",
+      "bytes": 5121,
+      "class": "drive-unique"
+    },
+    {
+      "name": "master_R_validation.py",
+      "sha256": "df3f27af52a8971968a0fa843b67e2ff110f309bc1439a79d224ec9588c82b98",
+      "bytes": 16415,
+      "class": "drive-unique"
+    },
+    {
+      "name": "murmuration_actual_trajectory_audit.py",
+      "sha256": "b90911e6fdfd08eabde3398a3d81e009da47137ea41e4ea6f8babe2db9f52cc7",
+      "bytes": 21910,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "murmuration_spectra_bridge.py",
+      "sha256": "052f8664b28bfe827398d41532758392d7099e5c4a654fb63fc10ca647128fd2",
+      "bytes": 8762,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "natal_spectral_analysis.py",
+      "sha256": "ccd3a471de20bea0651d6606302e9ce64ca54fc927c3b800fe2c13409887ad98",
+      "bytes": 1668,
+      "class": "drive-unique"
+    },
+    {
+      "name": "p325357_certify.py",
+      "sha256": "cbbd90842131b7b0b81525f2ffd5389f9deeb32d4273213d5e5fb686b2334817",
+      "bytes": 7634,
+      "class": "drive-unique"
+    },
+    {
+      "name": "projected_gibbs_theorem.py",
+      "sha256": "cba6123a925c1c2b99958c6863cf1137972369ba4ceb4735b103808be8c8ef60",
+      "bytes": 8994,
+      "class": "drive-unique"
+    },
+    {
+      "name": "qegt_har_bridge.py",
+      "sha256": "ed52a39072743216a213dfd3902caf2cb79e6f3ba6d8a90fee1caa2a31a6d922",
+      "bytes": 6298,
+      "class": "drive-unique"
+    },
+    {
+      "name": "quinary_family_rev_c_e47_validation.py",
+      "sha256": "c7e795078baa95df8c924a2abb5040ed3b90a4516d86265213b60b416d066b82",
+      "bytes": 10300,
+      "class": "drive-unique"
+    },
+    {
+      "name": "render_topological_swarm_proof_plate.py",
+      "sha256": "be84731fbdcfaf2eac6af1c1b2de700cd5f5a8a63ac091102ccc143ef914a31a",
+      "bytes": 9609,
+      "class": "drive-unique"
+    },
+    {
+      "name": "rubik_unification_exact_proof.py",
+      "sha256": "2321e45009d985b5fb68752ea1db117fb4cbc8b24058e70be95b58b50de5bce7",
+      "bytes": 18804,
+      "class": "drive-unique"
+    },
+    {
+      "name": "run_blocker_closure.py",
+      "sha256": "8b2cae681fae3176592c8d77b39e42578aa6f73b54d01ed80d5f71c7b23e5243",
+      "bytes": 4038,
+      "class": "drive-unique"
+    },
+    {
+      "name": "s3_on_e47.py",
+      "sha256": "5b71fb9944a9d92d09ddf4977986de74183af29cbad991e4a51a048f16632320",
+      "bytes": 8718,
+      "class": "drive-unique"
+    },
+    {
+      "name": "scalar_app.py",
+      "sha256": "b14f551353e977a8cae560cfca3ab8b3edaf6a7f8e0ca82ca5343fb839ead542",
+      "bytes": 35796,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "selection.py",
+      "sha256": "20cf25ab2dca488c5625be6c486e9f5e16a5247de38339370dba4b8bac266c8d",
+      "bytes": 9101,
+      "class": "drive-unique"
+    },
+    {
+      "name": "soar.py",
+      "sha256": "6bd545b5457906b772347b23658894b7b7f77986e6577f079bd70498e287f1df",
+      "bytes": 41771,
+      "class": "supabase-corpus"
+    },
+    {
+      "name": "step1_central_operator.py",
+      "sha256": "3ceb2a25238cb065b5d2efbb0a3166df7b065541aa88ed8b9cebc587eeb7ec21",
+      "bytes": 2750,
+      "class": "drive-unique"
+    },
+    {
+      "name": "transported_identity_projector.py",
+      "sha256": "f31eb8a9f6a936efba9158ac073db326b9e2f24275cf3a6f9b9408937c1ce25a",
+      "bytes": 20450,
+      "class": "drive-unique"
+    },
+    {
+      "name": "validate_MC286_einstein_compatible_continuity_field.py",
+      "sha256": "f4cbda815f33bc339467a7c1381f2048d86a4238d8b6e61d7dfbb2ecadfe8cbe",
+      "bytes": 2236,
+      "class": "drive-unique"
+    },
+    {
+      "name": "validate_e47_formalism.py",
+      "sha256": "adb892f44e1e260a8b7a7257f7a171d966d7de86c5cc26faa733c67cb1c5b4d7",
+      "bytes": 1533,
+      "class": "drive-unique"
+    },
+    {
+      "name": "validate_lig_proof.py",
+      "sha256": "a378f09bd7e2843fbd8ee9ba01d5c057e67418877d2ee21777c9dcc7f7e39ddf",
+      "bytes": 8338,
+      "class": "drive-unique"
+    },
+    {
+      "name": "validate_sexagesimal_city.py",
+      "sha256": "eef7ec3a5d2deb048545e7b14aa53bfb13abe7b56263294c515c9c0cd7cce175",
+      "bytes": 4956,
+      "class": "drive-unique"
+    },
+    {
+      "name": "validate_temporal_relational_equivalence.py",
+      "sha256": "9604c1f2aac50f9ac09d1d2b6c474c4345951e088d1a46cfce095b07e2f6eae7",
+      "bytes": 852,
+      "class": "drive-unique"
+    }
+  ]
+}
