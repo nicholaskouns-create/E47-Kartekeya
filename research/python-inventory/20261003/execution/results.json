@@ -1,0 +1,30 @@
+[
+  {
+    "path": "E47_Algebraic_Closure_CORRECTED.py",
+    "exit_code": 0
+  },
+  {
+    "path": "e47PythonValidationQuTiP.py",
+    "exit_code": 0
+  },
+  {
+    "path": "e47_generative_universe_test.py",
+    "exit_code": 0
+  },
+  {
+    "path": "arrival_mathematics_joint_e47_validation.py",
+    "exit_code": 0
+  },
+  {
+    "path": "visualizations_package_1/validate.py",
+    "exit_code": 0
+  },
+  {
+    "path": "visualizations_package_2/validate.py",
+    "exit_code": 0
+  },
+  {
+    "path": "test_selection.py",
+    "exit_code": 1
+  }
+]

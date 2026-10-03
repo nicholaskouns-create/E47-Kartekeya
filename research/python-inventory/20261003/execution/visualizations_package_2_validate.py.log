@@ -1,0 +1,53 @@
+{
+  "passed": 9,
+  "total": 9,
+  "results": [
+    {
+      "name": "\u03a9_c = 47/125",
+      "pass": true,
+      "detail": "47/125 = 0.376"
+    },
+    {
+      "name": "ambient 125 = 5\u00b3",
+      "pass": true,
+      "detail": "125 cells"
+    },
+    {
+      "name": "invariant sector 47",
+      "pass": true,
+      "detail": "47 cells by |\u03c6| rank"
+    },
+    {
+      "name": "residual 5 (space diagonal)",
+      "pass": true,
+      "detail": "5 cells i = j = k"
+    },
+    {
+      "name": "lock-to-spectrum kernel",
+      "pass": true,
+      "detail": "cycle n=5  dim ker K = 3"
+    },
+    {
+      "name": "named shifts stay honest",
+      "pass": true,
+      "detail": "K=(C\u22126I)(C\u221230I)  dim ker = 0 \u2264 n"
+    },
+    {
+      "name": "K symmetric when C is",
+      "pass": true,
+      "detail": "K_ij = K_ji"
+    },
+    {
+      "name": "5\u00d75 cannot hold E47",
+      "pass": true,
+      "detail": "dim ker 3 \u2264 n 5"
+    },
+    {
+      "name": "kernel residual small when dim ker > 0",
+      "pass": true,
+      "detail": "\u2016Kv\u2016/\u2016v\u2016 = 1.1015581261768232e-13"
+    }
+  ]
+}
+
+OK 9/9

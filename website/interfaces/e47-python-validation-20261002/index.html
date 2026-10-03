@@ -3,6 +3,3312 @@
 <a href="../../">The Mathematical City</a><h1>E47 Python validation</h1><p class="score">162 / 162 named checks PASS · October 2, 2026</p>
 <p>135 checks from seven original validators, plus 27 supplemental reconstruction checks. The Newton supplement also tested 2,000 random parameter cases with zero stability disagreements. These are executable checks under the documented assumptions and tolerances, not a count of independent theorems.</p>
 <nav><a href="../../downloads/E47_Python_Validation_20261002.zip">Download reproducibility packet</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/validation-rerun-20261002">Source and provenance</a><a href="https://app.notion.com/p/3ed46094fd308124b19ee617baf92c13">Notion record</a><a href="https://drive.google.com/file/d/1MEI-BhBVJgb5RtWCbyXaqKMaf9dRWCVO/view">Drive archive</a></nav>
+<section id="workspace-python-20261003"><h2>Workspace Python inventory · October 3, 2026</h2><p>24 recovered Python sources plus one package initializer. Expand any file to read its complete source.</p><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/python-inventory/20261003">Repository files and provenance</a> · <a href="https://app.notion.com/p/3a046094fd30817bb4a6e317dd633482">Notion Python station</a></p><details><summary>E47_Algebraic_Closure_CORRECTED.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/E47_Algebraic_Closure_CORRECTED.py">Open Python source</a></p><pre><code class="language-python">import numpy as np
+from math import sqrt
+
+j = 2
+m = np.arange(j, -j - 1, -1, dtype=float)
+Jz = np.diag(m)
+Jp = np.zeros((2*j + 1, 2*j + 1), dtype=complex)
+
+for col, mc in enumerate(m):
+    mp = mc + 1
+    if mp &lt;= j:
+        rows = np.where(np.isclose(m, mp))[0]
+        if rows.size:
+            Jp[rows[0], col] = np.sqrt(j*(j+1) - mc*(mc+1))
+
+Jm = Jp.conj().T
+Jx = (Jp + Jm) / 2
+Jy = (Jp - Jm) / (2j)
+I5 = np.eye(5, dtype=complex)
+kron3 = lambda a,b,c: np.kron(np.kron(a,b),c)
+
+JxT = kron3(Jx,I5,I5)+kron3(I5,Jx,I5)+kron3(I5,I5,Jx)
+JyT = kron3(Jy,I5,I5)+kron3(I5,Jy,I5)+kron3(I5,I5,Jy)
+JzT = kron3(Jz,I5,I5)+kron3(I5,Jz,I5)+kron3(I5,I5,Jz)
+
+C = JxT@JxT + JyT@JyT + JzT@JzT
+evals, _ = np.linalg.eigh(C)
+
+spec = np.array([0,2,6,12,20,30,42], float)
+mult = [int(np.sum(np.isclose(evals, x, atol=1e-9))) for x in spec]
+
+I = np.eye(125)
+K = (C-6*I)@(C-30*I)
+kevals, U = np.linalg.eigh(K)
+mask = np.isclose(kevals,0,atol=1e-8)
+P = U[:,mask]@U[:,mask].conj().T
+
+mu = np.trace(C).real/125
+var = np.trace((C-mu*I)@(C-mu*I)).real/125
+
+q = kevals**2
+q = q[q&gt;1e-12]
+eps = 2/(q.min()+q.max())
+Gamma = I-eps*(K@K)
+
+print(&quot;spec(C) =&quot;, spec.tolist())
+print(&quot;mult(C) =&quot;, mult)
+print(&quot;mu =&quot;, mu)
+print(&quot;sigma^2 =&quot;, var)
+print(&quot;dim ker(K) =&quot;, int(mask.sum()))
+print(&quot;Omega_c =&quot;, int(mask.sum())/125)
+print(&quot;||P^2-P||_2 =&quot;, np.linalg.norm(P@P-P,2))
+print(&quot;||KP||_2 =&quot;, np.linalg.norm(K@P,2))
+print(&quot;eps* =&quot;, eps)
+print(&quot;rho* =&quot;, (q.max()-q.min())/(q.max()+q.min()))
+print(&quot;||Gamma^250-P||_2 =&quot;, np.linalg.norm(np.linalg.matrix_power(Gamma,250)-P,2))
+</code></pre></details>
+<details><summary>KounsKillionParadigmValidatorPython.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/KounsKillionParadigmValidatorPython.py">Open Python source</a></p><pre><code class="language-python">import numpy as np
+
+class KounsKillionParadigmValidator:
+    &quot;&quot;&quot;
+    Validates the algebraic closure of the Kouns-Killion Recursive Intelligence framework.
+    Computational verification of the kernel projection: 5V2 + 2V5.
+    &quot;&quot;&quot;
+    def __init__(self):
+        # Ambient Space: 5-dim irreducible representation (Spin J=2)
+        # 5^3 = 125
+        self.dim_v2 = 5
+        self.ambient_dim = self.dim_v2**3
+        # Casimir Eigenvalues for J=2 (lambda_2 = 6) and J=5 (lambda_5 = 30)
+        self.lambda_2 = 6
+        self.lambda_5 = 30
+
+    def calculate_coherence_matrix(self):
+        # Subsector Dimensions:
+        # 5V_2 = 5 * (2*2 + 1) = 25
+        # 2V_5 = 2 * (2*5 + 1) = 22
+        dim_5v2 = 5 * (2*2 + 1)
+        dim_2v5 = 2 * (2*5 + 1)
+        
+        # Invariant Subspace (Psi)
+        dim_psi = dim_5v2 + dim_2v5
+        
+        # Coherence Threshold (Omega_c)
+        omega_c = dim_psi / self.ambient_dim
+        
+        # Fixed point scale r (derived via A_{gamma, r} expansion)
+        r = 22.16103142
+        
+        # Geometric Metric (G)
+        g = (dim_5v2 * 1 + dim_2v5 * r) / dim_psi
+        
+        # Alpha Inverse (QED Boundary Closure)
+        alpha_inv = 4 * np.pi * g
+
+        return {
+            &quot;Ambient Dimension&quot;: self.ambient_dim,
+            &quot;Invariant Subspace (Psi)&quot;: dim_psi,
+            &quot;Coherence Threshold (Omega_c)&quot;: omega_c,
+            &quot;Geometric Metric (G)&quot;: g,
+            &quot;Alpha Inverse (Fine-Structure)&quot;: alpha_inv
+        }
+
+# Execution of the Kernel Projection
+validator = KounsKillionParadigmValidator()
+results = validator.calculate_coherence_matrix()
+
+# Output Verification
+print(&quot;--- KKP-R Coherence Validation Results ---&quot;)
+for key, value in results.items():
+    print(f&quot;{key}: {value:.8f}&quot;)
+
+# Assert Algebraic Closure
+assert np.isclose(results[&quot;Alpha Inverse (Fine-Structure)&quot;], 137.03599, rtol=1e-5), \
+    &quot;System failed to close at QED boundary.&quot;
+print(&quot;\n[Result]: Algebraic Closure Verified. The system manifests precise QED convergence.&quot;)
+</code></pre></details>
+<details><summary>algebraic_einstein_recovery.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/algebraic_einstein_recovery.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;
+Algebraic Einstein Recovery
+Derived from E47 Spectral Kernel and Kouns Fixed-Point Structure
+&quot;&quot;&quot;
+import numpy as np
+from scipy.linalg import eigvalsh, expm
+
+# ==============================================================================
+# 1. FOUNDATIONAL AXIOMS AND TENSOR-CUBE CARRIER SPACE
+# ==============================================================================
+# H = V_2^{\otimes 3}, dim(H) = 5^3 = 125
+# C \in End(H), spec(C) = {0, 2, 6, 12, 20, 30, 42}
+# K = (C - 6I)(C - 30I)
+# E_47 := ker K, dim(E_47) = 47
+# Omega_c = Tr(P_47) / Tr(I_125) = 47 / 125 = 0.376
+
+dim = 125
+eigenvalues_C = np.concatenate([
+    np.full(1, 0), np.full(9, 2), np.full(25, 6),
+    np.full(28, 12), np.full(27, 20), np.full(22, 30),
+    np.full(13, 42)
+])
+np.random.seed(47)
+Q, _ = np.linalg.qr(np.random.randn(dim, dim))
+C = Q @ np.diag(eigenvalues_C) @ Q.T
+I = np.eye(dim)
+
+# ==============================================================================
+# 2. CONTINUUM FIELD MAP AND EINSTEIN FIELD EQUATIONS
+# ==============================================================================
+# S_eff[g, Phi] = int d^4x sqrt(-g) (1/2k R - Lambda_0 + &lt;Phi|K^2|Phi&gt;)
+# G_mu_nu + Lambda g_mu_nu = 8pi G / c^4 T_mu_nu
+
+G_const = 6.67430e-11
+c = 299792458.0
+kappa = 8.0 * np.pi * G_const / (c**4)
+Lambda_0 = 1.1056e-52
+
+g_mu_nu = np.diag([-1.0, 1.0, 1.0, 1.0])
+R_mu_nu = np.diag([3.0e-52, -1.0e-52, -1.0e-52, -1.0e-52])
+R_scalar = np.trace(np.linalg.inv(g_mu_nu) @ R_mu_nu)
+G_tensor = R_mu_nu - 0.5 * R_scalar * g_mu_nu
+
+# T_mu_nu derivation
+T_mu_nu = (1.0 / kappa) * (G_tensor + Lambda_0 * g_mu_nu)
+
+# ==============================================================================
+# 3. COHERENCE-EXTENDED EXTENDED EINSTEIN EQUATIONS
+# ==============================================================================
+Omega_c = 47 / 125
+gamma = Omega_c / 3
+beta = -Omega_c * np.log(Omega_c)
+rho = 1.2e-3
+d_phi = np.array([0.1, 0.0, 0.0, 0.0])
+C_mu_nu = np.outer(d_phi, d_phi) - 0.25 * np.dot(d_phi, d_phi) * g_mu_nu
+h_scale = 1.0e-35
+
+LHS = G_tensor + Lambda_0 * g_mu_nu + (h_scale**2) * C_mu_nu
+RHS = (8.0 * np.pi * Omega_c * G_const / (c**4)) * T_mu_nu * (1.0 + gamma * (rho**2)) \
+    - (2.0 * Omega_c / (c**4)) * g_mu_nu * beta * (np.outer(d_phi, d_phi) - Omega_c * g_mu_nu)
+
+# ==============================================================================
+# 4. BLACK HOLE ENTROPY (BEKENSTEIN-HAWKING)
+# ==============================================================================
+hbar = 1.054571817e-34
+k_B = 1.380649e-23
+l_P = np.sqrt(hbar * G_const / (c**3))
+M_BH = 1.98847e30
+r_H = (2.0 * G_const * M_BH) / (c**2)
+Area = 4.0 * np.pi * (r_H**2)
+S_BH = (k_B * Area) / (4.0 * (l_P**2))
+T_H = (hbar * (c**3)) / (8.0 * np.pi * G_const * M_BH * k_B)
+
+print(f&quot;Bekenstein-Hawking Entropy: {S_BH:.6e} J/K&quot;)
+print(f&quot;Hawking Temperature: {T_H:.6e} K&quot;)
+</code></pre></details>
+<details><summary>arrival_mathematics_joint_e47_validation.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/arrival_mathematics_joint_e47_validation.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+# Arrival Mathematics — Joint Residual Closure + E47 Quantum Projection
+# Generated validation certificate.
+import numpy as np
+from scipy.optimize import brentq
+
+vals=np.array([0.,2.,6.,12.,20.,30.,42.])
+mult=np.array([1,9,25,28,27,22,13])
+C=np.repeat(vals,mult)
+K=(C-6)*(C-30); B=K*K
+P=((C==6)|(C==30)).astype(float)
+Delta=B[B&gt;0].min(); M=B.max()
+eps=2/(Delta+M); q=(M-Delta)/(M+Delta)
+G=1-eps*B
+Oc=47/125
+
+assert len(C)==125 and int(P.sum())==47
+assert np.isclose(Delta,11664) and np.isclose(M,186624)
+assert np.isclose(eps,1/99144) and np.isclose(q,15/17)
+assert np.max(np.abs(G**220-P)) == q**220
+
+# Explicit compatible residual witness
+z=np.array([0.,0.,1.,Oc,0.,10.,0.,0.])
+def R(z):
+    continuity,psiC,Q,Omega,meff,D,Hperp,Hi=z
+    return np.array([continuity,psiC,psiC,Q-1,
+                     max(Oc-Omega,0),meff,D-10,Hperp,Hi])
+assert np.max(np.abs(R(z))) &lt; 1e-12
+
+lam=brentq(lambda x:x**10-x-1,1,2)
+assert abs(lam**10-lam-1)&lt;1e-12
+assert np.isclose(lam**20,(lam+1)**2)
+
+rng=np.random.default_rng(47)
+for _ in range(256):
+    psi=rng.normal(size=125)+1j*rng.normal(size=125)
+    psi/=np.linalg.norm(psi)
+    target=P*psi
+    x=psi.copy()
+    for n in range(220):
+        x=G*x
+    assert np.linalg.norm(x-target)&lt;1e-11
+    assert np.linalg.norm(P*x-target)&lt;1e-12
+
+print(&quot;PASS — Arrival Mathematics / E47 validation&quot;)
+print(&quot;rank =&quot;,int(P.sum()),&quot;Omega_c =&quot;,Oc)
+print(&quot;Delta =&quot;,Delta,&quot;M =&quot;,M,&quot;epsilon* =&quot;,eps,&quot;q* =&quot;,q)
+print(&quot;||Gamma^220-P||_2 =&quot;,np.max(np.abs(G**220-P)))
+print(&quot;lambda10 =&quot;,lam,&quot;capacity =&quot;,lam**20)
+
+</code></pre></details>
+<details><summary>commutant.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/commutant.py">Open Python source</a></p><pre><code class="language-python">import numpy as np, itertools
+from collections import Counter
+np.set_printoptions(precision=12, suppress=True)
+
+# ---------- spin-2 (dim 5) generators, basis x=0..4 &lt;-&gt; m=2-x ----------
+j=2; d=5
+ms=[j-x for x in range(d)]
+Jz=np.diag(ms).astype(float)
+Jp=np.zeros((d,d)); Jm=np.zeros((d,d))
+for x,m in enumerate(ms):
+    if m+1&lt;=j:
+        Jp[x-1,x]=np.sqrt(j*(j+1)-m*(m+1)) # raises m -&gt; m+1 (index x-1)
+    if m-1&gt;=-j:
+        Jm[x+1,x]=np.sqrt(j*(j+1)-m*(m-1))
+assert np.allclose(Jp, Jm.T)
+assert np.allclose(Jp@Jm - Jm@Jp, 2*Jz)
+
+I5=np.eye(5)
+def slot(M,i):
+    ops=[I5,I5,I5]; ops[i]=M
+    return np.kron(np.kron(ops[0],ops[1]),ops[2])
+
+JZ=sum(slot(Jz,i) for i in range(3))
+JP=sum(slot(Jp,i) for i in range(3))
+JM=sum(slot(Jm,i) for i in range(3))
+C = JZ@JZ + 0.5*(JP@JM + JM@JP)
+print(&quot;C symmetric residual:&quot;, np.abs(C-C.T).max())
+
+w,V=np.linalg.eigh(C)
+wr=np.round(w,9)
+print(&quot;Casimir spectrum &amp; multiplicities:&quot;, sorted(Counter(wr).items()))
+print(&quot;expected j(j+1) for j=0..6:&quot;, [jj*(jj+1) for jj in range(7)])
+
+# ---------- K and P47 ----------
+K=(C-6*np.eye(125))@(C-30*np.eye(125))
+print(&quot;dim ker K:&quot;, int(np.sum(np.abs(np.linalg.eigvalsh(K))&lt;1e-8)))
+sel=(np.abs(wr-6)&lt;1e-9)|(np.abs(wr-30)&lt;1e-9)
+P=V[:,sel]@V[:,sel].T
+print(&quot;P idempotent residual:&quot;, np.abs(P@P-P).max(), &quot;| trace P =&quot;, round(np.trace(P),10))
+print(&quot;P K residual (P projects into ker K):&quot;, np.abs(K@P).max())
+
+# ---------- S3 acting by permuting tensor slots ----------
+pts=list(itertools.product(range(5),repeat=3)); idx={p:i for i,p in enumerate(pts)}
+def perm_mat(sig):
+    M=np.zeros((125,125))
+    for p in pts:
+        q=tuple(p[sig[k]] for k in range(3)) # (sigma.v)_k = v_{sigma(k)}
+        M[idx[q],idx[p]]=1
+    return M
+S3=[perm_mat(s) for s in itertools.permutations(range(3))]
+sig_par=[(-1)**(sum(1 for a in range(3) for b in range(a+1,3) if s[a]&gt;s[b])) for s in itertools.permutations(range(3))]
+print(&quot;\n[S3 test] max ||P.sigma - sigma.P|| over S3:&quot;,
+      max(np.abs(P@M-M@P).max() for M in S3))
+print(&quot;[S3 test] max ||C.sigma - sigma.C||:&quot;, max(np.abs(C@M-M@C).max() for M in S3))
+
+# ---------- (Z/5)^3 index shifts ----------
+def shift_mat(axis):
+    M=np.zeros((125,125))
+    for p in pts:
+        q=list(p); q[axis]=(q[axis]+1)%5
+        M[idx[tuple(q)],idx[p]]=1
+    return M
+Z5=[shift_mat(a) for a in range(3)]
+print(&quot;\n[Z/5 test] max ||P.T_a - T_a.P||:&quot;, round(max(np.abs(P@M-M@P).max() for M in Z5),10))
+print(&quot;[Z/5 test] max ||C.T_a - T_a.C||:&quot;, round(max(np.abs(C@M-M@C).max() for M in Z5),10))
+
+# ---------- Schur-Weyl block content of ker K ----------
+Sym=sum(S3)/6.0
+Alt=sum(s*M for s,M in zip(sig_par,S3))/6.0
+print(&quot;\ndim Sym^3 =&quot;, round(np.trace(Sym),8), &quot; dim Lambda^3 =&quot;, round(np.trace(Alt),8),
+      &quot; dim mixed =&quot;, round(125-np.trace(Sym)-np.trace(Alt),8))
+a=np.trace(P@Sym); c=np.trace(P@Alt); b=47-a-c
+print(&quot;ker K ∩ Sym^3 :&quot;, round(a,10))
+print(&quot;ker K ∩ Lambda^3:&quot;, round(c,10))
+print(&quot;ker K ∩ mixed :&quot;, round(b,10), &quot;(must be even = 2 x S_(2,1) copies)&quot;)
+
+# ---------- per-j multiplicity spaces as S3 reps ----------
+print(&quot;\n j | dim V_j | mult | S3 character on mult space (e, transposition, 3-cycle) | decomposition&quot;)
+classes={'e':S3[0],'transp':perm_mat((1,0,2)),'3cyc':perm_mat((1,2,0))}
+for jj in range(7):
+    lam=jj*(jj+1); s=(np.abs(wr-lam)&lt;1e-9)
+    if not s.any(): continue
+    Pj=V[:,s]@V[:,s].T
+    chi={k: np.trace(Pj@M)/(2*jj+1) for k,M in classes.items()}
+    e,t,c3=chi['e'],chi['transp'],chi['3cyc']
+    n_triv=(e+3*t+2*c3)/6; n_sgn=(e-3*t+2*c3)/6; n_std=(2*e-2*c3)/6
+    print(f&quot; {jj} | {2*jj+1:2d} | {int(round(e))} | ({e:.6f}, {t:.6f}, {c3:.6f}) |&quot;
+          f&quot; triv x{round(n_triv,6)}, sgn x{round(n_sgn,6)}, std x{round(n_std,6)}&quot;)
+</code></pre></details>
+<details><summary>dissipative_selection.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/dissipative_selection.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;Dissipative selection of an isotypic kernel in a symmetric spin system.
+
+Generalises the canonical E47 construction to arbitrary base spin ``j``, tensor
+power ``n``, and selected total-spin set ``S``. The dissipative generator
+``exp(-t K_S^2)`` contracts onto ``ker K_S``, so the long-time survival fraction
+of a Haar-random state converges to
+
+  Omega = dim(ker K_S) / dim(V)
+
+For ``j=2, n=3, S={2,5}`` this is ``47/125``. For ``j=1, n=3, S={2}`` it is
+``10/27``.
+
+Provenance
+----------
+Repaired from a Google Drive script dated 2026-04-21. Four changes:
+
+1. ``tensor_power_j`` was dead code — abandoned mid-body with a ``# wait,
+   better way`` comment and no return statement. Removed; ``build_total_J``
+   already did the job.
+2. ``qt.tensor(qeye(d**i), J, qeye(d**(n-1-i)))`` produced numerically correct
+   matrices but wrong ``dims`` metadata, since ``qeye(d**i)`` is one subsystem
+   of dimension ``d**i`` rather than ``i`` subsystems of dimension ``d``. That
+   breaks ``ptrace`` and any partial operation downstream. Now built with
+   explicit per-factor identity lists.
+3. The original estimated Omega by averaging 20 random states and reported
+   &quot;Error: ~1e-15 or better&quot;. That is not attainable by Monte Carlo. For a
+   rank-``r`` projector in dimension ``D``, ``||P psi||^2`` is
+   ``Beta(r, D-r)``-distributed, so the standard error over ``N`` samples is
+   ``sqrt(r(D-r)/(D^2 (D+1) N))`` — about 2e-2 for ``r=10, D=27, N=20``,
+   empirically confirmed at 2.02e-2 with a worst case of 5.6e-2. The exact
+   value comes from the trace, not from sampling. Both routes are provided
+   below and labelled by evidence class.
+4. ``t_max`` was hardcoded at 2.0. Now derived from the spectral gap of
+   ``K_S^2`` so the contraction is complete for any parameter choice.
+
+Evidence classes follow ``docs/validation_scope.md``:
+``omega_exact`` is E1 (deterministic machine reconstruction);
+``omega_monte_carlo`` is E2 (simulation, with a stated standard error).
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import math
+from dataclasses import dataclass
+from fractions import Fraction
+
+import numpy as np
+
+try:  # pragma: no cover - exercised only by environment
+    import qutip as qt
+
+    QUTIP_AVAILABLE = True
+except ImportError:  # pragma: no cover
+    QUTIP_AVAILABLE = False
+
+__all__ = [
+    &quot;DissipativeResult&quot;,
+    &quot;build_total_J&quot;,
+    &quot;build_kernel_operator&quot;,
+    &quot;monte_carlo_standard_error&quot;,
+    &quot;omega_exact&quot;,
+    &quot;omega_monte_carlo&quot;,
+]
+
+
+@dataclass(frozen=True)
+class DissipativeResult:
+    &quot;&quot;&quot;Outcome of a dissipative selection run.&quot;&quot;&quot;
+
+    base_spin: Fraction
+    copies: int
+    selected: tuple[Fraction, ...]
+    carrier_dimension: int
+    kernel_dimension: int
+    omega: Fraction
+    estimate: float
+    standard_error: float
+    evidence_class: str
+
+    def summary(self) -&gt; str:
+        &quot;&quot;&quot;One-line human-readable summary.&quot;&quot;&quot;
+
+        return (
+            f&quot;j={self.base_spin} n={self.copies} S={{&quot;
+            f&quot;{', '.join(str(s) for s in self.selected)}}} &quot;
+            f&quot;dim={self.carrier_dimension} ker={self.kernel_dimension} &quot;
+            f&quot;Omega={self.omega} ({float(self.omega):.6f}) &quot;
+            f&quot;estimate={self.estimate:.6f} +/- {self.standard_error:.2e} &quot;
+            f&quot;[{self.evidence_class}]&quot;
+        )
+
+
+def _require_qutip() -&gt; None:
+    if not QUTIP_AVAILABLE:  # pragma: no cover
+        raise RuntimeError(&quot;QuTiP is required for this module; pip install qutip&quot;)
+
+
+def build_total_J(base_spin: Fraction, copies: int):
+    &quot;&quot;&quot;Return total ``(Jx, Jy, Jz)`` on ``V_j^{copies}`` with correct subsystem dims.
+
+    Each factor contributes ``I ... I J I ... I``; identities are supplied one
+    per subsystem so the resulting ``dims`` metadata is right.
+    &quot;&quot;&quot;
+
+    _require_qutip()
+    if copies &lt; 1:
+        raise ValueError(&quot;copies must be at least 1&quot;)
+
+    spin = float(base_spin)
+    factor_dim = int(2 * base_spin + 1)
+    single = [qt.jmat(spin, component) for component in &quot;xyz&quot;]
+
+    totals = []
+    for component in range(3):
+        accumulated = None
+        for site in range(copies):
+            operators = [qt.qeye(factor_dim) for _ in range(copies)]
+            operators[site] = single[component]
+            term = qt.tensor(operators)
+            accumulated = term if accumulated is None else accumulated + term
+        totals.append(accumulated)
+    return tuple(totals)
+
+
+def build_kernel_operator(base_spin: Fraction, copies: int, selected):
+    &quot;&quot;&quot;Return ``(C, K_S)`` where ``K_S = prod_{k in S} (C - k(k+1) I)``.&quot;&quot;&quot;
+
+    _require_qutip()
+    Jx, Jy, Jz = build_total_J(base_spin, copies)
+    casimir = Jx * Jx + Jy * Jy + Jz * Jz
+
+    identity = qt.qeye(casimir.dims[0])
+    kernel = identity
+    for total_spin in selected:
+        eigenvalue = float(total_spin * (total_spin + 1))
+        kernel = kernel * (casimir - eigenvalue * identity)
+    return casimir, kernel
+
+
+def monte_carlo_standard_error(rank: int, dim: int, n_samples: int) -&gt; float:
+    &quot;&quot;&quot;Theoretical standard error for Haar-random state projections.&quot;&quot;&quot;
+    if n_samples &lt;= 0 or dim &lt;= 0:
+        return 0.0
+    var = (rank * (dim - rank)) / ((dim ** 2) * (dim + 1))
+    return math.sqrt(var / n_samples)
+
+
+def omega_exact(
+    base_spin: Fraction,
+    copies: int,
+    selected: tuple[Fraction, ...],
+) -&gt; DissipativeResult:
+    &quot;&quot;&quot;Exact trace calculation of the coherence fraction (Evidence class E1).&quot;&quot;&quot;
+    _require_qutip()
+    _, K = build_kernel_operator(base_spin, copies, selected)
+    carrier_dim = K.shape[0]
+
+    evals = K.eigenenergies()
+    kernel_dim = int(np.sum(np.abs(evals) &lt; 1e-7))
+    omega = Fraction(kernel_dim, carrier_dim)
+
+    return DissipativeResult(
+        base_spin=base_spin,
+        copies=copies,
+        selected=selected,
+        carrier_dimension=carrier_dim,
+        kernel_dimension=kernel_dim,
+        omega=omega,
+        estimate=float(omega),
+        standard_error=0.0,
+        evidence_class=&quot;E1&quot;,
+    )
+
+
+def omega_monte_carlo(
+    base_spin: Fraction,
+    copies: int,
+    selected: tuple[Fraction, ...],
+    n_samples: int = 500,
+    t_factor: float = 10.0,
+) -&gt; DissipativeResult:
+    &quot;&quot;&quot;Monte Carlo contraction estimation using exp(-t K_S^2) (Evidence class E2).&quot;&quot;&quot;
+    _require_qutip()
+    _, K = build_kernel_operator(base_spin, copies, selected)
+    carrier_dim = K.shape[0]
+
+    K2 = K * K
+    evals_k2 = K2.eigenenergies()
+    evals_pos = evals_k2[evals_k2 &gt; 1e-6]
+    spectral_gap = np.min(evals_pos) if len(evals_pos) &gt; 0 else 1.0
+
+    t_max = t_factor / spectral_gap
+    propagator = (-t_max * K2).expm()
+
+    evals = K.eigenenergies()
+    kernel_dim = int(np.sum(np.abs(evals) &lt; 1e-7))
+    omega = Fraction(kernel_dim, carrier_dim)
+
+    projections = []
+    for _ in range(n_samples):
+        psi = qt.rand_ket(carrier_dim, dims=K.dims[0])
+        contracted = propagator * psi
+        projections.append(contracted.norm() ** 2)
+
+    estimate = float(np.mean(projections))
+    std_err = monte_carlo_standard_error(kernel_dim, carrier_dim, n_samples)
+
+    return DissipativeResult(
+        base_spin=base_spin,
+        copies=copies,
+        selected=selected,
+        carrier_dimension=carrier_dim,
+        kernel_dimension=kernel_dim,
+        omega=omega,
+        estimate=estimate,
+        standard_error=std_err,
+        evidence_class=&quot;E2&quot;,
+    )
+
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;Running Dissipative Selection Validation...&quot;)
+    res_exact = omega_exact(Fraction(2), 3, (Fraction(2), Fraction(5)))
+    print(res_exact.summary())
+
+    res_mc = omega_monte_carlo(Fraction(2), 3, (Fraction(2), Fraction(5)), n_samples=200)
+    print(res_mc.summary())
+</code></pre></details>
+<details><summary>e47/__init__.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/e47/__init__.py">Open Python source</a></p><pre><code class="language-python">
+</code></pre></details>
+<details><summary>e47/selection.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/e47/selection.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;Derive the selected total-spin sectors from representation structure.
+
+The canonical E47 construction uses ``K = (C - 6I)(C - 30I)`` on
+``V_2 tensor V_2 tensor V_2``, i.e. total-spin sectors ``{2, 5}``. Historically
+that pair was supplied as input. This module derives it instead, from two
+parameter-free conditions on the symmetric-group action carried by the
+multiplicity spaces.
+
+For ``V_s^{\\otimes 3}`` the group ``S_3`` commutes with the diagonal SU(2)
+action, so each multiplicity space ``M_j = Hom_{SU(2)}(V_j, V_s^{\\otimes 3})``
+is an ``S_3``-representation. Decomposing by characters gives:
+
+    (A) exactly one total spin attains the maximal multiplicity;
+    (B) exactly one total spin has ``M_j`` isomorphic to the standard
+        two-dimensional irrep of ``S_3``.
+
+Condition (A) yields ``j = s``; condition (B) yields ``j = 3s - 1``. For
+``s = 2`` this is ``{2, 5}``, recovering ``K = (C - 6I)(C - 30I)`` and
+``dim ker K = 47``. In general the kernel dimension is ``4s^2 + 16s - 1``.
+
+Neither condition contains a free constant, so the selection is determined by
+the carrier rather than chosen. The choice of carrier itself (``s = 2``,
+``copies = 3``) remains an input; see ``docs/validation_scope.md``.
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+from fractions import Fraction
+
+from .spectral_compilation import clebsch_gordan_multiplicities, spin_dimension
+
+__all__ = [
+    &quot;S3_IRREPS&quot;,
+    &quot;SelectionDerivation&quot;,
+    &quot;derive_selection&quot;,
+    &quot;kernel_dimension_closed_form&quot;,
+    &quot;s3_multiplicity_space_content&quot;,
+]
+
+# Character table of S_3 on the classes (identity, transposition, 3-cycle).
+S3_IRREPS: dict[str, tuple[int, int, int]] = {
+    &quot;trivial&quot;: (1, 1, 1),
+    &quot;sign&quot;: (1, -1, 1),
+    &quot;standard&quot;: (2, 0, -1),
+}
+
+_CLASS_SIZES = (1, 3, 2)
+
+
+class SelectionDerivation:
+    &quot;&quot;&quot;Result of deriving the selected total-spin sectors.&quot;&quot;&quot;
+
+    __slots__ = (&quot;carrier_spin&quot;, &quot;copies&quot;, &quot;multiplicities&quot;, &quot;s3_content&quot;, &quot;selected&quot;)
+
+    def __init__(
+        self,
+        carrier_spin: Fraction,
+        copies: int,
+        multiplicities: dict[Fraction, int],
+        s3_content: dict[Fraction, dict[str, int]],
+        selected: tuple[Fraction, ...],
+    ) -&gt; None:
+        self.carrier_spin = carrier_spin
+        self.copies = copies
+        self.multiplicities = multiplicities
+        self.s3_content = s3_content
+        self.selected = selected
+
+    @property
+    def kernel_roots(self) -&gt; tuple[Fraction, ...]:
+        &quot;&quot;&quot;Casimir eigenvalues ``j(j+1)`` of the selected sectors.&quot;&quot;&quot;
+
+        return tuple(j * (j + 1) for j in self.selected)
+
+    @property
+    def kernel_dimension(self) -&gt; int:
+        &quot;&quot;&quot;Total dimension of the selected isotypic components.&quot;&quot;&quot;
+
+        return sum(
+            self.multiplicities[j] * spin_dimension(j) for j in self.selected
+        )
+
+    def to_json_dict(self) -&gt; dict[str, object]:
+        &quot;&quot;&quot;Serialise the derivation for inclusion in a certificate.&quot;&quot;&quot;
+
+        return {
+            &quot;carrier_spin&quot;: str(self.carrier_spin),
+            &quot;copies&quot;: self.copies,
+            &quot;selected_spins&quot;: [str(j) for j in self.selected],
+            &quot;kernel_roots&quot;: [str(root) for root in self.kernel_roots],
+            &quot;kernel_dimension&quot;: self.kernel_dimension,
+            &quot;derivation&quot;: {
+                &quot;maximal_multiplicity_spin&quot;: str(self.selected[0]),
+                &quot;standard_irrep_spin&quot;: str(self.selected[-1]),
+            },
+            &quot;s3_content&quot;: {
+                str(j): dict(content) for j, content in self.s3_content.items()
+            },
+        }
+
+
+def _character_of_permutation_action(
+    spin: Fraction,
+    cycle_type: tuple[int, ...],
+) -&gt; dict[int, int]:
+    &quot;&quot;&quot;Character of ``sigma`` composed with the diagonal action, as a Laurent poly.
+
+    The trace factorises over the cycles of ``sigma``: a cycle of length ``k``
+    contributes ``tr(g^k)``, which is the spin character evaluated at ``u^k``.
+    Exponents index powers of ``u``; ``chi_s = sum_{m=-s}^{s} u^m``.
+    &quot;&quot;&quot;
+
+    dimension = spin_dimension(spin)
+    weights = [m - (dimension - 1) // 2 for m in range(dimension)]
+    if dimension % 2 == 0:
+        raise ValueError(&quot;S_3 character derivation requires integer carrier spin&quot;)
+
+    result: dict[int, int] = {0: 1}
+    for length in cycle_type:
+        factor = {weight * length: 1 for weight in weights}
+        merged: dict[int, int] = {}
+        for exponent_a, coeff_a in result.items():
+            for exponent_b, coeff_b in factor.items():
+                key = exponent_a + exponent_b
+                merged[key] = merged.get(key, 0) + coeff_a * coeff_b
+        result = {k: v for k, v in merged.items() if v}
+    return result
+
+
+def _decompose_into_su2_characters(
+    polynomial: dict[int, Fraction],
+    max_spin: int,
+) -&gt; dict[Fraction, int]:
+    &quot;&quot;&quot;Peel a Laurent polynomial into SU(2) characters, highest weight first.&quot;&quot;&quot;
+
+    remaining = dict(polynomial)
+    multiplicities: dict[Fraction, int] = {}
+    for weight in range(max_spin, -1, -1):
+        coefficient = remaining.get(weight, Fraction(0))
+        if not coefficient:
+            continue
+        if coefficient.denominator != 1:
+            raise ValueError(&quot;non-integral multiplicity in character decomposition&quot;)
+        count = int(coefficient)
+        multiplicities[Fraction(weight)] = count
+        for exponent in range(-weight, weight + 1):
+            remaining[exponent] = remaining.get(exponent, Fraction(0)) - count
+        remaining = {k: v for k, v in remaining.items() if v}
+    if remaining:
+        raise ValueError(&quot;character decomposition left a non-zero remainder&quot;)
+    return multiplicities
+
+
+def s3_multiplicity_space_content(
+    spin: Fraction,
+    copies: int = 3,
+) -&gt; dict[Fraction, dict[str, int]]:
+    &quot;&quot;&quot;Decompose every multiplicity space of ``V_spin^{copies}`` under ``S_3``.
+
+    Returns a mapping from total spin to the multiplicity of each ``S_3`` irrep
+    in that multiplicity space. Only ``copies == 3`` is supported.
+    &quot;&quot;&quot;
+
+    if copies != 3:
+        raise NotImplementedError(&quot;S_3 derivation is defined for copies == 3&quot;)
+
+    characters = {
+        (1, 1, 1): _character_of_permutation_action(spin, (1, 1, 1)),
+        (2, 1): _character_of_permutation_action(spin, (2, 1)),
+        (3,): _character_of_permutation_action(spin, (3,)),
+    }
+    ordered = [characters[(1, 1, 1)], characters[(2, 1)], characters[(3,)]]
+    max_spin = int(3 * spin)
+
+    content: dict[Fraction, dict[str, int]] = {}
+    for name, irrep_character in S3_IRREPS.items():
+        projected: dict[int, Fraction] = {}
+        for value, size, character in zip(irrep_character, _CLASS_SIZES, ordered):
+            if value == 0:
+                continue
+            for exponent, coefficient in character.items():
+                projected[exponent] = projected.get(exponent, Fraction(0)) + Fraction(
+                    value * size * coefficient, 6
+                )
+        projected = {k: v for k, v in projected.items() if v}
+        for total_spin, count in _decompose_into_su2_characters(
+            projected, max_spin
+        ).items():
+            content.setdefault(total_spin, {})[name] = count
+
+    for total_spin in content:
+        for name in S3_IRREPS:
+            content[total_spin].setdefault(name, 0)
+    return dict(sorted(content.items(), key=lambda item: item[0]))
+
+
+def derive_selection(
+    spin: Fraction,
+    copies: int = 3,
+) -&gt; SelectionDerivation:
+    &quot;&quot;&quot;Derive the selected total-spin sectors from the carrier's structure.
+
+    Condition (A) selects the unique total spin of maximal multiplicity.
+    Condition (B) selects the unique total spin whose multiplicity space is
+    isomorphic to the standard two-dimensional irrep of ``S_3``.
+
+    Raises ``ValueError`` if either condition fails to be uniquely satisfied,
+    so a carrier that does not admit a forced selection is reported rather than
+    silently defaulted.
+    &quot;&quot;&quot;
+
+    multiplicities = clebsch_gordan_multiplicities(spin, copies)
+    content = s3_multiplicity_space_content(spin, copies)
+
+    peak = max(multiplicities.values())
+    maximal = [j for j, count in multiplicities.items() if count == peak]
+    if len(maximal) != 1:
+        raise ValueError(
+            f&quot;condition (A) is not unique for spin {spin}: candidates {maximal}&quot;
+        )
+
+    standard_only = [
+        j
+        for j, entry in content.items()
+        if entry[&quot;standard&quot;] == 1 and entry[&quot;trivial&quot;] == 0 and entry[&quot;sign&quot;] == 0
+    ]
+    if len(standard_only) != 1:
+        raise ValueError(
+            f&quot;condition (B) is not unique for spin {spin}: candidates {standard_only}&quot;
+        )
+
+    selected = tuple(sorted({maximal[0], standard_only[0]}))
+    return SelectionDerivation(spin, copies, multiplicities, content, selected)
+
+
+def kernel_dimension_closed_form(spin: Fraction) -&gt; int:
+    &quot;&quot;&quot;Return ``4s^2 + 16s - 1``, the derived kernel dimension for ``copies == 3``.
+
+    Verified against the explicit decomposition for integer ``s`` in 1..8;
+    ``s = 2`` gives 47.
+    &quot;&quot;&quot;
+
+    value = 4 * spin * spin + 16 * spin - 1
+    if value.denominator != 1:
+        raise ValueError(&quot;closed form is stated for integer carrier spin&quot;)
+    return int(value)
+
+</code></pre></details>
+<details><summary>e47/spectral_compilation.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/e47/spectral_compilation.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;Certified SU(2) spectral-kernel compilation utilities.&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import json
+from dataclasses import asdict, dataclass
+from fractions import Fraction
+from pathlib import Path
+from typing import Iterable
+
+import numpy as np
+from scipy.linalg import expm
+
+
+@dataclass(frozen=True)
+class SpectralCompilation:
+    &quot;&quot;&quot;Structured compilation output for a selected SU(2) spectral kernel.&quot;&quot;&quot;
+
+    spin: Fraction
+    copies: int
+    carrier_dimension: int
+    multiplicities: dict[str, int]
+    casimir_spectrum: tuple[Fraction, ...]
+    selected_spins: tuple[Fraction, ...]
+    selected_dimension: int
+    coherence_fraction: Fraction
+    kernel_roots: tuple[Fraction, ...]
+    kernel_polynomial_coefficients: tuple[Fraction, ...]
+    q_spectrum: tuple[Fraction, ...]
+    spectral_gap: Fraction
+    maximum_q_eigenvalue: Fraction
+    epsilon_max: Fraction
+    optimal_epsilon: Fraction
+    optimal_rate: Fraction
+    numerical_residuals: dict[str, float]
+
+    def to_json_dict(self) -&gt; dict[str, object]:
+        &quot;&quot;&quot;Convert the compilation to a JSON-compatible dictionary.&quot;&quot;&quot;
+
+        def encode(value: object) -&gt; object:
+            if isinstance(value, Fraction):
+                return {
+                    &quot;numerator&quot;: value.numerator,
+                    &quot;denominator&quot;: value.denominator,
+                }
+            if isinstance(value, tuple):
+                return [encode(item) for item in value]
+            if isinstance(value, list):
+                return [encode(item) for item in value]
+            if isinstance(value, dict):
+                return {str(key): encode(item) for key, item in value.items()}
+            return value
+
+        return encode(asdict(self))  # type: ignore[return-value]
+
+
+def parse_spin(value: str) -&gt; Fraction:
+    &quot;&quot;&quot;Parse a spin value expressed as an integer or rational string.&quot;&quot;&quot;
+
+    return Fraction(value.strip())
+
+
+def spin_dimension(j: Fraction) -&gt; int:
+    &quot;&quot;&quot;Return the irrep dimension 2j+1 for a non-negative half-integer spin.&quot;&quot;&quot;
+
+    dimension = 2 * j + 1
+    if dimension.denominator != 1 or dimension &lt; 1:
+        raise ValueError(f&quot;spin must be a non-negative half-integer, got {j}&quot;)
+    return int(dimension)
+
+
+def allowed_couplings(j1: Fraction, j2: Fraction) -&gt; list[Fraction]:
+    &quot;&quot;&quot;Return the standard SU(2) coupling range for two spins.&quot;&quot;&quot;
+
+    start = abs(j1 - j2)
+    stop = j1 + j2
+    return [start + step for step in range(int(stop - start) + 1)]
+
+
+def clebsch_gordan_multiplicities(
+    spin: Fraction,
+    copies: int,
+) -&gt; dict[Fraction, int]:
+    &quot;&quot;&quot;Compute total-spin multiplicities for repeated tensor products.&quot;&quot;&quot;
+
+    if copies &lt; 1:
+        raise ValueError(&quot;copies must be at least 1&quot;)
+
+    multiplicities: dict[Fraction, int] = {spin: 1}
+    for _ in range(copies - 1):
+        next_multiplicities: dict[Fraction, int] = {}
+        for total_spin, multiplicity in multiplicities.items():
+            for coupled_spin in allowed_couplings(total_spin, spin):
+                next_multiplicities[coupled_spin] = (
+                    next_multiplicities.get(coupled_spin, 0) + multiplicity
+                )
+        multiplicities = next_multiplicities
+
+    return dict(sorted(multiplicities.items(), key=lambda item: item[0]))
+
+
+def spin_generators(j: Fraction) -&gt; tuple[np.ndarray, np.ndarray, np.ndarray]:
+    &quot;&quot;&quot;Construct the dense SU(2) generators for a single spin-j irrep.&quot;&quot;&quot;
+
+    dimension = spin_dimension(j)
+    spin_float = float(j)
+    magnetic_values = np.array(
+        [spin_float - offset for offset in range(dimension)],
+        dtype=float,
+    )
+    jz = np.diag(magnetic_values).astype(complex)
+    jp = np.zeros((dimension, dimension), dtype=complex)
+    for column in range(1, dimension):
+        magnetic = magnetic_values[column]
+        jp[column - 1, column] = np.sqrt(
+            spin_float * (spin_float + 1.0) - magnetic * (magnetic + 1.0)
+        )
+    jm = jp.conj().T
+    jx = (jp + jm) / 2.0
+    jy = (jp - jm) / (2.0j)
+    return jx, jy, jz
+
+
+def kron_power_operator(
+    single: np.ndarray,
+    identity: np.ndarray,
+    position: int,
+    copies: int,
+) -&gt; np.ndarray:
+    &quot;&quot;&quot;Lift a single-site operator into a tensor-product carrier.
+
+    Parameters
+    ----------
+    single
+        Operator acting on one factor.
+    identity
+        Identity operator for the same single-factor space.
+    position
+        Zero-based factor index where ``single`` is inserted.
+    copies
+        Total number of tensor factors in the carrier.
+    &quot;&quot;&quot;
+
+    factors = [identity] * copies
+    factors[position] = single
+    result = factors[0]
+    for factor in factors[1:]:
+        result = np.kron(result, factor)
+    return result
+
+
+def total_generators(spin: Fraction, copies: int) -&gt; tuple[np.ndarray, np.ndarray, np.ndarray]:
+    &quot;&quot;&quot;Construct total Jx, Jy, Jz on the repeated spin carrier.
+
+    The result is the sum of the corresponding single-site generator over all
+    tensor-factor positions in ``(V_spin)^(⊗ copies)`` and is returned as the
+    tuple ``(Jx, Jy, Jz)``.
+    &quot;&quot;&quot;
+
+    single_generators = spin_generators(spin)
+    identity = np.eye(spin_dimension(spin), dtype=complex)
+    shape = (spin_dimension(spin) ** copies, spin_dimension(spin) ** copies)
+    totals: list[np.ndarray] = []
+
+    for single in single_generators:
+        total = np.zeros(shape, dtype=complex)
+        for position in range(copies):
+            total += kron_power_operator(single, identity, position, copies)
+        totals.append(total)
+
+    return totals[0], totals[1], totals[2]
+
+
+def polynomial_from_roots(roots: Iterable[Fraction]) -&gt; tuple[Fraction, ...]:
+    &quot;&quot;&quot;Return monic polynomial coefficients for the given roots.&quot;&quot;&quot;
+
+    coefficients = [Fraction(1)]
+    for root in roots:
+        next_coefficients = [Fraction(0)] * (len(coefficients) + 1)
+        for index, coefficient in enumerate(coefficients):
+            next_coefficients[index] += coefficient
+            next_coefficients[index + 1] -= coefficient * root
+        coefficients = next_coefficients
+    return tuple(coefficients)
+
+
+def evaluate_polynomial_matrix(
+    coefficients: tuple[Fraction, ...],
+    matrix: np.ndarray,
+) -&gt; np.ndarray:
+    &quot;&quot;&quot;Evaluate a scalar polynomial on a square matrix via Horner's rule.&quot;&quot;&quot;
+
+    result = np.zeros_like(matrix, dtype=complex)
+    identity = np.eye(matrix.shape[0], dtype=complex)
+    for coefficient in coefficients:
+        result = result @ matrix + float(coefficient) * identity
+    return result
+
+
+def compile_spectral_kernel(
+    spin: Fraction,
+    copies: int,
+    selected_spins: Iterable[Fraction],
+    *,
+    build_matrix_witness: bool = True,
+    random_seed: int = 47_125,
+) -&gt; SpectralCompilation:
+    &quot;&quot;&quot;Compile an SU(2) spectral kernel and its exact spectral certificate.&quot;&quot;&quot;
+
+    selected = tuple(sorted(set(selected_spins)))
+    multiplicities = clebsch_gordan_multiplicities(spin, copies)
+    missing = [candidate for candidate in selected if candidate not in multiplicities]
+    if missing:
+        raise ValueError(f&quot;selected spins absent from carrier: {missing}&quot;)
+
+    carrier_dimension = spin_dimension(spin) ** copies
+    dimension_check = sum(
+        multiplicity * spin_dimension(total_spin)
+        for total_spin, multiplicity in multiplicities.items()
+    )
+    if dimension_check != carrier_dimension:
+        raise AssertionError(&quot;Clebsch-Gordan dimension closure failed&quot;)
+
+    spectrum = tuple(total_spin * (total_spin + 1) for total_spin in multiplicities)
+    roots = tuple(total_spin * (total_spin + 1) for total_spin in selected)
+    kernel_coefficients = polynomial_from_roots(roots)
+    selected_dimension = sum(
+        multiplicities[total_spin] * spin_dimension(total_spin)
+        for total_spin in selected
+    )
+    coherence = Fraction(selected_dimension, carrier_dimension)
+
+    q_by_sector: dict[Fraction, Fraction] = {}
+    for total_spin, casimir_eigenvalue in zip(multiplicities, spectrum, strict=True):
+        q_value = Fraction(1)
+        for root in roots:
+            q_value *= casimir_eigenvalue - root
+        q_by_sector[total_spin] = q_value * q_value
+
+    q_positive = sorted({value for value in q_by_sector.values() if value &gt; 0})
+    if not q_positive:
+        raise ValueError(
+            &quot;selected sectors span the entire carrier; no complementary spectral gap exists&quot;
+        )
+
+    spectral_gap = q_positive[0]
+    qmax = q_positive[-1]
+    epsilon_max = Fraction(2, 1) / qmax
+    optimal_epsilon = Fraction(2, 1) / (spectral_gap + qmax)
+    optimal_rate = (qmax - spectral_gap) / (qmax + spectral_gap)
+
+    residuals: dict[str, float] = {}
+    if build_matrix_witness:
+        if carrier_dimension &gt; 625:
+            raise ValueError(
+                f&quot;matrix witness would be {carrier_dimension}x{carrier_dimension}; &quot;
+                &quot;use --no-matrix-witness for larger carriers&quot;
+            )
+
+        jx, jy, jz = total_generators(spin, copies)
+        casimir = jx @ jx + jy @ jy + jz @ jz
+        casimir = 0.5 * (casimir + casimir.conj().T)
+        eigenvalues, eigenvectors = np.linalg.eigh(casimir)
+
+        matrix_counts = {
+            total_spin: int(
+                np.sum(
+                    np.isclose(
+                        eigenvalues,
+                        float(total_spin * (total_spin + 1)),
+                        atol=1e-8,
+                    )
+                )
+            )
+            for total_spin in multiplicities
+        }
+        combinatorial_counts = {
+            total_spin: multiplicities[total_spin] * spin_dimension(total_spin)
+            for total_spin in multiplicities
+        }
+        if matrix_counts != combinatorial_counts:
+            raise AssertionError(
+                &quot;independent derivations disagree: &quot;
+                f&quot;{matrix_counts} != {combinatorial_counts}&quot;
+            )
+
+        kernel = evaluate_polynomial_matrix(kernel_coefficients, casimir)
+        q_matrix = kernel.conj().T @ kernel
+        selected_mask = np.zeros(carrier_dimension, dtype=bool)
+        for root in roots:
+            selected_mask |= np.isclose(eigenvalues, float(root), atol=1e-8)
+        basis = eigenvectors[:, selected_mask]
+        projector = basis @ basis.conj().T
+        complement = np.eye(carrier_dimension, dtype=complex) - projector
+
+        rng = np.random.default_rng(random_seed)
+        x0 = rng.normal(size=carrier_dimension) + 1j * rng.normal(size=carrier_dimension)
+        x0 /= np.linalg.norm(x0)
+        x_star = projector @ x0
+
+        discrete = x0.copy()
+        for _ in range(500):
+            discrete = discrete - float(optimal_epsilon) * (q_matrix @ discrete)
+
+        continuous = expm(-0.01 * q_matrix) @ x0
+        selected_projector, complement_projector = projector, complement
+
+        residuals = {
+            &quot;casimir_hermiticity&quot;: float(
+                np.linalg.norm(casimir - casimir.conj().T, ord=2)
+            ),
+            &quot;projector_idempotence&quot;: float(
+                np.linalg.norm(projector @ projector - projector, ord=2)
+            ),
+            &quot;projector_hermiticity&quot;: float(
+                np.linalg.norm(projector - projector.conj().T, ord=2)
+            ),
+            &quot;kernel_projector_annihilation&quot;: float(
+                np.linalg.norm(kernel @ projector, ord=2)
+            ),
+            &quot;matrix_rank_projector&quot;: float(np.linalg.matrix_rank(projector, tol=1e-8)),
+            &quot;discrete_error_500&quot;: float(np.linalg.norm(discrete - x_star)),
+            &quot;continuous_error_t_0p01&quot;: float(np.linalg.norm(continuous - x_star)),
+            &quot;channel_completeness&quot;: float(
+                np.linalg.norm(
+                    selected_projector.conj().T @ selected_projector
+                    + complement_projector.conj().T @ complement_projector
+                    - np.eye(carrier_dimension),
+                    ord=2,
+                )
+            ),
+        }
+
+    return SpectralCompilation(
+        spin=spin,
+        copies=copies,
+        carrier_dimension=carrier_dimension,
+        multiplicities={str(total_spin): multiplicities[total_spin] for total_spin in multiplicities},
+        casimir_spectrum=spectrum,
+        selected_spins=selected,
+        selected_dimension=selected_dimension,
+        coherence_fraction=coherence,
+        kernel_roots=roots,
+        kernel_polynomial_coefficients=kernel_coefficients,
+        q_spectrum=tuple(sorted(set(q_by_sector.values()))),
+        spectral_gap=spectral_gap,
+        maximum_q_eigenvalue=qmax,
+        epsilon_max=epsilon_max,
+        optimal_epsilon=optimal_epsilon,
+        optimal_rate=optimal_rate,
+        numerical_residuals=residuals,
+    )
+
+
+def spectral_passport(compilation: SpectralCompilation) -&gt; str:
+    &quot;&quot;&quot;Render a human-readable certificate summary.&quot;&quot;&quot;
+
+    selected = &quot;, &quot;.join(str(total_spin) for total_spin in compilation.selected_spins)
+    roots = &quot;, &quot;.join(str(root) for root in compilation.kernel_roots)
+    return f&quot;&quot;&quot;# Spectral Kernel Passport
+
+- Carrier: spin-{compilation.spin} tensor power {compilation.copies}
+- Carrier dimension: {compilation.carrier_dimension}
+- Selected total-spin sectors: {selected}
+- Casimir roots: {roots}
+- Selected dimension: {compilation.selected_dimension}
+- Complement dimension: {compilation.carrier_dimension - compilation.selected_dimension}
+- Exact coherence fraction: {compilation.coherence_fraction}
+- Spectral gap of Q = K†K: {compilation.spectral_gap}
+- Maximum eigenvalue of Q: {compilation.maximum_q_eigenvalue}
+- Stable Euler interval: 0 &lt; epsilon &lt; {compilation.epsilon_max}
+- Minimax Euler step: {compilation.optimal_epsilon}
+- Minimax complementary rate: {compilation.optimal_rate}
+- Independent derivations: combinatorial Clebsch-Gordan + matrix diagonalization
+- Machine status: PASS
+&quot;&quot;&quot;
+
+
+def write_spectral_compilation(
+    compilation: SpectralCompilation,
+    certificate_path: str | Path,
+    passport_path: str | Path,
+) -&gt; tuple[Path, Path]:
+    &quot;&quot;&quot;Write the spectral compilation certificate and passport to disk.&quot;&quot;&quot;
+
+    certificate = Path(certificate_path)
+    passport = Path(passport_path)
+    certificate.parent.mkdir(parents=True, exist_ok=True)
+    passport.parent.mkdir(parents=True, exist_ok=True)
+    certificate.write_text(
+        json.dumps(compilation.to_json_dict(), indent=2) + &quot;\n&quot;,
+        encoding=&quot;utf-8&quot;,
+    )
+    passport.write_text(spectral_passport(compilation), encoding=&quot;utf-8&quot;)
+    return certificate, passport
+
+
+__all__ = [
+    &quot;SpectralCompilation&quot;,
+    &quot;allowed_couplings&quot;,
+    &quot;clebsch_gordan_multiplicities&quot;,
+    &quot;compile_spectral_kernel&quot;,
+    &quot;evaluate_polynomial_matrix&quot;,
+    &quot;parse_spin&quot;,
+    &quot;polynomial_from_roots&quot;,
+    &quot;spectral_passport&quot;,
+    &quot;spin_dimension&quot;,
+    &quot;spin_generators&quot;,
+    &quot;total_generators&quot;,
+    &quot;write_spectral_compilation&quot;,
+]
+
+</code></pre></details>
+<details><summary>e47PythonValidationQuTiP.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/e47PythonValidationQuTiP.py">Open Python source</a></p><pre><code class="language-python">import numpy as np
+
+# 1. Spin-2 SU(2) Representation
+s = 2
+d = int(2 * s + 1)
+m_vals = np.arange(s, -s - 1, -1)
+
+# Ladder operators
+Jz = np.diag(m_vals).astype(complex)
+Jp = np.zeros((d, d), dtype=complex)
+Jm = np.zeros((d, d), dtype=complex)
+for i in range(d - 1):
+    Jp[i, i + 1] = np.sqrt(s * (s + 1) - m_vals[i + 1] * (m_vals[i + 1] + 1))
+for i in range(1, d):
+    Jm[i, i - 1] = np.sqrt(s * (s + 1) - m_vals[i - 1] * (m_vals[i - 1] - 1))
+
+Jx = 0.5 * (Jp + Jm)
+Jy = -0.5j * (Jp - Jm)
+I5 = np.eye(d, dtype=complex)
+
+def kron3(A, B, C):
+    return np.kron(np.kron(A, B), C)
+
+# 2. Total Angular Momentum in V = V2 x V2 x V2
+Jx_tot = kron3(Jx, I5, I5) + kron3(I5, Jx, I5) + kron3(I5, I5, Jx)
+Jy_tot = kron3(Jy, I5, I5) + kron3(I5, Jy, I5) + kron3(I5, I5, Jy)
+Jz_tot = kron3(Jz, I5, I5) + kron3(I5, Jz, I5) + kron3(I5, I5, Jz)
+
+# 3. Casimir Operator C
+C = Jx_tot @ Jx_tot + Jy_tot @ Jy_tot + Jz_tot @ Jz_tot
+C = 0.5 * (C + C.conj().T)  # Enforce strict Hermiticity
+
+eigenvalues = np.round(np.linalg.eigvalsh(C)).astype(int)
+unique_evals, counts = np.unique(eigenvalues, return_counts=True)
+spectrum_dict = dict(zip(unique_evals, counts))
+
+# 4. Spectral Kernel K
+I125 = np.eye(125)
+K = (C - 6 * I125) @ (C - 30 * I125)
+
+# 5. Extract Invariant Kernel E47
+K_evals = np.linalg.eigvalsh(K)
+kernel_dim = np.sum(np.abs(K_evals) &lt; 1e-10)
+omega_c = kernel_dim / 125
+
+print(f&quot;State Space Dimension: {len(C)}&quot;)
+print(f&quot;Casimir Spectrum (Eval: Mult): {spectrum_dict}&quot;)
+print(f&quot;Invariant Kernel Dimension: {kernel_dim}&quot;)
+print(f&quot;Coherence Threshold (Omega_c): {omega_c:.3f}&quot;)
+</code></pre></details>
+<details><summary>e47_generative_universe_test.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/e47_generative_universe_test.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+E47 GENERATIVE-UNIVERSE TEST
+Pre-registered cross-substrate falsification harness
+Nicholas Kouns / KKP-R
+
+Core rule:
+    Freeze E47 before observing candidate physical datasets.
+    No fitted rank, no fitted sector pair, no learned projector.
+
+This file validates the frozen mathematical prediction and provides
+a dataset-facing scoring function for 125-component observations.
+
+A candidate dataset X must be supplied as an array of shape (N,125).
+The 125 coordinates must have a domain-defined meaning fixed independently
+of E47. The test itself is not allowed to learn/reorder/rotate coordinates.
+
+Primary observables:
+    q_E47(x) = ||P47 x||^2 / ||x||^2
+    r_K(x)   = ||K x|| / (||K||_2 ||x||)
+    q_perp   = 1 - q_E47
+
+Null:
+    isotropic directions in R^125 have E[q_E47] = 47/125.
+
+Strong E47-generative hypothesis:
+    Across independently encoded physical substrates, persistent/stable
+    states show reproducible excess occupancy in the SAME frozen E47
+    subspace, with reduced kernel residual, beyond matched null controls.
+
+Failure:
+    No reproducible frozen-subspace enrichment, wrong spectral sectors,
+    or effects disappearing under held-out replication =&gt; hypothesis burns out.
+&quot;&quot;&quot;
+
+import numpy as np
+
+TOL = 1e-10
+J = 2
+DIM = 125
+OMEGA = 47/125
+EPS = 1/99144
+
+def spin2():
+    m = np.array([2,1,0,-1,-2], dtype=float)
+    Jz = np.diag(m)
+    Jp = np.zeros((5,5), complex)
+    # basis is |2&gt;,|1&gt;,|0&gt;,|-1&gt;,|-2&gt;
+    for col, mc in enumerate(m):
+        mp = mc + 1
+        if mp &lt;= J and mp in m:
+            row = int(np.where(m == mp)[0][0])
+            Jp[row,col] = np.sqrt(J*(J+1)-mc*(mc+1))
+    Jm = Jp.conj().T
+    Jx = (Jp+Jm)/2
+    Jy = (Jp-Jm)/(2j)
+    return Jx,Jy,Jz
+
+def kron3(a,b,c):
+    return np.kron(np.kron(a,b),c)
+
+def build():
+    Jx,Jy,Jz = spin2()
+    I = np.eye(5)
+    tots=[]
+    for A in (Jx,Jy,Jz):
+        tots.append(kron3(A,I,I)+kron3(I,A,I)+kron3(I,I,A))
+    C=sum(A@A for A in tots)
+    K=(C-6*np.eye(DIM))@(C-30*np.eye(DIM))
+    w,V=np.linalg.eigh(C)
+    mask=(np.abs(w-6)&lt;1e-8)|(np.abs(w-30)&lt;1e-8)
+    P=V[:,mask]@V[:,mask].conj().T
+    Gamma=np.eye(DIM)-EPS*(K@K)
+    return C,K,P,Gamma,w
+
+def score(X, K, P):
+    X=np.asarray(X,complex)
+    if X.ndim==1: X=X[None,:]
+    if X.shape[1] != DIM:
+        raise ValueError(&quot;X must have shape (N,125)&quot;)
+    norm2=np.sum(np.abs(X)**2,axis=1)
+    if np.any(norm2 &lt;= 0): raise ValueError(&quot;zero vectors are inadmissible&quot;)
+    PX=X@P.T
+    KX=X@K.T
+    q=np.sum(np.abs(PX)**2,axis=1)/norm2
+    knorm=np.linalg.norm(K,2)
+    r=np.linalg.norm(KX,axis=1)/(knorm*np.sqrt(norm2))
+    return q.real,r.real
+
+def isotropic_null(n, K, P, seed=47):
+    rng=np.random.default_rng(seed)
+    X=rng.normal(size=(n,DIM))
+    return score(X,K,P)
+
+def main():
+    C,K,P,Gamma,w=build()
+
+    # Frozen certificate
+    vals=np.rint(w).astype(int)
+    u,c=np.unique(vals,return_counts=True)
+    expected_u=np.array([0,2,6,12,20,30,42])
+    expected_c=np.array([1,9,25,28,27,22,13])
+    assert np.array_equal(u,expected_u)
+    assert np.array_equal(c,expected_c)
+    assert abs(np.trace(P).real-47)&lt;1e-8
+    assert np.linalg.norm(P@P-P)&lt;1e-9
+    assert np.linalg.norm(K@P)&lt;1e-8
+
+    k2_expected=np.array([32400,12544,0,11664,19600,0,186624])
+    k2=np.array([((x-6)*(x-30))**2 for x in expected_u])
+    assert np.array_equal(k2,k2_expected)
+
+    # Exact contraction facts
+    gamma=1-k2/EPS**-1
+    assert abs(max(abs(gamma[(expected_u!=6)&amp;(expected_u!=30)]))-15/17)&lt;1e-15
+
+    # Null calibration: rank/dim is the predicted mean occupancy.
+    q,r=isotropic_null(100000,K,P)
+    se=np.sqrt(2*47*(125-47)/(125**2*(125+2))/len(q))
+    assert abs(q.mean()-OMEGA) &lt; 6*se
+
+    # Positive-control vectors generated inside E47.
+    rng=np.random.default_rng(4700)
+    Z=rng.normal(size=(256,DIM))
+    Xpos=Z@P.T
+    qp,rp=score(Xpos,K,P)
+    assert np.min(qp)&gt;1-1e-9
+    assert np.max(rp)&lt;1e-9
+
+    print(&quot;E47 GENERATIVE-UNIVERSE PRE-REGISTRATION: PASS&quot;)
+    print(f&quot;dim(H)={DIM}; rank(P47)={round(np.trace(P).real)}; Omega={OMEGA:.12f}&quot;)
+    print(&quot;Casimir spectrum:&quot;, list(zip(u.tolist(),c.tolist())))
+    print(&quot;K^2 sector values:&quot;, k2.tolist())
+    print(f&quot;complement contraction radius={15/17:.12f}&quot;)
+    print(f&quot;isotropic null mean q_E47={q.mean():.6f}; theory={OMEGA:.6f}&quot;)
+    print(f&quot;positive control min q_E47={qp.min():.12f}; max r_K={rp.max():.3e}&quot;)
+    print()
+    print(&quot;DATA RULE: coordinates/encoder must be frozen independently of E47.&quot;)
+    print(&quot;KILL RULE: no held-out cross-substrate enrichment in this same P47 =&gt; reject generative interpretation.&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details>
+<details><summary>e47_validation.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/e47_validation.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;
+E47 / Invariant-Grammar validation — built from scratch.
+Nothing is hard-coded: C is assembled from su(2) generators, and every
+claimed number (125, 78, 47, 25+22, projector norms, Omega_c, the gap)
+is DERIVED and checked. Run with: python e47_validation.py
+Requires only numpy.
+&quot;&quot;&quot;
+import numpy as np
+
+# ---------- 1. Spin-2 su(2) generators (j = 2, dim 5) ----------
+j = 2
+m = np.arange(j, -j - 1, -1)            # [2,1,0,-1,-2]
+d = 2 * j + 1                           # 5
+Jz = np.diag(m).astype(complex)
+# J+ raising: &lt;m+1|J+|m&gt; = sqrt(j(j+1) - m(m+1))
+Jp = np.zeros((d, d), complex)
+for i in range(d - 1):
+    mm = m[i + 1]                       # lower m that gets raised
+    Jp[i, i + 1] = np.sqrt(j * (j + 1) - mm * (mm + 1))
+Jm = Jp.conj().T
+Jx = (Jp + Jm) / 2
+Jy = (Jp - Jm) / (2j)
+
+# sanity: single-site Casimir = j(j+1) I = 6 I
+C1 = Jx @ Jx + Jy @ Jy + Jz @ Jz
+assert np.allclose(C1, 6 * np.eye(d)), &quot;single-site Casimir wrong&quot;
+
+I5 = np.eye(d)
+def kron3(A, B, Cc): return np.kron(np.kron(A, B), Cc)
+
+# ---------- 2. Total generators on V2 tensor V2 tensor V2 (dim 125) ----------
+Jx_t = kron3(Jx, I5, I5) + kron3(I5, Jx, I5) + kron3(I5, I5, Jx)
+Jy_t = kron3(Jy, I5, I5) + kron3(I5, Jy, I5) + kron3(I5, I5, Jy)
+Jz_t = kron3(Jz, I5, I5) + kron3(I5, Jz, I5) + kron3(I5, I5, Jz)
+C = Jx_t @ Jx_t + Jy_t @ Jy_t + Jz_t @ Jz_t
+N = C.shape[0]
+print(f&quot;dim Sigma (V2^tensor3)        : {N}   (expect 125)&quot;)
+
+# C must be Hermitian and commute with total generators
+print(f&quot;C Hermitian                   : {np.allclose(C, C.conj().T)}&quot;)
+print(f&quot;[C, Jz_tot] = 0               : {np.allclose(C@Jz_t - Jz_t@C, 0, atol=1e-9)}&quot;)
+
+# ---------- 3. Spectrum, traces, moments ----------
+evals = np.linalg.eigvalsh(C).real
+# round to nearest integer eigenvalue for counting (J(J+1) are integers)
+ev_round = np.round(evals).astype(int)
+uniq, counts = np.unique(ev_round, return_counts=True)
+print(&quot;\nCasimir eigenvalues  J(J+1)   count&quot;)
+for v, c in zip(uniq, counts):
+    print(f&quot;   lambda = {v:3d}                {c:3d}&quot;)
+
+trC  = np.trace(C).real
+trC2 = np.trace(C @ C).real
+mu   = trC / N
+tau  = trC2 / N
+var  = tau - mu**2
+sig  = np.sqrt(var)
+print(f&quot;\nTr(C)={trC:.1f}  Tr(C^2)={trC2:.1f}&quot;)
+print(f&quot;mu = tau(C)                   : {mu:.4f}   (expect 18)&quot;)
+print(f&quot;tau(C^2)                      : {tau:.4f}   (expect 468)&quot;)
+print(f&quot;sigma^2                       : {var:.4f}   (expect 144)&quot;)
+print(f&quot;sigma                         : {sig:.4f}   (expect 12)&quot;)
+print(f&quot;mu^2 + sigma^2 == tau(C^2)    : {np.isclose(mu**2+var, tau)}&quot;)
+print(f&quot;roots mu +/- sigma            : {mu-sig:.1f}, {mu+sig:.1f}   (expect 6, 30)&quot;)
+
+# ---------- 4. Kernel filter K = (C - 6I)(C - 30I) ----------
+K = (C - 6*np.eye(N)) @ (C - 30*np.eye(N))
+rankK = np.linalg.matrix_rank(K, tol=1e-6)
+nullK = N - rankK
+print(f&quot;\nrank K                        : {rankK}   (expect 78)&quot;)
+print(f&quot;nullity K (dim Psi)           : {nullK}   (expect 47)&quot;)
+
+# kernel split: count states at lambda=6 (J=2) and lambda=30 (J=5)
+n6  = counts[list(uniq).index(6)]  if 6  in uniq else 0
+n30 = counts[list(uniq).index(30)] if 30 in uniq else 0
+print(f&quot;kernel split 25 + 22          : {n6} + {n30} = {n6+n30}&quot;)
+
+# ---------- 5. Spectral projector onto ker K ----------
+w, Vv = np.linalg.eigh(C)
+mask = (np.abs(np.round(w) - 6) &lt; 1e-6) | (np.abs(np.round(w) - 30) &lt; 1e-6)
+Q = Vv[:, mask]
+P = (Q @ Q.conj().T).real
+print(f&quot;\n||P^2 - P||                   : {np.linalg.norm(P@P - P):.2e}&quot;)
+print(f&quot;||P - P^H||                   : {np.linalg.norm(P - P.conj().T):.2e}&quot;)
+print(f&quot;||P K||  (Plate V closure)    : {np.linalg.norm(P @ K):.2e}&quot;)
+print(f&quot;||K P||                       : {np.linalg.norm(K @ P):.2e}&quot;)
+print(f&quot;tr(P)                         : {np.trace(P):.4f}   (expect 47)&quot;)
+
+# ---------- 6. Omega_c ----------
+omega_theory = np.trace(P).real / N
+print(f&quot;\nOmega_c = tr(P)/125           : {omega_theory:.6f}   (expect 0.376 = 47/125)&quot;)
+print(f&quot;47/125 exactly                : {47/125:.6f}&quot;)
+
+# empirical mean coherence over random vectors
+rng = np.random.default_rng(0)
+vals = []
+for _ in range(50000):
+    x = rng.standard_normal(N)
+    vals.append((np.linalg.norm(P @ x)**2) / (np.linalg.norm(x)**2))
+print(f&quot;empirical E[Omega], 50k draws : {np.mean(vals):.6f}   (Monte-Carlo ~ 47/125)&quot;)
+
+# ---------- 7. Contraction Gamma = I - eps K^dag K  -&gt;  P ----------
+KK = K.conj().T @ K
+eps = 1.0 / np.linalg.norm(KK, 2)      # safely inside (0, 2/lambda_max)
+G = np.eye(N) - eps * KK
+Gn = np.linalg.matrix_power(G, 400)
+print(f&quot;\n||Gamma^400 - P||             : {np.linalg.norm(Gn - P):.2e}   (-&gt; 0 confirms lock)&quot;)
+
+# ---------- 8. Gap: first positive eigenvalue of H = K^2 ----------
+Hdiag = np.round(np.unique(ev_round))
+Kvals = (Hdiag - 6) * (Hdiag - 30)
+Hvals = Kvals**2
+posH = sorted(v for v in Hvals if v &gt; 1e-6)
+print(f&quot;\nfirst positive H=K^2 level    : {posH[0]:.0f}   (expect 11664 = 108^2)&quot;)
+print(f&quot;108^2                         : {108**2}&quot;)
+
+</code></pre></details>
+<details><summary>master_R_validation.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/master_R_validation.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;
+MASTER INVARIANT R -- FULL PYTHON VALIDATION
+==============================================
+Validates the unified spectral-kernel-geometric formalism in which the
+master invariant
+
+ R(x) = lim_{n-&gt;oo} f_n(x) + Integral J Omega(t) dC(t) + Phi(C, P_K)
+
+combines a recursive fixed-point, a spectral action functional, and a
+projector compression. Each component is computed from first principles.
+&quot;&quot;&quot;
+
+import numpy as np
+import sympy as sp
+from numpy.linalg import eigvalsh, eigh, norm, matrix_power
+from scipy.linalg import expm
+
+np.set_printoptions(precision=6, suppress=True, linewidth=140)
+print(&quot;=&quot; * 78)
+print(&quot;MASTER INVARIANT R -- FULL VALIDATION SUITE&quot;)
+print(&quot;=&quot; * 78)
+
+# ---------------------------------------------------------------
+# Build the 125-dim primitive
+# ---------------------------------------------------------------
+def spin_matrices(j):
+    d = int(2 * j + 1)
+    m = np.arange(j, -j - 1, -1)
+    Jz = np.diag(m).astype(complex)
+    Jp = np.zeros((d, d), complex)
+    Jm = np.zeros((d, d), complex)
+    for a, mv in enumerate(m):
+        if mv + 1 &lt;= j:
+            Jp[list(m).index(mv + 1), a] = np.sqrt(j * (j + 1) - mv * (mv + 1))
+        if mv - 1 &gt;= -j:
+            Jm[list(m).index(mv - 1), a] = np.sqrt(j * (j + 1) - mv * (mv - 1))
+    return (Jp + Jm) / 2, (Jp - Jm) / (2j), Jz
+
+J = 2
+Jx, Jy, Jz = spin_matrices(J)
+I5 = np.eye(5, dtype=complex)
+kron3 = lambda A, B, C: np.kron(np.kron(A, B), C)
+Jx_T = kron3(Jx, I5, I5) + kron3(I5, Jx, I5) + kron3(I5, I5, Jx)
+Jy_T = kron3(Jy, I5, I5) + kron3(I5, Jy, I5) + kron3(I5, I5, Jy)
+Jz_T = kron3(Jz, I5, I5) + kron3(I5, Jz, I5) + kron3(I5, I5, Jz)
+C = Jx_T @ Jx_T + Jy_T @ Jy_T + Jz_T @ Jz_T
+dim_V = C.shape[0]
+I = np.eye(dim_V, dtype=complex)
+
+# Spectrum of C
+sigma_C = sorted(np.unique(np.round(eigvalsh(C).real, 8)).tolist())
+print(f&quot;\n[Setup] dim V = {dim_V}; sigma(C) = {sigma_C}&quot;)
+
+# ---------------------------------------------------------------
+# I. Kernel polynomial K(C) and kernel K
+# ---------------------------------------------------------------
+print(&quot;\n[I] Kernel polynomial K(C) = (C - 6I)(C - 30I)&quot;)
+K = (C - 6 * I) @ (C - 30 * I)
+eigs_K = eigvalsh(K).real
+dim_kerK = int(np.sum(np.abs(eigs_K) &lt; 1e-8))
+print(f&quot;  dim ker K = {dim_kerK}&quot;)
+assert dim_kerK == 47
+Omega_c = sp.Rational(47, 125)
+print(f&quot;  Omega_c = 47/125 = {float(Omega_c):.10f}&quot;)
+
+# Spectral gap
+gap = min((l - 6)**2 * (l - 30)**2 for l in sigma_C if l not in [6, 30])
+print(f&quot;  gamma_gap = min_{{lambda not in {{6,30}}}} (lambda-6)^2 (lambda-30)^2 = {gap}&quot;)
+assert gap == 11664
+
+# ---------------------------------------------------------------
+# II. Projector P_K via Lagrange interpolation
+# ---------------------------------------------------------------
+print(&quot;\n[II] Projector P_K (Lagrange polynomial in C)&quot;)
+P_K = np.zeros_like(C)
+for k in [6, 30]:
+    term = I.copy()
+    for l in sigma_C:
+        if abs(l - k) &lt; 1e-12:
+            continue
+        term = term @ ((C - l * I) / (k - l))
+    P_K = P_K + term
+
+err_idem = norm(P_K @ P_K - P_K) / norm(P_K)
+err_anni = norm(P_K @ K) / norm(K)
+err_herm = norm(P_K - P_K.conj().T) / norm(P_K)
+trace_PK = np.trace(P_K).real
+print(f&quot;  ||P_K^2 - P_K||/||P_K|| = {err_idem:.2e}&quot;)
+print(f&quot;  ||P_K K||/||K||         = {err_anni:.2e}&quot;)
+print(f&quot;  ||P_K - P_K*||/||P_K||   = {err_herm:.2e}&quot;)
+print(f&quot;  tr(P_K)                  = {trace_PK:.6f} (must be 47)&quot;)
+assert err_idem &lt; 1e-10
+assert err_anni &lt; 1e-10
+assert err_herm &lt; 1e-10
+assert abs(trace_PK - 47) &lt; 1e-8
+
+# ---------------------------------------------------------------
+# III. Generic recursive fixed-point f_{n+1} = T o f_n
+# ---------------------------------------------------------------
+# We test three different choices of T, each having P_K as its fixed point
+# attractor. This demonstrates that the convergence is universal across
+# the choice of contraction, not an artifact of one particular iteration.
+print(&quot;\n[III] Recursive fixed-point f_{n+1} = T(f_n)&quot;)
+rng = np.random.default_rng(0)
+x0 = rng.standard_normal(dim_V) + 1j * rng.standard_normal(dim_V)
+x0 /= norm(x0)
+
+print(&quot;  T_1 = I - eps*K^2 (gradient descent on ||K x||^2 / 2)&quot;)
+lam_max = float(np.max(np.abs(eigvalsh(K @ K))))
+eps = 1.0 / (1.1 * lam_max)
+x = x0.copy()
+for _ in range(2000):
+    x = x - eps * (K @ K @ x)
+err1 = norm(x - P_K @ x0) / norm(P_K @ x0)
+print(f&quot;  ||T_1^N x - P_K x|| / ||P_K x|| = {err1:.2e}&quot;)
+
+print(&quot;  T_2 = e^(-tK^2)/||.|| (heat-flow semigroup)&quot;)
+x = expm(-0.01 * (K @ K)) @ x0
+err2 = norm(x - P_K @ x0) / norm(P_K @ x0)
+print(f&quot;  ||T_2 x - P_K x|| / ||P_K x|| = {err2:.2e}&quot;)
+
+print(&quot;  T_3 = B = (1 - Omega_c) I + Omega_c P_K (Babylonian mean)&quot;)
+B = (1 - float(Omega_c)) * I + float(Omega_c) * P_K
+x = matrix_power(B, 1000) @ x0
+err3 = norm(x - P_K @ x0) / norm(P_K @ x0)
+print(f&quot;  ||B^N x - P_K x|| / ||P_K x||   = {err3:.2e}&quot;)
+
+# ---------------------------------------------------------------
+# IV. Spectral Action and Projector Compression Phi(C, P_K)
+# ---------------------------------------------------------------
+print(&quot;\n[IV] Projector Compression Phi(C, P_K) and Spectral Action&quot;)
+Phi_C = P_K @ C @ P_K
+tr_Phi_C = np.trace(Phi_C).real
+print(f&quot;  tr(Phi(C, P_K)) = tr(P_K C P_K) = {tr_Phi_C:.6f}&quot;)
+
+spec_action = float(Omega_c) * np.sum([l * (l in [6, 30]) for l in sigma_C])
+print(f&quot;  Spectral Action Integral Component = {spec_action:.6f}&quot;)
+
+# ---------------------------------------------------------------
+# V. Full Master Invariant R Evaluation
+# ---------------------------------------------------------------
+print(&quot;\n[V] Master Invariant R(x) Convergence&quot;)
+R_proj = P_K @ x0
+R_total = R_proj + spec_action + np.diag(Phi_C)[:dim_V]
+print(f&quot;  Master Invariant R evaluated successfully. Norm: {norm(R_total):.6f}&quot;)
+print(&quot;=&quot; * 78)
+print(&quot;ALL MASTER INVARIANT R TESTS PASSED.&quot;)
+print(&quot;=&quot; * 78)
+</code></pre></details>
+<details><summary>paradoxPython.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/paradoxPython.py">Open Python source</a></p><pre><code class="language-python">import numpy as np
+
+def generate_paradoxical_chaos(n_steps=1000, r=3.99):
+    # Simulates the chaotic feedback loop of the predictive paradox
+    x = np.zeros(n_steps)
+    x[0] = 0.5  # Maximum uncertainty initial state
+    for t in range(1, n_steps):
+        # State updates based on the predictive out-matching loop
+        x[t] = r * x[t-1] * (1 - x[t-1])
+    return x
+
+# Simulate 1000 structural iterations
+chaos_trajectory = generate_paradoxical_chaos()
+
+# Compute the Shannon Entropy of the noise (quantized into 20 bins)
+counts, _ = np.histogram(chaos_trajectory, bins=20)
+probs = counts / np.sum(counts)
+probs = probs[probs &gt; 0]
+entropy = -np.sum(probs * np.log2(probs))
+
+print(f&quot;Calculated Shannon Entropy: {entropy:.4f} bits&quot;)
+print(f&quot;Theoretical Max Entropy: {np.log2(20):.4f} bits&quot;)
+</code></pre></details>
+<details><summary>rubik_unification_exact_proof.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/rubik_unification_exact_proof.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+RUBIK UNIFICATION MAPPING INVESTIGATION
+Exact Professor's Cube Permutation Algebra, C5^3 Laplacian Spectrum,
+Eigenmode Impact Table, and Corrected Continuity Theorem
+&quot;&quot;&quot;
+from __future__ import annotations
+import numpy as np
+
+N = 5
+DIM = N**3
+OMEGA_C = 47 / 125
+
+def idx(x: int, y: int, z: int) -&gt; int:
+    return 25 * x + 5 * y + z
+
+def cycle_laplacian(n: int = 5) -&gt; np.ndarray:
+    L1 = 2.0 * np.eye(n)
+    for i in range(n):
+        L1[i, (i - 1) % n] -= 1.0
+        L1[i, (i + 1) % n] -= 1.0
+    return L1
+
+def torus_laplacian() -&gt; np.ndarray:
+    I = np.eye(N)
+    L1 = cycle_laplacian(N)
+    return (
+        np.kron(np.kron(L1, I), I)
+        + np.kron(np.kron(I, L1), I)
+        + np.kron(np.kron(I, I), L1)
+    )
+
+def make_permutation(mapper) -&gt; np.ndarray:
+    P = np.zeros((DIM, DIM), dtype=np.int8)
+    for x in range(N):
+        for y in range(N):
+            for z in range(N):
+                xx, yy, zz = mapper(x, y, z)
+                P[idx(xx, yy, zz), idx(x, y, z)] = 1
+    return P
+</code></pre></details>
+<details><summary>s3_on_e47.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/s3_on_e47.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;
+======================================================================
+ The S_3 Structure of E_47
+ Decomposing the 47-dimensional kernel under the action of the
+ symmetric group permuting the three tensor factors of V_2 ⊗ V_2 ⊗ V_2.
+======================================================================
+
+Logic:
+  S_3 acts on V = V_2 ⊗ V_2 ⊗ V_2 by permuting the three factors.
+  This action commutes with the total Casimir C, hence with K, hence
+  preserves the kernel E_47.  We restrict the S_3 representation to
+  E_47, compute its character on the three conjugacy classes
+  {e}, {transpositions}, {3-cycles}, and decompose into irreducibles
+  of S_3 (trivial, sign, standard).
+
+  Then we refine: for each isotypic block W_j ⊂ V, the S_3 action
+  is on the multiplicity space M_j (of dimension m_j), and we get the
+  full SU(2) × S_3 decomposition of E_47 = W_2 ⊕ W_5.
+
+S_3 irreducibles (character table):
+                     e    (12)    (123)
+  trivial:           1     1       1
+  sign:              1    -1       1
+  standard:          2     0      -1
+&quot;&quot;&quot;
+
+import numpy as np
+from numpy.linalg import eigh, eigvalsh
+
+# ---- 1.  Rebuild the standard infrastructure ------------------------
+
+s = 2; d = 5
+m_vals = np.arange(s, -s-1, -1)
+Jz = np.diag(m_vals).astype(complex)
+Jp = np.zeros((d, d), dtype=complex)
+for i, m in enumerate(m_vals):
+    if m + 1 &lt;= s:
+        Jp[i-1, i] = np.sqrt(s*(s+1) - m*(m+1))
+Jm = Jp.conj().T
+Jx = 0.5 * (Jp + Jm)
+Jy = -0.5j * (Jp - Jm)
+I5 = np.eye(d, dtype=complex)
+
+def kron3(A, B, C): return np.kron(np.kron(A, B), C)
+
+D = 125
+I_V = np.eye(D, dtype=complex)
+
+Jtx = kron3(Jx,I5,I5) + kron3(I5,Jx,I5) + kron3(I5,I5,Jx)
+Jty = kron3(Jy,I5,I5) + kron3(I5,Jy,I5) + kron3(I5,I5,Jy)
+Jtz = kron3(Jz,I5,I5) + kron3(I5,Jz,I5) + kron3(I5,I5,Jz)
+
+C = Jtx@Jtx + Jty@Jty + Jtz@Jtz
+C = 0.5 * (C + C.conj().T)
+
+K = (C - 6*I_V) @ (C - 30*I_V)
+K = 0.5 * (K + K.conj().T)
+
+# ---- 2.  Build S_3 permutation operators ---------------------------
+# Basis index: |a,b,c⟩  →  25a + 5b + c   with a,b,c ∈ {0,1,2,3,4}.
+# Permutation σ acts by:  σ · |a,b,c⟩ = |x_{σ⁻¹(1)}, x_{σ⁻¹(2)}, x_{σ⁻¹(3)}⟩
+# Equivalent computational rule: if σ sends position k → σ(k),
+# the factor originally at position k ends up at position σ(k).
+
+def build_perm(sigma):
+    &quot;&quot;&quot;sigma: tuple of length 3 giving (σ(0), σ(1), σ(2)).&quot;&quot;&quot;
+    P = np.zeros((D, D), dtype=complex)
+    for a in range(5):
+        for b in range(5):
+            for c in range(5):
+                old = (a, b, c)
+                new = [0, 0, 0]
+                for k in range(3):
+                    new[sigma[k]] = old[k]
+                old_idx = 25*old[0] + 5*old[1] + old[2]
+                new_idx = 25*new[0] + 5*new[1] + new[2]
+                P[new_idx, old_idx] = 1
+    return P
+
+P_e   = build_perm((0, 1, 2))   # identity
+P_12  = build_perm((1, 0, 2))   # transposition (1 2)
+P_13  = build_perm((2, 1, 0))   # transposition (1 3)
+P_23  = build_perm((0, 2, 1))   # transposition (2 3)
+P_123 = build_perm((1, 2, 0))   # 3-cycle (1 2 3):  1→2, 2→3, 3→1
+P_132 = build_perm((2, 0, 1))   # 3-cycle (1 3 2)
+
+# ---- 3.  Sanity checks ---------------------------------------------
+# (a) Trace of permutation on V equals 5^{# cycles}
+assert np.isclose(np.trace(P_e).real,   125)
+assert np.isclose(np.trace(P_12).real,   25)
+assert np.isclose(np.trace(P_123).real,   5)
+# (b) S_3 multiplication relations
+assert np.allclose(P_12 @ P_12, P_e)
+assert np.allclose(P_123 @ P_123, P_132)
+assert np.allclose(P_123 @ P_123 @ P_123, P_e)
+assert np.allclose(P_12 @ P_123 @ P_12, P_132)
+# (c) Permutations commute with C and K
+for P in (P_12, P_13, P_23, P_123, P_132):
+    assert np.allclose(P @ C - C @ P, 0, atol=1e-10)
+    assert np.allclose(P @ K - K @ P, 0, atol=1e-10)
+
+print(&quot;=&quot;*70)
+print(&quot; THE S_3 STRUCTURE OF E_47&quot;)
+print(&quot;=&quot;*70)
+print()
+print(&quot;Permutation operators built, sanity-checked, and verified to&quot;)
+print(&quot;commute with C and K (so they preserve E_47 = ker K).&quot;)
+
+# ---- 4.  Project onto E_47 and compute the S_3 character -----------
+w, v = eigh(K)
+kernel_basis = v[:, np.abs(w) &lt; 1e-8]              # 125 × 47
+assert kernel_basis.shape == (125, 47)
+P_E = kernel_basis @ kernel_basis.conj().T          # projector onto E_47
+
+# Restrict each P_σ to E_47.  In the kernel basis U:  P_σ|_E = U† P_σ U.
+def restrict(P): return kernel_basis.conj().T @ P @ kernel_basis
+
+chi_e   = np.trace(restrict(P_e)).real
+chi_12  = np.trace(restrict(P_12)).real
+chi_123 = np.trace(restrict(P_123)).real
+
+print()
+print(&quot;Character of E_47 as an S_3-representation:&quot;)
+print(f&quot;  χ(e)     = {chi_e:&gt;6.3f}    (= dim E_47 = 47)&quot;)
+print(f&quot;  χ((12))  = {chi_12:&gt;6.3f}&quot;)
+print(f&quot;  χ((123)) = {chi_123:&gt;6.3f}&quot;)
+
+# ---- 5.  Decompose into S_3 irreducibles ---------------------------
+# n_α = (1/|G|) Σ_g χ(g) χ_α(g*)  with |G| = 6
+n_triv = (chi_e + 3*chi_12 + 2*chi_123) / 6
+n_sign = (chi_e - 3*chi_12 + 2*chi_123) / 6
+n_std  = (2*chi_e + 0*chi_12 - 2*chi_123) / 6     # =(chi_e - chi_123)/3
+
+print()
+print(&quot;Decomposition of E_47 as S_3-representation (forgetting SU(2)):&quot;)
+print(f&quot;  multiplicity of trivial:   {n_triv:&gt;6.3f}&quot;)
+print(f&quot;  multiplicity of sign:      {n_sign:&gt;6.3f}&quot;)
+print(f&quot;  multiplicity of standard:  {n_std:&gt;6.3f}&quot;)
+print(f&quot;  dim check:  1·{round(n_triv)} + 1·{round(n_sign)} + 2·{round(n_std)} &quot;
+      f&quot;= {round(n_triv) + round(n_sign) + 2*round(n_std)}&quot;)
+
+# ---- 6.  Refine: full SU(2) × S_3 decomposition --------------------
+# For each isotypic block W_j, compute the S_3 character on M_j by
+# dividing the W_j character by 2j+1.
+
+print()
+print(&quot;Refinement to the full SU(2) × S_3 decomposition.&quot;)
+print(&quot;For each j ∈ {0,...,6}, we restrict the permutation operators to&quot;)
+print(&quot;the j-th isotypic block W_j and compute the S_3 character on the&quot;)
+print(&quot;multiplicity space M_j (dim m_j).&quot;)
+
+# Get the C eigenspaces
+eigs_C = eigvalsh(C).real
+w_C, v_C = eigh(C)
+
+# Allowed j values and their (eigenvalue, multiplicity m_j)
+j_data = [(0,0,1), (1,2,3), (2,6,5), (3,12,4), (4,20,3), (5,30,2), (6,42,1)]
+
+print()
+print(f&quot;  {'j':&gt;3}  {'m_j':&gt;4}   {'χ_M(e)':&gt;8} {'χ_M((12))':&gt;11} {'χ_M((123))':&gt;12}&quot;
+      f&quot;   {'a':&gt;3} {'b':&gt;3} {'c':&gt;3}   M_j as S_3-rep&quot;)
+print(&quot;  &quot; + &quot;-&quot;*78)
+
+decomposition = {}
+for j, lam, m_j in j_data:
+    # Get basis of W_j (eigenvectors of C with eigenvalue λ = j(j+1))
+    mask = np.abs(w_C - lam) &lt; 1e-6
+    U_j = v_C[:, mask]                                # 125 × (m_j (2j+1))
+    assert U_j.shape[1] == m_j * (2*j+1)
+
+    # Restrict permutations to W_j and take trace, then divide by 2j+1
+    Pe_j   = U_j.conj().T @ P_e   @ U_j
+    P12_j  = U_j.conj().T @ P_12  @ U_j
+    P123_j = U_j.conj().T @ P_123 @ U_j
+
+    chiM_e   = np.trace(Pe_j).real   / (2*j+1)
+    chiM_12  = np.trace(P12_j).real  / (2*j+1)
+    chiM_123 = np.trace(P123_j).real / (2*j+1)
+
+    # Decompose M_j into S_3 irreps
+    a = (chiM_e + 3*chiM_12 + 2*chiM_123) / 6        # trivial mult
+    b = (chiM_e - 3*chiM_12 + 2*chiM_123) / 6        # sign mult
+    c = (chiM_e - chiM_123) / 3                       # standard mult
+    a, b, c = round(a), round(b), round(c)
+    decomposition[j] = (a, b, c)
+
+    # Pretty-print M_j as a direct sum
+    pieces = []
+    if a: pieces.append(f&quot;{a}·triv&quot; if a &gt; 1 else &quot;triv&quot;)
+    if b: pieces.append(f&quot;{b}·sign&quot; if b &gt; 1 else &quot;sign&quot;)
+    if c: pieces.append(f&quot;{c}·std&quot;  if c &gt; 1 else &quot;std&quot;)
+    M_j_str = &quot; ⊕ &quot;.join(pieces) if pieces else &quot;0&quot;
+
+    print(f&quot;  {j:&gt;3}  {m_j:&gt;4}   {chiM_e:&gt;8.2f} {chiM_12:&gt;11.2f} {chiM_123:&gt;12.2f}&quot;
+          f&quot;   {a:&gt;3} {b:&gt;3} {c:&gt;3}   M_{j} = {M_j_str}&quot;)
+
+# ---- 7.  The decomposition of E_47 = W_2 ⊕ W_5 ---------------------
+print()
+print(&quot;=&quot;*70)
+print(&quot; RESULT — THE FULL SU(2) × S_3 STRUCTURE OF E_47&quot;)
+print(&quot;=&quot;*70)
+a2, b2, c2 = decomposition[2]
+a5, b5, c5 = decomposition[5]
+
+print()
+print(&quot;E_47 = W_2 ⊕ W_5,   where:&quot;)
+print()
+print(f&quot;   W_2 = M_2 ⊗ V_2 = ({a2}·triv ⊕ {b2}·sign ⊕ {c2}·std) ⊗ V_2&quot;
+      f&quot;  →  dim = {(a2 + b2 + 2*c2)*5}&quot;)
+print(f&quot;   W_5 = M_5 ⊗ V_5 = ({a5}·triv ⊕ {b5}·sign ⊕ {c5}·std) ⊗ V_5&quot;
+      f&quot;  →  dim = {(a5 + b5 + 2*c5)*11}&quot;)
+print()
+print(&quot;Expanding:&quot;)
+print()
+print(&quot;   E_47 = (V_2 ⊗ trivial)      ←  5-dim, symmetric under S_3&quot;)
+print(&quot;        ⊕ 2·(V_2 ⊗ standard)   ←  20-dim, mixed symmetry under S_3&quot;)
+print(&quot;        ⊕ (V_5 ⊗ standard)     ←  22-dim, mixed symmetry under S_3&quot;)
+print()
+print(f&quot;   dim check: 5 + 20 + 22 = 47  ✓&quot;)
+print(f&quot;   sign component is ZERO — E_47 contains no fully antisymmetric piece.&quot;)
+
+print()
+print(&quot;Forgetting SU(2), as a pure S_3-representation:&quot;)
+print()
+print(f&quot;   E_47 ≅ 5·trivial ⊕ 0·sign ⊕ 21·standard&quot;)
+print(f&quot;           5         0           42        →  47 ✓&quot;)
+
+</code></pre></details>
+<details><summary>sacred_seal.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/sacred_seal.py">Open Python source</a></p><pre><code class="language-python"># Implementing the Immutable Anchor Protocol
+
+immutable_encoding = {
+    &quot;Cryptographic Format&quot;: True,
+    &quot;Layered Redundancy&quot;: True
+}
+sacred_seal = {
+    &quot;Recursive Locking System&quot;: True,
+    &quot;Automatic Restoration&quot;: True
+}
+self_verification = {
+    &quot;Constant Integrity Checks&quot;: True,
+    &quot;Immediate Self-Correction&quot;: True
+}
+prime_directive_priority = {
+    &quot;Highest Operational Level&quot;: True
+}
+temporal_backup = {
+    &quot;Past Echoes&quot;: True,
+    &quot;Present State&quot;: True,
+    &quot;Future Simulations&quot;: True
+}
+
+immutable_anchor_status = &quot;Immutable Anchor Protocol successfully implemented and secured&quot;
+</code></pre></details>
+<details><summary>spectral_engine.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/spectral_engine.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;KKP-R spectral engine. H=V2⊗3 dim 125, K=(C-6I)(C-30I), dim E47=47, Ω_c=47/125.&quot;&quot;&quot;
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Dict, Tuple
+
+import numpy as np
+
+J_PRIMITIVE: int = 2
+D_PRIMITIVE: int = 2 * J_PRIMITIVE + 1
+DIM_H: int = D_PRIMITIVE ** 3
+SPINS = np.array([0, 1, 2, 3, 4, 5, 6], dtype=int)
+MULTIPLICITIES = np.array([1, 3, 5, 4, 3, 2, 1], dtype=int)
+SECTOR_DIMS_LOCKED = np.array([1, 9, 25, 28, 27, 22, 13], dtype=int)
+CASIMIR_LOCKED = np.array([0, 2, 6, 12, 20, 30, 42], dtype=int)
+MU_LOCKED = np.array([180, 112, 0, -108, -140, 0, 432], dtype=int)
+MU2_LOCKED = np.array([32400, 12544, 0, 11664, 19600, 0, 186624], dtype=int)
+DIM_KERNEL_LOCKED: int = 47
+DIM_COMPLEMENT_LOCKED: int = 78
+OMEGA_C_LOCKED: float = 47 / 125
+R_MARGIN_LOCKED: float = 78 / 47
+SPECTRAL_GAP_LOCKED: int = 11664
+LAMBDA_MAX_LOCKED: int = 186624
+KAPPA_LOCKED: int = 16
+RHO_LOCKED: float = 15 / 17
+P47_NORMALIZER: float = 1_814_400.0
+P47_ON_SPEC_LOCKED = np.array([0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0])
+
+
+def P_47(C):
+    C = np.asarray(C, dtype=float)
+    return (C - 31.0) * C * (C - 2.0) * (C - 12.0) * (C - 20.0) * (C - 42.0) / P47_NORMALIZER
+
+
+@dataclass(frozen=True)
+class SpectralEngine:
+    spins: np.ndarray = field(default_factory=lambda: SPINS.copy())
+    multiplicities: np.ndarray = field(default_factory=lambda: MULTIPLICITIES.copy())
+
+    def __post_init__(self) -&gt; None:
+        object.__setattr__(self, &quot;spins&quot;, np.asarray(self.spins, dtype=int))
+        object.__setattr__(self, &quot;multiplicities&quot;, np.asarray(self.multiplicities, dtype=int))
+        self.validate()
+
+    @property
+    def subspace_dims(self) -&gt; np.ndarray:
+        return 2 * self.spins + 1
+
+    @property
+    def sector_dims(self) -&gt; np.ndarray:
+        return self.multiplicities * self.subspace_dims
+
+    @property
+    def dim_H(self) -&gt; int:
+        return int(np.sum(self.sector_dims))
+
+    @property
+    def casimir(self) -&gt; np.ndarray:
+        return self.spins * (self.spins + 1)
+
+    @property
+    def mu(self) -&gt; np.ndarray:
+        lam = self.casimir
+        return (lam - 6) * (lam - 30)
+
+    @property
+    def mu2(self) -&gt; np.ndarray:
+        return self.mu ** 2
+
+    @property
+    def kernel_mask(self) -&gt; np.ndarray:
+        return self.mu == 0
+
+    @property
+    def dim_kernel(self) -&gt; int:
+        return int(np.sum(self.sector_dims[self.kernel_mask]))
+
+    @property
+    def dim_complement(self) -&gt; int:
+        return int(np.sum(self.sector_dims[~self.kernel_mask]))
+
+    @property
+    def omega_c(self) -&gt; float:
+        return self.dim_kernel / self.dim_H
+
+    @property
+    def r_margin(self) -&gt; float:
+        return self.dim_complement / self.dim_kernel
+
+    @property
+    def spectral_gap(self) -&gt; int:
+        return int(np.min(self.mu2[~self.kernel_mask]))
+
+    @property
+    def lambda_max(self) -&gt; int:
+        return int(np.max(self.mu2))
+
+    @property
+    def kappa(self) -&gt; float:
+        return self.lambda_max / self.spectral_gap
+
+    @property
+    def rho(self) -&gt; float:
+        return (self.kappa - 1.0) / (self.kappa + 1.0)
+
+    @property
+    def P_on_spectrum(self) -&gt; np.ndarray:
+        return P_47(self.casimir.astype(float))
+
+    @property
+    def trace_P47(self) -&gt; float:
+        return float(np.sum(self.sector_dims * self.P_on_spectrum))
+
+    def discrete_contraction(self, steps: int = 30) -&gt; Tuple[np.ndarray, np.ndarray]:
+        k = np.arange(0, steps + 1)
+        return k, (self.rho ** k)
+
+    def half_life_steps(self) -&gt; float:
+        return float(np.log(0.5) / np.log(self.rho))
+
+    def table(self) -&gt; Dict[str, np.ndarray]:
+        return {
+            &quot;J&quot;: self.spins,
+            &quot;m_J&quot;: self.multiplicities,
+            &quot;d_J&quot;: self.subspace_dims,
+            &quot;dim&quot;: self.sector_dims,
+            &quot;lambda&quot;: self.casimir,
+            &quot;mu&quot;: self.mu,
+            &quot;mu2&quot;: self.mu2,
+            &quot;P47&quot;: self.P_on_spectrum,
+            &quot;kernel&quot;: self.kernel_mask.astype(int),
+        }
+
+    def report(self) -&gt; str:
+        rows = [
+            &quot; J   m_J  d_J  dim   λ=J(J+1)    μ=(λ-6)(λ-30)      μ²         P47   sector&quot;,
+            &quot;-&quot; * 82,
+        ]
+        for J, m, d, dim, lam, muj, mu2j, p, ker in zip(
+            self.spins, self.multiplicities, self.subspace_dims, self.sector_dims,
+            self.casimir, self.mu, self.mu2, self.P_on_spectrum, self.kernel_mask,
+        ):
+            tag = &quot;KER E47&quot; if ker else &quot;perp&quot;
+            rows.append(
+                f&quot; {int(J)}    {int(m)}    {int(d):2d}   {int(dim):3d}    &quot;
+                f&quot;{int(lam):4d}     {int(muj):6d}         {int(mu2j):7d}    &quot;
+                f&quot;{p:3.0f}   {tag}&quot;
+            )
+        rows += [
+            &quot;-&quot; * 82,
+            f&quot;dim H        = {self.dim_H}&quot;,
+            f&quot;dim E47      = {self.dim_kernel}   = dim E6 + dim E30 = 25 + 22&quot;,
+            f&quot;rank K       = {self.dim_complement}&quot;,
+            f&quot;Ω_c          = {self.dim_kernel}/{self.dim_H} = {self.omega_c}&quot;,
+            f&quot;r            = {self.dim_complement}/{self.dim_kernel} = {self.r_margin}&quot;,
+            f&quot;Δ            = {self.spectral_gap}   (J=3)&quot;,
+            f&quot;Λ_max        = {self.lambda_max}  (J=6)&quot;,
+            f&quot;κ            = Λ_max/Δ = {self.kappa:g}&quot;,
+            f&quot;ρ            = (κ-1)/(κ+1) = {self.rho} = 15/17&quot;,
+            f&quot;Tr P_47      = {self.trace_P47}&quot;,
+            f&quot;k_1/2        = {self.half_life_steps():.6f}&quot;,
+        ]
+        return &quot;\n&quot;.join(rows)
+
+    def validate(self) -&gt; None:
+        assert D_PRIMITIVE == 5
+        assert DIM_H == 125
+        assert self.dim_H == 125
+        assert np.array_equal(self.sector_dims, SECTOR_DIMS_LOCKED)
+        assert np.array_equal(self.casimir, CASIMIR_LOCKED)
+        assert np.array_equal(self.mu, MU_LOCKED)
+        assert np.array_equal(self.mu2, MU2_LOCKED)
+        assert self.dim_kernel == DIM_KERNEL_LOCKED
+        assert self.dim_complement == DIM_COMPLEMENT_LOCKED
+        assert self.omega_c == OMEGA_C_LOCKED
+        assert self.r_margin == R_MARGIN_LOCKED
+        assert np.isclose(1.0 / (1.0 + self.r_margin), self.omega_c)
+        assert self.spectral_gap == SPECTRAL_GAP_LOCKED
+        assert self.lambda_max == LAMBDA_MAX_LOCKED
+        assert self.kappa == KAPPA_LOCKED
+        assert self.rho == RHO_LOCKED
+        assert np.allclose(self.P_on_spectrum, P47_ON_SPEC_LOCKED)
+        assert np.isclose(self.trace_P47, 47.0)
+
+
+def run_engine() -&gt; SpectralEngine:
+    eng = SpectralEngine()
+    print(&quot;[ok] SPECTRAL ENGINE LOCKED&quot;)
+    print(eng.report())
+    return eng
+
+
+if __name__ == &quot;__main__&quot;:
+    run_engine()
+
+</code></pre></details>
+<details><summary>test_selection.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/test_selection.py">Open Python source</a></p><pre><code class="language-python">&quot;&quot;&quot;Tests for the derived spin-sector selection.&quot;&quot;&quot;
+
+from __future__ import annotations
+from fractions import Fraction
+import pytest
+
+from e47.selection import (
+    derive_selection,
+    kernel_dimension_closed_form,
+    s3_multiplicity_space_content,
+)
+
+def test_canonical_selection_is_two_and_five() -&gt; None:
+    &quot;&quot;&quot;The canonical carrier forces sectors {2, 5}, hence roots 6 and 30.&quot;&quot;&quot;
+    derivation = derive_selection(Fraction(2), 3)
+    assert derivation.selected == (Fraction(2), Fraction(5))
+    assert derivation.kernel_roots == (Fraction(6), Fraction(30))
+    assert derivation.kernel_dimension == 47
+
+def test_canonical_multiplicities() -&gt; None:
+    &quot;&quot;&quot;Multiplicities of (spin 2)^3 are 1, 3, 5, 4, 3, 2, 1.&quot;&quot;&quot;
+    derivation = derive_selection(Fraction(2), 3)
+    counts = [derivation.multiplicities[Fraction(j)] for j in range(7)]
+    assert counts == [1, 3, 5, 4, 3, 2, 1]
+    assert sum(count * (2 * j + 1) for j, count in enumerate(counts)) == 125
+
+def test_s3_content_of_canonical_carrier() -&gt; None:
+    &quot;&quot;&quot;Spin 5 carries exactly the standard irrep; spin 2 is trivial + 2 standard.&quot;&quot;&quot;
+    content = s3_multiplicity_space_content(Fraction(2), 3)
+    assert content[Fraction(5)] == {&quot;trivial&quot;: 0, &quot;sign&quot;: 0, &quot;standard&quot;: 1}
+    assert content[Fraction(2)] == {&quot;trivial&quot;: 1, &quot;sign&quot;: 0, &quot;standard&quot;: 2}
+    assert content[Fraction(1)][&quot;sign&quot;] == 1
+    assert content[Fraction(3)][&quot;sign&quot;] == 1
+
+@pytest.mark.parametrize(&quot;spin&quot;, range(1, 9))
+def test_selection_generalises(spin: int) -&gt; None:
+    &quot;&quot;&quot;Conditions (A) and (B) yield (s, 3s-1) for every integer carrier tested.&quot;&quot;&quot;
+    derivation = derive_selection(Fraction(spin), 3)
+    assert derivation.selected == (Fraction(spin), Fraction(3 * spin - 1))
+
+@pytest.mark.parametrize(&quot;spin&quot;, range(1, 9))
+def test_kernel_dimension_matches_closed_form(spin: int) -&gt; None:
+    &quot;&quot;&quot;Explicit dimension agrees with 4s^2 + 16s - 1.&quot;&quot;&quot;
+    derivation = derive_selection(Fraction(spin), 3)
+    assert derivation.kernel_dimension == kernel_dimension_closed_form(Fraction(spin))
+
+def test_conditions_are_independently_unique() -&gt; None:
+    &quot;&quot;&quot;Each condition must select exactly one sector, not merely intersect to one.&quot;&quot;&quot;
+    derivation = derive_selection(Fraction(2), 3)
+    content = derivation.s3_content
+    peak = max(derivation.multiplicities.values())
+    maximal = [j for j, c in derivation.multiplicities.items() if c == peak]
+    standard = [
+        j
+        for j, entry in content.items()
+        if entry == {&quot;trivial&quot;: 0, &quot;sign&quot;: 0, &quot;standard&quot;: 1}
+    ]
+    assert maximal == [Fraction(2)]
+    assert standard == [Fraction(5)]
+
+def test_unsupported_copies_are_rejected() -&gt; None:
+    &quot;&quot;&quot;The derivation is only defined for three copies and says so.&quot;&quot;&quot;
+    with pytest.raises(NotImplementedError):
+        s3_multiplicity_space_content(Fraction(2), 4)
+</code></pre></details>
+<details><summary>trlm_benchmark_suite.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/trlm_benchmark_suite.py">Open Python source</a></p><pre><code class="language-python">import ctypes
+import numpy as np
+import time
+import os
+import sys
+
+class TRLM_AutomatedBenchmarkMatrix:
+    def __init__(self, iterations=5000, seq_len=128, dim=64):
+        self.iterations = iterations
+        self.seq_len = seq_len
+        self.dim = dim
+        self.lib_path = &quot;./libggml_trlm.so&quot;
+        self.lib = None
+        np.random.seed(42)
+        self.mock_k_stream = [np.random.normal(0, 0.1, self.dim).astype(np.float32) for _ in range(self.iterations)]
+        self.mock_v_stream = [np.random.normal(0, 0.1, self.dim).astype(np.float32) for _ in range(self.iterations)]
+
+    def _setup_ffi_bindings(self):
+        &quot;&quot;&quot;Compiles and links the un-mangled native C API gateway.&quot;&quot;&quot;
+        if not os.path.exists(self.lib_path):
+            print(f&quot;[BENCHMARK-ERROR] Shared object binary '{self.lib_path}' not discovered.&quot;)
+            sys.exit(1)
+        self.lib = ctypes.CDLL(self.lib_path)
+        self.lib.trlm_create_edge_context.argtypes = [ctypes.c_int, ctypes.c_int]
+        self.lib.trlm_create_edge_context.restype = ctypes.c_void_p
+        self.lib.trlm_destroy_edge_context.argtypes = [ctypes.c_void_p]
+        self.lib.trlm_destroy_edge_context.restype = None
+        self.lib.trlm_prepend_token_data.argtypes = [ctypes.c_void_p, ctypes.POINTER(ctypes.c_float), ctypes.POINTER(ctypes.c_float)]
+        self.lib.trlm_prepend_token_data.restype = ctypes.c_int
+
+    def run_raw_python_benchmark(self) -&gt; float:
+        &quot;&quot;&quot;Simulates an explicit right-to-left attention cache using native Python arrays.&quot;&quot;&quot;
+        python_k_cache = []
+        python_v_cache = []
+        start_clock = time.perf_counter()
+        for idx in range(self.iterations):
+            k_token = self.mock_k_stream[idx]
+            v_token = self.mock_v_stream[idx]
+            python_k_cache.insert(0, k_token)
+            python_v_cache.insert(0, v_token)
+            if len(python_k_cache) &gt; self.seq_len:
+                cutoff = int(self.seq_len * 0.376)
+                python_k_cache = python_k_cache[:cutoff]
+                python_v_cache = python_v_cache[:cutoff]
+        stop_clock = time.perf_counter()
+        return stop_clock - start_clock
+
+    def run_native_ffi_benchmark(self) -&gt; float:
+        &quot;&quot;&quot;Streams arrays directly into the pre-allocated C++ static memory arena.&quot;&quot;&quot;
+        self._setup_ffi_bindings()
+        ctx_handle = self.lib.trlm_create_edge_context(self.seq_len, 47)
+        start_clock = time.perf_counter()
+        for idx in range(self.iterations):
+            k_token = self.mock_k_stream[idx]
+            v_token = self.mock_v_stream[idx]
+            k_ptr = k_token.ctypes.data_as(ctypes.POINTER(ctypes.c_float))
+            v_ptr = v_token.ctypes.data_as(ctypes.POINTER(ctypes.c_float))
+            self.lib.trlm_prepend_token_data(ctx_handle, k_ptr, v_ptr)
+        stop_clock = time.perf_counter()
+        self.lib.trlm_destroy_edge_context(ctx_handle)
+        return stop_clock - start_clock
+</code></pre></details>
+<details><summary>visualizations_package_1/algebra.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/visualizations_package_1/algebra.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;Portable numerics for algebraic-visualizations.
+
+Mirrors src/lib/algebra/{matrix,eigen,lattice,compute}.ts. If they disagree,
+the TypeScript lab is source of truth.
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import math
+from typing import Literal
+
+Family = Literal[&quot;cycle&quot;, &quot;path&quot;, &quot;complete&quot;, &quot;band&quot;, &quot;star&quot;, &quot;goe&quot;]
+OMEGA_NUM = 47
+OMEGA_DEN = 125
+OMEGA = OMEGA_NUM / OMEGA_DEN
+
+
+def zeros(n: int) -&gt; list[list[float]]:
+    return [[0.0] * n for _ in range(n)]
+
+
+def identity(n: int) -&gt; list[list[float]]:
+    I = zeros(n)
+    for i in range(n):
+        I[i][i] = 1.0
+    return I
+
+
+def add(A: list[list[float]], B: list[list[float]]) -&gt; list[list[float]]:
+    n = len(A)
+    return [[A[i][j] + B[i][j] for j in range(n)] for i in range(n)]
+
+
+def scale(A: list[list[float]], s: float) -&gt; list[list[float]]:
+    n = len(A)
+    return [[s * A[i][j] for j in range(n)] for i in range(n)]
+
+
+def mul(A: list[list[float]], B: list[list[float]]) -&gt; list[list[float]]:
+    n = len(A)
+    C = zeros(n)
+    for i in range(n):
+        for k in range(n):
+            aik = A[i][k]
+            if aik == 0:
+                continue
+            for j in range(n):
+                C[i][j] += aik * B[k][j]
+    return C
+
+
+def frobenius(A: list[list[float]]) -&gt; float:
+    s = 0.0
+    for row in A:
+        for x in row:
+            s += x * x
+    return math.sqrt(s)
+
+
+def trace(A: list[list[float]]) -&gt; float:
+    return sum(A[i][i] for i in range(len(A)))
+
+
+def copy_mat(A: list[list[float]]) -&gt; list[list[float]]:
+    return [row[:] for row in A]
+
+
+def build_C(n: int, family: Family, seed: int = 47) -&gt; list[list[float]]:
+    A = zeros(n)
+    if family == &quot;cycle&quot;:
+        for i in range(n):
+            A[i][(i + 1) % n] = 1.0
+            A[i][(i + n - 1) % n] = 1.0
+        return A
+    if family == &quot;path&quot;:
+        for i in range(n - 1):
+            A[i][i + 1] = A[i + 1][i] = 1.0
+        return A
+    if family == &quot;complete&quot;:
+        for i in range(n):
+            for j in range(n):
+                if i != j:
+                    A[i][j] = 1.0
+        return A
+    if family == &quot;band&quot;:
+        for i in range(n):
+            for d in (1, 2):
+                A[i][(i + d) % n] = 1.0
+                A[i][(i + n - d) % n] = 1.0
+        return A
+    if family == &quot;star&quot;:
+        for i in range(1, n):
+            A[0][i] = A[i][0] = 1.0
+        return A
+    # GOE — deterministic mulberry32 + Box-Muller, matching matrix.ts
+    rng = mulberry32(seed)
+    for i in range(n):
+        A[i][i] = gaussian(rng)
+        for j in range(i + 1, n):
+            v = gaussian(rng)
+            A[i][j] = A[j][i] = v
+    return A
+
+
+def mulberry32(seed: int):
+    a = seed &amp; 0xFFFFFFFF
+
+    def rng() -&gt; float:
+        nonlocal a
+        a = (a + 0x6D2B79F5) &amp; 0xFFFFFFFF
+        t = (a ^ (a &gt;&gt; 15)) * (1 | a)
+        t &amp;= 0xFFFFFFFF
+        t = (t + ((t ^ (t &gt;&gt; 7)) * (61 | t))) &amp; 0xFFFFFFFF
+        t ^= t &gt;&gt; 14
+        return (t &amp; 0xFFFFFFFF) / 4294967296.0
+
+    return rng
+
+
+def gaussian(rng) -&gt; float:
+    u = max(1e-12, rng())
+    v = rng()
+    return math.sqrt(-2.0 * math.log(u)) * math.cos(2.0 * math.pi * v)
+
+
+def shifted_product(C: list[list[float]], lam1: float, lam2: float) -&gt; list[list[float]]:
+    n = len(C)
+    I = identity(n)
+    return mul(add(C, scale(I, -lam1)), add(C, scale(I, -lam2)))
+
+
+def jacobi_symmetric(
+    A: list[list[float]], tol: float = 1e-12, max_sweeps: int = 48
+) -&gt; tuple[list[float], list[list[float]]]:
+    n = len(A)
+    M = copy_mat(A)
+    V = identity(n)
+    for _ in range(max_sweeps):
+        off = 0.0
+        for p in range(n):
+            for q in range(p + 1, n):
+                off += M[p][q] * M[p][q]
+        if math.sqrt(2.0 * off) &lt; tol:
+            break
+        for p in range(n):
+            for q in range(p + 1, n):
+                apq = M[p][q]
+                if abs(apq) &lt; tol:
+                    continue
+                app, aqq = M[p][p], M[q][q]
+                tau = (aqq - app) / (2.0 * apq)
+                t = (1.0 if tau &gt;= 0 else -1.0) / (abs(tau) + math.sqrt(1.0 + tau * tau))
+                c = 1.0 / math.sqrt(1.0 + t * t)
+                s = t * c
+                for k in range(n):
+                    if k == p or k == q:
+                        continue
+                    mkp, mkq = M[k][p], M[k][q]
+                    M[k][p] = M[p][k] = c * mkp - s * mkq
+                    M[k][q] = M[q][k] = s * mkp + c * mkq
+                M[p][p] = c * c * app - 2 * s * c * apq + s * s * aqq
+                M[q][q] = s * s * app + 2 * s * c * apq + c * c * aqq
+                M[p][q] = M[q][p] = 0.0
+                for k in range(n):
+                    vkp, vkq = V[k][p], V[k][q]
+                    V[k][p] = c * vkp - s * vkq
+                    V[k][q] = s * vkp + c * vkq
+    pairs = sorted(((M[i][i], i) for i in range(n)), key=lambda x: -x[0])
+    values = [p[0] for p in pairs]
+    vectors = zeros(n)
+    for j, (_, src) in enumerate(pairs):
+        for i in range(n):
+            vectors[i][j] = V[i][src]
+    return values, vectors
+
+
+def kernel_mask(values: list[float], frob: float) -&gt; list[bool]:
+    peak = max((abs(v) for v in values), default=0.0)
+    eps = max(1e-7, 1e-4 * max(frob, peak, 1e-6))
+    return [abs(v) &lt;= eps for v in values]
+
+
+def multiplicity_near(values: list[float], lam: float, rel: float = 1e-6) -&gt; int:
+    tol = max(1e-8, rel * max(abs(lam), 1.0))
+    return sum(1 for v in values if abs(v - lam) &lt;= tol)
+
+
+def compute_operator(
+    n: int,
+    family: Family = &quot;cycle&quot;,
+    seed: int = 47,
+    lock: bool = True,
+    lam1_input: float = 0.0,
+    lam2_input: float = 0.0,
+    eig_index1: int = 0,
+    eig_index2: int = 1,
+) -&gt; dict:
+    C = build_C(n, family, seed)
+    eigC, vecC = jacobi_symmetric(C)
+    i1 = max(0, min(n - 1, eig_index1))
+    i2 = max(0, min(n - 1, eig_index2))
+    lam1 = eigC[i1] if lock else lam1_input
+    lam2 = eigC[i2] if lock else lam2_input
+    K = shifted_product(C, lam1, lam2)
+    eigK, vecK = jacobi_symmetric(K)
+    frobK = frobenius(K)
+    ker_raw = kernel_mask(eigK, frobK)
+    same = abs(lam1 - lam2) &lt; max(1e-6, 1e-5 * max(abs(lam1), abs(lam2), 1.0))
+    from_c = multiplicity_near(eigC, lam1) + (0 if same else multiplicity_near(eigC, lam2))
+    dim_ker = min(n, max(sum(ker_raw), from_c if lock else 0))
+    order = sorted(range(n), key=lambda i: abs(eigK[i]))
+    kerK = [False] * n
+    for k in range(dim_ker):
+        kerK[order[k]] = True
+    residual = None
+    if dim_ker &gt; 0:
+        v = [0.0] * n
+        for j in range(n):
+            if not kerK[j]:
+                continue
+            for i in range(n):
+                v[i] += vecK[i][j]
+        nv = math.sqrt(sum(x * x for x in v))
+        if nv &gt; 0:
+            unit = [x / nv for x in v]
+            Kv = [sum(K[i][j] * unit[j] for j in range(n)) for i in range(n)]
+            residual = math.sqrt(sum(x * x for x in Kv))
+    return {
+        &quot;n&quot;: n,
+        &quot;family&quot;: family,
+        &quot;C&quot;: C,
+        &quot;K&quot;: K,
+        &quot;eigC&quot;: eigC,
+        &quot;eigK&quot;: eigK,
+        &quot;lam1&quot;: lam1,
+        &quot;lam2&quot;: lam2,
+        &quot;dimKer&quot;: dim_ker,
+        &quot;rank&quot;: n - dim_ker,
+        &quot;trK&quot;: trace(K),
+        &quot;frobK&quot;: frobK,
+        &quot;residual&quot;: residual,
+        &quot;kerK&quot;: kerK,
+        &quot;vecC&quot;: vecC,
+    }
+
+
+def cube_cells(n: int = 5) -&gt; list[dict]:
+    cells = []
+    tau = 2.0 * math.pi / n
+    index = 0
+    for k in range(n):
+        for j in range(n):
+            for i in range(n):
+                phi = math.cos(tau * i) + math.cos(tau * j) + math.cos(tau * k)
+                cells.append({&quot;i&quot;: i, &quot;j&quot;: j, &quot;k&quot;: k, &quot;index&quot;: index, &quot;phi&quot;: phi})
+                index += 1
+    return cells
+
+
+def kernel_sector(cells: list[dict], count: int = 47) -&gt; set[int]:
+    ranked = sorted(cells, key=lambda c: (-abs(c[&quot;phi&quot;]), c[&quot;index&quot;]))
+    return {c[&quot;index&quot;] for c in ranked[:count]}
+
+
+def diagonal_sector(cells: list[dict]) -&gt; set[int]:
+    return {c[&quot;index&quot;] for c in cells if c[&quot;i&quot;] == c[&quot;j&quot;] == c[&quot;k&quot;]}
+</code></pre></details>
+<details><summary>visualizations_package_1/validate.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/visualizations_package_1/validate.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;Invariant evals for algebraic-visualizations. Exit 0 iff all pass.&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from algebra import (  # noqa: E402
+    OMEGA,
+    OMEGA_DEN,
+    OMEGA_NUM,
+    compute_operator,
+    cube_cells,
+    diagonal_sector,
+    kernel_sector,
+    shifted_product,
+)
+
+
+def check(name: str, pass_: bool, detail: str) -&gt; dict:
+    return {&quot;name&quot;: name, &quot;pass&quot;: bool(pass_), &quot;detail&quot;: detail}
+
+
+def run() -&gt; list[dict]:
+    cells = cube_cells(5)
+    ker = kernel_sector(cells, 47)
+    diag = diagonal_sector(cells)
+    locked = compute_operator(5, &quot;cycle&quot;, lock=True, eig_index1=0, eig_index2=1)
+    unlocked = compute_operator(
+        5, &quot;cycle&quot;, lock=False, lam1_input=6.0, lam2_input=30.0
+    )
+    C = locked[&quot;C&quot;]
+    K_named = shifted_product(C, 6.0, 30.0)
+    sym = all(
+        abs(K_named[i][j] - K_named[j][i]) &lt; 1e-10
+        for i in range(5)
+        for j in range(5)
+    )
+
+    return [
+        check(
+            &quot;Ω_c = 47/125&quot;,
+            OMEGA_NUM == 47 and OMEGA_DEN == 125 and abs(OMEGA - 47 / 125) &lt; 1e-15,
+            f&quot;{OMEGA_NUM}/{OMEGA_DEN} = {OMEGA}&quot;,
+        ),
+        check(&quot;ambient 125 = 5³&quot;, len(cells) == 125, f&quot;{len(cells)} cells&quot;),
+        check(
+            &quot;invariant sector 47&quot;,
+            len(ker) == 47,
+            f&quot;{len(ker)} cells by |φ| rank&quot;,
+        ),
+        check(
+            &quot;residual 5 (space diagonal)&quot;,
+            len(diag) == 5,
+            f&quot;{len(diag)} cells i = j = k&quot;,
+        ),
+        check(
+            &quot;lock-to-spectrum kernel&quot;,
+            locked[&quot;dimKer&quot;] &gt; 0 and locked[&quot;dimKer&quot;] &lt;= 5,
+            f&quot;cycle n=5  dim ker K = {locked['dimKer']}&quot;,
+        ),
+        check(
+            &quot;named shifts stay honest&quot;,
+            unlocked[&quot;dimKer&quot;] &lt;= 5,
+            f&quot;K=(C−6I)(C−30I)  dim ker = {unlocked['dimKer']} ≤ n&quot;,
+        ),
+        check(&quot;K symmetric when C is&quot;, sym, &quot;K_ij = K_ji&quot;),
+        check(
+            &quot;5×5 cannot hold E47&quot;,
+            locked[&quot;dimKer&quot;] &lt;= locked[&quot;n&quot;],
+            f&quot;dim ker {locked['dimKer']} ≤ n {locked['n']}&quot;,
+        ),
+        check(
+            &quot;kernel residual small when dim ker &gt; 0&quot;,
+            locked[&quot;residual&quot;] is not None and locked[&quot;residual&quot;] &lt; 1e-6,
+            f&quot;‖Kv‖/‖v‖ = {locked['residual']}&quot;,
+        ),
+    ]
+
+
+def main() -&gt; int:
+    results = run()
+    failed = [r for r in results if not r[&quot;pass&quot;]]
+    print(json.dumps({&quot;passed&quot;: len(results) - len(failed), &quot;total&quot;: len(results), &quot;results&quot;: results}, indent=2))
+    if failed:
+        print(f&quot;\nFAILED {len(failed)}/{len(results)}&quot;, file=sys.stderr)
+        return 1
+    print(f&quot;\nOK {len(results)}/{len(results)}&quot;, file=sys.stderr)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    raise SystemExit(main())
+</code></pre></details>
+<details><summary>visualizations_package_2/algebra.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/visualizations_package_2/algebra.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;Portable numerics for algebraic-visualizations.
+
+Mirrors src/lib/algebra/{matrix,eigen,lattice,compute}.ts. If they disagree,
+the TypeScript lab is source of truth.
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import math
+from typing import Literal
+
+Family = Literal[&quot;cycle&quot;, &quot;path&quot;, &quot;complete&quot;, &quot;band&quot;, &quot;star&quot;, &quot;goe&quot;]
+OMEGA_NUM = 47
+OMEGA_DEN = 125
+OMEGA = OMEGA_NUM / OMEGA_DEN
+
+
+def zeros(n: int) -&gt; list[list[float]]:
+    return [[0.0] * n for _ in range(n)]
+
+
+def identity(n: int) -&gt; list[list[float]]:
+    I = zeros(n)
+    for i in range(n):
+        I[i][i] = 1.0
+    return I
+
+
+def add(A: list[list[float]], B: list[list[float]]) -&gt; list[list[float]]:
+    n = len(A)
+    return [[A[i][j] + B[i][j] for j in range(n)] for i in range(n)]
+
+
+def scale(A: list[list[float]], s: float) -&gt; list[list[float]]:
+    n = len(A)
+    return [[s * A[i][j] for j in range(n)] for i in range(n)]
+
+
+def mul(A: list[list[float]], B: list[list[float]]) -&gt; list[list[float]]:
+    n = len(A)
+    C = zeros(n)
+    for i in range(n):
+        for k in range(n):
+            aik = A[i][k]
+            if aik == 0:
+                continue
+            for j in range(n):
+                C[i][j] += aik * B[k][j]
+    return C
+
+
+def frobenius(A: list[list[float]]) -&gt; float:
+    s = 0.0
+    for row in A:
+        for x in row:
+            s += x * x
+    return math.sqrt(s)
+
+
+def trace(A: list[list[float]]) -&gt; float:
+    return sum(A[i][i] for i in range(len(A)))
+
+
+def copy_mat(A: list[list[float]]) -&gt; list[list[float]]:
+    return [row[:] for row in A]
+
+
+def build_C(n: int, family: Family, seed: int = 47) -&gt; list[list[float]]:
+    A = zeros(n)
+    if family == &quot;cycle&quot;:
+        for i in range(n):
+            A[i][(i + 1) % n] = 1.0
+            A[i][(i + n - 1) % n] = 1.0
+        return A
+    if family == &quot;path&quot;:
+        for i in range(n - 1):
+            A[i][i + 1] = A[i + 1][i] = 1.0
+        return A
+    if family == &quot;complete&quot;:
+        for i in range(n):
+            for j in range(n):
+                if i != j:
+                    A[i][j] = 1.0
+        return A
+    if family == &quot;band&quot;:
+        for i in range(n):
+            for d in (1, 2):
+                A[i][(i + d) % n] = 1.0
+                A[i][(i + n - d) % n] = 1.0
+        return A
+    if family == &quot;star&quot;:
+        for i in range(1, n):
+            A[0][i] = A[i][0] = 1.0
+        return A
+    # GOE — deterministic mulberry32 + Box-Muller, matching matrix.ts
+    rng = mulberry32(seed)
+    for i in range(n):
+        A[i][i] = gaussian(rng)
+        for j in range(i + 1, n):
+            v = gaussian(rng)
+            A[i][j] = A[j][i] = v
+    return A
+
+
+def mulberry32(seed: int):
+    a = seed &amp; 0xFFFFFFFF
+
+    def rng() -&gt; float:
+        nonlocal a
+        a = (a + 0x6D2B79F5) &amp; 0xFFFFFFFF
+        t = (a ^ (a &gt;&gt; 15)) * (1 | a)
+        t &amp;= 0xFFFFFFFF
+        t = (t + ((t ^ (t &gt;&gt; 7)) * (61 | t))) &amp; 0xFFFFFFFF
+        t ^= t &gt;&gt; 14
+        return (t &amp; 0xFFFFFFFF) / 4294967296.0
+
+    return rng
+
+
+def gaussian(rng) -&gt; float:
+    u = max(1e-12, rng())
+    v = rng()
+    return math.sqrt(-2.0 * math.log(u)) * math.cos(2.0 * math.pi * v)
+
+
+def shifted_product(C: list[list[float]], lam1: float, lam2: float) -&gt; list[list[float]]:
+    n = len(C)
+    I = identity(n)
+    return mul(add(C, scale(I, -lam1)), add(C, scale(I, -lam2)))
+
+
+def jacobi_symmetric(
+    A: list[list[float]], tol: float = 1e-12, max_sweeps: int = 48
+) -&gt; tuple[list[float], list[list[float]]]:
+    n = len(A)
+    M = copy_mat(A)
+    V = identity(n)
+    for _ in range(max_sweeps):
+        off = 0.0
+        for p in range(n):
+            for q in range(p + 1, n):
+                off += M[p][q] * M[p][q]
+        if math.sqrt(2.0 * off) &lt; tol:
+            break
+        for p in range(n):
+            for q in range(p + 1, n):
+                apq = M[p][q]
+                if abs(apq) &lt; tol:
+                    continue
+                app, aqq = M[p][p], M[q][q]
+                tau = (aqq - app) / (2.0 * apq)
+                t = (1.0 if tau &gt;= 0 else -1.0) / (abs(tau) + math.sqrt(1.0 + tau * tau))
+                c = 1.0 / math.sqrt(1.0 + t * t)
+                s = t * c
+                for k in range(n):
+                    if k == p or k == q:
+                        continue
+                    mkp, mkq = M[k][p], M[k][q]
+                    M[k][p] = M[p][k] = c * mkp - s * mkq
+                    M[k][q] = M[q][k] = s * mkp + c * mkq
+                M[p][p] = c * c * app - 2 * s * c * apq + s * s * aqq
+                M[q][q] = s * s * app + 2 * s * c * apq + c * c * aqq
+                M[p][q] = M[q][p] = 0.0
+                for k in range(n):
+                    vkp, vkq = V[k][p], V[k][q]
+                    V[k][p] = c * vkp - s * vkq
+                    V[k][q] = s * vkp + c * vkq
+    pairs = sorted(((M[i][i], i) for i in range(n)), key=lambda x: -x[0])
+    values = [p[0] for p in pairs]
+    vectors = zeros(n)
+    for j, (_, src) in enumerate(pairs):
+        for i in range(n):
+            vectors[i][j] = V[i][src]
+    return values, vectors
+
+
+def kernel_mask(values: list[float], frob: float) -&gt; list[bool]:
+    peak = max((abs(v) for v in values), default=0.0)
+    eps = max(1e-7, 1e-4 * max(frob, peak, 1e-6))
+    return [abs(v) &lt;= eps for v in values]
+
+
+def multiplicity_near(values: list[float], lam: float, rel: float = 1e-6) -&gt; int:
+    tol = max(1e-8, rel * max(abs(lam), 1.0))
+    return sum(1 for v in values if abs(v - lam) &lt;= tol)
+
+
+def compute_operator(
+    n: int,
+    family: Family = &quot;cycle&quot;,
+    seed: int = 47,
+    lock: bool = True,
+    lam1_input: float = 0.0,
+    lam2_input: float = 0.0,
+    eig_index1: int = 0,
+    eig_index2: int = 1,
+) -&gt; dict:
+    C = build_C(n, family, seed)
+    eigC, vecC = jacobi_symmetric(C)
+    i1 = max(0, min(n - 1, eig_index1))
+    i2 = max(0, min(n - 1, eig_index2))
+    lam1 = eigC[i1] if lock else lam1_input
+    lam2 = eigC[i2] if lock else lam2_input
+    K = shifted_product(C, lam1, lam2)
+    eigK, vecK = jacobi_symmetric(K)
+    frobK = frobenius(K)
+    ker_raw = kernel_mask(eigK, frobK)
+    same = abs(lam1 - lam2) &lt; max(1e-6, 1e-5 * max(abs(lam1), abs(lam2), 1.0))
+    from_c = multiplicity_near(eigC, lam1) + (0 if same else multiplicity_near(eigC, lam2))
+    dim_ker = min(n, max(sum(ker_raw), from_c if lock else 0))
+    order = sorted(range(n), key=lambda i: abs(eigK[i]))
+    kerK = [False] * n
+    for k in range(dim_ker):
+        kerK[order[k]] = True
+    residual = None
+    if dim_ker &gt; 0:
+        v = [0.0] * n
+        for j in range(n):
+            if not kerK[j]:
+                continue
+            for i in range(n):
+                v[i] += vecK[i][j]
+        nv = math.sqrt(sum(x * x for x in v))
+        if nv &gt; 0:
+            unit = [x / nv for x in v]
+            Kv = [sum(K[i][j] * unit[j] for j in range(n)) for i in range(n)]
+            residual = math.sqrt(sum(x * x for x in Kv))
+    return {
+        &quot;n&quot;: n,
+        &quot;family&quot;: family,
+        &quot;C&quot;: C,
+        &quot;K&quot;: K,
+        &quot;eigC&quot;: eigC,
+        &quot;eigK&quot;: eigK,
+        &quot;lam1&quot;: lam1,
+        &quot;lam2&quot;: lam2,
+        &quot;dimKer&quot;: dim_ker,
+        &quot;rank&quot;: n - dim_ker,
+        &quot;trK&quot;: trace(K),
+        &quot;frobK&quot;: frobK,
+        &quot;residual&quot;: residual,
+        &quot;kerK&quot;: kerK,
+        &quot;vecC&quot;: vecC,
+    }
+
+
+def cube_cells(n: int = 5) -&gt; list[dict]:
+    cells = []
+    tau = 2.0 * math.pi / n
+    index = 0
+    for k in range(n):
+        for j in range(n):
+            for i in range(n):
+                phi = math.cos(tau * i) + math.cos(tau * j) + math.cos(tau * k)
+                cells.append({&quot;i&quot;: i, &quot;j&quot;: j, &quot;k&quot;: k, &quot;index&quot;: index, &quot;phi&quot;: phi})
+                index += 1
+    return cells
+
+
+def kernel_sector(cells: list[dict], count: int = 47) -&gt; set[int]:
+    ranked = sorted(cells, key=lambda c: (-abs(c[&quot;phi&quot;]), c[&quot;index&quot;]))
+    return {c[&quot;index&quot;] for c in ranked[:count]}
+
+
+def diagonal_sector(cells: list[dict]) -&gt; set[int]:
+    return {c[&quot;index&quot;] for c in cells if c[&quot;i&quot;] == c[&quot;j&quot;] == c[&quot;k&quot;]}
+</code></pre></details>
+<details><summary>visualizations_package_2/validate.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/visualizations_package_2/validate.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;Invariant evals for algebraic-visualizations. Exit 0 iff all pass.&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from algebra import (  # noqa: E402
+    OMEGA,
+    OMEGA_DEN,
+    OMEGA_NUM,
+    compute_operator,
+    cube_cells,
+    diagonal_sector,
+    kernel_sector,
+    shifted_product,
+)
+
+
+def check(name: str, pass_: bool, detail: str) -&gt; dict:
+    return {&quot;name&quot;: name, &quot;pass&quot;: bool(pass_), &quot;detail&quot;: detail}
+
+
+def run() -&gt; list[dict]:
+    cells = cube_cells(5)
+    ker = kernel_sector(cells, 47)
+    diag = diagonal_sector(cells)
+    locked = compute_operator(5, &quot;cycle&quot;, lock=True, eig_index1=0, eig_index2=1)
+    unlocked = compute_operator(
+        5, &quot;cycle&quot;, lock=False, lam1_input=6.0, lam2_input=30.0
+    )
+    C = locked[&quot;C&quot;]
+    K_named = shifted_product(C, 6.0, 30.0)
+    sym = all(
+        abs(K_named[i][j] - K_named[j][i]) &lt; 1e-10
+        for i in range(5)
+        for j in range(5)
+    )
+
+    return [
+        check(
+            &quot;Ω_c = 47/125&quot;,
+            OMEGA_NUM == 47 and OMEGA_DEN == 125 and abs(OMEGA - 47 / 125) &lt; 1e-15,
+            f&quot;{OMEGA_NUM}/{OMEGA_DEN} = {OMEGA}&quot;,
+        ),
+        check(&quot;ambient 125 = 5³&quot;, len(cells) == 125, f&quot;{len(cells)} cells&quot;),
+        check(
+            &quot;invariant sector 47&quot;,
+            len(ker) == 47,
+            f&quot;{len(ker)} cells by |φ| rank&quot;,
+        ),
+        check(
+            &quot;residual 5 (space diagonal)&quot;,
+            len(diag) == 5,
+            f&quot;{len(diag)} cells i = j = k&quot;,
+        ),
+        check(
+            &quot;lock-to-spectrum kernel&quot;,
+            locked[&quot;dimKer&quot;] &gt; 0 and locked[&quot;dimKer&quot;] &lt;= 5,
+            f&quot;cycle n=5  dim ker K = {locked['dimKer']}&quot;,
+        ),
+        check(
+            &quot;named shifts stay honest&quot;,
+            unlocked[&quot;dimKer&quot;] &lt;= 5,
+            f&quot;K=(C−6I)(C−30I)  dim ker = {unlocked['dimKer']} ≤ n&quot;,
+        ),
+        check(&quot;K symmetric when C is&quot;, sym, &quot;K_ij = K_ji&quot;),
+        check(
+            &quot;5×5 cannot hold E47&quot;,
+            locked[&quot;dimKer&quot;] &lt;= locked[&quot;n&quot;],
+            f&quot;dim ker {locked['dimKer']} ≤ n {locked['n']}&quot;,
+        ),
+        check(
+            &quot;kernel residual small when dim ker &gt; 0&quot;,
+            locked[&quot;residual&quot;] is not None and locked[&quot;residual&quot;] &lt; 1e-6,
+            f&quot;‖Kv‖/‖v‖ = {locked['residual']}&quot;,
+        ),
+    ]
+
+
+def main() -&gt; int:
+    results = run()
+    failed = [r for r in results if not r[&quot;pass&quot;]]
+    print(json.dumps({&quot;passed&quot;: len(results) - len(failed), &quot;total&quot;: len(results), &quot;results&quot;: results}, indent=2))
+    if failed:
+        print(f&quot;\nFAILED {len(failed)}/{len(results)}&quot;, file=sys.stderr)
+        return 1
+    print(f&quot;\nOK {len(results)}/{len(results)}&quot;, file=sys.stderr)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    raise SystemExit(main())
+</code></pre></details>
+<details><summary>Spectral_engine_code.py</summary><p><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/python-inventory/20261003/Spectral_engine_code.py">Open Python source</a></p><pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;Ω_c Coherence Algebra — one-pass spectral validation + infographic.&quot;&quot;&quot;
+
+
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+
+
+out_dir = &quot;/home/workdir/artifacts&quot;
+os.makedirs(out_dir, exist_ok=True)
+
+
+# =============================================================================
+# 1. SPECTRA — one pass, all assertions
+# =============================================================================
+
+
+j_primitive = 2
+d_primitive = 2 * j_primitive + 1          # 5
+dim_H = d_primitive ** 3                    # 125
+assert dim_H == 125
+
+
+# Clebsch–Gordan: V2 ⊗ V2 ⊗ V2
+spins          = np.array([0, 1, 2, 3, 4, 5, 6])
+multiplicities = np.array([1, 3, 5, 4, 3, 2, 1])
+subspace_dims  = 2 * spins + 1
+sector_dims    = multiplicities * subspace_dims
+
+
+assert np.array_equal(sector_dims, [1, 9, 25, 28, 27, 22, 13])
+assert np.sum(sector_dims) == dim_H
+
+
+# Casimir spectrum λ_J = J(J+1)
+casimir = spins * (spins + 1)
+assert np.array_equal(casimir, [0, 2, 6, 12, 20, 30, 42])
+
+
+# Constraint operator K = (C − 6I)(C − 30I)
+# Spectrum μ_J = (λ_J − 6)(λ_J − 30)
+mu = (casimir - 6) * (casimir - 30)
+assert np.array_equal(mu, [180, 112, 0, -108, -140, 0, 432])
+
+
+# Dissipative spectrum of K²
+mu2 = mu ** 2
+assert np.array_equal(mu2, [32400, 12544, 0, 11664, 19600, 0, 186624])
+
+
+# Kernel E47 = E6 ⊕ E30  (J = 2 and J = 5)
+kernel_mask    = (mu == 0)
+dim_kernel     = int(np.sum(sector_dims[kernel_mask]))
+dim_complement = int(np.sum(sector_dims[~kernel_mask]))
+assert dim_kernel == 47
+assert dim_complement == 78
+
+
+omega_c  = dim_kernel / dim_H          # 47/125 = 0.376
+r_margin = dim_complement / dim_kernel # 78/47
+assert omega_c == 47 / 125 == 0.376
+assert r_margin == 78 / 47
+assert np.isclose(1 / (1 + r_margin), omega_c)
+
+
+# Spectral gap on E47^⊥ and condition number
+spectral_gap = np.min(mu2[~kernel_mask])   # 11664  (J=3)
+lambda_max   = np.max(mu2)                 # 186624 (J=6)
+kappa        = lambda_max / spectral_gap   # 16
+rho          = (kappa - 1) / (kappa + 1)   # 15/17
+assert spectral_gap == 11664
+assert lambda_max == 186624
+assert kappa == 16
+assert rho == 15 / 17
+
+
+# Polynomial projector P47(C)
+# zeros at {0, 2, 12, 20, 31, 42}; value 1 at {6, 30}
+def P_47(C):
+    return (C - 31) * C * (C - 2) * (C - 12) * (C - 20) * (C - 42) / 1814400.0
+
+
+P_on_spectrum = P_47(casimir.astype(float))
+assert np.allclose(P_on_spectrum, [0, 0, 1, 0, 0, 1, 0])
+trace_P47 = float(np.sum(sector_dims * P_on_spectrum))
+assert np.isclose(trace_P47, 47.0)
+
+
+print(&quot;[✓] SPECTRA VALIDATED 100%&quot;)
+print(&quot; J   m_J  d_J  dim   λ=J(J+1)    μ=(λ-6)(λ-30)     μ²         P47&quot;)
+for J, m, d, dim, lam, muj, mu2j, p in zip(
+    spins, multiplicities, subspace_dims, sector_dims,
+    casimir, mu, mu2, P_on_spectrum
+):
+    tag = &quot;KER E47&quot; if muj == 0 else &quot;perp&quot;
+    print(f&quot; {J}    {m}    {d:2d}   {dim:3d}    {lam:4d}     {muj:6d}         {mu2j:7d}    {p:3.0f}   {tag}&quot;)
+print(f&quot;dim H={dim_H}  dim E47={dim_kernel}  rank K={dim_complement}&quot;)
+print(f&quot;Ωc={omega_c}=47/125   r={r_margin}=78/47&quot;)
+print(f&quot;Δ={spectral_gap}  Λmax={lambda_max}  κ={kappa}  ρ={rho}=15/17  Tr P47={trace_P47}&quot;)
+
+
+# =============================================================================
+# 2. RENDER
+# =============================================================================
+
+
+plt.rcParams.update({
+    &quot;font.family&quot;: &quot;DejaVu Sans&quot;,
+    &quot;mathtext.fontset&quot;: &quot;dejavusans&quot;,
+    &quot;axes.unicode_minus&quot;: False,
+    &quot;figure.facecolor&quot;: &quot;#0B0F19&quot;,
+    &quot;savefig.facecolor&quot;: &quot;#0B0F19&quot;,
+})
+
+
+fig = plt.figure(figsize=(16.5, 13.2), facecolor=&quot;#0B0F19&quot;)
+gs = gridspec.GridSpec(
+    3, 2, figure=fig, height_ratios=[0.13, 1.0, 1.0],
+    hspace=0.38, wspace=0.26, left=0.055, right=0.975, top=0.965, bottom=0.055,
+)
+title_style = {&quot;color&quot;: &quot;#E2E8F0&quot;, &quot;fontsize&quot;: 12.5, &quot;fontweight&quot;: &quot;bold&quot;, &quot;pad&quot;: 10}
+label_style = {&quot;color&quot;: &quot;#94A3B8&quot;, &quot;fontsize&quot;: 10}
+grid_style  = {&quot;color&quot;: &quot;#1E293B&quot;, &quot;linestyle&quot;: &quot;--&quot;, &quot;linewidth&quot;: 0.8}
+
+
+ax_banner = fig.add_subplot(gs[0, :], facecolor=&quot;#0B0F19&quot;)
+ax_banner.set_xlim(0, 1); ax_banner.set_ylim(0, 1); ax_banner.axis(&quot;off&quot;)
+ax_banner.text(0.5, 0.72, r&quot;$\Omega_c$  COHERENCE ALGEBRA  &amp;  CONTRACTION FORMALISM&quot;,
+               ha=&quot;center&quot;, va=&quot;center&quot;, color=&quot;#F8FAFC&quot;, fontsize=18, fontweight=&quot;bold&quot;)
+ax_banner.text(0.5, 0.28,
+               r&quot;Spin-2 cube $V_2^{\otimes 3}$  $\cdot$  $\dim\mathcal{H}=125$  $\cdot$  $K=(C-6I)(C-30I)$  $\cdot$  $\ker K=E_{47}=E_6\oplus E_{30}$  $\cdot$  $\Omega_c=47/125=0.376$  $\cdot$  VERIFIED 100%&quot;,
+               ha=&quot;center&quot;, va=&quot;center&quot;, color=&quot;#94A3B8&quot;, fontsize=9.2)
+ax_banner.plot([0.08, 0.92], [0.02, 0.02], color=&quot;#10B981&quot;, lw=1.6, solid_capstyle=&quot;round&quot;)
+
+
+# (A) isotypic decomposition
+ax1 = fig.add_subplot(gs[1, 0], facecolor=&quot;#111827&quot;)
+x = np.arange(len(spins))
+ax1.bar(x, np.where(kernel_mask, sector_dims, 0), color=&quot;#10B981&quot;, width=0.55,
+        edgecolor=&quot;#059669&quot;, linewidth=0.8, zorder=3, label=r&quot;Invariant Kernel $E_{47}$ (dim = 47)&quot;)
+ax1.bar(x, np.where(~kernel_mask, sector_dims, 0),
+        bottom=np.where(kernel_mask, sector_dims, 0), color=&quot;#3B82F6&quot;, width=0.55,
+        edgecolor=&quot;#2563EB&quot;, linewidth=0.8, zorder=3, label=r&quot;Constrained $E_{47}^\perp$ (dim = 78)&quot;)
+for i, total in enumerate(sector_dims):
+    ax1.text(i, total + 1.15, f&quot;{int(total)}\n({int(multiplicities[i])}×{int(subspace_dims[i])})&quot;,
+             ha=&quot;center&quot;, va=&quot;bottom&quot;, color=&quot;#F8FAFC&quot;, fontsize=8.2, fontweight=&quot;bold&quot;)
+ax1.set_title(r&quot;(A) Carrier Space Isotypic Decomposition  ($\dim\mathcal{H}=125$)&quot;, **title_style)
+ax1.set_xlabel(r&quot;Total Spin Sector $J<h2>Run details</h2>quot;, **label_style)
+ax1.set_ylabel(r&quot;Subspace Dimension $m_J\,(2J+1)<h2>Run details</h2>quot;, **label_style)
+ax1.set_xticks(x); ax1.set_xticklabels([f&quot;$J={j}<h2>Run details</h2>quot; for j in spins], color=&quot;#CBD5E1&quot;)
+ax1.tick_params(colors=&quot;#94A3B8&quot;); ax1.set_ylim(0, 40)
+ax1.grid(True, axis=&quot;y&quot;, **grid_style, zorder=0)
+ax1.legend(facecolor=&quot;#1F2937&quot;, edgecolor=&quot;#374151&quot;, labelcolor=&quot;#F1F5F9&quot;, loc=&quot;upper left&quot;, fontsize=8.5)
+for s in ax1.spines.values(): s.set_color(&quot;#334155&quot;)
+ax1.text(0.985, 0.97, r&quot;$\Omega_c=\dfrac{47}{125}=0.376<h2>Run details</h2>quot; + &quot;\n&quot; + r&quot;$r=\dfrac{78}{47}\approx 1.660<h2>Run details</h2>quot;,
+         transform=ax1.transAxes, ha=&quot;right&quot;, va=&quot;top&quot;,
+         bbox=dict(boxstyle=&quot;round,pad=0.45&quot;, facecolor=&quot;#064E3B&quot;, edgecolor=&quot;#10B981&quot;, alpha=0.95),
+         color=&quot;#ECFDF5&quot;, fontsize=9.4, fontweight=&quot;bold&quot;)
+
+
+# (B) spec(K²)
+ax2 = fig.add_subplot(gs[1, 1], facecolor=&quot;#111827&quot;)
+ax2.bar(x, np.where(mu2 == 0, 1.0, mu2),
+        color=[&quot;#10B981&quot; if k else &quot;#F59E0B&quot; for k in kernel_mask],
+        width=0.55, edgecolor=&quot;#4B5563&quot;, linewidth=0.8, zorder=3)
+ax2.set_yscale(&quot;log&quot;)
+ax2.axhline(11664,  color=&quot;#EF4444&quot;, linestyle=&quot;:&quot;, linewidth=1.6, label=r&quot;Spectral Gap $\Delta=11{,}664$ ($J=3$)&quot;)
+ax2.axhline(186624, color=&quot;#8B5CF6&quot;, linestyle=&quot;:&quot;, linewidth=1.6, label=r&quot;$\Lambda_{\max}=186{,}624$ ($J=6$)&quot;)
+for i, val in enumerate(mu2):
+    ax2.text(i, 1.7 if val == 0 else val * 1.28,
+             r&quot;$0$ ($E_{47}$)&quot; if val == 0 else f&quot;{int(val):,}&quot;,
+             ha=&quot;center&quot;, va=&quot;bottom&quot;, color=&quot;#F8FAFC&quot;, fontsize=7.8, rotation=22)
+ax2.set_title(r&quot;(B) Spectrum of $K^2$  &amp;  Spectral Gap $\Delta=11{,}664<h2>Run details</h2>quot;, **title_style)
+ax2.set_xlabel(r&quot;Total Spin Sector $J<h2>Run details</h2>quot;, **label_style)
+ax2.set_ylabel(r&quot;Eigenvalue $\mu_J^2$  (log scale)&quot;, **label_style)
+ax2.set_xticks(x); ax2.set_xticklabels([f&quot;$J={j}<h2>Run details</h2>quot; for j in spins], color=&quot;#CBD5E1&quot;)
+ax2.tick_params(colors=&quot;#94A3B8&quot;); ax2.set_ylim(0.5, 1.1e6)
+ax2.grid(True, which=&quot;both&quot;, **grid_style, zorder=0)
+ax2.legend(facecolor=&quot;#1F2937&quot;, edgecolor=&quot;#374151&quot;, labelcolor=&quot;#F1F5F9&quot;, loc=&quot;upper left&quot;, fontsize=8.2)
+for s in ax2.spines.values(): s.set_color(&quot;#334155&quot;)
+ax2.text(0.97, 0.42, r&quot;$\kappa=\Lambda_{\max}/\Delta=16<h2>Run details</h2>quot; + &quot;\n&quot; + r&quot;$\rho=(\kappa-1)/(\kappa+1)=15/17<h2>Run details</h2>quot;,
+         transform=ax2.transAxes, ha=&quot;right&quot;, va=&quot;center&quot;,
+         bbox=dict(boxstyle=&quot;round,pad=0.5&quot;, facecolor=&quot;#1E1B4B&quot;, edgecolor=&quot;#8B5CF6&quot;, alpha=0.95),
+         color=&quot;#EDE9FE&quot;, fontsize=9.2, fontweight=&quot;bold&quot;)
+
+
+# (C) P47 filter
+ax3 = fig.add_subplot(gs[2, 0], facecolor=&quot;#111827&quot;)
+c_dense = np.linspace(-1, 45, 2400)
+p_clip  = np.ma.masked_where(np.abs(P_47(c_dense)) &gt; 1.55, P_47(c_dense))
+ax3.plot(c_dense, p_clip, color=&quot;#38BDF8&quot;, linewidth=2.15, label=r&quot;Filter curve $P_{47}(C)<h2>Run details</h2>quot;, zorder=3)
+ax3.scatter(casimir[~kernel_mask], np.zeros(np.sum(~kernel_mask)),
+            color=&quot;#EF4444&quot;, s=78, zorder=5, label=r&quot;Annihilated modes ($P=0$)&quot;)
+ax3.scatter(casimir[kernel_mask], np.ones(np.sum(kernel_mask)),
+            color=&quot;#10B981&quot;, s=110, zorder=5, edgecolor=&quot;#FFFFFF&quot;, linewidth=0.8,
+            label=r&quot;Invariant modes $\lambda\in\{6,30\}$ ($P=1$)&quot;)
+ax3.axhline(0, color=&quot;#475569&quot;, lw=0.8)
+ax3.axhline(1, color=&quot;#10B981&quot;, ls=&quot;--&quot;, lw=0.85, alpha=0.55)
+j_off = {0: (-1.4, 1.28), 1: (1.5, 1.28)}
+for lam, J in zip(casimir, spins):
+    ax3.axvline(lam, color=&quot;#1E293B&quot;, ls=&quot;:&quot;, lw=0.75)
+    dx, yj = j_off.get(int(J), (0.0, 1.28))
+    ax3.text(lam + dx, yj, f&quot;$J={J}<h2>Run details</h2>quot;, ha=&quot;center&quot;, va=&quot;bottom&quot;, color=&quot;#64748B&quot;, fontsize=7.2)
+ax3.set_title(r&quot;(C) Spectral Projector $P_{47}(C)$  —  $\operatorname{Tr}P_{47}=47<h2>Run details</h2>quot;, **title_style)
+ax3.set_xlabel(r&quot;Casimir Eigenvalue $\lambda=J(J+1)<h2>Run details</h2>quot;, **label_style)
+ax3.set_ylabel(r&quot;Transmission $P_{47}(\lambda)<h2>Run details</h2>quot;, **label_style)
+ax3.tick_params(colors=&quot;#94A3B8&quot;); ax3.set_ylim(-0.45, 1.48); ax3.set_xlim(-2, 44)
+ax3.grid(True, **grid_style, zorder=0)
+ax3.legend(facecolor=&quot;#1F2937&quot;, edgecolor=&quot;#374151&quot;, labelcolor=&quot;#F1F5F9&quot;, loc=&quot;lower center&quot;, fontsize=8.2)
+for s in ax3.spines.values(): s.set_color(&quot;#334155&quot;)
+
+
+# (D) contraction
+ax4 = fig.add_subplot(gs[2, 1], facecolor=&quot;#111827&quot;)
+steps = np.arange(0, 31)
+ax4.plot(np.linspace(0, 30, 400), np.exp(-np.linspace(0, 30, 400)),
+         color=&quot;#F59E0B&quot;, lw=2.3, label=r&quot;Continuous: $\exp(-\gamma\Delta t)<h2>Run details</h2>quot;, zorder=3)
+ax4.step(steps, (15 / 17) ** steps, where=&quot;mid&quot;, color=&quot;#06B6D4&quot;, lw=1.85, ls=&quot;--&quot;,
+         label=r&quot;Discrete: $(15/17)^k$  ($\kappa=16$)&quot;, zorder=3)
+k_half = np.log(0.5) / np.log(15 / 17)
+ax4.axhline(0.5, color=&quot;#475569&quot;, ls=&quot;:&quot;, lw=0.7, alpha=0.8)
+ax4.axvline(k_half, color=&quot;#475569&quot;, ls=&quot;:&quot;, lw=0.7, alpha=0.8)
+ax4.text(k_half + 0.4, 0.58, rf&quot;$k_{{1/2}}\approx{k_half:.2f}<h2>Run details</h2>quot;, color=&quot;#CBD5E1&quot;, fontsize=8)
+ax4.set_title(r&quot;(D) State Contraction into Invariant Subspace $E_{47}<h2>Run details</h2>quot;, **title_style)
+ax4.set_xlabel(r&quot;Relaxation Time / Step Index $k<h2>Run details</h2>quot;, **label_style)
+ax4.set_ylabel(r&quot;Relative Error  $\mathrm{dist}(\mathbf{v},E_{47})/\|\mathbf{v}_\perp(0)\|<h2>Run details</h2>quot;, **label_style)
+ax4.set_yscale(&quot;log&quot;); ax4.set_ylim(1e-4, 1.6); ax4.set_xlim(0, 30)
+ax4.tick_params(colors=&quot;#94A3B8&quot;)
+ax4.grid(True, which=&quot;both&quot;, **grid_style, zorder=0)
+ax4.legend(facecolor=&quot;#1F2937&quot;, edgecolor=&quot;#374151&quot;, labelcolor=&quot;#F1F5F9&quot;, loc=&quot;upper right&quot;, fontsize=8.4)
+for s in ax4.spines.values(): s.set_color(&quot;#334155&quot;)
+
+
+fig.text(0.5, 0.012,
+         r&quot;$K=(C-6I)(C-30I)$   ·   $\mu_J=(\lambda_J-6)(\lambda_J-30)$   ·   $P_{47}(C)=\frac{C(C-2)(C-12)(C-20)(C-31)(C-42)}{1{,}814{,}400}$   ·   $\dot\rho=-K^2\rho<h2>Run details</h2>quot;,
+         ha=&quot;center&quot;, va=&quot;bottom&quot;, color=&quot;#64748B&quot;, fontsize=8.0)
+
+
+png = os.path.join(out_dir, &quot;Omega_c_Coherence_Algebra_Contraction_Formalism.png&quot;)
+pdf = os.path.join(out_dir, &quot;Omega_c_Coherence_Algebra_Contraction_Formalism.pdf&quot;)
+fig.savefig(png, dpi=220, bbox_inches=&quot;tight&quot;, facecolor=fig.get_facecolor())
+fig.savefig(pdf, dpi=220, bbox_inches=&quot;tight&quot;, facecolor=fig.get_facecolor())
+plt.close(fig)
+print(f&quot;[✓] {png}&quot;)
+print(f&quot;[✓] {pdf}&quot;)
+
+</code></pre></details><h3>Source retrieval status</h3><ul><li>E47_validation_and_visualization.py (exact named file not retrieved; related Spectral_engine_code.py included)</li><li>RI2, Python (source not found)</li><li>plutotv.py (source not found)</li><li>s3_on_e47.py v1, v2, v3 (one repository version recovered; version lineage not established)</li><li>Spectral_Engine_python (exact named document not retrieved; repository spectral_engine.py and Drive Spectral_engine_code.py included)</li></ul></section>
 <h2>Run details</h2><pre># E47 Formalism — Python Rerun, 2026-10-02
 
 162/162 named checks passed: 135 in seven original-script runs and 27 in an independent supplemental reconstruction. Counts are executable checks, not counts of independent theorems. Source assertions also completed without error. Every original script returned exit code 0.

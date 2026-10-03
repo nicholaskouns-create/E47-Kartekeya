@@ -1,0 +1,10 @@
+E47 GENERATIVE-UNIVERSE PRE-REGISTRATION: PASS
+dim(H)=125; rank(P47)=47; Omega=0.376000000000
+Casimir spectrum: [(0, 1), (2, 9), (6, 25), (12, 28), (20, 27), (30, 22), (42, 13)]
+K^2 sector values: [32400, 12544, 0, 11664, 19600, 0, 186624]
+complement contraction radius=0.882352941176
+isotropic null mean q_E47=0.376029; theory=0.376000
+positive control min q_E47=1.000000000000; max r_K=9.365e-16
+
+DATA RULE: coordinates/encoder must be frozen independently of E47.
+KILL RULE: no held-out cross-substrate enrichment in this same P47 => reject generative interpretation.
