@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Citizens · Mathematical City</title><style>
-:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#07090d;color:#eef4f8;font:14px ui-monospace,SFMono-Regular,Menlo,monospace}main{max-width:1280px;margin:auto;padding:28px}h1{font:800 clamp(44px,8vw,96px)/.86 system-ui;letter-spacing:-.06em;margin:.35em 0 .2em}p{line-height:1.5}.top,.stats,.meta{display:flex;gap:9px;flex-wrap:wrap}.pill,.tag{border:1px solid #31404d;border-radius:99px;padding:7px 11px}.stats{margin:18px 0}.stat{border:1px solid #27303a;background:#0d1118;border-radius:12px;padding:11px 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}input,select{background:#0d1118;color:#eef4f8;border:1px solid #31404d;border-radius:10px;padding:11px 12px;font:inherit}input{flex:1;min-width:220px}.card{border:1px solid #27303a;padding:15px;margin:9px 0;border-radius:12px;background:#0d1118}.row{display:flex;justify-content:space-between;gap:12px}.code{color:#70e8ff}.b{color:#aab5c2}.links a,a{color:#9cdcff;text-decoration:none}.g2{border-color:#375b55}.empty{padding:30px;text-align:center;color:#8795a1}@media(max-width:700px){main{padding:16px 14px 28px}.row{display:block}h1{font-size:clamp(38px,13vw,58px)}}button,a,input,select{touch-action:manipulation}
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#07090d;color:#eef4f8;font:14px ui-monospace,SFMono-Regular,Menlo,monospace}main{max-width:1280px;margin:auto;padding:28px}h1{font:800 clamp(44px,8vw,96px)/.86 system-ui;letter-spacing:-.06em;margin:.35em 0 .2em}p{line-height:1.5}.top,.stats,.meta{display:flex;gap:9px;flex-wrap:wrap}.pill,.tag{border:1px solid #31404d;border-radius:99px;padding:7px 11px}.stats{margin:18px 0}.stat{border:1px solid #27303a;background:#0d1118;border-radius:12px;padding:11px 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}input,select{background:#0d1118;color:#eef4f8;border:1px solid #31404d;border-radius:10px;padding:11px 12px;font:inherit}input{flex:1;min-width:220px}.card{border:1px solid #27303a;padding:15px;margin:9px 0;border-radius:12px;background:#0d1118}.row{display:flex;justify-content:space-between;gap:12px}.code{color:#70e8ff}.b{color:#aab5c2}.links a,a{color:#9cdcff;text-decoration:none}.g2{border-color:#375b55}.empty{padding:30px;text-align:center;color:#8795a1}@media(max-width:700px){main{padding:16px 14px 28px}.row{display:block}h1{font-size:clamp(38px,13vw,58px)}}button,a,input,select{touch-action:manipulation}button{background:#0d1118;color:#eef4f8;border:1px solid #31404d;border-radius:10px;padding:11px 12px;font:inherit}button:disabled{opacity:.4}
 .formal{margin:12px 0 4px;padding:12px;border-left:2px solid #70e8ff;background:#090d13}.formal b{color:#d8e7ef}.formal .eq{color:#8cffc8;margin-top:7px}.lineage{margin-top:9px;padding-top:9px;border-top:1px solid #27303a}.lineage a{margin-right:12px}.tiny{font-size:12px;color:#8193a2}
 </style></head><body><main>
 <div class="top"><span class="pill">MATHEMATICAL CITY</span><span class="pill">COMPLETE ACTIVE NOTION ROLL</span><span class="pill">377 CITIZENS</span></div>
@@ -7,7 +7,9 @@
 <p>Complete active mirror of the <a href="https://mathematicalcity.notion.site/be16a65a0eb44f8faa866e1c62b7c097?v=1aafa2ad38234c59886fa69c764d6a1b">Roll of Mathematical Citizens</a>. The Notion roll is the source registry; this page mirrors the full active census without adding a parallel hierarchy. Formalism Atlas links are explicit locks only. Token overlap is not a crosswalk.</p>
 <div class="stats"><div class="stat"><b id="population">377</b><br><span class="b">citizens</span></div><div class="stat"><b id="shown">…</b><br><span class="b">shown</span></div><div class="stat"><b id="locked">…</b><br><span class="b">atlas locks</span></div></div>
 <div class="toolbar"><input id="q" placeholder="Search citizen, identity, borough…"><select id="filter"><option value="all">All citizens</option><option value="validated">Machine validated</option><option value="g2">Generation II</option><option value="locked">Atlas-locked</option></select></div>
+<div class="toolbar"><button id="prev" type="button">Previous</button><button id="next" type="button">Next</button><select id="size"><option>10</option><option selected>20</option><option>50</option><option>100</option></select><span class="b" id="cutlabel">…</span><a href="./keyset.js">keyset.js</a><a href="./keyset.py">keyset.py</a></div>
 <div id="list"><div class="empty">Loading complete registry…</div></div>
+<script src="./keyset.js"></script>
 <script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 let rows=[],formalism=[],g2=[],byKey={};
@@ -61,9 +63,10 @@ function normalize(x){return {
  notion_url:x.notion_url||'',
  generation:(/-G2-/.test(x.citizen||x.citizen_code||'')?2:(x.generation||1))
 }}
-function render(){
+let cursor=null;
+function matching(){
  const needle=q.value.trim().toLowerCase(),mode=filter.value;
- const xs=rows.filter(x=>{
+ return rows.filter(x=>{
   if(mode==='validated'&&!x.machine_validated)return false;
   if(mode==='g2'&&x.generation!==2)return false;
   if(mode==='locked'&&!frmFor(x))return false;
@@ -71,9 +74,21 @@ function render(){
   const hay=[x.citizen,x.identity,x.borough,x.evidence,x.boundary,f&&f.formalism,f&&f.summary].join(' ').toLowerCase();
   return !needle||hay.includes(needle)
  });
+}
+function writeCursor(){
+ const u=new URL(location.href);
+ if(cursor==null)u.searchParams.delete('after'); else u.searchParams.set('after',String(cursor));
+ history.replaceState(null,'',u);
+}
+function render(){
+ const xs=matching();
+ const cut=Keyset.keysetPage(xs,cursor,Number(size.value)||20,x=>x.civic_id);
  shown.textContent=xs.length;
  locked.textContent=rows.filter(x=>frmFor(x)).length;
- list.innerHTML=xs.length?xs.map(x=>{const f=frmFor(x),g=g2For(x);return `<article class="card ${x.generation===2?'g2':''}" id="MC-${esc(x.civic_id)}">
+ prev.disabled=cursor==null;
+ next.disabled=!cut.hasMore;
+ cutlabel.textContent=cut.page.length?('MC-'+cut.start+'–'+cut.page[cut.page.length-1].civic_id+' · keyset after '+(cursor==null?'start':cursor)):'No citizens match this view.';
+ list.innerHTML=cut.page.length?cut.page.map(x=>{const f=frmFor(x),g=g2For(x);return `<article class="card ${x.generation===2?'g2':''}" id="MC-${esc(x.civic_id)}">
  <div class=row><div><div class=code>MC-${esc(x.civic_id)} · ${esc(x.citizen)}</div><h2>${esc(x.identity||x.citizen)}</h2></div><div class=b>${x.generation===2?'GEN II':'GEN I'}</div></div>
  <div class=meta>${x.evidence?`<span class=tag>${esc(x.evidence)}</span>`:''}${x.machine_validated?'<span class=tag>machine validated</span>':''}${x.borough?`<span class=tag>${esc(x.borough)}</span>`:''}</div>
  <div class="formal"><b>FORMALISM${f?' · '+esc(f.key):''}</b><div class="eq">${esc(x.identity||x.citizen)}</div>${f?`<div>${esc(f.formalism)}</div><div class="tiny">${esc(f.summary||'')}</div>`:'<div class="tiny">Roll identity is the formalism. No atlas lock asserted.</div>'}</div>
@@ -87,7 +102,19 @@ Promise.all([fetch('./citizens.json').then(r=>r.json()),fetch('../data/formalism
  g2=gc.citizens||[];
  rows=(m.citizens||[]).map(normalize).sort((a,b)=>(a.civic_id||0)-(b.civic_id||0));
  population.textContent=rows.length;
- q.oninput=render;filter.onchange=render;render();
+ q.oninput=()=>{cursor=null;writeCursor();render()};
+ filter.onchange=()=>{cursor=null;writeCursor();render()};
+ size.onchange=()=>{cursor=null;writeCursor();render()};
+ prev.onclick=()=>{const xs=matching(); const first=Keyset.keysetPage(xs,cursor,Number(size.value)||20).start; cursor=Keyset.previousCursor(xs,first,Number(size.value)||20); writeCursor(); render(); window.scrollTo(0,0)};
+ next.onclick=()=>{const cut=Keyset.keysetPage(matching(),cursor,Number(size.value)||20); if(cut.nextCursor!=null){cursor=cut.nextCursor; writeCursor(); render(); window.scrollTo(0,0)}};
+ const params=new URLSearchParams(location.search);
+ if(params.get('after')) cursor=Number(params.get('after'));
+ const hash=location.hash.match(/^#MC-(\d+)$/);
+ if(hash){
+  const id=Number(hash[1]); const xs=matching(); const i=xs.findIndex(x=>x.civic_id===id);
+  if(i>=0){const n=Number(size.value)||20; const start=Math.floor(i/n)*n; cursor=start?xs[start-1].civic_id:null; writeCursor()}
+ }
+ render();
  if(location.hash){const el=document.querySelector(location.hash); if(el) el.scrollIntoView()}
 }).catch(e=>{list.innerHTML='<div class=empty>Registry load failed.</div>';console.error(e)});
 </script></main></body></html>
