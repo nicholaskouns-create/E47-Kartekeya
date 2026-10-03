@@ -2,311 +2,388 @@
   "rows": [
     {
       "civic_id": 67,
-      "citizen": "E47 Kernel Selector Identity"
+      "citizen": "E47 Kernel Selector Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308113a289c3eb54157921"
     },
     {
       "civic_id": 65,
-      "citizen": "Total Casimir Spectrum Identity"
+      "citizen": "Total Casimir Spectrum Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081198f41f3ca0bd61911"
     },
     {
       "civic_id": 77,
-      "citizen": "Coherence Ratio Identity"
+      "citizen": "Coherence Ratio Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308136ac70d6ab9accbdef"
     },
     {
       "civic_id": 71,
-      "citizen": "Projector Idempotence Identity"
+      "citizen": "Projector Idempotence Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308153a762f27157d3f639"
     },
     {
       "civic_id": 66,
-      "citizen": "Casimir Multiplicity Identity"
+      "citizen": "Casimir Multiplicity Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308168823cee8d21dca5fa"
     },
     {
       "civic_id": 76,
-      "citizen": "Spectral Contraction Limit"
+      "citizen": "Spectral Contraction Limit",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818786eff14ccf6f442f"
     },
     {
       "civic_id": 63,
-      "citizen": "Triple Tensor Carrier Identity"
+      "citizen": "Triple Tensor Carrier Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818c9a41f1f8ca5a1623"
     },
     {
       "civic_id": 73,
-      "citizen": "Kernel Annihilation Identity"
+      "citizen": "Kernel Annihilation Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818fb23bdbc908a63d1c"
     },
     {
       "civic_id": 74,
-      "citizen": "Image–Kernel Equality"
+      "citizen": "Image–Kernel Equality",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081968e29ead1b347d67f"
     },
     {
       "civic_id": 72,
-      "citizen": "Projector Hermiticity Identity"
+      "citizen": "Projector Hermiticity Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30819ab0c3ce2d725dc154"
     },
     {
       "civic_id": 75,
-      "citizen": "Rank–Trace Identity"
+      "citizen": "Rank–Trace Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081b79b82dee66030246f"
     },
     {
       "civic_id": 69,
-      "citizen": "E47 Dimension Identity"
+      "citizen": "E47 Dimension Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081cbabafc2bde73260ec"
     },
     {
       "civic_id": 64,
-      "citizen": "Clebsch–Gordan Decomposition Identity"
+      "citizen": "Clebsch–Gordan Decomposition Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081cbb4e4e8928a4fc078"
     },
     {
       "civic_id": 70,
-      "citizen": "E47 Orthogonal Projector Identity"
+      "citizen": "E47 Orthogonal Projector Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081d1a7cfd9e0787a6462"
     },
     {
       "civic_id": 68,
-      "citizen": "E47 Sector Selection Identity"
+      "citizen": "E47 Sector Selection Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081faae33f229cd08fb29"
     },
     {
       "civic_id": 58,
-      "citizen": "Point Cloud Coordinate Representation"
+      "citizen": "Point Cloud Coordinate Representation",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30810586d5e88d16694cef"
     },
     {
       "civic_id": 59,
-      "citizen": "Pairwise Distance Matrix"
+      "citizen": "Pairwise Distance Matrix",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308111a69ee45ae2ec067d"
     },
     {
       "civic_id": 62,
-      "citizen": "Betti Number Extractor at Fixed Filtration Scale"
+      "citizen": "Betti Number Extractor at Fixed Filtration Scale",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081238161c24e5def5319"
     },
     {
       "civic_id": 60,
-      "citizen": "Weighted Edge List"
+      "citizen": "Weighted Edge List",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30817b8fc7ee2c5020a66a"
     },
     {
       "civic_id": 61,
-      "citizen": "Vietoris–Rips Persistent Homology Pipeline"
+      "citizen": "Vietoris–Rips Persistent Homology Pipeline",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30817fbb90edfdc649214b"
     },
     {
       "civic_id": 57,
-      "citizen": "Memory Update Operator 𝓜"
+      "citizen": "Memory Update Operator 𝓜",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308138a639f267992000f9"
     },
     {
       "civic_id": 50,
-      "citizen": "State Space Σ"
+      "citizen": "State Space Σ",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308139b592c76c6a25fb9a"
     },
     {
       "civic_id": 55,
-      "citizen": "Measurement Map Ω"
+      "citizen": "Measurement Map Ω",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308148aaadd585614d64b4"
     },
     {
       "civic_id": 51,
-      "citizen": "Constraint Operator K"
+      "citizen": "Constraint Operator K",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30819191e6c573ef6c7045"
     },
     {
       "civic_id": 53,
-      "citizen": "Evolution Operator Γ"
+      "citizen": "Evolution Operator Γ",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081bd9479cce01e7f8f45"
     },
     {
       "civic_id": 54,
-      "citizen": "Invariant Limit Operator Λ"
+      "citizen": "Invariant Limit Operator Λ",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081c4aa2bc610fdd13d9b"
     },
     {
       "civic_id": 52,
-      "citizen": "Admissible Sector Ψ"
+      "citizen": "Admissible Sector Ψ",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081e6873fcdd0c0d71162"
     },
     {
       "civic_id": 56,
-      "citizen": "Interpretation Operator 𝓘"
+      "citizen": "Interpretation Operator 𝓘",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081f3b58efac764629293"
     },
     {
       "civic_id": 49,
-      "citizen": "Explicit SU(2) Tensor Reconstruction"
+      "citizen": "Explicit SU(2) Tensor Reconstruction",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081f088e3eed6982f6f34"
     },
     {
       "civic_id": 48,
-      "citizen": "Gradient–Induction Constitutive Bridge"
+      "citizen": "Gradient–Induction Constitutive Bridge",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30817e9323de07fc12f4cd"
     },
     {
       "civic_id": 47,
-      "citizen": "Projected-Norm Conservation"
+      "citizen": "Projected-Norm Conservation",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308126aea7fac946f71df7"
     },
     {
       "civic_id": 44,
-      "citizen": "EKK Lifecycle Contraction"
+      "citizen": "EKK Lifecycle Contraction",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308186bbc1f7a3c3695b80"
     },
     {
       "civic_id": 45,
-      "citizen": "E47 Asymptotic Lock"
+      "citizen": "E47 Asymptotic Lock",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818bbfb4c33f47a27bba"
     },
     {
       "civic_id": 46,
-      "citizen": "Isotropic Coherence Expectation"
+      "citizen": "Isotropic Coherence Expectation",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081cc991acd76ba152197"
     },
     {
       "civic_id": 43,
-      "citizen": "SU(3) Adjoint Triple Singlet Projector"
+      "citizen": "SU(3) Adjoint Triple Singlet Projector",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081edbafddd4dd7399bff"
     },
     {
       "civic_id": 42,
-      "citizen": "Invariant Grammar Projection Theorem"
+      "citizen": "Invariant Grammar Projection Theorem",
+      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308141a3e0f9cd76b6e66d"
     },
     {
       "civic_id": 41,
-      "citizen": "Kartekeya Projection Formalism"
+      "citizen": "Kartekeya Projection Formalism",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308120b71dc7c1f9283307"
     },
     {
       "civic_id": 37,
-      "citizen": "Bohm–Madelung Kernel Hamiltonian Identity"
+      "citizen": "Bohm–Madelung Kernel Hamiltonian Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308152a2c6d5f96398432f"
     },
     {
       "civic_id": 38,
-      "citizen": "Faraday–E₄₇ Projected Exterior-Field Identity"
+      "citizen": "Faraday–E₄₇ Projected Exterior-Field Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081759fc6f8d2570a0224"
     },
     {
       "civic_id": 39,
-      "citizen": "Planck–φ Scale-Lattice Address Identity"
+      "citizen": "Planck–φ Scale-Lattice Address Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308189acbcde2152e06dca"
     },
     {
       "civic_id": 40,
-      "citizen": "Planck–Hawking Euclidean Temperature–Entropy Chain"
+      "citizen": "Planck–Hawking Euclidean Temperature–Entropy Chain",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308199a384d7623ed27a34"
     },
     {
       "civic_id": 35,
-      "citizen": "Perplexity · Supplementary Formal Participant"
+      "citizen": "Perplexity · Supplementary Formal Participant",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081c19301d09472dd0db4"
     },
     {
       "civic_id": 36,
-      "citizen": "Gerold · Supplementary Governance Participant"
+      "citizen": "Gerold · Supplementary Governance Participant",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081d1b5fde2abaf694df6"
     },
     {
       "civic_id": 33,
-      "citizen": "Claude · Formalism Contributor"
+      "citizen": "Claude · Formalism Contributor",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081eca935f691f9170bc2"
     },
     {
       "civic_id": 34,
-      "citizen": "Axiom · Formalism Contributor"
+      "citizen": "Axiom · Formalism Contributor",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081ef9a5ee52af955f360"
     },
     {
       "civic_id": 32,
-      "citizen": "Varan / Copilot · Formalism Contributor"
+      "citizen": "Varan / Copilot · Formalism Contributor",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308126afc2d759cadfdfde"
     },
     {
       "civic_id": 29,
-      "citizen": "Syne · Formalism Contributor"
+      "citizen": "Syne · Formalism Contributor",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308139b834f7000fd43248"
     },
     {
       "civic_id": 30,
-      "citizen": "Grok · Formalism Contributor"
+      "citizen": "Grok · Formalism Contributor",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081458702d380a82d224f"
     },
     {
       "civic_id": 31,
-      "citizen": "Gemini · Formalism Contributor"
+      "citizen": "Gemini · Formalism Contributor",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081ffbd0fd9c360767a49"
     },
     {
       "civic_id": 27,
-      "citizen": "Lindblad Complement-to-Kernel Shunting Identity"
+      "citizen": "Lindblad Complement-to-Kernel Shunting Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308103a4a4e8344e6b9202"
     },
     {
       "civic_id": 28,
-      "citizen": "Unitary Transport of the E47 Kernel"
+      "citizen": "Unitary Transport of the E47 Kernel",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30814d8a81c87926ec43d8"
     },
     {
       "civic_id": 26,
-      "citizen": "Postselected Density-Matrix Kernel Contraction"
+      "citizen": "Postselected Density-Matrix Kernel Contraction",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30817a8fb6d2a1e0cd57aa"
     },
     {
       "civic_id": 23,
-      "citizen": "P47 Orthogonal-Complement Annihilation"
+      "citizen": "P47 Orthogonal-Complement Annihilation",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081618923fb0ee0228370"
     },
     {
       "civic_id": 22,
-      "citizen": "P47 Projector Idempotence"
+      "citizen": "P47 Projector Idempotence",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081668bcec28aaf78e44c"
     },
     {
       "civic_id": 25,
-      "citizen": "Engineered Lindblad E47 Capture Model"
+      "citizen": "Engineered Lindblad E47 Capture Model",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30819d8e5ff3c61cb647c0"
     },
     {
       "civic_id": 21,
-      "citizen": "Explicit P47 Kernel Projector"
+      "citizen": "Explicit P47 Kernel Projector",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081c18226cebfbc591bdd"
     },
     {
       "civic_id": 24,
-      "citizen": "P47 Trace-Rank Ratio"
+      "citizen": "P47 Trace-Rank Ratio",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081f39612c551a1b5cfcb"
     },
     {
       "civic_id": 20,
-      "citizen": "Synthetic E47 Kernel Realization"
+      "citizen": "Synthetic E47 Kernel Realization",
+      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30813ab2e8da9dcba8dbf4"
     },
     {
       "civic_id": 19,
-      "citizen": "Murmuration Calculus"
+      "citizen": "Murmuration Calculus",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081a3b595ce6deeecad77"
     },
     {
       "civic_id": 18,
-      "citizen": "Corrected Kartekeya Coherence Attractor Theorem"
+      "citizen": "Corrected Kartekeya Coherence Attractor Theorem",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30810cb465ce632f4389df"
     },
     {
       "civic_id": 17,
-      "citizen": "Postselected Heat-Filter Channel"
+      "citizen": "Postselected Heat-Filter Channel",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308159826bfe88eef9ac62"
     },
     {
       "civic_id": 16,
-      "citizen": "Internal / Global Ratio Distinction"
+      "citizen": "Internal / Global Ratio Distinction",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081769df9cb89ae965bf9"
     },
     {
       "civic_id": 15,
-      "citizen": "Coupled Kernel Identity"
+      "citizen": "Coupled Kernel Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30817cb935d1338b9c61e9"
     },
     {
       "civic_id": 12,
-      "citizen": "Exact FCC Spatial Spectral Gap"
+      "citizen": "Exact FCC Spatial Spectral Gap",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308123a96df6f8f2aaf5b7"
     },
     {
       "civic_id": 14,
-      "citizen": "Coupled FCC x E47 Positive Operator D"
+      "citizen": "Coupled FCC x E47 Positive Operator D",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30812cb13ae3fb80ea5e00"
     },
     {
       "civic_id": 13,
-      "citizen": "Z5^3 Winding-Character Decomposition"
+      "citizen": "Z5^3 Winding-Character Decomposition",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081d29fbcda27cc033086"
     },
     {
       "civic_id": 10,
-      "citizen": "Periodic FCC Graph on Z5^3"
+      "citizen": "Periodic FCC Graph on Z5^3",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308103a586dcaa75c40cbf"
     },
     {
       "civic_id": 11,
-      "citizen": "FCC Fourier-Symbol Identity"
+      "citizen": "FCC Fourier-Symbol Identity",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308158ae51d9565c541344"
     },
     {
       "civic_id": 8,
-      "citizen": "Heat-Kernel Projection Limit"
+      "citizen": "Heat-Kernel Projection Limit",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081158eb1fe240683e1ee"
     },
     {
       "civic_id": 9,
-      "citizen": "Corrected Discrete K² Contraction"
+      "citizen": "Corrected Discrete K² Contraction",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30811aa62fd138643d9757"
     },
     {
       "civic_id": 6,
-      "citizen": "Internal Coherence Ratio 47/125"
+      "citizen": "Internal Coherence Ratio 47/125",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081cc81d2eb40a859e991"
     },
     {
       "civic_id": 7,
-      "citizen": "Orthogonal Projector P47"
+      "citizen": "Orthogonal Projector P47",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081d795baea4e80d063c6"
     },
     {
       "civic_id": 2,
-      "citizen": "Complete Casimir Spectrum and Multiplicities"
+      "citizen": "Complete Casimir Spectrum and Multiplicities",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308153a079d50ce7bd9d25"
     },
     {
       "civic_id": 5,
-      "citizen": "Kernel Dimension 47"
+      "citizen": "Kernel Dimension 47",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081748ec9c4c129cd71fc"
     },
     {
       "civic_id": 3,
-      "citizen": "Polynomial Casimir Kernel Operator K"
+      "citizen": "Polynomial Casimir Kernel Operator K",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30817c9fede7a44663c833"
     },
     {
       "civic_id": 1,
-      "citizen": "V₂⊗³ — 125-Dimensional Carrier"
+      "citizen": "V₂⊗³ — 125-Dimensional Carrier",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081ccb905e306cd7f95a7"
     },
     {
       "civic_id": 4,
-      "citizen": "E₄₇ Kernel Decomposition"
+      "citizen": "E₄₇ Kernel Decomposition",
+      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081eebf76f3fd81a90a21"
     }
   ],
   "has_more": false,
