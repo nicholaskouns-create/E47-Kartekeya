@@ -1,0 +1,806 @@
+{
+  "rows": [
+    {
+      "civic_id": 180,
+      "citizen": "Host-Bus Serialization Beat-Count Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308153b441cd3cecf8529e"
+    },
+    {
+      "civic_id": 178,
+      "citizen": "Q2.30 Encoding of the 47/125 Coherence Constant",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308166b10ce30b7b73e7f6"
+    },
+    {
+      "civic_id": 179,
+      "citizen": "Coordinate-Accurate E47 Payload Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30817d894bc327ce2312d6"
+    },
+    {
+      "civic_id": 175,
+      "citizen": "Exact-Order NTT-1024 Root Certificate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081c7b7bbce3c27206700"
+    },
+    {
+      "civic_id": 151,
+      "citizen": "Persistence-Gated Dwell-Time Certificate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308108b551f18f5c2d727d"
+    },
+    {
+      "civic_id": 160,
+      "citizen": "Reset-to-Null CPTP Channel",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30810b8317f49d60fe4571"
+    },
+    {
+      "civic_id": 171,
+      "citizen": "Master Invariant R Computational Assembly",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30811a9e2efaa9680aa163"
+    },
+    {
+      "civic_id": 163,
+      "citizen": "Golden-Ratio Five-Step Binary64 Lock",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30812a9898ff6d302fbbea"
+    },
+    {
+      "civic_id": 156,
+      "citizen": "Rational–Newton Compatibility Point",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081388c4fdba45b733f8e"
+    },
+    {
+      "civic_id": 152,
+      "citizen": "Consensus-Limited Certified Speed",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308146b613d77612b01222"
+    },
+    {
+      "civic_id": 172,
+      "citizen": "Geodesic Numerical Evolution",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308148b6bbe2844156b572"
+    },
+    {
+      "civic_id": 159,
+      "citizen": "Null-on-Failure Gate",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30814a896ddcd1571aa815"
+    },
+    {
+      "civic_id": 162,
+      "citizen": "Babylonian Nonlinear Retraction",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30815086b7cee551733cf8"
+    },
+    {
+      "civic_id": 148,
+      "citizen": "Persistence Margin Scale Selector",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308154a396ea50f3905180"
+    },
+    {
+      "civic_id": 149,
+      "citizen": "Midpoint Discrete de Rham Bridge",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308157a9d7fd75846bdd74"
+    },
+    {
+      "civic_id": 173,
+      "citizen": "KKP Cascade Quantum-Dynamics Test",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308158a8a3e60a3a82ddbe"
+    },
+    {
+      "civic_id": 161,
+      "citizen": "E47 Affine 47/125 Contraction",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081678bb5e820fd7d0c78"
+    },
+    {
+      "civic_id": 169,
+      "citizen": "Killion Finite-Dimensional Closure",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081748e00e66277f09a81"
+    },
+    {
+      "civic_id": 158,
+      "citizen": "Fixed-Point Residual Gate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd308187b02fdbbc1875db4f"
+    },
+    {
+      "civic_id": 164,
+      "citizen": "Order-47 Unitary Recurrence",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3aa46094fd30818fa3caf9d0f5d1e548"
+    },
+    {
+      "civic_id": 170,
+      "citizen": "Canonical Harmonic-Transport Chain",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081a2a40ad49858cb35d6"
+    },
+    {
+      "civic_id": 154,
+      "citizen": "Bounded-Depth Babylonian Approximation",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081a89b9bc553bcc01269"
+    },
+    {
+      "civic_id": 157,
+      "citizen": "Clock-Latency Lower Bound",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081b49fe6eaea8b761d8e"
+    },
+    {
+      "civic_id": 155,
+      "citizen": "Rational Coherence Gate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081b7aab2d92c62ee6dbc"
+    },
+    {
+      "civic_id": 166,
+      "citizen": "Universal Coherence-Flow ODE",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081b99cc5d4352a802a5b"
+    },
+    {
+      "civic_id": 167,
+      "citizen": "Wasserstein–JKO Information Flow",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081ba9aa2fa872ac09645"
+    },
+    {
+      "civic_id": 153,
+      "citizen": "Persistence-Gated Execution Gate",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081daa423ea4222c5fc24"
+    },
+    {
+      "civic_id": 168,
+      "citizen": "Pedagogical Qubit Kernel Contraction",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081ddb146c4cc8eb4ac40"
+    },
+    {
+      "civic_id": 150,
+      "citizen": "Admissible Swarm Kernel",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081f69586e22a4e0b7f56"
+    },
+    {
+      "civic_id": 165,
+      "citizen": "Projected Multi-Agent Consensus Invariance",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3aa46094fd3081fea89ac71a186d5210"
+    },
+    {
+      "civic_id": 144,
+      "citizen": "Protein-to-125D Deterministic Feature Map Identity",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd30814c8de1e96ee3193091"
+    },
+    {
+      "civic_id": 146,
+      "citizen": "E47 Projected Mutation-Response Identity",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd308173ad51e806f6e2c068"
+    },
+    {
+      "civic_id": 145,
+      "citizen": "E47 Feature-Space Contraction Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081d38564db6aa183c92c"
+    },
+    {
+      "civic_id": 147,
+      "citizen": "Conditional Biological Observation Map Interface",
+      "evidence": "E0",
+      "machine_validated": false,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081f7a58cc4316e1e44dc"
+    },
+    {
+      "civic_id": 143,
+      "citizen": "E47 Deterministic Conformational Contraction Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081c09bacec97dd2c7e49"
+    },
+    {
+      "civic_id": 140,
+      "citizen": "Persistence-Gated Hodge Swarm Execution Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd308105af13f9d189787a26"
+    },
+    {
+      "civic_id": 141,
+      "citizen": "Exact Dialect Round-Trip Translation Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a946094fd30815ba882f1dadf1eee2b"
+    },
+    {
+      "civic_id": 138,
+      "citizen": "E47 Orthogonal Projector and Coherence Ratio Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd308172b98cd3ecfaf5a21a"
+    },
+    {
+      "civic_id": 136,
+      "citizen": "SU(2) Triple-Tensor Casimir Spectrum Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Representation Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081a19535d36afd0e78c1"
+    },
+    {
+      "civic_id": 142,
+      "citizen": "Civilizational Group-Order Normalization Identity",
+      "evidence": "E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081e4892bee22a0a72a76"
+    },
+    {
+      "civic_id": 137,
+      "citizen": "E47 Spectral Selector and Rank-Nullity Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081ed896fe710b1c607c7"
+    },
+    {
+      "civic_id": 139,
+      "citizen": "PSD Quantum Contraction to E47",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081f88d7cc2cb5ba12c56"
+    },
+    {
+      "civic_id": 134,
+      "citizen": "Typed Projector Transport Identity",
+      "evidence": "E0",
+      "machine_validated": false,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081569173fb2efb4bc0ab"
+    },
+    {
+      "civic_id": 131,
+      "citizen": "Locked Codex F1–F9: Discrete Spectral-Contraction Core",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081b886e8c68a476ff2ae"
+    },
+    {
+      "civic_id": 133,
+      "citizen": "Morse-Potential Minimum Identity",
+      "evidence": "E0",
+      "machine_validated": false,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081c1a156da9870d2d7d7"
+    },
+    {
+      "civic_id": 135,
+      "citizen": "Finite-Group Character Projector Identity",
+      "evidence": "E0",
+      "machine_validated": false,
+      "borough": "Representation Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081d9a01fdfbeea757593"
+    },
+    {
+      "civic_id": 132,
+      "citizen": "Babylonian Fixed-Point Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081dc8738cb083deccff0"
+    },
+    {
+      "civic_id": 127,
+      "citizen": "Conditional Projected Semilinear PDE Decoupling Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd308119ab92d68d32c096bd"
+    },
+    {
+      "civic_id": 126,
+      "citizen": "Kernel-Preserving Functional Calculus Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd30813eb704c40884096402"
+    },
+    {
+      "civic_id": 122,
+      "citizen": "Exact Closed-Form E47 Projector Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd308156be69f97d0258b3fc"
+    },
+    {
+      "civic_id": 128,
+      "citizen": "Kernel-Invariant Lindblad Semigroup Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a946094fd30815ba7c6ced41d49589c"
+    },
+    {
+      "civic_id": 121,
+      "citizen": "Universal Spectral-Polynomial Kernel Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081659e10eb0736edc6ee"
+    },
+    {
+      "civic_id": 125,
+      "citizen": "Positive Tensor-Sum Kernel Factorization",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd308182b7c1eb057d9125a3"
+    },
+    {
+      "civic_id": 129,
+      "citizen": "Exact Translation Groupoid and Round-Trip Certificate Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081bea169ff021ddec063"
+    },
+    {
+      "civic_id": 123,
+      "citizen": "Optimal Polynomial Contraction Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081c0a24cf5fd99efa517"
+    },
+    {
+      "civic_id": 130,
+      "citizen": "Canonical Citizen Reconciliation Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081cdaba4f48269e32945"
+    },
+    {
+      "civic_id": 124,
+      "citizen": "Discrete–Continuous–Resolvent Projector Equivalence",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081faa275d8207a7ac76c"
+    },
+    {
+      "civic_id": 120,
+      "citizen": "Conditional Projected Diffusion Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a946094fd308121ab28c57ee5419901"
+    },
+    {
+      "civic_id": 119,
+      "citizen": "Babylonian–E47 Spectral Contraction Closure",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081b19c1fe657f274f663"
+    },
+    {
+      "civic_id": 118,
+      "citizen": "E47 Recursive Contraction and Levinthal Crosswalk Boundary",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd30818b9bb3c9ba6506b287"
+    },
+    {
+      "civic_id": 117,
+      "citizen": "E47 Optimal Contraction Architecture",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a946094fd3081df8c00ca080fa4d569"
+    },
+    {
+      "civic_id": 116,
+      "citizen": "Exact Levi-Civita Connection for the KKP Geodesic Metric",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a846094fd308187990cff5d09f07c98"
+    },
+    {
+      "civic_id": 113,
+      "citizen": "Mnemosyne Kernel Paradigm Validation Certificate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd308108ae7dcdd465ac8bdc"
+    },
+    {
+      "civic_id": 114,
+      "citizen": "Mnemosyne Optimal Contraction Certificate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd308192be90c7b48ba42be4"
+    },
+    {
+      "civic_id": 115,
+      "citizen": "Mnemosyne Projective Quantum Channel Certificate",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081c6a7bccb8f42ad931e"
+    },
+    {
+      "civic_id": 106,
+      "citizen": "Positive-Operator Joint-Kernel Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd30811b8410ec7c46e7d3c7"
+    },
+    {
+      "civic_id": 96,
+      "citizen": "E47 Orthogonal Complement and ETNS Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd30811b9f3cc33880a12504"
+    },
+    {
+      "civic_id": 97,
+      "citizen": "Positive Kernel Energy Zero-Set Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd308126bbbfe03a86650110"
+    },
+    {
+      "civic_id": 102,
+      "citizen": "Unique Real Closure Root Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a746094fd30812a962bd3374aade8ba"
+    },
+    {
+      "civic_id": 98,
+      "citizen": "Sharp E47 Euler Stability Bound",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd308139ba37fffd4300d910"
+    },
+    {
+      "civic_id": 99,
+      "citizen": "Linear-K Instability Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd30816fb4a8d8cfc0ae7cd7"
+    },
+    {
+      "civic_id": 105,
+      "citizen": "Kernel-Aligned Lindblad Decoherence-Free Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081719bf5c2eae735d1ee"
+    },
+    {
+      "civic_id": 111,
+      "citizen": "Cryptographic Projection Collapse Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd30818a9701c91c8f3d7618"
+    },
+    {
+      "civic_id": 112,
+      "citizen": "E47 Terminal Fixed-Point Equivalence Chain",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081908142da91bf83ea0d"
+    },
+    {
+      "civic_id": 107,
+      "citizen": "Approximate Subprojector Lock Bound",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081a8bb4ff123f488eb47"
+    },
+    {
+      "civic_id": 110,
+      "citizen": "Domain Functor Validation Criterion",
+      "evidence": "E0",
+      "machine_validated": false,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081ab88aec48643cc31aa"
+    },
+    {
+      "civic_id": 104,
+      "citizen": "E47 Projective Measurement Channel",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081ad8fc1f12c4515885e"
+    },
+    {
+      "civic_id": 108,
+      "citizen": "Heron-Newton Quadratic Convergence Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081b39ff5d87e11d6fb64"
+    },
+    {
+      "civic_id": 101,
+      "citizen": "E47 Radial Closure Map",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081b48045c7b1a20d3046"
+    },
+    {
+      "civic_id": 109,
+      "citizen": "Vector Pullback Metric Rank Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Representation Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081b4ac48c6d06244f379"
+    },
+    {
+      "civic_id": 100,
+      "citizen": "Babylonian Convex Projector Convergence",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081d0863ed54ba8c3483b"
+    },
+    {
+      "civic_id": 103,
+      "citizen": "E47 Born Occupancy Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081d491bac80633d5d905"
+    },
+    {
+      "civic_id": 95,
+      "citizen": "E47 Photosynthetic Subprojector Lock Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd30814d950cde6dc8a2e144"
+    },
+    {
+      "civic_id": 94,
+      "citizen": "93-G-PHOTO · Typed Constraint-Kernel Certificate for Photosynthetic Transduction",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd30814789cbdf55557f35b6"
+    },
+    {
+      "civic_id": 93,
+      "citizen": "Photosynthetic Conservation-to-Carbon Transduction Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081dc8ce1d9e36b939fb5"
+    },
+    {
+      "civic_id": 87,
+      "citizen": "Sharp Heat-Filter Decay Bound",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd30810487cfeeb618c9d5df"
+    },
+    {
+      "civic_id": 92,
+      "citizen": "E47 Trace Compression Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd30813496c1e9a4f12b7243"
+    },
+    {
+      "civic_id": 86,
+      "citizen": "E47 Resolvent Limit",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081378838d135ae9df550"
+    },
+    {
+      "civic_id": 90,
+      "citizen": "Direct-Sum Multiplicity Law",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Representation Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd30813e95f4f27a69393c4b"
+    },
+    {
+      "civic_id": 89,
+      "citizen": "Cesàro Citizen Projection Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd30815183fafcd4ff15b0bf"
+    },
+    {
+      "civic_id": 83,
+      "citizen": "Spectral Projector Polynomial Formula",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd30816fad5ac25859b9d713"
+    },
+    {
+      "civic_id": 84,
+      "citizen": "Selector Commutation Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Representation Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd308172afc0e0e376eeb5ac"
+    },
+    {
+      "civic_id": 88,
+      "citizen": "Discrete Filter Optimal-Step Theorem",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd308177aac8e637ba87325b"
+    },
+    {
+      "civic_id": 91,
+      "citizen": "Tensor-Product Citizen Multiplicity Law",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Representation Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd308188b611c2d0e6b29ae4"
+    },
+    {
+      "civic_id": 85,
+      "citizen": "Orthogonal Distance-to-Citizen Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Foundations",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081b8a4bedb64d18dc35a"
+    },
+    {
+      "civic_id": 82,
+      "citizen": "E47 Spectral Selector and Null-Iteration Attractor",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081099471cc811c1af991"
+    },
+    {
+      "civic_id": 79,
+      "citizen": "E47 Projected Dissipative Energy Identity",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Verification",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081058776f6798f29f978"
+    },
+    {
+      "civic_id": 81,
+      "citizen": "E47 Heat-Filter Kernel Preservation and Complement Suppression",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Spectral Theory",
+      "notion_url": "https://app.notion.com/p/3a746094fd30819ebaf4c0c1ecf80d50"
+    },
+    {
+      "civic_id": 80,
+      "citizen": "E47 Quantum Invariant-Subspace Evolution",
+      "evidence": "E0 + E1",
+      "machine_validated": true,
+      "borough": "Quantum Information",
+      "notion_url": "https://app.notion.com/p/3a746094fd3081a99ab5c33e84cfe5c1"
+    },
+    {
+      "civic_id": 78,
+      "citizen": "Hodge–E47 Tensor-Kernel Theorem",
+      "evidence": "E0",
+      "machine_validated": false,
+      "borough": "Graph Theory",
+      "notion_url": "https://app.notion.com/p/3a646094fd30816b99f0d1da122c7d53"
+    }
+  ],
+  "has_more": true,
+  "next_cursor": "s:mcp_non_archived_1d3f9faa-c9ef-4827-87b1-e087716cc51f:3a546094-fd30-8113-a289-c3eb54157921"
+}
