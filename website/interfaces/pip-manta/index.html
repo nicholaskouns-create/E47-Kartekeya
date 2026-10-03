@@ -3,45 +3,204 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090d10">
+<meta name="theme-color" content="#071428">
 <title>PIP Explains E47–MANTA</title>
 <style>
-:root{color-scheme:dark;--bg:#090d10;--p:#10171c;--l:#263037;--t:#f0f1e9;--m:#9fabad;--c:#6edfd4;--g:#c1e8ce;--b:#c59a67;--o:#ec9859;--y:#f0c86d}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% -10%,#17383a 0,transparent 28%),var(--bg);color:var(--t);font-family:Arial,sans-serif}.w{width:min(1160px,calc(100% - 24px));margin:auto}
-header{position:sticky;top:0;z-index:9;background:#090d10e8;border-bottom:1px solid var(--l);backdrop-filter:blur(12px)}header .w{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.09em;font-size:12px}.brand small{display:block;color:var(--m);font:9px ui-monospace,monospace;margin-top:4px}a{color:inherit;text-decoration:none}.pill{border:1px solid var(--l);border-radius:999px;padding:8px 11px;font:10px ui-monospace,monospace}
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center;padding:44px 0}.ey{font:10px ui-monospace,monospace;letter-spacing:.14em;color:var(--c)}h1,h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.04em}h1{font-size:clamp(46px,7vw,82px);line-height:.94;margin:10px 0 16px}h1 em{font-style:normal;color:var(--c)}.lead{color:#c6d0ce;font-size:17px;line-height:1.55}.boundary{border:1px solid #5b4b28;background:#17140b;border-radius:10px;padding:12px;color:#e4d09c;font-size:12px;line-height:1.5}.pip{min-height:300px;border:1px solid var(--l);border-radius:18px;background:linear-gradient(150deg,#101c21,#0b1115);display:grid;place-items:center;position:relative;overflow:hidden}.pipbot{width:145px;height:190px;position:relative}.head{position:absolute;left:7px;top:0;width:132px;height:94px;border:7px solid #d5e3e5;border-radius:48px;background:#c8d9dc}.face{position:absolute;inset:14px;border-radius:31px;background:#071014;border:3px solid #557277}.e{position:absolute;top:28px;width:14px;height:19px;border-radius:50%;background:var(--c);box-shadow:0 0 13px var(--c)}.e.a{left:39px}.e.b{right:39px}.sm{position:absolute;left:45px;top:57px;width:40px;height:17px;border-bottom:5px solid var(--c);border-radius:50%}.body{position:absolute;left:20px;top:88px;width:106px;height:102px;border:7px solid #d5e3e5;border-radius:34px 34px 44px 44px;background:#b9cdd1}.body:before{content:"PIP";position:absolute;left:27px;top:24px;background:#163c45;padding:6px 8px;border-radius:7px;font-weight:900}.body:after{content:"★";position:absolute;left:39px;top:58px;color:var(--y);font-size:25px}.talk{position:absolute;left:14px;right:14px;bottom:12px;background:#071014e8;border:1px solid #36565b;border-radius:10px;padding:10px 12px;font:10px/1.45 ui-monospace,monospace}.talk b{color:var(--c)}
-section{padding:36px 0;border-top:1px solid var(--l)}h2{font-size:clamp(30px,4vw,44px);margin:6px 0 18px}.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.panel{border:1px solid var(--l);border-radius:13px;background:#10171ceb;overflow:hidden}.pt{padding:13px 15px;border-bottom:1px solid var(--l);display:flex;justify-content:space-between;font:9px ui-monospace,monospace;letter-spacing:.1em}.pt b{color:var(--c)}
-.shells{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;padding:13px}.sh{border:1px solid var(--l);border-radius:9px;padding:8px;text-align:center;background:#0b1216}.sh.target{border-color:#4f9478;background:#10251d}.orb{width:25px;height:25px;border-radius:50%;margin:2px auto 6px;background:currentColor;box-shadow:inset 0 -7px 10px #0007,0 0 10px currentColor}.sh:nth-child(1){color:#b79cff}.sh:nth-child(2){color:#73b7ff}.sh:nth-child(3){color:#73d29a}.sh:nth-child(4){color:#ec9859}.sh:nth-child(5){color:#ef80c4}.sh:nth-child(6){color:#57e5a0}.sh:nth-child(7){color:#ef7a7a}.sh strong{display:block;color:var(--t);font:13px Georgia,serif}.sh small{color:var(--m);font:8px ui-monospace,monospace}.pct{margin-top:6px;font:9px ui-monospace,monospace}.bar{height:4px;background:#1b272c;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:currentColor}
-.actions,.modes{display:flex;flex-wrap:wrap;gap:7px;padding:13px;border-top:1px solid var(--l)}button{border:1px solid var(--l);background:#0c1418;color:var(--t);border-radius:8px;padding:10px 11px;font:10px ui-monospace,monospace;cursor:pointer}.primary,.modes button.on{background:#12312f;border-color:#4a8f88;color:var(--c)}.lock{background:#17251d;border-color:#48755a;color:var(--g)}
-.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:13px}.metric{border:1px solid var(--l);border-radius:9px;background:#0b1216;padding:11px}.metric small{display:block;color:var(--m);font:8px ui-monospace,monospace;letter-spacing:.08em}.metric strong{display:block;margin-top:5px;font:23px Georgia,serif}.metric:nth-child(1) strong,.metric:nth-child(4) strong{color:var(--g)}.metric:nth-child(2) strong{color:var(--b)}.metric:nth-child(3) strong{color:var(--c)}
-.exp{padding:13px 15px;border-top:1px solid var(--l);color:#c8d3d1;font-size:12px;line-height:1.55}.exp b{color:var(--c)}.formula{margin-top:9px;border:1px solid var(--l);background:#0b1216;border-radius:8px;padding:10px;font:12px/1.65 ui-monospace,monospace;overflow:auto}
-canvas{display:block;width:100%;height:390px;background:radial-gradient(circle at 50% 45%,#10272a,#090e11 70%);touch-action:none}.ctrl{padding:5px 13px 12px}.row{display:grid;grid-template-columns:78px 1fr 45px;gap:9px;align-items:center;margin:10px 0}.row label,.row output{font:9px ui-monospace,monospace}.row output{color:var(--c);text-align:right}.row input{width:100%;accent-color:#6edfd4}.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.badge{border:1px solid var(--l);border-radius:11px;background:var(--p);padding:14px}.badge b{font:28px Georgia,serif}.badge small{display:block;color:var(--m);font:9px/1.5 ui-monospace,monospace;margin-top:5px}.badge.e0 b{color:var(--c)}.badge.e1 b{color:var(--g)}.badge.e2 b{color:var(--o)}footer{border-top:1px solid var(--l);padding:22px 0 30px;color:var(--m);font:9px ui-monospace,monospace}
-@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.shells{grid-template-columns:repeat(4,1fr)}canvas{height:340px}}@media(max-width:480px){.shells{grid-template-columns:repeat(2,1fr)}h1{font-size:48px}.lead{font-size:15px}.w{width:calc(100% - 18px)}}
+:root{color-scheme:dark;--bg:#071428;--p:#10233d;--l:#2c5278;--t:#f4f7ff;--m:#b7c7dc;--c:#3ec6ff;--g:#3dde8a;--b:#e0b15a;--o:#ff8a3d;--y:#ffe14a;--pk:#ff6eb4;--pu:#8b7cff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#1a4d86 0,transparent 32%),radial-gradient(circle at 10% 110%,#12325c 0,transparent 28%),var(--bg);color:var(--t);font-family:Arial,sans-serif}.w{width:min(1160px,calc(100% - 24px));margin:auto}
+header{position:sticky;top:0;z-index:9;background:#071428ee;border-bottom:1px solid var(--l);backdrop-filter:blur(12px)}header .w{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.09em;font-size:12px}.brand small{display:block;color:var(--m);font:9px ui-monospace,monospace;margin-top:4px}a{color:inherit;text-decoration:none}.pill{border:1px solid var(--l);border-radius:999px;padding:8px 11px;font:10px ui-monospace,monospace}
+.poster{margin:22px auto 8px;border:1px solid #3d6ea8;border-radius:22px;background:linear-gradient(180deg,#12325e,#0b1d3a 55%,#08162c);overflow:hidden;box-shadow:0 18px 50px #0008}
+.poster-top{display:grid;grid-template-columns:148px 1fr 210px;gap:12px;align-items:center;padding:16px 18px 8px}
+.kicker{font:11px ui-monospace,monospace;letter-spacing:.16em;color:#9fd8ff}h1{font-family:Georgia,serif;font-weight:700;letter-spacing:-.03em;font-size:clamp(28px,4vw,46px);line-height:.95;margin:4px 0}h1 em{font-style:normal;color:#ffe14a}
+.banner{margin:0 18px 12px;border-radius:12px;background:#fff4;border:1px solid #ffd56a;color:#ffe9a8;padding:8px 12px;font-size:13px}
+.stage{display:grid;grid-template-columns:250px 1fr;gap:12px;padding:0 18px 16px}
+.pip-card{border-radius:18px;background:linear-gradient(180deg,#1b4e93,#12386f);border:1px solid #6eb6ff;min-height:280px;position:relative;overflow:hidden}
+.pip{width:150px;height:210px;margin:18px auto 0;position:relative;animation:bob 2.6s ease-in-out infinite}
+.head{position:absolute;left:18px;top:22px;width:114px;height:86px;border-radius:46px;background:#e9f4ff;border:6px solid #d7e7f8;box-shadow:inset 0 -8px 0 #c5d8ee}
+.ant{position:absolute;left:68px;top:0;width:6px;height:26px;background:#d7e7f8;border-radius:4px}.ant i{position:absolute;left:-6px;top:-10px;width:18px;height:18px;border-radius:50%;background:#3ec6ff;box-shadow:0 0 14px #3ec6ff;animation:pulse 1.4s ease-in-out infinite}
+.face{position:absolute;inset:16px 14px 14px;border-radius:30px;background:#102033}
+.eye{position:absolute;top:18px;width:16px;height:20px;border-radius:50%;background:#7cf0ff;box-shadow:0 0 10px #7cf0ff;animation:blink 4.2s infinite}.eye.l{left:22px}.eye.r{right:22px}
+.smile{position:absolute;left:34px;top:44px;width:34px;height:16px;border-bottom:4px solid #7cf0ff;border-radius:0 0 20px 20px}
+.torso{position:absolute;left:32px;top:104px;width:86px;height:78px;border-radius:28px;background:#e9f4ff;border:6px solid #d7e7f8}
+.badge{position:absolute;left:22px;top:16px;background:#163e78;color:#fff;font:700 11px Arial;padding:4px 7px;border-radius:6px}
+.star{position:absolute;left:34px;top:40px;color:#ffe14a;font-size:18px}
+.arm{position:absolute;left:108px;top:112px;width:34px;height:12px;background:#e9f4ff;border-radius:8px;transform-origin:left center;animation:point 2.6s ease-in-out infinite}
+.talk{position:absolute;left:10px;right:10px;bottom:10px;background:#071428ee;border:1px solid #3ec6ff;border-radius:12px;padding:8px 10px;font:11px/1.4 ui-monospace,monospace;min-height:62px}
+.talk b{color:#7cf0ff}
+.view{border-radius:18px;border:1px solid #3d6ea8;background:radial-gradient(circle at 50% 40%,#16406e,#081426 72%);position:relative;min-height:320px}
+canvas#story{width:100%;height:320px;display:block}
+.beatbar{display:flex;gap:6px;padding:0 18px 16px;overflow:auto}
+.beat{flex:0 0 108px;border:1px solid #355e8c;border-radius:12px;padding:7px;background:#0d2240;font-size:11px;color:#cfe3ff;cursor:pointer}
+.beat.on{border-color:#ffe14a;background:#1a3f72;color:#fff}.beat b{display:block;font-size:13px;margin-bottom:2px}
+.controls{display:flex;gap:8px;padding:0 18px 16px}button{border:1px solid var(--l);background:#0c1c33;color:var(--t);border-radius:8px;padding:10px 12px;font:10px ui-monospace,monospace;cursor:pointer}.primary{background:#12486a;border-color:#3ec6ff;color:#d8f6ff}.lock{background:#123826;border-color:#3dde8a;color:#d9ffe8}
+.chain{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:0 18px 16px}
+.ch{border:1px solid #355e8c;border-radius:12px;padding:8px;text-align:center;font:10px ui-monospace,monospace;background:#0d2240;opacity:.45}
+.ch.on{opacity:1;border-color:#3ec6ff;box-shadow:0 0 12px #3ec6ff55}
+.gauges{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px 16px}
+.g{border:1px solid #355e8c;border-radius:14px;padding:10px;background:#0d2240}
+.dial{height:10px;border-radius:8px;background:#1b3354;overflow:hidden;margin-top:6px}.dial i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3dde8a,#ffe14a,#ff8a3d)}
+.dial.res i{background:linear-gradient(90deg,#8b7cff,#ff6eb4)}
+section{padding:28px 0;border-top:1px solid #24486e}h2{font-family:Georgia,serif;font-weight:500;letter-spacing:-.03em;font-size:clamp(28px,4vw,40px);margin:6px 0 14px}.ey{font:10px ui-monospace,monospace;letter-spacing:.14em;color:#7cf0ff}
+.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.panel{border:1px solid #2c5278;border-radius:13px;background:#10233db8;overflow:hidden}.pt{padding:13px 15px;border-bottom:1px solid #2c5278;display:flex;justify-content:space-between;font:9px ui-monospace,monospace;letter-spacing:.1em}
+.shells{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;padding:13px}.sh{border:1px solid #2c5278;border-radius:9px;padding:8px;text-align:center;background:#0b1a30}.sh.target{border-color:#3dde8a;background:#103226}.orb{width:22px;height:22px;border-radius:50%;margin:2px auto 6px;background:currentColor}.sh strong{display:block;color:#fff;font:13px Georgia,serif}.sh small,.pct{color:#b7c7dc;font:8px ui-monospace,monospace}.bar{height:4px;background:#1b3354;border-radius:5px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:currentColor}
+.actions,.modes{display:flex;flex-wrap:wrap;gap:7px;padding:13px;border-top:1px solid #2c5278}.modes button.on{background:#12486a;border-color:#3ec6ff;color:#d8f6ff}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:13px}.metric{border:1px solid #2c5278;border-radius:9px;background:#0b1a30;padding:11px}.metric small{display:block;color:#b7c7dc;font:8px ui-monospace,monospace}.metric strong{display:block;margin-top:5px;font:22px Georgia,serif;color:#7cf0ff}
+.exp{padding:13px 15px;border-top:1px solid #2c5278;color:#d5e2f2;font-size:12px;line-height:1.55}.formula{margin-top:9px;border:1px solid #2c5278;background:#0b1a30;border-radius:8px;padding:10px;font:12px/1.65 ui-monospace,monospace}
+canvas#cv{display:block;width:100%;height:360px;background:radial-gradient(circle at 50% 45%,#14375f,#081426 70%)}.ctrl{padding:5px 13px 12px}.row{display:grid;grid-template-columns:78px 1fr 45px;gap:9px;align-items:center;margin:10px 0}.row label,.row output{font:9px ui-monospace,monospace}.row output{color:#7cf0ff;text-align:right}.row input{width:100%;accent-color:#3ec6ff}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.badge{border:1px solid #2c5278;border-radius:11px;background:#10233d;padding:14px}.badge b{font:28px Georgia,serif}.badge small{display:block;color:#b7c7dc;font:9px/1.5 ui-monospace,monospace;margin-top:5px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.split div{border-radius:12px;padding:12px;font-size:13px}.ok{background:#123826;border:1px solid #3dde8a}.sim{background:#241848;border:1px solid #8b7cff}
+footer{border-top:1px solid #24486e;padding:22px 0 30px;color:#b7c7dc;font:9px ui-monospace,monospace}
+@keyframes bob{50%{transform:translateY(-6px)}}@keyframes pulse{50%{transform:scale(1.25)}}@keyframes blink{92%,96%{transform:scaleY(.08)}}@keyframes point{50%{transform:rotate(-18deg)}}
+@media(max-width:800px){.poster-top,.stage,.grid,.split{grid-template-columns:1fr}.chain{grid-template-columns:repeat(3,1fr)}.shells{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
-<body><div data-e2-contract style="position:fixed;z-index:9998;right:10px;top:10px;max-width:min(92vw,680px);padding:7px 10px;border:1px solid #8a6f4c;border-radius:9px;background:rgba(12,9,5,.92);color:#f2dfbf;font:600 10px/1.4 ui-monospace,monospace"><b>E2 CONTRACT</b> · Assumptions: the child MANTA dynamics use the declared E2 morph, gain, thrust and torque rules. Falsifier: independent reproduction of those rules disagrees with the shown outputs beyond declared tolerances.</div>
+<body>
+<div data-e2-contract style="position:fixed;z-index:9998;right:10px;top:10px;max-width:min(92vw,680px);padding:7px 10px;border:1px solid #8a6f4c;border-radius:9px;background:rgba(12,9,5,.92);color:#f2dfbf;font:600 10px/1.4 ui-monospace,monospace"><b>E2 CONTRACT</b> · Assumptions: the child MANTA dynamics use the declared E2 morph, gain, thrust and torque rules. Falsifier: independent reproduction of those rules disagrees with the shown outputs beyond declared tolerances.</div>
 <header><div class="w"><a class="brand" href="../../">THE MATHEMATICAL CITY<small>PIP · E47–MANTA EXPLAINER</small></a><a class="pill" href="https://www.aims.healthcare/journal/e47-manta-programmable-matter-spectral-morph-flight-system">AIMS ↗</a></div></header>
 <main>
-<div class="hero w"><div><div class="ey">KID-FRIENDLY INTERACTIVE EDITION</div><h1>Pip explains <em>E47–MANTA</em>.</h1><p class="lead">Start with 125 possibilities. An exact spectral filter reveals a 47-dimensional stable sector. Then a separate software bridge turns a 125-number control field into a morphing aircraft shape and flight-control numbers.</p><div class="boundary"><b>Boundary:</b> 125→47 is exact finite algebra. Morph geometry, gain, thrust and torque are E2 simulation rules, not measurements of physical programmable matter or propulsion.</div></div><div class="pip"><div class="pipbot"><div class="head"><div class="face"><i class="e a"></i><i class="e b"></i><i class="sm"></i></div></div><div class="body"></div></div><div class="talk" id="talk"><b>Pip:</b> Tap Γ STEP. The extra spectral pieces shrink while E47 stays put.</div></div></div>
+<div class="poster w">
+  <div class="poster-top">
+    <div class="kicker">PIP EXPLAINER</div>
+    <h1>The E47–MANTA <em>Spectral Morph</em> Flight System</h1>
+    <div class="kicker">SAME MATH. NINE BEATS.</div>
+  </div>
+  <div class="banner">This animation explains a simulation model. It does not prove real matter can morph, or that a real vehicle can fly this way.</div>
+  <div class="stage">
+    <div class="pip-card" aria-hidden="true">
+      <div class="pip">
+        <div class="ant"><i></i></div>
+        <div class="head"><div class="face"><i class="eye l"></i><i class="eye r"></i><i class="smile"></i></div></div>
+        <div class="arm"></div>
+        <div class="torso"><span class="badge">PIP</span><span class="star">★</span></div>
+      </div>
+      <div class="talk" id="talk"><b>Pip:</b> 125 states. One exact filter. A software flight model after that.</div>
+    </div>
+    <div class="view"><canvas id="story" width="980" height="640"></canvas></div>
+  </div>
+  <div class="beatbar" id="beats"></div>
+  <div class="gauges">
+    <div class="g"><small>Capture Ω</small><strong id="gCap">0.376</strong><div class="dial"><i id="gCapBar"></i></div></div>
+    <div class="g"><small>Residual rK — should fall</small><strong id="gRes">—</strong><div class="dial res"><i id="gResBar"></i></div></div>
+  </div>
+  <div class="chain" id="chain"></div>
+  <div class="controls">
+    <button class="primary" id="play">PLAY EXPLAINER</button>
+    <button id="prev">PREV</button>
+    <button id="next">NEXT</button>
+    <button class="lock" id="project2">PROJECT P47</button>
+  </div>
+</div>
+
 <section><div class="w"><div class="ey">1 · EXACT CORE</div><h2>125 states → filter → E47.</h2><div class="grid"><div class="panel"><div class="pt"><span>CASIMIR SHELLS</span><b>E0 EXACT</b></div><div class="shells" id="shells"></div><div class="actions"><button id="reset">RESET</button><button id="mix">RANDOMIZE</button><button class="primary" id="step">Γ STEP</button><button class="primary" id="ten">Γ ×10</button><button class="lock" id="project">PROJECT P47</button></div><div class="exp" id="explain"></div></div><div class="panel"><div class="pt"><span>LIVE RECEIPT</span><b>FINITE VALUES</b></div><div class="metrics"><div class="metric"><small>E47 capture Ω</small><strong id="cap">0.376000</strong></div><div class="metric"><small>rK residual</small><strong id="res">0</strong></div><div class="metric"><small>Γ steps</small><strong id="n">0</strong></div><div class="metric"><small>kernel fraction</small><strong>47/125</strong></div></div><div class="exp"><b>Exact machine</b><div class="formula">K=(C−6I)(C−30I)<br>Γ=I−K²/99144<br>lim Γⁿ=P₄₇</div></div></div></div></div></section>
+
 <section><div class="w"><div class="ey">2 · E2 SIMULATION BRIDGE</div><h2>Move the 125-node MANTA field.</h2><div class="grid"><div class="panel"><div class="pt"><span>125-NODE GEOMETRY</span><b>LIVE</b></div><canvas id="cv" width="900" height="620"></canvas></div><div class="panel"><div class="pt"><span>PILOT + MORPH CONTROLS</span><b>E2</b></div><div class="ctrl"><div class="row"><label>pitch</label><input id="pitch" type="range" min="-1" max="1" step=".01" value=".15"><output id="pitchO">.15</output></div><div class="row"><label>roll</label><input id="roll" type="range" min="-1" max="1" step=".01" value="-.10"><output id="rollO">-.10</output></div><div class="row"><label>yaw</label><input id="yaw" type="range" min="-1" max="1" step=".01" value="0"><output id="yawO">0</output></div><div class="row"><label>morph</label><input id="morph" type="range" min="0" max="1" step=".01" value=".55"><output id="morphO">.55</output></div><div class="row"><label>throttle</label><input id="throttle" type="range" min="0" max="1" step=".01" value=".72"><output id="throttleO">.72</output></div></div><div class="modes" id="modes"><button data-m="CRUISE">CRUISE</button><button class="on" data-m="MANEUVER">MANEUVER</button><button data-m="TRANSITION">TRANSITION</button><button data-m="RECOVERY">RECOVERY</button></div><div class="metrics"><div class="metric"><small>sweep σ</small><strong id="sig">1</strong></div><div class="metric"><small>gain χ</small><strong id="chi">0</strong></div><div class="metric"><small>thrust F</small><strong id="F">0 kN</strong></div><div class="metric"><small>τ x,y,z</small><strong id="tau">0,0,0</strong></div></div><div class="exp"><b>Pip:</b> Every dot obeys the declared node geometry and morph equations, followed by 12% neighbor smoothing. The flight numbers use the declared E2 gain and torque laws.</div></div></div></div></section>
-<section><div class="w"><div class="ey">3 · EVIDENCE FIREWALL</div><h2>Same chain, different receipts.</h2><div class="badges"><div class="badge e0"><b>E0</b><small>Exact carrier, Casimir spectrum, K selector, E47 kernel, projector and Γ contraction.</small></div><div class="badge e1"><b>E1</b><small>Executable validators reconstruct the finite algebra and numerical constants.</small></div><div class="badge e2"><b>E2</b><small>Morph geometry, smoothing, gain χ, thrust, torque and trajectories are software simulation.</small></div></div><div class="formula">E_exact ──defined bridge──▶ S_simulation &nbsp;&nbsp; but &nbsp;&nbsp; E_exact ⇏ S_physical</div></div></section>
+
+<section><div class="w"><div class="ey">3 · EVIDENCE FIREWALL</div><h2>Same chain, different receipts.</h2><div class="badges"><div class="badge"><b style="color:#7cf0ff">E0</b><small>Exact carrier, Casimir spectrum, K selector, E47 kernel, projector and Γ contraction.</small></div><div class="badge"><b style="color:#3dde8a">E1</b><small>Executable validators reconstruct the finite algebra and numerical constants.</small></div><div class="badge"><b style="color:#ff8a3d">E2</b><small>Morph geometry, smoothing, gain χ, thrust, torque and trajectories are software simulation.</small></div></div><div class="split"><div class="ok"><b>Exact algebra</b><br>125-state space, K=(C−6I)(C−30I), ker=E6⊕E30, P47, Γ=I−K²/99144.</div><div class="sim"><b>Simulation choices</b><br>Node geometry, smoothed morph, gain χ, thrust and torque rules, 6DOF flight. Software model.</div></div><div class="formula">E_exact ──defined bridge──▶ S_simulation &nbsp;&nbsp; but &nbsp;&nbsp; E_exact ⇏ S_physical</div></div></section>
 </main>
-<footer><div class="w">THE MATHEMATICAL CITY · PIP / E47–MANTA · near-black · cyan live · bronze residual · mint lock</div></footer>
+<footer><div class="w">THE MATHEMATICAL CITY · PIP / E47–MANTA · exact filter · simulation bridge · physical flight not claimed</div></footer>
 <script>
 (function(){
 "use strict";
-var S=[{l:0,m:1,k:180,k2:32400},{l:2,m:9,k:112,k2:12544},{l:6,m:25,k:0,k2:0,t:1},{l:12,m:28,k:-108,k2:11664},{l:20,m:27,k:-140,k2:19600},{l:30,m:22,k:0,k2:0,t:1},{l:42,m:13,k:432,k2:186624}],eps=1/99144,G=S.map(function(s){return 1-eps*s.k2}),p=S.map(function(s){return s.m/125}),steps=0,mode="MANEUVER";
-function $(x){return document.getElementById(x)} function norm(a){var z=a.reduce(function(q,x){return q+x},0);return a.map(function(x){return x/z})} function cap(){return p[2]+p[5]} function res(){return Math.sqrt(p.reduce(function(q,x,i){return q+x*S[i].k2},0))} function v(id){return Number($(id).value)}
+var S=[{l:0,m:1,k:180,k2:32400},{l:2,m:9,k:112,k2:12544},{l:6,m:25,k:0,k2:0,t:1},{l:12,m:28,k:-108,k2:11664},{l:20,m:27,k:-140,k2:19600},{l:30,m:22,k:0,k2:0,t:1},{l:42,m:13,k:432,k2:186624}],eps=1/99144,G=S.map(function(s){return 1-eps*s.k2}),p=S.map(function(s){return s.m/125}),steps=0,mode="MANEUVER",beat=0,playing=true,timer=0;
+var BEATS=[
+ {t:"1 Lattice",d:"125 states",say:"Think of this as a big box of 125 possible states. H = V2⊗3."},
+ {t:"2 E47 zone",d:"47 special",say:"The math picks out 47 states. K=(C−6I)(C−30I). ker K = E6 ⊕ E30."},
+ {t:"3 Filter",d:"Γ step",say:"Keep applying Γ = I − K²/99144. The state moves toward the E47 zone."},
+ {t:"4 Control",d:"125 nodes",say:"Each of the 125 coordinates is matched to one control node."},
+ {t:"5 Morph",d:"sim shape",say:"Activated nodes bend the simulated geometry. The software smooths the shape."},
+ {t:"6 Gauges",d:"Ω and rK",say:"Capture and residual tell the simulator how strongly to respond. χ is a simulation gain."},
+ {t:"7 Flight",d:"6DOF",say:"Force and torque rules move the virtual vehicle. Roll, pitch, yaw. Software model."},
+ {t:"8 Chain",d:"six links",say:"E47 state → 125-node field → morph geometry → gain → force/torque → 6DOF flight."},
+ {t:"9 Split",d:"exact / sim",say:"The algebra is exact. The flight behavior is a software model. Physical flight is not claimed."}
+];
+var CHAIN=["E47 spectral state","125-node field","simulated morph","simulation gain","force / torque","6DOF flight"];
+function $(x){return document.getElementById(x)}
+function norm(a){var z=a.reduce(function(q,x){return q+x},0);return a.map(function(x){return x/z})}
+function cap(){return p[2]+p[5]}
+function res(){return Math.sqrt(p.reduce(function(q,x,i){return q+x*S[i].k2},0))}
+function v(id){return Number($(id).value)}
+function setRange(id,val){$(id).value=val}
 function shells(){var mx=Math.max.apply(null,p);$("shells").innerHTML=S.map(function(s,i){return '<div class="sh '+(s.t?'target':'')+'"><div class="orb"></div><strong>λ='+s.l+'</strong><small>d='+s.m+(s.t?' · E47':'')+'</small><div class="pct">'+(100*p[i]).toFixed(2)+'%</div><div class="bar"><i style="width:'+Math.max(1,100*p[i]/mx)+'%"></i></div></div>'}).join("")}
-function text(){var c=cap();if(c>.999999)return "<b>Pip:</b> Only the C=6 and C=30 sectors remain. K is zero on the displayed state.";if(!steps)return "<b>Pip:</b> We begin at Ω=47/125=0.376. Press Γ STEP to shrink the non-E47 shells.";return "<b>Pip:</b> After "+steps+" Γ steps, E47 capture is "+(100*c).toFixed(2)+"%. The complementary shells keep fading."}
-function reset(){p=S.map(function(s){return s.m/125});steps=0;render()} function mix(){p=norm(S.map(function(s){return (.2+Math.random())*s.m}));steps=0;render()} function step(n){for(var j=0;j<n;j++){p=norm(p.map(function(x,i){return x*G[i]*G[i]}));steps++}render()} function project(){var z=p[2]+p[5];p=p.map(function(x,i){return i===2||i===5?x/z:0});render()}
-function sigma(){var u=v("morph");if(mode==="CRUISE")return 1;if(mode==="MANEUVER")return 1-.12*u;if(mode==="TRANSITION")return 1-.45*u;return .85+.15*cap()} function chi(){return Math.max(.15,Math.min(1.2,.3+.9*cap()-.05*Math.log10(1+res())))} function torque(){return [11880*v("roll"),14256*v("pitch"),8316*v("yaw")]}
-function nodes(){var a=[];for(var A=0;A<5;A++)for(var B=0;B<5;B++)for(var C=0;C<5;C++){var u=(A-2)/2,w=(C-2)/2,zv=(B-2)/2,x=4*u,z=2.5*zv*(1-.25*Math.abs(u)),y=.2*(1-u*u)-.12*zv*zv+.08*w,i=25*A+5*B+C,amp=.12+.88*Math.abs(Math.sin((i+1)*.613+steps*.11)),ph=(i*1.61803398875+steps*.17)%(Math.PI*2);a.push({A:A,B:B,C:C,x:x,y:y,z:z,amp:amp,ph:ph})}return a}
+function reset(){p=S.map(function(s){return s.m/125});steps=0}
+function step(n){for(var j=0;j<n;j++){p=norm(p.map(function(x,i){return x*G[i]*G[i]}));steps++}}
+function project(){var z=p[2]+p[5];p=p.map(function(x,i){return i===2||i===5?x/z:0})}
+function sigma(){var u=v("morph");if(mode==="CRUISE")return 1;if(mode==="MANEUVER")return 1-.12*u;if(mode==="TRANSITION")return 1-.45*u;return .85+.15*cap()}
+function chi(){return Math.max(.15,Math.min(1.2,.3+.9*cap()-.05*Math.log10(1+res())))}
+function torque(){return [11880*v("roll"),14256*v("pitch"),8316*v("yaw")]}
+function shellOf(i){var acc=0;for(var s=0;s<S.length;s++){acc+=S[s].m;if(i<acc)return s}return 6}
+function applyBeat(){
+  if(beat===0){reset();setRange("morph",0);setRange("pitch",0);setRange("roll",0)}
+  if(beat===1){reset()}
+  if(beat===2){reset();step(12)}
+  if(beat===3){setRange("morph",.15)}
+  if(beat===4){setRange("morph",.86);setRange("pitch",.22)}
+  if(beat===5){setRange("morph",.7)}
+  if(beat===6){setRange("pitch",.35);setRange("roll",-.28);setRange("throttle",.8);mode="MANEUVER"}
+  if(beat===8){project()}
+  $("talk").innerHTML="<b>Pip:</b> "+BEATS[beat].say;
+  $("beats").innerHTML=BEATS.map(function(b,i){return '<div class="beat'+(i===beat?' on':'')+'" data-b="'+i+'"><b>'+b.t+'</b>'+b.d+'</div>'}).join("");
+  $("chain").innerHTML=CHAIN.map(function(c,i){return '<div class="ch'+(i<=Math.max(0,beat-1)?' on':'')+'">'+c+'</div>'}).join("");
+}
+function nodes(){var a=[];for(var A=0;A<5;A++)for(var B=0;B<5;B++)for(var C=0;C<5;C++){var u=(A-2)/2,w=(C-2)/2,zv=(B-2)/2,x=4*u,z=2.5*zv*(1-.25*Math.abs(u)),y=.2*(1-u*u)-.12*zv*zv+.08*w,i=25*A+5*B+C,amp=.12+.88*Math.abs(Math.sin((i+1)*.613+steps*.11)),ph=(i*1.61803398875+steps*.17)%(Math.PI*2);a.push({A:A,B:B,C:C,i:i,x:x,y:y,z:z,amp:amp,ph:ph,shell:shellOf(i)})}return a}
 function morphed(){var a=nodes(),om=cap(),up=v("pitch"),ur=v("roll"),sg=sigma(),raw=a.map(function(n){var dy=.45*(n.amp-.5)*om+.15*up*n.z+.12*ur*n.x,dz=.06*n.amp*Math.sin(n.ph);return Object.assign({},n,{X:sg*n.x,Y:n.y+dy,Z:n.z+dz})}),M={};raw.forEach(function(n){M[n.A+","+n.B+","+n.C]=n});return raw.map(function(n){var nb=[];[[-1,0,0],[1,0,0],[0,-1,0],[0,1,0],[0,0,-1],[0,0,1]].forEach(function(d){var q=M[(n.A+d[0])+","+(n.B+d[1])+","+(n.C+d[2])];if(q)nb.push(q)});function mean(k){return nb.reduce(function(s,q){return s+q[k]},0)/nb.length}return Object.assign({},n,{X2:.88*n.X+.12*mean("X"),Y2:.88*n.Y+.12*mean("Y"),Z2:.88*n.Z+.12*mean("Z")})})}
-function draw(){var c=$("cv"),ctx=c.getContext("2d"),r=c.getBoundingClientRect(),d=Math.max(1,Math.min(2,devicePixelRatio||1)),W=r.width,H=r.height;if(c.width!==Math.floor(W*d)||c.height!==Math.floor(H*d)){c.width=Math.floor(W*d);c.height=Math.floor(H*d)}ctx.setTransform(d,0,0,d,0,0);ctx.clearRect(0,0,W,H);function P(x,y,z){return [W*.5+x*36+z*20,H*.52-z*12-y*145+x*2]}var a=morphed(),base=nodes();ctx.strokeStyle="rgba(100,125,130,.2)";base.forEach(function(n){[[1,0,0],[0,1,0],[0,0,1]].forEach(function(dv){var q=base.find(function(m){return m.A===n.A+dv[0]&&m.B===n.B+dv[1]&&m.C===n.C+dv[2]});if(!q)return;var x=P(n.x,n.y,n.z),y=P(q.x,q.y,q.z);ctx.beginPath();ctx.moveTo(x[0],x[1]);ctx.lineTo(y[0],y[1]);ctx.stroke()})});base.forEach(function(n){var q=P(n.x,n.y,n.z);ctx.fillStyle="rgba(120,140,145,.3)";ctx.beginPath();ctx.arc(q[0],q[1],2.2,0,Math.PI*2);ctx.fill()});ctx.strokeStyle="rgba(110,223,212,.2)";a.forEach(function(n){[[1,0,0],[0,1,0],[0,0,1]].forEach(function(dv){var q=a.find(function(m){return m.A===n.A+dv[0]&&m.B===n.B+dv[1]&&m.C===n.C+dv[2]});if(!q)return;var x=P(n.X2,n.Y2,n.Z2),y=P(q.X2,q.Y2,q.Z2);ctx.beginPath();ctx.moveTo(x[0],x[1]);ctx.lineTo(y[0],y[1]);ctx.stroke()})});a.forEach(function(n){var q=P(n.X2,n.Y2,n.Z2);ctx.globalAlpha=.45+.5*n.amp;ctx.fillStyle=n.amp>.82?"#ec9859":"#6edfd4";ctx.beginPath();ctx.arc(q[0],q[1],2.5+1.8*n.amp,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1})}
-function render(){shells();$("cap").textContent=cap().toFixed(6);$("res").textContent=res()<1e-8?"0":res().toFixed(3);$("n").textContent=steps;$("explain").innerHTML=text();$("talk").innerHTML=text();["pitch","roll","yaw","morph","throttle"].forEach(function(id){$(id+"O").textContent=v(id).toFixed(2)});var sg=sigma(),ch=chi(),F=145000*v("throttle")*ch,t=torque();$("sig").textContent=sg.toFixed(3);$("chi").textContent=ch.toFixed(3);$("F").textContent=(F/1000).toFixed(1)+" kN";$("tau").textContent=t.map(function(x){return (x/1000).toFixed(1)}).join(", ")+" kN·m";draw()}
-$("reset").onclick=reset;$("mix").onclick=mix;$("step").onclick=function(){step(1)};$("ten").onclick=function(){step(10)};$("project").onclick=project;["pitch","roll","yaw","morph","throttle"].forEach(function(id){$(id).oninput=render});$("modes").onclick=function(e){var b=e.target.closest("button[data-m]");if(!b)return;mode=b.dataset.m;document.querySelectorAll("#modes button").forEach(function(x){x.classList.toggle("on",x===b)});render()};addEventListener("resize",draw);render();
+function project3(W,H,x,y,z){return [W*.5+x*34+z*18,H*.56-z*11-y*130]}
+function drawLattice(c,a,mor){
+  var ctx=c.getContext("2d"),r=c.getBoundingClientRect(),d=Math.max(1,Math.min(2,devicePixelRatio||1)),W=r.width||640,H=r.height||320;
+  if(c.width!==Math.floor(W*d)||c.height!==Math.floor(H*d)){c.width=Math.floor(W*d);c.height=Math.floor(H*d)}
+  ctx.setTransform(d,0,0,d,0,0);ctx.clearRect(0,0,W,H);
+  ctx.fillStyle="#9fd8ff";ctx.font="12px ui-monospace,monospace";ctx.fillText(BEATS[beat].t+"  ·  "+BEATS[beat].d,16,22);
+  function at(n){var m=mor*(beat>=4?1:beat===3?.35:0);return project3(W,H,(1-m)*n.x+m*n.X2,(1-m)*n.y+m*n.Y2,(1-m)*n.z+m*n.Z2)}
+  ctx.strokeStyle="rgba(120,190,255,.28)";
+  a.forEach(function(n){[[1,0,0],[0,1,0],[0,0,1]].forEach(function(dv){var q=a.find(function(m){return m.A===n.A+dv[0]&&m.B===n.B+dv[1]&&m.C===n.C+dv[2]});if(!q)return;var x=at(n),y=at(q);ctx.beginPath();ctx.moveTo(x[0],x[1]);ctx.lineTo(y[0],y[1]);ctx.stroke()})});
+  a.forEach(function(n){var q=at(n),e47=n.shell===2||n.shell===5,fade=beat>=2&&!e47?Math.max(.18,1-cap()):1;ctx.globalAlpha=fade;ctx.fillStyle=beat>=4?hue(n.amp):e47?"#3dde8a":"#7ec8ff";ctx.beginPath();ctx.arc(q[0],q[1],beat>=4?2.4+2.2*n.amp:3.1,0,6.3);ctx.fill();ctx.globalAlpha=1});
+  if(beat>=6){ctx.save();ctx.translate(W*.72,H*.34);ctx.rotate(-.3*v("roll"));ctx.fillStyle="#e8f4ff";ctx.beginPath();ctx.moveTo(-70,8);ctx.quadraticCurveTo(0,-28,78,0);ctx.quadraticCurveTo(0,18,-70,8);ctx.fill();ctx.fillStyle="#3ec6ff";ctx.fillRect(-8,-6,16,10);ctx.restore();ctx.fillStyle="#ffe14a";ctx.fillText("6DOF  F "+(145*v("throttle")*chi()).toFixed(0)+" kN",16,H-16)}
+  if(beat===8){ctx.fillStyle="#ffe9a8";ctx.fillText("exact algebra PASS    simulation bridge ACTIVE    physical flight NOT claimed",16,H-16)}
+}
+function hue(t){var h=Math.floor(260-t*220);return "hsl("+h+",85%,62%)"}
+function drawField(){
+  var c=$("cv"),ctx=c.getContext("2d"),r=c.getBoundingClientRect(),d=Math.max(1,Math.min(2,devicePixelRatio||1)),W=r.width,H=r.height;if(!W)return;
+  if(c.width!==Math.floor(W*d)||c.height!==Math.floor(H*d)){c.width=Math.floor(W*d);c.height=Math.floor(H*d)}
+  ctx.setTransform(d,0,0,d,0,0);ctx.clearRect(0,0,W,H);
+  var a=morphed(),base=nodes();
+  function P(x,y,z){return [W*.5+x*36+z*20,H*.52-z*12-y*145]}
+  ctx.strokeStyle="rgba(130,170,210,.2)";
+  base.forEach(function(n){[[1,0,0],[0,1,0],[0,0,1]].forEach(function(dv){var q=base.find(function(m){return m.A===n.A+dv[0]&&m.B===n.B+dv[1]&&m.C===n.C+dv[2]});if(!q)return;var x=P(n.x,n.y,n.z),y=P(q.x,q.y,q.z);ctx.beginPath();ctx.moveTo(x[0],x[1]);ctx.lineTo(y[0],y[1]);ctx.stroke()})});
+  ctx.strokeStyle="rgba(62,198,255,.28)";
+  a.forEach(function(n){[[1,0,0],[0,1,0],[0,0,1]].forEach(function(dv){var q=a.find(function(m){return m.A===n.A+dv[0]&&m.B===n.B+dv[1]&&m.C===n.C+dv[2]});if(!q)return;var x=P(n.X2,n.Y2,n.Z2),y=P(q.X2,q.Y2,q.Z2);ctx.beginPath();ctx.moveTo(x[0],x[1]);ctx.lineTo(y[0],y[1]);ctx.stroke()})});
+  a.forEach(function(n){var q=P(n.X2,n.Y2,n.Z2);ctx.fillStyle=hue(n.amp);ctx.beginPath();ctx.arc(q[0],q[1],2.4+1.8*n.amp,0,6.3);ctx.fill()});
+}
+function render(){
+  shells();
+  var c=cap(),rk=res();
+  $("cap").textContent=c.toFixed(6);
+  $("res").textContent=rk<1e-8?"0":rk.toFixed(3);
+  $("n").textContent=steps;
+  $("explain").innerHTML="<b>Pip:</b> "+BEATS[beat].say;
+  ["pitch","roll","yaw","morph","throttle"].forEach(function(id){$(id+"O").textContent=v(id).toFixed(2)});
+  var sg=sigma(),ch=chi(),F=145000*v("throttle")*ch,t=torque();
+  $("sig").textContent=sg.toFixed(3);$("chi").textContent=ch.toFixed(3);$("F").textContent=(F/1000).toFixed(1)+" kN";$("tau").textContent=t.map(function(x){return (x/1000).toFixed(1)}).join(", ")+" kN·m";
+  $("gCap").textContent=c.toFixed(3);$("gRes").textContent=rk<1e-6?"0":rk.toFixed(1);
+  $("gCapBar").style.width=(100*Math.min(1,c))+"%";
+  $("gResBar").style.width=(100*Math.min(1,rk/400))+"%";
+  drawLattice($("story"),morphed(),v("morph"));
+  drawField();
+}
+function go(n){beat=(n+9)%9;applyBeat();render()}
+$("beats").onclick=function(e){var b=e.target.closest("[data-b]");if(!b)return;playing=false;$("play").textContent="PLAY EXPLAINER";go(+b.dataset.b)};
+$("play").onclick=function(){playing=!playing;this.textContent=playing?"PAUSE":"PLAY EXPLAINER"};
+$("prev").onclick=function(){playing=false;go(beat-1)};
+$("next").onclick=function(){playing=false;go(beat+1)};
+$("project2").onclick=function(){project();render()};
+$("reset").onclick=function(){reset();render()};
+$("mix").onclick=function(){p=norm(S.map(function(s){return (.2+Math.random())*s.m}));steps=0;render()};
+$("step").onclick=function(){step(1);render()};
+$("ten").onclick=function(){step(10);render()};
+$("project").onclick=function(){project();render()};
+["pitch","roll","yaw","morph","throttle"].forEach(function(id){$(id).oninput=render});
+$("modes").onclick=function(e){var b=e.target.closest("button[data-m]");if(!b)return;mode=b.dataset.m;document.querySelectorAll("#modes button").forEach(function(x){x.classList.toggle("on",x===b)});render()};
+addEventListener("resize",render);
+applyBeat();render();
+timer=setInterval(function(){if(playing)go(beat+1)},4200);
 })();
 </script>
 </body>
