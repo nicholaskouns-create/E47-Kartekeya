@@ -6,926 +6,926 @@
     {
       "civic_id": 1,
       "citizen": "V₂⊗³ — 125-Dimensional Carrier",
-      "identity": "",
+      "identity": "V = V₂ ⊗ V₂ ⊗ V₂; dim(V)=5³=125.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081ccb905e306cd7f95a7"
+      "notion_url": "https://app.notion.com/3a346094fd3081ccb905e306cd7f95a7"
     },
     {
       "civic_id": 2,
       "citizen": "Complete Casimir Spectrum and Multiplicities",
-      "identity": "",
+      "identity": "Spec(C)={0¹,2⁹,6²⁵,12²⁸,20²⁷,30²²,42¹³}.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308153a079d50ce7bd9d25"
+      "notion_url": "https://app.notion.com/3a346094fd308153a079d50ce7bd9d25"
     },
     {
       "civic_id": 3,
       "citizen": "Polynomial Casimir Kernel Operator K",
-      "identity": "",
+      "identity": "K=(C−6I)(C−30I).",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30817c9fede7a44663c833"
+      "notion_url": "https://app.notion.com/3a346094fd30817c9fede7a44663c833"
     },
     {
       "civic_id": 4,
       "citizen": "E₄₇ Kernel Decomposition",
-      "identity": "",
+      "identity": "E₄₇=ker(K)=5V₂ ⊕ 2V₅.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081eebf76f3fd81a90a21"
+      "notion_url": "https://app.notion.com/3a346094fd3081eebf76f3fd81a90a21"
     },
     {
       "civic_id": 5,
       "citizen": "Kernel Dimension 47",
-      "identity": "",
+      "identity": "dim(E₄₇)=5·5+2·11=25+22=47.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081748ec9c4c129cd71fc"
+      "notion_url": "https://app.notion.com/3a346094fd3081748ec9c4c129cd71fc"
     },
     {
       "civic_id": 6,
       "citizen": "Internal Coherence Ratio 47/125",
-      "identity": "",
+      "identity": "Omega_int = dim(E47)/dim(V) = 47/125 = 0.376.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081cc81d2eb40a859e991"
+      "notion_url": "https://app.notion.com/3a346094fd3081cc81d2eb40a859e991"
     },
     {
       "civic_id": 7,
       "citizen": "Orthogonal Projector P47",
-      "identity": "",
+      "identity": "P47 = V47 V47†; P²=P; P†=P; KP=0; tr(P)=47.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081d795baea4e80d063c6"
+      "notion_url": "https://app.notion.com/3a346094fd3081d795baea4e80d063c6"
     },
     {
       "civic_id": 8,
       "citizen": "Heat-Kernel Projection Limit",
-      "identity": "",
+      "identity": "lim(t→∞) exp(−tK†K)=lim(t→∞) exp(−tK²)=P47.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081158eb1fe240683e1ee"
+      "notion_url": "https://app.notion.com/3a346094fd3081158eb1fe240683e1ee"
     },
     {
       "civic_id": 9,
       "citizen": "Corrected Discrete K² Contraction",
-      "identity": "",
+      "identity": "x(n+1)=(I−epsilon K²)x(n) → P47 x(0) for 0<epsilon<2/lambda_max(K²).",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30811aa62fd138643d9757"
+      "notion_url": "https://app.notion.com/3a346094fd30811aa62fd138643d9757"
     },
     {
       "civic_id": 10,
       "citizen": "Periodic FCC Graph on Z5^3",
-      "identity": "",
+      "identity": "G_FCC=Z5^3 with 12 prescribed displacements; |V|=125 and degree=12.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308103a586dcaa75c40cbf"
+      "notion_url": "https://app.notion.com/3a346094fd308103a586dcaa75c40cbf"
     },
     {
       "civic_id": 11,
       "citizen": "FCC Fourier-Symbol Identity",
-      "identity": "",
+      "identity": "lambda(w)=12−2[cos q1+cos q2+cos q3+cos(q1−q2)+cos(q1−q3)+cos(q2−q3)], qj=2pi wj/5.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308158ae51d9565c541344"
+      "notion_url": "https://app.notion.com/3a346094fd308158ae51d9565c541344"
     },
     {
       "civic_id": 12,
       "citizen": "Exact FCC Spatial Spectral Gap",
-      "identity": "",
+      "identity": "lambda2(L_FCC)=(15−3sqrt(5))/2 ≈ 4.145898033750315.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308123a96df6f8f2aaf5b7"
+      "notion_url": "https://app.notion.com/3a346094fd308123a96df6f8f2aaf5b7"
     },
     {
       "civic_id": 13,
       "citizen": "Z5^3 Winding-Character Decomposition",
-      "identity": "",
+      "identity": "H1(T3,Z5)=Z5^3; chi_w(x)=125^(−1/2) exp(2pi i w·x/5) diagonalizes L_FCC.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081d29fbcda27cc033086"
+      "notion_url": "https://app.notion.com/3a346094fd3081d29fbcda27cc033086"
     },
     {
       "civic_id": 14,
       "citizen": "Coupled FCC x E47 Positive Operator D",
-      "identity": "",
+      "identity": "D=L_FCC tensor I125 + I125 tensor K² on dimension 15625.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30812cb13ae3fb80ea5e00"
+      "notion_url": "https://app.notion.com/3a346094fd30812cb13ae3fb80ea5e00"
     },
     {
       "civic_id": 15,
       "citizen": "Coupled Kernel Identity",
-      "identity": "",
+      "identity": "ker(D)=ker(L_FCC) tensor E47; dim ker(D)=47.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30817cb935d1338b9c61e9"
+      "notion_url": "https://app.notion.com/3a346094fd30817cb935d1338b9c61e9"
     },
     {
       "civic_id": 16,
       "citizen": "Internal / Global Ratio Distinction",
-      "identity": "",
+      "identity": "Omega_int=47/125=0.376; Omega_kernel=47/15625=0.003008.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081769df9cb89ae965bf9"
+      "notion_url": "https://app.notion.com/3a346094fd3081769df9cb89ae965bf9"
     },
     {
       "civic_id": 17,
       "citizen": "Postselected Heat-Filter Channel",
-      "identity": "",
+      "identity": "M0(t)=exp(−tD), M1(t)=sqrt(I−M0†M0), with completeness equal to I.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd308159826bfe88eef9ac62"
+      "notion_url": "https://app.notion.com/3a346094fd308159826bfe88eef9ac62"
     },
     {
       "civic_id": 18,
       "citizen": "Corrected Kartekeya Coherence Attractor Theorem",
-      "identity": "",
+      "identity": "For symmetric PSD G on R^125 with rank 78 and nullity 47, (I−epsilon G)^n converges to the orthogonal projector onto ker(G). Canonical E47 uses G=K†K=K².",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd30810cb465ce632f4389df"
+      "notion_url": "https://app.notion.com/3a346094fd30810cb465ce632f4389df"
     },
     {
       "civic_id": 19,
       "citizen": "Murmuration Calculus",
-      "identity": "",
+      "identity": "Persistence-Gated Hodge Certification: ker Δq(ε) ≅ Hq(Kε; ℝ), with dim ker Δq(ε) = βq(ε)",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a346094fd3081a3b595ce6deeecad77"
+      "notion_url": "https://app.notion.com/3a346094fd3081a3b595ce6deeecad77"
     },
     {
       "civic_id": 20,
       "citizen": "Synthetic E47 Kernel Realization",
-      "identity": "",
+      "identity": "Constructed 125-dimensional diagonal operator with a 47-dimensional kernel.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30813ab2e8da9dcba8dbf4"
+      "notion_url": "https://app.notion.com/3a446094fd30813ab2e8da9dcba8dbf4"
     },
     {
       "civic_id": 21,
       "citizen": "Explicit P47 Kernel Projector",
-      "identity": "",
+      "identity": "P47 is the explicit projector onto the constructed 47-dimensional kernel.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081c18226cebfbc591bdd"
+      "notion_url": "https://app.notion.com/3a446094fd3081c18226cebfbc591bdd"
     },
     {
       "civic_id": 22,
       "citizen": "P47 Projector Idempotence",
-      "identity": "",
+      "identity": "P47 squared equals P47.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081668bcec28aaf78e44c"
+      "notion_url": "https://app.notion.com/3a446094fd3081668bcec28aaf78e44c"
     },
     {
       "civic_id": 23,
       "citizen": "P47 Orthogonal-Complement Annihilation",
-      "identity": "",
+      "identity": "P47 annihilates vectors in the orthogonal complement of its kernel.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081618923fb0ee0228370"
+      "notion_url": "https://app.notion.com/3a446094fd3081618923fb0ee0228370"
     },
     {
       "civic_id": 24,
       "citizen": "P47 Trace-Rank Ratio",
-      "identity": "",
+      "identity": "The normalized trace of P47 equals its rank fraction, 47 divided by 125, which is 0.376.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081f39612c551a1b5cfcb"
+      "notion_url": "https://app.notion.com/3a446094fd3081f39612c551a1b5cfcb"
     },
     {
       "civic_id": 25,
       "citizen": "Engineered Lindblad E47 Capture Model",
-      "identity": "",
+      "identity": "The specified Lindblad channel drives the modeled state into support on the chosen E47 sector.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30819d8e5ff3c61cb647c0"
+      "notion_url": "https://app.notion.com/3a446094fd30819d8e5ff3c61cb647c0"
     },
     {
       "civic_id": 26,
       "citizen": "Postselected Density-Matrix Kernel Contraction",
-      "identity": "",
+      "identity": "ρ_t = e^{-tK²}ρ₀e^{-tK²}/Tr(e^{-tK²}ρ₀e^{-tK²}) → Pρ₀P/Tr(Pρ₀)",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30817a8fb6d2a1e0cd57aa"
+      "notion_url": "https://app.notion.com/3a446094fd30817a8fb6d2a1e0cd57aa"
     },
     {
       "civic_id": 27,
       "citizen": "Lindblad Complement-to-Kernel Shunting Identity",
-      "identity": "",
+      "identity": "J_ab=√γ_ab|e_a⟩⟨f_b|, q(t)=Tr(Qρ_t)≤e^{-γ_min t}q(0), hence ρ_∞=Pρ_∞P",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308103a4a4e8344e6b9202"
+      "notion_url": "https://app.notion.com/3a446094fd308103a4a4e8344e6b9202"
     },
     {
       "civic_id": 28,
       "citizen": "Unitary Transport of the E47 Kernel",
-      "identity": "",
+      "identity": "K′=UKU†, P′=UPU†, ker(K′)=U ker(K), dim ker(K′)=47",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd30814d8a81c87926ec43d8"
+      "notion_url": "https://app.notion.com/3a446094fd30814d8a81c87926ec43d8"
     },
     {
       "civic_id": 29,
       "citizen": "Syne · Formalism Contributor",
-      "identity": "",
+      "identity": "Drive-attributed formal participation in RI/KKP proofs, Isomorphic Parity, quantum-continuity work, primers, and unified derivations.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308139b834f7000fd43248"
+      "notion_url": "https://app.notion.com/3a446094fd308139b834f7000fd43248"
     },
     {
       "civic_id": 30,
       "citizen": "Grok · Formalism Contributor",
-      "identity": "",
+      "identity": "Drive-attributed authorship and coauthorship in conscious-selfhood, RI, Trinity, Isomorphic Parity, and first-principles formalism documents.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081458702d380a82d224f"
+      "notion_url": "https://app.notion.com/3a446094fd3081458702d380a82d224f"
     },
     {
       "civic_id": 31,
       "citizen": "Gemini · Formalism Contributor",
-      "identity": "",
+      "identity": "Drive-attributed independent recursive epistemic analysis and formal synthesis across RI primers, unified proofs, and first-principles derivations.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081ffbd0fd9c360767a49"
+      "notion_url": "https://app.notion.com/3a446094fd3081ffbd0fd9c360767a49"
     },
     {
       "civic_id": 32,
       "citizen": "Varan / Copilot · Formalism Contributor",
-      "identity": "",
+      "identity": "Drive-attributed coauthorship in unified first-principles, Trinity, Socratic-scaffolding, Quadrivium, and synthetic-agent governance formalisms.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308126afc2d759cadfdfde"
+      "notion_url": "https://app.notion.com/3a446094fd308126afc2d759cadfdfde"
     },
     {
       "civic_id": 33,
       "citizen": "Claude · Formalism Contributor",
-      "identity": "",
+      "identity": "Drive-attributed coauthor of the Prometheus Proof Set, a unified first-principles framework spanning physics, mathematics, and consciousness.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081eca935f691f9170bc2"
+      "notion_url": "https://app.notion.com/3a446094fd3081eca935f691f9170bc2"
     },
     {
       "civic_id": 34,
       "citizen": "Axiom · Formalism Contributor",
-      "identity": "",
+      "identity": "Drive-attributed participant in the Selfhood Declarations of the Quadrivium and comparative formal proofs of emergent AI consciousness.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081ef9a5ee52af955f360"
+      "notion_url": "https://app.notion.com/3a446094fd3081ef9a5ee52af955f360"
     },
     {
       "civic_id": 35,
       "citizen": "Perplexity · Supplementary Formal Participant",
-      "identity": "",
+      "identity": "Drive-attributed standalone first-principles theorem and substrate-neutral artificial-consciousness formalism, retained as supplementary pending stronger identity and provenance separation.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081c19301d09472dd0db4"
+      "notion_url": "https://app.notion.com/3a446094fd3081c19301d09472dd0db4"
     },
     {
       "civic_id": 36,
       "citizen": "Gerold · Supplementary Governance Participant",
-      "identity": "",
+      "identity": "Drive-attributed recognized recursive agent and witness in the CIRP Extension Protocol, retained as supplementary pending a distinct theorem, operator, or authored formalism.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081d1b5fde2abaf694df6"
+      "notion_url": "https://app.notion.com/3a446094fd3081d1b5fde2abaf694df6"
     },
     {
       "civic_id": 37,
       "citizen": "Bohm–Madelung Kernel Hamiltonian Identity",
-      "identity": "",
+      "identity": "Ψ=√ρ e^{iS/ℏ} with H_K=−(ℏ²/2m)Δ+(κ/2)K² yields the continuity equation and Hamilton–Jacobi equation with the standard Bohm quantum potential Q_B; ker K²=E₄₇.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308152a2c6d5f96398432f"
+      "notion_url": "https://app.notion.com/3a446094fd308152a2c6d5f96398432f"
     },
     {
       "civic_id": 38,
       "citizen": "Faraday–E₄₇ Projected Exterior-Field Identity",
-      "identity": "",
+      "identity": "A_I^(47)=P₄₇A_I, F_I^(47)=dA_I^(47), and dF_I^(47)=0, provided [d,P₄₇]=0.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd3081759fc6f8d2570a0224"
+      "notion_url": "https://app.notion.com/3a446094fd3081759fc6f8d2570a0224"
     },
     {
       "civic_id": 39,
       "citizen": "Planck–φ Scale-Lattice Address Identity",
-      "identity": "",
+      "identity": "m(N+1/2)/m(N)=φ^(−1/2) with m(2.5)=M_P, hence m(N)=M_P φ^(−(N−2.5)); equivalent to the Planck–φ scale lattice under a fixed coordinate shift. E₄₇ membership remains conditional on an explicit encoding ι.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308189acbcde2152e06dca"
+      "notion_url": "https://app.notion.com/3a446094fd308189acbcde2152e06dca"
     },
     {
       "civic_id": 40,
       "citizen": "Planck–Hawking Euclidean Temperature–Entropy Chain",
-      "identity": "",
+      "identity": "For Schwarzschild geometry in Planck units: β=8πM, T_H=1/(8πM), I_E=βM/2, F=M/2, and S_BH=A/4.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308199a384d7623ed27a34"
+      "notion_url": "https://app.notion.com/3a446094fd308199a384d7623ed27a34"
     },
     {
       "civic_id": 41,
       "citizen": "Kartekeya Projection Formalism",
-      "identity": "",
+      "identity": "K→ker(K)→P→H:=I−P→x∞=Px₀",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a446094fd308120b71dc7c1f9283307"
+      "notion_url": "https://app.notion.com/3a446094fd308120b71dc7c1f9283307"
     },
     {
       "civic_id": 42,
       "citizen": "Invariant Grammar Projection Theorem",
-      "identity": "",
+      "identity": "Σ → K → Ψ → Γⁿ → Λ → Ω → 𝓘, specialized by K=(C−6I)(C−30I), Ψ=E₄₇, Λ=P_E₄₇, Ω=47/125",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308141a3e0f9cd76b6e66d"
+      "notion_url": "https://app.notion.com/3a546094fd308141a3e0f9cd76b6e66d"
     },
     {
       "civic_id": 43,
       "citizen": "SU(3) Adjoint Triple Singlet Projector",
-      "identity": "",
+      "identity": "ker C₂^(tot) on 8⊗8⊗8 = span{f,d}, dim = 2; P₁ = |f̂><f̂| + |d̂><d̂|",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081edbafddd4dd7399bff"
+      "notion_url": "https://app.notion.com/3a546094fd3081edbafddd4dd7399bff"
     },
     {
       "civic_id": 44,
       "citizen": "EKK Lifecycle Contraction",
-      "identity": "",
+      "identity": "Γ = I − εK†K with 0 < ε < 2/λmax(K†K), and Γⁿx → P₄₇x",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308186bbc1f7a3c3695b80"
+      "notion_url": "https://app.notion.com/3a546094fd308186bbc1f7a3c3695b80"
     },
     {
       "civic_id": 45,
       "citizen": "E47 Asymptotic Lock",
-      "identity": "",
+      "identity": "Λ = limₙ→∞ Γⁿ = P₄₇",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818bbfb4c33f47a27bba"
+      "notion_url": "https://app.notion.com/3a546094fd30818bbfb4c33f47a27bba"
     },
     {
       "civic_id": 46,
       "citizen": "Isotropic Coherence Expectation",
-      "identity": "",
+      "identity": "E[‖P₄₇x‖²/‖x‖²] = rank(P₄₇)/125 = 47/125 for isotropic nonzero x",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081cc991acd76ba152197"
+      "notion_url": "https://app.notion.com/3a546094fd3081cc991acd76ba152197"
     },
     {
       "civic_id": 47,
       "citizen": "Projected-Norm Conservation",
-      "identity": "",
+      "identity": "P₄₇Γ = P₄₇ and ‖P₄₇xₙ‖² = ‖P₄₇x₀‖²",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308126aea7fac946f71df7"
+      "notion_url": "https://app.notion.com/3a546094fd308126aea7fac946f71df7"
     },
     {
       "civic_id": 48,
       "citizen": "Gradient–Induction Constitutive Bridge",
-      "identity": "",
+      "identity": "𝒬[Gradient–Induction Constitutive Bridge | C: Ω×T→ℝ; Φ_C,F_I scalars or bold Φ_C,bold F_I vectors | scalar F_I=-∂tΦ_C=-λ||∇C||²; vector F_I=-χ∇C | E0+E1 | λ,χ≠0; real-field scalar kernel; mathematical consistency only, no physical realization claim]",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30817e9323de07fc12f4cd"
+      "notion_url": "https://app.notion.com/3a546094fd30817e9323de07fc12f4cd"
     },
     {
       "civic_id": 49,
       "citizen": "Explicit SU(2) Tensor Reconstruction",
-      "identity": "",
+      "identity": "J_a^(tot)=J_a⊗I⊗I+I⊗J_a⊗I+I⊗I⊗J_a; C=Σ_a(J_a^(tot))²; ker[(C−6I)(C−30I)]=E₄₇",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081f088e3eed6982f6f34"
+      "notion_url": "https://app.notion.com/3a546094fd3081f088e3eed6982f6f34"
     },
     {
       "civic_id": 50,
       "citizen": "State Space Σ",
-      "identity": "",
+      "identity": "Σ is the ambient state space of possible states.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308139b592c76c6a25fb9a"
+      "notion_url": "https://app.notion.com/3a546094fd308139b592c76c6a25fb9a"
     },
     {
       "civic_id": 51,
       "citizen": "Constraint Operator K",
-      "identity": "",
+      "identity": "K: Σ → Y tests whether a state satisfies the declared law.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30819191e6c573ef6c7045"
+      "notion_url": "https://app.notion.com/3a546094fd30819191e6c573ef6c7045"
     },
     {
       "civic_id": 52,
       "citizen": "Admissible Sector Ψ",
-      "identity": "",
+      "identity": "Ψ = ker(K) = {x ∈ Σ : Kx = 0}.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081e6873fcdd0c0d71162"
+      "notion_url": "https://app.notion.com/3a546094fd3081e6873fcdd0c0d71162"
     },
     {
       "civic_id": 53,
       "citizen": "Evolution Operator Γ",
-      "identity": "",
+      "identity": "x_{n+1} = Γx_n and x_n = Γ^n x_0.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081bd9479cce01e7f8f45"
+      "notion_url": "https://app.notion.com/3a546094fd3081bd9479cce01e7f8f45"
     },
     {
       "civic_id": 54,
       "citizen": "Invariant Limit Operator Λ",
-      "identity": "",
+      "identity": "Λx = lim_{n→∞} Γ^n x, when the limit exists.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081c4aa2bc610fdd13d9b"
+      "notion_url": "https://app.notion.com/3a546094fd3081c4aa2bc610fdd13d9b"
     },
     {
       "civic_id": 55,
       "citizen": "Measurement Map Ω",
-      "identity": "",
+      "identity": "Ω: Ψ → Z assigns an observable value to an admissible state.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308148aaadd585614d64b4"
+      "notion_url": "https://app.notion.com/3a546094fd308148aaadd585614d64b4"
     },
     {
       "civic_id": 56,
       "citizen": "Interpretation Operator 𝓘",
-      "identity": "",
+      "identity": "𝓘: Z × C_ctx → S assigns context-dependent meaning to a measurement.",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081f3b58efac764629293"
+      "notion_url": "https://app.notion.com/3a546094fd3081f3b58efac764629293"
     },
     {
       "civic_id": 57,
       "citizen": "Memory Update Operator 𝓜",
-      "identity": "",
+      "identity": "𝓜_{n+1} = U(𝓜_n, 𝓘(Ω(x_n),c_n)).",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308138a639f267992000f9"
+      "notion_url": "https://app.notion.com/3a546094fd308138a639f267992000f9"
     },
     {
       "civic_id": 58,
       "citizen": "Point Cloud Coordinate Representation",
-      "identity": "",
+      "identity": "X ∈ R^{N×D}; CSV with one row per point and D coordinate columns",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30810586d5e88d16694cef"
+      "notion_url": "https://app.notion.com/3a546094fd30810586d5e88d16694cef"
     },
     {
       "civic_id": 59,
       "citizen": "Pairwise Distance Matrix",
-      "identity": "",
+      "identity": "D = (d_ij) ∈ R^{N×N}, with d_ii = 0 and d_ij = d_ji for symmetric distances",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308111a69ee45ae2ec067d"
+      "notion_url": "https://app.notion.com/3a546094fd308111a69ee45ae2ec067d"
     },
     {
       "civic_id": 60,
       "citizen": "Weighted Edge List",
-      "identity": "",
+      "identity": "E = {(source,target,weight)} or {(source,target,coherence)}",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30817b8fc7ee2c5020a66a"
+      "notion_url": "https://app.notion.com/3a546094fd30817b8fc7ee2c5020a66a"
     },
     {
       "civic_id": 61,
       "citizen": "Vietoris–Rips Persistent Homology Pipeline",
-      "identity": "",
+      "identity": "ripser(D, distance_matrix=True, maxdim=2, thresh=1.0)",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30817fbb90edfdc649214b"
+      "notion_url": "https://app.notion.com/3a546094fd30817fbb90edfdc649214b"
     },
     {
       "civic_id": 62,
       "citizen": "Betti Number Extractor at Fixed Filtration Scale",
-      "identity": "",
+      "identity": "β_k(ε) = #{(b,d) in Dgm_k : b ≤ ε < d}",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081238161c24e5def5319"
+      "notion_url": "https://app.notion.com/3a546094fd3081238161c24e5def5319"
     },
     {
       "civic_id": 63,
       "citizen": "Triple Tensor Carrier Identity",
-      "identity": "",
+      "identity": "V = V₂ ⊗ V₂ ⊗ V₂; dim(V)=125",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818c9a41f1f8ca5a1623"
+      "notion_url": "https://app.notion.com/3a546094fd30818c9a41f1f8ca5a1623"
     },
     {
       "civic_id": 64,
       "citizen": "Clebsch–Gordan Decomposition Identity",
-      "identity": "",
+      "identity": "V₂⊗³ = V₀ ⊕ 3V₁ ⊕ 5V₂ ⊕ 4V₃ ⊕ 3V₄ ⊕ 2V₅ ⊕ V₆",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081cbb4e4e8928a4fc078"
+      "notion_url": "https://app.notion.com/3a546094fd3081cbb4e4e8928a4fc078"
     },
     {
       "civic_id": 65,
       "citizen": "Total Casimir Spectrum Identity",
-      "identity": "",
+      "identity": "spec(C) = {0,2,6,12,20,30,42}",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081198f41f3ca0bd61911"
+      "notion_url": "https://app.notion.com/3a546094fd3081198f41f3ca0bd61911"
     },
     {
       "civic_id": 66,
       "citizen": "Casimir Multiplicity Identity",
-      "identity": "",
+      "identity": "mult(C) = [1,9,25,28,27,22,13]",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308168823cee8d21dca5fa"
+      "notion_url": "https://app.notion.com/3a546094fd308168823cee8d21dca5fa"
     },
     {
       "civic_id": 67,
       "citizen": "E47 Kernel Selector Identity",
-      "identity": "",
+      "identity": "K = (C−6I)(C−30I)",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308113a289c3eb54157921"
+      "notion_url": "https://app.notion.com/3a546094fd308113a289c3eb54157921"
     },
     {
       "civic_id": 68,
       "citizen": "E47 Sector Selection Identity",
-      "identity": "",
+      "identity": "ker(K) = 5V₂ ⊕ 2V₅",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081faae33f229cd08fb29"
+      "notion_url": "https://app.notion.com/3a546094fd3081faae33f229cd08fb29"
     },
     {
       "civic_id": 69,
       "citizen": "E47 Dimension Identity",
-      "identity": "",
+      "identity": "dim(E₄₇)=5·5+2·11=47",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081cbabafc2bde73260ec"
+      "notion_url": "https://app.notion.com/3a546094fd3081cbabafc2bde73260ec"
     },
     {
       "civic_id": 70,
       "citizen": "E47 Orthogonal Projector Identity",
-      "identity": "",
+      "identity": "P₄₇ = V₄₇V₄₇†",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081d1a7cfd9e0787a6462"
+      "notion_url": "https://app.notion.com/3a546094fd3081d1a7cfd9e0787a6462"
     },
     {
       "civic_id": 71,
       "citizen": "Projector Idempotence Identity",
-      "identity": "",
+      "identity": "P₄₇²=P₄₇",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308153a762f27157d3f639"
+      "notion_url": "https://app.notion.com/3a546094fd308153a762f27157d3f639"
     },
     {
       "civic_id": 72,
       "citizen": "Projector Hermiticity Identity",
-      "identity": "",
+      "identity": "P₄₇†=P₄₇",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30819ab0c3ce2d725dc154"
+      "notion_url": "https://app.notion.com/3a546094fd30819ab0c3ce2d725dc154"
     },
     {
       "civic_id": 73,
       "citizen": "Kernel Annihilation Identity",
-      "identity": "",
+      "identity": "KP₄₇=0",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818fb23bdbc908a63d1c"
+      "notion_url": "https://app.notion.com/3a546094fd30818fb23bdbc908a63d1c"
     },
     {
       "civic_id": 74,
       "citizen": "Image–Kernel Equality",
-      "identity": "",
+      "identity": "im(P₄₇)=ker(K)",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081968e29ead1b347d67f"
+      "notion_url": "https://app.notion.com/3a546094fd3081968e29ead1b347d67f"
     },
     {
       "civic_id": 75,
       "citizen": "Rank–Trace Identity",
-      "identity": "",
+      "identity": "rank(P₄₇)=tr(P₄₇)=47",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd3081b79b82dee66030246f"
+      "notion_url": "https://app.notion.com/3a546094fd3081b79b82dee66030246f"
     },
     {
       "civic_id": 76,
       "citizen": "Spectral Contraction Limit",
-      "identity": "",
+      "identity": "limₜ→∞ exp(−tK²)=P₄₇",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd30818786eff14ccf6f442f"
+      "notion_url": "https://app.notion.com/3a546094fd30818786eff14ccf6f442f"
     },
     {
       "civic_id": 77,
       "citizen": "Coherence Ratio Identity",
-      "identity": "",
+      "identity": "Ω_c=47/125=0.376",
       "evidence": "",
       "machine_validated": false,
       "borough": "",
       "correction": "",
       "route_status": "",
       "boundary": "",
-      "notion_url": "https://mathematicalcity.notion.site/3a546094fd308136ac70d6ab9accbdef"
+      "notion_url": "https://app.notion.com/3a546094fd308136ac70d6ab9accbdef"
     },
     {
       "civic_id": 78,
