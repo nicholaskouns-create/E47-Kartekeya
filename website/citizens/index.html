@@ -11,7 +11,7 @@
 <script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 let rows=[],formalism=[],g2=[],byKey={};
-const ATLAS='../interfaces/formalism-atlas/';
+const ATLAS='https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/';
 const GH='https://github.com/nicholaskouns-create/E47-Kartekeya';
 const LOCK={
 1:'FRM-3',3:'FRM-2',4:'FRM-3',5:'FRM-1',6:'FRM-12',7:'FRM-4',8:'FRM-4',9:'FRM-4',
@@ -24,6 +24,7 @@ const LOCK={
 230:'FRM-97',231:'FRM-97',232:'FRM-97',233:'FRM-97',234:'FRM-97',235:'FRM-97',236:'FRM-97',237:'FRM-97',
 301:'FRM-94',302:'FRM-94',303:'FRM-94',304:'FRM-94',305:'FRM-94',310:'FRM-99',312:'FRM-72',313:'FRM-72',314:'FRM-72',315:'FRM-72'
 };
+function pub(u){return String(u||'').replace(/https:\/\/app\.notion\.com\/p\//g,'https://mathematicalcity.notion.site/').replace(/https:\/\/app\.notion\.com\//g,'https://mathematicalcity.notion.site/')}
 function g2For(x){return g2.find(c=>c.citizen_code===x.citizen)||null}
 function frmFor(x){
   const key=LOCK[x.civic_id];
@@ -32,13 +33,13 @@ function frmFor(x){
 }
 function lineage(x,f,g){
   let a=[];
-  if(x.notion_url)a.push('<a href="'+esc(x.notion_url)+'">Notion citizen ↗</a>');
+  if(pub(x.notion_url))a.push('<a href="'+esc(pub(x.notion_url))+'">Notion citizen ↗</a>');
   if(f){
     a.push('<a href="'+ATLAS+'#'+esc(f.key)+'">Formalism Atlas ↗</a>');
     for(const z of (f.sources||[])){
       if(!z.url) continue;
       let n=z.url.includes('google.com')?'Google Drive':z.url.includes('notion.com')?'Notion formalism':z.url.includes('github.com')?'GitHub source':'Source';
-      a.push('<a href="'+esc(z.url)+'">'+n+' ↗</a>');
+      a.push('<a href="'+esc(pub(z.url))+'">'+n+' ↗</a>');
     }
   }
   if(g){
