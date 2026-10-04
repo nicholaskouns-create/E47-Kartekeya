@@ -37,7 +37,6 @@ def run():
     err220 = float(np.max(np.abs(GAMMA**220 - P)))
     bound220 = RHO**220
     checks["gamma220_theorem_bound"] = err220 <= bound220 * (1 + 1e-12)
-
     rng = np.random.default_rng(470125)
     psi = rng.normal(size=125) + 1j*rng.normal(size=125)
     psi /= np.linalg.norm(psi)
@@ -46,8 +45,11 @@ def run():
         psi = GAMMA * psi
         psi /= np.linalg.norm(psi)
         if n in (1,2,5,10,25,50,100,220,600):
-            log.append({"step":n,"capture":float(np.sum(P*np.abs(psi)**2)),
-                        "leak":float(np.linalg.norm(K2*psi))})
+            log.append({
+                "step": n,
+                "capture": float(np.sum(P * np.abs(psi)**2)),
+                "leak": float(np.linalg.norm(K2 * psi)),
+            })
     checks["runtime_capture_converges"] = log[-1]["capture"] > 1 - 1e-14
     checks = {k: bool(v) for k,v in checks.items()}
     payload = {
@@ -58,15 +60,15 @@ def run():
         "gamma_complement_unique": [float(x) for x in complement],
         "gamma220_error": err220,
         "gamma220_bound": bound220,
-        "gamma600_error": float(np.max(np.abs(GAMMA**600-P))),
+        "gamma600_error": float(np.max(np.abs(GAMMA**600 - P))),
         "runtime_log": log,
         "all_pass": all(checks.values()),
         "python": sys.version.split()[0],
         "numpy": np.__version__,
     }
-    canonical=json.dumps(payload,sort_keys=True,separators=(",",":")).encode()
-    payload["sha256"]=hashlib.sha256(canonical).hexdigest()
-    print(json.dumps(payload,indent=2))
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+    payload["sha256"] = hashlib.sha256(canonical).hexdigest()
+    print(json.dumps(payload, indent=2))
     return 0 if payload["all_pass"] else 1
 
 if __name__ == "__main__":
