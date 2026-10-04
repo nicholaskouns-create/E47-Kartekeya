@@ -56,12 +56,36 @@ body.embed .poster{margin-top:10px}
 body.embed{overflow-x:hidden}body.embed .w{width:min(1160px,calc(100% - 16px))}
 @media(max-width:800px){.poster-top,.stage,.grid,.split{grid-template-columns:1fr}.chain{grid-template-columns:repeat(3,1fr)}.shells{grid-template-columns:repeat(4,1fr)}}
 </style>
-</head>
+
+<style>
+.pip-hero{margin:18px auto 12px;position:relative;overflow:hidden;border:1px solid #3ec6ff;border-radius:24px;min-height:360px;background:radial-gradient(circle at 72% 40%,#1769a6 0,#0a2d59 27%,transparent 48%),linear-gradient(180deg,#061a3b,#0a3767 58%,#071428);box-shadow:0 20px 60px #0009}
+.pip-hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.5px);background-size:57px 53px;opacity:.18}
+.hero-copy2{position:relative;z-index:2;width:58%;padding:38px 34px}.hero-copy2 .mini{font:900 11px ui-monospace,monospace;letter-spacing:.18em;color:#7cf0ff}.hero-copy2 h2{font:900 clamp(42px,7vw,82px)/.88 Arial,sans-serif;letter-spacing:-.055em;margin:9px 0 12px;text-shadow:0 4px 0 #07254a}.hero-copy2 h2 span{color:#ffe14a}.hero-copy2 p{max-width:560px;font-size:16px;line-height:1.45;color:#e9f6ff}.hero-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.hero-buttons a{border-radius:999px;padding:11px 14px;font:800 10px ui-monospace,monospace;border:1px solid #3ec6ff;background:#0c4e7b}.hero-buttons a.alt{border-color:#ffe14a;background:#6b4b00;color:#fff7b2}
+.manta-art{position:absolute;right:-3%;top:56px;width:46%;height:220px;filter:drop-shadow(0 18px 20px #0008)}.manta-art svg{width:100%;height:100%}.manta-art .wing{fill:#dff6ff;stroke:#5ee8ff;stroke-width:3}.manta-art .dark{fill:#0a2340}.manta-art .glow{fill:#54efff;filter:drop-shadow(0 0 9px #3ec6ff)}
+.pip-mini{position:absolute;right:30px;bottom:18px;width:122px;height:92px}.piph{position:absolute;right:8px;top:0;width:86px;height:62px;border-radius:30px;background:#eaf6ff;border:5px solid #cce4f6}.pipf{position:absolute;inset:11px 9px 9px;border-radius:22px;background:#0a1d32}.pipf:before,.pipf:after{content:"";position:absolute;top:15px;width:10px;height:15px;border-radius:50%;background:#70f5ff;box-shadow:0 0 10px #3ec6ff}.pipf:before{left:16px}.pipf:after{right:16px}.pipbody{position:absolute;right:22px;bottom:0;width:58px;height:38px;border-radius:20px 20px 8px 8px;background:#eaf6ff}.piplabel{position:absolute;right:31px;bottom:8px;color:#0c4e7b;font:900 10px Arial}
+.visual-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px auto 26px}.vcard{position:relative;min-height:155px;border-radius:16px;border:1px solid #2c5278;background:linear-gradient(155deg,#12345e,#091a31);padding:14px;overflow:hidden}.vcard b{display:block;font-size:16px;margin:4px 0}.vcard small{font:9px/1.45 ui-monospace,monospace;color:#b7c7dc}.vnum{font:900 34px Georgia,serif;color:#7cf0ff;opacity:.9}.vcard:nth-child(2) .vnum{color:#3dde8a}.vcard:nth-child(3) .vnum{color:#ffe14a}.vcard:nth-child(4) .vnum{color:#ff6eb4}.vcard:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-35px;bottom:-45px;background:radial-gradient(circle,#3ec6ff55,transparent 67%)}
+.local-note{margin:0 auto 18px;border:1px solid #3dde8a;border-radius:12px;padding:10px 13px;background:#0b2d24;color:#d9ffe8;font:10px/1.5 ui-monospace,monospace}
+@media(max-width:800px){.hero-copy2{width:100%;padding:28px 20px 170px}.manta-art{width:72%;right:-12%;top:190px}.pip-mini{right:auto;left:20px}.visual-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.visual-strip{grid-template-columns:1fr}.pip-hero{min-height:520px}}
+</style></head>
 <body>
 <div data-e2-contract style="position:fixed;z-index:9998;right:10px;top:10px;max-width:min(92vw,680px);padding:7px 10px;border:1px solid #8a6f4c;border-radius:9px;background:rgba(12,9,5,.92);color:#f2dfbf;font:600 10px/1.4 ui-monospace,monospace"><b>E2 CONTRACT</b> · Assumptions: the child MANTA dynamics use the declared E2 morph, gain, thrust and torque rules. Falsifier: independent reproduction of those rules disagrees with the shown outputs beyond declared tolerances.</div>
-<header><div class="w"><a class="brand" href="../../">THE MATHEMATICAL CITY<small>PIP · E47–MANTA EXPLAINER</small></a><a class="pill" href="https://www.aims.healthcare/journal/e47-manta-programmable-matter-spectral-morph-flight-system">AIMS ↗</a></div></header>
+<header><div class="w"><a class="brand" href="../../">THE MATHEMATICAL CITY<small>PIP · E47–MANTA EXPLAINER</small></a><a class="pill" href="../manta/">MANTA FLIGHT LAB ↗</a></div></header>
 <main>
-<div class="poster w">
+<div class="pip-hero w" aria-label="Pip Manta interactive flight explainer">
+  <div class="hero-copy2"><div class="mini">PIP EXPLAINS · E47 → MANTA</div><h2>Turn math<br><span>into flight.</span></h2><p>Explore the exact 125 → 47 spectral core, shape a 125-node control field, then fly the declared MANTA simulation bridge.</p><div class="hero-buttons"><a href="#pip-console">START EXPLAINER ↓</a><a class="alt" href="../manta/">OPEN MANTA FLIGHT LAB ↗</a></div></div>
+  <div class="manta-art" aria-hidden="true"><svg viewBox="0 0 620 260"><path class="wing" d="M24 140 Q160 48 300 86 Q430 32 598 112 Q465 119 366 176 Q294 216 215 173 Q126 145 24 140Z"/><path class="dark" d="M84 139 Q190 91 292 105 L231 158 Q159 144 84 139Z"/><path class="dark" d="M315 103 Q426 72 551 111 Q425 121 355 163Z"/><path class="glow" d="M44 139 Q173 130 238 166 L226 174 Q148 151 44 143Z"/><path class="glow" d="M356 165 Q446 118 579 112 L555 121 Q442 129 366 176Z"/><ellipse class="glow" cx="300" cy="128" rx="35" ry="16"/></svg></div>
+  <div class="pip-mini" aria-hidden="true"><div class="piph"><div class="pipf"></div></div><div class="pipbody"></div><div class="piplabel">PIP</div></div>
+</div>
+<div class="visual-strip w" aria-label="Pip Manta visual guide">
+  <div class="vcard"><span class="vnum">125</span><b>Start with E47 mathematics</b><small>Seven Casimir shells. Exact finite carrier.</small></div>
+  <div class="vcard"><span class="vnum">47</span><b>Find the E47 sector</b><small>K=(C−6I)(C−30I). Project and contract.</small></div>
+  <div class="vcard"><span class="vnum">5³</span><b>Shape the MANTA field</b><small>One spectral coordinate per local control node.</small></div>
+  <div class="vcard"><span class="vnum">6</span><b>Fly the simulation</b><small>Thrust + torque → six degrees of freedom.</small></div>
+</div>
+<div class="local-note w">LOCAL-FIRST · This interface uses repository HTML/CSS/JS only. No CDN, remote image, font, map, or runtime dependency is required for the PiP explainer.</div>
+
+<div class="poster w" id="pip-console">
   <div class="poster-top">
     <div class="kicker">PIP EXPLAINER</div>
     <h1>The E47–MANTA <em>Spectral Morph</em> Flight System</h1>
