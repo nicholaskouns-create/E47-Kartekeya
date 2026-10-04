@@ -1,0 +1,18 @@
+// CITY-PROPULSION-GEO-1.0
+import {CITY_GEO,metersToWgs84,formatGps} from './city-geo.js';
+export const PROPULSION_APPS=[
+ {id:'skyrmion',name:'SKYRMION',role:'Flagship multi-domain flight',href:'../skyrmion/'},
+ {id:'syntax-jacob',name:'Syntax Jacob',role:'3I/ATLAS propulsion copilot',href:'../syntax-jacob/'},
+ {id:'ufo-propulsion',name:'UFO Propulsion Lab',role:'Scalar/metamaterial model lab',href:'../flight/ufo-propulsion/'},
+ {id:'hover',name:'Hover P47 Cockpit',role:'Advanced hover cockpit',href:'../flight/hover-cockpit/'},
+ {id:'eidolon',name:'EIDOLON',role:'AETHERIS receipt-bound flight',href:'../flight/eidolon/'}
+];
+export function installPropulsionGeo({position=()=>({east_m:0,north_m:0,up_m:0}),origin=CITY_GEO.defaultOrigin}={}){
+ const root=document.createElement('aside');root.className='city-geo-card';root.innerHTML='<b>GPS · CITY-GEO</b><span data-gps></span><div class="city-mini-map"><i data-marker></i></div><small>WGS84 · navigation/rendering only</small>';document.body.append(root);
+ const style=document.createElement('style');style.textContent='.city-geo-card{position:fixed;left:12px;bottom:12px;z-index:99;width:210px;padding:10px;border:1px solid #67ddd455;border-radius:12px;background:#031014dc;backdrop-filter:blur(12px);color:#dff;font:9px ui-monospace,monospace}.city-geo-card b,.city-geo-card span,.city-geo-card small{display:block;margin:3px}.city-mini-map{height:68px;margin:8px 2px;border:1px solid #67ddd433;border-radius:8px;background:linear-gradient(25deg,#0b2826,#09202b 45%,#17221e 46%,#07161b);position:relative;overflow:hidden}.city-mini-map:before,.city-mini-map:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(25deg,transparent 0 15px,#9ed3c515 16px 17px)}.city-mini-map:after{transform:rotate(80deg)}.city-mini-map i{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:#9ff;box-shadow:0 0 14px #7ff;z-index:2}@media(max-width:650px){.city-geo-card{width:160px;font-size:7px;bottom:92px}.city-mini-map{height:42px}}';document.head.append(style);
+ const gps=root.querySelector('[data-gps]'),marker=root.querySelector('[data-marker]');
+ function tick(){const q=position()||{},p=metersToWgs84(origin,+q.east_m||0,+q.north_m||0,+q.up_m||0);gps.textContent=formatGps(p);marker.style.transform='translate('+Math.max(-80,Math.min(80,(+q.east_m||0)/50))+'px,'+Math.max(-24,Math.min(24,-(+q.north_m||0)/50))+'px)';requestAnimationFrame(tick)}tick();return root;
+}
+export function renderPropulsionIndex(target=document.body){
+ const wrap=document.createElement('section');wrap.className='propulsion-index';wrap.innerHTML='<h2>PROPULSION ATLAS</h2><p>GPS-enabled City flight and propulsion surfaces.</p><div></div>';const grid=wrap.querySelector('div');for(const a of PROPULSION_APPS){const c=document.createElement('a');c.href=a.href;c.innerHTML='<strong>'+a.name+'</strong><span>'+a.role+'</span><small>GPS · WGS84 · OPEN ↗</small>';grid.append(c)}document.head.insertAdjacentHTML('beforeend','<style>.propulsion-index{padding:28px;background:#03090c;color:#dff;font-family:system-ui}.propulsion-index>div{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.propulsion-index a{padding:18px;border:1px solid #67ddd43b;border-radius:16px;background:#071419;color:inherit;text-decoration:none}.propulsion-index strong,.propulsion-index span,.propulsion-index small{display:block;margin:5px 0}.propulsion-index small{color:#67ddd4}</style>');target.append(wrap);return wrap;
+}

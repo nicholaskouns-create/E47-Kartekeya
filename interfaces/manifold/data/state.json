@@ -1,0 +1,56 @@
+{
+  "app": "MANIFOLD",
+  "title": "MANIFOLD",
+  "subtitle": "Spectral surfaces on the locked kernel",
+  "host": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manifold/",
+  "lock": {
+    "line": "[LOCK] PASS  dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16  rho=15/17  TrP47=47",
+    "passed": true,
+    "dim_H": 125,
+    "dim_E47": 47,
+    "rank_K": 78,
+    "omega_c": 0.376,
+    "omega_frac": "47/125",
+    "Delta": 11664,
+    "kappa": 16,
+    "rho": 0.8823529411764706,
+    "TrP47": 47.0,
+    "kernel": "(C-6I)(C-30I)"
+  },
+  "spectral": {
+    "J": [0, 1, 2, 3, 4, 5, 6],
+    "m_J": [1, 3, 5, 4, 3, 2, 1],
+    "dim": [1, 9, 25, 28, 27, 22, 13],
+    "lambda": [0, 2, 6, 12, 20, 30, 42],
+    "mu": [180, 112, 0, -108, -140, 0, 432],
+    "mu2": [32400, 12544, 0, 11664, 19600, 0, 186624],
+    "P47": [0, 0, 1, 0, 0, 1, 0]
+  },
+  "domains": [
+    {"name": "RAND/Policy", "theta": 0.0},
+    {"name": "Defense", "theta": 45.0},
+    {"name": "MITRE", "theta": 90.0},
+    {"name": "Space", "theta": 135.0},
+    {"name": "Health", "theta": 180.0},
+    {"name": "AI", "theta": 225.0},
+    {"name": "Resilience", "theta": 270.0},
+    {"name": "Public Safety", "theta": 315.0}
+  ],
+  "eidolon": {
+    "mode": "translate",
+    "mass_kg": 1200.0,
+    "L_inf": 0.9517734792475394,
+    "omega": 0.4418288465851782,
+    "m_eff": 36.11321873944249,
+    "thrust": 27.808892256297426,
+    "stability": 0.8056155044655193,
+    "phase": "BURN",
+    "budget": 0.8914156583279333,
+    "t_lock": 0.0,
+    "n": [3.372886689722363e-33, 0.0009101945145453299, 0.5062624889614591, 0.04731632623758908, 3.2614894993951093e-13, 0.4455109902860804, 0.0],
+    "series_n": 1081
+  },
+  "evidence": "E2 simulation readout of locked engines. Does not promote propulsion validity.",
+  "series_n": 1081,
+  "series_dt": 0.03333333333333333
+}

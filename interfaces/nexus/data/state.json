@@ -1,0 +1,58 @@
+{
+  "app": "NEXUS",
+  "title": "NEXUS",
+  "subtitle": "Emergent composition surface — reader of engines, not a second kernel",
+  "host": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/",
+  "lock": {
+    "line": "[LOCK] PASS  dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16  rho=15/17  TrP47=47",
+    "passed": true,
+    "dim_H": 125,
+    "dim_E47": 47,
+    "rank_K": 78,
+    "omega_c": 0.376,
+    "omega_frac": "47/125",
+    "Delta": 11664,
+    "kappa": 16,
+    "rho": "15/17",
+    "TrP47": 47,
+    "kernel": "(C-6I)(C-30I)"
+  },
+  "spectral": {
+    "J": [0,1,2,3,4,5,6],
+    "dim": [1,9,25,28,27,22,13],
+    "lambda": [0,2,6,12,20,30,42],
+    "mu2": [32400,12544,0,11664,19600,0,186624],
+    "P47": [0,0,1,0,0,1,0]
+  },
+  "domains": [
+    {"name":"RAND/Policy","theta":0},
+    {"name":"Defense","theta":45},
+    {"name":"MITRE","theta":90},
+    {"name":"Space","theta":135},
+    {"name":"Health","theta":180},
+    {"name":"AI","theta":225},
+    {"name":"Resilience","theta":270},
+    {"name":"Public Safety","theta":315}
+  ],
+  "eidolon": {
+    "mode":"translate",
+    "L":0.9517734792475394,
+    "omega":0.4418288465851782,
+    "m_eff":36.11321873944249,
+    "phase":"BURN",
+    "budget":0.8914156583279333,
+    "stability":0.8056155044655193,
+    "n":[3.372886689722363e-33,0.0009101945145453299,0.5062624889614591,0.04731632623758908,3.2614894993951093e-13,0.4455109902860804,0.0],
+    "t":36.0,
+    "series_n":1081
+  },
+  "tomo": {
+    "rel_l2":0.9165020409816599,
+    "mass_ratio":2.634966018646245,
+    "mse":0.004289633032703516,
+    "n2":33,
+    "n_iter":4,
+    "gated":true
+  },
+  "evidence":"E2 composition readout. Does not promote propulsion or recon to E0."
+}

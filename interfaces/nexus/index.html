@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#020609" />
+  <meta name="description" content="NEXUS — emergent composition surface for the Mathematical City. Pulse bus, operad machines, packet cinema, watchtower lock." />
+  <meta property="og:title" content="NEXUS · Mathematical City" />
+  <meta property="og:description" content="One pulse. Many morphisms. dim H=125 · dim E47=47 · Ω_c=47/125." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/" />
+  <meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NEXUS · Mathematical City" />
+  <meta name="twitter:description" content="One pulse. Many morphisms. dim H=125 · dim E47=47 · Ω_c=47/125." />
+  <meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/portal-share.jpg" />
+  <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/" />
+  <title>NEXUS · Mathematical City</title>
+  <style>
+    :root {
+      --bg:#020609; --panel:#061016; --ink:#eef9f8; --mute:#9bb0b7;
+      --live:#39f3ef; --lock:#3DFF9A; --ghost:#e8b44f; --line:#1dabb1;
+      --fail:#F43F5E; --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,sans-serif; }
+    a { color:var(--live); text-decoration:none; }
+    .lock-strip { font:11px/1.4 var(--mono); background:#031016; color:var(--lock); padding:10px 16px; border-bottom:1px solid #144650; letter-spacing:.02em; overflow-x:auto; white-space:nowrap; }
+    header { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; padding:16px 18px 8px; }
+    header h1 { margin:0; letter-spacing:.14em; font-size:clamp(22px,4vw,36px); }
+    header p { margin:4px 0 0; color:var(--mute); font:12px var(--mono); }
+    nav { display:flex; flex-wrap:wrap; gap:8px; padding:0 18px 12px; }
+    nav a { border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:9px; padding:8px 12px; font:700 11px var(--mono); }
+    nav a.active { border-color:var(--live); color:var(--live); }
+    main { padding:0 18px 28px; }
+    .grid { display:grid; gap:12px; grid-template-columns:repeat(12,1fr); }
+    .card { background:var(--panel); border:1px solid #144650; border-radius:14px; padding:14px 16px; }
+    .span-3 { grid-column:span 3; } .span-4 { grid-column:span 4; }
+    .span-6 { grid-column:span 6; } .span-8 { grid-column:span 8; } .span-12 { grid-column:span 12; }
+    .k { color:var(--mute); font:10px var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+    .v { font-size:26px; margin-top:6px; font-variant-numeric:tabular-nums; color:var(--live); }
+    .v.mint { color:var(--lock); } .v.ghost { color:var(--ghost); }
+    table { width:100%; border-collapse:collapse; font:12px var(--mono); }
+    th, td { text-align:left; padding:6px 4px; border-bottom:1px solid #14333a; }
+    th { color:var(--mute); font-weight:600; }
+    .ker { color:var(--lock); }
+    canvas { width:100%; height:140px; display:block; background:#0B1220; border-radius:10px; }
+    .bars { display:grid; gap:6px; }
+    .bar { display:grid; grid-template-columns:36px 1fr 48px; gap:8px; align-items:center; font:11px var(--mono); }
+    .bar i { display:block; height:10px; background:#1a343d; border-radius:99px; overflow:hidden; }
+    .bar i b { display:block; height:100%; background:var(--live); }
+    .bar i b.ker { background:var(--lock); }
+    .phone { width:min(390px,100%); margin:0 auto; background:#05090b; border:8px solid #0d1c22; border-radius:32px; min-height:560px; padding:18px 14px 24px; }
+    .dom { display:flex; justify-content:space-between; border:1px solid #144650; border-radius:10px; padding:8px 10px; font:12px var(--mono); margin:6px 0; }
+    .doors { display:flex; flex-wrap:wrap; gap:8px; }
+    .doors a { border:1px solid #24636a; border-radius:8px; padding:8px 10px; font:700 10px var(--mono); }
+    .replay input[type=range] { width:100%; accent-color:#39f3ef; }
+    .replay .row { display:flex; justify-content:space-between; font:11px var(--mono); color:var(--mute); margin:6px 0; }
+    .modes { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+    .modes button { border:1px solid #24636a; background:#07151a; color:var(--ink); border-radius:8px; padding:8px 10px; font:700 10px var(--mono); cursor:pointer; }
+    .tape { font:11px/1.6 var(--mono); color:var(--mute); background:#031016; border:1px dashed #144650; border-radius:10px; padding:10px 12px; overflow:auto; }
+    .seal { color:var(--ghost); word-break:break-all; }
+    .open { border:1px dashed #3a4a3a; color:var(--mute); }
+    .product { font:13px/1.7 var(--mono); color:var(--ink); }
+    .product .on { color:var(--live); }
+    .product .sq { color:var(--ghost); border-bottom:1px dashed #e8b44f; }
+    .product .co { color:#9bb0b7; }
+    .product .law { color:#c1e8ce; }
+    .product .op { color:#24636a; }
+    .stages { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:10px 0 14px; font:11px var(--mono); }
+    .stage { border:1px solid #144650; border-radius:8px; padding:6px 8px; color:var(--mute); }
+    .stage.done { border-color:#24636a; color:var(--live); }
+    .stage.on { border-color:var(--lock); color:var(--lock); background:#062018; }
+    .stage.blocked { border-style:dashed; color:#4a5560; }
+    .arrow { color:#24636a; }
+    footer { padding:8px 18px 24px; color:var(--mute); font:11px/1.5 var(--mono); }
+    @media (max-width:900px) { .span-3,.span-4,.span-6,.span-8 { grid-column:span 12; } }
+  </style>
+</head>
+<body>
+  <div class="lock-strip" id="lockStrip">[LOCK] …</div>
+  <header>
+    <div>
+      <h1>NEXUS</h1>
+      <p>Emergent composition · pulse bus · operad views · packet cinema</p>
+    </div>
+    <div class="tape">cyan live · mint lock · bronze Λ-ghost · reader, not authority</div>
+  </header>
+  <nav id="nav"></nav>
+  <main id="app"></main>
+  <footer>
+    K=(C-6I)(C-30I) · ker K = E47 = E6 ⊕ E30 · Ω_c = 47/125 · Evidence class stays with the child lab.
+    Host: <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/">Pages</a>
+    · Chassis: <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manifold/">MANIFOLD</a>
+    · Door: <a href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/">CITY LIVE</a>
+    · <a href="../instruments/">Directory</a>
+    · <a href="../formalism-atlas/">Formalism Atlas</a>
+    · <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/nexus">Source</a>
+    · No targeting or payload chrome.
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

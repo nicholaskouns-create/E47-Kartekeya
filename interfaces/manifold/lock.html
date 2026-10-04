@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020609" />
+  <title>MANIFOLD Lock Card</title>
+  <style>
+    html,body{margin:0;background:#020609;color:#eef9f8;font-family:system-ui,sans-serif}
+    .card{max-width:980px;margin:24px auto;padding:28px;border:1px solid #39f3ef;border-radius:18px;background:#061016}
+    .row{display:flex;justify-content:space-between;align-items:baseline}
+    h1{margin:0;letter-spacing:.14em}
+    .pass{color:#3DFF9A;font-size:36px;font-weight:700}
+    .k{color:#9bb0b7;font:12px ui-monospace,Menlo,monospace;letter-spacing:.08em}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+    .cell{background:#0B1220;border:1px solid #1dabb1;border-radius:12px;padding:14px}
+    .v{color:#39f3ef;font-size:28px;margin-top:6px}
+    @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="row"><h1>MANIFOLD</h1><div class="pass">PASS</div></div>
+    <p class="k">LOCK CARD · MATHEMATICAL CITY · E47 / KKP-R</p>
+    <p class="k">[LOCK] PASS  dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16  rho=15/17  TrP47=47</p>
+    <div class="grid">
+      <div class="cell"><div class="k">dim H</div><div class="v">125</div></div>
+      <div class="cell"><div class="k">dim E47</div><div class="v">47</div></div>
+      <div class="cell"><div class="k">rank K</div><div class="v">78</div></div>
+      <div class="cell"><div class="k">Ω_c</div><div class="v">47/125</div></div>
+      <div class="cell"><div class="k">Δ</div><div class="v">11664</div></div>
+      <div class="cell"><div class="k">κ</div><div class="v">16</div></div>
+    </div>
+    <p class="k" style="margin-top:22px">K=(C-6I)(C-30I) · ker K = E47 = E6 ⊕ E30 · ρ = 15/17 · Tr P47 = 47</p>
+    <p class="k">Surface over SpectralEngine + EidolonEngine. Import, do not re-derive.</p>
+  </div>
+</body>
+</html>

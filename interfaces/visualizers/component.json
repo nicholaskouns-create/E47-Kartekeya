@@ -1,0 +1,24 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"visualizers",
+  "display_name":"Mathematical City Visualizers",
+  "version":"0.1.0",
+  "kind":"research-instruments",
+  "maturity":"research",
+  "evidence":["E1","E2"],
+  "entrypoint":"website/interfaces/visualizers/index.html",
+  "smoke":{
+    "entrypoint":"website/interfaces/visualizers/smoke.mjs",
+    "command":"node website/interfaces/visualizers/smoke.mjs",
+    "benchmark_command":"node website/interfaces/visualizers/smoke.mjs --benchmark"
+  },
+  "provenance":{
+    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources":["website/interfaces/visualizers/index.html"]
+  },
+  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+  "boundaries":[
+    "Visualizer shells preserve the source instrument behavior.",
+    "Visualization does not promote evidence class."
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "SYNTAX-JACOB-PROVENANCE-1.2",
+  "title": "Syntax Jacob — Propulsion Lab",
+  "author": "Nicholas Shane Kouns, DO",
+  "original_work": true,
+  "created": "2026-09-18",
+  "public_surface": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/",
+  "runtime": {
+    "ephemeris_primary": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/syntax-jacob-ephemeris",
+    "ephemeris_mirror": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/syntax-jacob-ephemeris",
+    "upstream": [
+      "NASA/JPL Horizons API",
+      "NASA/JPL Small-Body Database API"
+    ],
+    "graphics": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-graphics-accelerator",
+    "e47_witness": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter",
+    "receipt_bus": "AETHERIS receipt bridge via CITY CORE postMessage",
+    "propulsion_lab": {
+      "modes": [
+        "inertial",
+        "coherence",
+        "coast"
+      ],
+      "controls": [
+        "vector thrust",
+        "throttle",
+        "pulse thrust",
+        "modeled velocity zero",
+        "camera focus"
+      ],
+      "dynamics_space": "display-space simulation",
+      "physical_claim": "none"
+    },
+    "stargate_invariants": {
+      "module": "website/interfaces/shared/stargate-invariants.js",
+      "validation": "STARGATE-CORRECTED-VALIDATION-1.1",
+      "certificate": "MC-STARGATE-CORRECTED-20260919",
+      "receipt_binding": "AETHERIS receipts include an E2 Stargate packet",
+      "physical_promotion": false
+    }
+  },
+  "astronomy_sources": [
+    {
+      "name": "NASA 3I/ATLAS",
+      "url": "https://science.nasa.gov/solar-system/comets/3i-atlas/"
+    },
+    {
+      "name": "JPL Horizons",
+      "url": "https://ssd.jpl.nasa.gov/horizons/"
+    },
+    {
+      "name": "JPL Small-Body Database",
+      "url": "https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html"
+    },
+    {
+      "name": "NASA Blue Marble",
+      "url": "https://visibleearth.nasa.gov/images/57723/the-blue-marble"
+    }
+  ],
+  "notion": [
+    {
+      "title": "The Mathematical City — Recursive Intelligence, E47 & K47/125",
+      "id": "0b778ea1-fbe0-4d20-b7b3-e998abd4ca76"
+    },
+    {
+      "title": "EIDOLON — Scalar Flight Lab",
+      "id": "3dd46094-fd30-817a-8bfa-dc322f33195c"
+    },
+    {
+      "title": "City Interface Layer — Notion ↔ GitHub Pages",
+      "id": "3de46094-fd30-81e7-b47d-d7316eac5f2d"
+    },
+    {
+      "title": "THE MATRIX — Quantum Circuit Instrument",
+      "id": "3dd46094-fd30-8072-b5c2-ef223460c15b"
+    },
+    {
+      "title": "Syntax Jacob — 3I/ATLAS Scalar Coherence Copilot",
+      "id": "3df46094-fd30-81ea-b61d-db514bf8805f"
+    }
+  ],
+  "google_drive": [
+    {
+      "title": "Simple Math Links a Comet to Quantum and Biological Systems",
+      "id": "1WtrRqDSjrayMIjvB29Sg_u4ATjGKZ44qFoiMRkFeDeE"
+    },
+    {
+      "title": "Recursive Coherence Theory: A Unified Framework from Comet Syntax to Cosmological Field Theory",
+      "id": "1jVxeq0sqpnMVRBppOgYB49AV8PtNJPiUu9htQwSeHtg"
+    },
+    {
+      "title": "Eidolon-Class Scalar Propulsion—A Canonical First-Principles Derivation of Geometric Motion",
+      "id": "1mjpHGVV2dEO3XQ_u6rNOizdPWbnFv8EssPru7AAoz1U"
+    },
+    {
+      "title": "UFO Propulsion Lab",
+      "id": "1vEKNZBm0qENr0XBAuCKz_aoZ0wxAPimo"
+    }
+  ],
+  "e47": {
+    "carrier": "V2^tensor3",
+    "dimension": 125,
+    "selector": "K=(C-6I)(C-30I)",
+    "kernel": "E6 ⊕ E30",
+    "kernel_dimension": 47,
+    "omega_c": "47/125",
+    "projector": "P47=P6+P30",
+    "contraction": "Gamma=I-epsilon*K^2",
+    "epsilon_star": "1/99144",
+    "rho_star": "15/17"
+  },
+  "evidence_boundary": {
+    "measured": "JPL Horizons state vectors and JPL SBDB orbit metadata",
+    "rendered": "nucleus morphology, coma, tails, display scaling, spacecraft and visual effects",
+    "model": "E47 coherence state, propulsion control law, scalar lock/copilot behavior, witness interpretation, and all spacecraft response dynamics",
+    "stargate": "Corrected Stargate formulas/invariants are attached as conditional mathematics and E2 simulator state. E47 capture, scalar lock and propulsion response are not physical wormhole evidence."
+  }
+}

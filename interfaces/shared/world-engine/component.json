@@ -1,0 +1,38 @@
+{
+  "schema": "CITY-COMPONENT-CONTRACT-1.0",
+  "id": "world-engine",
+  "name": "World Engine",
+  "version": "1.1.0",
+  "runtime": "browser-esm",
+  "entry": "world-engine.js",
+  "inputs": [
+    "lat",
+    "lon",
+    "altitude_m",
+    "heading",
+    "pitch",
+    "roll",
+    "speed",
+    "domain",
+    "timestamp",
+    "seed"
+  ],
+  "outputs": [
+    "CITY-WORLD-CELL-1.0",
+    "CITY-WORLD-STATE-1.0",
+    "city:world-state",
+    "CITY-WORLD-BINDING-1.0",
+    "CITY:WORLD postMessage",
+    "city-world-engine-v1 BroadcastChannel"
+  ],
+  "invariants": [
+    "same lat/lon/span/samples/seed yields the same procedural terrain",
+    "WGS84 coordinates remain the navigation frame",
+    "procedural generation is a rendering/world fallback and does not modify vehicle physics",
+    "external DEM may override terrain heights without changing the common world-state contract",
+    "craft/instrument changes preserve the last shared WGS84 world state through same-origin storage and broadcast",
+    "astronomical or experimental instrument state may consume the shared world anchor without rewriting measured source data"
+  ],
+  "smoke": "smoke.mjs",
+  "binding": "world-binding.js"
+}

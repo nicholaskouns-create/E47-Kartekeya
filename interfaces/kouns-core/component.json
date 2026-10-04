@@ -1,0 +1,24 @@
+{
+  "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+  "id":"city-core",
+  "display_name":"CITY CORE",
+  "version":"0.1.0",
+  "kind":"research-console",
+  "maturity":"research",
+  "evidence":["E1","E2"],
+  "entrypoint":"website/interfaces/kouns-core/index.html",
+  "smoke":{
+    "entrypoint":"website/interfaces/kouns-core/smoke.mjs",
+    "command":"node website/interfaces/kouns-core/smoke.mjs",
+    "benchmark_command":"node website/interfaces/kouns-core/smoke.mjs --benchmark"
+  },
+  "provenance":{
+    "receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources":["website/interfaces/kouns-core/aetheris-receipt-bridge.js","website/interfaces/kouns-core/matrix-cube-bridge.js"]
+  },
+  "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+  "boundaries":[
+    "CITY CORE is a launch and inspection console.",
+    "Composing instruments does not promote their evidence class or transfer ownership of their local contracts."
+  ]
+}
