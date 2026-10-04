@@ -68,6 +68,10 @@ body.embed{overflow-x:hidden}body.embed .w{width:min(1160px,calc(100% - 16px))}
 .local-note{margin:0 auto 18px;border:1px solid #3dde8a;border-radius:12px;padding:10px 13px;background:#0b2d24;color:#d9ffe8;font:10px/1.5 ui-monospace,monospace}
 @media(max-width:800px){.hero-copy2{width:100%;padding:28px 20px 170px}.manta-art{width:72%;right:-12%;top:190px}.pip-mini{right:auto;left:20px}.visual-strip{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.visual-strip{grid-template-columns:1fr}.pip-hero{min-height:520px}}
+</style><style>
+.level01{margin:18px auto 26px;border:1px solid #3ec6ff;border-radius:20px;background:linear-gradient(180deg,#0c2d54,#071428);overflow:hidden;box-shadow:0 18px 45px #0008}.level-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid #2c5278}.level-head b{font:900 12px ui-monospace,monospace;letter-spacing:.12em;color:#ffe14a}.level-head span{font:9px ui-monospace,monospace;color:#9fd8ff}.level-track{position:relative;height:230px;overflow:hidden;background:radial-gradient(circle at 50% 120%,#1769a6 0,transparent 46%),linear-gradient(#071428,#0b2b52)}.level-track:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.5px);background-size:53px 47px;opacity:.22;animation:stars 12s linear infinite}.gate{position:absolute;bottom:38px;width:48px;height:92px;border:3px solid #3ec6ff;border-radius:50%;box-shadow:0 0 18px #3ec6ff88;opacity:.35}.gate.done{border-color:#3dde8a;box-shadow:0 0 20px #3dde8aaa;opacity:1}.gate b{position:absolute;top:-25px;width:80px;left:-18px;text-align:center;font:8px ui-monospace,monospace;color:#d8f6ff}.pip-player{position:absolute;left:4%;bottom:25px;width:54px;height:70px;transition:left .7s cubic-bezier(.2,.8,.2,1);z-index:4;animation:pipHop 1s ease-in-out infinite}.pip-player .ph{width:52px;height:42px;border-radius:22px;background:#eaf6ff;border:4px solid #bcdff5}.pip-player .pf{margin:6px;width:32px;height:23px;border-radius:12px;background:#081c30;position:relative}.pip-player .pf:before,.pip-player .pf:after{content:"";position:absolute;top:6px;width:5px;height:7px;border-radius:50%;background:#70f5ff}.pip-player .pf:before{left:7px}.pip-player .pf:after{right:7px}.pip-player .pb{margin:0 auto;width:35px;height:27px;border-radius:12px;background:#eaf6ff;color:#0b4f87;text-align:center;font:900 8px/24px Arial}.manta-player{position:absolute;right:3%;bottom:53px;width:120px;opacity:.25;transform:translateY(8px);transition:.7s}.manta-player.ready{opacity:1;transform:translateY(0);filter:drop-shadow(0 0 12px #3ec6ff)}.manta-player svg{width:100%}.missionbar{display:grid;grid-template-columns:repeat(9,1fr);gap:5px;padding:10px}.missionbar button{padding:7px 3px;font-size:8px}.missionbar button.done{border-color:#3dde8a;background:#123826}.missionbar button.now{border-color:#ffe14a;color:#fff4a6}.xp{padding:0 14px 14px;font:9px ui-monospace,monospace;color:#b7c7dc}.xp i{display:block;height:7px;border-radius:8px;background:#173758;overflow:hidden;margin-top:6px}.xp i:after{content:"";display:block;width:var(--xp,11%);height:100%;background:linear-gradient(90deg,#3ec6ff,#3dde8a,#ffe14a);transition:width .6s}
+@keyframes pipHop{50%{transform:translateY(-6px) rotate(2deg)}}@keyframes stars{to{background-position:-53px 47px}}
+@media(max-width:650px){.missionbar{grid-template-columns:repeat(3,1fr)}.level-track{height:205px}.manta-player{width:90px}}
 </style></head>
 <body>
 <div data-e2-contract style="position:fixed;z-index:9998;right:10px;top:10px;max-width:min(92vw,680px);padding:7px 10px;border:1px solid #8a6f4c;border-radius:9px;background:rgba(12,9,5,.92);color:#f2dfbf;font:600 10px/1.4 ui-monospace,monospace"><b>E2 CONTRACT</b> · Assumptions: the child MANTA dynamics use the declared E2 morph, gain, thrust and torque rules. Falsifier: independent reproduction of those rules disagrees with the shown outputs beyond declared tolerances.</div>
@@ -86,7 +90,7 @@ body.embed{overflow-x:hidden}body.embed .w{width:min(1160px,calc(100% - 16px))}
 </div>
 <div class="local-note w">LOCAL-FIRST · This interface uses repository HTML/CSS/JS only. No CDN, remote image, font, map, or runtime dependency is required for the PiP explainer.</div>
 
-<div class="poster w" id="pip-console">
+<div class="level01 w" id="level01"><div class="level-head"><b>LEVEL 01 · THE E47 FLIGHT LAB</b><span id="levelStatus">MISSION 1 / 9 · ENTER THE 125-STATE CHAMBER</span></div><div class="level-track" id="levelTrack"><div class="pip-player" id="pipPlayer"><div class="ph"><div class="pf"></div></div><div class="pb">PIP</div></div><div class="gate" data-g="0" style="left:9%"><b>125</b></div><div class="gate" data-g="1" style="left:18.2%"><b>E47</b></div><div class="gate" data-g="2" style="left:27.4%"><b>Γ</b></div><div class="gate" data-g="3" style="left:36.599999999999994%"><b>5³</b></div><div class="gate" data-g="4" style="left:45.8%"><b>MORPH</b></div><div class="gate" data-g="5" style="left:55%"><b>Ω/rK</b></div><div class="gate" data-g="6" style="left:64.19999999999999%"><b>LAUNCH</b></div><div class="gate" data-g="7" style="left:73.39999999999999%"><b>GATES</b></div><div class="gate" data-g="8" style="left:82.6%"><b>E0/E2</b></div><div class="manta-player" id="mantaPlayer"><svg viewBox="0 0 180 80"><path d="M4 44 Q48 8 91 27 Q132 8 176 39 Q137 40 112 60 Q87 75 62 58 Q35 46 4 44Z" fill="#eaf7ff" stroke="#54efff" stroke-width="3"/><path d="M25 43 Q61 27 88 33 L64 54 Q45 47 25 43Z" fill="#09233e"/><path d="M95 32 Q128 22 160 39 Q130 41 108 56Z" fill="#09233e"/></svg></div></div><div class="missionbar" id="missionbar"></div><div class="xp">PiP LEVEL PROGRESS <i id="xp"></i></div></div><div class="poster w" id="pip-console">
   <div class="poster-top">
     <div class="kicker">PIP EXPLAINER</div>
     <h1>The E47–MANTA <em>Spectral Morph</em> Flight System</h1>
@@ -240,5 +244,18 @@ applyBeat();render();
 timer=setInterval(function(){if(playing)go(beat+1)},4200);
 })();
 </script>
-</body>
+<script>
+(function(){
+var labels=["Enter 125-State Chamber","Find 47 glowing states","Fire Γ filter","Activate 125-node field","Morph the MANTA","Tune Ω / rK","Launch","Fly spectral gates","Reach Evidence Firewall"],lv=0;
+function paint(){
+ var p=document.getElementById("pipPlayer"),m=document.getElementById("mantaPlayer"),st=document.getElementById("levelStatus"),bar=document.getElementById("missionbar"),xp=document.getElementById("xp");if(!p)return;
+ p.style.left=(4+lv*9.2)+"%";m.classList.toggle("ready",lv>=4);st.textContent="MISSION "+(lv+1)+" / 9 · "+labels[lv].toUpperCase();
+ document.querySelectorAll(".gate").forEach(function(g,i){g.classList.toggle("done",i<=lv)});
+ bar.innerHTML=labels.map(function(x,i){return '<button data-l="'+i+'" class="'+(i<lv?'done ':i===lv?'now':'')+'">'+(i+1)+' · '+x+'</button>'}).join("");
+ xp.style.setProperty("--xp",((lv+1)/9*100)+"%");
+}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-l]");if(b){lv=+b.dataset.l;paint()}var id=e.target.id;if(id==="step"||id==="ten")lv=Math.max(lv,2);if(id==="project"||id==="project2")lv=Math.max(lv,1);if(id==="morph")lv=Math.max(lv,4);setTimeout(paint,20)});
+paint();
+})();
+</script></body>
 </html>
