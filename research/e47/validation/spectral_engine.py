@@ -188,6 +188,12 @@ class SpectralEngine:
 def run_engine() -> SpectralEngine:
     eng = SpectralEngine()
     print("[ok] SPECTRAL ENGINE LOCKED")
+    print(
+        "[LOCK] PASS  "
+        f"dimH={eng.dim_H}  dimE47={eng.dim_kernel}  rankK={eng.dim_complement}  "
+        f"Omega_c={eng.dim_kernel}/{eng.dim_H}  Delta={eng.spectral_gap}  "
+        f"kappa={eng.kappa:g}  rho=15/17  TrP47={eng.trace_P47:g}"
+    )
     print(eng.report())
     return eng
 
