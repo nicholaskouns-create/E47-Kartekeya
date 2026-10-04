@@ -3,10 +3,10 @@
 Run from repo root:
 
 ```bash
+python3 research/e47/validation/spectral_engine.py
 python3 research/e47/validation/e47_gestalt_invariants.py
 python3 research/e47/validation/intertwiners.py
 python3 research/e47/validation/chevalley.py
-python3 research/e47/validation/spectral_engine.py
 python3 research/e47/validation/e47_noiseless_heisenberg_weyl.py
 python3 tests/test_e47_intertwiners.py
 python3 tests/test_e47_chevalley.py
@@ -20,3 +20,5 @@ Locked objects:
 - `Ω_c = 47/125`
 - `A_inv ≅ M5 ⊕ M2`, 29 units
 - Chevalley `sl(5)⊕sl(2)` on those units
+
+`spectral_engine.py` is the only run path for the lock. Inventory copies are not imported.
