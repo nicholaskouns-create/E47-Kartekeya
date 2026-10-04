@@ -1,0 +1,43 @@
+{
+  "certificate_code": "MC-URUK-P325352-UDU39-20261004",
+  "title": "The UDU39 Attractor Theorem — P325352",
+  "author": "Nicholas Shane Kouns",
+  "date": "2026-10-04",
+  "evidence_class": "E0 + E1",
+  "source": {
+    "tablet": "CDLI P325352",
+    "gross_obverse_total": 41,
+    "x_marked_residual": 2,
+    "accepted_projected_total": 39,
+    "reverse_reconciliation_1": [16, 6, 17],
+    "reverse_reconciliation_2": [9, 7, 6, 8, 9]
+  },
+  "projector": {
+    "diagonal": [1,1,1,1,1,1,1,1,0,1,1],
+    "idempotent": true
+  },
+  "checks": {
+    "obverse_total_41": true,
+    "P_idempotent": true,
+    "excluded_X_state_2": true,
+    "projected_state_39": true,
+    "first_reconciliation_16_6_17": true,
+    "second_reconciliation_9_7_6_8_9": true,
+    "representations_distinct": true,
+    "common_invariant": true
+  },
+  "result": {
+    "passed": 8,
+    "total": 8,
+    "overall": "PASS",
+    "canonical_identity": "1^T P x = 16+6+17 = 9+7+6+8+9 = 39"
+  },
+  "claim_boundary": "Certifies the finite arithmetic and projector identity encoded from the source reconstruction. Does not attribute projector theory to Late Uruk scribes and does not resolve the administrative semantics of X.",
+  "links": {
+    "proof": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47-lexical-attractor-20260923/UDU39_Attractor_Theorem_P325352_20261004.md",
+    "validator": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/validation/uruk/udu39_attractor_p325352.py",
+    "page": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/udu39-attractor/",
+    "drive_proof": "https://docs.google.com/document/d/189loqQrx_vTQJGkSYKPOk4jbf92xuS9Ngs8mYpoqix8/edit",
+    "drive_registry": "https://docs.google.com/spreadsheets/d/1ar0lMhJbvgGlb-ll8DRwLD9CoXkLRSJLS789eoJpvgI/edit"
+  }
+}
