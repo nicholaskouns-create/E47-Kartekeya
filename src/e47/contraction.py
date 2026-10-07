@@ -22,12 +22,14 @@ so the sharp upper stability bound is
 
     epsilon_max = 1 / 93312.
 
-The more restrictive interval
+Three regimes are intentionally distinct:
 
-    0 < epsilon <= 1 / 186624
+    0 < epsilon < 1 / 93312       convergent stationary steps
+    0 < epsilon <= 1 / 186624     monotone, non-oscillatory preparation
+    epsilon = 1 / 99144           minimax-optimal stationary theorem
 
-keeps every eigenvalue of Gamma in [0, 1), producing monotone,
-non-oscillatory contraction on the complement of E47.
+DEFAULT_EPSILON remains a conservative software default. It is not the
+canonical minimax theorem step. See research/e47/E47_Condition_Lock_Theorem.md.
 """
 
 from __future__ import annotations
@@ -68,6 +70,12 @@ SHARP_EPSILON_MAX: Final[float] = 2.0 / CANONICAL_K2_NORM
 #       0 < epsilon <= 1 / ||K^2||
 MONOTONE_EPSILON_MAX: Final[float] = 1.0 / CANONICAL_K2_NORM
 
+# Canonical minimax theorem step: balances the two extreme positive K^2
+# eigenvalues and gives complement spectral radius 15/17.
+MINIMAX_EPSILON: Final[float] = 1.0 / 99_144
+MINIMAX_COMPLEMENT_RADIUS: Final[float] = 15.0 / 17.0
+
+# Conservative software default. Deliberately distinct from MINIMAX_EPSILON.
 DEFAULT_EPSILON: Final[float] = 0.9 / CANONICAL_K2_NORM
 
 
@@ -617,6 +625,8 @@ __all__ = [
     "DEFAULT_EPSILON",
     "E47_DIMENSION",
     "MONOTONE_EPSILON_MAX",
+    "MINIMAX_EPSILON",
+    "MINIMAX_COMPLEMENT_RADIUS",
     "SHARP_EPSILON_MAX",
     "apply_contraction",
     "build_contraction",
