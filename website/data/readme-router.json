@@ -1,6 +1,6 @@
 {
   "schema": "CITY-README-ROUTER/1.0",
-  "updated": "2026-09-30",
+  "updated": "2026-10-07",
   "title": "The Mathematical City · README Router",
   "principle": "One object, many substrates. Route by intent; preserve evidence class and independent lineage.",
   "core": {
@@ -48,6 +48,13 @@
       "role": "PUBLICATION · NARRATIVE",
       "url": "https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory",
       "note": "Readable public essays, launch pages, root directory and explanatory publishing."
+    },
+    {
+      "id": "linear",
+      "label": "Linear",
+      "role": "QUESTIONS · BUILDS · HANDOFFS",
+      "url": "https://linear.app/4521/project/e47-open-questions-and-next-builds-842082fd0496",
+      "note": "E47 work queue: source-linked questions, next actions, discussions and development handoffs. Workspace access required."
     }
   ],
   "intents": [
@@ -253,6 +260,12 @@
       "label": "BUILD",
       "question": "I want source, contracts and extension points.",
       "routes": [
+        {
+          "label": "E47 — Open Questions & Next Builds",
+          "url": "https://linear.app/4521/project/e47-open-questions-and-next-builds-842082fd0496",
+          "substrate": "linear",
+          "kind": "work queue · workspace access"
+        },
         {
           "label": "Repository",
           "url": "https://github.com/nicholaskouns-create/E47-Kartekeya",
