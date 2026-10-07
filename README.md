@@ -53,9 +53,10 @@ The same routing graph is available as:
 | **Inspect the source** | [`src/`](src/) | [Tests](tests/) · [Scripts](scripts/) · [Reproducibility](docs/reproducibility.md) |
 | **Browse the complete terrain** | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) | [341-row primary-source atlas](https://docs.google.com/spreadsheets/d/118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU/edit?usp=drivesdk) |
 | **Read the public narrative** | [AIMS E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) | [AIMS Link Map](https://www.aims.healthcare/journal/mathematical-city-link-map) |
+| **Track a question or next build** | [E47 — Open Questions & Next Builds](https://linear.app/4521/project/e47-open-questions-and-next-builds-842082fd0496) | Link the source/page, next action and delivered result · Linear workspace access required |
 | **Build or extend** | [Documentation Router](docs/README.md) | [Lab manifest](lab-manifest.json) · [Contributing](CONTRIBUTING.md) |
 
-## One City, five substrates
+## One City, six substrates
 
 The platforms are not mirrors. Each contributes a different capability.
 
@@ -65,6 +66,7 @@ The platforms are not mirrors. Each contributes a different capability.
 | **Notion** | living knowledge graph and linked research context | [Mathematical City](https://mathematicalcity.notion.site/?pvs=74) |
 | **Google Drive** | long-form dossiers, source artifacts, machine-certificate corpus | [Certificate corpus](https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk) |
 | **Supabase** | live registries, provenance, runtime surfaces and receipts | [SEE · Citadel](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/) |
+| **Linear** | open questions, next builds, issue discussions and development handoffs | [E47 — Open Questions & Next Builds](https://linear.app/4521/project/e47-open-questions-and-next-builds-842082fd0496) |
 | **AIMS** | readable publication, essays, launch pages and public narrative | [E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) |
 
 This routing layer does not centralize the work. Independent instruments remain independently addressable; evidence class stays with the underlying result.
