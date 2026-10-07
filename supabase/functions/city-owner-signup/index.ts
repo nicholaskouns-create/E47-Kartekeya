@@ -7,8 +7,8 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const PUBLISHABLE_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? Deno.env.get("SUPABASE_PUBLISHABLE_KEY") ?? "";
 
 Deno.serve(async (req: Request) => {
-  const url = new URL(req.url);
-  if (url.searchParams.get("token") !== TOKEN) {
+  const presented = req.headers.get("x-function-token") ?? "";
+  if (!TOKEN || presented !== TOKEN) {
     return new Response("Unauthorized", { status: 401 });
   }
   const supabase = createClient(SUPABASE_URL, PUBLISHABLE_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
