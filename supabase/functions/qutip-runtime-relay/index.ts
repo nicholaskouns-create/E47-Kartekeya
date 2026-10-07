@@ -4,8 +4,8 @@ const SOURCE = "https://files.pythonhosted.org/packages/a7/22/6d27913df8f13f7d41
 const TOKEN = Deno.env.get("FUNCTION_TOKEN") ?? "";
 
 Deno.serve(async (req: Request) => {
-  const url = new URL(req.url);
-  if (url.searchParams.get("token") !== TOKEN) {
+  const presented = req.headers.get("x-function-token") ?? "";
+  if (!TOKEN || presented !== TOKEN) {
     return new Response("Not found", { status: 404 });
   }
   const upstream = await fetch(SOURCE);
