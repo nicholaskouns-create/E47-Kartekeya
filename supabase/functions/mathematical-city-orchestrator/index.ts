@@ -68,7 +68,19 @@ Deno.serve(async(req:Request)=>{
   if(req.method!=="POST") return new Response(JSON.stringify({error:"POST required"}),{status:405,headers:jsonHeaders});
   const supabaseUrl=Deno.env.get("SUPABASE_URL"),serviceRoleKey=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if(!supabaseUrl||!serviceRoleKey) return new Response(JSON.stringify({error:"Supabase runtime secrets missing"}),{status:500,headers:jsonHeaders});
+  const token=(req.headers.get("authorization")??"").replace(/^Bearer\s+/i,"");
+  if(!token) return new Response(JSON.stringify({error:"authenticated workspace member required"}),{status:401,headers:jsonHeaders});
   const supabase=createClient(supabaseUrl,serviceRoleKey,{auth:{persistSession:false,autoRefreshToken:false}});
+  const {data:userData,error:userError}=await supabase.auth.getUser(token);
+  if(userError||!userData.user) return new Response(JSON.stringify({error:"invalid user token"}),{status:401,headers:jsonHeaders});
+  const {data:workspace,error:wErr}=await supabase.from("city_workspaces").select("id,created_by_user_id").eq("slug","mathematical-city").eq("status","active").maybeSingle();
+  if(wErr) return new Response(JSON.stringify({error:wErr.message}),{status:500,headers:jsonHeaders});
+  if(!workspace) return new Response(JSON.stringify({error:"workspace not found"}),{status:404,headers:jsonHeaders});
+  if(workspace.created_by_user_id!==userData.user.id){
+    const {data:membership,error:mErr}=await supabase.from("city_memberships").select("role,status").eq("workspace_id",workspace.id).eq("user_id",userData.user.id).eq("status","active").maybeSingle();
+    if(mErr) return new Response(JSON.stringify({error:mErr.message}),{status:500,headers:jsonHeaders});
+    if(!membership) return new Response(JSON.stringify({error:"workspace access denied"}),{status:403,headers:jsonHeaders});
+  }
   const body=asObject(await req.json().catch(()=>({}))); const limit=Math.max(1,Math.min(Number(body.limit??10),50)); const operationFilter=text(body.operation_code);
   let query=supabase.from("transit_events").select("id,operation_code,event_type,source_system,destination_system,payload,correlation_id").eq("status","queued").order("created_at",{ascending:true}).limit(limit);
   if(operationFilter) query=query.eq("operation_code",operationFilter);
