@@ -9,7 +9,19 @@ Deno.serve(async (req: Request) => {
   const url = Deno.env.get("SUPABASE_URL");
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if (!url || !key) return json({error:"runtime secrets missing"},500);
+  const token=(req.headers.get("authorization")??"").replace(/^Bearer\s+/i,"");
+  if(!token) return json({error:"authenticated workspace member required"},401);
   const sb = createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
+  const {data:userData,error:userError}=await sb.auth.getUser(token);
+  if(userError||!userData.user) return json({error:"invalid user token"},401);
+  const {data:workspace,error:wErr}=await sb.from("city_workspaces").select("id,created_by_user_id").eq("slug","mathematical-city").eq("status","active").maybeSingle();
+  if(wErr) return json({error:wErr.message},500);
+  if(!workspace) return json({error:"workspace not found"},404);
+  if(workspace.created_by_user_id!==userData.user.id){
+    const {data:membership,error:mErr}=await sb.from("city_memberships").select("role,status").eq("workspace_id",workspace.id).eq("user_id",userData.user.id).eq("status","active").maybeSingle();
+    if(mErr) return json({error:mErr.message},500);
+    if(!membership) return json({error:"workspace access denied"},403);
+  }
   const body = await req.json().catch(()=>({})) as Record<string,unknown>;
   const mode = typeof body.mode === "string" ? body.mode : "snapshot";
 
