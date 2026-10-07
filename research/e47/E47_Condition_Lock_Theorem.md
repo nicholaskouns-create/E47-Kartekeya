@@ -52,6 +52,14 @@ P=\prod_{\lambda\in\{108^2,\,112^2,\,140^2,\,180^2,\,432^2\}}\left(I-\frac{K^2}{
 
 Each factor is \(1\) on \(E_{47}\), and each nonzero eigenvalue of \(K^2\) is annihilated by its own factor. \(\Gamma_*\) is the constant-step relaxation of this finite product.
 
+This is the same orthogonal spectral projector as the existing Casimir polynomial \(P_{47}(C)\): both act as 1 exactly on the \(C=6,30\) sectors and 0 on \(C=0,2,12,20,42\). Thus
+
+\[
+\prod_{\lambda\in\{11664,12544,19600,32400,186624\}}\left(I-\frac{K^2}{\lambda}\right)=P_{47}=P_6+P_{30}=P_{47}(C).
+\]
+
+**Registry:** Supabase identity `E47-K2-FIVE-FACTOR-C01` (derived E0), parented to `E47-P47-SUM`, `MC-P47-005`, and `E47-PREC-C05`.
+
 ## Theorem 5 — Five-step termination
 
 \(K^2|_{E^\perp}\) has exactly five distinct eigenvalues, so every Krylov space \(\operatorname{span}\{(K^2)^i(I-P)b\}\) has dimension at most 5. Constructively, five Richardson steps with steps \(1/\lambda_i\) take any \(b\) to \(Pb\) exactly: \(x_{i+1}=x_i-K^2x_i/\lambda_i\), \(x_5=Pb\).
@@ -70,6 +78,18 @@ which is asymptotically \((3/5)^n\), where \(3/5=(\sqrt\kappa-1)/(\sqrt\kappa+1)
 
 - **K inertia \((23,55,47)\).** \(K>0\) on \(c\in\{0,2,42\}\) (dimensions \(1+9+13\)), \(K<0\) on \(c\in\{12,20\}\) (\(28+27\)), and \(K=0\) on \(E_{47}\).
 - **Krein compatibility.** \(\Gamma_*\) commutes with \(\eta=2P-I\), so it preserves \(E_{47}\) and \(E_{47}^\perp\), the positive and negative subspaces of the signature-\((47,78)\) Krein form. It is not an isometry of that form: \(\Gamma_*^\dagger\eta\Gamma_*=\eta\Gamma_*^2\neq\eta\). See [E47 signature and symmetry](E47_Signature_Symmetry_Theorem.md), Theorem 6.
+
+## Contraction regimes
+
+The software and theorem constants serve different purposes and must not be conflated:
+
+| Regime | Step | Meaning |
+|---|---|---|
+| convergent stationary | \(0<\varepsilon<1/93312\) | sharp stability interval |
+| monotone preparation | \(0<\varepsilon\le1/186624\) | no negative complementary eigenvalues |
+| minimax theorem | \(\varepsilon_*=1/99144\) | optimal constant-step radius \(15/17\) |
+
+The implementation's `DEFAULT_EPSILON` is conservative software behavior; `MINIMAX_EPSILON` names the canonical theorem step.
 
 ## Boundary
 
