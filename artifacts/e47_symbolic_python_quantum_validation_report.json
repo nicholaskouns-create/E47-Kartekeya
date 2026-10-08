@@ -1,0 +1,16 @@
+{
+  "schema": "MC-E47-SYMBOLIC-PYTHON-QUANTUM-VALIDATION/1.0",
+  "status": "PASS",
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "evidence_boundary": "Symbolic algebra, numerical linear algebra, and classical state-vector simulation only; not quantum hardware validation and not a complete derivation of gravity or quantum gravity from E47.",
+  "validator_sha256": "1b4325c2c6bf86cf266369a98a86efffdbf9f533cccaafc440fc0f83b261c715",
+  "notes": [
+    "This report records the previously executed local validation run supplied to the user.",
+    "The repository validator is the canonical executable added alongside this report.",
+    "The Grassmann check uses a deterministic coordinate witness with the required dimensions, not the original sparse rational witness matrices.",
+    "The Einstein checks validate the Brinkmann vacuum family and profile independence, not the complete unmarked gauge-inequivalence theorem.",
+    "The quantum checks are classical state-vector simulation of the 125-dimensional Hilbert-space model, not quantum hardware execution."
+  ]
+}
