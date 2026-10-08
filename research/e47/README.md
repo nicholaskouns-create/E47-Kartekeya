@@ -4,6 +4,8 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 
 ## Current notes
 
+- [Grassmann–Casimir compatibility and spectral stabilization](E47_Grassmann_Casimir_Proof.md) — explicit 90/82 intersection and rank-47 Casimir core; 34/34 exact checks. [Python](validation/e47_grassmann_validation.py) · [machine record](../../artifacts/e47_grassmann_validation.json) · [web proof](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-grassmann-casimir/)
+
 - [E47 45-check harness correction](E47_45_Check_Harness_Correction_20260930.md) — preserves two first-run harness failures and their exact repairs: operator 2-norm contraction, exact Pell √5 identity, Lagrange denominators, 47/1/10 kernel separation, 8√3 twist defect, and the explicit finite-search E1 boundary; [machine record](../../certificates/MC-E47-HARNESS-CORRECTION-20260930-001.json)
 - [E47 exact spectral core](E47_Core_Spectral_Certificate.md)
 - [E47 Prism Spectral Formalism](E47_Prism_Spectral_Formalism.md) — seven-band Casimir decomposition, THE MATRIX typed lift, and E1 parity receipt
