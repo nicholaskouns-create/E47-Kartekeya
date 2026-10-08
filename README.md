@@ -13,6 +13,18 @@ Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create
 [![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
 [![Pages](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml)
 
+## Corrected Grassmann–Casimir formalism · 2026-10-08
+
+**Canonical theorem and evidence boundary:** [Corrected E47 Grassmann–Casimir formalism](research/e47/E47_Grassmann_Casimir_Formalism_Corrected_20261008.md). In the unnormalized spin basis the certified projector identity is `P^T G = G P`; `dim ker K = 47`, whereas the distinct Grassmann constraint has `dim ker A = 82`. The constructed witness establishes `E ∩ ker A = ker K`, which does not follow from equal dimensions alone. The earlier 34/34 exact certificate is retained.
+
+**Execute:** [Exact rational witness](research/e47/validation/e47_grassmann_casimir_witness_20261008.py) · [125-dimensional complex-state simulation](research/e47/validation/e47_grassmann_casimir_quantum_sim_20261008.py) · [Existing 34-check validator](research/e47/validation/e47_grassmann_validation.py).
+
+**Navigate:** [Notion canonical authority](https://app.notion.com/p/3a046094fd30811eb015e14e1c5bce7c) · [Notion City](https://app.notion.com/p/0b778ea1fbe04d20b7b3e998abd4ca76) · [Drive corrected archive](https://docs.google.com/document/d/1F6UvhIOElXLoTPMW3VtOntxv86r81uKQeGcQikNv3bE) · [Supabase Citadel](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/) · [Linear REC-12](https://linear.app/4521/issue/REC-12/publish-e47-grassmann-casimir-proof-and-34-check-python-package) · [Public 34-check proof](https://nicholaskouns-create.github.io/E47-Kartekeya/notes/e47-grassmann-casimir/).
+
+**Evidence:** E0 finite-dimensional theorem / E1 exact and numerical reconstruction. No physical quantum hardware, cubic closure, Einstein bridge, or universal physical significance is certified by this packet.
+
+---
+
 ## Verify the lock
 
 From the repository root:
