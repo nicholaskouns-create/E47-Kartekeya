@@ -1,0 +1,17 @@
+name: City live navigation and orphan audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 9 * * *'
+permissions:
+  contents: read
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Static route integrity and live GitHub Pages checks
+        run: python scripts/audit_city_links.py --live
