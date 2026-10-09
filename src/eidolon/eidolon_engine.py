@@ -23,6 +23,7 @@ KERNEL_MIX = np.array([0, 0, 25, 0, 0, 22, 0], dtype=float) / 47.0
 APP_TITLE = "EIDOLON"
 APP_SUBTITLE = "Coherence Propulsion Console"
 APP_ID = "EIDOLON / KKP-R / E47 / SECTOR ODE"
+LOCK_CAPS = ("exact", "legacy")
 
 def _repo_artifacts() -> Path:
     here = Path(__file__).resolve()
@@ -68,6 +69,7 @@ class Craft:
     mode: str = "translate"
     scale: str = "kernel"
     seed: int = 47
+    lock_cap: str = "exact"
 
 @dataclass
 class Sample:
@@ -95,6 +97,8 @@ class Sample:
 class EidolonEngine:
     def __init__(self, craft: Craft | None = None, dt: float = 1.0 / 60.0, duration: float = 48.0):
         self.craft = craft or Craft()
+        if self.craft.lock_cap not in LOCK_CAPS:
+            raise ValueError(f"lock_cap must be one of {LOCK_CAPS}, got {self.craft.lock_cap!r}")
         self.dt = float(dt)
         self.duration = float(duration)
         self.history: List[Sample] = []
@@ -138,6 +142,25 @@ class EidolonEngine:
     def stability(self, L: float, omega: float, n: np.ndarray) -> float:
         leak = float(np.dot(n / max(n.sum(), EPS), GAMMA * (1.0 - P47)))
         return float(np.clip(1.0 - abs(omega - OMEGA_C) / OMEGA_C - 0.25 * leak - 0.15 * (1.0 - L), 0, 1))
+    def cap_lock(self, n: np.ndarray, L: float, target: float) -> np.ndarray:
+        """Return the populations with kernel occupancy capped at ``target``.
+
+        ``exact`` sets the kernel share to ``target`` and the complement share to
+        ``1 - target``, each keeping its internal ratios (an empty complement is
+        refilled by sector dimension), so the lock equals the target at any step size.
+        ``legacy`` is the rule in force when CITY-EIDOLON-FLIGHT-REPLAY-001 was
+        issued: it rescales only the kernel and renormalizes, which settles near
+        ``target / (1 - dt)`` instead of at the target. It is kept so that issued
+        records replay bit-for-bit.
+        """
+        n = n.copy()
+        n[2] *= target / L
+        n[5] *= target / L
+        if self.craft.lock_cap == "exact":
+            comp = P47 == 0
+            c = float(n[comp].sum())
+            n[comp] = n[comp] * ((1.0 - target) / c) if c > EPS else (1.0 - target) * SECTOR_DIMS[comp] / DIM_COMP
+        return n / max(n.sum(), EPS)
     def run(self) -> "EidolonEngine":
         self.n = SECTOR_DIMS / DIM_H
         x = y = vx = vy = 0.0
@@ -159,9 +182,7 @@ class EidolonEngine:
             Ltmp = float((n[2] + n[5]) / max(n.sum(), EPS))
             target = min(1.0, self.craft.lock_target + (0.08 if self.craft.mode == "geodesic" else 0.0))
             if Ltmp > target + 1e-4 and self.craft.mode != "geodesic":
-                n[2] *= target / Ltmp
-                n[5] *= target / Ltmp
-                n = n / max(n.sum(), EPS)
+                n = self.cap_lock(n, Ltmp, target)
             self.n = n
             L = self.lock(n)
             omega = self.omega(L)
