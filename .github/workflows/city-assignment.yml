@@ -8,6 +8,12 @@ on:
       - 'scripts/check_evidence_ledger.py'
       - 'scripts/build_city_assignment.py'
       - 'artifacts/**'
+      - 'scripts/audit_city_links.py'
+      - 'website/interfaces/civic-assignment/**'
+      - 'website/interfaces/city-live/index.html'
+      - 'website/interfaces/formalism-atlas/index.html'
+      - 'website/interfaces/route-packets/index.html'
+      - 'website/index.html'
       - '.github/workflows/city-assignment.yml'
   workflow_dispatch:
 permissions:
@@ -30,6 +36,7 @@ jobs:
           python scripts/check_evidence_ledger.py
           python scripts/build_city_assignment.py
           python scripts/build_city_assignment.py --check
+          python scripts/audit_city_links.py
       - name: Commit canonical publication snapshot only if changed
         run: |
           if ! git diff --quiet -- website/data/city-assignment.json; then
