@@ -1,0 +1,322 @@
+{
+  "schema": "MC-CIVIC-ASSIGNMENT/2.0",
+  "policy": "research/e47/CITY_CONSTITUTION_EVIDENCE_DETERMINED_PROMOTION_20261008.md",
+  "source": "research/e47/evidence_ledger.json",
+  "source_sha256": "d7e92ddcc302c9978ce87203d2ab53a538d0b043879a4a2c3c2392c1e11876c8",
+  "claims": [
+    {
+      "id": "census.decomposition",
+      "statement": "V2⊗V2⊗V2 = V0 + 3V1 + 5V2 + 4V3 + 3V4 + 2V5 + V6",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json",
+      "certificate_sha256": "35a540d21756f13398ed0800b6fbcaaeff2daf8a0e0b05db4701c6387c23288a",
+      "verified_check": "census_1_3_5_4_3_2_1",
+      "depends_on": [],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "census.e47_unique_quadratic_selector",
+      "statement": "{2,5} is the only two-sector Casimir selection of dimension 47",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json",
+      "certificate_sha256": "35a540d21756f13398ed0800b6fbcaaeff2daf8a0e0b05db4701c6387c23288a",
+      "verified_check": "e47_unique_quadratic_selector",
+      "depends_on": [
+        "census.decomposition"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "einstein.unmarked_moduli_embedding",
+      "statement": "E47 (n = 47) injects into Ricci-flat Lorentzian metrics modulo diffeomorphism",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json",
+      "certificate_sha256": "a26042f6d6604ec777f909f77f0e1f2e7932f11df309825833fa543cdcd5c2cb",
+      "verified_check": "unmarked_affine_rigidity",
+      "depends_on": [
+        "profile.injectivity",
+        "profile.vacuum"
+      ],
+      "conditional_on": [
+        "plane-wave-equivalence-group-exhausts-isometries"
+      ],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "lock.chebyshev_rate",
+      "statement": "Chebyshev bound 1/T_n(17/15) = 2/((5/3)^n + (3/5)^n); rate 3/5",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "certificate_sha256": "322cbaea147344334d012d327e028f118f3d3e27d79dc085abf7eec26889caed",
+      "verified_check": "chebyshev_closed_form",
+      "depends_on": [
+        "census.decomposition",
+        "lock.condition_4"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "lock.condition_4",
+      "statement": "|K| on the complement of E47 is {108,112,140,180,432}; condition number 4",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "certificate_sha256": "322cbaea147344334d012d327e028f118f3d3e27d79dc085abf7eec26889caed",
+      "verified_check": "condition_K_4",
+      "depends_on": [
+        "census.decomposition"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "lock.equioscillation",
+      "statement": "Gamma* takes the values -15/17 and +15/17 on the complement; step 1/99144 is optimal",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "certificate_sha256": "322cbaea147344334d012d327e028f118f3d3e27d79dc085abf7eec26889caed",
+      "verified_check": "equioscillation_exact",
+      "depends_on": [
+        "census.decomposition",
+        "lock.condition_4"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "lock.five_factor_identity",
+      "statement": "prod (1 - x/lambda) over the five nonzero K^2 eigenvalues is 1 at 0 and vanishes on the complement spectrum",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "certificate_sha256": "322cbaea147344334d012d327e028f118f3d3e27d79dc085abf7eec26889caed",
+      "verified_check": "five_factor_scalar_identity",
+      "depends_on": [
+        "census.decomposition",
+        "lock.condition_4"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "lock.five_step_termination",
+      "statement": "Krylov dimension of the complement is 5; five Richardson steps reach P exactly",
+      "evidence": "E1",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_CONDITION_LOCK_CERTIFICATE.json",
+      "certificate_sha256": "322cbaea147344334d012d327e028f118f3d3e27d79dc085abf7eec26889caed",
+      "verified_check": "krylov_dimension_5",
+      "depends_on": [
+        "census.decomposition",
+        "lock.condition_4",
+        "lock.five_factor_identity"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "profile.injectivity",
+      "statement": "For odd n and even N >= n+3, q -> [g_q] is injective modulo plane-wave equivalence",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json",
+      "certificate_sha256": "ac2e914189e11bb2851ed5913158570c3dc7aa169696d5de1696f1da71ea7178",
+      "verified_check": "odd_n_injective",
+      "depends_on": [
+        "profile.vacuum"
+      ],
+      "conditional_on": [
+        "plane-wave-equivalence-group-exhausts-isometries"
+      ],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "profile.parity_obstruction",
+      "statement": "For even n, a = -1 identifies distinct profiles",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json",
+      "certificate_sha256": "ac2e914189e11bb2851ed5913158570c3dc7aa169696d5de1696f1da71ea7178",
+      "verified_check": "even_n_counterexample",
+      "depends_on": [],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "profile.vacuum",
+      "statement": "Every Brinkmann plane wave g_q with H = F(u)(x^2 - y^2) is Ricci-flat",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json",
+      "certificate_sha256": "ac2e914189e11bb2851ed5913158570c3dc7aa169696d5de1696f1da71ea7178",
+      "verified_check": "every_profile_vacuum",
+      "depends_on": [],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.bosonic_slice",
+      "statement": "E47 ∩ Sym³V2 is a single V2",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "bosonic_slice_exact",
+      "depends_on": [
+        "census.decomposition",
+        "symmetry.su2_s3_table"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.fermion_exclusion",
+      "statement": "E47 ∩ Λ³V2 = 0",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "fermion_exclusion_exact",
+      "depends_on": [
+        "census.decomposition",
+        "symmetry.su2_s3_table"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.gamma_not_isometry",
+      "statement": "||Gamma* eta Gamma* - eta|| = 12800/23409; Gamma* is not a Krein isometry",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "gamma_not_krein_isometry_exact",
+      "depends_on": [
+        "census.decomposition",
+        "lock.condition_4"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.k_inertia",
+      "statement": "In(K) = (23, 55, 47)",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "K_inertia_exact_23_55_47",
+      "depends_on": [
+        "census.decomposition"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.krein_isometries",
+      "statement": "SU(2) rotations and S3 permutations satisfy U^dagger eta U = eta (checked on sampled rotations)",
+      "evidence": "E1",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "krein_isometry_su2_rotations",
+      "depends_on": [],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.mixed_core",
+      "statement": "47 = 5 + 42 + 0 (symmetric, mixed, antisymmetric)",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "mixed_core_exact",
+      "depends_on": [
+        "census.decomposition",
+        "symmetry.su2_s3_table"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "symmetry.su2_s3_table",
+      "statement": "Exact SU(2) x S3 multiplicity table of V2⊗V2⊗V2",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json",
+      "certificate_sha256": "88bd3d1d7813c499ad1bdde7eeed16571b75999c3756004c4900a69d62258828",
+      "verified_check": "su2_s3_table",
+      "depends_on": [
+        "census.decomposition"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    }
+  ],
+  "claim_count": 18,
+  "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+  "surfaces": {
+    "citadel": {
+      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "url": "/E47-Kartekeya/data/city-assignment.json"
+    },
+    "citizenship_bureau": {
+      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "url": "/E47-Kartekeya/data/city-assignment.json"
+    },
+    "proof_forge": {
+      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "url": "/E47-Kartekeya/data/city-assignment.json"
+    },
+    "publication": {
+      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "url": "/E47-Kartekeya/data/city-assignment.json"
+    }
+  }
+}
