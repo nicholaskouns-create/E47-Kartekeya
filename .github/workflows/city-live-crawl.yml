@@ -14,5 +14,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Static route integrity and live GitHub Pages checks
-        run: python scripts/audit_city_links.py --live
+        run: |
+          set -e
+          python scripts/audit_city_links.py --live
           python scripts/crawl_city_site.py --live
