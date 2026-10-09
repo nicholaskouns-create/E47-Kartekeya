@@ -1,0 +1,37 @@
+{
+  "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
+  "id": "syntax-jacob",
+  "display_name": "Syntax Jacob",
+  "version": "1.2.0",
+  "kind": "interactive-simulator",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "entrypoint": "website/interfaces/syntax-jacob/index.html",
+  "smoke": {
+    "entrypoint": "website/interfaces/syntax-jacob/smoke.mjs",
+    "command": "node website/interfaces/syntax-jacob/smoke.mjs",
+    "benchmark_command": "node website/interfaces/syntax-jacob/smoke.mjs --benchmark"
+  },
+  "provenance": {
+    "receipt_schema": "CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources": [
+      "website/interfaces/syntax-jacob/provenance.json",
+      "NASA/JPL Horizons",
+      "NASA/JPL Small-Body Database",
+      "website/interfaces/shared/stargate-invariants.js",
+      "research/stargate/validation/stargate_corrected_validation_report.json"
+    ]
+  },
+  "telemetry": {
+    "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0"
+  },
+  "boundaries": [
+    "JPL ephemeris data are external measured/derived astronomy inputs.",
+    "Coherence, propulsion controls and spacecraft response remain model/simulation layers.",
+    "Stargate invariants are attached to modeled receipts without promoting E47 capture, scalar lock, or display-space propulsion to physical wormhole evidence.",
+    "Physical wormhole closure and hardware realization remain open."
+  ]
+}

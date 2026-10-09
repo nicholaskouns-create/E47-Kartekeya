@@ -1,0 +1,190 @@
+{
+  "title": "E47 Grassmann\u2013Casimir Compatibility and Spectral Stabilization.",
+  "checks": [
+    {
+      "name": "spin commutators",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "single-spin Casimir",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "physical inner product",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "carrier dimension",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "total weight conserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight -6 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight -5 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight -4 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight -3 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight -2 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight -1 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +0 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +1 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +2 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +3 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +4 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +5 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "weight +6 polynomial splits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "derived Casimir census",
+      "passed": true,
+      "detail": "{0: 1, 2: 9, 6: 25, 12: 28, 20: 27, 30: 22, 42: 13}"
+    },
+    {
+      "name": "weight-character decomposition",
+      "passed": true,
+      "detail": "{0: 1, 1: 3, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1}"
+    },
+    {
+      "name": "square-free Casimir annihilator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Casimir selector nullity",
+      "passed": true,
+      "detail": "nullity=47; rank=78; claimed 82 is incompatible with this operator"
+    },
+    {
+      "name": "exact projector",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "orthogonal projector in physical metric",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "optimal positive-step contraction",
+      "passed": true,
+      "detail": "K^2 spectrum off kernel=[11664, 12544, 19600, 32400, 186624]; epsilon=1/99144; rho=15/17"
+    },
+    {
+      "name": "kernel fixed by propagator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "complement strictly contracts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "coherence ratio",
+      "passed": true,
+      "detail": "47/125"
+    },
+    {
+      "name": "spectral complementary basis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "constructed Grassmann dimensions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "constructed intersection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "constraint rank and restricted rank",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "constraint kernel dimension",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Grassmann transversality arithmetic",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 34,
+  "failed": 0,
+  "arithmetic": "exact rational SymPy; operator norm uses physical spin inner product",
+  "claim_status": {
+    "Casimir kernel equals 82": "FALSE for K=(C-6I)(C-30I); computed nullity 47",
+    "Constraint kernel equals 82": "TRUE for a distinct rank-43 map A: V -> C^43",
+    "Grassmann intersection equals 47": "TRUE when E+ker(A)=V; explicitly realized here",
+    "Original E and 43 constraints": "Not supplied as matrices; construction here is an existence witness",
+    "Cubic closure": "Polynomial not supplied; root and dynamical stability untested",
+    "Einstein-to-spectral closure": "Metric/action/map and equivalence theorem not supplied; untested",
+    "Repository bit-exact implementation": "Repository source unavailable through attempted retrieval; untested",
+    "FPGA/ASIC realization": "Hardware description and execution evidence not supplied; untested",
+    "Entropy decrease": "No entropy functional specified; spectral error contraction proved"
+  },
+  "sympy_version": "1.14.0"
+}

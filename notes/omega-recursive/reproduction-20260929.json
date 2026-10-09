@@ -1,0 +1,36 @@
+{
+  "certificate_code": "MC-OMEGA-RECURSIVE-CLOSURE-20260927-001",
+  "reproduction_date": "2026-09-29",
+  "status": "PASS",
+  "checks_passed": 19,
+  "checks_failed": 0,
+  "checks": [
+    "continuity_to_diffusion",
+    "covariant_current_to_wave",
+    "conserved_geometric_family",
+    "newtonian_density_matching",
+    "inverse_square_force",
+    "recursive_fixed_point",
+    "quartic_discrete_scaling",
+    "discrete_minima_value",
+    "discrete_minima_stationary",
+    "curvature_at_minima",
+    "mass_ladder_ratio",
+    "decay_kernel_normalization",
+    "corrected_decay_pair_table",
+    "decay_path_exponential_composition",
+    "numeric_minima_residual",
+    "numeric_mass_ratio_phi",
+    "quantum_low_spectrum",
+    "quantum_unitarity",
+    "quantum_gap_ratio_phi"
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "sympy": "1.14.0"
+  },
+  "validator_sha256": "3de683c3d4b547ecea3be4153079544550ee5950b56e69fafbe652f4ddee351f",
+  "image_sha256": "05e0cf0145e3cdbfb10563221cd705ae80c629e65437487ed239c612be89ed3d",
+  "stdout": "[PASS] continuity_to_diffusion\n[PASS] covariant_current_to_wave\n[PASS] conserved_geometric_family\n[PASS] newtonian_density_matching\n[PASS] inverse_square_force\n[PASS] recursive_fixed_point\n[PASS] quartic_discrete_scaling\n[PASS] discrete_minima_value\n[PASS] discrete_minima_stationary\n[PASS] curvature_at_minima\n[PASS] mass_ladder_ratio\n[PASS] decay_kernel_normalization\n[PASS] corrected_decay_pair_table\n[PASS] decay_path_exponential_composition\n[PASS] numeric_minima_residual\n[PASS] numeric_mass_ratio_phi\n[PASS] quantum_low_spectrum\n[PASS] quantum_unitarity\n[PASS] quantum_gap_ratio_phi\n\\nVERDICT: 19/19 PASS\n"
+}

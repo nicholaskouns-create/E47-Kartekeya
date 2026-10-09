@@ -1,0 +1,13 @@
+{
+  "schema":"SKYRMION-RUNTIME2-SMOKE-1.0","date":"2026-09-19","fixedStepHz":120,"stepsPerVehicle":1200,"result":"PASS","checks":["finite-state","unit-quaternion","positive-mass","fixed-step-range","evidence-boundary","E47-capture-range"],
+  "vehicles":[
+    {"id":"f16","pass":true,"altitudeM":4026.7,"speedKt":503.2,"mach":0.80,"proof":true},
+    {"id":"sr71","pass":true,"altitudeM":3718.1,"speedKt":439.0,"mach":0.69,"proof":true},
+    {"id":"x15","pass":true,"altitudeM":3146.9,"speedKt":665.0,"mach":1.04,"proof":true},
+    {"id":"eidolon","pass":true,"altitudeM":3109.8,"speedKt":776.2,"mach":1.22,"proof":true},
+    {"id":"manta","pass":true,"altitudeM":3109.8,"speedKt":778.4,"mach":1.22,"proof":true},
+    {"id":"skyrmion","pass":true,"altitudeM":3109.8,"speedKt":847.4,"mach":1.33,"proof":true},
+    {"id":"jacob","pass":true,"altitudeM":3109.8,"speedKt":776.3,"mach":1.22,"proof":true}
+  ],
+  "note":"This is a numerical runtime smoke test, not aerodynamic validation against flight-test envelopes. Conventional models use typed coefficient-based rigid-body dynamics; experimental vehicles remain simulation-only adapters."
+}

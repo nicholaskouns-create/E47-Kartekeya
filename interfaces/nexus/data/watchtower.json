@@ -1,0 +1,18 @@
+{
+  "line": "[LOCK] PASS  dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16  rho=15/17  TrP47=47",
+  "passed": true,
+  "engines": {
+    "SpectralEngine": {"present": true, "role": "algebraic lock"},
+    "EidolonEngine": {"present": true, "role": "7-sector ODE"},
+    "TomographicVisualizer": {"present": true, "role": "ART + P47 gate"}
+  },
+  "routes": [
+    {"ok": true, "status": 200, "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/", "name": "CITY LIVE"},
+    {"ok": true, "status": 200, "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manifold/", "name": "MANIFOLD"},
+    {"ok": true, "status": 200, "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/eidolon/", "name": "EIDOLON flight"},
+    {"ok": true, "status": 200, "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/", "name": "MATRIX"},
+    {"ok": true, "status": 200, "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/", "name": "Q5"},
+    {"ok": true, "status": 200, "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/", "name": "CITY CORE"}
+  ],
+  "evidence": "Watchtower asserts algebraic lock. Route probes are availability, not evidence promotion."
+}

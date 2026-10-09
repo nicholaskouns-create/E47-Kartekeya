@@ -1,0 +1,42 @@
+{
+  "schema": "STARGATE-SIMULATOR-INVARIANTS-1.0",
+  "validation": "STARGATE-CORRECTED-VALIDATION-1.1",
+  "certificate": "MC-STARGATE-CORRECTED-20260919",
+  "evidence": {
+    "exact": "E0",
+    "machine": "E1",
+    "simulator": "E2",
+    "physical_closure": "OPEN"
+  },
+  "exact_invariants": {
+    "omega_c": "47/125",
+    "sech4_integral": "4/3"
+  },
+  "conditional_equations": {
+    "profile": "rho(l)=Omega_c+epsilon*tanh(l/ell)",
+    "profile_gradient": "d rho/dl=(epsilon/ell)*sech^2(l/ell)",
+    "radial_nec": "epsilon+p_l=Z(chi)*(d rho/dl)^2",
+    "static_spectrum": "lambda(k)=m^2+Z*k^2+alpha*k^4",
+    "static_minimum": "lambda_min=m^2-Z^2/(4*alpha) for Z<0, alpha>0",
+    "memory_average": "chi_avg=(1/tau)*integral c(t)dt",
+    "memory_accumulation": "chi_acc=(1/tau_ref)*integral c(t)dt"
+  },
+  "gates": {
+    "e47_rank_fraction_is_physical_threshold": false,
+    "physical_wormhole_validated": false,
+    "empirical_nec_violation_validated": false,
+    "hardware_stargate_validated": false,
+    "static_hessian_implies_lorentzian_stability": false
+  },
+  "simulator_surfaces": [
+    "Hover Assembly",
+    "MAV",
+    "Eidolon Harmonic",
+    "EIDOLON",
+    "Hover P47 Cockpit",
+    "UFO Propulsion Lab",
+    "Syntax Jacob",
+    "SKYRMION Runtime 2"
+  ],
+  "boundary": "Simulator observables remain E2 unless independently mapped and validated. Full nonlinear Einstein closure, Lorentzian stability, empirical NEC violation, and hardware realization remain open."
+}

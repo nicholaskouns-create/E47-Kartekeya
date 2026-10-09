@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEUTRINO · Flavor snapshot</title>
+<meta name="description" content="Vacuum muon-neutrino snapshot at tau = pi on the supplied E47 mixing inputs. 125 to 47 carrier census. Probabilities reproduced to eight decimals.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/neutrino-flavor/">
+<style>
+:root{color-scheme:dark;--bg:#070a0c;--line:#24343a;--text:#e9eef0;--muted:#8da0a5;--mint:#79e0cf;--bronze:#d1a56d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0,#10262a 0,#070a0c 36rem);color:var(--text);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(980px,94vw);margin:auto;padding:36px 0 72px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:20px}
+.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.16em;color:var(--mint)}
+h1{font:42px/1.05 Georgia,serif;margin:8px 0}
+p{color:var(--muted)}
+.lock{font:12px ui-monospace,monospace;color:var(--bronze);text-align:right}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.panel{background:#0a1012e8;border:1px solid var(--line);border-radius:16px;padding:18px}
+.span{grid-column:1/-1}
+h2{font:22px Georgia,serif;margin:0 0 8px}
+.metric b{display:block;font:28px ui-monospace,monospace;color:var(--mint)}
+.metric span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font:13px ui-monospace,monospace}
+th,td{padding:8px 6px;border-bottom:1px solid #1c2b30;text-align:left}
+th{color:var(--muted);font-weight:500}
+input[type=range]{width:100%;accent-color:#79e0cf}
+a{color:var(--mint)}
+.ok{color:var(--mint)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:34px}.lock{text-align:left}}
+</style>
+</head>
+<body><div data-e2-contract style="position:fixed;z-index:9998;right:10px;top:10px;max-width:min(92vw,680px);padding:7px 10px;border:1px solid #8a6f4c;border-radius:9px;background:rgba(12,9,5,.92);color:#f2dfbf;font:600 10px/1.4 ui-monospace,monospace"><b>E2 CONTRACT</b> · Assumptions: three-flavor vacuum unitary with supplied mixing fractions and mass splittings; no matter effects. Falsifier: an independent implementation with identical inputs disagrees beyond tolerance or normalization fails.</div>
+<main>
+<header>
+<div>
+<div class="eyebrow">THE MATHEMATICAL CITY · E2 SIMULATION</div>
+<h1>Neutrino flavor snapshot</h1>
+<p>Pure muon at τ = π. Mixing fractions and mass splittings are supplied inputs. The 125-dimensional diagonal is the carrier census, not the propagator.</p>
+</div>
+<div class="lock">125 → 47<br>Ω<sub>c</sub> = 47/125</div>
+</header>
+
+<section class="grid">
+<div class="panel metric"><b id="pe">—</b><span>P(μ → e)</span></div>
+<div class="panel metric"><b id="pm">—</b><span>P(μ → μ)</span></div>
+<div class="panel metric"><b id="pt">—</b><span>P(μ → τ)</span></div>
+
+<div class="panel span">
+<h2>Baseline</h2>
+<label for="tau">τ = <span id="tauLabel">π</span></label>
+<input id="tau" type="range" min="0" max="6.283185307179586" step="0.001" value="3.141592653589793">
+<p id="status" class="ok">Computing…</p>
+</div>
+
+<div class="panel span">
+<h2>Certified snapshot · τ = π</h2>
+<table>
+<thead><tr><th>Channel</th><th>This page</th><th>Dashboard target</th></tr></thead>
+<tbody>
+<tr><td>μ → e</td><td id="ce">—</td><td>0.04720552</td></tr>
+<tr><td>μ → μ</td><td id="cm">—</td><td>0.00314068</td></tr>
+<tr><td>μ → τ</td><td id="ct">—</td><td>0.94965381</td></tr>
+</tbody>
+</table>
+<p>Carrier 125. Rank P<sub>47</sub> = 47. Flavor-slot addresses [10, 11, 12] are the first three kernel indices of the diagonal census. They tag the slots. They are not an intertwiner.</p>
+<p>Source: <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_neutrino_flavor_advanced_simulation.py">e47_neutrino_flavor_advanced_simulation.py</a> · Note: <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Neutrino_Flavor_Advanced_Simulation.md">plate</a> · Certificate: <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/3159377e2b176c457e0a7ccf3cb3beb87f4d79fb/certificates/MC-E47-NEUTRINO-FLAVOR-20260929-001.json">MC-E47-NEUTRINO-FLAVOR-20260929-001</a> · Directory: <a href="../instruments/">instruments</a></p>
+</div>
+</section>
+</main>
+<script>
+const c=(re,im=0)=>[re,im];
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]];
+const mul=(a,b)=>[a[0]*b[0]-a[1]*b[1], a[0]*b[1]+a[1]*b[0]];
+const conj=a=>[a[0],-a[1]];
+const abs2=a=>a[0]*a[0]+a[1]*a[1];
+function matmul(A,B){
+  const C=[[c(0),c(0),c(0)],[c(0),c(0),c(0)],[c(0),c(0),c(0)]];
+  for(let i=0;i<3;i++) for(let j=0;j<3;j++){
+    let s=c(0);
+    for(let k=0;k<3;k++) s=add(s,mul(A[i][k],B[k][j]));
+    C[i][j]=s;
+  }
+  return C;
+}
+function herm(A){
+  const H=[[c(0),c(0),c(0)],[c(0),c(0),c(0)],[c(0),c(0),c(0)]];
+  for(let i=0;i<3;i++) for(let j=0;j<3;j++) H[i][j]=conj(A[j][i]);
+  return H;
+}
+function matvec(A,v){
+  return [0,1,2].map(i=>[0,1,2].reduce((s,k)=>add(s,mul(A[i][k],v[k])),c(0)));
+}
+const sin2_12=15/49, sin2_23=25/47, sin2_13=1/47, delta=192*Math.PI/180;
+const c12=Math.sqrt(1-sin2_12), s12=Math.sqrt(sin2_12);
+const c23=Math.sqrt(1-sin2_23), s23=Math.sqrt(sin2_23);
+const c13=Math.sqrt(1-sin2_13), s13=Math.sqrt(sin2_13);
+const eimd=[Math.cos(-delta), Math.sin(-delta)];
+const eipd=[Math.cos(delta), Math.sin(delta)];
+const R12=[[c(c12),c(s12),c(0)],[c(-s12),c(c12),c(0)],[c(0),c(0),c(1)]];
+const R13=[[c(c13),c(0),mul(c(s13),eimd)],[c(0),c(1),c(0)],[mul(c(-s13),eipd),c(0),c(c13)]];
+const R23=[[c(1),c(0),c(0)],[c(0),c(c23),c(s23)],[c(0),c(-s23),c(c23)]];
+const U=matmul(R23, matmul(R13, R12));
+const Uh=herm(U);
+const dm21=7.34449e-5, dm31=2.5130169e-3;
+const phases=[0, dm21/dm31, 1];
+function evolve(tau){
+  const D=phases.map(p=>{
+    const ang=-p*tau;
+    return c(Math.cos(ang), Math.sin(ang));
+  });
+  const UD=U.map(row=>row.map((z,j)=>mul(z,D[j])));
+  const S=matmul(UD, Uh);
+  const amp=matvec(S, [c(0),c(1),c(0)]);
+  const p=amp.map(abs2);
+  return {p, norm:Math.abs(p[0]+p[1]+p[2]-1)};
+}
+const $ = id => document.getElementById(id);
+const fmt = x => x.toFixed(8);
+function paint(){
+  const tau=Number($('tau').value);
+  const nearPi=Math.abs(tau-Math.PI)<1e-9;
+  $('tauLabel').textContent = nearPi ? 'π' : tau.toFixed(4);
+  const {p,norm}=evolve(tau);
+  $('pe').textContent=fmt(p[0]);
+  $('pm').textContent=fmt(p[1]);
+  $('pt').textContent=fmt(p[2]);
+  $('status').textContent=`Normalization defect ${norm.toExponential(2)} · initial flavor muon · classical unitary, not hardware.`;
+}
+function certify(){
+  const {p}=evolve(Math.PI);
+  $('ce').textContent=fmt(p[0]);
+  $('cm').textContent=fmt(p[1]);
+  $('ct').textContent=fmt(p[2]);
+}
+$('tau').addEventListener('input', paint);
+certify();
+paint();
+</script>
+</body>
+</html>

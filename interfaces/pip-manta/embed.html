@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071428">
+<meta name="description" content="Embeddable Mathematical City frame for the PIP E47–MANTA nine-beat explainer.">
+<title>PIP E47–MANTA · Embed</title>
+<style>
+html,body{width:100%;margin:0;background:#071428;color:#f4f7ff;font-family:Arial,sans-serif}
+body{display:flex;flex-direction:column;min-height:100vh}
+.top{flex:0 0 40px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;border-bottom:1px solid #2c5278;background:#071428}
+.brand{font-size:10px;font-weight:800;letter-spacing:.12em}
+.brand span{color:#7cf0ff}
+.top a{color:#d9ffe8;text-decoration:none;font:9px ui-monospace,monospace;border:1px solid #3dde8a;border-radius:999px;padding:6px 9px}
+.slot{flex:1 1 auto;min-height:720px;background:#071428}
+iframe{width:100%;height:980px;min-height:720px;border:0;background:#071428;display:block}
+.fail{display:none;margin:18px;padding:14px;border:1px solid #8a6f4c;border-radius:12px;color:#f2dfbf;font:12px/1.5 ui-monospace,monospace}
+.fail a{color:#7cf0ff}
+@media(max-width:560px){.top{flex-basis:36px;padding:0 8px}.brand{font-size:8px}.top a{font-size:8px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="brand">THE MATHEMATICAL CITY · <span>PIP E47–MANTA</span></div><a id="open" href="./" target="_blank" rel="noopener">OPEN FULL APP ↗</a></div>
+<div class="slot">
+  <iframe id="app" src="./?embed=1" title="PIP Explains E47–MANTA nine-beat animation" loading="eager" allow="fullscreen" allowfullscreen referrerpolicy="origin"></iframe>
+  <div class="fail" id="fail">The animation frame did not load. <a href="./" target="_blank" rel="noopener">Open the full explainer</a>.</div>
+</div>
+<script>
+(function(){
+  var frame=document.getElementById("app");
+  var fail=document.getElementById("fail");
+  var ready=false;
+  function publish(h){
+    var total=Math.max(760, Math.ceil(h)+40);
+    frame.style.height=Math.max(720, Math.ceil(h))+"px";
+    try{window.parent.postMessage({source:"pip-manta",type:"resize",height:total},"*")}catch(err){}
+  }
+  function measure(){
+    try{
+      var doc=frame.contentDocument;
+      if(!doc||!doc.body) return;
+      ready=true;
+      fail.style.display="none";
+      publish(Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight));
+    }catch(err){
+      frame.style.height="980px";
+    }
+  }
+  frame.addEventListener("load", function(){
+    measure();
+    try{
+      var doc=frame.contentDocument;
+      if(doc&&window.ResizeObserver) new ResizeObserver(measure).observe(doc.body);
+    }catch(err){}
+  });
+  window.addEventListener("message", function(e){
+    var d=e.data;
+    if(!d||d.source!=="pip-manta"||d.type!=="resize") return;
+    ready=true;
+    publish(d.height||980);
+  });
+  addEventListener("resize", measure);
+  setInterval(measure, 1500);
+  setTimeout(function(){ if(!ready) fail.style.display="block"; }, 8000);
+})();
+</script>
+</body>
+</html>
