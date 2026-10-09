@@ -1,0 +1,41 @@
+name: City assignment canonical publication
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/e47/evidence_ledger.json'
+      - 'research/e47/CITY_CONSTITUTION_EVIDENCE_DETERMINED_PROMOTION_20261008.md'
+      - 'scripts/check_evidence_ledger.py'
+      - 'scripts/build_city_assignment.py'
+      - 'artifacts/**'
+      - '.github/workflows/city-assignment.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: city-assignment-main
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate existing claim ledger and compile shared record
+        run: |
+          python scripts/check_evidence_ledger.py
+          python scripts/build_city_assignment.py
+          python scripts/build_city_assignment.py --check
+      - name: Commit canonical publication snapshot only if changed
+        run: |
+          if ! git diff --quiet -- website/data/city-assignment.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add website/data/city-assignment.json
+            git commit -m "ci: synchronize canonical civic assignment"
+            git push
+          fi
