@@ -57,7 +57,7 @@ trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson
 ```
 
 `artifacts/` is gitignored; certificates there are committed with `git add -f`.
-Trajectory NDJSON is tracked under `trajectories/` and must match `trajectory.canonical_sha256` before commit.
+Trajectory NDJSON is tracked under `trajectories/`; its records must match `trajectory.canonical_sha256` and `trajectory.merkle_root` before commit.
 
 See [`docs/eidolon_flight_replay_ndjson.md`](eidolon_flight_replay_ndjson.md).
 

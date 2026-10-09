@@ -35,7 +35,20 @@ install -D -m 0644 trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson \
   website/data/trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson
 ```
 
-One record per line. No pretty-print. No trailing blank line unless it was in the issued bytes. Do not rewrite field order or float formatting — `canonical_sha256` is over the exact file.
+One canonical record per line: JSON with sorted keys and no insignificant whitespace. No pretty-print. Do not round, reorder, or reformat values.
+
+The certificate binds the records, not the bytes of a file:
+
+- `canonical_sha256` is the SHA-256 of the canonical JSON array of all records (`[`, the canonical records joined by `,`, `]`).
+- `merkle_root` is the SHA-256 Merkle root over the records in order: leaf = SHA-256(canonical record), parent = SHA-256(left ‖ right), an unpaired node is paired with itself.
+
+To regenerate the log from the engine instead of copying issued bytes:
+
+```bash
+python scripts/regenerate_eidolon_replay.py
+```
+
+It re-runs `EidolonEngine` under the certificate's `craft` block and the lock-cap rule in force at issue time, and keeps the file only if both bindings match.
 
 ## 2. Bind-check before `git add`
 
@@ -67,11 +80,12 @@ The script refuses the commit if:
 
 - the file is missing,
 - line count ≠ `n_samples`,
-- a line is not JSON or is missing a required channel,
+- a line is not JSON, is not a canonical record, or is missing a required channel,
 - `L` is outside `[0, 1]`,
-- SHA-256 of the exact file bytes ≠ `trajectory.canonical_sha256`.
+- the recomputed `canonical_sha256` ≠ `trajectory.canonical_sha256`,
+- the recomputed `merkle_root` ≠ `trajectory.merkle_root`.
 
-`merkle_root` is the issuing lab's sample-sequence commitment. Recompute it only with the same leaf canonicalization used at issue time. The SHA-256 bind is the commit gate; the Merkle root is recorded, not re-derived here.
+Both bindings are recomputed from the records; either mismatch blocks the commit. The script also reports the certificate signature status. Pass `--require-signature` to make an unverified signature fail the check.
 
 ## 3. Stage
 
@@ -115,8 +129,13 @@ Pages mirror (after the Pages workflow):
 ## What this commit asserts
 
 - The attached log has 961 samples of `W`, `L`, `m_eff`, and `mode`.
-- File bytes match `canonical_sha256`.
+- The records match `canonical_sha256` and `merkle_root`.
 - Parent E47 invariants remain declared, not re-proved.
+
+## Record of CITY-EIDOLON-FLIGHT-REPLAY-001
+
+- **Lock-cap rule at issue time.** The certificate was issued under the engine's `legacy` lock-cap rule, which rescales only the kernel populations and renormalizes. Under that rule the lock settles near `lock_target / (1 − dt)`: `0.9685` for the certified `dt = 0.05`, above the configured `lock_target = 0.92`. The engine default is now `exact`, which holds `lock_target` at any step size. `Craft(lock_cap="legacy")` replays this certificate; the certificate and its log are unchanged.
+- **Signature status (2026-10-09).** `signature.payload_sha256` is not reproduced by the canonical JSON of the published certificate without its `signature` object, so the Ed25519 signature cannot be checked from repository contents. This stays open until the certificate is re-signed over the canonical payload or the signed bytes are published. It is tracked by a strict expected-failure in `tests/test_eidolon_flight_replay.py`.
 
 ## What this commit refuses
 

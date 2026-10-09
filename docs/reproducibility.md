@@ -90,8 +90,15 @@ python scripts/check_eidolon_replay_ndjson.py \
   --ndjson trajectories/CITY-EIDOLON-FLIGHT-REPLAY-001.ndjson
 ```
 
-The checker prints the `git add` / `git commit` / `git push` commands only on PASS.
+The checker recomputes `canonical_sha256` and `merkle_root` from the records and prints the `git add` / `git commit` / `git push` commands only on PASS.
 It does not promote the replay above E2.
+
+Regenerate the log from the engine and re-bind it:
+
+```bash
+python scripts/regenerate_eidolon_replay.py
+python -m pytest tests/test_eidolon_flight_replay.py -v
+```
 
 ## Instrument smoke receipts
 
