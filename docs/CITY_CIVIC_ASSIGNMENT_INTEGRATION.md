@@ -15,3 +15,11 @@ The shared read-only gateway is live as a deployed function, but integration int
 ## Security
 
 Do not disable JWT verification. Client UI is read-only. Do not use an unverified browser label as an authorization grant. The gateway verifies the content digest but relies on HTTPS/GitHub Pages origin for source authenticity; for stronger provenance pin a signed digest or release artifact.
+
+## Runtime integration update (2026-10-09)
+- **Citadel / SEE and Proof Forge hosted interface:** `city-app-host` v8 inserts a navigation backlink to the common evidence assignment at HTML serve time, without changing hosted artifact source.
+- **Citizenship / transit orchestration:** `mathematical-city-orchestrator` v5 verifies canonical assignment digest and exact claim/evidence grade before processing a promotion or citizen enrollment. It removes the old reviewer-preference gate for E0 upgrades while preserving other safeguards.
+- **Proof Forge / research runtime:** `city-research-lab` v3 verifies the same assignment before work, includes digest in snapshot output and proof-search queue provenance.
+- **Shared read API:** `city-civic-assignment` v1 is JWT-protected and verifies content digest.
+- **Automated integrity:** `scripts/audit_city_links.py` checks governance routes, `scripts/crawl_city_site.py` inventories every HTML file and checks reachability, local link targets and optional live URLs. `.github/workflows/city-live-crawl.yml` schedules daily live checks and supports manual dispatch.
+- **Verification limitation:** Deployed versions are confirmed active, but an authenticated runtime transaction, successful Actions run and passing live full-site crawl are not yet confirmed. Hosted Citadel and Proof Forge front-end backlinks are navigational; mutation-grade evidence enforcement occurs in the orchestrator, not in a client-side banner. The full-site crawl may surface legacy orphans; no clean crawl has been established.
