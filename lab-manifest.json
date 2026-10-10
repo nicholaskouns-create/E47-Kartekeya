@@ -102,6 +102,19 @@
       "contract": "website/interfaces/kouns-core/component.json",
       "version": "0.1.0",
       "smoke_entrypoint": "website/interfaces/kouns-core/smoke.mjs"
+    },
+    {
+      "id": "e47-research-workbench",
+      "path": "website/interfaces/e47-research-workbench",
+      "kind": "interactive-research-workbench",
+      "maturity": "research",
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "contract": "website/interfaces/e47-research-workbench/component.json",
+      "version": "1.0.0",
+      "smoke_entrypoint": "website/interfaces/e47-research-workbench/smoke.mjs"
     }
   ],
   "reproducibility": {

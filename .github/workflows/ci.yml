@@ -59,6 +59,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
 
+      - name: Validate workbench browser numerical engine
+        run: node website/interfaces/e47-research-workbench/engine.test.mjs
+
       - name: Run autonomous instrument smoke suite
         run: python scripts/run_instrument_smokes.py --receipt-dir artifacts/instrument-receipts
 

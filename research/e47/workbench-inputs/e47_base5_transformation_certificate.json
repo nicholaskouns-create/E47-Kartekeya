@@ -1,0 +1,141 @@
+{
+  "title": "E47 Base-5 Transformation Equivalence and Quantum-Channel Topology",
+  "source": "/mnt/data/e47_measured_geometry.npz",
+  "checks_passed": 33,
+  "checks_total": 33,
+  "checks": {
+    "Source arrays 90 vertices, 47 unit normals and labels": true,
+    "Source all supporting planes active": true,
+    "Source face histogram": true,
+    "Every edge incident to two faces": true,
+    "Euler topology (90,135,47)": true,
+    "Channel sectors 25 plus 22": true,
+    "Base-5 integer conversion round-trip": true,
+    "Base-5 sector identity": true,
+    "Base-5 product addresses bijective": true,
+    "Adjacency symmetric, degree histogram": true,
+    "Connected channel graph and unique zero Laplacian eigenvalue": true,
+    "Laplacian spectrum nonnegative": true,
+    "Sector cross-edge commutator identity": true,
+    "cube target boundary": true,
+    "cube inverse radial map recovers original vertices": true,
+    "cube vertex correspondence one-to-one": true,
+    "cube labels and adjacency transported unchanged": true,
+    "cube interpolation t=0 unique vertices": true,
+    "cube interpolation t=0.25 unique vertices": true,
+    "cube interpolation t=0.5 unique vertices": true,
+    "cube interpolation t=0.75 unique vertices": true,
+    "cube interpolation t=1 unique vertices": true,
+    "pyramid target boundary": true,
+    "pyramid inverse radial map recovers original vertices": true,
+    "pyramid vertex correspondence one-to-one": true,
+    "pyramid labels and adjacency transported unchanged": true,
+    "pyramid interpolation t=0 unique vertices": true,
+    "pyramid interpolation t=0.25 unique vertices": true,
+    "pyramid interpolation t=0.5 unique vertices": true,
+    "pyramid interpolation t=0.75 unique vertices": true,
+    "pyramid interpolation t=1 unique vertices": true,
+    "Source channel Laplacian unchanged by transported graph": true,
+    "Casimir multiplicities 6x25 and 30x22": true
+  },
+  "topology": {
+    "vertices": 90,
+    "edges": 135,
+    "faces": 47,
+    "euler": 2
+  },
+  "face_histogram": {
+    "4": 3,
+    "5": 14,
+    "6": 23,
+    "7": 6,
+    "8": 1
+  },
+  "base5": {
+    "5": "10",
+    "22": "42",
+    "25": "100",
+    "47": "142",
+    "78": "303",
+    "90": "330",
+    "125": "1000",
+    "135": "1020"
+  },
+  "casimir": {
+    "J2": {
+      "count": 25,
+      "eigenvalue": 6
+    },
+    "J5": {
+      "count": 22,
+      "eigenvalue": 30
+    }
+  },
+  "channel_graph": {
+    "connected": true,
+    "cross_sector_edges": 70,
+    "laplacian_eigenvalues": [
+      5.295611450251943e-16,
+      0.7985634820404182,
+      0.8707104903604612,
+      0.9301041621469937,
+      1.884697183548622,
+      2.1507277174056347,
+      2.2264906386370904,
+      2.794786713789468,
+      2.896877432331048,
+      3.4033498820600743,
+      3.586460729116262,
+      3.972101698839326,
+      4.236133282702236,
+      4.528712575676629,
+      4.73451766473693,
+      4.762346235566607,
+      4.875127750450657,
+      5.090806707205634,
+      5.349733482622434,
+      5.71247540479756,
+      5.888265725471715,
+      6.026055885469317,
+      6.053938642959893,
+      6.360565025117386,
+      6.462395292414159,
+      6.51553708385969,
+      6.800048348049419,
+      6.823537526445299,
+      7.011686710920987,
+      7.140871982432282,
+      7.26342148405958,
+      7.299049851100319,
+      7.488673111289263,
+      7.5138855189327565,
+      7.736353418202173,
+      7.867658176815729,
+      7.932005760170948,
+      8.098730302391596,
+      8.161143775871135,
+      8.223185255353822,
+      8.44628428041641,
+      8.745694620454726,
+      8.780689469383363,
+      8.830476804991081,
+      8.933286433247176,
+      9.172177909621173,
+      9.619658370524538
+    ],
+    "commutator_frobenius": 283.9718295887816
+  },
+  "targets": {
+    "cube": {
+      "max_face_nonplanarity_rms": 0.14738996011387082,
+      "vertex_radius_min": 1.0066247348073936,
+      "vertex_radius_max": 1.6033282847217074
+    },
+    "pyramid": {
+      "max_face_nonplanarity_rms": 0.22109241607953725,
+      "vertex_radius_min": 0.8954623828168136,
+      "vertex_radius_max": 1.9993148918124264
+    }
+  },
+  "qualification": "Faces are transported as potentially curved patches, not necessarily flat convex facets. The cube and pyramid images are conceptual and not certified by this construction. The base-5 rewrite does not alter Hilbert-space physics."
+}

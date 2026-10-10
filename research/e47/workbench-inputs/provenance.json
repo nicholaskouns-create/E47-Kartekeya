@@ -1,0 +1,53 @@
+{
+  "schema": "E47-WORKBENCH-SOURCES-1.0",
+  "sources": [
+    {
+      "file": "e47_base5_transformation_certificate.json",
+      "sha256": "b4f7db6048c91729e9f9d4edfd7c4c519d822790624b596b401d8aed082a67eb",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "e47_spectral_occupancy_flow_validation.py",
+      "sha256": "c9ad7fd6527f1cd499a0add7e1cb3f24aae5922629a025062acf2e6c7eda6d18",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "measure_e47.py",
+      "sha256": "47e530209e40bce6a8641e42f375a1272c130d39145402998a850ce6e504d333",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "omega_c_47_125.py",
+      "sha256": "c5e7c79b30945ac74e074dd2ed766720bf5d171365ebcba887e48b3e0e942df0",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "results.json",
+      "sha256": "e1f363242f4e621d32557065549b47f3825b458dd8c66231369f6969cfe9a0cf",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "validate.py",
+      "sha256": "9500ca19952b07491bb0f8cbc0564cfc6ccaf1141dc333ecbbed321638ce0d27",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "e47_quantum_validation.py",
+      "sha256": "bcfa3df0eb3dd41c6410826de6ce5e70a74d838488a19d80d10aa47b99631a80",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    },
+    {
+      "file": "full_x5f_three_x5f_system_x5f_comparison.csv",
+      "sha256": "589fdf3b4473ad8448534b646d0e7c331dc5e1088c90660dabeb8ad906696bed",
+      "origin": "user-supplied attachment",
+      "role": "archived input; not executed by browser"
+    }
+  ]
+}
