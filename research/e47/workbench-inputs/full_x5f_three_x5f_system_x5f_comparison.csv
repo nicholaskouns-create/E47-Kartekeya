@@ -1,0 +1,94 @@
+eta,system,P_dim,Delta,max_abs_Gamma_complement,notes
+0.0,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.01,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.02,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.03,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.04,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.05,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.06,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.07,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.08,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.09,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.1,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.11,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.12,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.13,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.14,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.15,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.16,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.17,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.18,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.19,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.2,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.21,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.22,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.23,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.24,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.25,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.26,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.27,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.28,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.29,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.3,E47_exact_125d,47,0.0,0.9946643266360042,exact: (I-P)GP=0
+0.0,Bismuth_reduced_hinge,4,0.0,1.0,reduced model: leakage ~ eta
+0.01,Bismuth_reduced_hinge,4,0.00852,1.0,reduced model: leakage ~ eta
+0.02,Bismuth_reduced_hinge,4,0.01708,1.0,reduced model: leakage ~ eta
+0.03,Bismuth_reduced_hinge,4,0.025679999999999998,1.0,reduced model: leakage ~ eta
+0.04,Bismuth_reduced_hinge,4,0.03432,1.0,reduced model: leakage ~ eta
+0.05,Bismuth_reduced_hinge,4,0.043000000000000003,1.0,reduced model: leakage ~ eta
+0.06,Bismuth_reduced_hinge,4,0.051719999999999995,1.0,reduced model: leakage ~ eta
+0.07,Bismuth_reduced_hinge,4,0.060480000000000006,1.0,reduced model: leakage ~ eta
+0.08,Bismuth_reduced_hinge,4,0.06928000000000001,1.0,reduced model: leakage ~ eta
+0.09,Bismuth_reduced_hinge,4,0.07812,1.0,reduced model: leakage ~ eta
+0.1,Bismuth_reduced_hinge,4,0.08700000000000001,1.0,reduced model: leakage ~ eta
+0.11,Bismuth_reduced_hinge,4,0.09592,1.0,reduced model: leakage ~ eta
+0.12,Bismuth_reduced_hinge,4,0.10487999999999999,1.0,reduced model: leakage ~ eta
+0.13,Bismuth_reduced_hinge,4,0.11388,1.0,reduced model: leakage ~ eta
+0.14,Bismuth_reduced_hinge,4,0.12292000000000002,1.0,reduced model: leakage ~ eta
+0.15,Bismuth_reduced_hinge,4,0.132,1.0,reduced model: leakage ~ eta
+0.16,Bismuth_reduced_hinge,4,0.14112000000000002,1.0,reduced model: leakage ~ eta
+0.17,Bismuth_reduced_hinge,4,0.15028000000000002,1.0,reduced model: leakage ~ eta
+0.18,Bismuth_reduced_hinge,4,0.15948,1.0,reduced model: leakage ~ eta
+0.19,Bismuth_reduced_hinge,4,0.16872,1.0,reduced model: leakage ~ eta
+0.2,Bismuth_reduced_hinge,4,0.17800000000000002,1.0,reduced model: leakage ~ eta
+0.21,Bismuth_reduced_hinge,4,0.18732,1.0,reduced model: leakage ~ eta
+0.22,Bismuth_reduced_hinge,4,0.19668,1.0,reduced model: leakage ~ eta
+0.23,Bismuth_reduced_hinge,4,0.20608,1.0,reduced model: leakage ~ eta
+0.24,Bismuth_reduced_hinge,4,0.21552,1.0,reduced model: leakage ~ eta
+0.25,Bismuth_reduced_hinge,4,0.225,1.0,reduced model: leakage ~ eta
+0.26,Bismuth_reduced_hinge,4,0.23452,1.0,reduced model: leakage ~ eta
+0.27,Bismuth_reduced_hinge,4,0.24408000000000002,1.0,reduced model: leakage ~ eta
+0.28,Bismuth_reduced_hinge,4,0.25368,1.0,reduced model: leakage ~ eta
+0.29,Bismuth_reduced_hinge,4,0.26331999999999994,1.0,reduced model: leakage ~ eta
+0.3,Bismuth_reduced_hinge,4,0.273,1.0,reduced model: leakage ~ eta
+0.0,Woven_FE_reduced_Koopman,6,0.0,1.0,reduced model: leakage ~ eta
+0.01,Woven_FE_reduced_Koopman,6,0.0062499999999999995,1.0,reduced model: leakage ~ eta
+0.02,Woven_FE_reduced_Koopman,6,0.0126,1.0,reduced model: leakage ~ eta
+0.03,Woven_FE_reduced_Koopman,6,0.019049999999999997,1.0,reduced model: leakage ~ eta
+0.04,Woven_FE_reduced_Koopman,6,0.025599999999999998,1.0,reduced model: leakage ~ eta
+0.05,Woven_FE_reduced_Koopman,6,0.03225,1.0,reduced model: leakage ~ eta
+0.06,Woven_FE_reduced_Koopman,6,0.039,1.0,reduced model: leakage ~ eta
+0.07,Woven_FE_reduced_Koopman,6,0.04585,1.0,reduced model: leakage ~ eta
+0.08,Woven_FE_reduced_Koopman,6,0.0528,1.0,reduced model: leakage ~ eta
+0.09,Woven_FE_reduced_Koopman,6,0.059849999999999993,1.0,reduced model: leakage ~ eta
+0.1,Woven_FE_reduced_Koopman,6,0.067,1.0,reduced model: leakage ~ eta
+0.11,Woven_FE_reduced_Koopman,6,0.07425,1.0,reduced model: leakage ~ eta
+0.12,Woven_FE_reduced_Koopman,6,0.08159999999999999,1.0,reduced model: leakage ~ eta
+0.13,Woven_FE_reduced_Koopman,6,0.08905,1.0,reduced model: leakage ~ eta
+0.14,Woven_FE_reduced_Koopman,6,0.0966,1.0,reduced model: leakage ~ eta
+0.15,Woven_FE_reduced_Koopman,6,0.10425,1.0,reduced model: leakage ~ eta
+0.16,Woven_FE_reduced_Koopman,6,0.112,1.0,reduced model: leakage ~ eta
+0.17,Woven_FE_reduced_Koopman,6,0.11985000000000001,1.0,reduced model: leakage ~ eta
+0.18,Woven_FE_reduced_Koopman,6,0.1278,1.0,reduced model: leakage ~ eta
+0.19,Woven_FE_reduced_Koopman,6,0.13585,1.0,reduced model: leakage ~ eta
+0.2,Woven_FE_reduced_Koopman,6,0.14400000000000002,1.0,reduced model: leakage ~ eta
+0.21,Woven_FE_reduced_Koopman,6,0.15224999999999997,1.0,reduced model: leakage ~ eta
+0.22,Woven_FE_reduced_Koopman,6,0.1606,1.0,reduced model: leakage ~ eta
+0.23,Woven_FE_reduced_Koopman,6,0.16905,1.0,reduced model: leakage ~ eta
+0.24,Woven_FE_reduced_Koopman,6,0.17759999999999998,1.0,reduced model: leakage ~ eta
+0.25,Woven_FE_reduced_Koopman,6,0.18625,1.0,reduced model: leakage ~ eta
+0.26,Woven_FE_reduced_Koopman,6,0.195,1.0,reduced model: leakage ~ eta
+0.27,Woven_FE_reduced_Koopman,6,0.20385000000000003,1.0,reduced model: leakage ~ eta
+0.28,Woven_FE_reduced_Koopman,6,0.21280000000000002,1.0,reduced model: leakage ~ eta
+0.29,Woven_FE_reduced_Koopman,6,0.22185,1.0,reduced model: leakage ~ eta
+0.3,Woven_FE_reduced_Koopman,6,0.23099999999999998,1.0,reduced model: leakage ~ eta

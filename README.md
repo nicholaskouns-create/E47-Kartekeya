@@ -13,6 +13,12 @@ Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create
 [![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
 [![Pages](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml)
 
+## E47 Research WorkBench
+
+[Instrument source and run guide](website/interfaces/e47-research-workbench/README.md) · [Build tracking · REC-16](https://linear.app/4521/issue/REC-16/build-e47-research-workbench-with-reproducible-spectral-experiments).
+
+Explore spectral dynamics, 47-face geometry, a traceable validation ledger, and workspace destinations. Export replayable JSON, CSV, research notes, and OBJ geometry. E1/E2; workspace cards are navigation links, not automatic synchronization. Regenerate with `PYTHONPATH=src python -m e47.workbench` and serve `website/` locally. The repository Pages workflow publishes the instrument after its review branch lands.
+
 ## Corrected Grassmann–Casimir formalism · 2026-10-08
 
 **Canonical theorem and evidence boundary:** [Corrected E47 Grassmann–Casimir formalism](research/e47/E47_Grassmann_Casimir_Formalism_Corrected_20261008.md). In the unnormalized spin basis the certified projector identity is `P^T G = G P`; `dim ker K = 47`, whereas the distinct Grassmann constraint has `dim ker A = 82`. The constructed witness establishes `E ∩ ker A = ker K`, which does not follow from equal dimensions alone. The earlier 34/34 exact certificate is retained.

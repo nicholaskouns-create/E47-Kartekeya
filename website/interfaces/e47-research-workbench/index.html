@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore E47 spectral dynamics, 47-face geometry and reproducible numerical evidence.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'">
+<link rel="modulepreload" href="../shared/instrument-telemetry.js"><title>E47 Research WorkBench</title><link rel="stylesheet" href="style.css"><link rel="icon" href="icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip">Skip to workbench</a>
+<aside class="sidebar">
+<a class="brand" href="./"><span class="mark">E<span>47</span></span><span>RESEARCH<br><b>WORKBENCH</b></span></a>
+<div class="sidebar-label">INSTRUMENTS</div>
+<nav aria-label="Workbench instruments">
+<button data-view="dynamics" class="active"><span>◉</span> Spectral dynamics</button>
+<button data-view="geometry"><span>◇</span> Crystal geometry</button>
+<button data-view="validation"><span>✓</span> Validation ledger</button>
+<button data-view="workspace"><span>↗</span> Research workspace</button>
+</nav>
+<div class="sidebar-note"><span class="status-dot"></span> LOCAL COMPUTATION<p>Your experiments run in this browser. Export a receipt to keep or share a run.</p></div>
+<a class="city-link" href="../../">← Mathematical City</a>
+<div class="version">INSTRUMENT v1.0.0 · E1 / E2</div>
+</aside>
+<div class="shell">
+<header><span>MATHEMATICAL CITY <span class="slash">/</span> COMPUTATIONAL OBSERVATORY</span><span class="header-badge">125D CARRIER</span></header>
+<main id="main">
+<div class="heading"><div><div class="eyebrow">E47 RESEARCH WORKBENCH</div><h1 id="view-title">Spectral dynamics</h1><p id="view-description">A precise view into the 47-dimensional invariant subspace.</p></div><button id="export-json" class="primary">↓ Export run</button></div>
+<div id="notice" class="notice" role="status" aria-live="polite">Loading the verified numerical bundle…</div>
+<section id="dynamics" class="view">
+<div class="stats"><article><div>CARRIER DIMENSION</div><strong>125 <small>states</small></strong><p>V₂ ⊗ V₂ ⊗ V₂</p></article><article><div>SELECTED SUBSPACE</div><strong>47 <small>states</small></strong><p>J = 2 ⊕ J = 5</p></article><article><div>EXACT RANK FRACTION</div><strong>0.376</strong><p>47 / 125 · dimension ratio</p></article><article><div>COMPLEMENT RADIUS</div><strong id="rho">0.882353</strong><p id="rho-label">15 / 17 · optimal step</p></article></div>
+<div class="experiment-grid"><div class="panel controls"><div class="panel-heading"><h2>Experiment setup</h2><span class="tag">E2 MODEL</span></div>
+<label for="mode">Evolution</label><select id="mode"><option value="discrete">Discrete spectral filter</option><option value="continuous">Continuous occupancy flow</option></select>
+<label for="preset">Initial state distribution</label><select id="preset"><option value="isotropic">Isotropic sector weights</option><option value="seeded">Seeded random pure-state weights</option><option value="selected">Selected subspace only</option><option value="complement">Complement only</option><option value="custom">Custom sector weights</option></select>
+<div id="seed-wrap" hidden><label for="seed">Random seed</label><input id="seed" type="number" value="47" min="0" max="4294967295" step="1"><p class="hint">Mulberry32 in a Casimir eigenbasis; distinct from the supplied NumPy seed.</p></div>
+<label for="steps">Iterations / sample count <output id="steps-output">220</output></label><input id="steps" type="range" min="1" max="1000" value="220">
+<div id="epsilon-wrap"><label for="epsilon">Filter step ε</label><select id="epsilon"><option value="optimal">Optimal · 1 / 99144</option><option value="small">Slow · 0.25 × optimal</option><option value="large">Near limit · 1.05 × optimal</option></select></div>
+<div id="horizon-wrap" hidden><label for="horizon">Scaled time horizon τ</label><input id="horizon" type="number" min="0.01" max="100" value="15" step="0.1"></div>
+<details><summary>Inspect / edit sector weights</summary><div id="weights" class="weights"></div><p class="hint">Weights are normalized on each run. Editing selects Custom.</p></details>
+<button id="run" class="primary full">Run experiment →</button>
+<div class="formula">K = (C − 6I)(C − 30I)<br>G = I − εK²<br>P = projection onto ker K</div>
+</div><div class="panel chart-panel"><div class="panel-heading"><div><h2>Convergence to the selected subspace</h2><p>Complement norm and its rigorous decay bound</p></div><span id="run-label" class="tag">DISCRETE</span></div>
+<div class="legend"><span class="cyan">● Observed error</span><span class="gold">┄ Decay bound</span><span>LOG SCALE</span></div><canvas id="convergence" aria-label="Logarithmic convergence chart" role="img"></canvas>
+<div class="results"><div><span>FINAL ERROR</span><strong id="final-error">—</strong></div><div><span>CONDITIONAL OCCUPANCY</span><strong id="final-occupancy">—</strong></div><div><span id="probability-label">FILTER SUCCESS PROBABILITY</span><strong id="final-probability">—</strong></div></div>
+</div></div>
+<div class="bottom-grid"><div class="panel"><div class="panel-heading"><h2>Normalized selected occupancy</h2><span class="tag">Ω(t)</span></div><canvas id="occupancy" aria-label="Selected occupancy over evolution" role="img"></canvas><p class="hint">47/125 is a rank fraction. A particular state's occupancy depends on its initial weights.</p></div><div class="panel"><div class="panel-heading"><h2>Casimir sector census</h2><span class="tag">7 SECTORS</span></div><div id="sector-bars"></div><p class="hint">Selected sectors at C = 6 and C = 30 account for 25 + 22 states.</p></div></div>
+<div class="panel run-table"><div class="panel-heading"><h2>Inspectable samples</h2><div><button id="export-csv">↓ CSV</button><button id="export-md">↓ Research note</button><label class="button" for="import-file">↑ Import run</label><input id="import-file" type="file" accept=".json,application/json" hidden></div></div><div class="table-scroll"><table><thead><tr><th>Sample</th><th>Scaled time τ</th><th>Error</th><th>Bound</th><th>Occupancy</th><th>Probability / norm²</th></tr></thead><tbody id="samples"></tbody></table></div></div>
+</section>
+<section id="geometry" class="view" hidden><div class="geometry-grid"><div class="panel crystal-panel"><div class="panel-heading"><h2>Canonical 47-face crystal</h2><button id="reset-camera">Reset view</button></div><canvas id="crystal" tabindex="0" aria-label="Interactive crystal. Drag to rotate, use arrow keys to rotate, click a facet to inspect, or use the facet selector." role="img"></canvas><div class="geometry-tools"><label><input type="checkbox" id="wireframe" checked> Facet edges</label><label><input type="checkbox" id="rotate"> Auto rotate</label><button id="export-obj">↓ OBJ mesh</button></div><p class="hint">Drag to rotate · click a facet to inspect · arrow keys rotate · selected face highlighted.</p></div><div class="panel"><h2>Geometry inspector</h2><label for="facet">Facet</label><select id="facet"></select><div id="facet-info"></div><div id="geometry-metrics"></div><p class="hint">The halfspace construction is geometrical. Its spin labels are an assigned correspondence.</p></div></div><div class="bottom-grid"><div class="panel"><h2>Face degree distribution</h2><div id="face-histogram"></div></div><div class="panel"><h2>Face adjacency spectrum</h2><canvas id="laplacian" aria-label="Face adjacency graph Laplacian eigenvalues" role="img"></canvas><p class="hint">A single near-zero eigenvalue certifies graph connectivity within numerical tolerance.</p></div></div></section>
+<section id="validation" class="view" hidden><div class="panel"><div class="panel-heading"><div><h2>Reconstruction ledger</h2><p>Generated by Python from src/e47 canonical operators. This browser displays the saved checks.</p></div><button id="verify">Verify browser model</button></div><div id="validation-summary"></div><div class="table-scroll"><table><thead><tr><th>Check</th><th>Residual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody id="checks"></tbody></table></div></div><div class="panel audit"><h2>Comparison CSV: parameter provenance open</h2><p id="audit-text"></p><p>The original rows are retained without alteration. Bismuth and woven-system entries are reduced models, not material measurements.</p></div><div class="panel"><h2>Source provenance</h2><p>Archived inputs are hash identified. Repairs live in the workbench adapter; original input bytes remain inspectable.</p><div class="table-scroll"><table><thead><tr><th>Source</th><th>SHA-256</th></tr></thead><tbody id="sources"></tbody></table></div><p><code>PYTHONPATH=src python -m e47.workbench</code> regenerates the bundle and matrix validations.</p></div></section>
+<section id="workspace" class="view" hidden><div class="panel workspace-intro"><span class="tag">RESEARCH CONTINUITY</span><h2>One experiment. Inspectable records.</h2><p>Keep code in GitHub, research context in Notion, documents in Google Workspace, and next actions in Linear. These are verified navigation destinations; live account synchronization is not enabled in this app.</p></div><div id="workspace-links" class="workspace-grid"></div><div class="panel"><h2>Portable experiment handoff</h2><p>Export JSON for exact replay, CSV for spreadsheet analysis, and Markdown for research notes. Imported receipts are validated and recomputed locally. Imported files cannot execute code.</p><p>Experiments stay in browser memory until exported. No workspace credentials or private document contents are bundled.</p><div class="formula">JSON receipt → reproduce<br>CSV samples → inspect<br>Research note → document<br>Linear issue → next action</div></div></section>
+<footer><span>E47 · FINITE-DIMENSIONAL RESEARCH INSTRUMENT</span><span>Numerical reconstruction & simulation · E1 / E2</span></footer>
+</main></div><script type="module" src="app.mjs"></script>
+</body></html>
