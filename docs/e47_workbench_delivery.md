@@ -4,8 +4,8 @@ Instrument: `website/interfaces/e47-research-workbench/`, version 1.0.0, researc
 
 ## Validation
 
-- Full Python suite: 198 passed, 1 expected failure.
-- Workbench Python regression subset after final numerical edits: 21 passed.
+- Full Python suite: 199 passed, 1 expected failure.
+- Workbench Python regression subset after final numerical/package edits: 22 passed.
 - Workbench browser numerical engine: 6 tests passed.
 - Saved matrix/geometry reconstruction ledger: 13/13 passed.
 - Lab and instrument contracts: 8 declared instruments passed.
@@ -32,3 +32,9 @@ These records are linked by navigation. The app does not invoke live account con
 ## Security review
 
 No keys, credentials, account contents, external scripts, arbitrary remote fetches, eval or executable imports. Files are bounded to 2 MB; schema, weights, step range and horizon are validated. Display text uses textContent. External links are HTTPS with noopener/noreferrer. CSP restricts scripts/fetches to the app origin and disallows objects. Receipts are unsigned reproducibility records. Runs remain in memory until exported. This review is not a Codex Security service scan or a verification of program enrollment.
+
+## Offline delivery
+
+`scripts/package_e47_workbench.py` produces a directly openable single-file HTML app. It embeds the verified bundle and destination links, removes module fetches, and uses exact SHA-256 CSP script/style hashes with network reads disabled. The same full browser interaction QA is run against the file URL.
+
+Remote CI exposed that pytest.ini adjusts only the parent import path. The portable-output regression now explicitly supplies src to its CLI subprocess, and displays captured stderr on failure. Validation is rerun without a pre-set PYTHONPATH to match CI.

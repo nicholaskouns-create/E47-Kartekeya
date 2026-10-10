@@ -12,6 +12,15 @@ python -m http.server 8000 --directory website --bind 127.0.0.1
 ```
 
 Open `http://127.0.0.1:8000/interfaces/e47-research-workbench/`.
+For a directly openable offline app:
+
+```bash
+python scripts/package_e47_workbench.py --output artifacts/E47-Research-WorkBench.html
+```
+
+Open that generated HTML file directly. It embeds the numerical bundle and workspace
+links, uses exact inline-script/style CSP hashes, and makes no network reads.
+
 The static app has no CDN dependencies, build step, API key, or account credential.
 Its generated `data.json` is committed for direct Pages hosting.
 

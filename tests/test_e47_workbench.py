@@ -1,6 +1,7 @@
 """Workbench observables cross-checked against canonical full matrix evolution."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -82,8 +83,41 @@ def test_bundle_is_traceable_and_valid():
 
 def test_portable_geometry_output(tmp_path):
     output=tmp_path/'nested'/'geometry.npz'
-    subprocess.run([sys.executable,'-m','e47.workbench','--geometry-only','--output',str(output)],cwd=ROOT,check=True,capture_output=True)
+    result=subprocess.run([sys.executable,'-m','e47.workbench','--geometry-only','--output',str(output)],cwd=ROOT,text=True,capture_output=True,env={**os.environ,'PYTHONPATH':str(ROOT/'src')+os.pathsep+os.environ.get('PYTHONPATH','')})
+    assert result.returncode==0,result.stderr
     with np.load(output) as data:
         assert data['vertices'].shape==(90,3)
         assert data['normals'].shape==(47,3)
         assert data['labels'].shape==(47,3)
+
+
+def test_offline_package_csp_hashes_match_exact_inline_bytes(tmp_path):
+    """A corrupted packaging step must not ship scripts the CSP will reject."""
+    import base64
+    from html.parser import HTMLParser
+
+    output=tmp_path/'workbench.html'
+    subprocess.run([sys.executable,str(ROOT/'scripts/package_e47_workbench.py'),'--output',str(output)],check=True,capture_output=True)
+
+    class Parser(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=False)
+            self.policy='';self.blocks={};self.current=None
+        def handle_starttag(self,tag,attrs):
+            attrs=dict(attrs)
+            if tag=='meta' and attrs.get('http-equiv')=='Content-Security-Policy':self.policy=attrs['content']
+            if tag in {'style','script'}:
+                assert 'src' not in attrs
+                self.current=tag;self.blocks[tag]=''
+        def handle_endtag(self,tag):
+            if self.current==tag:self.current=None
+        def handle_data(self,data):
+            if self.current:self.blocks[self.current]+=data
+
+    parser=Parser();parser.feed(output.read_text())
+    assert "connect-src 'none'" in parser.policy
+    for block in parser.blocks.values():
+        digest=base64.b64encode(hashlib.sha256(block.encode()).digest()).decode()
+        assert 'sha256-'+digest in parser.policy
+    assert 'OFFLINE_BUNDLE' in parser.blocks['script']
+    assert "await fetch('./data.json')" not in parser.blocks['script']
