@@ -98,3 +98,9 @@ python scripts/check_instrument_contracts.py
 Python matrix checks are performed when regenerating the bundle. The validation
 screen displays their stored results; its browser verification separately checks
 Python/JS reference parity, bounds and occupancy monotonicity.
+
+The public HTML includes Open Graph and Twitter large-image metadata pointing to
+`share-cover.jpg` (1200 × 630 JPEG). This cover was generated with OpenAI image
+generation on 2026-10-10 and depicts illustrative crystal artwork, rather than
+the measured mesh. Share services fetch the public HTML and image; existing
+previews may need their cache refreshed after publication.
