@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
       - name: Validate existing claim ledger and compile shared record
