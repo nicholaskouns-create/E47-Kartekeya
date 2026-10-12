@@ -13,6 +13,26 @@ Immutable snapshot: [`release/E47-v1.0`](https://github.com/nicholaskouns-create
 [![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
 [![Pages](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/pages.yml)
 
+## SKYRMION Runtime 2 · WGS84 World Engine 1.0
+
+> Browser-native flight lab with a 120 Hz fixed-step, six-degree-of-freedom (6DOF) simulation, DEM + procedural terrain, seven selectable vehicles, and E47 numerical receipts for experimental models. No install—runs in a tab.
+
+**[Launch SKYRMION](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/)** · [Runtime source](website/interfaces/skyrmion/runtime2/) · [World Engine](website/interfaces/shared/world-engine/world-engine.js) · [Runtime tests](scripts/check_skyrmion_runtime.cjs)
+
+SKYRMION Runtime 2 provides a conventional ⇄ experimental simulation boundary within one shared flight-state architecture. F-16, SR-71, and X-15 use conventional aerodynamic models; EIDOLON, MANTA, SKYRMION, and Syntax Jacob use separately typed experimental simulation adapters. Each selected vehicle has its own initialized dynamics, controls, and receipts. The World Engine supplies WGS84 geographic positioning, DEM terrain with a deterministic procedural fallback, biome, weather, and solar context, alongside browser-native GPU rendering. The physics loop advances at a fixed 120 Hz; controls include the on-screen stick, WASD, and Q/E yaw.
+
+**Built to be falsifiable.** Inspect the declared airframe parameters, stability derivatives, atmosphere, terrain, and integrator; reproduce a test vector or compare against an independent integrator under matching assumptions and a stated tolerance. Exported telemetry and mission replays preserve the state being evaluated. The [runtime tests](scripts/check_skyrmion_runtime.cjs) cover trimmed flight, control response, seven-craft maneuvers, state isolation, replay validity, and a rigid-body conservation check.
+
+```bash
+node --test scripts/check_skyrmion_runtime.cjs
+```
+
+**NTTR / integration:** Tested in simulation over NTTR WGS84 terrain (author-reported); available for 99th/57th range-integration discussions through proposed JT4, SAIC, or Leidos contract pathways.
+
+**Related portfolio:** [MAV small-UAS simulation](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/flight/mav/) and InvariFold extend the portfolio across flight dynamics and biological folding.
+
+**Evidence:** E1 numerical reconstruction / E2 simulation. E47 receipts describe the mathematical runtime; vehicle performance is evaluated against each declared flight model.
+
 ## E47 Research WorkBench
 
 [Instrument source and run guide](website/interfaces/e47-research-workbench/README.md) · [Build tracking · REC-16](https://linear.app/4521/issue/REC-16/build-e47-research-workbench-with-reproducible-spectral-experiments).
