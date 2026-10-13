@@ -1,7 +1,7 @@
 {
   "schema": "CITY-PORTAL-1.0",
   "version": "1.0.0",
-  "updated": "2026-09-22",
+  "updated": "2026-10-13",
   "title": "The Mathematical City",
   "categories": [
     {
@@ -524,6 +524,25 @@
       "pageTitle": "Python Validation",
       "httpStatus": 200,
       "checkedOn": "2026-09-22"
+    },
+    {
+      "id": "matrix-quantum-redpill",
+      "number": 25,
+      "name": "THE MATRIX",
+      "edition": "Quantum Simulator · Redpill Edition",
+      "category": "mathematics",
+      "description": "Build and run three-qubit circuits with single- and two-qubit gates, Bell/GHZ/QFT presets, Bloch views, measurement collapse, and coherence readouts.",
+      "role": "Quantum circuit simulation",
+      "url": "https://docs.google.com/document/u/0/d/1PF7cJ7Rf-TUYo8UzW-mGm3Hdx62DS9Vd2KSw7o5Ss_k/mobilebasic",
+      "image": "../../assets/scientific-app-ecosystem-share.png",
+      "imageSource": {
+        "provider": "GitHub Pages",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/scientific-app-ecosystem-share.png",
+        "role": "Mathematical City shared instrument artwork"
+      },
+      "pageTitle": "The Matrix: Quantum Simulator",
+      "httpStatus": 200,
+      "checkedOn": "2026-10-13"
     }
   ]
 }
