@@ -8,12 +8,12 @@ version = "0.1.0"
 description = "Finite-dimensional algebraic validation package for the E47 spectral kernel."
 readme = "README.md"
 requires-python = ">=3.12"
-license = { file = "LICENSE" }
+license = "CC-BY-4.0"
+license-files = ["LICENSE"]
 keywords = ["e47", "spectral-kernel", "su2", "quantum", "validation"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
-    "License :: Public Domain",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Mathematics",
