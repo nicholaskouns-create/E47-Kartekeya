@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: "22"
       - name: Check assets, certificates, rendering, E47 bridge and Q5 topology
-        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs scripts/check_q5_surface.mjs
+        run: node --test scripts/check_website.cjs scripts/check_e47_bridge.cjs scripts/check_eidolon_receipt_binding.mjs scripts/check_q5_surface.mjs website/interfaces/observatory/engine.test.mjs website/interfaces/observatory/qgnn.test.mjs
 
   publish:
     name: Publish website root to gh-pages

@@ -1,0 +1,35 @@
+{
+  "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
+  "id": "city-observatory",
+  "display_name": "Mathematical City Observatory",
+  "version": "1.0.0",
+  "kind": "playable-research-world",
+  "maturity": "research",
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "entrypoint": "website/interfaces/observatory/index.html",
+  "smoke": {
+    "entrypoint": "website/interfaces/observatory/smoke.mjs",
+    "command": "node website/interfaces/observatory/smoke.mjs",
+    "benchmark_command": "node website/interfaces/observatory/smoke.mjs --benchmark"
+  },
+  "provenance": {
+    "receipt_schema": "CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources": [
+      "research/observatory-inputs/e47_qgnn.py",
+      "src/e47/su2_kernel.py",
+      "website/interfaces/e47-research-workbench/engine.mjs"
+    ]
+  },
+  "telemetry": {
+    "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0"
+  },
+  "boundaries": [
+    "Finite mathematical and noiseless compressed quantum simulation, not quantum hardware or physical validation.",
+    "Neural metrics are synthetic training metrics.",
+    "Atlas links preserve source boundaries; external embedding/state transfer is not asserted.",
+    "Private workspace records and credentials are excluded from public artifacts."
+  ]
+}

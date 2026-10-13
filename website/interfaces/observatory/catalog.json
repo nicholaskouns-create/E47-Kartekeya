@@ -1,0 +1,868 @@
+{
+  "version": "CITY-OBSERVATORY-CATALOG-1",
+  "generatedAt": "2026-10-13",
+  "verification": "Curated from reviewed repository sources and owner-supplied destinations. External titles, availability, and embedding remain unverified where noted.",
+  "routes": [
+    {
+      "id": "city-home",
+      "title": "E47 Kartekeya",
+      "category": "City",
+      "description": "Existing E47 project entrance.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "city",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/"
+      }
+    },
+    {
+      "id": "city-live",
+      "title": "City Live",
+      "category": "City",
+      "description": "Existing live City interface.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "city",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/city-live/"
+      }
+    },
+    {
+      "id": "formalism-atlas",
+      "title": "Formalism Atlas",
+      "category": "Evidence",
+      "description": "Existing interface for exploring the formalism atlas.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "evidence",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/"
+      }
+    },
+    {
+      "id": "route-packets",
+      "title": "Route Packets",
+      "category": "Evidence",
+      "description": "Existing route packet interface.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "evidence",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/route-packets/"
+      }
+    },
+    {
+      "id": "civic-assignment",
+      "title": "Civic Assignment",
+      "category": "Commons",
+      "description": "Existing civic assignment interface.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/civic-assignment/",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "commons",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/civic-assignment/"
+      }
+    },
+    {
+      "id": "eidolon-flight",
+      "title": "EIDOLON Flight Lab",
+      "category": "Flight",
+      "description": "User-supplied hosted EIDOLON flight destination.",
+      "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "flight",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site"
+      }
+    },
+    {
+      "id": "pip-manta",
+      "title": "PiP–MANTA",
+      "category": "Learning",
+      "description": "Existing PiP–MANTA interface.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/pip-manta/?utm_source=chatgpt.com",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "learning",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/pip-manta/?utm_source=chatgpt.com"
+      }
+    },
+    {
+      "id": "creator-home",
+      "title": "Nicholas Kouns — project home",
+      "category": "City",
+      "description": "User-supplied GitHub Pages homepage.",
+      "url": "https://nicholaskouns-create.github.io/",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "city",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/"
+      }
+    },
+    {
+      "id": "kouns-core-flight",
+      "title": "Kouns Core · EIDOLON",
+      "category": "Flight",
+      "description": "User-supplied EIDOLON module route within Kouns Core.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight",
+      "embed": "unknown",
+      "evidence": "Destination supplied by the owner; availability and behavior require live verification.",
+      "boundary": "Opens externally. Embedding and cross-surface state compatibility are not verified.",
+      "tags": [
+        "flight",
+        "existing-surface"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight"
+      }
+    },
+    {
+      "id": "hosted-1",
+      "title": "iris-dove-dawn-silver.grok.me / fold",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://iris-dove-dawn-silver.grok.me/fold",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://iris-dove-dawn-silver.grok.me/fold"
+      }
+    },
+    {
+      "id": "hosted-2",
+      "title": "king-dawn-terra-nova.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://king-dawn-terra-nova.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://king-dawn-terra-nova.grok.me"
+      }
+    },
+    {
+      "id": "hosted-3",
+      "title": "autumn-palm-blend-wave.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://autumn-palm-blend-wave.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://autumn-palm-blend-wave.grok.me"
+      }
+    },
+    {
+      "id": "hosted-4",
+      "title": "monarch-sky-daisy-civic.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://monarch-sky-daisy-civic.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://monarch-sky-daisy-civic.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-5",
+      "title": "zest-blade-turbo-rose.grok.me / qegt",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://zest-blade-turbo-rose.grok.me/qegt",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://zest-blade-turbo-rose.grok.me/qegt"
+      }
+    },
+    {
+      "id": "hosted-6",
+      "title": "moon-shale-tulip-xenon.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://moon-shale-tulip-xenon.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://moon-shale-tulip-xenon.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-7",
+      "title": "kite-pixel-tiger-stone.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://kite-pixel-tiger-stone.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://kite-pixel-tiger-stone.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-8",
+      "title": "leaf-vivid-bison-crisp.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://leaf-vivid-bison-crisp.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://leaf-vivid-bison-crisp.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-9",
+      "title": "flame-kind-fleet-blend.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://flame-kind-fleet-blend.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://flame-kind-fleet-blend.grok.me"
+      }
+    },
+    {
+      "id": "hosted-10",
+      "title": "apex-zinc-daisy-acre.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://apex-zinc-daisy-acre.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://apex-zinc-daisy-acre.grok.me"
+      }
+    },
+    {
+      "id": "hosted-11",
+      "title": "spark-maple-sail-tiger.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://spark-maple-sail-tiger.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://spark-maple-sail-tiger.grok.me"
+      }
+    },
+    {
+      "id": "hosted-12",
+      "title": "sapphire-cabin-crystal-king.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://sapphire-cabin-crystal-king.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://sapphire-cabin-crystal-king.grok.me"
+      }
+    },
+    {
+      "id": "hosted-13",
+      "title": "star-sage-atlas-rapid.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://star-sage-atlas-rapid.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://star-sage-atlas-rapid.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-14",
+      "title": "glow-garden-brick-cedar.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://glow-garden-brick-cedar.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://glow-garden-brick-cedar.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-15",
+      "title": "iris-dove-dawn-silver.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://iris-dove-dawn-silver.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://iris-dove-dawn-silver.grok.me"
+      }
+    },
+    {
+      "id": "hosted-16",
+      "title": "garden-moss-cabin-forest.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://garden-moss-cabin-forest.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://garden-moss-cabin-forest.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-17",
+      "title": "zinc-crane-gem-pepper.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://zinc-crane-gem-pepper.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://zinc-crane-gem-pepper.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-18",
+      "title": "velvet-king-quiet-amber.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://velvet-king-quiet-amber.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://velvet-king-quiet-amber.grok.me"
+      }
+    },
+    {
+      "id": "hosted-19",
+      "title": "mist-mint-branch-nova.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://mist-mint-branch-nova.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://mist-mint-branch-nova.grok.me"
+      }
+    },
+    {
+      "id": "hosted-20",
+      "title": "heart-eagle-blade-hazel.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://heart-eagle-blade-hazel.grok.me",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://heart-eagle-blade-hazel.grok.me"
+      }
+    },
+    {
+      "id": "hosted-21",
+      "title": "topaz-solar-iris-drift.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://topaz-solar-iris-drift.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://topaz-solar-iris-drift.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-22",
+      "title": "kite-glade-tiger-cabin.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://kite-glade-tiger-cabin.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://kite-glade-tiger-cabin.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-23",
+      "title": "winter-dawn-leaf-marble.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://winter-dawn-leaf-marble.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://winter-dawn-leaf-marble.grok.me/"
+      }
+    },
+    {
+      "id": "hosted-24",
+      "title": "oasis-acorn-pearl-prism.grok.me",
+      "category": "Hosted instruments",
+      "description": "Owner-supplied destination. Its title and capabilities have not been verified.",
+      "url": "https://oasis-acorn-pearl-prism.grok.me/",
+      "embed": "unknown",
+      "evidence": "URL supplied by the owner. Remote inspection was unavailable in this session.",
+      "boundary": "Open externally to inspect this instrument. No iframe or identity integration is assumed.",
+      "tags": [
+        "external",
+        "unverified"
+      ],
+      "source": {
+        "type": "owner-supplied-url",
+        "url": "https://oasis-acorn-pearl-prism.grok.me/"
+      }
+    },
+    {
+      "id": "entrain-description",
+      "title": "ENTRAIN · described instrument",
+      "category": "Learning",
+      "description": "Owner-described neural trainer and E47 projection monitor. Locate its hosted route before cross-surface integration.",
+      "url": null,
+      "embed": "unknown",
+      "evidence": "Owner supplied the ENTRAIN interface text; original hosted route remains unidentified.",
+      "boundary": "Neural encoding is not a Hilbert-space isomorphism. Predictive accuracy and E47 capture are distinct. Original ENTRAIN URL remains unidentified.",
+      "tags": [
+        "neural",
+        "projection",
+        "entrain",
+        "route-unidentified"
+      ],
+      "source": {
+        "type": "owner-supplied-interface-description",
+        "reference": "ENTRAIN interface text in project conversation"
+      }
+    },
+    {
+      "id": "q5",
+      "title": "Q5 Lattice",
+      "category": "Geometry",
+      "description": "Explore 125 addresses with cube and torus topology.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Address topology is a distinct object from the Casimir-selected subspace.",
+      "tags": [
+        "q5",
+        "geometry",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/q5"
+      }
+    },
+    {
+      "id": "matrix",
+      "title": "THE MATRIX",
+      "category": "Quantum",
+      "description": "Explore the existing quantum simulation instrument.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/matrix/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Simulation and parity reconstruction do not establish hardware performance.",
+      "tags": [
+        "matrix",
+        "quantum",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/matrix"
+      }
+    },
+    {
+      "id": "e47-research-workbench",
+      "title": "E47 Research WorkBench",
+      "category": "Evidence",
+      "description": "Replay spectral experiments, inspect crystal geometry, and export results.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-research-workbench/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Sector observables omit phases; exports are reproducibility records, not signed attestations.",
+      "tags": [
+        "e47-research-workbench",
+        "evidence",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/e47-research-workbench"
+      }
+    },
+    {
+      "id": "e47-spectral-matrix-proof",
+      "title": "125 × 125 Matrix Proof",
+      "category": "Evidence",
+      "description": "Inspect the finite spectral core and its executable reconstruction.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Finite mathematical results retain their stated assumptions.",
+      "tags": [
+        "e47-spectral-matrix-proof",
+        "evidence",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/e47-spectral-matrix-proof"
+      }
+    },
+    {
+      "id": "manta",
+      "title": "MANTA",
+      "category": "Flight",
+      "description": "Explore the programmable-matter spectral-morph flight simulation.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/manta/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Vehicle behavior is modeled simulation, not demonstrated propulsion hardware.",
+      "tags": [
+        "manta",
+        "flight",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/manta"
+      }
+    },
+    {
+      "id": "skyrmion",
+      "title": "SKYRMION Runtime 2",
+      "category": "Flight",
+      "description": "Explore the multi-domain flight laboratory.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Conventional and experimental vehicle models retain separate scope.",
+      "tags": [
+        "skyrmion",
+        "flight",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/skyrmion"
+      }
+    },
+    {
+      "id": "nexus",
+      "title": "NEXUS",
+      "category": "City",
+      "description": "Explore pulse, packet cinema, and instrument composition.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/nexus/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Composition does not upgrade source evidence.",
+      "tags": [
+        "nexus",
+        "city",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/nexus"
+      }
+    },
+    {
+      "id": "density-sensitivity",
+      "title": "DENSITY",
+      "category": "Measurement",
+      "description": "Explore sensitivity tomography in the existing instrument.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/density-sensitivity/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Model sensitivity is distinct from empirical measurement.",
+      "tags": [
+        "density-sensitivity",
+        "measurement",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/density-sensitivity"
+      }
+    },
+    {
+      "id": "gaze",
+      "title": "GAZE",
+      "category": "Astronomy",
+      "description": "Explore the existing sky and astronomical navigation interface.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/gaze/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Astronomical context and modeled overlays retain separate provenance.",
+      "tags": [
+        "gaze",
+        "astronomy",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/gaze"
+      }
+    },
+    {
+      "id": "syntax-jacob",
+      "title": "Syntax Jacob",
+      "category": "Astronomy",
+      "description": "Explore scalar navigation with ephemeris context.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/syntax-jacob/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Ephemeris context and modeled coherence are distinct.",
+      "tags": [
+        "syntax-jacob",
+        "astronomy",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/syntax-jacob"
+      }
+    },
+    {
+      "id": "coherence-runtime",
+      "title": "Coherence Runtime",
+      "category": "Governance",
+      "description": "Inspect the existing continuity and consent runtime.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Identity records and runtime contracts do not imply universal authority.",
+      "tags": [
+        "coherence-runtime",
+        "governance",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/coherence-runtime"
+      }
+    },
+    {
+      "id": "e47-47face-crystal",
+      "title": "47-Face Crystal",
+      "category": "Geometry",
+      "description": "Inspect the existing crystal geometry surface.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-47face-crystal/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Geometric reconstruction is not physical or historical causation.",
+      "tags": [
+        "e47-47face-crystal",
+        "geometry",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/e47-47face-crystal"
+      }
+    },
+    {
+      "id": "instruments",
+      "title": "Instrument Portal",
+      "category": "City",
+      "description": "Browse the canonical instrument directory.",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/",
+      "embed": "unknown",
+      "evidence": "Repository source reviewed; publication availability checked separately.",
+      "boundary": "Each instrument retains its own evidence boundary.",
+      "tags": [
+        "instruments",
+        "city",
+        "existing-instrument"
+      ],
+      "source": {
+        "type": "github-source",
+        "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/instruments"
+      }
+    }
+  ]
+}

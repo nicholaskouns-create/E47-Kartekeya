@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {performance} from 'node:perf_hooks';
+import {spectralRun,makeDataset,createTrainer,trainEpoch,trainerMetrics} from './engine.mjs';
+import {evolveCarrier} from './qgnn.mjs';
+const start=performance.now(),run=spectralRun({selectedWeight:.376,steps:30,seed:47});
+assert.ok(run.records.at(-1).error<=run.records.at(-1).bound+1e-12);
+const trainer=createTrainer({dataset:makeDataset('Circle',47,128),hidden:8});
+for(let i=0;i<100;i++)trainEpoch(trainer);
+const carrier=JSON.parse(readFileSync(new URL('./qgnn-data.json',import.meta.url),'utf8'));
+const quantum=evolveCarrier(carrier,[.34,-.27,.21,.48]);
+assert.ok(Math.abs(quantum.expectation-carrier.fixtures[1].expectation)<1e-10);
+console.log(JSON.stringify({schema:'CITY-INSTRUMENT-RECEIPT/1.0',component_id:'city-observatory',version:'1.0.0',status:'PASS',evidence:['E1','E2'],elapsed_ms:performance.now()-start,metrics:{projection_probability:run.records.at(-1).probability,training_mse:trainerMetrics(trainer).mse,quantum_norm_error:quantum.error},scope:'Deterministic browser-model smoke. No remote writes, hardware execution or empirical claims.'}));
