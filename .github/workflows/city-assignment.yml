@@ -36,6 +36,7 @@ jobs:
           python scripts/check_evidence_ledger.py
           python scripts/build_city_assignment.py
           python scripts/build_city_assignment.py --check
+          python -m unittest scripts.test_city_link_audit
           python scripts/audit_city_links.py
       - name: Commit canonical publication snapshot only if changed
         run: |

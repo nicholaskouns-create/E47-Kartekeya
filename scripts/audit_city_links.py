@@ -7,7 +7,7 @@ from __future__ import annotations
 import html.parser, pathlib, sys, urllib.parse, urllib.request, time
 ROOT=pathlib.Path(__file__).resolve().parents[1]/"website"
 BASE="https://nicholaskouns-create.github.io/E47-Kartekeya/"
-PAGES=["index.html","interfaces/city-live/index.html","interfaces/formalism-atlas/index.html","interfaces/route-packets/index.html","interfaces/civic-assignment/index.html"]
+PAGES=["index.html","interfaces/city-live/index.html","interfaces/formalism-atlas/index.html","interfaces/route-packets/index.html","interfaces/civic-assignment/index.html","interfaces/observatory/index.html"]
 TARGET="interfaces/civic-assignment/index.html"
 class Links(html.parser.HTMLParser):
     def __init__(self):super().__init__();self.links=[]
@@ -19,13 +19,13 @@ class Links(html.parser.HTMLParser):
 def normalized(current,link):
     u=urllib.parse.urlsplit(link)
     if u.scheme in ("mailto","tel","javascript","data") or link.startswith("#") or link.startswith("//"):return None
-    if u.scheme and u.netloc not in ("nicholaskouns-create.github.io",):return None
-    if u.netloc:
-        if not u.path.startswith("/E47-Kartekeya/"):return None
-        rel=u.path[len("/E47-Kartekeya/"):]
-    elif u.path.startswith("/E47-Kartekeya/"):rel=u.path[len("/E47-Kartekeya/"):]
-    elif u.path.startswith("/"):return None
-    else:rel=urllib.parse.urljoin(current,link).split("?",1)[0].split("#",1)[0]
+    # Resolve against an absolute Pages URL. A path-only urljoin returns '/'
+    # for '../../', incorrectly treating the repository home as /index.html.
+    resolved=urllib.parse.urlsplit(urllib.parse.urljoin(urllib.parse.urljoin(BASE,current),link))
+    if resolved.scheme not in ("http","https") or resolved.netloc!="nicholaskouns-create.github.io":return None
+    prefix="/E47-Kartekeya/"
+    if not resolved.path.startswith(prefix):return None
+    rel=resolved.path[len(prefix):]
     if not rel or rel.endswith("/"):rel+="index.html"
     return urllib.parse.unquote(rel)
 def main():
