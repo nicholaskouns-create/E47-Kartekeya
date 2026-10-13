@@ -19,3 +19,7 @@ GitHub Pages serves the static app. Supabase can provide authorized persistence 
 ## Verification queue
 
 Confirm original ENTRAIN route; fetch live titles and frame policies; inspect permitted embedding; define accepted replay fields per instrument; verify keyboard, reduced-motion, text, and phone behavior; confirm public publication scope before adding any connected workspace data.
+
+## Public endpoint audit
+
+All 24 supplied Grok endpoints returned HTTP 200 on 2026-10-13; their observed titles now identify the Atlas cards. No restrictive frame headers were observed, but the build browser could not validate external frames, so these remain direct launch destinations with embedding marked unknown. `surface-audit.json` records the bounded public reads.
