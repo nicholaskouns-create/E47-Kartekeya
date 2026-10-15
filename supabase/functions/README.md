@@ -25,3 +25,12 @@ Secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID` (see `docs/CITY_RUNTIME_
 ## Secrets policy
 
 Never commit service-role keys, JWTs, or launch tokens. Use `Deno.env.get(...)`.
+
+## Publishing functions
+
+`city-app-migrator` and `city-app-route-patch` write into the `city-apps` bucket that `city-app-host` serves. They run without JWT verification, so they require the header `x-city-admin-token` matching the Supabase secret `CITY_ADMIN_TOKEN`. While the secret is unset they refuse every call. Each published file's SHA-256 is recorded in the response and, for the migrator, in `migration-manifest.json`.
+
+```bash
+curl -H "x-city-admin-token: $CITY_ADMIN_TOKEN" \
+  "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-migrator?app=spectra"
+```
