@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Full City HTML inventory and link graph audit. No silent orphan exemptions.
+"""Full City HTML inventory and link graph audit. Orphan exemptions must be explicit, each with a reason, in config/city-orphan-exemptions.json.
 Usage: python scripts/crawl_city_site.py [--live]
 Emits JSON diagnostics; exits 1 if broken internal links, orphan HTML pages,
 or live HTTP failures are found. External sites are out of scope.
@@ -19,7 +19,9 @@ def target(page,link):
     if u.netloc or u.path.startswith("/"):
         if not u.path.startswith("/E47-Kartekeya/"):return None
         rel=u.path[len("/E47-Kartekeya/"):]
-    else:rel=urllib.parse.urljoin(page,link).split("#")[0].split("?")[0]
+    else:
+        # Resolve against a synthetic absolute root so "../" from a subpage maps to the site root, not "/".
+        rel=urllib.parse.urlsplit(urllib.parse.urljoin("https://site.invalid/"+page,link)).path.lstrip("/")
     rel=urllib.parse.unquote(rel)
     if not rel or rel.endswith("/"):rel+="index.html"
     return rel
@@ -44,7 +46,9 @@ def main():
         p=stack.pop()
         if p in reached:continue
         reached.add(p);stack.extend(edges.get(p,set())-reached)
-    orphaned=sorted(known-reached)
+    ex_path=ROOT.parent/"config"/"city-orphan-exemptions.json"
+    exempt=set(json.load(open(ex_path))["exempt"]) if ex_path.is_file() else set()
+    orphaned=sorted(known-reached-exempt)
     live=[]
     if "--live" in sys.argv:
         assets=sorted(set(p for p in pages if p in reached)|{"data/city-assignment.json"})

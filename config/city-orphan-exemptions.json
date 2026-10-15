@@ -1,0 +1,22 @@
+{
+  "schema": "MC-CITY-ORPHAN-EXEMPT/1.0",
+  "note": "Pages intentionally unlinked: embed targets, lock cards, redirect stubs. Each needs a reason.",
+  "exempt": {
+    "interfaces/manifold/embed.html": "iframe embed target (nexus/app.js, pip-manta aims-embed)",
+    "interfaces/manifold/lock.html": "lock card loaded by manifold/index + nexus/app.js",
+    "interfaces/manifold/city.html": "redirect stub -> manifold/index.html?view=city",
+    "interfaces/manifold/density.html": "redirect stub -> manifold view",
+    "interfaces/manifold/eidolon.html": "redirect stub -> manifold view",
+    "interfaces/nexus/embed.html": "iframe embed target",
+    "interfaces/nexus/lock.html": "lock card loaded by nexus/app.js + manifold/index",
+    "interfaces/nexus/cinema.html": "redirect stub -> nexus view",
+    "interfaces/nexus/operad.html": "redirect stub -> nexus view",
+    "interfaces/nexus/pulse.html": "redirect stub -> nexus view",
+    "interfaces/nexus/watchtower.html": "redirect stub -> nexus view",
+    "interfaces/pip-manta/embed.html": "iframe embed target (aims-embed.md)",
+    "interfaces/pip-manta/card.html": "share/preview card for embeds",
+    "interfaces/kouns-core/bridge.html": "embedded field-bridge panel used inside kouns-core",
+    "interfaces/mathematical-city/index.html": "legacy redirect to site root (noindex)",
+    "interfaces/visualizers/index.html": "retired route, redirect to instruments/"
+  }
+}
