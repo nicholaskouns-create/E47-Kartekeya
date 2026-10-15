@@ -2,7 +2,7 @@
   "schema": "MC-CIVIC-ASSIGNMENT/2.0",
   "policy": "research/e47/CITY_CONSTITUTION_EVIDENCE_DETERMINED_PROMOTION_20261008.md",
   "source": "research/e47/evidence_ledger.json",
-  "source_sha256": "d7e92ddcc302c9978ce87203d2ab53a538d0b043879a4a2c3c2392c1e11876c8",
+  "source_sha256": "02705c3dcc5a5162c57d5173a705b6161b84423e8aabbbbfa8ae54d2e2b9a19b",
   "claims": [
     {
       "id": "census.decomposition",
@@ -133,6 +133,54 @@
         "lock.condition_4",
         "lock.five_factor_identity"
       ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "moment.cube_first_proper_carrier",
+      "statement": "V2⊗V2⊗V2 is the first triple product on which the moment selector cuts a proper kernel; there it is (C-6I)(C-30I) with dim ker 47",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "certificate_sha256": "d6a9fc021290b9aec0bdd1fcc3e15dc5fd6de9e9a4a2fd7ddd33167aa894fbdb",
+      "verified_check": "first_proper_member_is_e47",
+      "depends_on": [
+        "census.decomposition",
+        "moment.fibonacci_lucas_carriers",
+        "moment.triple_roots"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "moment.fibonacci_lucas_carriers",
+      "statement": "Both moment roots are Casimir values on V_j⊗V_j⊗V_j iff (2J+1, 2j+1) = (L_k, F_k) with k odd (proved in the note; exhaustively checked for 2j ≤ 400)",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "certificate_sha256": "d6a9fc021290b9aec0bdd1fcc3e15dc5fd6de9e9a4a2fd7ddd33167aa894fbdb",
+      "verified_check": "upper_root_iff_fibonacci_to_j200",
+      "depends_on": [
+        "moment.triple_roots"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "moment.triple_roots",
+      "statement": "On V_j⊗V_j⊗V_j the Casimir has mean 3j(j+1) and standard deviation 2j(j+1), so the moment roots are j(j+1) and 5j(j+1)",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "certificate_sha256": "d6a9fc021290b9aec0bdd1fcc3e15dc5fd6de9e9a4a2fd7ddd33167aa894fbdb",
+      "verified_check": "triple_mu_3jj1_sigma_2jj1",
+      "depends_on": [],
       "conditional_on": [],
       "empirical": [],
       "scope": "as-stated-in-ledger",
@@ -299,23 +347,23 @@
       "supersession": "not_assessed"
     }
   ],
-  "claim_count": 18,
-  "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+  "claim_count": 21,
+  "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
   "surfaces": {
     "citadel": {
-      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     },
     "citizenship_bureau": {
-      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     },
     "proof_forge": {
-      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     },
     "publication": {
-      "assignment_sha256": "4cb0cb69e7ca884797abb846e43b7144fbe3a084378513a00c64d06fd5c5ab69",
+      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     }
   }

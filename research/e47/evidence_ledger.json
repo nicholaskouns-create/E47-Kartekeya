@@ -19,6 +19,30 @@
       "depends_on": ["census.decomposition"]
     },
     {
+      "id": "moment.triple_roots",
+      "statement": "On V_j⊗V_j⊗V_j the Casimir has mean 3j(j+1) and standard deviation 2j(j+1), so the moment roots are j(j+1) and 5j(j+1)",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "check": "triple_mu_3jj1_sigma_2jj1",
+      "depends_on": []
+    },
+    {
+      "id": "moment.fibonacci_lucas_carriers",
+      "statement": "Both moment roots are Casimir values on V_j⊗V_j⊗V_j iff (2J+1, 2j+1) = (L_k, F_k) with k odd (proved in the note; exhaustively checked for 2j ≤ 400)",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "check": "upper_root_iff_fibonacci_to_j200",
+      "depends_on": ["moment.triple_roots"]
+    },
+    {
+      "id": "moment.cube_first_proper_carrier",
+      "statement": "V2⊗V2⊗V2 is the first triple product on which the moment selector cuts a proper kernel; there it is (C-6I)(C-30I) with dim ker 47",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "check": "first_proper_member_is_e47",
+      "depends_on": ["moment.fibonacci_lucas_carriers", "census.decomposition"]
+    },
+    {
       "id": "lock.condition_4",
       "statement": "|K| on the complement of E47 is {108,112,140,180,432}; condition number 4",
       "evidence": "E0",
