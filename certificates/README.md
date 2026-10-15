@@ -16,6 +16,8 @@ The first four records below live in `artifacts/`. Their theorem notes and execu
 | [Condition lock](../artifacts/E47_CONDITION_LOCK_CERTIFICATE.json) | Optimal constant step, five-factor projector and five-step termination · 25/25 |
 | [Signature and symmetry](../artifacts/E47_SIGNATURE_SYMMETRY_CERTIFICATE.json) | SU(2) × S₃ resolution, K inertia and Krein-form isometries · 28/28 |
 | [Casimir census](../artifacts/E47_CASIMIR_CENSUS_CERTIFICATE.json) | Multiplicity vector and unique quadratic 47-dimensional selector · 12/12 |
+| [Moment selector](../artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json) | μ ± σ selector on triple products: Fibonacci–Lucas carriers, cube first proper member · 13/13 |
+| [Moment dynamics](../artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json) | Flow and iteration closed forms on every member; cube best-conditioned, 15/17 and 3/5 · 13/13 |
 | [Profile injection](../artifacts/E47_PROFILE_INJECTION_CERTIFICATE.json) | Vacuum plane-wave family and conditional unmarked-moduli injectivity · 9/9 |
 | [G_E47 machine status](MC-G-E47-MACHINE-STATUS-20260927.json) | Locked core, structural carrier, external L, and uninstantiated maps · 5/5; [scope note](MC-G-E47-MACHINE-STATUS-20260927.md) |
 | [E47 × KKP-RADAR bridge](MC-E47-RADAR-BRIDGE-20260927-001.json) | Exact 5×5×5 I/Q → E47 operator bridge; isotropic-null occupancy 47/125; synthetic seven-shell benchmark PASS; measured-radar validation not claimed |

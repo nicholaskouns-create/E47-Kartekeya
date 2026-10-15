@@ -1,0 +1,126 @@
+{
+  "boundary": "Triple products V_j^(x)3 only. The moment rule is a chosen selector; the theorem shows the carrier it forces, not that the rule is the only natural one. For n = 25, 243, ... sigma is rational and the question is open. No physical identification is claimed.",
+  "checks": {
+    "first_proper_member_is_e47": true,
+    "lower_root_is_spin_j_sector": true,
+    "machine_cube_kmom_nullity_47": true,
+    "machine_cube_moments_18_12": true,
+    "norm_equation_lucas_fibonacci": true,
+    "phi_power_identity": true,
+    "proper_kernel_for_k5_to_k13": true,
+    "selector_hits_both_sectors_k3_to_k13": true,
+    "spin_half_selects_whole_carrier": true,
+    "three_is_first_rational_sigma": true,
+    "triple_mu_3jj1_sigma_2jj1": true,
+    "upper_root_iff_fibonacci_to_j200": true,
+    "variance_lemma_n2_to_6": true
+  },
+  "exact": {
+    "carriers_with_both_roots_in_spectrum_2j_up_to_400": [
+      1,
+      4,
+      12,
+      33,
+      88,
+      232
+    ],
+    "evidence": "exact rational arithmetic over Clebsch\u2013Gordan decompositions",
+    "family": [
+      {
+        "F_k": 2,
+        "J": "3/2",
+        "L_k": 4,
+        "dim_carrier": 8,
+        "dim_kernel": 8,
+        "j": "1/2",
+        "k": 3,
+        "mu": "9/4",
+        "omega": "1",
+        "selector_hits_both_sectors": true,
+        "sigma": "3/2"
+      },
+      {
+        "F_k": 5,
+        "J": "5",
+        "L_k": 11,
+        "dim_carrier": 125,
+        "dim_kernel": 47,
+        "j": "2",
+        "k": 5,
+        "mu": "18",
+        "omega": "47/125",
+        "selector_hits_both_sectors": true,
+        "sigma": "12"
+      },
+      {
+        "F_k": 13,
+        "J": "14",
+        "L_k": 29,
+        "dim_carrier": 2197,
+        "dim_kernel": 314,
+        "j": "6",
+        "k": 7,
+        "mu": "126",
+        "omega": "314/2197",
+        "selector_hits_both_sectors": true,
+        "sigma": "84"
+      },
+      {
+        "F_k": 34,
+        "J": "75/2",
+        "L_k": 76,
+        "dim_carrier": 39304,
+        "dim_kernel": 2144,
+        "j": "33/2",
+        "k": 9,
+        "mu": "3465/4",
+        "omega": "268/4913",
+        "selector_hits_both_sectors": true,
+        "sigma": "1155/2"
+      },
+      {
+        "F_k": 89,
+        "J": "99",
+        "L_k": 199,
+        "dim_carrier": 704969,
+        "dim_kernel": 14687,
+        "j": "44",
+        "k": 11,
+        "mu": "5940",
+        "omega": "14687/704969",
+        "selector_hits_both_sectors": true,
+        "sigma": "3960"
+      },
+      {
+        "F_k": 233,
+        "J": "260",
+        "L_k": 521,
+        "dim_carrier": 12649337,
+        "dim_kernel": 100658,
+        "j": "116",
+        "k": 13,
+        "mu": "40716",
+        "omega": "100658/12649337",
+        "selector_hits_both_sectors": true,
+        "sigma": "27144"
+      }
+    ],
+    "lemma": "mu = n j(j+1), sigma^2 = (2n(n-1)/3)[j(j+1)]^2",
+    "norm_equation": "(2J+1)^2 - 5(2j+1)^2 = -4  <=>  (2J+1, 2j+1) = (L_k, F_k), k odd",
+    "rational_sigma_tensor_powers": [
+      3,
+      25,
+      243
+    ],
+    "selector": "K_mom = (C - (mu - sigma)I)(C - (mu + sigma)I), moments of spec(C) under the normalized trace",
+    "triple_roots": "mu - sigma = j(j+1) (sector J = j); mu + sigma = 5 j(j+1)"
+  },
+  "machine": {
+    "evidence": "float64 replay on the 125x125 carrier",
+    "mu": 18.0,
+    "nullity": 47,
+    "sigma": 12.0
+  },
+  "schema": "MC-E47-MOMENT-SELECTOR/1.0",
+  "status": "PASS"
+}

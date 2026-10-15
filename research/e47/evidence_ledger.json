@@ -19,6 +19,54 @@
       "depends_on": ["census.decomposition"]
     },
     {
+      "id": "moment.triple_roots",
+      "statement": "On V_j⊗V_j⊗V_j the Casimir has mean 3j(j+1) and standard deviation 2j(j+1), so the moment roots are j(j+1) and 5j(j+1)",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "check": "triple_mu_3jj1_sigma_2jj1",
+      "depends_on": []
+    },
+    {
+      "id": "moment.fibonacci_lucas_carriers",
+      "statement": "Both moment roots are Casimir values on V_j⊗V_j⊗V_j iff (2J+1, 2j+1) = (L_k, F_k) with k odd (proved in the note; exhaustively checked for 2j ≤ 400)",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "check": "upper_root_iff_fibonacci_to_j200",
+      "depends_on": ["moment.triple_roots"]
+    },
+    {
+      "id": "moment.cube_first_proper_carrier",
+      "statement": "V2⊗V2⊗V2 is the first triple product on which the moment selector cuts a proper kernel; there it is (C-6I)(C-30I) with dim ker 47",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_SELECTOR_CERTIFICATE.json",
+      "check": "first_proper_member_is_e47",
+      "depends_on": ["moment.fibonacci_lucas_carriers", "census.decomposition"]
+    },
+    {
+      "id": "moment.dynamics_closed_forms",
+      "statement": "On every Fibonacci–Lucas carrier the moment selector's gap is at J = j+1 and its top at J = 3j, so sqrt(kappa) = j^2(4j+1)/(j+1)^2 (proved in the note; exact for k = 5..13)",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json",
+      "check": "root_kappa_closed_form",
+      "depends_on": ["moment.fibonacci_lucas_carriers"]
+    },
+    {
+      "id": "moment.cube_best_conditioned",
+      "statement": "The cube is the best-conditioned moment carrier: ||K||/gap = 4, optimal rate 15/17, Chebyshev rate 3/5",
+      "evidence": "E0",
+      "record": "artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json",
+      "check": "cube_best_conditioned_in_family",
+      "depends_on": ["moment.dynamics_closed_forms", "moment.cube_first_proper_carrier"]
+    },
+    {
+      "id": "moment.cube_flow_replay",
+      "statement": "On the 125x125 carrier ||e^{-tK^2} - P|| = e^{-11664 t}, ||(I - K^2/99144)^n - P|| = (15/17)^n, and the five-factor product is the exact projector",
+      "evidence": "E1",
+      "record": "artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json",
+      "check": "machine_flow_and_iteration_rates",
+      "depends_on": ["moment.dynamics_closed_forms"]
+    },
+    {
       "id": "lock.condition_4",
       "statement": "|K| on the complement of E47 is {108,112,140,180,432}; condition number 4",
       "evidence": "E0",
