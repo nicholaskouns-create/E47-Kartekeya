@@ -7,8 +7,8 @@ Status as of 2026-09-27 12:10 PT on PR #107 (`sync/supabase-runtime-source-20260
 | function slug | band | purpose | site/caller if known | status |
 |---|---|---|---|---|
 | `city-app-host` | host | Static app host + Syntax Jacob ephemeris proxy from storage | website/interfaces | exported |
-| `city-app-migrator` | host | Crawl grok.me origins into city-apps storage bucket | — | exported |
-| `city-app-route-patch` | host | Patch SEE registry/suite routes into storage | — | exported |
+| `city-app-migrator` | host | Crawl grok.me origins into city-apps storage bucket; requires `x-city-admin-token`; records SHA-256 per file | — | exported |
+| `city-app-route-patch` | host | Patch SEE registry/suite routes into storage; requires `x-city-admin-token`; records SHA-256 per file | — | exported |
 | `city-graphics-accelerator` | host | Graphics contract + adaptive canvas ES module | website/interfaces | exported |
 | `city-mini-labs` | labs/brand | Mini AI Labs registry, HTML gateway, octet packet actions | city-formalism-rescue, city-cube-bus | pending export |
 | `city-mini-labs-editorial-light` | labs/brand | Quiet editorial entry to city-unified-game | — | exported |
