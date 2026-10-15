@@ -2,7 +2,7 @@
   "schema": "MC-CIVIC-ASSIGNMENT/2.0",
   "policy": "research/e47/CITY_CONSTITUTION_EVIDENCE_DETERMINED_PROMOTION_20261008.md",
   "source": "research/e47/evidence_ledger.json",
-  "source_sha256": "02705c3dcc5a5162c57d5173a705b6161b84423e8aabbbbfa8ae54d2e2b9a19b",
+  "source_sha256": "8dcb8c4a8fa1c3a4a5df5aae36cb3c038eac5bd67a142533a3ffaa652a4dc854",
   "claims": [
     {
       "id": "census.decomposition",
@@ -139,6 +139,26 @@
       "supersession": "not_assessed"
     },
     {
+      "id": "moment.cube_best_conditioned",
+      "statement": "The cube is the best-conditioned moment carrier: ||K||/gap = 4, optimal rate 15/17, Chebyshev rate 3/5",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json",
+      "certificate_sha256": "eb433fe1a554564c1229d2bfe547d5dd9704c708f45ce93d0073d572cd306786",
+      "verified_check": "cube_best_conditioned_in_family",
+      "depends_on": [
+        "census.decomposition",
+        "moment.cube_first_proper_carrier",
+        "moment.dynamics_closed_forms",
+        "moment.fibonacci_lucas_carriers",
+        "moment.triple_roots"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
       "id": "moment.cube_first_proper_carrier",
       "statement": "V2⊗V2⊗V2 is the first triple product on which the moment selector cuts a proper kernel; there it is (C-6I)(C-30I) with dim ker 47",
       "evidence": "E0",
@@ -148,6 +168,41 @@
       "verified_check": "first_proper_member_is_e47",
       "depends_on": [
         "census.decomposition",
+        "moment.fibonacci_lucas_carriers",
+        "moment.triple_roots"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "moment.cube_flow_replay",
+      "statement": "On the 125x125 carrier ||e^{-tK^2} - P|| = e^{-11664 t}, ||(I - K^2/99144)^n - P|| = (15/17)^n, and the five-factor product is the exact projector",
+      "evidence": "E1",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json",
+      "certificate_sha256": "eb433fe1a554564c1229d2bfe547d5dd9704c708f45ce93d0073d572cd306786",
+      "verified_check": "machine_flow_and_iteration_rates",
+      "depends_on": [
+        "moment.dynamics_closed_forms",
+        "moment.fibonacci_lucas_carriers",
+        "moment.triple_roots"
+      ],
+      "conditional_on": [],
+      "empirical": [],
+      "scope": "as-stated-in-ledger",
+      "supersession": "not_assessed"
+    },
+    {
+      "id": "moment.dynamics_closed_forms",
+      "statement": "On every Fibonacci–Lucas carrier the moment selector's gap is at J = j+1 and its top at J = 3j, so sqrt(kappa) = j^2(4j+1)/(j+1)^2 (proved in the note; exact for k = 5..13)",
+      "evidence": "E0",
+      "civic_state": "PRIMA_FACIE",
+      "certificate": "artifacts/E47_MOMENT_DYNAMICS_CERTIFICATE.json",
+      "certificate_sha256": "eb433fe1a554564c1229d2bfe547d5dd9704c708f45ce93d0073d572cd306786",
+      "verified_check": "root_kappa_closed_form",
+      "depends_on": [
         "moment.fibonacci_lucas_carriers",
         "moment.triple_roots"
       ],
@@ -347,23 +402,23 @@
       "supersession": "not_assessed"
     }
   ],
-  "claim_count": 21,
-  "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
+  "claim_count": 24,
+  "assignment_sha256": "4e1c44dd49bf5b76686e2ac6e932d0ed2c920c850022f79ce80fbc67c7dbfa2c",
   "surfaces": {
     "citadel": {
-      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
+      "assignment_sha256": "4e1c44dd49bf5b76686e2ac6e932d0ed2c920c850022f79ce80fbc67c7dbfa2c",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     },
     "citizenship_bureau": {
-      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
+      "assignment_sha256": "4e1c44dd49bf5b76686e2ac6e932d0ed2c920c850022f79ce80fbc67c7dbfa2c",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     },
     "proof_forge": {
-      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
+      "assignment_sha256": "4e1c44dd49bf5b76686e2ac6e932d0ed2c920c850022f79ce80fbc67c7dbfa2c",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     },
     "publication": {
-      "assignment_sha256": "4fd80423c7a424d14f10351204bc90767f161a8b18e65bc8f636b1f2e67779f1",
+      "assignment_sha256": "4e1c44dd49bf5b76686e2ac6e932d0ed2c920c850022f79ce80fbc67c7dbfa2c",
       "url": "/E47-Kartekeya/data/city-assignment.json"
     }
   }

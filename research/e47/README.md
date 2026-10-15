@@ -16,6 +16,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 - [E47 signature and symmetry](E47_Signature_Symmetry_Theorem.md) — exact SU(2)×S₃ resolution, fermion exclusion, bosonic slice V₂, 42-dim mixed core, K inertia (23,55,47), Krein form and its isometries (28/28 PASS)
 - [E47 Casimir census](E47_Casimir_Census_Theorem.md) — census (1,3,5,4,3,2,1), selector rule, E47 as the unique quadratic selector of dimension 47 (12/12 PASS)
 - [E47 moment selector](E47_Moment_Selector_Theorem.md) — μ ± σ of the Casimir lands on the spectrum of V_j⊗³ exactly for 2j+1 = F_k (k odd), with upper sector 2J+1 = L_k; the cube is the first proper carrier, 125 → 47 (13/13 PASS)
+- [E47 moment dynamics](E47_Moment_Dynamics_Theorem.md) — flow e^{−tK²} and iteration I − εK² on every Fibonacci–Lucas carrier: gap at J = j+1, top at J = 3j, √κ = j²(4j+1)/(j+1)²; the cube is best-conditioned (4, 15/17, 3/5, 1/99144) (13/13 PASS)
 - [Profile-injection lemma](E47_Profile_Injection_Lemma.md) — vacuum plane-wave family for any n; injective for odd n, parity obstruction for even n; conditional on one imported fact (9/9 PASS)
 - [Evidence monotonicity](Evidence_Monotonicity.md) — how evidence classes and assumptions propagate; enforced over an 18-claim [ledger](evidence_ledger.json)
 - [Cross-plate validation](validation/e47_extracted_invariants_validation.py) — 47/47 exact and NumPy checks across the supplied E47 plates; [receipt](../../artifacts/E47_EXTRACTED_INVARIANTS_CERTIFICATE.json) records image-derived observations and separate unvalidated claims.

@@ -1,0 +1,134 @@
+{
+  "boundary": "Dynamics of the moment selector on the Fibonacci\u2013Lucas triple products k = 5..13, with closed forms proved in the note for every member. Linear flow and iteration only; no physical time scale or physical identification is claimed.",
+  "checks": {
+    "cube_best_conditioned_in_family": true,
+    "cube_rates_16_15_17_3_5_99144": true,
+    "gap_at_J_equals_j_plus_1": true,
+    "gap_closed_form": true,
+    "integral_ratio_only_on_cube": true,
+    "kernel_is_j_and_upper_root": true,
+    "lower_neighbours_differ_by_4": true,
+    "machine_five_step_exact_projector": true,
+    "machine_flow_and_iteration_rates": true,
+    "optimal_step_closed_form": true,
+    "root_kappa_closed_form": true,
+    "top_at_J_equals_3j": true,
+    "top_closed_form": true
+  },
+  "exact": {
+    "closed_forms": {
+      "eps_star": "1/(8(2j-1)^2[(j+1)^4 + j^4(4j+1)^2])",
+      "gap": "|mu_(j+1)| = 4(j+1)^2(2j-1)",
+      "lower_neighbours": "|mu_(j-1)| = |mu_(j+1)| + 4",
+      "sqrt_kappa": "j^2(4j+1)/(j+1)^2",
+      "top": "|mu_(3j)| = 4j^2(4j+1)(2j-1)"
+    },
+    "dynamics": {
+      "flow": "x' = -K^2 x; ||e^{-tK^2} - P|| = e^{-Delta t}",
+      "iteration": "x_{n+1} = (I - eps K^2) x_n; stable iff 0 < eps < 2/Lambda",
+      "optimum": "eps* = 2/(Delta+Lambda), rho* = (kappa-1)/(kappa+1), Chebyshev (sqrt(kappa)-1)/(sqrt(kappa)+1)"
+    },
+    "evidence": "exact rational arithmetic over every sector of each Fibonacci\u2013Lucas member k = 5..13",
+    "family": [
+      {
+        "Delta": "11664",
+        "J_upper": "5",
+        "Lambda": "186624",
+        "chebyshev": "3/5",
+        "eps_star": "1/99144",
+        "finite_termination_steps": 5,
+        "gap_abs_mu": "108",
+        "gap_sector": "3",
+        "j": "2",
+        "k": 5,
+        "kappa": "16",
+        "rho_star": "15/17",
+        "sqrt_kappa": "4",
+        "top_abs_mu": "432",
+        "top_sector": "6"
+      },
+      {
+        "Delta": "4648336",
+        "J_upper": "14",
+        "Lambda": "1568160000",
+        "chebyshev": "851/949",
+        "eps_star": "1/786404168",
+        "finite_termination_steps": 16,
+        "gap_abs_mu": "2156",
+        "gap_sector": "7",
+        "j": "6",
+        "k": 7,
+        "kappa": "810000/2401",
+        "rho_star": "807599/812401",
+        "sqrt_kappa": "900/49",
+        "top_abs_mu": "39600",
+        "top_sector": "18"
+      },
+      {
+        "Delta": "1536640000",
+        "J_upper": "75/2",
+        "Lambda": "5451365753856",
+        "chebyshev": "35869/37094",
+        "eps_star": "1/2726451196928",
+        "finite_termination_steps": 48,
+        "gap_abs_mu": "39200",
+        "gap_sector": "35/2",
+        "j": "33/2",
+        "k": 9,
+        "kappa": "5323599369/1500625",
+        "rho_star": "2661049372/2662549997",
+        "sqrt_kappa": "72963/1225",
+        "top_abs_mu": "2334816",
+        "top_sector": "99/2"
+      },
+      {
+        "Delta": "496602090000",
+        "J_upper": "99",
+        "Lambda": "14220528156020736",
+        "chebyshev": "113549/114899",
+        "eps_star": "1/7110512379055368",
+        "finite_termination_steps": 131,
+        "gap_abs_mu": "704700",
+        "gap_sector": "45",
+        "j": "44",
+        "k": 11,
+        "kappa": "13047122176/455625",
+        "rho_star": "13046666551/13047577801",
+        "sqrt_kappa": "114224/675",
+        "top_abs_mu": "119249856",
+        "top_sector": "132"
+      },
+      {
+        "Delta": "159987992660496",
+        "J_upper": "260",
+        "Lambda": "33425799602504601600",
+        "chebyshev": "2081117/2090243",
+        "eps_star": "1/16712979795248631048",
+        "finite_termination_steps": 346,
+        "gap_abs_mu": "12648636",
+        "gap_sector": "117",
+        "j": "116",
+        "k": 13,
+        "kappa": "4350061062400/20820969",
+        "rho_star": "4350040241431/4350081883369",
+        "sqrt_kappa": "2085680/4563",
+        "top_abs_mu": "5781504960",
+        "top_sector": "348"
+      }
+    ],
+    "integral_sqrt_kappa_for_2j_up_to_4000": [
+      "2"
+    ]
+  },
+  "machine": {
+    "discrete": true,
+    "evidence": "float64 replay on the 125x125 carrier",
+    "flow": true,
+    "projector": true,
+    "stability": true,
+    "termination_steps": 5,
+    "tolerance": "relative deviation < 1e-8 for 20 iteration steps and 4 flow times"
+  },
+  "schema": "MC-E47-MOMENT-DYNAMICS/1.0",
+  "status": "PASS"
+}

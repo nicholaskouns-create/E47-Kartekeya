@@ -59,6 +59,8 @@ Spin \(1/2\) selects the whole carrier. Spin 2, with \(5=F_5\) and \(11=L_5\), i
 
 With the [Casimir census](E47_Casimir_Census_Theorem.md), the selection reads in two steps. The moment rule picks the cube among carriers. Inside the cube, \(\{2,5\}\) is the unique two-sector selection of dimension 47.
 
+The [moment dynamics](E47_Moment_Dynamics_Theorem.md) complete the picture. Across the family, the cube is also the best-conditioned carrier: \(\|K\|/\mathrm{gap}=4\), rate 15/17.
+
 ## Boundary
 
 - The statement covers triple products \(V_j^{\otimes3}\). For \(n=25,243,\dots\), \(\sigma\) is rational and the question is open.
