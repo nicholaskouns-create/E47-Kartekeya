@@ -8,7 +8,24 @@ body{margin:0;background:var(--b);color:var(--i);font-family:Inter,system-ui,san
 header{padding:64px 0 34px;border-bottom:1px solid var(--l)}small{font:11px ui-monospace,monospace;color:var(--a);letter-spacing:.13em}h1{font-size:clamp(38px,7vw,70px);line-height:.95;margin:12px 0 18px}p{color:var(--m)}.status{display:inline-block;border:1px solid var(--a);color:var(--g);padding:7px 10px;border-radius:999px;font:12px ui-monospace,monospace}
 section{padding:28px 0;border-bottom:1px solid var(--l)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{background:var(--p);border:1px solid var(--l);padding:18px;border-radius:10px}.eq{font:16px ui-monospace,monospace;color:var(--g);overflow-wrap:anywhere}.nums{font:13px ui-monospace,monospace;color:var(--i)}
 a{color:var(--a)}footer{padding:30px 0 60px;color:var(--m);font:11px ui-monospace,monospace}@media(max-width:700px){.grid{grid-template-columns:1fr}}
-</style></head><body><header><div class="w"><small>MC-E47-HARNESS-CORRECTION-20260930-001</small><h1>45-check harness correction</h1><span class="status">REPORTED RUN · 45/45 PASS · EXIT 0 · SHA a045a02f…</span><p>Two first-run failures are retained because they identify exactly where a validator can agree with itself while checking the wrong quantity.</p></div></header>
+</style><!-- city-share:start · Mathematical City link-share card (generated) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Mathematical City">
+<meta property="og:title" content="E47 · 45-Check Harness Correction">
+<meta property="og:description" content="Correction provenance for the E47 45-check validation harness: spectral norm, exact Pell identity, cross-object interpolation, kernel separation, and finite-search boundary.">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-harness-correction/">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-e47-harness-correction.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Share card for E47 · 45-Check Harness Correction, showing a view of the page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="E47 · 45-Check Harness Correction">
+<meta name="twitter:description" content="Correction provenance for the E47 45-check validation harness: spectral norm, exact Pell identity, cross-object interpolation, kernel separation, and finite-search boundary.">
+<meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-e47-harness-correction.jpg">
+<meta name="twitter:image:alt" content="Share card for E47 · 45-Check Harness Correction, showing a view of the page">
+<!-- city-share:end -->
+</head><body><header><div class="w"><small>MC-E47-HARNESS-CORRECTION-20260930-001</small><h1>45-check harness correction</h1><span class="status">REPORTED RUN · 45/45 PASS · EXIT 0 · SHA a045a02f…</span><p>Two first-run failures are retained because they identify exactly where a validator can agree with itself while checking the wrong quantity.</p></div></header>
 <main>
 <section><div class="w grid"><article class="card"><small>CORRECTION 01 · NORM</small><h2>Spectral means spectral.</h2><div class="eq">Γ = I − K²/99144<br>‖Γⁿ − P_E‖₂ = (15/17)ⁿ</div><p>The first harness used Frobenius norm, importing complement multiplicity. The repaired assertion uses the operator 2-norm directly at 1e−9.</p><div class="nums">n=1 0.882352941 · n=2 0.778546713<br>n=4 0.606134984 · n=8 0.367399619</div></article>
 <article class="card"><small>CORRECTION 02 · √5 LIMIT</small><h2>Replace tolerance with identity.</h2><div class="eq">m² − 5u² = −4<br>(m/u)² = 5 − 4/u²</div><p>The ratio approaches √5 from below at O(u⁻²). At u=233 the finite difference is about 1.6×10⁻⁵, so the old 10⁻⁶ proximity assertion was the wrong test. The repaired harness checks the exact rational identity plus monotonicity.</p></article></div></section>
