@@ -27,6 +27,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 - [E47 Casimir-spectral Lorentzian signature](E47_Casimir_Spectral_Lorentzian_Signature.md) — `eta=P6-P0`, explicit 125D pullback, 12/12 machine PASS
 - [E47 Prima-Facie Spacetime Closure — 26/26 Casimir pullback](E47_Prima_Facie_Spacetime_Closure_26.md) — metric derived as `B4†(P6-P0)B4`
 - [Proof obligation ledger: nontrivial Einstein sector](NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md)
+- [Neural–quantum benchmark and Recursive Identity validation](E47_Neural_Quantum_RI_Validation.md) — the 220-layer PyTorch network, NumPy iteration and postselected quantum process all realise Γ = I − K²/99144, with error (15/17)^L at every depth L ≤ 220 (V1–V6), plus Theorems 1–2, descent and dilation of the Recursive Identity formalization and five consequences (45/45 PASS); [suite](validation/e47_neural_quantum_validation_suite.py) · [certificate](../../certificates/MC-E47-NEURAL-QUANTUM-RI-20261016-001.json) · [infographic](figures/E47_Neural_Quantum_RI_Validation_20261016.png)
 
 ## Relationship to executable code
 

@@ -1,0 +1,632 @@
+{
+ "certificate": "MC-E47-NEURAL-QUANTUM-RI-20261016-001",
+ "status": "PASS",
+ "evidence": "E0 exact representation-theoretic identities (rational sector spectra, optimal step, rate 15/17); E1 deterministic machine reconstruction in NumPy and PyTorch, complex128",
+ "subject": "E47 classical neural and postselected quantum statevector benchmark; PyTorch validation V1-V6; Recursive Identity formalization (Theorems 1-2, descent, dilation) and five consequences",
+ "kernel": {
+  "carrier": "V2 x V2 x V2 = C^125",
+  "K": "(C-6I)(C-30I)",
+  "E47": "ker K = 5V2 + 2V5",
+  "dim_E47": 47,
+  "Gamma": "I - K^2/99144",
+  "rate": "15/17"
+ },
+ "environment": {
+  "python": "3.13.16",
+  "torch": "2.14.1+cu130",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "dtype": "torch.complex128",
+  "device": "cpu"
+ },
+ "sources_sha256": {
+  "e47_neural_quantum_benchmark.py": "fcb28e059472cbb5109f53a5fba81e10b02fdb232cfefda8e0faa945fac1cdc7",
+  "e47_neural_quantum_spectral_checks.py": "69f29ce9d208f11128e327e0d743a18d198b3ddd041bf94861b5c83295bbb46f",
+  "e47_neural_quantum_pytorch_validation.py": "30e2dfb09bc906cfa2428692e0f510a5a07319fb2414b711f7573da4dbd889bd",
+  "e47_recursive_identity_checks.py": "888e6853e004fb7a0c8ef6ddb6fad61edf122fe883c3f8f0bc4e81ef4f1ba30d",
+  "e47_neural_quantum_validation_suite.py": "73b4c6a67502442bb14fd8e81f981e4d724d04cad86b9e9569131ad3d7ff43d7"
+ },
+ "benchmark": {
+  "configuration": {
+   "iterations": 220,
+   "seed": 47,
+   "dimension": 125,
+   "kernel_rank": 47,
+   "backend": "CPU complex128"
+  },
+  "spin_sector_dimensions": {
+   "0": 1,
+   "1": 9,
+   "2": 25,
+   "3": 28,
+   "4": 27,
+   "5": 22,
+   "6": 13
+  },
+  "checks": {
+   "casimir_hermiticity_error": 0.0,
+   "projector_idempotence_error": 1.1517971462646362e-14,
+   "projector_commutator_error": 5.6584741083001135e-15,
+   "gamma_eigenvalue_radius_complement": 0.8823529411764706,
+   "exact_rate": 0.8823529411764706,
+   "operator_norm_error_at_n": 1.0998014527879737e-12,
+   "numpy_torch_branch_difference": 1.4819479334191418e-14,
+   "quantum_block_unitarity_error": 1.1464139898553685e-16,
+   "numpy_quantum_final_branch_difference": 2.0532138936181894e-13
+  },
+  "information_retention": {
+   "initial_projected_probability": 0.329700278729789,
+   "discarded_squared_norm": 0.670299721270211,
+   "final_unconditional_branch_probability": 0.32970027872975916,
+   "final_conditional_fidelity": 1.0000000000000004,
+   "warning": "Projection preserves selected amplitudes but does not guarantee task-relevant information retention."
+  },
+  "numpy_trace": {
+   "0": {
+    "numpy_residual": 0.8187183406216149,
+    "projected_fidelity": 0.3297002787297893
+   },
+   "1": {
+    "numpy_residual": 0.6896975300500605,
+    "projected_fidelity": 0.4093708141518212
+   },
+   "5": {
+    "numpy_residual": 0.36612818588350077,
+    "projected_fidelity": 0.7109438022161442
+   },
+   "10": {
+    "numpy_residual": 0.17938137582782335,
+    "projected_fidelity": 0.9110814090882754
+   },
+   "25": {
+    "numpy_residual": 0.025510051247118627,
+    "projected_fidelity": 0.9980300872920361
+   },
+   "50": {
+    "numpy_residual": 0.001089307491034369,
+    "projected_fidelity": 0.9999964010144486
+   },
+   "100": {
+    "numpy_residual": 2.0424771375998957e-06,
+    "projected_fidelity": 0.9999999999873468
+   },
+   "220": {
+    "numpy_residual": 6.396783407525521e-13,
+    "projected_fidelity": 1.0000000000000004
+   }
+  },
+  "quantum_trace": {
+   "0": {
+    "all_success_probability": 1.0000000000000002,
+    "conditional_fidelity_to_projected_input": 0.32970027872978913,
+    "difference_from_numpy_branch": 4.51666538748133e-15
+   },
+   "1": {
+    "all_success_probability": 0.8053829616869432,
+    "conditional_fidelity_to_projected_input": 0.4093708141518212,
+    "difference_from_numpy_branch": 5.120965077319908e-16
+   },
+   "5": {
+    "all_success_probability": 0.46375012722813214,
+    "conditional_fidelity_to_projected_input": 0.7109438022161446,
+    "difference_from_numpy_branch": 7.35106346137703e-15
+   },
+   "10": {
+    "all_success_probability": 0.3618779567236719,
+    "conditional_fidelity_to_projected_input": 0.9110814090882756,
+    "difference_from_numpy_branch": 1.0081565712921506e-14
+   },
+   "25": {
+    "all_success_probability": 0.3303510414444196,
+    "conditional_fidelity_to_projected_input": 0.9980300872920366,
+    "difference_from_numpy_branch": 2.264211336321324e-14
+   },
+   "50": {
+    "all_success_probability": 0.3297014653205991,
+    "conditional_fidelity_to_projected_input": 0.999996401014449,
+    "difference_from_numpy_branch": 4.5935084617052174e-14
+   },
+   "100": {
+    "all_success_probability": 0.3297002787339608,
+    "conditional_fidelity_to_projected_input": 0.999999999987347,
+    "difference_from_numpy_branch": 9.281667035654889e-14
+   },
+   "220": {
+    "all_success_probability": 0.32970027872978913,
+    "conditional_fidelity_to_projected_input": 1.0000000000000004,
+    "difference_from_numpy_branch": 2.0543531246058354e-13
+   }
+  },
+  "theoretical_operator_norm_errors": {
+   "0": 1.0,
+   "1": 0.8823529411764706,
+   "5": 0.534824985896467,
+   "10": 0.2860377655391561,
+   "25": 0.04375809853883145,
+   "50": 0.0019147711877340826,
+   "100": 3.666348701376589e-06,
+   "220": 1.0998014527879737e-12
+  },
+  "caveat": "Quantum simulation is an ideal postselected ancilla-unitary statevector simulation, not a quantum circuit gate-count or hardware benchmark. Timings across these implementations are not equivalent workloads."
+ },
+ "spectral_checks": {
+  "equivariance_commutator_frobenius": {
+   "C": 6.473352399285872e-14,
+   "P": 5.0881697967652074e-14,
+   "Gamma": 1.160901592394631e-13
+  },
+  "polynomial_identity_error": 3.497330746733368e-14,
+  "sectors": {
+   "0": {
+    "dimension": 1,
+    "multiplicity": 1,
+    "K2": 32400,
+    "gamma": "103/153",
+    "gamma_float": 0.673202614379085
+   },
+   "1": {
+    "dimension": 9,
+    "multiplicity": 3,
+    "K2": 12544,
+    "gamma": "10825/12393",
+    "gamma_float": 0.8734769628015815
+   },
+   "2": {
+    "dimension": 25,
+    "multiplicity": 5,
+    "K2": 0,
+    "gamma": "1",
+    "gamma_float": 1.0
+   },
+   "3": {
+    "dimension": 28,
+    "multiplicity": 4,
+    "K2": 11664,
+    "gamma": "15/17",
+    "gamma_float": 0.8823529411764706
+   },
+   "4": {
+    "dimension": 27,
+    "multiplicity": 3,
+    "K2": 19600,
+    "gamma": "9943/12393",
+    "gamma_float": 0.8023077543774711
+   },
+   "5": {
+    "dimension": 22,
+    "multiplicity": 2,
+    "K2": 0,
+    "gamma": "1",
+    "gamma_float": 1.0
+   },
+   "6": {
+    "dimension": 13,
+    "multiplicity": 1,
+    "K2": 186624,
+    "gamma": "-15/17",
+    "gamma_float": -0.8823529411764706
+   }
+  },
+  "sector_eigenvalue_numeric_mismatch": 0.0,
+  "optimal_step": {
+   "eta_star": "1/99144",
+   "rho_star": "15/17",
+   "kappa": "16"
+  },
+  "operator_norm": {
+   "1": {
+    "measured": 0.8823529411764737,
+    "theory": 0.8823529411764706
+   },
+   "10": {
+    "measured": 0.2860377655391674,
+    "theory": 0.2860377655391561
+   },
+   "50": {
+    "measured": 0.0019147711877345102,
+    "theory": 0.0019147711877340826
+   },
+   "100": {
+    "measured": 3.6663487015731693e-06,
+    "theory": 3.666348701376589e-06
+   },
+   "220": {
+    "measured": 1.1000494365835893e-12,
+    "theory": 1.0998014527879737e-12
+   }
+  },
+  "operator_norm_max_abs_deviation": 1.1268763699945339e-14,
+  "success_probability": {
+   "projected_probability_q": 0.329700278729789,
+   "final": 0.32970027872975916,
+   "min_excess_over_q": -2.986499936241671e-14,
+   "max_step_increase": 0.0
+  }
+ },
+ "pytorch_validation": {
+  "environment": {
+   "python": "3.13.16",
+   "torch": "2.14.1+cu130",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "dtype": "torch.complex128",
+   "device": "cpu"
+  },
+  "V1": {
+   "max_abs_deviation_from_law": 1.1601830607332886e-14,
+   "norm_at_220": 1.1001323538266401e-12,
+   "law_at_220": 1.0998014527879737e-12,
+   "norms_by_depth": [
+    1.0000000000000007,
+    0.8823529411764737,
+    0.7785467128027733,
+    0.6869529818848039,
+    0.6061349840160053,
+    0.5348249858964774,
+    0.4719043993204234,
+    0.4163862346944925,
+    0.36739961884808314,
+    0.32417613427772185,
+    0.28603776553916754,
+    0.2523862637110311,
+    0.22269376209796946,
+    0.19649449596879723,
+    0.17337749644305717,
+    0.1529801439203451,
+    0.13498247992971693,
+    0.11910218817328,
+    0.1050901660352474,
+    0.09272661708992454,
+    0.0818176033146396,
+    0.07219200292468236,
+    0.06369882611001404,
+    0.056204846567659714,
+    0.04959251167734695,
+    0.04375809853883576,
+    0.03861008694603167,
+    0.03406772377591045,
+    0.03005975627286228,
+    0.026523314358408,
+    0.023402924433889527,
+    0.02064963920637319,
+    0.01822026988797639,
+    0.01607670872468508,
+    0.014185331227663366,
+    0.012516468730291257,
+    0.011043942997315892,
+    0.009744655585867026,
+    0.008598225516941541,
+    0.007586669573771995,
+    0.006694120212151816,
+    0.005906576657781016,
+    0.00521168528627739,
+    0.004598545840832998,
+    0.004057540447793847,
+    0.003580182748053375,
+    0.003158984777694203,
+    0.0027873395097301884,
+    0.002459417214467827,
+    0.0021700740127657075,
+    0.001914771187734476,
+    0.00168950398917752,
+    0.0014907388139802024,
+    0.0013153577770413474,
+    0.001160609803271786,
+    0.0010240674734750975,
+    0.0009035889471839804,
+    0.0007972843651623573,
+    0.0007034862045550517,
+    0.0006207231216662167,
+    0.0005476968720585051,
+    0.0004832619459339952,
+    0.00042640759935356375,
+    0.0003762419994296474,
+    0.00033197823479087324,
+    0.00029292197187431775,
+    0.0002584605634185623,
+    0.00022805343831051826,
+    0.00020122362203874573,
+    0.00017755025474005162,
+    0.0001566619894765884,
+    0.0001382311671851618,
+    0.00012196867692819055,
+    0.0001076194208189484,
+    9.495831248744917e-05,
+    8.378674631237444e-05,
+    7.392948204040137e-05,
+    6.523189591798898e-05,
+    5.755755522180887e-05,
+    5.078607813692101e-05,
+    4.48112454149808e-05,
+    3.953933418971455e-05,
+    3.488764781449604e-05,
+    3.0783218659846705e-05,
+    2.7161663523437413e-05,
+    2.3966173697163102e-05,
+    2.1146623850504998e-05,
+    1.8658785750487245e-05,
+    1.646363448576963e-05,
+    1.4526736310976252e-05,
+    1.2817708509705992e-05,
+    1.1309742802717487e-05,
+    9.979184825925637e-06,
+    8.805163081717008e-06,
+    7.76926154270947e-06,
+    6.855230773046076e-06,
+    6.048733035078322e-06,
+    5.337117383887838e-06,
+    4.709221221089905e-06,
+    4.155195195088015e-06,
+    3.666348701586805e-06,
+    3.2350135602532895e-06,
+    2.8544237297130587e-06,
+    2.518609173290245e-06,
+    2.2223022117870177e-06,
+    1.960854892847347e-06,
+    1.7301660819330609e-06,
+    1.5266171311464477e-06,
+    1.3470151158184463e-06,
+    1.188542749275579e-06,
+    1.0487141905216531e-06,
+    9.253360505614455e-07,
+    8.164729857614564e-07,
+    7.204173403978621e-07,
+    6.356623592251056e-07,
+    5.608785522848758e-07,
+    4.948928403199829e-07,
+    4.3667015324467614e-07,
+    3.85297194052992e-07,
+    3.399681123450375e-07,
+    2.9997186391206775e-07,
+    2.6468105637568694e-07,
+    2.3354210865692321e-07,
+    2.0606656640009284e-07,
+    1.8182344104888702e-07,
+    1.6043244795775336e-07,
+    1.4155804237890152e-07,
+    1.2490415504540967e-07,
+    1.1020954862517865e-07,
+    9.724371943284505e-08,
+    8.580328188381043e-08,
+    7.570877814764349e-08,
+    6.680186311647976e-08,
+    5.894282041907655e-08,
+    5.200837099584599e-08,
+    4.588973911457931e-08,
+    4.049094633938544e-08,
+    3.5727305641977223e-08,
+    3.152409326254034e-08,
+    2.7815376430960168e-08,
+    2.454297922330404e-08,
+    2.1655569858332668e-08,
+    1.910785578582902e-08,
+    1.685987272664962e-08,
+    1.4876358361464844e-08,
+    1.3126198513194831e-08,
+    1.1581939950412362e-08,
+    1.021935878649319e-08,
+    9.017081311009304e-09,
+    7.956248239959934e-09,
+    7.020219102506323e-09,
+    6.194311016482369e-09,
+    5.4655685823187494e-09,
+    4.822560480621242e-09,
+    4.255200474289051e-09,
+    3.754588725377105e-09,
+    3.312872390679742e-09,
+    2.9231227244037452e-09,
+    2.5792259956048357e-09,
+    2.2757876896977936e-09,
+    2.0080480103365243e-09,
+    1.7718070921426062e-09,
+    1.5633592202362419e-09,
+    1.3794346059586357e-09,
+    1.2171482292553514e-09,
+    1.0739544147171722e-09,
+    9.476068372557154e-10,
+    8.361237435385686e-10,
+    7.377562778656095e-10,
+    6.509614104739905e-10,
+    5.743777936827173e-10,
+    5.068039412008334e-10,
+    4.4718002074427813e-10,
+    3.9457058074136033e-10,
+    3.481506135288071e-10,
+    3.071916322945591e-10,
+    2.7105154746976187e-10,
+    2.391631337419462e-10,
+    2.1102632507639234e-10,
+    1.8619968507709358e-10,
+    1.6429393218577213e-10,
+    1.4496519923225465e-10,
+    1.2791056106924446e-10,
+    1.1286225193401375e-10,
+    9.958443724751317e-11,
+    8.786860103530605e-11,
+    7.753118274213097e-11,
+    6.840983336127709e-11,
+    6.03616554928007e-11,
+    5.3260303582691375e-11,
+    4.6994383456395786e-11,
+    4.146568274826077e-11,
+    3.658741538466034e-11,
+    3.2282995827146486e-11,
+    2.8485063851479867e-11,
+    2.513389646734351e-11,
+    2.21769641223086e-11,
+    1.9567926338463658e-11,
+    1.726586490658948e-11,
+    1.5234587898354958e-11,
+    1.3442318424450502e-11,
+    1.1860922164156095e-11,
+    1.0465553255192905e-11,
+    9.23431861660159e-12,
+    8.147933155804071e-12,
+    7.189392450194225e-12,
+    6.343594281456579e-12,
+    5.597374425742774e-12,
+    4.938875641403515e-12,
+    4.3578492943062865e-12,
+    3.845306909008872e-12,
+    3.3928498731319697e-12,
+    2.9937705431643664e-12,
+    2.6415166101991663e-12,
+    2.3308117017026394e-12,
+    2.056614171886424e-12,
+    1.8147568254459354e-12,
+    1.6012886873466596e-12,
+    1.4129219875865009e-12,
+    1.2467144490204366e-12,
+    1.1001323538266403e-12
+   ]
+  },
+  "V2": {
+   "operator_bound": 1.1001323538266401e-12,
+   "max_ratio_10000_inputs": 8.139280958065266e-13
+  },
+  "V3": {
+   "torch_vs_numpy_operator": 2.24387934553185e-14
+  },
+  "V4": {
+   "complement": 5.265125872263317e-16,
+   "coupling": 1.115173382152636e-14,
+   "kernel": 1.016491419136952e-12,
+   "stored_unit_eigenvalue_offset": 4.107825191113079e-15,
+   "offset_times_220": 9.037215420448774e-13
+  },
+  "V5": {
+   "max_generator_commutator": 2.569639024936315e-12,
+   "max_rotation_defect_20_random": 1.4445662972685945e-12
+  },
+  "V6": {
+   "torch_vs_numpy": 1.4819479334191418e-14,
+   "distance_to_P_psi": 6.397956344691123e-13,
+   "fidelity": 1.0000000000000004,
+   "squared_norm": 0.3297002787297607,
+   "projected_probability_q": 0.329700278729789
+  }
+ },
+ "recursive_identity": {
+  "theorem_1": {
+   "su2_relation_error": 1.788428409391922e-15,
+   "relative_commutators": {
+    "C": 4.4327995393937743e-16,
+    "K": 1.1090406071873625e-15,
+    "P": 1.3534814610056258e-14,
+    "Gamma": 5.3734126819061616e-14
+   },
+   "multiplicities": [
+    1,
+    3,
+    5,
+    4,
+    3,
+    2,
+    1
+   ],
+   "dim_ker_K": 47,
+   "P_minus_lagrange_polynomial_of_C": 4.330232517407224e-14
+  },
+  "theorem_2": {
+   "unit_eigenvalues": 47,
+   "Gamma_minus_I_on_E47": 4.679721581424176e-15,
+   "GammaP_minus_P": 4.676143651843971e-15,
+   "PGamma_minus_P": 4.694647927740949e-15,
+   "norm_Gamma_I_minus_P": 0.8823529411764737
+  },
+  "section_IV": {
+   "gradient_finite_difference_rel_error": 1.9002409098246017e-10,
+   "update_identity_error": 3.663310412728527e-14,
+   "nonzero_eigenvalues_K2": [
+    11664,
+    12544,
+    19600,
+    32400,
+    186624
+   ],
+   "max_eta_lambda": 1.8823529411764706,
+   "sharp_descent_factor": 0.7785467128027681,
+   "max_ratio_20000_states": 0.7708156328840103,
+   "ratio_on_j3_state": 0.7785467128027664
+  },
+  "coherence": {
+   "values_n_0_1_5_10_25_50": [
+    0.3297002787297893,
+    0.4093708141518213,
+    0.7109438022161436,
+    0.911081409088275,
+    0.9980300872920351,
+    0.9999964010144482
+   ],
+   "min_step_change": -5.551115123125783e-16,
+   "max_ratio_to_geometric_bound_n_le_100": 0.534559551339467
+  },
+  "time_functional": {
+   "loop_rate": "1/(1-c)",
+   "T_200": 49.747176615928275,
+   "T_300": 74.78268027320355,
+   "mean_step_200_300": 0.25035503657275276,
+   "two_ln_17_15": 0.250326285908012
+  },
+  "coherence_gradient": {
+   "on_E47": 3.275691459695546e-15,
+   "on_E47_perp": 2.233995883062729e-15,
+   "at_psi0": 0.9402084980158147
+  },
+  "section_V": {
+   "unitarity": 5.096645932181003e-14,
+   "hermiticity": 2.0924498418981243e-16,
+   "involution": 5.097831651532266e-14,
+   "norm_conservation": 0.0
+  }
+ },
+ "checks": {
+  "B_kernel_rank_47": true,
+  "B_sector_dimensions": true,
+  "B_casimir_hermitian": true,
+  "B_projector_idempotent": true,
+  "B_projector_commutes_with_Gamma": true,
+  "B_rate_15_over_17": true,
+  "B_numpy_torch_agree": true,
+  "B_block_unitary": true,
+  "B_numpy_quantum_agree": true,
+  "B_success_probability_equals_projected_probability": true,
+  "B_final_fidelity_1": true,
+  "B_residual_below_law_at_every_checkpoint": true,
+  "S_equivariance_C_P_Gamma": true,
+  "S_gamma_equals_I_minus_K2_over_99144": true,
+  "S_sector_eigenvalues_exact": true,
+  "S_multiplicities_1_3_5_4_3_2_1": true,
+  "S_optimal_step_is_1_over_99144": true,
+  "S_optimal_rate_is_15_over_17": true,
+  "S_operator_norm_matches_15_17_power": true,
+  "S_success_probability_never_increases": true,
+  "S_success_probability_never_below_q": true,
+  "V1_error_law_every_depth": true,
+  "V2_every_input_within_operator_bound": true,
+  "V3_agrees_with_numpy": true,
+  "V4_matches_exact_operator_off_kernel": true,
+  "V4_kernel_deviation_explained_by_rounding": true,
+  "V5_so3_equivariant": true,
+  "V6_seed47_state": true,
+  "RI_T1_su2_relations": true,
+  "RI_T1_invariance_C_K_P_Gamma": true,
+  "RI_T1_decomposition_and_dim_47": true,
+  "RI_T1_P_is_polynomial_in_C": true,
+  "RI_T2_fixed_space_is_E47": true,
+  "RI_T2_GammaP_eq_PGamma_eq_P": true,
+  "RI_T2_rate_15_over_17": true,
+  "RI_IV_gradient_step": true,
+  "RI_IV_descent_premise": true,
+  "RI_X1_sharp_descent_factor_15_17_squared": true,
+  "RI_X2_coherence_monotone": true,
+  "RI_X2_coherence_geometric_bound": true,
+  "RI_X3_time_step_tends_to_2ln17_15": true,
+  "RI_X4_coherence_critical_set": true,
+  "RI_V_dilation_unitary_and_norm_conserving": true,
+  "RI_X5_dilation_is_a_reflection": true,
+  "RI_X2_coherence_equals_benchmark_projected_fidelity": true
+ },
+ "check_count": 45,
+ "pass_count": 45
+}
