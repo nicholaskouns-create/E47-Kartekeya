@@ -1,0 +1,22 @@
+{
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.10.0+cpu",
+    "dtype": "complex128"
+  },
+  "carrier_dimension": 125,
+  "e47_rank": 47,
+  "projector_residual": 2.4881096373302933e-15,
+  "evidence_boundary": "Numerical symmetry-protection benchmark for specified channels; not universal quantum error correction or experimental validation.",
+  "selected_results": {
+    "theta_1_e47_collective_fidelity": 1.0,
+    "theta_1_unencoded_control_fidelity": 0.9387912809451864,
+    "theta_1_e47_local_fidelity": 0.5854
+  },
+  "source_sha256": {
+    "e47_torch.py": "b38952311be3e210a6139a3a14a6cedc5986b75a107e22693940fc690a9e7def",
+    "e47_noise_experiment.py": "e49c602eda75e4535edb22e93da8b5a7869a17d4ae215e51efd4fec3145c610e",
+    "e47_logical_benchmark.py": "c5581dae17f0cc12daf388f502c291946d26b313a28350534e6a3c629a61d833",
+    "formal_report_docx": "13a0d69889e3a6a4c4d7992e9d76b80c6b0fbb03d25ba22c8f3af4c7dcc8d48f"
+  }
+}
