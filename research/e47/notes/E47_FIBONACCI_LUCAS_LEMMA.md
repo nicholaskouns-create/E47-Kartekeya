@@ -39,4 +39,12 @@ The structure (multiplicities \(F_n, F_{n-2}\)) is uniform across the family; E4
 
 ## Open item
 
-The lemma describes the selection; it does **not** derive \(K = (C-6I)(C-30I)\). Why the kernel selects Casimir eigenvalues 6 and 30 remains open.
+Why 6 and 30: answered by the [moment selector theorem](../E47_Moment_Selector_Theorem.md).
+On \(V_j^{\otimes 3}\) the total Casimir has \(\mu = 3j(j+1)\) and \(\sigma = 2j(j+1)\), so
+\(\mu - \sigma = j(j+1)\) and \(\mu + \sigma = 5j(j+1)\). On the cube (\(j = 2\)) these are 6 and 30,
+and \(K = (C-6I)(C-30I)\) is exactly the moment selector \(K_{\mathrm{mom}}\) (certificate
+`MC-E47-MOMENT-SELECTOR/1.0`, 13/13 PASS). The same condition \(J(J+1) = 5j(j+1)\) is what forces
+\((2j+1, 2J+1) = (F_n, L_n)\) with \(n\) odd, so this lemma's family is the moment selector's family.
+
+Still open: why the moment rule \(\mu \pm \sigma\) is the natural selector. The moment theorem shows
+which carriers the rule forces, not that it is the only natural rule (see its Boundary section).

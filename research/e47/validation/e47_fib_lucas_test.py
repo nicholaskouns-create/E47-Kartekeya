@@ -43,6 +43,28 @@ def isprime(n):
     return n > 1 and all(n % p for p in range(2, int(n ** 0.5) + 1))
 
 
+def moments(j):
+    """Exact mean and variance of the total Casimir J(J+1) over all (2j+1)^3 states."""
+    c = census(j)
+    N = (2 * j + 1) ** 3
+    mu = sum(v * (2 * J + 1) * J * (J + 1) for J, v in c.items()) / N
+    var = sum(v * (2 * J + 1) * (J * (J + 1) - mu) ** 2 for J, v in c.items()) / N
+    return mu, var
+
+
+def check_moments():
+    # mean = 3j(j+1), std = 2j(j+1) exactly, j = 1/2 .. 6
+    for k in range(1, 13):
+        j = Fr(k, 2)
+        mu, var = moments(j)
+        assert mu == 3 * j * (j + 1), (j, mu)
+        assert var == (2 * j * (j + 1)) ** 2, (j, var)
+    j = Fr(2)
+    mu, var = moments(j)
+    assert (mu - 2 * j * (j + 1), mu + 2 * j * (j + 1)) == (6, 30)
+    print("Moment selector: mean=3j(j+1), std=2j(j+1) exact for j=1/2..6; j=2 gives mu-sigma=6, mu+sigma=30")
+
+
 def main():
     # E47 census
     c2 = census(Fr(2))
@@ -57,6 +79,7 @@ def main():
         assert 3 * F - L == 2 * fib(n - 2)
         j, J = Fr(F - 1, 2), Fr(L - 1, 2)
         assert J <= 3 * j
+        assert J * (J + 1) == 5 * j * (j + 1), (n, j, J)
         c = census(j)
         nj, nJ = c.get(j, 0), c.get(J, 0)
         assert nj == F, (n, nj)
@@ -65,7 +88,8 @@ def main():
         N = F ** 3
         d = int(nj * (2 * j + 1) + nJ * (2 * J + 1))
         print(f"{n:>2} {'(' + str(j) + ', ' + str(J) + ')':>14} {N:>9} {nj:>5} {nJ:>5} {d:>6} {str(Fr(d, N)):>14} {isprime(d)}")
-    print("\nAll identities verified: n(j)=F_n, n(J)=F_{n-2}=3j-J+1, 3F_n-L_n=2F_{n-2}.")
+    check_moments()
+    print("\nAll identities verified: n(j)=F_n, n(J)=F_{n-2}=3j-J+1, 3F_n-L_n=2F_{n-2}, J(J+1)=5j(j+1).")
 
 
 if __name__ == "__main__":
