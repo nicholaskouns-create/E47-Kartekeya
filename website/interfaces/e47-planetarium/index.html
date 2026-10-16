@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>E47 Planetarium · The Mathematical City</title>
+<meta name="description" content="A live, in-browser computation of the E47 spectral carrier: 125 states, exact Casimir census, kernel of K, and the 47-dimensional selected subspace.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-planetarium/">
+<meta name="theme-color" content="#0b111b">
+<style>
+:root{color-scheme:dark;--bg:#0b111b;--panel:#111b29;--edge:#263344;--text:#e6edf4;--muted:#91a0b3;--cyan:#74e1d0;--gold:#d7b879;--green:#7fe08a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--cyan)}button,input{font:inherit}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--edge);background:#0e1724}
+.brand{font-weight:700;letter-spacing:.08em;font-size:12px;color:var(--muted)}.brand b{color:var(--cyan)}
+.tabs{display:flex;gap:6px}.tabs button,.btn{background:#192637;color:var(--text);border:1px solid #344459;border-radius:6px;padding:7px 13px;cursor:pointer}
+.tabs button[aria-selected=true],.btn.primary{background:var(--cyan);border-color:var(--cyan);color:#082b2b;font-weight:700}
+main{padding:16px 20px;max-width:1500px;margin:0 auto}
+h1{font-size:22px;margin:4px 0 2px}.sub{color:var(--muted);margin:0 0 14px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px}
+.panel{background:var(--panel);border:1px solid var(--edge);border-radius:10px;padding:14px}
+#stage{position:relative;height:min(68vh,640px);min-height:360px;padding:0;overflow:hidden;background:radial-gradient(ellipse at center,#12233a 0%,#0b111b 70%)}
+#sky{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.legend{position:absolute;left:12px;top:10px;font-size:12px;color:var(--muted);pointer-events:none}
+.legend span{margin-right:12px}.t{color:var(--cyan)}.g{color:var(--gold)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+.controls input[type=range]{flex:1;min-width:160px;accent-color:var(--cyan)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.stat{background:#0e1724;border:1px solid var(--edge);border-radius:8px;padding:9px 11px}
+.stat div{font-size:10.5px;letter-spacing:.08em;color:var(--muted)}.stat strong{font-size:19px;font-variant-numeric:tabular-nums}
+.proof h2,.panel h2{font-size:13px;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;text-transform:uppercase}
+.proof ol{list-style:none;padding:0;margin:0}
+.proof li{border-left:2px solid var(--edge);padding:6px 0 8px 12px;opacity:.25;transition:opacity .5s,border-color .5s}
+.proof li.on{opacity:1}.proof li.ok{border-color:var(--green)}.proof li.bad{border-color:#e06b6b}
+.proof li .chk{color:var(--green);font-weight:700;margin-right:6px}.proof li.bad .chk{color:#e06b6b}
+.proof li code{color:var(--cyan);font-size:12.5px}.proof .val{color:var(--muted);font-size:12px;display:block}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--edge);text-align:right}th{color:var(--muted);font-weight:600;font-size:11.5px}
+td.ok{color:var(--green)}
+#ratio{width:100%;height:300px;display:block}
+.census{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px;font-size:12px}
+.census span{background:#0e1724;border:1px solid var(--edge);border-radius:5px;padding:3px 7px}
+.census span.sel2{border-color:var(--cyan);color:var(--cyan)}.census span.sel5{border-color:var(--gold);color:var(--gold)}
+footer{color:var(--muted);font-size:12px;padding:10px 20px 30px;max-width:1500px;margin:0 auto}
+nav.city-related ul{padding-left:18px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}#stage{height:56vh}}
+</style>
+</head>
+<body>
+<header>
+ <span class="brand">THE MATHEMATICAL CITY / <b>E47 PLANETARIUM</b></span>
+ <div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="sky-tab">Spectral sky</button>
+  <button role="tab" aria-selected="false" data-tab="fib-tab">Fibonacci–Lucas</button>
+ </div>
+ <a href="../../">← Mathematical City</a>
+</header>
+<main id="main">
+<section id="sky-tab">
+ <h1>K<sub>47/125</sub> — the carrier, live</h1>
+ <p class="sub">Every number on this page is computed in your browser from V₂⊗V₂⊗V₂: J² from J<sub>z</sub>, J<sub>±</sub> tensor sums, Jacobi eigen-decomposition, kernel of K, and the filter Γ = I − εK².</p>
+ <div class="grid">
+  <div>
+   <div class="panel" id="stage">
+    <canvas id="sky" aria-label="125 Casimir eigenstates arranged in shells by total spin J" role="img"></canvas>
+    <div class="legend"><span class="t">● E<sub>6</sub> (J=2)</span><span class="g">● E<sub>30</sub> (J=5)</span><span>● complement</span></div>
+   </div>
+   <div class="controls">
+    <button class="btn primary" id="play">▶ Run filter</button>
+    <button class="btn" id="reset">Reset</button>
+    <label for="iter" style="color:var(--muted)">iteration</label>
+    <input type="range" id="iter" min="0" max="220" value="0">
+   </div>
+   <div class="stats">
+    <div class="stat"><div>ITERATION n</div><strong id="r-n">0</strong></div>
+    <div class="stat"><div>COMPLEMENT NORM</div><strong id="r-err">—</strong></div>
+    <div class="stat"><div>BOUND (15/17)ⁿ·e₀</div><strong id="r-bound">—</strong></div>
+    <div class="stat"><div>OCCUPANCY ‖Px‖²</div><strong id="r-occ">—</strong></div>
+    <div class="stat"><div>CARRIER</div><strong id="r-dim">—</strong></div>
+    <div class="stat"><div>dim ker K</div><strong id="r-ker">—</strong></div>
+    <div class="stat"><div>Ω<sub>c</sub></div><strong id="r-omega">—</strong></div>
+    <div class="stat"><div>SPECTRAL RADIUS</div><strong id="r-rho">—</strong></div>
+   </div>
+   <div class="census" id="census"></div>
+  </div>
+  <aside class="panel proof"><h2>Proof, verified as it is written</h2><ol id="proof"></ol></aside>
+ </div>
+</section>
+<section id="fib-tab" hidden>
+ <h1>Fibonacci–Lucas family</h1>
+ <p class="sub">For odd n, take 2j+1 = F<sub>n</sub> and 2J+1 = L<sub>n</sub>. The multiplicity of each sector in V<sub>j</sub><sup>⊗3</sup> is counted live from the J<sub>z</sub> weight distribution: n(J) = c(J) − c(J+1).</p>
+ <div class="grid">
+  <div class="panel"><h2>Computed pairs</h2><div style="overflow-x:auto"><table id="fibtable"></table></div></div>
+  <div class="panel"><h2>L<sub>n</sub>/F<sub>n</sub> → √5</h2><canvas id="ratio" aria-label="Ratio of Lucas to Fibonacci numbers converging to the square root of 5" role="img"></canvas></div>
+ </div>
+</section>
+<nav class="city-related" aria-label="Related pages"><h2 style="font-size:13px;color:var(--muted)">Related pages</h2><ul>
+ <li><a href="../observatory/">interfaces/observatory/</a></li>
+ <li><a href="../e47-research-workbench/">interfaces/e47-research-workbench/</a></li>
+</ul></nav>
+</main>
+<footer>Exact finite linear algebra; the field-theory reading is a separate premise. Nothing is loaded from a server — view source to audit.</footer>
+<script>
+"use strict";
+// ---------- linear algebra ----------
+const D=5, N=125, jj=2;
+const ms=[2,1,0,-1,-2];
+function idx(a,b,c){return a*25+b*5+c}
+function zeros(n){const M=[];for(let i=0;i<n;i++)M.push(new Float64Array(n));return M}
+// single-spin J+ : <m+1|J+|m> = sqrt(j(j+1)-m(m+1))
+function jplus1(m){return Math.sqrt(jj*(jj+1)-m*(m+1))}
+// Build J^2 = J-J+ + Jz^2 + Jz on 125-dim tensor product
+function buildJ2(){
+ const Jz=new Float64Array(N);
+ const Jp=zeros(N); // Jp[row][col]
+ for(let a=0;a<5;a++)for(let b=0;b<5;b++)for(let c=0;c<5;c++){
+  const s=[a,b,c], col=idx(a,b,c);
+  Jz[col]=ms[a]+ms[b]+ms[c];
+  for(let k=0;k<3;k++){const m=ms[s[k]]; if(m<2){const t=s.slice();t[k]=s[k]-1;Jp[idx(t[0],t[1],t[2])][col]+=jplus1(m);}}
+ }
+ const C=zeros(N);
+ // J-J+ = Jp^T Jp
+ for(let i=0;i<N;i++)for(let j=0;j<N;j++){let s=0;for(let k=0;k<N;k++)s+=Jp[k][i]*Jp[k][j];C[i][j]=s}
+ for(let i=0;i<N;i++)C[i][i]+=Jz[i]*Jz[i]+Jz[i];
+ return {C,Jz};
+}
+function jacobi(Ain){
+ const n=Ain.length,A=Ain.map(r=>Float64Array.from(r)),V=zeros(n);
+ for(let i=0;i<n;i++)V[i][i]=1;
+ for(let sweep=0;sweep<60;sweep++){
+  let off=0;for(let p=0;p<n;p++)for(let q=p+1;q<n;q++)off+=A[p][q]*A[p][q];
+  if(off<1e-26)break;
+  for(let p=0;p<n;p++)for(let q=p+1;q<n;q++){
+   const apq=A[p][q];if(Math.abs(apq)<1e-15)continue;
+   const th=(A[q][q]-A[p][p])/(2*apq);
+   const t=Math.sign(th||1)/(Math.abs(th)+Math.sqrt(th*th+1));
+   const c=1/Math.sqrt(t*t+1),s=t*c;
+   for(let k=0;k<n;k++){const akp=A[k][p],akq=A[k][q];A[k][p]=c*akp-s*akq;A[k][q]=s*akp+c*akq}
+   for(let k=0;k<n;k++){const apk=A[p][k],aqk=A[q][k];A[p][k]=c*apk-s*aqk;A[q][k]=s*apk+c*aqk}
+   for(let k=0;k<n;k++){const vkp=V[k][p],vkq=V[k][q];V[k][p]=c*vkp-s*vkq;V[k][q]=s*vkp+c*vkq}
+  }
+ }
+ return {vals:A.map((r,i)=>r[i]),V};
+}
+function matmul(A,B){const n=A.length,R=zeros(n);for(let i=0;i<n;i++){const Ai=A[i],Ri=R[i];for(let k=0;k<n;k++){const a=Ai[k];if(a===0)continue;const Bk=B[k];for(let j=0;j<n;j++)Ri[j]+=a*Bk[j]}}return R}
+function matvec(A,x){const n=A.length,y=new Float64Array(n);for(let i=0;i<n;i++){let s=0;const r=A[i];for(let j=0;j<n;j++)s+=r[j]*x[j];y[i]=s}return y}
+function norm(x){let s=0;for(const v of x)s+=v*v;return Math.sqrt(s)}
+function maxabs(M){let m=0;for(const r of M)for(const v of r)m=Math.max(m,Math.abs(v));return m}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+// ---------- compute ----------
+const t0=performance.now();
+const {C}=buildJ2();
+const {vals,V}=jacobi(C);
+const Js=vals.map(l=>(-1+Math.sqrt(1+4*Math.max(l,0)))/2);
+const Jint=Js.map(Math.round);
+const intErr=Math.max(...vals.map((l,i)=>Math.abs(l-Jint[i]*(Jint[i]+1))));
+const dJ=[0,0,0,0,0,0,0];Jint.forEach(J=>dJ[J]++);
+const nJ=dJ.map((d,J)=>d/(2*J+1));
+const I=zeros(N);for(let i=0;i<N;i++)I[i][i]=1;
+const Cm6=C.map((r,i)=>{const x=Float64Array.from(r);x[i]-=6;return x});
+const Cm30=C.map((r,i)=>{const x=Float64Array.from(r);x[i]-=30;return x});
+const K=matmul(Cm6,Cm30);
+const K2=matmul(K,K);
+// kernel via eigenvectors of C: K v = (λ-6)(λ-30) v
+const kvals=vals.map(l=>(l-6)*(l-30));
+const sel=kvals.map(k=>Math.abs(k)<1e-6);
+const kerDim=sel.filter(Boolean).length;
+// residual ||K v|| for selected eigenvectors using the explicit K matrix
+let kRes=0;for(let c=0;c<N;c++)if(sel[c]){const v=V.map(r=>r[c]);kRes=Math.max(kRes,norm(matvec(K,v)))}
+// projector P = sum v v^T over selected
+const P=zeros(N);for(let c=0;c<N;c++)if(sel[c])for(let i=0;i<N;i++){const vi=V[i][c];if(vi===0)continue;for(let j=0;j<N;j++)P[i][j]+=vi*V[j][c]}
+const PP=matmul(P,P);let idemErr=0;for(let i=0;i<N;i++)for(let j=0;j<N;j++)idemErr=Math.max(idemErr,Math.abs(PP[i][j]-P[i][j]));
+const KPerr=maxabs(matmul(K,P));
+let trP=0;for(let i=0;i<N;i++)trP+=P[i][i];
+const eps=1/99144;
+const G=K2.map((r,i)=>r.map((v,j)=>(i===j?1:0)-eps*v));
+const gEig=kvals.map((k,i)=>sel[i]?null:1-eps*k*k).filter(v=>v!==null);
+const rho=Math.max(...gEig.map(Math.abs));
+// trajectory from seeded state (seed 47)
+const rnd=mulberry32(47);const x0=new Float64Array(N);for(let i=0;i<N;i++)x0[i]=rnd()*2-1;
+const xn0=norm(x0);for(let i=0;i<N;i++)x0[i]/=xn0;
+const STEPS=220,traj=[];let x=x0;
+function comp(x){const px=matvec(P,x);const q=x.map((v,i)=>v-px[i]);return {err:norm(q),occ:Math.pow(norm(px),2)/Math.pow(norm(x),2)}}
+const e0=comp(x0).err;let boundOK=true;
+for(let n=0;n<=STEPS;n++){
+ const c=comp(x);const w=new Float64Array(N);for(let k=0;k<N;k++){let s=0;for(let i=0;i<N;i++)s+=V[i][k]*x[i];w[k]=s*s}
+ const bound=Math.pow(15/17,n)*e0; if(c.err>bound*(1+1e-9)+1e-15)boundOK=false;
+ traj.push({err:c.err,occ:c.occ,bound,w});x=matvec(G,x);
+}
+const ms_=Math.round(performance.now()-t0);
+
+// ---------- proof ----------
+const expD=[1,9,25,28,27,22,13],expN=[1,3,5,4,3,2,1];
+const fmt=v=>v.toExponential(1);
+const steps=[
+ ["Carrier <code>V₂⊗V₂⊗V₂</code> built; J² = J₋J₊ + J<sub>z</sub>² + J<sub>z</sub> assembled", N===125, `dim = ${N}`],
+ ["J² eigenvalues are exactly J(J+1)", intErr<1e-9, `max |λ − J(J+1)| = ${fmt(intErr)} (Jacobi, ${N}×${N})`],
+ ["Census d(J) = 1, 9, 25, 28, 27, 22, 13", dJ.join()===expD.join(), `computed: ${dJ.join(', ')}`],
+ ["Multiplicities n(J) = 1, 3, 5, 4, 3, 2, 1", nJ.join()===expN.join(), `computed: ${nJ.join(', ')}`],
+ ["<code>K = (C−6I)(C−30I)</code>; ker K = E₆ ⊕ E₃₀", kerDim===47 && kRes<1e-8, `dim ker K = ${kerDim} = ${dJ[2]} + ${dJ[5]}; max ‖Kv‖ = ${fmt(kRes)}`],
+ ["Projector: P² = P, KP = 0, tr P = 47", idemErr<1e-9 && KPerr<1e-7 && Math.abs(trP-47)<1e-9, `‖P²−P‖∞ = ${fmt(idemErr)}, ‖KP‖∞ = ${fmt(KPerr)}, tr P = ${trP.toFixed(9)}`],
+ ["Ω<sub>c</sub> = 47/125 = 0.376", Math.abs(kerDim/N-0.376)<1e-15, `Ω_c = ${(kerDim/N).toFixed(3)}`],
+ ["Γ = I − εK², ε = 1/99144: complement radius 15/17", Math.abs(rho-15/17)<1e-12, `ρ = ${rho.toFixed(12)} (15/17 = ${(15/17).toFixed(12)})`],
+ ["Iterated complement norm stays under (15/17)ⁿ·e₀", boundOK, `${STEPS} iterations, final ${fmt(traj[STEPS].err)} ≤ ${fmt(traj[STEPS].bound)}`],
+ ["K<sub>47/125</sub> certified in this browser", true, `${ms_} ms total`]
+];
+steps[9][1]=steps.slice(0,9).every(s=>s[1]);
+const ol=document.getElementById('proof');
+steps.forEach((s,i)=>{const li=document.createElement('li');li.innerHTML=`<span class="chk">${s[1]?'✓':'✗'}</span>${s[0]}<span class="val">${s[2]}</span>`;li.className=s[1]?'ok':'bad';ol.appendChild(li);setTimeout(()=>li.classList.add('on'),250+i*330)});
+window.E47={N,kerDim,omega:kerDim/N,dJ,nJ,rho,allOK:steps[9][1],intErr};
+if(!steps[9][1])console.error('E47 verification failed',window.E47);
+
+document.getElementById('r-dim').textContent=N;
+document.getElementById('r-ker').textContent=kerDim;
+document.getElementById('r-omega').textContent=(kerDim/N).toFixed(3);
+document.getElementById('r-rho').textContent=rho.toFixed(6);
+document.getElementById('census').innerHTML=dJ.map((d,J)=>`<span class="${J===2?'sel2':J===5?'sel5':''}">J=${J}: n=${nJ[J]} · d=${d}</span>`).join('');
+
+// ---------- 3D sky ----------
+const cv=document.getElementById('sky'),ctx=cv.getContext('2d');
+const nodes=[];{const byJ={};for(let k=0;k<N;k++)(byJ[Jint[k]]=byJ[Jint[k]]||[]).push(k);
+ for(const J in byJ){const list=byJ[J],R=0.22+0.13*J,m=list.length,ga=Math.PI*(3-Math.sqrt(5));
+  list.forEach((k,i)=>{const y=m===1?0:1-2*(i+.5)/m,r=Math.sqrt(1-y*y),th=ga*i+J*0.7;nodes.push({k,J:+J,x:R*r*Math.cos(th),y:R*y,z:R*r*Math.sin(th)})})}}
+let rotY=0.5,rotX=-0.35,drag=null,cur=0,playing=false,dpr=1;
+function resize(){dpr=Math.min(devicePixelRatio||1,2);cv.width=cv.clientWidth*dpr;cv.height=cv.clientHeight*dpr}
+addEventListener('resize',resize);resize();
+cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(!drag)return;rotY+=(e.clientX-drag.x)*0.008;rotX+=(e.clientY-drag.y)*0.008;rotX=Math.max(-1.4,Math.min(1.4,rotX));drag={x:e.clientX,y:e.clientY}});
+cv.addEventListener('pointerup',()=>drag=null);
+function draw(){
+ const W=cv.width,H=cv.height,S=Math.min(W,H)*0.55,cx=W/2,cy=H/2;
+ ctx.clearRect(0,0,W,H);
+ if(!drag)rotY+=0.0025;
+ const cy_=Math.cos(rotY),sy=Math.sin(rotY),cx_=Math.cos(rotX),sx=Math.sin(rotX);
+ const t=traj[cur],w0=traj[0].w;
+ // shell rings
+ ctx.lineWidth=1*dpr;
+ for(let J=0;J<=6;J++){const R=(0.22+0.13*J)*S;ctx.strokeStyle=J===2?'rgba(116,225,208,.18)':J===5?'rgba(215,184,121,.18)':'rgba(145,160,179,.07)';ctx.beginPath();ctx.ellipse(cx,cy,R,R*Math.abs(cx_)*0.98+0.01,0,0,Math.PI*2);ctx.stroke()}
+ const pts=nodes.map(n=>{const x1=n.x*cy_+n.z*sy,z1=-n.x*sy+n.z*cy_;const y2=n.y*cx_-z1*sx,z2=n.y*sx+z1*cx_;const p=1/(1.9-z2);return{n,X:cx+x1*S*p*1.3,Y:cy+y2*S*p*1.3,z:z2,p}}).sort((a,b)=>a.z-b.z);
+ ctx.globalCompositeOperation='lighter';
+ for(const q of pts){const {n}=q,s=sel[n.k];
+  // brightness from the actual amplitude |<v_k|x_n>|^2 relative to start, plus selected glow growing with occupancy
+  const amp=Math.min(1,Math.sqrt(t.w[n.k]/(w0[n.k]+1e-30)));
+  let col,a,r;
+  if(s){a=0.35+0.65*Math.min(1,t.occ/ (traj[STEPS].occ));col=n.J===2?[116,225,208]:[215,184,121];r=(3+5*a)*dpr*q.p*1.4}
+  else{a=0.08+0.8*amp;col=[150,170,200];r=(2.2+2.5*amp)*dpr*q.p*1.4}
+  const g=ctx.createRadialGradient(q.X,q.Y,0,q.X,q.Y,r*4);
+  g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(.25,`rgba(${col},${a*.5})`);g.addColorStop(1,`rgba(${col},0)`);
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(q.X,q.Y,r*4,0,Math.PI*2);ctx.fill();
+ }
+ ctx.globalCompositeOperation='source-over';
+ if(playing){if(cur<STEPS){cur++;setIter(cur)}else{playing=false;playBtn.textContent='▶ Run filter'}}
+ requestAnimationFrame(draw);
+}
+const slider=document.getElementById('iter'),playBtn=document.getElementById('play');
+slider.max=STEPS;
+function setIter(n){cur=n;slider.value=n;const t=traj[n];
+ document.getElementById('r-n').textContent=n;
+ document.getElementById('r-err').textContent=t.err.toExponential(2);
+ document.getElementById('r-bound').textContent=t.bound.toExponential(2);
+ document.getElementById('r-occ').textContent=t.occ.toFixed(6);}
+slider.addEventListener('input',()=>{playing=false;playBtn.textContent='▶ Run filter';setIter(+slider.value)});
+playBtn.addEventListener('click',()=>{if(cur>=STEPS)cur=0;playing=!playing;playBtn.textContent=playing?'❚❚ Pause':'▶ Run filter'});
+document.getElementById('reset').addEventListener('click',()=>{playing=false;playBtn.textContent='▶ Run filter';setIter(0)});
+setIter(0);requestAnimationFrame(draw);
+
+// ---------- Fibonacci–Lucas ----------
+function weights(j2){ // j2 = 2j ; returns counts c[M2] for 3 copies, keyed by 2M offset
+ const one=new Array(j2+1).fill(1);let a=[1];
+ for(let r=0;r<3;r++){const b=new Array(a.length+j2).fill(0);for(let i=0;i<a.length;i++)for(let k=0;k<=j2;k++)b[i+k]+=a[i];a=b}
+ return a; // index i corresponds to 2M = i - 3*j2, step 2 in 2M per index? (each step of k is ΔM=1)
+}
+function mult(j2,J2){const a=weights(j2),off=3*j2/2; // index i ↔ M = i - 3j
+ const c=M=>{const i=M+off;return Number.isInteger(i)&&i>=0&&i<a.length?a[i]:0};const J=J2/2;return c(J)-c(J+1)}
+const F=[0,1],L=[2,1];for(let i=2;i<=16;i++){F.push(F[i-1]+F[i-2]);L.push(L[i-1]+L[i-2])}
+let rows='<tr><th>n</th><th>j</th><th>J</th><th>carrier (2j+1)³</th><th>n(j)</th><th>F<sub>n</sub></th><th>n(J)</th><th>F<sub>n−2</sub></th><th>L²−5F²</th><th>check</th></tr>';
+const fibRes=[];
+for(const n of [3,5,7,9,11]){const j2=F[n]-1,J2=L[n]-1;const nj=mult(j2,j2),nJ_=mult(j2,J2);const id=L[n]*L[n]-5*F[n]*F[n];const ok=nj===F[n]&&nJ_===F[n-2]&&id===-4;fibRes.push(ok);
+ const h=v=>v%2?`${v}/2`:`${v/2}`;
+ rows+=`<tr><td>${n}</td><td>${h(j2)}</td><td>${h(J2)}</td><td>${Math.pow(F[n],3)}</td><td>${nj}</td><td>${F[n]}</td><td>${nJ_}</td><td>${F[n-2]}</td><td>${id}</td><td class="${ok?'ok':''}">${ok?'✓':'✗'}</td></tr>`}
+document.getElementById('fibtable').innerHTML=rows;
+window.E47.fibOK=fibRes.every(Boolean);if(!window.E47.fibOK)console.error('Fibonacci–Lucas check failed');
+function drawRatio(){const c=document.getElementById('ratio'),d=Math.min(devicePixelRatio||1,2);c.width=c.clientWidth*d;c.height=c.clientHeight*d;const g=c.getContext('2d'),W=c.width,H=c.height,pad=36*d;
+ const lo=1,hi=3.2,X=i=>pad+(W-2*pad)*(i-1)/15,Y=v=>H-pad-(H-2*pad)*(v-lo)/(hi-lo);
+ g.clearRect(0,0,W,H);g.font=`${11*d}px system-ui`;g.fillStyle='#91a0b3';
+ g.strokeStyle='#d7b879';g.setLineDash([6*d,5*d]);g.beginPath();g.moveTo(X(1),Y(Math.sqrt(5)));g.lineTo(X(16),Y(Math.sqrt(5)));g.stroke();g.setLineDash([]);
+ g.fillText('√5 = '+Math.sqrt(5).toFixed(6),X(10),Y(Math.sqrt(5))-8*d);
+ g.strokeStyle='#74e1d0';g.lineWidth=2*d;g.beginPath();for(let i=1;i<=16;i++){const v=L[i]/F[i];i===1?g.moveTo(X(i),Y(v)):g.lineTo(X(i),Y(v))}g.stroke();
+ for(let i=1;i<=16;i++){g.fillStyle=i%2?'#74e1d0':'#4f8f86';g.beginPath();g.arc(X(i),Y(L[i]/F[i]),3.5*d,0,7);g.fill()}
+ g.fillStyle='#91a0b3';for(let i=1;i<=16;i+=3)g.fillText('n='+i,X(i)-8*d,H-pad+16*d);
+ g.fillText(`L₁₆/F₁₆ = ${(L[16]/F[16]).toFixed(9)}`,pad,pad-10*d);}
+document.querySelectorAll('[role=tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[role=tab]').forEach(x=>x.setAttribute('aria-selected',x===b));
+ document.getElementById('sky-tab').hidden=b.dataset.tab!=='sky-tab';document.getElementById('fib-tab').hidden=b.dataset.tab!=='fib-tab';if(b.dataset.tab==='fib-tab')drawRatio();else resize()}));
+addEventListener('resize',()=>{if(!document.getElementById('fib-tab').hidden)drawRatio()});
+</script>
+</body>
+</html>
