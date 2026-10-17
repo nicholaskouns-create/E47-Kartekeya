@@ -29,3 +29,7 @@ E_{47}=\ker K=E_6\oplus E_{30},\qquad \dim E_{47}=47,
 The exact finite-dimensional algebra and projector identities are E0-style mathematical statements. The PyTorch runs are E1 numerical validations of those statements and of the specified channel models. The observed protection under collective dephasing is a symmetry-protection result for that model only. It is **not** universal quantum error correction, experimental validation, a hardware demonstration, or evidence that E47 outperforms established error-correcting codes under realistic device noise.
 
 No canonical-status or evidence-class promotion is implied by this repository update.
+
+## See also
+
+- [Logical qubit in the spin-2 multiplicity](../E47_Logical_Qubit_Multiplicity_Validation.md): gauge-aware collective-noise test and an independent reproduction of `e47_logical_benchmark.py`.

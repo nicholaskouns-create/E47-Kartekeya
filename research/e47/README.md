@@ -28,6 +28,7 @@ This directory holds theorem plates, exact notes, and open proof obligations adj
 - [E47 Prima-Facie Spacetime Closure — 26/26 Casimir pullback](E47_Prima_Facie_Spacetime_Closure_26.md) — metric derived as `B4†(P6-P0)B4`
 - [Proof obligation ledger: nontrivial Einstein sector](NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md)
 - [Neural–quantum benchmark and Recursive Identity validation](E47_Neural_Quantum_RI_Validation.md) — the 220-layer PyTorch network, NumPy iteration and postselected quantum process all realise Γ = I − K²/99144, with error (15/17)^L at every depth L ≤ 220 (V1–V6), plus Theorems 1–2, descent and dilation of the Recursive Identity formalization and five consequences (45/45 PASS); [suite](validation/e47_neural_quantum_validation_suite.py) · [certificate](../../certificates/MC-E47-NEURAL-QUANTUM-RI-20261016-001.json) · [infographic](figures/E47_Neural_Quantum_RI_Validation_20261016.png)
+- [Logical qubit in the spin-2 multiplicity](E47_Logical_Qubit_Multiplicity_Validation.md) — the J = 2 sector of E47 is C⁵ ⊗ V₂, so a qubit in the multiplicity keeps fidelity 1 under every collective rotation with a gauge-aware decoder; reproduces the logical-qubit report and records that its SVD code basis is not unique (13/13 PASS); [checks](validation/e47_logical_subsystem_checks.py) · [certificate](../../certificates/MC-E47-LOGICAL-SUBSYSTEM-20261016-001.json) · [plate](figures/E47_Logical_Qubit_Multiplicity_20261016.png)
 
 ## Relationship to executable code
 
