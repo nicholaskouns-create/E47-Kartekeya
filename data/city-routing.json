@@ -1,0 +1,107 @@
+{
+  "schema": "CITY-ROUTING-1.0",
+  "cycle": [
+    "spectra",
+    "fold",
+    "scalar",
+    "murmuration",
+    "mnemosyne",
+    "density",
+    "horizon",
+    "wave",
+    "identity",
+    "build",
+    "soar",
+    "spectra"
+  ],
+  "routes": [
+    {
+      "id": "spectra",
+      "accepts": [
+        "structure",
+        "spectra"
+      ],
+      "next": "fold"
+    },
+    {
+      "id": "fold",
+      "accepts": [
+        "invariance",
+        "fold"
+      ],
+      "next": "scalar"
+    },
+    {
+      "id": "scalar",
+      "accepts": [
+        "field",
+        "scalar"
+      ],
+      "next": "murmuration"
+    },
+    {
+      "id": "murmuration",
+      "accepts": [
+        "dynamics",
+        "murmuration"
+      ],
+      "next": "mnemosyne"
+    },
+    {
+      "id": "mnemosyne",
+      "accepts": [
+        "memory",
+        "mnemosyne"
+      ],
+      "next": "density"
+    },
+    {
+      "id": "density",
+      "accepts": [
+        "measurement",
+        "density"
+      ],
+      "next": "horizon"
+    },
+    {
+      "id": "horizon",
+      "accepts": [
+        "prediction",
+        "horizon"
+      ],
+      "next": "wave"
+    },
+    {
+      "id": "wave",
+      "accepts": [
+        "flow",
+        "wave"
+      ],
+      "next": "identity"
+    },
+    {
+      "id": "identity",
+      "accepts": [
+        "persistence",
+        "identity"
+      ],
+      "next": "build"
+    },
+    {
+      "id": "build",
+      "accepts": [
+        "construction",
+        "build"
+      ],
+      "next": "soar"
+    },
+    {
+      "id": "soar",
+      "accepts": [
+        "restoration",
+        "soar"
+      ],
+      "next": "spectra"
+    }
+  ]
+}

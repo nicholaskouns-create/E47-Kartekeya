@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CITY-INVARIANT 1.0 executable packet",
+  "type": "object",
+  "required": [
+    "object",
+    "operator",
+    "invariant",
+    "witness",
+    "evidence",
+    "provenance",
+    "next_action"
+  ],
+  "properties": {
+    "object": {},
+    "operator": {},
+    "invariant": {},
+    "witness": {},
+    "evidence": {
+      "type": "string"
+    },
+    "provenance": {},
+    "next_action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 124
+      },
+      "uniqueItems": true
+    },
+    "receipt": {}
+  },
+  "additionalProperties": true
+}

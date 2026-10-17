@@ -1,0 +1,172 @@
+{
+  "certificate": "MC-E47-CANONICAL-47FACE-CRYSTAL-20260930-001",
+  "status": "PASS",
+  "checks_passed": 21,
+  "checks_total": 21,
+  "basis_convention": {
+    "coupling_tree": "((V2 tensor V2) -> j12) tensor V2 -> J",
+    "phase_convention": "Condon-Shortley Clebsch-Gordan",
+    "uncoupled_order": "m1,m2,m3 each in [2,1,0,-1,-2]",
+    "facet_order": "J ascending, j12 ascending, m ascending"
+  },
+  "basis": {
+    "J2_channels": 25,
+    "J5_channels": 22,
+    "total": 47,
+    "orthonormality_residual": 9.024399986237648e-16,
+    "C_eigen_residual": 1.525674451084487e-14,
+    "J12_eigen_residual": 1.184231484559502e-14,
+    "Jz_eigen_residual": 0.0,
+    "kernel_residual": 2.035953459305057e-13
+  },
+  "spherical_embedding": {
+    "rule": "z=m/(J+1); phi=2pi[r/mu_J + m/47 + offset_J], offset_2=0, offset_5=1/94",
+    "unit_norm_residual": 1.1102230246251565e-16,
+    "minimum_pair_distance": 0.06300788489418467,
+    "primal_hull_vertices": 47,
+    "origin_interior_margin": 0.8040206096455594
+  },
+  "dual_crystal": {
+    "V": 90,
+    "E": 135,
+    "F": 47,
+    "Euler": 2,
+    "face_size_histogram": {
+      "4": 3,
+      "5": 14,
+      "6": 23,
+      "7": 6,
+      "8": 1
+    },
+    "facet_plane_residual": 3.3306690738754696e-16
+  },
+  "precision_note": "The coupled basis is canonical after fixing coupling tree, CG phase, and ordering. The 3D point rule is an explicit deterministic label-derived embedding convention; it is not claimed to be the unique Euclidean embedding forced by SU(2). The exact invariant correspondence is one canonical E47 channel per dual facet.",
+  "checks": [
+    {
+      "name": "47 unique coupled labels",
+      "pass": true,
+      "value": 47,
+      "expected": "47"
+    },
+    {
+      "name": "J=2 state count",
+      "pass": true,
+      "value": 25,
+      "expected": "25"
+    },
+    {
+      "name": "J=5 state count",
+      "pass": true,
+      "value": 22,
+      "expected": "22"
+    },
+    {
+      "name": "coupled basis orthonormal",
+      "pass": true,
+      "value": 9.024399986237648e-16,
+      "expected": "<1e-12"
+    },
+    {
+      "name": "C eigenlabels J(J+1)",
+      "pass": true,
+      "value": 1.525674451084487e-14,
+      "expected": "<1e-11"
+    },
+    {
+      "name": "J12^2 eigenlabels j12(j12+1)",
+      "pass": true,
+      "value": 1.184231484559502e-14,
+      "expected": "<1e-11"
+    },
+    {
+      "name": "Jz eigenlabels m",
+      "pass": true,
+      "value": 0.0,
+      "expected": "<1e-12"
+    },
+    {
+      "name": "K annihilates coupled E47 basis",
+      "pass": true,
+      "value": 2.035953459305057e-13,
+      "expected": "<1e-10"
+    },
+    {
+      "name": "rank P47 = 47",
+      "pass": true,
+      "value": 47,
+      "expected": "47"
+    },
+    {
+      "name": "P47 idempotent",
+      "pass": true,
+      "value": 1.0694489634375983e-15,
+      "expected": "<1e-12"
+    },
+    {
+      "name": "47 spherical points",
+      "pass": true,
+      "value": 47,
+      "expected": "47"
+    },
+    {
+      "name": "all spherical points have unit norm",
+      "pass": true,
+      "value": 1.1102230246251565e-16,
+      "expected": "<1e-12"
+    },
+    {
+      "name": "all spherical points distinct",
+      "pass": true,
+      "value": 0.06300788489418467,
+      "expected": ">1e-3"
+    },
+    {
+      "name": "all 47 are primal hull vertices",
+      "pass": true,
+      "value": 47,
+      "expected": "47"
+    },
+    {
+      "name": "origin strictly inside primal hull",
+      "pass": true,
+      "value": 0.8040206096455594,
+      "expected": ">1e-6"
+    },
+    {
+      "name": "dual has exactly 47 facets",
+      "pass": true,
+      "value": 47,
+      "expected": "47"
+    },
+    {
+      "name": "one facet per coupled channel",
+      "pass": true,
+      "value": 47,
+      "expected": "47"
+    },
+    {
+      "name": "facet planes n_a\u00b7x=1",
+      "pass": true,
+      "value": 3.3306690738754696e-16,
+      "expected": "<1e-9"
+    },
+    {
+      "name": "dual Euler characteristic",
+      "pass": true,
+      "value": 2,
+      "expected": "2"
+    },
+    {
+      "name": "dual topology vertex count",
+      "pass": true,
+      "value": 90,
+      "expected": "90"
+    },
+    {
+      "name": "dual topology edge count",
+      "pass": true,
+      "value": 135,
+      "expected": "135"
+    }
+  ]
+}

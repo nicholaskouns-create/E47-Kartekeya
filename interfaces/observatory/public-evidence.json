@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "snapshot_status": "available",
+  "snapshot_date": "2026-10-13",
+  "source": "Supabase public.source_artifacts filtered access_scope=public",
+  "boundary": "Registry evidence classes are source labels, not independently upgraded verification. Only explicit public records are included.",
+  "records": [
+    {
+      "title": "CITY Route Packets — live cross-platform projection",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/supabase/functions/city-route-packets/index.ts",
+      "evidence_class": "E1",
+      "artifact_type": "routing_api",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 Canonical 47-Face Dual Crystal",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-CANONICAL-47FACE-CRYSTAL-20260930-001.json",
+      "evidence_class": "E1",
+      "artifact_type": "machine_certificate",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 convergence + noiseless multiplicity closure",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json",
+      "evidence_class": "E1",
+      "artifact_type": "machine_certificate",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 Explicit Twisted Spectral Triple — First-Principles Validator",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_twisted_spectral_triple_validator.py",
+      "evidence_class": "E1",
+      "artifact_type": "python_validator",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 First-Principles Proof: Spectral Selection, Projector, and Recursive Contraction",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/pull/119",
+      "evidence_class": "E1",
+      "artifact_type": "python_validator",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 FLOW AS A SINGLE 125 × 125 SPECTRAL MATRIX MACHINE",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_spectral_matrix_proof.py",
+      "evidence_class": "E1",
+      "artifact_type": "python_validator",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 Prism Spectral Formalism — GitHub authority",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md",
+      "evidence_class": "E0 + E1",
+      "artifact_type": "formalism",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 Prism Spectral Formalism — Notion registry",
+      "canonical_url": "https://app.notion.com/p/3e346094fd30818e99c1d04635983c62?pvs=204",
+      "evidence_class": "E0 + E1",
+      "artifact_type": "formalism_mirror",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "E47 Prism Spectral Formalism — Supabase executable witness",
+      "canonical_url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter",
+      "evidence_class": "E1",
+      "artifact_type": "executable_witness",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    },
+    {
+      "title": "Newton–Mean × E47 Product-Kernel Invariant",
+      "canonical_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NEWTON-MEAN-PRODUCT-20260930-001.json",
+      "evidence_class": "E1",
+      "artifact_type": "machine_certificate",
+      "boundary": "Finite mathematical reconstruction or source record; no physical or hardware validation is implied."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "pipeline": [
+    {
+      "stage": "Σ",
+      "name": "State Space",
+      "dimension": 125,
+      "role": "Ambient input vector space (ℝ¹²⁵)",
+      "validated": true,
+      "computation": "5³ tensor product of Spin-2 spaces"
+    },
+    {
+      "stage": "C",
+      "name": "Constraint",
+      "operator": "Casimir",
+      "definition": "C = J_x² + J_y² + J_z²",
+      "role": "Casimir operator spectral filtering",
+      "validated": true,
+      "eigenvalue_spectrum": {
+        "0": 1,
+        "2": 9,
+        "6": 25,
+        "12": 28,
+        "20": 27,
+        "30": 22,
+        "42": 13
+      },
+      "total_dimension": 125
+    },
+    {
+      "stage": "K",
+      "name": "Kernel Filter",
+      "operator": "K = (C - 6I)(C - 30I)",
+      "role": "Invariant subspace (Ψ) isolation",
+      "validated": true,
+      "target_eigenvalues": [6, 30],
+      "target_j_values": [2, 5],
+      "kernel_dimension": 47
+    },
+    {
+      "stage": "H_k",
+      "name": "Harmonic Flow",
+      "equation": "∂ₜψ = i Ĥ ψ",
+      "role": "Recursive oscillation phase",
+      "validated": true,
+      "hamiltonian": "H = K²",
+      "spectral_gap": 11664
+    },
+    {
+      "stage": "E_47",
+      "name": "Dimensional Reduction",
+      "dimension": 47,
+      "role": "Orthogonal projection to invariant kernel",
+      "validated": true,
+      "coherence_fraction": 0.376,
+      "expected_coherence_fraction": 0.376
+    },
+    {
+      "stage": "P_E",
+      "name": "Projector",
+      "property": "Idempotent",
+      "equation": "P_E² = P_E",
+      "role": "Idempotent kernel mapping",
+      "validated": true,
+      "idempotence_error": 1.6202201482531093e-14,
+      "hermiticity_error": 0.0
+    },
+    {
+      "stage": "Γ",
+      "name": "Dynamics",
+      "map": "Γ(xₙ₊₁) = f(xₙ)",
+      "role": "Iterative contraction",
+      "validated": true,
+      "convergence_type": "Babylonian",
+      "convergence_target": 0.376,
+      "convergence_tolerance": 1e-7
+    }
+  ],
+  "validation_status": "COMPLETE",
+  "timestamp": "2026-07-21T19:30:00Z"
+}

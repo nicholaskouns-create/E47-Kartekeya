@@ -1,0 +1,30 @@
+{
+  "schema": "E47-WORKBENCH-WORKSPACE-1.0",
+  "mode": "verified navigation links; no runtime account synchronization",
+  "destinations": [
+    {
+      "platform": "GITHUB",
+      "title": "E47-Kartekeya",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+      "description": "Canonical source, reviewable changes, reproducibility checks, and instrument contracts."
+    },
+    {
+      "platform": "GOOGLE WORKSPACE",
+      "title": "WorkBench build & reproducibility guide",
+      "url": "https://docs.google.com/document/d/1QSEoFN19Gu3e8bAEfhoYJESQiA2YhBe5Y2SNdbYxNpU/edit?usp=drivesdk",
+      "description": "New native Google Doc with the build guide, repairs, evidence boundaries and reproduction steps."
+    },
+    {
+      "platform": "LINEAR",
+      "title": "WorkBench delivery \u00b7 REC-16",
+      "url": "https://linear.app/4521/issue/REC-16/build-e47-research-workbench-with-reproducible-spectral-experiments",
+      "description": "Implementation, validation, delivery evidence, and remaining integration work."
+    },
+    {
+      "platform": "NOTION",
+      "title": "WorkBench delivery record",
+      "url": "https://app.notion.com/p/3f546094fd30814fb37ad856bb52a967?pvs=204",
+      "description": "New private Notion draft with reproduction steps, verification, source provenance and evidence boundaries."
+    }
+  ]
+}

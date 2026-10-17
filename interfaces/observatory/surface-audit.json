@@ -1,0 +1,223 @@
+{
+  "schema": "CITY-SURFACE-AUDIT-1",
+  "observedAt": "2026-10-13",
+  "scope": "Public HTTP status, page title, and embedding headers. Header absence is not a successful functional embed test.",
+  "routes": [
+    {
+      "id": "hosted-1",
+      "url": "https://iris-dove-dawn-silver.grok.me/fold",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Street",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-2",
+      "url": "https://king-dawn-terra-nova.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Field Desk",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-3",
+      "url": "https://autumn-palm-blend-wave.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Gaze",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-4",
+      "url": "https://monarch-sky-daisy-civic.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "SKYRMION",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-5",
+      "url": "https://zest-blade-turbo-rose.grok.me/qegt",
+      "embed": "unknown",
+      "status": 200,
+      "title": "CHIMERA \u2014 The HAR Codex",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-6",
+      "url": "https://moon-shale-tulip-xenon.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "SKYRMION",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-7",
+      "url": "https://kite-pixel-tiger-stone.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Q5 Lattice",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-8",
+      "url": "https://leaf-vivid-bison-crisp.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Hover",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-9",
+      "url": "https://flame-kind-fleet-blend.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "The Mathematical City",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-10",
+      "url": "https://apex-zinc-daisy-acre.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Mathematical City",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-11",
+      "url": "https://spark-maple-sail-tiger.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "City OS",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-12",
+      "url": "https://sapphire-cabin-crystal-king.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "InvariFold",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-13",
+      "url": "https://star-sage-atlas-rapid.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "UFO Propulsion Lab",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-14",
+      "url": "https://glow-garden-brick-cedar.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "MAV",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-15",
+      "url": "https://iris-dove-dawn-silver.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Street",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-16",
+      "url": "https://garden-moss-cabin-forest.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "WAVEFORGE",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-17",
+      "url": "https://zinc-crane-gem-pepper.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Hover",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-18",
+      "url": "https://velvet-king-quiet-amber.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Kartekeya",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-19",
+      "url": "https://mist-mint-branch-nova.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Identity",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-20",
+      "url": "https://heart-eagle-blade-hazel.grok.me",
+      "embed": "unknown",
+      "status": 200,
+      "title": "SCALAR \u00b7 Algebraic Quantum Scalar Fields",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-21",
+      "url": "https://topaz-solar-iris-drift.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Soar",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-22",
+      "url": "https://kite-glade-tiger-cabin.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Murmuration",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-23",
+      "url": "https://winter-dawn-leaf-marble.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "Density",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    },
+    {
+      "id": "hosted-24",
+      "url": "https://oasis-acorn-pearl-prism.grok.me/",
+      "embed": "unknown",
+      "status": 200,
+      "title": "THE MATRIX",
+      "x_frame_options": "",
+      "frame_ancestors": null
+    }
+  ]
+}

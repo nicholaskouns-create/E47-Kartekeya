@@ -1,0 +1,48 @@
+{
+  "schema": "MC-FORMALISM-CROSSWALK-1.0",
+  "citizen_code": "E47-LOR-SIG-C01",
+  "title": "E47 Casimir-Spectral Lorentzian Signature Theorem",
+  "date": "2026-09-24",
+  "evidence_class": "E0 + E1",
+  "validation_status": "machine_validated",
+  "statement": "eta=P6-P0; g4=diag(-1,2,8,2); sig(g4)=(-,+,+,+)",
+  "validation": {
+    "certificate_code": "MC-E47-CASIMIR-LOR-SIGNATURE-20260924",
+    "checks": "12/12 PASS",
+    "eigenvalues": [
+      -1,
+      2,
+      2,
+      8
+    ],
+    "source_sha256": "7928cad685b204062e1b42306890a1ed07f037827889d0370f8bdffabfea71c8"
+  },
+  "github": {
+    "validator": "research/e47/validation/e47_casimir_lorentzian_signature.py",
+    "validator_commit": "dfced5773631eb7b4b79e84f8eb1a63e51435d9d",
+    "formalism": "research/e47/E47_Casimir_Spectral_Lorentzian_Signature.md",
+    "certificate": "artifacts/MC-E47-CASIMIR-LOR-SIGNATURE-20260924.json",
+    "graph": "website/data/formalism-graph.json",
+    "public_certificate": "website/data/MC-E47-CASIMIR-LOR-SIGNATURE-20260924.json"
+  },
+  "notion": {
+    "validator_page": "https://app.notion.com/p/3e546094fd30813d83e8c1ec82c25e65",
+    "citizen_page": "https://app.notion.com/p/3e546094fd3081428d92d5f7f3801d7c",
+    "civic_id": "MC-348",
+    "formalism_page": "https://app.notion.com/p/3e546094fd3081eababdc2e3f40920ec",
+    "formalism_id": "FRM-98"
+  },
+  "supabase": {
+    "project_id": "gpkjvihkyectnenvnbng",
+    "source_artifact_id": "34c9a957-2033-4dcb-964a-16ec6473255e",
+    "source_logical_id": "SRC-E47-CASIMIR-LOR-SIGNATURE-20260924",
+    "python_artifact_code": "PY-E47-CASIMIR-LOR-SIGNATURE-20260924",
+    "certificate_code": "MC-E47-CASIMIR-LOR-SIGNATURE-20260924",
+    "citizen_code": "E47-LOR-SIG-C01"
+  },
+  "parents": [
+    "E47-CARRIER-125",
+    "E47-CASIMIR-SPECTRUM",
+    "E47-PRISM-20260922"
+  ]
+}

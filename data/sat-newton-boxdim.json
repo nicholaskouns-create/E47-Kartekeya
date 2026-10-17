@@ -1,0 +1,19 @@
+{
+  "schema":"SAT-NEWTON-BOXDIM-1.0",
+  "generated_on":"2026-09-22",
+  "clauses":[[1,2,3],[-1,-2,3],[1,-3,2]],
+  "slice":{"x1":[-0.5,1.5],"x2":[-0.5,1.5],"x3_initial":0.37},
+  "estimates":[
+    {"resolution":96,"dimension":1.1746806562940753,"ci95_low":1.0595150252811585,"ci95_high":1.289846287306992,"r2":0.9950208389011267,"unresolved_fraction":0.0},
+    {"resolution":128,"dimension":1.2085473753368936,"ci95_low":1.094098939659576,"ci95_high":1.3229958110142113,"r2":0.9953528437231816,"unresolved_fraction":0.0},
+    {"resolution":192,"dimension":1.151070708098302,"ci95_low":1.0364348948594797,"ci95_high":1.2657065213371244,"r2":0.9948629035710446,"unresolved_fraction":0.0},
+    {"resolution":256,"dimension":1.1540488734769676,"ci95_low":1.0849704794317667,"ci95_high":1.2231272675221685,"r2":0.9972098232083486,"unresolved_fraction":0.0},
+    {"resolution":384,"dimension":1.1588068411588979,"ci95_low":1.09446612369067,"ci95_high":1.2231475586271257,"r2":0.9975983234336645,"unresolved_fraction":0.0},
+    {"resolution":512,"dimension":1.1356637850327658,"ci95_low":1.0857306229581551,"ci95_high":1.1855969471073764,"r2":0.9979911240850581,"unresolved_fraction":0.0}
+  ],
+  "high_resolution_mean_dimension":1.1498975519417334,
+  "high_resolution_range":[1.1356637850327658,1.1588068411588979],
+  "distance_to_nearest_integer":0.14989755194173338,
+  "noninteger_across_high_resolution_range":true,
+  "robustness":{"boundary_definitions":["4-neighbor","8-neighbor"],"resolutions":[256,384,512],"fit_window":"drop finest pixel scale","dimension_range":[1.1252727299408924,1.158806841158898],"mean_dimension":1.1422692825606162}
+}

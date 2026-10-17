@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620">
+  <rect width="1100" height="620" fill="#020609"/>
+  <rect x="36" y="36" width="1028" height="548" rx="18" fill="#061016" stroke="#39f3ef" stroke-width="2"/>
+  <text x="70" y="110" fill="#eef9f8" font-family="ui-sans-serif,system-ui" font-size="42" font-weight="700">MANIFOLD</text>
+  <text x="70" y="148" fill="#9bb0b7" font-family="ui-monospace,Menlo,monospace" font-size="16">LOCK CARD · MATHEMATICAL CITY · E47 / KKP-R</text>
+  <text x="1030" y="110" fill="#3DFF9A" font-family="ui-sans-serif,system-ui" font-size="42" font-weight="700" text-anchor="end">PASS</text>
+  <text x="1030" y="148" fill="#39f3ef" font-family="ui-monospace,Menlo,monospace" font-size="12" text-anchor="end">dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16</text>
+  <g font-family="ui-sans-serif,system-ui">
+    <rect x="70" y="190" width="300" height="120" rx="12" fill="#0B1220" stroke="#1dabb1"/>
+    <text x="90" y="228" fill="#9bb0b7" font-size="16">dim H</text><text x="90" y="278" fill="#39f3ef" font-size="36" font-weight="700">125</text>
+    <rect x="400" y="190" width="300" height="120" rx="12" fill="#0B1220" stroke="#1dabb1"/>
+    <text x="420" y="228" fill="#9bb0b7" font-size="16">dim E47</text><text x="420" y="278" fill="#39f3ef" font-size="36" font-weight="700">47</text>
+    <rect x="730" y="190" width="300" height="120" rx="12" fill="#0B1220" stroke="#1dabb1"/>
+    <text x="750" y="228" fill="#9bb0b7" font-size="16">rank K</text><text x="750" y="278" fill="#39f3ef" font-size="36" font-weight="700">78</text>
+    <rect x="70" y="330" width="300" height="120" rx="12" fill="#0B1220" stroke="#1dabb1"/>
+    <text x="90" y="368" fill="#9bb0b7" font-size="16">Ω_c</text><text x="90" y="418" fill="#39f3ef" font-size="36" font-weight="700">47/125</text>
+    <rect x="400" y="330" width="300" height="120" rx="12" fill="#0B1220" stroke="#1dabb1"/>
+    <text x="420" y="368" fill="#9bb0b7" font-size="16">Δ</text><text x="420" y="418" fill="#39f3ef" font-size="36" font-weight="700">11664</text>
+    <rect x="730" y="330" width="300" height="120" rx="12" fill="#0B1220" stroke="#1dabb1"/>
+    <text x="750" y="368" fill="#9bb0b7" font-size="16">κ</text><text x="750" y="418" fill="#39f3ef" font-size="36" font-weight="700">16</text>
+  </g>
+  <text x="70" y="500" fill="#e8b44f" font-family="ui-monospace,Menlo,monospace" font-size="16">K=(C-6I)(C-30I)   ker K = E47 = E6 ⊕ E30   ρ = 15/17   Tr P47 = 47</text>
+  <text x="70" y="534" fill="#64748B" font-family="ui-monospace,Menlo,monospace" font-size="13">Surface over SpectralEngine + EidolonEngine. Import, do not re-derive.</text>
+</svg>

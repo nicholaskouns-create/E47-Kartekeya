@@ -1,0 +1,86 @@
+{
+  "schema": "CITY-OBSERVATORY-TOOLS-1",
+  "version": "1.0.0",
+  "title": "Mathematical City Observatory",
+  "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+  "runtime": "Static browser application; pure deterministic ES modules; no server credentials",
+  "objects": {
+    "instruments": "catalog.json",
+    "public_evidence": "public-evidence.json",
+    "share_assets": "share/manifest.json",
+    "numerical_engine": "engine.mjs",
+    "quantum_carrier": "qgnn-data.json"
+  },
+  "browser_api": {
+    "global": "window.cityObservatory",
+    "operations": [
+      "getState()",
+      "getCatalog()",
+      "runSpectral(config)",
+      "openView(view)",
+      "exportReplay()",
+      "importReplay(text)",
+      "runQuantum(angles) -> Promise"
+    ]
+  },
+  "spectral_inputs": {
+    "seed": "integer 0..4294967295",
+    "selectedWeight": "number 0..1",
+    "steps": "integer 0..300",
+    "angle": "number -2*pi..2*pi; phase only, does not affect probabilities"
+  },
+  "neural_inputs": {
+    "dataset": [
+      "Circle",
+      "XOR",
+      "Spiral",
+      "Linear"
+    ],
+    "hidden": "integer 2..32",
+    "seed": "integer 0..4294967295",
+    "learningRate": "number 0.001..2",
+    "epochs": "integer 0..20000"
+  },
+  "replay": {
+    "schema": "E47-OBSERVATORY-REPLAY-1",
+    "fields": [
+      "schema",
+      "spectral",
+      "neural",
+      "view",
+      "quantum"
+    ],
+    "maximum_bytes": 8192,
+    "results": "Always recomputed from inputs; imported outputs are rejected"
+  },
+  "views": [
+    "city",
+    "signal",
+    "learn",
+    "atlas",
+    "evidence"
+  ],
+  "embedding": {
+    "bridge": "bridge.mjs",
+    "message_schema": "CITY-OBSERVATORY-BRIDGE-1",
+    "allowed_parent_origin": "https://nicholaskouns-create.github.io",
+    "actions": [
+      "open-view",
+      "request-state"
+    ],
+    "validation": "Both origin and parent-window identity checked"
+  },
+  "boundaries": [
+    "Seven-sector norm simulation is distinct from full QGNN gate evolution",
+    "Neural accuracy is synthetic training accuracy",
+    "Projection probability depends on input overlap",
+    "Zero selected overlap has undefined conditional fidelity",
+    "Registry entries are not automatically independent verification",
+    "No autonomous authority, remote writes, or human identity verification are implied"
+  ],
+  "quantum_inputs": {
+    "angles": "Four finite radians in [-2*pi,2*pi]",
+    "source": "research/observatory-inputs/e47_qgnn.py",
+    "model": "Exact 47-complex-coordinate noiseless eigengate simulation"
+  }
+}
