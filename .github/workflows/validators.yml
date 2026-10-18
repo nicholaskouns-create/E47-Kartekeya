@@ -1,0 +1,75 @@
+name: Validators (every PR + full sweep of main)
+
+# Forward:  every pull request runs every validator listed by config/validators.json.
+# Backward: every push to main, a nightly sweep, and manual runs re-check everything
+#           already on main. Network-only checks (live site crawl) run on the nightly
+#           and manual sweeps, not on push, so a fresh Pages deploy can't race them.
+# A validator passes when it exits 0. The job fails on any unexpected FAIL/TIMEOUT.
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: "17 10 * * *"   # nightly, 03:17 America/Los_Angeles (PDT)
+  workflow_dispatch:
+    inputs:
+      allow_network:
+        description: "Also run validators flagged needs_network"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validators-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validators:
+    name: Run all E47 validators
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-ci.txt
+
+      - name: Install validator dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-ci.txt
+
+      - name: Run every validator
+        env:
+          NETWORK_FLAG: ${{ (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.allow_network)) && '--allow-network' || '' }}
+        run: |
+          python scripts/run_all_validators.py $NETWORK_FLAG \
+            --jobs 4 \
+            --log-dir validator-logs \
+            --json validator-logs/receipt.json
+
+      - name: List files the validators regenerated (informational)
+        if: always()
+        run: |
+          {
+            echo "### Files rewritten by validators during this run"
+            echo '```'
+            git status --short -- . ':!validator-logs' || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload validator logs and receipt
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: validator-logs
+          path: validator-logs/
+          if-no-files-found: warn
