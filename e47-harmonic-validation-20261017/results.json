@@ -1,0 +1,513 @@
+{
+  "title": "E47 harmonic-polynomial realization",
+  "checks": [
+    {
+      "level": "E1",
+      "name": "degree 2: exact Laplacian nullity",
+      "status": "PASS",
+      "detail": {
+        "rank": 1,
+        "nullity": 5
+      }
+    },
+    {
+      "level": "E1",
+      "name": "degree 2: all basis elements harmonic",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 2: Casimir eigenvalue 6",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 2: rotations preserve harmonicity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 2: rotation Lie brackets",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 5: exact Laplacian nullity",
+      "status": "PASS",
+      "detail": {
+        "rank": 10,
+        "nullity": 11
+      }
+    },
+    {
+      "level": "E1",
+      "name": "degree 5: all basis elements harmonic",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 5: Casimir eigenvalue 30",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 5: rotations preserve harmonicity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "degree 5: rotation Lie brackets",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "supplied quadratic basis: harmonic and independent",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "level": "E1",
+      "name": "125-dimensional tensor carrier census",
+      "status": "PASS",
+      "detail": {
+        "0": 1,
+        "2": 9,
+        "6": 25,
+        "12": 28,
+        "20": 27,
+        "30": 22,
+        "42": 13
+      }
+    },
+    {
+      "level": "E1",
+      "name": "E47 multiplicities",
+      "status": "PASS",
+      "detail": {
+        "0": 1,
+        "1": 3,
+        "2": 5,
+        "3": 4,
+        "4": 3,
+        "5": 2,
+        "6": 1
+      }
+    },
+    {
+      "level": "E1",
+      "name": "exact nonzero K squared spectrum",
+      "status": "PASS",
+      "detail": [
+        11664,
+        12544,
+        19600,
+        32400,
+        186624
+      ]
+    },
+    {
+      "level": "E1",
+      "name": "exact minimax contraction",
+      "status": "PASS",
+      "detail": {
+        "epsilon": "1/99144",
+        "rho": "15/17"
+      }
+    },
+    {
+      "level": "E2",
+      "name": "220-step complex state contraction",
+      "status": "PASS",
+      "detail": {
+        "error": 5.76847450957188e-13,
+        "operator_bound": 1.0998014527879737e-12
+      }
+    },
+    {
+      "level": "E2",
+      "name": "kernel amplitudes preserved",
+      "status": "PASS",
+      "detail": null
+    }
+  ],
+  "exact_bases": {
+    "2": [
+      [
+        {
+          "powers": [
+            0,
+            1,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            0,
+            2
+          ],
+          "coefficient": "-1"
+        },
+        {
+          "powers": [
+            0,
+            2,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            0,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            1,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            0,
+            2
+          ],
+          "coefficient": "-1"
+        },
+        {
+          "powers": [
+            2,
+            0,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ]
+    ],
+    "5": [
+      [
+        {
+          "powers": [
+            0,
+            0,
+            5
+          ],
+          "coefficient": "1/5"
+        },
+        {
+          "powers": [
+            0,
+            2,
+            3
+          ],
+          "coefficient": "-2"
+        },
+        {
+          "powers": [
+            0,
+            4,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            1,
+            4
+          ],
+          "coefficient": "5"
+        },
+        {
+          "powers": [
+            0,
+            3,
+            2
+          ],
+          "coefficient": "-10"
+        },
+        {
+          "powers": [
+            0,
+            5,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            1,
+            3
+          ],
+          "coefficient": "-1"
+        },
+        {
+          "powers": [
+            1,
+            3,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            0,
+            4
+          ],
+          "coefficient": "1"
+        },
+        {
+          "powers": [
+            1,
+            2,
+            2
+          ],
+          "coefficient": "-6"
+        },
+        {
+          "powers": [
+            1,
+            4,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            0,
+            5
+          ],
+          "coefficient": "1/15"
+        },
+        {
+          "powers": [
+            0,
+            2,
+            3
+          ],
+          "coefficient": "-1/3"
+        },
+        {
+          "powers": [
+            2,
+            0,
+            3
+          ],
+          "coefficient": "-1/3"
+        },
+        {
+          "powers": [
+            2,
+            2,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            1,
+            4
+          ],
+          "coefficient": "1"
+        },
+        {
+          "powers": [
+            0,
+            3,
+            2
+          ],
+          "coefficient": "-1"
+        },
+        {
+          "powers": [
+            2,
+            1,
+            2
+          ],
+          "coefficient": "-3"
+        },
+        {
+          "powers": [
+            2,
+            3,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            1,
+            3
+          ],
+          "coefficient": "-1"
+        },
+        {
+          "powers": [
+            3,
+            1,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            0,
+            4
+          ],
+          "coefficient": "1"
+        },
+        {
+          "powers": [
+            1,
+            2,
+            2
+          ],
+          "coefficient": "-3"
+        },
+        {
+          "powers": [
+            3,
+            0,
+            2
+          ],
+          "coefficient": "-1"
+        },
+        {
+          "powers": [
+            3,
+            2,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            0,
+            5
+          ],
+          "coefficient": "1/5"
+        },
+        {
+          "powers": [
+            2,
+            0,
+            3
+          ],
+          "coefficient": "-2"
+        },
+        {
+          "powers": [
+            4,
+            0,
+            1
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            0,
+            1,
+            4
+          ],
+          "coefficient": "1"
+        },
+        {
+          "powers": [
+            2,
+            1,
+            2
+          ],
+          "coefficient": "-6"
+        },
+        {
+          "powers": [
+            4,
+            1,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ],
+      [
+        {
+          "powers": [
+            1,
+            0,
+            4
+          ],
+          "coefficient": "5"
+        },
+        {
+          "powers": [
+            3,
+            0,
+            2
+          ],
+          "coefficient": "-10"
+        },
+        {
+          "powers": [
+            5,
+            0,
+            0
+          ],
+          "coefficient": "1"
+        }
+      ]
+    ]
+  },
+  "seed": 47,
+  "E0": "PROVED: see validation.md for the mathematical argument",
+  "E1": "PASS: exact rational and integer calculations",
+  "E2": "PASS: numerical spectral-basis complex-state simulation",
+  "E3": "NOT RUN: independent implementation or replication",
+  "E4": "NOT TESTED: physical or experimental realization"
+}
