@@ -1,0 +1,43 @@
+{
+  "schema": "E47-VALIDATOR-MANIFEST/1.0",
+  "description": "Every validator CI runs on each PR (forward) and on main nightly/on push (backward). Files matched by 'discover' run automatically with defaults; 'validators' entries add arguments, timeouts or flags. Nothing is skipped silently: excluded, known-failing and network-only entries are all listed in the run summary.",
+  "default_timeout": 300,
+  "discover": [
+    "research/e47/validation/*.py",
+    "research/e47/first-principles/*.py",
+    "research/e47/newton-e47-product/*.py",
+    "research/e47/arrival_mathematics/*.py",
+    "validation/*.py",
+    "validators/*.py",
+    "q5/validator.py",
+    "e47-harmonic-validation-20261017/validate.py"
+  ],
+  "validators": [
+    {
+      "path": "scripts/check_lab_contract.py"
+    },
+    {
+      "id": "scripts/crawl_city_site.py (static)",
+      "path": "scripts/crawl_city_site.py"
+    },
+    {
+      "id": "scripts/crawl_city_site.py --live",
+      "path": "scripts/crawl_city_site.py",
+      "args": ["--live"],
+      "needs_network": true
+    },
+    {
+      "path": "research/e47/validation/density_sensitivity_tomography.py",
+      "args": ["research/e47/validation/data/density_sensitivity_seed_20260925.json", "--output", "{tmp}/density.json"]
+    },
+    {
+      "path": "research/e47/validation/sensitivity_boundary_mapper.py",
+      "args": ["--registry", "research/e47/validation/sensitivity_boundary_hypothesis.json", "--demo", "--output", "{tmp}/sensitivity-boundary-demo.json"]
+    },
+    {
+      "path": "research/e47/validation/ri_qegt_live_cross_platform_graph_20260925.py",
+      "known_failing": "Crashes at line 165 writing its report: json.dumps gets a numpy bool ('Object of type bool is not JSON serializable'), so no PASS/FAIL count is produced. Serialization bug, not a math result."
+    }
+  ],
+  "exclude": []
+}

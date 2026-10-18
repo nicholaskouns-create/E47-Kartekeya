@@ -1,0 +1,9 @@
+# Dependencies for scripts/run_all_validators.py (.github/workflows/validators.yml).
+# CPU-only PyTorch wheels keep the install small; torch is needed by the neural-quantum validators.
+--extra-index-url https://download.pytorch.org/whl/cpu
+-r requirements.txt
+matplotlib>=3.9
+networkx>=3.3
+pandas>=2.2
+ephem>=4.1
+torch>=2.4
