@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "simulator": "Icarus Verilog",
+  "compared_complex_outputs": 768,
+  "frames": 6,
+  "frame_locks": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  "coefficient_format": "signed 32-bit Q8.24; factors truncated toward zero",
+  "quantized_complement_bound": 0.882352888584137,
+  "ideal_complement_bound": 0.8823529411764706,
+  "quantization_error_bound_per_coordinate": "abs(input)/2^24 + 2^-24",
+  "process_node": "technology-neutral RTL; no technology-library synthesis or physical design executed"
+}

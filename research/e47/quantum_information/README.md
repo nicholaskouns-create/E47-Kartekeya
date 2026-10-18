@@ -33,3 +33,9 @@ No canonical-status or evidence-class promotion is implied by this repository up
 ## See also
 
 - [Logical qubit in the spin-2 multiplicity](../E47_Logical_Qubit_Multiplicity_Validation.md): gauge-aware collective-noise test and an independent reproduction of `e47_logical_benchmark.py`.
+
+## Packed encoding, measurement and RTL components
+
+[Executable package and validation](qgnn_components/README.md) supplies the actual coupled-basis transform, seven-qubit packed encoding, E47 syndrome measurement, trace-preserving attenuation/reset channel, independent complex128 PyTorch validation, and fixed-point RTL. Execution: 36 quantum-component checks and 21 tensor checks passed; 768 complex RTL outputs across six frames matched the integer oracle.
+
+[Tensor-to-RTL formalism](qgnn_components/Tensor_and_RTL_Validation.md) · [Accessible proof plate](qgnn_components/proof_plate/E47_Proof_Plate.html) · [Print PDF](qgnn_components/proof_plate/E47_Proof_Plate.pdf). The contraction is exact algebra; the reported circuit and RTL results are simulations. RTL is technology-neutral; physical ASIC implementation has not been run.

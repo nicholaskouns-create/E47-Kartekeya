@@ -1,0 +1,1020 @@
+[
+  {
+    "index": 0,
+    "bits": "0000000",
+    "j": 0,
+    "j12": 2,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 1,
+    "bits": "0000001",
+    "j": 1,
+    "j12": 1,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 2,
+    "bits": "0000010",
+    "j": 1,
+    "j12": 1,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 3,
+    "bits": "0000011",
+    "j": 1,
+    "j12": 1,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 4,
+    "bits": "0000100",
+    "j": 1,
+    "j12": 2,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 5,
+    "bits": "0000101",
+    "j": 1,
+    "j12": 2,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 6,
+    "bits": "0000110",
+    "j": 1,
+    "j12": 2,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 7,
+    "bits": "0000111",
+    "j": 1,
+    "j12": 3,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 8,
+    "bits": "0001000",
+    "j": 1,
+    "j12": 3,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 9,
+    "bits": "0001001",
+    "j": 1,
+    "j12": 3,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 10,
+    "bits": "0001010",
+    "j": 2,
+    "j12": 0,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 11,
+    "bits": "0001011",
+    "j": 2,
+    "j12": 0,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 12,
+    "bits": "0001100",
+    "j": 2,
+    "j12": 0,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 13,
+    "bits": "0001101",
+    "j": 2,
+    "j12": 0,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 14,
+    "bits": "0001110",
+    "j": 2,
+    "j12": 0,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 15,
+    "bits": "0001111",
+    "j": 2,
+    "j12": 1,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 16,
+    "bits": "0010000",
+    "j": 2,
+    "j12": 1,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 17,
+    "bits": "0010001",
+    "j": 2,
+    "j12": 1,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 18,
+    "bits": "0010010",
+    "j": 2,
+    "j12": 1,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 19,
+    "bits": "0010011",
+    "j": 2,
+    "j12": 1,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 20,
+    "bits": "0010100",
+    "j": 2,
+    "j12": 2,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 21,
+    "bits": "0010101",
+    "j": 2,
+    "j12": 2,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 22,
+    "bits": "0010110",
+    "j": 2,
+    "j12": 2,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 23,
+    "bits": "0010111",
+    "j": 2,
+    "j12": 2,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 24,
+    "bits": "0011000",
+    "j": 2,
+    "j12": 2,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 25,
+    "bits": "0011001",
+    "j": 2,
+    "j12": 3,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 26,
+    "bits": "0011010",
+    "j": 2,
+    "j12": 3,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 27,
+    "bits": "0011011",
+    "j": 2,
+    "j12": 3,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 28,
+    "bits": "0011100",
+    "j": 2,
+    "j12": 3,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 29,
+    "bits": "0011101",
+    "j": 2,
+    "j12": 3,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 30,
+    "bits": "0011110",
+    "j": 2,
+    "j12": 4,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 31,
+    "bits": "0011111",
+    "j": 2,
+    "j12": 4,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 32,
+    "bits": "0100000",
+    "j": 2,
+    "j12": 4,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 33,
+    "bits": "0100001",
+    "j": 2,
+    "j12": 4,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 34,
+    "bits": "0100010",
+    "j": 2,
+    "j12": 4,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 35,
+    "bits": "0100011",
+    "j": 3,
+    "j12": 1,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 36,
+    "bits": "0100100",
+    "j": 3,
+    "j12": 1,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 37,
+    "bits": "0100101",
+    "j": 3,
+    "j12": 1,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 38,
+    "bits": "0100110",
+    "j": 3,
+    "j12": 1,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 39,
+    "bits": "0100111",
+    "j": 3,
+    "j12": 1,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 40,
+    "bits": "0101000",
+    "j": 3,
+    "j12": 1,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 41,
+    "bits": "0101001",
+    "j": 3,
+    "j12": 1,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 42,
+    "bits": "0101010",
+    "j": 3,
+    "j12": 2,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 43,
+    "bits": "0101011",
+    "j": 3,
+    "j12": 2,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 44,
+    "bits": "0101100",
+    "j": 3,
+    "j12": 2,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 45,
+    "bits": "0101101",
+    "j": 3,
+    "j12": 2,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 46,
+    "bits": "0101110",
+    "j": 3,
+    "j12": 2,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 47,
+    "bits": "0101111",
+    "j": 3,
+    "j12": 2,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 48,
+    "bits": "0110000",
+    "j": 3,
+    "j12": 2,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 49,
+    "bits": "0110001",
+    "j": 3,
+    "j12": 3,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 50,
+    "bits": "0110010",
+    "j": 3,
+    "j12": 3,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 51,
+    "bits": "0110011",
+    "j": 3,
+    "j12": 3,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 52,
+    "bits": "0110100",
+    "j": 3,
+    "j12": 3,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 53,
+    "bits": "0110101",
+    "j": 3,
+    "j12": 3,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 54,
+    "bits": "0110110",
+    "j": 3,
+    "j12": 3,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 55,
+    "bits": "0110111",
+    "j": 3,
+    "j12": 3,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 56,
+    "bits": "0111000",
+    "j": 3,
+    "j12": 4,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 57,
+    "bits": "0111001",
+    "j": 3,
+    "j12": 4,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 58,
+    "bits": "0111010",
+    "j": 3,
+    "j12": 4,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 59,
+    "bits": "0111011",
+    "j": 3,
+    "j12": 4,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 60,
+    "bits": "0111100",
+    "j": 3,
+    "j12": 4,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 61,
+    "bits": "0111101",
+    "j": 3,
+    "j12": 4,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 62,
+    "bits": "0111110",
+    "j": 3,
+    "j12": 4,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 63,
+    "bits": "0111111",
+    "j": 4,
+    "j12": 2,
+    "m": -4,
+    "selected": false
+  },
+  {
+    "index": 64,
+    "bits": "1000000",
+    "j": 4,
+    "j12": 2,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 65,
+    "bits": "1000001",
+    "j": 4,
+    "j12": 2,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 66,
+    "bits": "1000010",
+    "j": 4,
+    "j12": 2,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 67,
+    "bits": "1000011",
+    "j": 4,
+    "j12": 2,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 68,
+    "bits": "1000100",
+    "j": 4,
+    "j12": 2,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 69,
+    "bits": "1000101",
+    "j": 4,
+    "j12": 2,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 70,
+    "bits": "1000110",
+    "j": 4,
+    "j12": 2,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 71,
+    "bits": "1000111",
+    "j": 4,
+    "j12": 2,
+    "m": 4,
+    "selected": false
+  },
+  {
+    "index": 72,
+    "bits": "1001000",
+    "j": 4,
+    "j12": 3,
+    "m": -4,
+    "selected": false
+  },
+  {
+    "index": 73,
+    "bits": "1001001",
+    "j": 4,
+    "j12": 3,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 74,
+    "bits": "1001010",
+    "j": 4,
+    "j12": 3,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 75,
+    "bits": "1001011",
+    "j": 4,
+    "j12": 3,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 76,
+    "bits": "1001100",
+    "j": 4,
+    "j12": 3,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 77,
+    "bits": "1001101",
+    "j": 4,
+    "j12": 3,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 78,
+    "bits": "1001110",
+    "j": 4,
+    "j12": 3,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 79,
+    "bits": "1001111",
+    "j": 4,
+    "j12": 3,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 80,
+    "bits": "1010000",
+    "j": 4,
+    "j12": 3,
+    "m": 4,
+    "selected": false
+  },
+  {
+    "index": 81,
+    "bits": "1010001",
+    "j": 4,
+    "j12": 4,
+    "m": -4,
+    "selected": false
+  },
+  {
+    "index": 82,
+    "bits": "1010010",
+    "j": 4,
+    "j12": 4,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 83,
+    "bits": "1010011",
+    "j": 4,
+    "j12": 4,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 84,
+    "bits": "1010100",
+    "j": 4,
+    "j12": 4,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 85,
+    "bits": "1010101",
+    "j": 4,
+    "j12": 4,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 86,
+    "bits": "1010110",
+    "j": 4,
+    "j12": 4,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 87,
+    "bits": "1010111",
+    "j": 4,
+    "j12": 4,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 88,
+    "bits": "1011000",
+    "j": 4,
+    "j12": 4,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 89,
+    "bits": "1011001",
+    "j": 4,
+    "j12": 4,
+    "m": 4,
+    "selected": false
+  },
+  {
+    "index": 90,
+    "bits": "1011010",
+    "j": 5,
+    "j12": 3,
+    "m": -5,
+    "selected": true
+  },
+  {
+    "index": 91,
+    "bits": "1011011",
+    "j": 5,
+    "j12": 3,
+    "m": -4,
+    "selected": true
+  },
+  {
+    "index": 92,
+    "bits": "1011100",
+    "j": 5,
+    "j12": 3,
+    "m": -3,
+    "selected": true
+  },
+  {
+    "index": 93,
+    "bits": "1011101",
+    "j": 5,
+    "j12": 3,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 94,
+    "bits": "1011110",
+    "j": 5,
+    "j12": 3,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 95,
+    "bits": "1011111",
+    "j": 5,
+    "j12": 3,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 96,
+    "bits": "1100000",
+    "j": 5,
+    "j12": 3,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 97,
+    "bits": "1100001",
+    "j": 5,
+    "j12": 3,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 98,
+    "bits": "1100010",
+    "j": 5,
+    "j12": 3,
+    "m": 3,
+    "selected": true
+  },
+  {
+    "index": 99,
+    "bits": "1100011",
+    "j": 5,
+    "j12": 3,
+    "m": 4,
+    "selected": true
+  },
+  {
+    "index": 100,
+    "bits": "1100100",
+    "j": 5,
+    "j12": 3,
+    "m": 5,
+    "selected": true
+  },
+  {
+    "index": 101,
+    "bits": "1100101",
+    "j": 5,
+    "j12": 4,
+    "m": -5,
+    "selected": true
+  },
+  {
+    "index": 102,
+    "bits": "1100110",
+    "j": 5,
+    "j12": 4,
+    "m": -4,
+    "selected": true
+  },
+  {
+    "index": 103,
+    "bits": "1100111",
+    "j": 5,
+    "j12": 4,
+    "m": -3,
+    "selected": true
+  },
+  {
+    "index": 104,
+    "bits": "1101000",
+    "j": 5,
+    "j12": 4,
+    "m": -2,
+    "selected": true
+  },
+  {
+    "index": 105,
+    "bits": "1101001",
+    "j": 5,
+    "j12": 4,
+    "m": -1,
+    "selected": true
+  },
+  {
+    "index": 106,
+    "bits": "1101010",
+    "j": 5,
+    "j12": 4,
+    "m": 0,
+    "selected": true
+  },
+  {
+    "index": 107,
+    "bits": "1101011",
+    "j": 5,
+    "j12": 4,
+    "m": 1,
+    "selected": true
+  },
+  {
+    "index": 108,
+    "bits": "1101100",
+    "j": 5,
+    "j12": 4,
+    "m": 2,
+    "selected": true
+  },
+  {
+    "index": 109,
+    "bits": "1101101",
+    "j": 5,
+    "j12": 4,
+    "m": 3,
+    "selected": true
+  },
+  {
+    "index": 110,
+    "bits": "1101110",
+    "j": 5,
+    "j12": 4,
+    "m": 4,
+    "selected": true
+  },
+  {
+    "index": 111,
+    "bits": "1101111",
+    "j": 5,
+    "j12": 4,
+    "m": 5,
+    "selected": true
+  },
+  {
+    "index": 112,
+    "bits": "1110000",
+    "j": 6,
+    "j12": 4,
+    "m": -6,
+    "selected": false
+  },
+  {
+    "index": 113,
+    "bits": "1110001",
+    "j": 6,
+    "j12": 4,
+    "m": -5,
+    "selected": false
+  },
+  {
+    "index": 114,
+    "bits": "1110010",
+    "j": 6,
+    "j12": 4,
+    "m": -4,
+    "selected": false
+  },
+  {
+    "index": 115,
+    "bits": "1110011",
+    "j": 6,
+    "j12": 4,
+    "m": -3,
+    "selected": false
+  },
+  {
+    "index": 116,
+    "bits": "1110100",
+    "j": 6,
+    "j12": 4,
+    "m": -2,
+    "selected": false
+  },
+  {
+    "index": 117,
+    "bits": "1110101",
+    "j": 6,
+    "j12": 4,
+    "m": -1,
+    "selected": false
+  },
+  {
+    "index": 118,
+    "bits": "1110110",
+    "j": 6,
+    "j12": 4,
+    "m": 0,
+    "selected": false
+  },
+  {
+    "index": 119,
+    "bits": "1110111",
+    "j": 6,
+    "j12": 4,
+    "m": 1,
+    "selected": false
+  },
+  {
+    "index": 120,
+    "bits": "1111000",
+    "j": 6,
+    "j12": 4,
+    "m": 2,
+    "selected": false
+  },
+  {
+    "index": 121,
+    "bits": "1111001",
+    "j": 6,
+    "j12": 4,
+    "m": 3,
+    "selected": false
+  },
+  {
+    "index": 122,
+    "bits": "1111010",
+    "j": 6,
+    "j12": 4,
+    "m": 4,
+    "selected": false
+  },
+  {
+    "index": 123,
+    "bits": "1111011",
+    "j": 6,
+    "j12": 4,
+    "m": 5,
+    "selected": false
+  },
+  {
+    "index": 124,
+    "bits": "1111100",
+    "j": 6,
+    "j12": 4,
+    "m": 6,
+    "selected": false
+  },
+  {
+    "index": 125,
+    "bits": "1111101",
+    "unused": true,
+    "selected": false
+  },
+  {
+    "index": 126,
+    "bits": "1111110",
+    "unused": true,
+    "selected": false
+  },
+  {
+    "index": 127,
+    "bits": "1111111",
+    "unused": true,
+    "selected": false
+  }
+]

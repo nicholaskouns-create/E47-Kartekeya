@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Casimir sector dimensions",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "125 distinct coupled labels",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "coupled basis orthonormal",
+      "error": 6.059615436317369e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "Casimir diagonalization",
+      "error": 1.6732490834425107e-12,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "intermediate Casimir labels",
+      "error": 1.370155315536534e-12,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "magnetic labels",
+      "error": 2.5915731300617813e-13,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "seven-qubit Schur unitary",
+      "error": 6.062420366141384e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "projector rank 47",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "kernel annihilation",
+      "error": 1.4059844242194152e-11,
+      "tolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "projector idempotence",
+      "error": 7.853484586193984e-15,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "collective generator 0 invariance",
+      "error": 6.962651760259669e-13,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "collective generator 1 invariance",
+      "error": 7.34349126286431e-13,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "collective generator 2 invariance",
+      "error": 1.487533254086218e-13,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "three unused states rejected",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "all 128 packed membership inputs",
+      "error": 1.6529410035761497e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "full basis transform and ancilla state",
+      "error": 1.262108403434323e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "Born probability",
+      "error": 1.0158540675320182e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "successful branch equals physical projector",
+      "error": 8.466258581730025e-15,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "nonselective measurement channel",
+      "error": 1.765125826404649e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "nonselective measurement trace",
+      "error": 2.4202861985049747e-14,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "relaxation Kraus completeness",
+      "error": 0.0,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "attenuation dilation unitary",
+      "error": 6.029347685756854e-16,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "Qiskit flagged circuit and reset equals update",
+      "error": 8.54463445966792e-17,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "relaxation trace",
+      "error": 2.5902380280444168e-18,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "relaxation Hermiticity",
+      "error": 5.564980545308356e-17,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "relaxation positivity",
+      "error": 3.453928873319664e-16,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "arbitrary E47 state fixed",
+      "error": 0.0,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "ten mixed states trace",
+      "error": 2.220446049250313e-16,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "ten mixed states positivity",
+      "error": 2.833642859213536e-16,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "complement amplitude bound",
+      "error": 0.0,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "one-step leakage bound",
+      "error": 0.0,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "220-step density limit",
+      "error": 5.627999415531729e-13,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "sharp leakage rate",
+      "error": 0.0,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "graph mixture trace",
+      "error": 1.5541428168266498e-18,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "graph mixture positivity",
+      "error": 5.103187564684113e-16,
+      "tolerance": 2e-10,
+      "passed": true
+    },
+    {
+      "name": "synthesized u/cx circuit state",
+      "error": 2.6352380254811503e-13,
+      "tolerance": 1e-09,
+      "passed": true
+    }
+  ],
+  "simulator": "Qiskit Statevector and DensityMatrix circuit simulation",
+  "hardware_run": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "qiskit": "2.6.0"
+  },
+  "python": "3.12.14",
+  "seed": 470125,
+  "selected_dimension": 47,
+  "carrier_dimension": 125,
+  "amplitude_rate": 0.8823529411764706,
+  "population_rate": 0.7785467128027681,
+  "random_state_success_probability": 0.40255874561120053,
+  "synthesized_gate_counts": {
+    "u": 20824,
+    "cx": 15309,
+    "measure": 1
+  },
+  "synthesized_depth": 21828
+}

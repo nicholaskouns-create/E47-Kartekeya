@@ -1,0 +1,58 @@
+[
+  {
+    "j": 0,
+    "start": 0,
+    "end": 0,
+    "numerator": 103,
+    "denominator": 153,
+    "q24": 11294465
+  },
+  {
+    "j": 1,
+    "start": 1,
+    "end": 9,
+    "numerator": 10825,
+    "denominator": 12393,
+    "q24": 14654511
+  },
+  {
+    "j": 2,
+    "start": 10,
+    "end": 34,
+    "numerator": 1,
+    "denominator": 1,
+    "q24": 16777216
+  },
+  {
+    "j": 3,
+    "start": 35,
+    "end": 62,
+    "numerator": 15,
+    "denominator": 17,
+    "q24": 14803425
+  },
+  {
+    "j": 4,
+    "start": 63,
+    "end": 89,
+    "numerator": 9943,
+    "denominator": 12393,
+    "q24": 13460490
+  },
+  {
+    "j": 5,
+    "start": 90,
+    "end": 111,
+    "numerator": 1,
+    "denominator": 1,
+    "q24": 16777216
+  },
+  {
+    "j": 6,
+    "start": 112,
+    "end": 124,
+    "numerator": -15,
+    "denominator": 17,
+    "q24": -14803425
+  }
+]
