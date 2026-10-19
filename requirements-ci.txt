@@ -5,5 +5,5 @@
 matplotlib>=3.9
 networkx>=3.3
 pandas>=2.2
-ephem>=4.1
+ephem>=4.2.1
 torch>=2.4
