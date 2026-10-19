@@ -2,7 +2,7 @@
 # CPU-only PyTorch wheels keep the install small; torch is needed by the neural-quantum validators.
 --extra-index-url https://download.pytorch.org/whl/cpu
 -r requirements.txt
-matplotlib>=3.9
+matplotlib>=3.11.2
 networkx>=3.3
 pandas>=2.2
 ephem>=4.1
