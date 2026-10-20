@@ -39,3 +39,25 @@ jobs:
           assert all('result' not in r and 'artifact_url' not in r for r in payload['runs'])
           print('Distributed evidence contract + public registry PASS')
           PY
+      - name: Publish immutable consumer receipt
+        if: success()
+        env:
+          CONSUMER_REPO: ${{ github.repository }}
+          CONSUMER_SHA: ${{ github.sha }}
+          CONSUMER_RUN: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import os,json
+          receipt={'schema_version':'1.0','producer':os.environ['CONSUMER_REPO'],
+                   'commit':os.environ['CONSUMER_SHA'],'run_id':os.environ['CONSUMER_RUN'],
+                   'upstream_contract':'46f696fd9479e4dcade7ffb0c79ac7978f6a9bf6',
+                   'check':'shared_contract_and_public_registry','status':'passed',
+                   'evidence':'integration_smoke_only'}
+          with open('consumer-receipt.json','w') as out:json.dump(receipt,out,sort_keys=True,indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: mathematical-city-consumer-receipt
+          path: consumer-receipt.json
+          retention-days: 30
