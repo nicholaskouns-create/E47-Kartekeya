@@ -1,0 +1,311 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\renewcommand{\thetheorem}{\Alph{theorem}}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{corollary}[lemma]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[lemma]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[lemma]{Remark}
+
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\title[A Fibonacci--Lucas Tower of Casimir-Selected Sectors]{A Fibonacci--Lucas Tower of Casimir-Selected Sectors\\ in Triple Tensor Powers of $SU(2)$ Representations}
+\author{Nicholas Kouns}
+\date{October 2026}
+\subjclass[2020]{Primary 22E70; Secondary 11B39, 81R05, 20C35}
+\keywords{SU(2) representations, Clebsch--Gordan decomposition, quadratic Casimir, Fibonacci numbers, Lucas numbers, golden ratio, quantum tetrahedron}
+
+
+\begin{document}
+\begin{abstract}
+Let $V_j$ denote the spin-$j$ irreducible representation of $SU(2)$, and let $C$ be the total quadratic Casimir on $V_j^{\otimes 3}$. For $j=2$ the spectrum of $C$ on the $125$-dimensional space $V_2^{\otimes 3}$ has mean $\mu=18$ and standard deviation $\sigma=12$, and the operator $K=(C-6I)(C-30I)$ built from $\mu\pm\sigma$ has kernel $E_6\oplus E_{30}$ of dimension $47=25+22$, so $\Omega_c=47/125$. We show that this is the first member of an infinite tower indexed by odd $n$ with $3\nmid n$. Setting $j=(F_n-1)/2$ and $J=(L_n-1)/2$, the multiplicities of $V_j$ and $V_J$ in $V_j^{\otimes 3}$ are $n(j)=F_n$ and $n(J)=F_{n-2}$, the values $\mu\pm\sigma$ are exactly $j(j+1)$ and $J(J+1)=5j(j+1)$, and the selected dimension is $D=F_n^2+F_{n-2}L_n$. We prove that $D/(2j+1)^2$ decreases strictly to $3/\varphi$ along the tower, with an explicit error term. We also prove that $n(j)$ equals the dimension of the space of equilateral quantum tetrahedra, $\dim\Inv(V_j^{\otimes 4})$. Every stated instance is checked by an exact-arithmetic validator that passes $35/35$ checks.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+The E47 construction starts from the carrier space $V_2^{\otimes 3}$, the threefold tensor power of the spin-$2$ representation of $SU(2)$, which has $5^3=125$ states. On this space the total quadratic Casimir
+\[
+C=(S_1+S_2+S_3)^2=\sum_{a=1}^{3}S_a^2+2\sum_{a<b}S_a\cdot S_b
+\]
+has a spectrum of mean $\mu=18$ and standard deviation $\sigma=12$. The two values $\mu\pm\sigma=6,30$ are themselves Casimir eigenvalues, $6=2\cdot 3$ and $30=5\cdot 6$. The operator
+\[
+K=(C-6I)(C-30I)
+\]
+therefore has nontrivial kernel. Its kernel is $E_6\oplus E_{30}$, where $E_\lambda$ denotes the $\lambda$-eigenspace of $C$. One finds $\dim E_6=25$, $\dim E_{30}=22$, $\rank K=78$, and $\dim\ker K=47$. The selected fraction is $\Omega_c=47/125$.
+
+The purpose of this note is to explain the number $47$ structurally. The pair of spins $(j,J)=(2,5)$ is the first member of an infinite family. In this family $2j+1$ and $2J+1$ are a Fibonacci and a Lucas number with the same odd index, and every quantity above has a closed Fibonacci--Lucas form. The main results are as follows.
+\begin{itemize}
+\item Theorem~\ref{thm:A} gives the multiplicities $n(j)=F_n$ and $n(J)=F_{n-2}$.
+\item Theorem~\ref{thm:B} gives the Casimir identity $J(J+1)=5j(j+1)$.
+\item Theorem~\ref{thm:C} shows that the selector $\mu\pm\sigma$ picks out precisely these two sectors, for every member of the tower.
+\item Theorem~\ref{thm:D} establishes the asymptotics $D/(2j+1)^2\to 3/\varphi$.
+\item Proposition~\ref{prop:tet} identifies $n(j)$ with the dimension of the space of equilateral quantum tetrahedra.
+\end{itemize}
+Section~\ref{sec:comp} describes the computational certificate. Section~\ref{sec:scope} separates what is proved here from the interpretive questions that remain open.
+
+\section{Preliminaries}
+
+\subsection{Representations of \texorpdfstring{$SU(2)$}{SU(2)}}
+For $j\in\tfrac12\mathbb{Z}_{\ge 0}$ let $V_j$ be the irreducible representation of dimension $2j+1$. It has spin operators $S=(S^x,S^y,S^z)$ satisfying $S^2=S\cdot S=j(j+1)\,I$, and weights $m=j,j-1,\dots,-j$, each of multiplicity one; see \cite{Hall,FultonHarris}. Throughout, $j$ is a nonnegative integer. On $V_j^{\otimes 3}$, $S_a$ denotes $S$ acting on the $a$-th factor. The total Casimir $C$ is defined above, and $E_\lambda$ is its $\lambda$-eigenspace. For a spin $J'$ we write $n(J')$ for the multiplicity of $V_{J'}$ in $V_j^{\otimes 3}$; the value of $j$ will always be clear from context.
+
+Two standard facts will be used repeatedly.
+\begin{itemize}
+\item \emph{Clebsch--Gordan rule.} For integers $l,j\ge 0$,
+\[
+V_l\otimes V_j\cong\bigoplus_{k=|l-j|}^{l+j}V_k,
+\]
+each summand occurring once.
+\item \emph{Casimir eigenvalues.} $C$ acts on every copy of $V_{J'}$ inside $V_j^{\otimes 3}$ as the scalar $J'(J'+1)$. Since $J'\mapsto J'(J'+1)$ is strictly increasing on $J'\ge 0$, the eigenspace $E_{J'(J'+1)}$ is exactly the $V_{J'}$-isotypic component, of dimension $n(J')(2J'+1)$. In particular $C$ is diagonalizable, and $\ker\bigl((C-aI)(C-bI)\bigr)=E_a\oplus E_b$ for $a\ne b$.
+\end{itemize}
+
+\subsection{Fibonacci and Lucas numbers}
+Let $F_0=0$, $F_1=1$, $F_{n+1}=F_n+F_{n-1}$, and $L_n=F_{n-1}+F_{n+1}$, so that $L_n=F_n+2F_{n-1}$. Let $\varphi=(1+\sqrt5)/2$ and $\psi=-1/\varphi$. Then Binet's formulas $F_n=(\varphi^n-\psi^n)/\sqrt5$ and $L_n=\varphi^n+\psi^n$ hold. We use the following classical identities \cite{Vajda,Koshy}:
+\begin{align}
+L_n^2-5F_n^2&=4(-1)^n,\label{eq:pell}\\
+F_mL_k&=F_{m+k}+(-1)^kF_{m-k},\label{eq:FL}\\
+5F_n^2&=L_{2n}-2(-1)^n,\label{eq:F2}
+\end{align}
+together with $\varphi^2=\varphi+1$, $\sqrt5=2\varphi-1$, $\varphi^{-2}=2-\varphi$, and $F_{-k}=(-1)^{k+1}F_k$.
+
+\begin{lemma}[Parity]\label{lem:parity}
+$F_n$ is even if and only if $3\mid n$, and $L_n$ is even if and only if $3\mid n$.
+\end{lemma}
+\begin{proof}
+Modulo $2$ the sequence $(F_n)$ is $0,1,1,0,1,1,\dots$, which has period $3$ with zeros exactly at $n\equiv 0\pmod 3$. Since $L_n=F_{n-1}+F_{n+1}$, $L_n\equiv 0\pmod 2$ exactly when $F_{n-1}\equiv F_{n+1}$. Modulo $2$ this happens precisely when $F_{n-1}\equiv F_{n+1}\equiv 1$, that is, when $3\mid n$.
+\end{proof}
+
+\begin{definition}[The tower]\label{def:tower}
+An index $n\ge 5$ is a \emph{tower index} if $n$ is odd and $3\nmid n$, that is, $n\equiv\pm1\pmod 6$. The first tower indices are $n=5,7,11,13,17,19,23,25,\dots$; for example, $n=9$ and $n=15$ are excluded. For a tower index set
+\[
+j=\frac{F_n-1}{2},\qquad J=\frac{L_n-1}{2}.
+\]
+These are integers by Lemma~\ref{lem:parity}.
+\end{definition}
+
+\begin{remark}
+Integrality of $j$ and $J$ requires only $3\nmid n$. Oddness of $n$ is what makes the Casimir identity of Theorem~\ref{thm:B} hold. For example, $n=4$ gives $(j,J)=(1,3)$ with $J(J+1)=12\ne 10=5j(j+1)$. The index $n=1$ gives the degenerate pair $j=J=0$, and $n=3$ fails integrality.
+\end{remark}
+
+\section{Main results}
+
+\begin{lemma}[Multiplicities in $V_j^{\otimes 3}$]\label{lem:mult}
+Let $j\ge 0$ be an integer. The multiplicity of $V_k$ in $V_j^{\otimes 3}$ is
+\[
+n(k)=\begin{cases}2k+1,& 0\le k\le j,\\ 3j-k+1,& j\le k\le 3j,\end{cases}
+\]
+and $n(k)=0$ for $k>3j$. In particular $n(j)=2j+1$.
+\end{lemma}
+\begin{proof}
+By the Clebsch--Gordan rule, $V_j\otimes V_j\cong\bigoplus_{l=0}^{2j}V_l$. Tensoring with $V_j$ and applying the rule again shows that $n(k)$ is the number of integers $l\in[0,2j]$ with $|l-j|\le k\le l+j$. This condition is equivalent to $j-k\le l\le j+k$ together with $l\ge k-j$.
+\begin{itemize}
+\item If $0\le k\le j$, then $k-j\le j-k$, so the condition reads $j-k\le l\le j+k$. This interval lies inside $[0,2j]$ and contains $2k+1$ integers.
+\item If $j\le k\le 3j$, then $j-k\le 0$ and $j+k\ge 2j$, so the condition reads $k-j\le l\le 2j$. This interval contains $3j-k+1$ integers.
+\end{itemize}
+For $k>3j$ no $l\le 2j$ satisfies $l\ge k-j$. The two formulas agree at $k=j$.
+\end{proof}
+
+For $j=2$, Lemma~\ref{lem:mult} gives the census $n(0),\dots,n(6)=1,3,5,4,3,2,1$.
+
+\begin{theorem}[Tower multiplicities]\label{thm:A}
+For every tower index $n$, the spins $j=(F_n-1)/2$ and $J=(L_n-1)/2$ satisfy $j\le J\le 3j$, and
+\[
+n(j)=F_n,\qquad n(J)=F_{n-2}.
+\]
+\end{theorem}
+\begin{proof}
+First, $L_n=F_n+2F_{n-1}\ge F_n$ gives $J\ge j$. Next, $J\le 3j$ is equivalent to $L_n-1\le 3F_n-3$, i.e.\ $2F_{n-1}\le 2F_n-2$, i.e.\ $F_{n-2}\ge 1$, which holds for $n\ge 3$. By Lemma~\ref{lem:mult}, $n(j)=2j+1=F_n$, and
+\[
+n(J)=3j-J+1=\frac{3(F_n-1)-(L_n-1)}{2}+1=\frac{3F_n-L_n}{2}.
+\]
+Since $L_n=F_{n-1}+F_{n+1}=F_n+2F_{n-1}$, we get $3F_n-L_n=2(F_n-F_{n-1})=2F_{n-2}$.
+\end{proof}
+
+\begin{theorem}[Casimir identity]\label{thm:B}
+For integers $j,J\ge 0$,
+\[
+J(J+1)=5j(j+1)\iff(2J+1)^2=5(2j+1)^2-4.
+\]
+In particular, for every tower index $n$, $J(J+1)=5j(j+1)$.
+\end{theorem}
+\begin{proof}
+Expanding, $(2J+1)^2-5(2j+1)^2+4=4\bigl(J(J+1)-5j(j+1)\bigr)$, which gives the equivalence. For a tower index, $2j+1=F_n$ and $2J+1=L_n$. Since $n$ is odd, \eqref{eq:pell} gives $L_n^2=5F_n^2-4$.
+\end{proof}
+
+\begin{corollary}[Selected dimension]\label{cor:D}
+For every tower index $n$, the combined dimension of the $V_j$- and $V_J$-isotypic components of $V_j^{\otimes 3}$ is
+\[
+D=n(j)(2j+1)+n(J)(2J+1)=F_n^2+F_{n-2}L_n.
+\]
+At $n=5$ one has $(j,J)=(2,5)$, $n(j)=5$, $n(J)=2$, and $D=5\cdot5+2\cdot11=47$, inside a space of dimension $(2j+1)^3=125$.
+\end{corollary}
+\begin{proof}
+Substitute $n(j)=F_n$, $2j+1=F_n$, $n(J)=F_{n-2}$, and $2J+1=L_n$ from Theorem~\ref{thm:A}.
+\end{proof}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrrrr}
+\toprule
+$n$ & $j$ & $J$ & $n(j)=F_n$ & $n(J)=F_{n-2}$ & $D$ & $D/(2j+1)^2-3/\varphi$\\
+\midrule
+5 & 2 & 5 & 5 & 2 & 47 & $2.59\times10^{-2}$\\
+7 & 6 & 14 & 13 & 5 & 314 & $3.89\times10^{-3}$\\
+11 & 44 & 99 & 89 & 34 & 14687 & $8.31\times10^{-5}$\\
+13 & 116 & 260 & 233 & 89 & 100658 & $1.21\times10^{-5}$\\
+17 & 798 & 1785 & 1597 & 610 & 4728719 & $2.58\times10^{-7}$\\
+19 & 2090 & 4674 & 4181 & 1597 & 32411114 & $3.77\times10^{-8}$\\
+\bottomrule
+\end{tabular}
+\caption{The first six members of the tower.}\label{tab:tower}
+\end{table}
+
+\subsection{The \texorpdfstring{$\mu\pm\sigma$}{mu +/- sigma} selector}
+
+\begin{proposition}[Mean and spread of the Casimir spectrum]\label{prop:musigma}
+For any integer $j\ge 1$, the spectrum of $C$ on $V_j^{\otimes 3}$, counted with multiplicity, has mean and standard deviation
+\[
+\mu=\frac{\Tr C}{(2j+1)^3}=3j(j+1),\qquad\sigma=\Bigl(\frac{\Tr C^2}{(2j+1)^3}-\mu^2\Bigr)^{1/2}=2j(j+1).
+\]
+Consequently $\mu-\sigma=j(j+1)$ and $\mu+\sigma=5j(j+1)$. Equivalently, $\sum_{a<b}S_a\cdot S_b$ equals $-j(j+1)$ on $E_{\mu-\sigma}$ and $+j(j+1)$ on $E_{\mu+\sigma}$, whenever these eigenspaces are nonzero.
+\end{proposition}
+\begin{proof}
+Write $d=2j+1$ and $X=\sum_{a<b}S_a\cdot S_b$, so $C=3j(j+1)I+2X$. On $V_j$, $\Tr S^i=0$. By rotational symmetry together with $\sum_iS^iS^i=j(j+1)I$, we have $\Tr(S^iS^k)=\delta_{ik}\,j(j+1)d/3$.
+
+For $a\ne b$, $\Tr(S_a^iS_b^i)=d\cdot\Tr S^i\cdot\Tr S^i=0$, so $\Tr X=0$ and $\mu=3j(j+1)$.
+
+For $\Tr X^2$, consider the products of the three pair terms. Two distinct pairs among three factors always share exactly one factor, say $(1,2)$ and $(1,3)$. Then
+\[
+\Tr\bigl((S_1\cdot S_2)(S_1\cdot S_3)\bigr)=\sum_{i,k}\Tr(S^iS^k)\,\Tr(S^i)\,\Tr(S^k)=0.
+\]
+For a single pair,
+\[
+\Tr\bigl((S_1\cdot S_2)^2\bigr)=d\sum_{i,k}\Tr(S^iS^k)^2=d\cdot3\Bigl(\frac{j(j+1)d}{3}\Bigr)^2=\frac{d^3\,(j(j+1))^2}{3}.
+\]
+Summing over the three pairs gives $\Tr X^2/d^3=(j(j+1))^2$. Hence $\Tr C^2/d^3-\mu^2=4\Tr X^2/d^3=4(j(j+1))^2$, and $\sigma=2j(j+1)$. The final statement follows from $X=(C-\mu I)/2$.
+\end{proof}
+
+\begin{theorem}[The selector picks the tower sectors]\label{thm:C}
+Let $n$ be a tower index, with $j,J$ as in Definition~\ref{def:tower}. Then
+\[
+\ker\bigl((C-(\mu-\sigma)I)(C-(\mu+\sigma)I)\bigr)=E_{j(j+1)}\oplus E_{J(J+1)},
+\]
+and this kernel has dimension $D=F_n^2+F_{n-2}L_n$. For $n=5$ the operator is $K=(C-6I)(C-30I)$ on $V_2^{\otimes3}$, with
+\[
+\dim E_6=25,\quad\dim E_{30}=22,\quad\rank K=78,\quad\dim\ker K=47,\quad\Omega_c=\tfrac{47}{125}.
+\]
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:musigma} and Theorem~\ref{thm:B}, $\mu-\sigma=j(j+1)$ and $\mu+\sigma=5j(j+1)=J(J+1)$. Both $V_j$ and $V_J$ occur in $V_j^{\otimes3}$ by Theorem~\ref{thm:A}. Since $C$ is diagonalizable with $E_{J'(J'+1)}$ equal to the $V_{J'}$-isotypic component, the kernel is as stated, with dimension $D$ by Corollary~\ref{cor:D}. For $n=5$: $\mu=18$, $\sigma=12$, $\dim E_6=n(2)\cdot5=25$, $\dim E_{30}=n(5)\cdot11=22$, and $\rank K=125-47=78$.
+\end{proof}
+
+\begin{remark}[Converse; classical, outside the validator]\label{rem:converse}
+By Theorem~\ref{thm:B}, for $j\ge 1$ the value $\mu+\sigma=5j(j+1)$ is a Casimir eigenvalue $J(J+1)$ exactly when $(x,y)=(2J+1,2j+1)$ is a positive solution of $x^2-5y^2=-4$. Every positive solution of this equation has the form $(L_n,F_n)$ with $n$ odd \cite{Koshy}. Requiring $x$ and $y$ odd then forces $3\nmid n$ (Lemma~\ref{lem:parity}). So the tower consists of \emph{exactly} those $j\ge1$ for which both $\mu\pm\sigma$ are Casimir eigenvalues. A direct search over $1\le j<2\times10^5$ returns $j=2,6,44,116,798,2090,14328,37512$, in agreement with this. The validator does not check this converse.
+\end{remark}
+
+\subsection{Asymptotics along the tower}
+
+\begin{theorem}[Golden limit]\label{thm:D}
+For every tower index $n$,
+\[
+\frac{D}{(2j+1)^2}-\frac{3}{\varphi}=\frac{10-3\sqrt5-3\sqrt5\,\varphi^{-2n}}{5F_n^2}.
+\]
+In particular, $0<D/(2j+1)^2-3/\varphi<(10-3\sqrt5)/(5F_n^2)$. Along the tower the difference decreases strictly to $0$, so
+\[
+\lim\frac{D}{(2j+1)^2}=1+\frac{\sqrt5}{\varphi^2}=\frac{3}{\varphi}.
+\]
+\end{theorem}
+\begin{proof}
+Since $2j+1=F_n$, we have $D/(2j+1)^2=1+F_{n-2}L_n/F_n^2$. For odd $n$, \eqref{eq:FL} with $m=n-2$, $k=n$ and $F_{-2}=-1$ gives $F_{n-2}L_n=F_{2n-2}+1$, and \eqref{eq:F2} gives $5F_n^2=L_{2n}+2$. Because $n$ is odd, $\psi^{2n}=\varphi^{-2n}$ and $\psi^{2n-2}=\varphi^{-(2n-2)}$. Therefore
+\[
+\frac{F_{n-2}L_n}{F_n^2}=\frac{\sqrt5\,\bigl(\varphi^{2n-2}-\varphi^{2-2n}+\sqrt5\bigr)}{5F_n^2},\qquad
+\frac{\sqrt5}{\varphi^2}=\frac{\sqrt5\,\varphi^{-2}\bigl(\varphi^{2n}+\varphi^{-2n}+2\bigr)}{5F_n^2}.
+\]
+Subtracting, the leading terms $\varphi^{2n-2}$ cancel. Using $\varphi^2+\varphi^{-2}=L_2=3$ and $2\varphi^{-2}=3-\sqrt5$, the numerator becomes
+\[
+\sqrt5\bigl(\sqrt5-2\varphi^{-2}-3\varphi^{-2n}\bigr)=10-3\sqrt5-3\sqrt5\,\varphi^{-2n}.
+\]
+The identity $1+\sqrt5/\varphi^2=3/\varphi$ is equivalent to $\varphi^2+\sqrt5=3\varphi$, which holds because $\varphi^2+\sqrt5=(\varphi+1)+(2\varphi-1)=3\varphi$. This proves the displayed formula.
+
+The numerator lies in the interval $[10-3\sqrt5(1+\varphi^{-10}),\,10-3\sqrt5]\subset[3.237,3.292]$, so the difference is positive. If $n<n'$ are consecutive tower indices, the ratio of numerators is below $3.292/3.237<1.02$. On the other hand, $F_{n'}\ge F_{n+2}=2F_n+F_{n-1}\ge\tfrac52F_n$, because $F_n=F_{n-1}+F_{n-2}\le 2F_{n-1}$. Hence $(F_{n'}/F_n)^2\ge\tfrac{25}{4}>1.02$, and the difference strictly decreases. It tends to $0$ because $F_n\to\infty$.
+\end{proof}
+
+\begin{remark}[Classical, outside the validator]\label{rem:phi2}
+Similarly, $n(j)/n(J)=F_n/F_{n-2}\to\varphi^2$ along the tower, by Binet's formula. The validator does not check this limit.
+\end{remark}
+
+\subsection{Equilateral quantum tetrahedra}
+
+\begin{proposition}\label{prop:tet}
+For every integer $j\ge0$, $\dim\Inv(V_j^{\otimes4})=n(j)=2j+1$. On the tower this common value is $F_n$. In particular $\dim\Inv(V_2^{\otimes4})=5$ and $\dim\Inv(V_6^{\otimes4})=13$.
+\end{proposition}
+\begin{proof}
+Every representation of $SU(2)$ is self-dual, so
+\[
+\Inv(V_j^{\otimes4})\cong\operatorname{Hom}_{SU(2)}(V_j^{*},V_j^{\otimes3})\cong\operatorname{Hom}_{SU(2)}(V_j,V_j^{\otimes3}).
+\]
+By Schur's lemma the dimension of the right-hand side is the multiplicity $n(j)$, which equals $2j+1$ by Lemma~\ref{lem:mult}.
+\end{proof}
+
+In loop quantum gravity, $\Inv(V_{j_1}\otimes\cdots\otimes V_{j_4})$ is the state space of a quantum tetrahedron whose faces have areas labelled by $j_1,\dots,j_4$ \cite{Barbieri,BaezBarrett}. Proposition~\ref{prop:tet} therefore identifies the multiplicity $n(j)$ of the $E_{\mu-\sigma}$ sector with the dimension of the equilateral spin-$j$ quantum tetrahedron space.
+
+\section{Computational verification}\label{sec:comp}
+
+Every specific instance stated above is checked by the script
+\begin{center}
+\texttt{research/e47/validation/e47\_fib\_lucas\_tower\_validate.py}
+\end{center}
+in the repository \texttt{nicholaskouns-create/E47-Kartekeya} \cite{repo}. It was added in commit \texttt{866edb4} (pull request \#135, 18 October 2026). The script uses only the Python standard library and exact integer and rational (\texttt{Fraction}) arithmetic. The only floating-point steps are the comparisons with $3/\varphi$. It exits with status $0$ and prints \texttt{RESULT: 35 / 35 checks} followed by \texttt{PASS}. The checks, grouped by the result they confirm, are:
+\begin{enumerate}
+\item \emph{Theorems~\ref{thm:A}, \ref{thm:B}, Corollary~\ref{cor:D}} (17 checks). For $n=5,7,11,13$, the script computes $n(j)$ and $n(J)$ from the weight census of $V_j^{\otimes3}$ (the multiplicity of spin $J'$ is the number of weight-$J'$ states minus the number of weight-$(J'+1)$ states). It checks $n(j)=F_n$, $n(J)=F_{n-2}$, $J(J+1)=5j(j+1)$, and $D=F_n^2+F_{n-2}L_n$, and finally that $D=47$ at $n=5$.
+\item \emph{Theorem~\ref{thm:D}} (3 checks). Using exact rationals for $D/(2j+1)^2$, it checks that the distance to $3/\varphi$ strictly decreases over $n=5,7,11,13,17,19$, that it is below $10^{-6}$ at $n=19$, and that $1+\sqrt5/\varphi^2=3/\varphi$ holds to $10^{-12}$. It also confirms that $n=9,15$ are excluded.
+\item \emph{Proposition~\ref{prop:tet}} (2 checks). It checks $\dim\Inv(V_j^{\otimes4})=n(j)$ for $j=2$ (both $5$) and $j=6$ (both $13$).
+\item \emph{Proposition~\ref{prop:musigma}, Theorem~\ref{thm:C}} (6 checks). For $n=5,\dots,19$, with $\mu=3j(j+1)$ and $\sigma=2j(j+1)$, it checks $\mu-\sigma=j(j+1)$, $\mu+\sigma=J(J+1)$, and $\sum_{a<b}S_a\cdot S_b=\mp j(j+1)$ on the two sectors.
+\item \emph{The case $j=2$} (7 checks). The script builds the $125\times125$ Casimir $C$ with integer entries, using spin matrices $S^+e_m=e_{m+1}$, $S^-e_{m+1}=(j-m)(j+m+1)e_m$, $S^ze_m=me_m$. These are a diagonal similarity of the standard ones, so the spectrum is unchanged. It then verifies:
+\begin{itemize}
+\item the census $1,3,5,4,3,2,1$;
+\item $\Tr C=\sum_{J'}n(J')(2J'+1)J'(J'+1)$;
+\item $\prod_{J'}(C-J'(J'+1)I)=0$;
+\item every eigenspace dimension is $n(J')(2J'+1)$;
+\item $\dim E_6=25$ and $\dim E_{30}=22$;
+\item $\rank K=78$, $\dim\ker K=47$, and $\Omega_c=47/125$.
+\end{itemize}
+All ranks are computed by exact Gaussian elimination over $\mathbb{Q}$.
+\end{enumerate}
+For the finite statements at $j=2$, exact integer computation is itself a complete proof. The general statements are proved in Section~3, and the script confirms the first instances independently.
+
+\section{Scope and open questions}\label{sec:scope}
+
+\emph{What is proved.} The statements of Section~3 are theorems of finite-dimensional representation theory and of Fibonacci--Lucas arithmetic:
+\begin{itemize}
+\item the multiplicities $F_n$ and $F_{n-2}$;
+\item the identity $J(J+1)=5j(j+1)$;
+\item the fact that the $\mu\pm\sigma$ selector isolates exactly the $V_j$ and $V_J$ sectors, of total dimension $D=F_n^2+F_{n-2}L_n$ (giving $47$ of $125$ at the base $j=2$);
+\item the strict convergence $D/(2j+1)^2\downarrow 3/\varphi$;
+\item the equality $n(j)=\dim\Inv(V_j^{\otimes4})$.
+\end{itemize}
+These hold independently of any physical interpretation.
+
+\emph{What remains open.} The E47 program reads these structures geometrically. The $E_{\mu-\sigma}$ multiplicity is the state space of an equilateral quantum tetrahedron, and the limiting density $3/\varphi$ of the selected sectors, measured against $(2j+1)^2$, suggests a quadratic growth law with a golden constant. Whether the limit $3/\varphi$, or the tetrahedral reading of Proposition~\ref{prop:tet}, corresponds to physical geometry is a genuine open question. Nothing in this note asserts or refutes it. What the note does establish is that the question rests on exact, reproducible mathematics rather than on numerical coincidence. Natural next steps are to identify the selected sectors with explicit intertwiner bases, to compute their volume and area spectra in the sense of \cite{BaezBarrett}, and to ask whether the tower has an analogue for other Pell-type selectors.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{BaezBarrett} J.~C.~Baez and J.~W.~Barrett, \emph{The quantum tetrahedron in 3 and 4 dimensions}, Adv.\ Theor.\ Math.\ Phys.\ \textbf{3} (1999), 815--850. arXiv:gr-qc/9903060.
+\bibitem{Barbieri} A.~Barbieri, \emph{Quantum tetrahedra and simplicial spin networks}, Nuclear Phys.\ B \textbf{518} (1998), 714--728. arXiv:gr-qc/9707010.
+\bibitem{FultonHarris} W.~Fulton and J.~Harris, \emph{Representation Theory: A First Course}, Graduate Texts in Mathematics 129, Springer, 1991.
+\bibitem{Hall} B.~C.~Hall, \emph{Lie Groups, Lie Algebras, and Representations}, 2nd ed., Graduate Texts in Mathematics 222, Springer, 2015.
+\bibitem{Koshy} T.~Koshy, \emph{Fibonacci and Lucas Numbers with Applications}, Wiley, 2001.
+\bibitem{Vajda} S.~Vajda, \emph{Fibonacci \& Lucas Numbers, and the Golden Section}, Ellis Horwood, 1989.
+\bibitem{repo} N.~Kouns, \emph{E47-Kartekeya}, GitHub repository \texttt{nicholaskouns-create/E47-Kartekeya}, validator \texttt{e47\_fib\_lucas\_tower\_validate.py}, commit \texttt{866edb4}, 2026.
+\end{thebibliography}
+
+\end{document}
