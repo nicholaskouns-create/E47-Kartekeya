@@ -3,7 +3,7 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 -r requirements.txt
 matplotlib>=3.11.2
-networkx>=3.3
+networkx>=3.7
 pandas>=3.0.6
 ephem>=4.1
 torch>=2.14.1+cpu
