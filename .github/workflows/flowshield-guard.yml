@@ -1,0 +1,33 @@
+name: FlowShield repository guard
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check committed files for high-confidence private key exposure
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess, pathlib, sys
+          patterns=(b'-----BEGIN OPENSSH PRIVATE KEY-----',b'-----BEGIN RSA PRIVATE KEY-----',b'-----BEGIN EC PRIVATE KEY-----',b'-----BEGIN PRIVATE KEY-----')
+          bad=[]
+          for path in subprocess.check_output(['git','ls-files','-z']).split(b'\0'):
+              if not path: continue
+              p=pathlib.Path(path.decode('utf-8','surrogateescape'))
+              if not p.is_file() or p.stat().st_size>2_000_000: continue
+              try: data=p.read_bytes()
+              except OSError: continue
+              if any(x in data for x in patterns): bad.append(str(p))
+          if bad:
+              print('Private key material detected in tracked files:',*bad,sep='\n')
+              sys.exit(1)
+          print('PASS: no PEM private-key markers in tracked files')
+          PY
