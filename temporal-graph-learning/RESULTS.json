@@ -1,0 +1,31 @@
+{
+  "status": "user_reported_unverified",
+  "provenance": "User-provided experimental summaries; no raw data, scripts, seed logs or official TGBL download supplied",
+  "experiments": [
+    {
+      "id": "synthetic_64",
+      "nodes": 64,
+      "steps": 20,
+      "feature_dimension": 128,
+      "epochs": 40,
+      "auc_baseline": 0.9896,
+      "auc_projected": 1,
+      "projector_rank_reported": 24,
+      "note": "Reported rank 24 was calculated from node count 64, although the user describes applying projection after feature extraction; dimensional placement must be resolved before reproduction."
+    },
+    {
+      "id": "synthetic_tgbl_style_4000",
+      "nodes": 4000,
+      "edges": 80000,
+      "feature_dimension": 64,
+      "test_edges": 5000,
+      "negatives_per_positive": 20,
+      "projector_rank": 24,
+      "auc_baseline": 0.5082,
+      "auc_projected": 0.5072,
+      "mrr_approx_baseline": 0.5076,
+      "mrr_approx_projected": 0.5138,
+      "note": "Not official TGBL; rounded AUC delta -0.0010; user reports -0.0009."
+    }
+  ]
+}
