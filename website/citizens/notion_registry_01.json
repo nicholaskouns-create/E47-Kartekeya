@@ -561,7 +561,7 @@
       "borough": "Spectral Theory",
       "correction": "Boundary clarified",
       "route_status": "Certified",
-      "boundary": "Discrete iteration count on Γ. Not a physical clock and not a continuum PDE time.",
+      "boundary": "Discrete iteration count on Γ. The quantum clock reads elapsed time from phase; this latency bound counts contraction steps.",
       "notion_url": "https://app.notion.com/p/3da46094fd30811db9a7fd072170adee"
     },
     {
