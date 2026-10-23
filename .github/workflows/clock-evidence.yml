@@ -1,0 +1,35 @@
+name: Clock-bound repository evidence
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate signed workflow receipt
+        env:
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          python3 - <<'PY'
+          import json,os,datetime,hashlib,time
+          from pathlib import Path
+          manifest=json.loads(Path('.well-known/e47-clock-credential.json').read_text())
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          payload={"schema":"e47-clock-evidence-v1","repository":os.environ["REPO"],"commit_sha":os.environ["SHA"],"workflow_run_id":os.environ["RUN_ID"],"attempt":os.environ["RUN_ATTEMPT"],"observed_at_utc":now,"host_monotonic_ns":time.monotonic_ns(),"clock_id":"github-runner-host","e47_tick":None,"clock_status":"not-attested","manifest":manifest["schema"]}
+          canonical=json.dumps(payload,sort_keys=True,separators=(',',':')).encode()
+          payload["sha256"]=hashlib.sha256(canonical).hexdigest()
+          Path('clock-receipt.json').write_text(json.dumps(payload,indent=2)+'\n')
+          print('Receipt hash:',payload["sha256"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: clock-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: clock-receipt.json
+          retention-days: 90
