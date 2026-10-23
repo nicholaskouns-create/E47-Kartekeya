@@ -17,7 +17,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import subprocess, pathlib, sys
-          patterns=(b'-----BEGIN OPENSSH PRIVATE KEY-----',b'-----BEGIN RSA PRIVATE KEY-----',b'-----BEGIN EC PRIVATE KEY-----',b'-----BEGIN PRIVATE KEY-----')
+          prefix=b'-'*5+b'BEGIN '+b'PRIVATE KEY'; patterns=tuple(b'-'*5+b'BEGIN '+kind+b'PRIVATE KEY'+b'-'*5 for kind in (b'',b'OPENSSH ',b'RSA ',b'EC '))
           bad=[]
           for path in subprocess.check_output(['git','ls-files','-z']).split(b'\0'):
               if not path: continue
