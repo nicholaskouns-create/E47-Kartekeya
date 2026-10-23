@@ -1,0 +1,27 @@
+name: E47 Cora matched-rank ablation
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'temporal-graph-learning/cora_ablation.py'
+      - '.github/workflows/e47-cora-ablation.yml'
+permissions:
+  contents: read
+jobs:
+  ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy==2.2.6 scipy==1.15.3 scikit-learn==1.6.1
+      - run: python temporal-graph-learning/cora_ablation.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e47-cora-matched-rank-receipts
+          path: |
+            temporal-graph-learning/cora-ablation-results.json
+            temporal-graph-learning/cora-ablation-summary.json
