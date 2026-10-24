@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "status": "PASS",
+      "flows": [
+        "navigation",
+        "zero-overlap",
+        "training",
+        "replay",
+        "invalid-input",
+        "preferences",
+        "search",
+        "share",
+        "download",
+        "exact-quantum-gates",
+        "calendar-export",
+        "no-overflow"
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "status": "PASS",
+      "flows": [
+        "navigation",
+        "zero-overlap",
+        "training",
+        "replay",
+        "invalid-input",
+        "preferences",
+        "search",
+        "share",
+        "download",
+        "exact-quantum-gates",
+        "calendar-export",
+        "no-overflow"
+      ]
+    },
+    {
+      "integration": "same-origin iframe doorway",
+      "status": "PASS"
+    }
+  ]
+}

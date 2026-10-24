@@ -1,0 +1,40 @@
+{
+  "schema": "E47-SOCIAL-ASSETS-1.0",
+  "updated": "2026-09-23",
+  "canonical": "portal-share.jpg",
+  "dimensions": {
+    "width": 1200,
+    "height": 630
+  },
+  "source": "user-approved E47 gestalt social share set",
+  "assets": [
+    {
+      "variant": 1,
+      "file": "e47-social-01-portal.jpg",
+      "sha256": "b8ae73ed54c6ae71f82fb8dd273717438a0ebedf5fcdcb17625d90afca57081c",
+      "github_pages": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/e47-social-01-portal.jpg",
+      "drive": "https://drive.google.com/file/d/1EipTrSRzcgC_g2XLltTyea3v8toDChMk/view?usp=drivesdk"
+    },
+    {
+      "variant": 2,
+      "file": "e47-social-02-monolith.jpg",
+      "sha256": "466cb83fc6ac6435daae87048d7276cde1f4746a6e250810da850e67d9a33d77",
+      "github_pages": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/e47-social-02-monolith.jpg",
+      "drive": "https://drive.google.com/file/d/1mp5aBYV2RpxB6nukDUSlKWlRvklI1Ki2/view?usp=drivesdk"
+    },
+    {
+      "variant": 3,
+      "file": "e47-social-03-gateway.jpg",
+      "sha256": "a3a3b4f477d02a09275b5a3af7ee686eff834543846148a4869b5d1534ec9f31",
+      "github_pages": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/e47-social-03-gateway.jpg",
+      "drive": "https://drive.google.com/file/d/12Cg5v7IYuH0mEM2iL6txgE9kW_MfBYD2/view?usp=drivesdk"
+    },
+    {
+      "variant": 4,
+      "file": "e47-social-04-lambda-grid.jpg",
+      "sha256": "dedf38162c1ebe53a3e24c4aafe0b5b9dbfc1385822282d00f0fb6c974dfccd8",
+      "github_pages": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/city-portal/e47-social-04-lambda-grid.jpg",
+      "drive": "https://drive.google.com/file/d/1d1Ka7uOW64GaeKXJaxBEuIjXqghWQHeb/view?usp=drivesdk"
+    }
+  ]
+}

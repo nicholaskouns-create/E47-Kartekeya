@@ -1,0 +1,56 @@
+{
+  "certificate_code": "MC-E47-SPECTRAL-MATRIX-20260925",
+  "title": "E47 FLOW AS A SINGLE 125 × 125 SPECTRAL MATRIX MACHINE",
+  "date": "2026-09-25",
+  "evidence_class": "E1",
+  "status": "PASS",
+  "checks_passed": 17,
+  "checks_total": 17,
+  "carrier_dimension": 125,
+  "casimir_spectrum": [
+    0,
+    2,
+    6,
+    12,
+    20,
+    30,
+    42
+  ],
+  "multiplicities": [
+    1,
+    9,
+    25,
+    28,
+    27,
+    22,
+    13
+  ],
+  "K_blocks": [
+    180,
+    112,
+    0,
+    -108,
+    -140,
+    0,
+    432
+  ],
+  "Q_blocks": [
+    32400,
+    12544,
+    0,
+    11664,
+    19600,
+    0,
+    186624
+  ],
+  "kernel_dimension": 47,
+  "omega_c": 0.376,
+  "rho_min": 11664,
+  "rho_max": 186624,
+  "epsilon_star": "1/99144",
+  "contraction_factor": "15/17",
+  "finite_power_residual_2norm": 5.612e-14,
+  "core_identity": "lim n→∞ (I − εK²)^n = lim t→∞ exp(−tK²) = P47",
+  "source_sha256": "bc925cb275c2dd234ecf016ffdea4be4b01c6daa34f1d7281b967c013231e525",
+  "certificate_sha256": "14dd51b827358727fa5bb8e0917eeccb17045aad48274544c54a10d0908bac88"
+}

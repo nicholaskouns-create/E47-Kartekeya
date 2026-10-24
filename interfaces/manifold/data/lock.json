@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "line": "[LOCK] PASS  dimH=125  dimE47=47  rankK=78  Omega_c=47/125  Delta=11664  kappa=16  rho=15/17  TrP47=47",
+  "dim_H": 125,
+  "dim_E47": 47,
+  "rank_K": 78,
+  "omega_c": 0.376,
+  "omega_frac": "47/125",
+  "Delta": 11664,
+  "kappa": 16,
+  "rho": 0.8823529411764706,
+  "TrP47": 47.0,
+  "kernel": "(C-6I)(C-30I)"
+}

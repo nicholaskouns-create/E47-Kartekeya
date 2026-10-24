@@ -1,0 +1,47 @@
+PASS | spin commutators | 
+PASS | single-spin Casimir | 
+PASS | physical inner product | 
+PASS | carrier dimension | 
+PASS | total weight conserved | 
+PASS | weight -6 polynomial splits | 
+PASS | weight -5 polynomial splits | 
+PASS | weight -4 polynomial splits | 
+PASS | weight -3 polynomial splits | 
+PASS | weight -2 polynomial splits | 
+PASS | weight -1 polynomial splits | 
+PASS | weight +0 polynomial splits | 
+PASS | weight +1 polynomial splits | 
+PASS | weight +2 polynomial splits | 
+PASS | weight +3 polynomial splits | 
+PASS | weight +4 polynomial splits | 
+PASS | weight +5 polynomial splits | 
+PASS | weight +6 polynomial splits | 
+PASS | derived Casimir census | {0: 1, 2: 9, 6: 25, 12: 28, 20: 27, 30: 22, 42: 13}
+PASS | weight-character decomposition | {0: 1, 1: 3, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1}
+PASS | square-free Casimir annihilator | 
+PASS | Casimir selector nullity | nullity=47; rank=78; claimed 82 is incompatible with this operator
+PASS | exact projector | 
+PASS | orthogonal projector in physical metric | 
+PASS | optimal positive-step contraction | K^2 spectrum off kernel=[11664, 12544, 19600, 32400, 186624]; epsilon=1/99144; rho=15/17
+PASS | kernel fixed by propagator | 
+PASS | complement strictly contracts | 
+PASS | coherence ratio | 47/125
+PASS | spectral complementary basis | 
+PASS | constructed Grassmann dimensions | 
+PASS | constructed intersection | 
+PASS | constraint rank and restricted rank | 
+PASS | constraint kernel dimension | 
+PASS | Grassmann transversality arithmetic | 
+
+34/34 exact checks passed.
+{
+  "Casimir kernel equals 82": "FALSE for K=(C-6I)(C-30I); computed nullity 47",
+  "Constraint kernel equals 82": "TRUE for a distinct rank-43 map A: V -> C^43",
+  "Grassmann intersection equals 47": "TRUE when E+ker(A)=V; explicitly realized here",
+  "Original E and 43 constraints": "Not supplied as matrices; construction here is an existence witness",
+  "Cubic closure": "Polynomial not supplied; root and dynamical stability untested",
+  "Einstein-to-spectral closure": "Metric/action/map and equivalence theorem not supplied; untested",
+  "Repository bit-exact implementation": "Repository source unavailable through attempted retrieval; untested",
+  "FPGA/ASIC realization": "Hardware description and execution evidence not supplied; untested",
+  "Entropy decrease": "No entropy functional specified; spectral error contraction proved"
+}

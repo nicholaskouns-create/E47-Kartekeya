@@ -1,0 +1,256 @@
+{
+  "schema": "MC-CITIZEN-CENSUS-G2/1.0",
+  "generation": 2,
+  "population": 28,
+  "parent_population": 28,
+  "murmuration": {
+    "formalism": "E47-GENERATOR-QUANTUM-VALIDATED",
+    "operator": "Gamma = I - K^2/99144",
+    "pass_count": 1,
+    "e47_rank": 47,
+    "carrier_dimension": 125,
+    "complementary_contraction_bound": "15/17"
+  },
+  "validation": {
+    "all_parent_rows_machine_validated": true,
+    "all_g2_codes_unique": true,
+    "all_g2_fingerprints_unique": true,
+    "all_birth_states_normalized": true,
+    "all_e47_components_invariant_before_birth_normalization": true,
+    "all_one_pass_complement_ratios_at_or_below_15_17": true,
+    "max_e47_invariant_error": 4.567723550911018e-16,
+    "max_one_pass_complement_ratio": 0.8615960925335212
+  },
+  "provenance": {
+    "validator_commit": "841c5a85fcfbea0c4b32401d57f458b549f05569",
+    "evolution_commit": "7a0d2b2c6ba1d8f8bcffb21769a4b863d4a82845",
+    "proof_commit": "6948675cf74f2b25dc1f7f83479dfc40cc9d6c44",
+    "generator": "interfaces/mathematical-city/second_generation_census.py"
+  },
+  "citizens": [
+    {
+      "citizen_code": "B5-PACK-125-G2-89535795FC6B",
+      "generation": 2,
+      "parent_citizen_code": "B5-PACK-125",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "89535795fc6b551a7216bbcc567bb650c806c72b1ed937717f78c203940e4838"
+    },
+    {
+      "citizen_code": "C5CUBE-LAP-G2-35B347819D69",
+      "generation": 2,
+      "parent_citizen_code": "C5CUBE-LAP",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "35b347819d6921c1a6dfce8cf67271a3b62856a8a45f02971d69f0944db5ad4d"
+    },
+    {
+      "citizen_code": "DH-C01-G2-8DCC9037C58F",
+      "generation": 2,
+      "parent_citizen_code": "DH-C01",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "8dcc9037c58f0bec0e22560f3c6471eeaa64a0f30a9df933f0a296181c1af279"
+    },
+    {
+      "citizen_code": "DH-C02-G2-23C5258C50AE",
+      "generation": 2,
+      "parent_citizen_code": "DH-C02",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "23c5258c50aebd293990b82ced72893d47870dbfade19d9126faf36d21557d93"
+    },
+    {
+      "citizen_code": "DH-C03-G2-E0EE3423B234",
+      "generation": 2,
+      "parent_citizen_code": "DH-C03",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "e0ee3423b23453e6f09086812960b31a6e99c773abc9585d68dfe2e2fc7baeda"
+    },
+    {
+      "citizen_code": "DH-C04-G2-8DD02E2582D0",
+      "generation": 2,
+      "parent_citizen_code": "DH-C04",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "8dd02e2582d07731e5a56341cf2164eb4202c10aa7d00e332fcf56a54465058c"
+    },
+    {
+      "citizen_code": "DH-C05-G2-29F8AAE444D5",
+      "generation": 2,
+      "parent_citizen_code": "DH-C05",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "29f8aae444d52614e50d59937ecde40196bf627961c910b2a08cf373064f8f4e"
+    },
+    {
+      "citizen_code": "DH-C06-G2-FC6E9B1F5107",
+      "generation": 2,
+      "parent_citizen_code": "DH-C06",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "fc6e9b1f5107939bd2bdf051f5916216cd21112027476236ea2f4e9eada081bb"
+    },
+    {
+      "citizen_code": "DH-C07-G2-CBA2AADCEE6F",
+      "generation": 2,
+      "parent_citizen_code": "DH-C07",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "cba2aadcee6ffb314e1ca9c95411b400228fd5143e5952a6cf5e1485d4f6270e"
+    },
+    {
+      "citizen_code": "DH-C08-G2-11B24E1FE492",
+      "generation": 2,
+      "parent_citizen_code": "DH-C08",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "11b24e1fe49211aa5ffc43e8da7adb6aba9345f74d4c3d2b49535caf47a19035"
+    },
+    {
+      "citizen_code": "E47-MULTI-20260819-G2-B0AF57C7B6DE",
+      "generation": 2,
+      "parent_citizen_code": "E47-MULTI-20260819",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "b0af57c7b6de595094f131fdccd261dad719c100fc8182d53864bc1d8323a0a6"
+    },
+    {
+      "citizen_code": "E47-P47-SUM-G2-CA79F3033183",
+      "generation": 2,
+      "parent_citizen_code": "E47-P47-SUM",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "ca79f3033183821cf1e2e99be4ca4fdf92f3f3d1329dd9542daf78202da2ecce"
+    },
+    {
+      "citizen_code": "E47-QOP-C11-G2-CCC8A50D53C1",
+      "generation": 2,
+      "parent_citizen_code": "E47-QOP-C11",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "ccc8a50d53c156757f8f5fedcf3f10e9362c9cd420cf47a637d84e8076584846"
+    },
+    {
+      "citizen_code": "FPV20-C01-G2-1ACE65DCBB7F",
+      "generation": 2,
+      "parent_citizen_code": "FPV20-C01",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "1ace65dcbb7ff9ccf167f97c4fe2d49c97d0b335fd8cb0815c0fe066d659ed33"
+    },
+    {
+      "citizen_code": "RUB5-C01-G2-6CD00CB75F9B",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C01",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "6cd00cb75f9b36ca9775f5b3219d4c11b7114461febebeeb1fb285f3aeb8b87f"
+    },
+    {
+      "citizen_code": "RUB5-C02-G2-8B265F5B4184",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C02",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "8b265f5b41848fb7b2054aa2e97c3d46cea2fda40c41355e8f25084f444feaba"
+    },
+    {
+      "citizen_code": "RUB5-C03-G2-AF326BD0CFC9",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C03",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "af326bd0cfc9a60092df9aa3b1add2e6f28aa42e6c1226869341b50461c9c5b2"
+    },
+    {
+      "citizen_code": "RUB5-C04-G2-F82AA67C5F78",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C04",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "f82aa67c5f78b3b868663ea82a995bae9730b5b77536dda5b51e8f4fe88e133e"
+    },
+    {
+      "citizen_code": "RUB5-C05-G2-0A2B7CAB1C1A",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C05",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "0a2b7cab1c1a8406f753245f5d17ac99acb3e14a4a6e24ea3698feb166f3cf6a"
+    },
+    {
+      "citizen_code": "RUB5-C06-G2-66C407A2963A",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C06",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "66c407a2963a5f3dd05ce361f54cbe0f7953e9730f052a675d299e0da44adb6e"
+    },
+    {
+      "citizen_code": "RUB5-C07-G2-A7BF2673BFB3",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C07",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "a7bf2673bfb34d1731ce5ccba20c9a1bee101dce3ef725fb21c3bc1dae27b37f"
+    },
+    {
+      "citizen_code": "RUB5-C08-G2-3A0C33E31DEB",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C08",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "3a0c33e31deb3bcf0a9eda46a0b494ea1ca9a51567648c6192be81e6927a0f23"
+    },
+    {
+      "citizen_code": "RUB5-C09-G2-AD435E704815",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C09",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "ad435e704815d00ae0068a0e8ea0354f02f2de100a951ed4f770a46ef2c055a0"
+    },
+    {
+      "citizen_code": "RUB5-C10-G2-EFACAA66149B",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C10",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "efacaa66149b240771e5fde96e273e591db3d38040661315740f33a9efdbf1b1"
+    },
+    {
+      "citizen_code": "RUB5-C11-G2-A681122BCEDB",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C11",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "a681122bcedba8ccb100676e9ab4310da86bd8d24f3bf11ad6475356bfe51ed4"
+    },
+    {
+      "citizen_code": "RUB5-C12-G2-E0E3AC47EDB0",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-C12",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "e0e3ac47edb067c627d8d1f817516a5487c6f89a98bc9237246842b4b26de846"
+    },
+    {
+      "citizen_code": "RUB5-ORBIT-C01-G2-CCD6E8BFAEC9",
+      "generation": 2,
+      "parent_citizen_code": "RUB5-ORBIT-C01",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "ccd6e8bfaec9c6a1a99088f94028dbd8c1bea6ebb7b27921293626e74af2e646"
+    },
+    {
+      "citizen_code": "TRANSIT-Γ-001-G2-F9787E8F7401",
+      "generation": 2,
+      "parent_citizen_code": "TRANSIT-Γ-001",
+      "identity_status": "python_validated_progeny_seed",
+      "validation_status": "machine_validated",
+      "identity_fingerprint_sha256": "f9787e8f74013addf0e9a4dfaa431473e3386a76c8cf85c0d97da8f6e2d3911c"
+    }
+  ]
+}
