@@ -329,3 +329,8 @@ Omega_c=rac{dim E_{47}}{dimmathcal H}=rac{47}{125}=0.376.
 This establishes a machine-auditable chain from finite combinatorics and spherical geometry through local similarity and global rigid transport. The code explicitly corrected two presentation issues: the gnomonic expansion uses an additive `+O(Δ²)` remainder, and the exact fitted angle `θ*=-90.427855°` gives `R*_{21}=-0.20263`.
 
 The validator distinguishes proved geometry from the still-open §10 constellation null test, which requires the final 90 node coordinates and selected figure-star set `J`.
+
+
+## E47 spectral and noiseless-subsystem certificate (2026-10-24)
+
+[Read the cross-repository evidence note](E47_SPECTRAL_ADVANTAGES_2026-10-24.md). Documents the exact 125→47 Casimir construction, the (15/17)^n spectral convergence certificate, and collective-SU(2) noiseless multiplicity encoding, separately from channel-dependent QEC and unmeasured hardware advantages.
