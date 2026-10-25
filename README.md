@@ -1,5 +1,7 @@
 # The Kartekeya Isolation Lock · E47-v1.0
 
+**[Public Lean/Coq machine-checked proof explainer](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/)** · Identity holds the canonical HTML and compiler evidence. The exact construction, formalized scalar statements, and concrete-matrix certification boundary are distinguished there.
+
 > **Main entry portal:** [The Mathematical City](https://nicholaskouns-create.github.io/website/) — explore the districts, interactive labs, and research index.
 >
 > **[Explore PiP Manta](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/pip-manta/embed.html)**
