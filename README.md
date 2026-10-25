@@ -1,5 +1,7 @@
 # The Kartekeya Isolation Lock · E47-v1.0
 
+**[Verity companion proof poster](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/verity-poster.html)** · Print-oriented companion to the [responsive Lean/Coq explainer](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/); evidence levels remain explicitly separated.
+
 **[Public Lean/Coq machine-checked proof explainer](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/)** · Identity holds the canonical HTML and compiler evidence. The exact construction, formalized scalar statements, and concrete-matrix certification boundary are distinguished there.
 
 > **Main entry portal:** [The Mathematical City](https://nicholaskouns-create.github.io/website/) — explore the districts, interactive labs, and research index.
