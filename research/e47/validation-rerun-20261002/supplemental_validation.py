@@ -4,7 +4,10 @@ Swarm Safety Identities; Higher-Dimensional Newton-Mean Iterations.
 """
 import numpy as np, sympy as sp, json, pathlib, runpy, contextlib, io
 from scipy.linalg import expm
-out=pathlib.Path(__file__).resolve().parent
+out=pathlib.Path(__file__).resolve().parent          # script dir, read-only here
+import sys as _sys; _sys.path.insert(0,str(out.parents[2]/"tools"))
+from e47_outdir import resolve_out_dir
+OUT_DIR=resolve_out_dir()                            # never the script dir
 with contextlib.redirect_stdout(io.StringIO()):
  core=runpy.run_path(str(out/'spectral_core_source.py'))
 K2,P=core['K2'],core['P']; results=[]
@@ -72,6 +75,6 @@ near('Swarm','nonautonomous_unrolling',abs(e-unroll))
 birth,death=0.,pers; h=.1; birth2=birth+vmax*h; death2=death-vmax*h
 ck('Swarm','matched_endpoint_drift_bound',abs((death2-birth2)-(death-birth))<=2*vmax*h+1e-14)
 record={'mode':'independent reconstruction of stated identities','checks':results,'passed':sum(x['passed'] for x in results),'total':len(results),'limitations':'Hodge: cycle and filled-triangle witnesses. Swarm: algebraic witnesses under stated assumptions, not trajectory-level topology preservation.'}
-(out/'supplemental_results.json').write_text(json.dumps(record,indent=2))
+(OUT_DIR/'supplemental_results.json').write_text(json.dumps(record,indent=2))
 print(f"TOTAL {record['passed']}/{record['total']} PASS")
 assert all(x['passed'] for x in results)

@@ -12,8 +12,9 @@ import numpy as np
 import sympy as sp
 
 ROOT=Path(__file__).resolve().parents[3] if len(Path(__file__).resolve().parents)>3 else Path.cwd()
-OUT=(ROOT/"artifacts"/"E47_CONDITION_LOCK_CERTIFICATE.json") if (ROOT/"artifacts").exists() else Path(__file__).with_name("E47_CONDITION_LOCK_CERTIFICATE.json")
-if os.environ.get("E47_CERT_OUT"): OUT=Path(os.environ["E47_CERT_OUT"])
+import sys as _sys; _sys.path.insert(0,str(ROOT/"tools"))
+from e47_outdir import resolve_out
+OUT=resolve_out("E47_CONDITION_LOCK_CERTIFICATE.json")
 
 CASIMIR=[0,2,6,12,20,30,42]          # j(j+1), j=0..6, on V2⊗V2⊗V2
 KERNEL={6,30}                        # E47 = ker (C-6I)(C-30I)
