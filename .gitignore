@@ -56,3 +56,43 @@ dmypy.json
 
 # Generated artifacts (committed only when intentionally regenerated)
 artifacts/
+
+# ---------------------------------------------------------------------------
+# Validation run outputs.
+#
+# Scripts write to <tempdir>/e47-out by default (see tools/e47_outdir.py), so
+# a plain run leaves the tree clean. These entries cover the case where an
+# out-dir is pointed back inside the repo, and the scripts not yet routed
+# through the resolver, which still emit beside themselves.
+#
+# To regenerate committed evidence deliberately, name the destination:
+#   python3 research/e47/validation/e47_condition_lock_certificate.py \
+#       --out-dir artifacts
+# ---------------------------------------------------------------------------
+.e47-out/
+e47-out/
+
+migration/python/murmuration_trajectory_audit/
+
+research/drive-curation/20261003/E47_VALIDATION_REPORT.md
+research/drive-curation/20261003/NEWTON_MEAN_EXACT_PYTHON_PROOF.md
+research/drive-curation/20261003/RUBIK_UNIFICATION_EXACT_PYTHON_PROOF.md
+research/drive-curation/20261003/Topological_Swarm_Control_Certificate.json
+research/drive-curation/20261003/Topological_Swarm_Control_Proof_Plate.png
+research/drive-curation/20261003/e47_corrected_certificate.json
+research/drive-curation/20261003/e47_kkp_full_validation_report.json
+research/drive-curation/20261003/e47_quantum_operator_certificate.json
+research/drive-curation/20261003/e47_stabilizer_telemetry.csv
+research/drive-curation/20261003/e47_validation_results.json
+research/drive-curation/20261003/newton_mean_corrected_validation_certificate.json
+research/drive-curation/20261003/quinary_family_rev_c_e47_certificate.json
+research/drive-curation/20261003/rubik_operator_matrices_summary.json
+research/drive-curation/20261003/rubik_unification_validation_certificate.json
+
+research/e47-lexical-attractor-20260923/results/intrinsic/
+research/e47-lexical-attractor-20260923/results/next_state.json
+research/e47-lexical-attractor-20260923/results/spacetime_execution.log
+
+research/e47/validation/e47_grassmann_validation.json
+research/e47/validation/e47_symbolic_python_quantum_validation_report.json
+research/e47/workbench-inputs/operators.npz

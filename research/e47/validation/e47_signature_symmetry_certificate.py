@@ -18,8 +18,9 @@ import sympy as sp
 from scipy.linalg import expm
 
 ROOT=Path(__file__).resolve().parents[3] if len(Path(__file__).resolve().parents)>3 else Path.cwd()
-OUT=(ROOT/"artifacts"/"E47_SIGNATURE_SYMMETRY_CERTIFICATE.json") if (ROOT/"artifacts").exists() else Path(__file__).with_name("E47_SIGNATURE_SYMMETRY_CERTIFICATE.json")
-if os.environ.get("E47_CERT_OUT"): OUT=Path(os.environ["E47_CERT_OUT"])
+import sys as _sys; _sys.path.insert(0,str(ROOT/"tools"))
+from e47_outdir import resolve_out
+OUT=resolve_out("E47_SIGNATURE_SYMMETRY_CERTIFICATE.json")
 
 SPINS=range(7)
 KERNEL_SPINS={2,5}                   # c=6 and c=30
