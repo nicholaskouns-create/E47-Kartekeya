@@ -1,0 +1,18 @@
+name: Failure ledger
+on:
+  push:
+    paths: ['**/FAILURE_LEDGER.json', '**/validate_ledger.py', '.github/workflows/ledger.yml']
+  pull_request:
+    paths: ['**/FAILURE_LEDGER.json', '**/validate_ledger.py', '.github/workflows/ledger.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Validate the ledger
+        run: python3 -I ledger/validate_ledger.py ledger/FAILURE_LEDGER.json
