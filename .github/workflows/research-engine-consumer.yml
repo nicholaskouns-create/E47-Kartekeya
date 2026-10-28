@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: nicholaskouns-create/Radar
           ref: 46f696fd9479e4dcade7ffb0c79ac7978f6a9bf6
