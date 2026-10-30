@@ -5,6 +5,10 @@ const $=id=>document.getElementById(id);
 const log=s=>$('log').textContent+=s+'\n';
 let last=null;
 let prismPending=false;
+let bridgeLiftPending=false;
+let jwtAccessToken='';
+const jwtInput=document.getElementById('matrixJwt');
+if(jwtInput)jwtInput.addEventListener('change',()=>{jwtAccessToken=jwtInput.value.trim();jwtInput.value='';log('Authorization token held in memory only');});
 const worker=new Worker('./mps-worker.js');
 
 function config(){
@@ -67,6 +71,7 @@ worker.onmessage=e=>{
   $('events').textContent=x.noise?.events??0;
   $('bars').innerHTML=x.lastS.map(s=>'<div class="bar" style="height:'+Math.max(2,100*s/(x.lastS[0]||1))+'%"></div>').join('');
   log(new Date().toISOString()+' · '+x.engine+' · '+x.backend+' · χ='+x.maxBond+' · noise='+x.noise.model+' events='+x.noise.events+(x.validation?' · dense Δ='+x.validation.relative_l2.toExponential(3):''));
+  if(bridgeLiftPending){bridgeLiftPending=false;lift();}
   if(prismPending){
     prismPending=false;
     lift();
@@ -106,11 +111,12 @@ async function lift(){
     };
     const r=await fetch('https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/matrix-cube-adapter',{
       method:'POST',
-      headers:{'content-type':'application/json'},
+      headers:{'content-type':'application/json',...(jwtAccessToken?{'Authorization':'Bearer '+jwtAccessToken}:{})},
       body:JSON.stringify({statevector,circuit})
     });
-    const x=await r.json();
-    if(!x.ok)throw Error(x.error);
+    const x=await r.json().catch(()=>({error:'Non-JSON response from adapter'}));
+    if(r.status===401||r.status===403)throw Error('JWT authorization required or expired. Supply a valid Supabase user access token in the MATRIX authorization field.');
+    if(!r.ok||!x.ok)throw Error(x.error||('HTTP '+r.status));
     const w=x.witness.witness;
     $('e47').textContent=(100*w.e47_weight).toFixed(3)+'% E47';
     $('e47detail').textContent='complement '+(100*w.complement_weight).toFixed(3)+'% · K² '+w.k2_energy.toExponential(3)+' · typed 125 feature vector';
@@ -145,3 +151,5 @@ $('run').onclick=run;
 $('lift').onclick=lift;
 $('prismtest').onclick=prismTest;
 run();
+
+window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==window.parent||e.data?.type!=='CITY_MATRIX_RUN_AND_LIFT')return;bridgeLiftPending=true;run();});
