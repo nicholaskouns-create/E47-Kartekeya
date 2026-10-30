@@ -154,3 +154,12 @@ test("Syntax Jacob publishes runtime provenance", () => {
     assert.ok(runtime.includes(token), token);
   }
 });
+
+test("MATRIX navigation preserves restricted prism provenance and distinct public sources", () => {
+  const matrix = read(resolve(site, "interfaces/matrix/index.html"));
+  assert.ok(matrix.includes('href="https://docs.google.com/document/d/1wCmn5J4Tjo0qVV5AOoHUxD1tXComhPf7lU1ntzKtaMs/edit"'), "Original FRM-96 Drive provenance must be retained");
+  assert.ok(matrix.includes("Drive prism mirror · restricted (owner-only)"), "Restricted mirror must not be advertised as public");
+  assert.ok(matrix.includes('href="https://drive.google.com/file/d/1tN0bGS_y9Z2KB5ROWL-ZrO7I48tuBpTU/view">Matrix HTML source · public (separate artifact)</a>'), "Public Matrix HTML must be identified as a different artifact");
+  assert.ok(matrix.includes('href="https://drive.google.com/file/d/1gOAyWJe7HMf9zzqD4xX7YGR6_wjOrAv-/view">MPS manuscript PDF · public (separate artifact)</a>'), "Public MPS manuscript must be identified as a different artifact");
+  assert.ok(matrix.includes('href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md">formalism</a>'), "Existing public mathematical source must remain");
+});
