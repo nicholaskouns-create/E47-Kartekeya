@@ -1,0 +1,13 @@
+import {readFile} from 'node:fs/promises';
+import {performance} from 'node:perf_hooks';
+import assert from 'node:assert/strict';
+import {simulate,importRun,seededWeights} from './engine.mjs';
+const started=performance.now();
+const bundle=JSON.parse(await readFile(new URL('./data.json',import.meta.url),'utf8'));
+assert.equal(bundle.validation.status,'pass');
+const computed=simulate(bundle.reference_run.inputs);
+for(let i=0;i<computed.records.length;i++)assert.ok(Math.abs(computed.records[i].error-bundle.reference_run.records[i].error)<1e-12);
+assert.equal(importRun(JSON.stringify(computed)).records.length,221);
+assert.deepEqual(seededWeights(47),seededWeights(47));
+assert.equal(bundle.geometry.euler,2);
+console.log(JSON.stringify({schema:'CITY-INSTRUMENT-RECEIPT/1.0',component_id:'e47-research-workbench',version:'1.0.0',status:'PASS',evidence:['E1','E2'],duration_ms:performance.now()-started,checks:['Python/browser error parity','receipt replay','seed determinism','Euler topology'],timestamp_utc:new Date().toISOString()}));

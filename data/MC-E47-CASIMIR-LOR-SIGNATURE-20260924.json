@@ -1,0 +1,81 @@
+{
+  "schema": "MC-E47-CASIMIR-LOR-SIGNATURE/1.0",
+  "certificate_id": "MC-E47-CASIMIR-LOR-SIGNATURE-20260924",
+  "status": "PASS",
+  "evidence_class": "E1",
+  "source_path": "research/e47/validation/e47_casimir_lorentzian_signature.py",
+  "source_sha256": "7928cad685b204062e1b42306890a1ed07f037827889d0370f8bdffabfea71c8",
+  "commit_sha": "dfced5773631eb7b4b79e84f8eb1a63e51435d9d",
+  "checks": {
+    "P0_projector": true,
+    "P6_projector": true,
+    "P0_P6_orthogonal": true,
+    "rank_P0_1": true,
+    "rank_P6_25": true,
+    "P0_u_eq_u": true,
+    "P6_u_eq_0": true,
+    "W_in_E6": true,
+    "P0_W_eq_0": true,
+    "orbit_metric_diag_2_8_2": true,
+    "g4_diag_minus1_2_8_2": true,
+    "signature_lorentzian": true
+  },
+  "derived": {
+    "P0_denominator": 3628800,
+    "P6_denominator": 1741824,
+    "eta": "P6-P0",
+    "spatial_metric": [
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        2
+      ]
+    ],
+    "restricted_metric": [
+      [
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "eigenvalues": [
+      -1,
+      2,
+      2,
+      8
+    ],
+    "signature": "(-,+,+,+)"
+  },
+  "citizen_code": "E47-LOR-SIG-C01",
+  "parent_artifact": "PY-E47-SPACETIME-PRIMA-FACIE-20260924",
+  "boundary": "Finite-dimensional Casimir-spectral Lorentzian metric on the explicit four-plane spanned by E0 and the selected E6 orbit tangent."
+}

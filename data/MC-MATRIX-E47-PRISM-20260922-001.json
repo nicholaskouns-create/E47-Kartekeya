@@ -1,0 +1,105 @@
+{
+  "schema": "MATRIX-E47-PRISM-CERTIFICATE/1.0",
+  "certificate_id": "MC-MATRIX-E47-PRISM-20260922-001",
+  "status": "PASS",
+  "evidence_class": "E1 software/numerical parity",
+  "scope": "THE MATRIX certified 8-qubit software simulation -> documented typed 256-to-125 feature lift -> seven-band Casimir decomposition; no hardware or experimental claim",
+  "configuration": {
+    "qubits": 8,
+    "layers": 24,
+    "chi": 16,
+    "phi": 0.7,
+    "entangler": "brickwork",
+    "noise": "none",
+    "source_dimension": 256,
+    "typed_target_dimension": 125
+  },
+  "python_reference": {
+    "spectral_weight_sum": 1.0000000000000004,
+    "bands": [
+      {
+        "lambda": 0,
+        "multiplicity": 1,
+        "weight": 0.003873208953955917
+      },
+      {
+        "lambda": 2,
+        "multiplicity": 9,
+        "weight": 0.06049575013782006
+      },
+      {
+        "lambda": 6,
+        "multiplicity": 25,
+        "weight": 0.12153223655298497,
+        "selected": true
+      },
+      {
+        "lambda": 12,
+        "multiplicity": 28,
+        "weight": 0.17853315216187027
+      },
+      {
+        "lambda": 20,
+        "multiplicity": 27,
+        "weight": 0.17702406495212444
+      },
+      {
+        "lambda": 30,
+        "multiplicity": 22,
+        "weight": 0.25351593478374257,
+        "selected": true
+      },
+      {
+        "lambda": 42,
+        "multiplicity": 13,
+        "weight": 0.2050256524575022
+      }
+    ],
+    "e47_weight": 0.3750481713367275,
+    "e47_percent": 37.50481713367275,
+    "rank_fraction": 0.376,
+    "delta_from_rank_fraction": -0.0009518286632724804,
+    "delta_percentage_points": -0.09518286632724804,
+    "complement_weight": 0.6249518286632725,
+    "k2_energy": 44699.14038394355
+  },
+  "live_matrix_adapter": {
+    "adapter": "matrix-cube-adapter@2",
+    "supabase_version": 2,
+    "status": "PASS",
+    "spectral_weight_sum": 1.0000000000000007,
+    "e47_weight": 0.3750481713367246,
+    "e47_weight_from_bands": 0.37504817133672613,
+    "e47_band_parity_residual": 1.5543122344752192e-15,
+    "max_band_abs_delta_vs_python": 2.942091015256665e-15,
+    "state_hash": "5ed09e45777066c2e51e58e99493ce9acc9b7df0d9d1c8fb2339fadb3c369bca",
+    "circuit_hash": "896470227c7a8e7ec5fd3232de98c767f6f6527ce0504a8d9e5160bc20094eb8"
+  },
+  "checks": {
+    "browser_mps_smoke": true,
+    "python_mps_dense": true,
+    "qiskit_aer_state_parity": true,
+    "qiskit_aer_fidelity": true,
+    "typed_feature_norm": true,
+    "seven_band_weight_sum": true,
+    "e47_equals_band_6_plus_30": true,
+    "live_adapter_ok": true,
+    "live_band_parity": true,
+    "live_e47_parity": true
+  },
+  "provenance": {
+    "validation_workflow_run": 35749118449,
+    "validation_workflow_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35749118449",
+    "validated_head_sha": "e3f286ab758c77f26035901da9dd415157055212",
+    "deployed_website_run": 35749174177,
+    "deployed_website_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35749174177",
+    "python_validator": "scripts/validate_e47_prism_matrix.py",
+    "matrix_ui": "website/interfaces/matrix/",
+    "adapter_source": "supabase/functions/matrix-cube-adapter/index.ts"
+  },
+  "interpretation": {
+    "exact_statement": "For this certified MATRIX state after the documented typed 256-to-125 lift, the E47 spectral weight is the sum of the lambda=6 and lambda=30 Casimir band weights.",
+    "observation": "The measured E47 state weight 37.504817% is close to, but not equal to, the 47/125 rank fraction 37.6%.",
+    "caution": "The band weights are state-dependent. The near agreement with 47/125 is not a universal identity or a physical probability law."
+  }
+}

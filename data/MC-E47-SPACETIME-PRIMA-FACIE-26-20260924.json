@@ -1,0 +1,83 @@
+{
+  "schema": "MC-E47-SPACETIME-PRIMA-FACIE/2.0",
+  "certificate_code": "MC-E47-SPACETIME-PRIMA-FACIE-26-20260924",
+  "title": "E47 Prima-Facie Spacetime Closure — Casimir Pullback",
+  "status": "PASS",
+  "supersedes": "MC-E47-SPACETIME-PRIMA-FACIE-20260924",
+  "evidence_class": "E1",
+  "source_path": "research/e47/validation/e47_spacetime_prima_facie.py",
+  "source_commit": "4dce2445e7d641682370f0a31190c1e947b9f095",
+  "github_blob_sha": "2ca49b175ec429c97ced7ddaf3b506690e2e1cd0",
+  "execution": {
+    "checks_passed": 26,
+    "checks_total": 26,
+    "result": "PRIMA_FACIE_SPACETIME_PASS",
+    "intertwiner_residual": 1.5418039012522706e-15
+  },
+  "derived": {
+    "dim_V": 125,
+    "dim_E47": 47,
+    "K2_gap": 11664,
+    "K2_norm": 186624,
+    "eta125": "P6-P0",
+    "pullback": "B4† eta125 B4",
+    "metric": [
+      [
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "metric_eigenvalues": [
+      -1,
+      2,
+      2,
+      8
+    ],
+    "signature": "(-,+,+,+)",
+    "sectional_curvatures": [
+      "1/2",
+      "1/2",
+      "-1"
+    ],
+    "ricci_orthonormal": [
+      "0",
+      "-1/2",
+      "1",
+      "-1/2"
+    ],
+    "scalar_curvature": "0",
+    "einstein_orthonormal": [
+      "0",
+      "-1/2",
+      "1",
+      "-1/2"
+    ],
+    "scaled_stress_energy": "8πG_N T_E47 = diag(0,-1/2,1,-1/2)",
+    "covariant_divergence": [
+      0,
+      0,
+      0
+    ]
+  },
+  "source_sha256": "2c351037fc6bdbe13130ddd724428ae0ea4849ddae7d10879df4511f8e014324"
+}

@@ -1,0 +1,14 @@
+{
+ "schema":"CITY-INSTRUMENT-CONTRACT/1.0",
+ "id":"e47-research-workbench",
+ "display_name":"E47 Research WorkBench",
+ "version":"1.0.0",
+ "kind":"interactive-research-workbench",
+ "maturity":"research",
+ "evidence":["E1","E2"],
+ "entrypoint":"website/interfaces/e47-research-workbench/index.html",
+ "smoke":{"entrypoint":"website/interfaces/e47-research-workbench/smoke.mjs","command":"node website/interfaces/e47-research-workbench/smoke.mjs","benchmark_command":"node website/interfaces/e47-research-workbench/smoke.mjs --benchmark"},
+ "provenance":{"receipt_schema":"CITY-INSTRUMENT-RECEIPT/1.0","sources":["src/e47/workbench.py","src/e47/su2_kernel.py","research/e47/workbench-inputs/provenance.json"]},
+ "telemetry":{"failure_schema":"CITY-INSTRUMENT-FAILURE/1.0"},
+ "boundaries":["Finite-dimensional reconstruction and modeled observables, not hardware or empirical certification.","Sector weights omit state phases; fidelity applies to the normalized selected projection when nonzero.","Workspace destinations are navigation links; no live connector synchronization.","Imported receipts are validated and recomputed; experiments are retained only when exported."]
+}

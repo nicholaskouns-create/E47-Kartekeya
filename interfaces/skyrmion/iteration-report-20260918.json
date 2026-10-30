@@ -1,0 +1,718 @@
+{
+  "schema": "SKYRMION-100-ITERATION-RUN-1.1",
+  "runDate": "2026-09-18",
+  "branch": "main",
+  "terrainBlob": "f0cb737c00a8af21d3de8b3fe3eba0cf8e332d26",
+  "assetsBlob": "2cb3fd9d3da2d7e121dab1f3bf22c44d321350e3",
+  "indexBlob": "be352f0943215591e13fb92a9362c5ab221a2195",
+  "total": 100,
+  "passed": 100,
+  "failed": 0,
+  "correctionNote": "The first audit pass reported 6 false negatives because its record slicer stopped at Object.freeze closures. The record parser was corrected and the full 100 checks were rerun.",
+  "firstPass": {
+    "passed": 94,
+    "failed": 6
+  },
+  "results": [
+    {
+      "iteration": 1,
+      "category": "provenance",
+      "check": "licensed asset schema v2",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 2,
+      "category": "provenance",
+      "check": "NASA Global Hawk registered",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 3,
+      "category": "provenance",
+      "check": "NASA source attribution",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 4,
+      "category": "provenance",
+      "check": "NASA media usage link",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 5,
+      "category": "provenance",
+      "check": "AMVLab CC BY registry",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 6,
+      "category": "provenance",
+      "check": "F-16 exact candidate",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 7,
+      "category": "provenance",
+      "check": "SR-71 exact candidate",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 8,
+      "category": "provenance",
+      "check": "X-15 exact candidate",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 9,
+      "category": "provenance",
+      "check": "provider controlled candidates remain URL-null",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 10,
+      "category": "provenance",
+      "check": "license register documents identity boundary",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 11,
+      "category": "loader",
+      "check": "GLTFLoader imported",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 12,
+      "category": "loader",
+      "check": "SkeletonUtils clone imported",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 13,
+      "category": "loader",
+      "check": "runtime record validation",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 14,
+      "category": "loader",
+      "check": "load timeout protection",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 15,
+      "category": "loader",
+      "check": "load progress event",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 16,
+      "category": "loader",
+      "check": "load error event",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 17,
+      "category": "loader",
+      "check": "cache cleared on error",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 18,
+      "category": "loader",
+      "check": "per-scene material cloning",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 19,
+      "category": "loader",
+      "check": "model stats collected",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 20,
+      "category": "loader",
+      "check": "audit API v2",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 21,
+      "category": "rig",
+      "check": "left aileron patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 22,
+      "category": "rig",
+      "check": "right aileron patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 23,
+      "category": "rig",
+      "check": "elevator patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 24,
+      "category": "rig",
+      "check": "left elevator patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 25,
+      "category": "rig",
+      "check": "right elevator patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 26,
+      "category": "rig",
+      "check": "rudder patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 27,
+      "category": "rig",
+      "check": "left flap patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 28,
+      "category": "rig",
+      "check": "right flap patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 29,
+      "category": "rig",
+      "check": "spoiler patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 30,
+      "category": "rig",
+      "check": "landing gear patterns",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 31,
+      "category": "flight binding",
+      "check": "bind pose captured",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 32,
+      "category": "flight binding",
+      "check": "relative control drive",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 33,
+      "category": "flight binding",
+      "check": "left aileron driven",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 34,
+      "category": "flight binding",
+      "check": "right aileron driven",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 35,
+      "category": "flight binding",
+      "check": "split elevators driven",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 36,
+      "category": "flight binding",
+      "check": "automatic flap target",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 37,
+      "category": "flight binding",
+      "check": "left spoiler driven",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 38,
+      "category": "flight binding",
+      "check": "right spoiler driven",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 39,
+      "category": "flight binding",
+      "check": "licensed gear nodes respected",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 40,
+      "category": "flight binding",
+      "check": "GLB animation mixer advanced",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 41,
+      "category": "terrain",
+      "check": "Esri world imagery path",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 42,
+      "category": "terrain",
+      "check": "DEM terrain tile path",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 43,
+      "category": "terrain",
+      "check": "bilinear local ground sampler",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 44,
+      "category": "terrain",
+      "check": "height field stored in patch",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 45,
+      "category": "terrain",
+      "check": "sample count stored in patch",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 46,
+      "category": "terrain",
+      "check": "ground sampled at craft position",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 47,
+      "category": "terrain",
+      "check": "clearance computed from DEM",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 48,
+      "category": "terrain",
+      "check": "fog adapts to clearance",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 49,
+      "category": "terrain",
+      "check": "shadows adapt to clearance",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 50,
+      "category": "terrain",
+      "check": "patch streaming threshold retained",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 51,
+      "category": "quality",
+      "check": "mobile DPR cap",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 52,
+      "category": "quality",
+      "check": "adaptive render scale function",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 53,
+      "category": "quality",
+      "check": "CITY codec scale integration",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 54,
+      "category": "quality",
+      "check": "render-scale event integration",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 55,
+      "category": "quality",
+      "check": "low shadow tier 512",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 56,
+      "category": "quality",
+      "check": "high shadow tier 1024",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 57,
+      "category": "quality",
+      "check": "ACES tone mapping",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 58,
+      "category": "quality",
+      "check": "sRGB output",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 59,
+      "category": "quality",
+      "check": "high-performance WebGL preference",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 60,
+      "category": "quality",
+      "check": "render telemetry emitted",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 61,
+      "category": "fleet",
+      "check": "Three.js craftRoot",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 62,
+      "category": "fleet",
+      "check": "per-aircraft camera distance",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 63,
+      "category": "fleet",
+      "check": "per-aircraft camera height",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 64,
+      "category": "fleet",
+      "check": "per-aircraft lookahead",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 65,
+      "category": "fleet",
+      "check": "heading-pitch-roll pose",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 66,
+      "category": "fleet",
+      "check": "quaternion craft orientation",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 67,
+      "category": "fleet",
+      "check": "F-16 mesh",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 68,
+      "category": "fleet",
+      "check": "SR-71 mesh",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 69,
+      "category": "fleet",
+      "check": "X-15 mesh",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 70,
+      "category": "fleet",
+      "check": "EIDOLON MANTA Syntax meshes",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 71,
+      "category": "effects",
+      "check": "cockpit physical glass",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 72,
+      "category": "effects",
+      "check": "engine flame system",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 73,
+      "category": "effects",
+      "check": "world-space trails",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 74,
+      "category": "effects",
+      "check": "contrail speed threshold",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 75,
+      "category": "effects",
+      "check": "contrail altitude threshold",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 76,
+      "category": "effects",
+      "check": "shadow target follows craft",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 77,
+      "category": "effects",
+      "check": "space stars domain",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 78,
+      "category": "effects",
+      "check": "planet domain",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 79,
+      "category": "effects",
+      "check": "trails hidden outside atmosphere",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 80,
+      "category": "effects",
+      "check": "MANTA live 3D bridge",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 81,
+      "category": "integrity",
+      "check": "identity gate requires exact runtime asset",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 82,
+      "category": "integrity",
+      "check": "F-15 not mapped to F-16",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 83,
+      "category": "integrity",
+      "check": "exact candidates marked candidate",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 84,
+      "category": "integrity",
+      "check": "procedural 2D fallback retained",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 85,
+      "category": "integrity",
+      "check": "old terrain renderer import removed",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 86,
+      "category": "integrity",
+      "check": "MANTA worker retained",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 87,
+      "category": "integrity",
+      "check": "GPS runtime retained",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 88,
+      "category": "integrity",
+      "check": "world teleport retained",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 89,
+      "category": "integrity",
+      "check": "asset audit lab path",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 90,
+      "category": "integrity",
+      "check": "licensed replacement event",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 91,
+      "category": "regression",
+      "check": "terrain v5 schema",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 92,
+      "category": "regression",
+      "check": "tests expect v5 schema",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 93,
+      "category": "regression",
+      "check": "tests cover licensed candidates",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 94,
+      "category": "regression",
+      "check": "tests cover quality governor",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 95,
+      "category": "regression",
+      "check": "license register covers NASA",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 96,
+      "category": "regression",
+      "check": "asset status HUD chip",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 97,
+      "category": "regression",
+      "check": "render telemetry HUD chip",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 98,
+      "category": "regression",
+      "check": "Three.js import map retained",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 99,
+      "category": "regression",
+      "check": "terrain module syntax",
+      "pass": true,
+      "error": null
+    },
+    {
+      "iteration": 100,
+      "category": "regression",
+      "check": "asset module syntax",
+      "pass": true,
+      "error": null
+    }
+  ]
+}

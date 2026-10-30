@@ -1,0 +1,837 @@
+{
+  "schema": "MC-FORMALISM-SOURCE-SNAPSHOT-1.0",
+  "survey_date": "2026-09-23",
+  "github": {
+    "repository": "nicholaskouns-create/E47-Kartekeya",
+    "main_commit": "601b5fe9872195919c1470b47cb2a8e0142d5271",
+    "tree_sha": "63a82db59ca7f06c000545ff2c90a8e851bae6ed",
+    "latest_workflow_runs": [
+      {
+        "id": 35958786033,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "601b5fe9872195919c1470b47cb2a8e0142d5271",
+        "created_at": "2026-09-24T05:10:36Z",
+        "updated_at": "2026-09-24T05:10:54Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958786033"
+      },
+      {
+        "id": 35958785992,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "in_progress",
+        "conclusion": "",
+        "head_sha": "601b5fe9872195919c1470b47cb2a8e0142d5271",
+        "created_at": "2026-09-24T05:10:36Z",
+        "updated_at": "2026-09-24T05:10:41Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958785992"
+      },
+      {
+        "id": 35958786254,
+        "name": "Deploy website",
+        "event": "push",
+        "status": "in_progress",
+        "conclusion": "",
+        "head_sha": "601b5fe9872195919c1470b47cb2a8e0142d5271",
+        "created_at": "2026-09-24T05:10:36Z",
+        "updated_at": "2026-09-24T05:10:53Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958786254"
+      },
+      {
+        "id": 35958786192,
+        "name": "CI",
+        "event": "push",
+        "status": "in_progress",
+        "conclusion": "",
+        "head_sha": "601b5fe9872195919c1470b47cb2a8e0142d5271",
+        "created_at": "2026-09-24T05:10:36Z",
+        "updated_at": "2026-09-24T05:10:47Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958786192"
+      },
+      {
+        "id": 35958720201,
+        "name": "CI",
+        "event": "push",
+        "status": "queued",
+        "conclusion": "",
+        "head_sha": "8812d8c99a145dc91011116ed41d1832696da8ab",
+        "created_at": "2026-09-24T05:09:42Z",
+        "updated_at": "2026-09-24T05:10:53Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958720201"
+      },
+      {
+        "id": 35958720226,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "8812d8c99a145dc91011116ed41d1832696da8ab",
+        "created_at": "2026-09-24T05:09:42Z",
+        "updated_at": "2026-09-24T05:09:56Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958720226"
+      },
+      {
+        "id": 35958720292,
+        "name": "Deploy website",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "8812d8c99a145dc91011116ed41d1832696da8ab",
+        "created_at": "2026-09-24T05:09:42Z",
+        "updated_at": "2026-09-24T05:10:09Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958720292"
+      },
+      {
+        "id": 35958720227,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "8812d8c99a145dc91011116ed41d1832696da8ab",
+        "created_at": "2026-09-24T05:09:42Z",
+        "updated_at": "2026-09-24T05:10:44Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958720227"
+      },
+      {
+        "id": 35958612692,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "af25f91fc9dda64cecdfb6b39f921eb45090fed5",
+        "created_at": "2026-09-24T05:08:11Z",
+        "updated_at": "2026-09-24T05:08:27Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958612692"
+      },
+      {
+        "id": 35958612676,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "af25f91fc9dda64cecdfb6b39f921eb45090fed5",
+        "created_at": "2026-09-24T05:08:11Z",
+        "updated_at": "2026-09-24T05:09:11Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958612676"
+      },
+      {
+        "id": 35958612677,
+        "name": "CI",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "af25f91fc9dda64cecdfb6b39f921eb45090fed5",
+        "created_at": "2026-09-24T05:08:11Z",
+        "updated_at": "2026-09-24T05:10:15Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958612677"
+      },
+      {
+        "id": 35958590463,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "79993cace50a16cbea06cc41b62ea50fe3b79984",
+        "created_at": "2026-09-24T05:07:54Z",
+        "updated_at": "2026-09-24T05:08:10Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958590463"
+      },
+      {
+        "id": 35958590461,
+        "name": "Deploy website",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "79993cace50a16cbea06cc41b62ea50fe3b79984",
+        "created_at": "2026-09-24T05:07:54Z",
+        "updated_at": "2026-09-24T05:08:26Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958590461"
+      },
+      {
+        "id": 35958590455,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "79993cace50a16cbea06cc41b62ea50fe3b79984",
+        "created_at": "2026-09-24T05:07:54Z",
+        "updated_at": "2026-09-24T05:08:49Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958590455"
+      },
+      {
+        "id": 35958590465,
+        "name": "CI",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "79993cace50a16cbea06cc41b62ea50fe3b79984",
+        "created_at": "2026-09-24T05:07:54Z",
+        "updated_at": "2026-09-24T05:09:31Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958590465"
+      },
+      {
+        "id": 35958574920,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "248baa554b9443a71857876143310a832f80e7bb",
+        "created_at": "2026-09-24T05:07:41Z",
+        "updated_at": "2026-09-24T05:07:54Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958574920"
+      },
+      {
+        "id": 35958574903,
+        "name": "Deploy website",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "248baa554b9443a71857876143310a832f80e7bb",
+        "created_at": "2026-09-24T05:07:41Z",
+        "updated_at": "2026-09-24T05:08:06Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958574903"
+      },
+      {
+        "id": 35958574914,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "248baa554b9443a71857876143310a832f80e7bb",
+        "created_at": "2026-09-24T05:07:41Z",
+        "updated_at": "2026-09-24T05:08:33Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958574914"
+      },
+      {
+        "id": 35958574909,
+        "name": "CI",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "248baa554b9443a71857876143310a832f80e7bb",
+        "created_at": "2026-09-24T05:07:41Z",
+        "updated_at": "2026-09-24T05:09:08Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958574909"
+      },
+      {
+        "id": 35958527772,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "a33bba4eeb6964612e13ccf307778f81ca0292aa",
+        "created_at": "2026-09-24T05:07:02Z",
+        "updated_at": "2026-09-24T05:07:13Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958527772"
+      },
+      {
+        "id": 35958527825,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "a33bba4eeb6964612e13ccf307778f81ca0292aa",
+        "created_at": "2026-09-24T05:07:02Z",
+        "updated_at": "2026-09-24T05:07:56Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958527825"
+      },
+      {
+        "id": 35958527737,
+        "name": "CI",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "a33bba4eeb6964612e13ccf307778f81ca0292aa",
+        "created_at": "2026-09-24T05:07:02Z",
+        "updated_at": "2026-09-24T05:08:27Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958527737"
+      },
+      {
+        "id": 35958525435,
+        "name": "Portal audit",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "689d2546aeb5fb7e6eb74f9534d13ddf8722b909",
+        "created_at": "2026-09-24T05:07:00Z",
+        "updated_at": "2026-09-24T05:07:09Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958525435"
+      },
+      {
+        "id": 35958525477,
+        "name": "City Watchtower",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "689d2546aeb5fb7e6eb74f9534d13ddf8722b909",
+        "created_at": "2026-09-24T05:07:00Z",
+        "updated_at": "2026-09-24T05:07:12Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958525477"
+      },
+      {
+        "id": 35958525425,
+        "name": "Deploy website",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "689d2546aeb5fb7e6eb74f9534d13ddf8722b909",
+        "created_at": "2026-09-24T05:07:00Z",
+        "updated_at": "2026-09-24T05:07:39Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958525425"
+      },
+      {
+        "id": 35958525432,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "689d2546aeb5fb7e6eb74f9534d13ddf8722b909",
+        "created_at": "2026-09-24T05:07:00Z",
+        "updated_at": "2026-09-24T05:07:53Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958525432"
+      },
+      {
+        "id": 35958525459,
+        "name": "CI",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "689d2546aeb5fb7e6eb74f9534d13ddf8722b909",
+        "created_at": "2026-09-24T05:07:00Z",
+        "updated_at": "2026-09-24T05:08:30Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958525459"
+      },
+      {
+        "id": 35958523901,
+        "name": "Deploy website",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "6f8695d85045042629b92d2f3e7e357bf5a6a757",
+        "created_at": "2026-09-24T05:06:59Z",
+        "updated_at": "2026-09-24T05:07:20Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958523901"
+      },
+      {
+        "id": 35958523907,
+        "name": "Verify Mathematical City Citizens & Spectral Kernels",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "6f8695d85045042629b92d2f3e7e357bf5a6a757",
+        "created_at": "2026-09-24T05:06:59Z",
+        "updated_at": "2026-09-24T05:07:50Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958523907"
+      },
+      {
+        "id": 35958523882,
+        "name": "CI",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "6f8695d85045042629b92d2f3e7e357bf5a6a757",
+        "created_at": "2026-09-24T05:06:59Z",
+        "updated_at": "2026-09-24T05:08:32Z",
+        "html_url": "https://github.com/nicholaskouns-create/E47-Kartekeya/actions/runs/35958523882"
+      }
+    ]
+  },
+  "notion": {
+    "workspace": "Nick Kouns’s Workspace",
+    "formalism_registry_records": 94
+  },
+  "drive": {
+    "primary_source_atlas": {
+      "spreadsheet_id": "118VxCzWOo8ZGlUK0r0uwfgKv6_exIem_Px4MQBKPPKU",
+      "observed_rows": 341
+    },
+    "machine_certificate_ledger": {
+      "spreadsheet_id": "1pmVxAbLylhcTksEfMt__YqCWmf5dxaglu7yr7EZE534",
+      "observed_rows": 277
+    }
+  },
+  "gmail": {
+    "query": "newer_than:7d (E47 OR \"Mathematical City\" OR Kartekeya)",
+    "messages": [
+      {
+        "id": "1a0d14cd9c1bee83",
+        "thread_id": "1a0d14cd9c1bee83",
+        "subject": "E47 formalism",
+        "from": "",
+        "email_ts": "2026-09-23T19:44:23-07:00",
+        "has_attachment": true,
+        "attachment_names": [
+          "Mathematical City — 341-Row Primary Source Formalism Atlas.pdf"
+        ]
+      },
+      {
+        "id": "1a0d09650ff9b4e0",
+        "thread_id": "1a0d09650ff9b4e0",
+        "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Curate portal catalog with read-only route audit (PR #98)",
+        "from": "",
+        "email_ts": "2026-09-23T16:25:07-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0d001c76a522fe",
+        "thread_id": "1a0d001c76a522fe",
+        "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Bind lexical attractor spine across E47 runtime (PR #97)",
+        "from": "",
+        "email_ts": "2026-09-23T13:42:52-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf9a55f7f2262",
+        "thread_id": "1a0cf992a7039f1a",
+        "subject": "E47",
+        "from": "",
+        "email_ts": "2026-09-23T11:49:52-07:00",
+        "has_attachment": true,
+        "attachment_names": [
+          "persistence-gated-hodge-swarm.tar.gz",
+          "PUBLISH.md"
+        ]
+      },
+      {
+        "id": "1a0cf41f5e1acc5d",
+        "thread_id": "1a0cf41f5e1acc5d",
+        "subject": "KKP-R E47 kernel filter",
+        "from": "",
+        "email_ts": "2026-09-23T17:13:20+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf3f875ec1626",
+        "thread_id": "1a0cf3f875ec1626",
+        "subject": "E47 carrier dim 125",
+        "from": "",
+        "email_ts": "2026-09-23T17:10:41+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf3d39f2fbf48",
+        "thread_id": "1a0cf3d39f2fbf48",
+        "subject": "E47 kernel: 5V₂⊕2V₅",
+        "from": "",
+        "email_ts": "2026-09-23T17:08:09+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf3c83d3b3ccf",
+        "thread_id": "1a0cf3c83d3b3ccf",
+        "subject": "E47 locks to 47/125",
+        "from": "",
+        "email_ts": "2026-09-23T17:07:23+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf3afacb3941c",
+        "thread_id": "1a0cf3afacb3941c",
+        "subject": "E47 kernel locks at 0.376",
+        "from": "",
+        "email_ts": "2026-09-23T17:05:43+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf2f8ada51893",
+        "thread_id": "1a0cf2f8ada51893",
+        "subject": "E47 kernel locked at 47/125",
+        "from": "",
+        "email_ts": "2026-09-23T16:53:12+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf2da4992cf74",
+        "thread_id": "1a0cf2da4992cf74",
+        "subject": "E47 dim split 25+22",
+        "from": "",
+        "email_ts": "2026-09-23T16:51:09+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf2be149b842d",
+        "thread_id": "1a0cf2be149b842d",
+        "subject": "E47 kernel update: 47/125",
+        "from": "",
+        "email_ts": "2026-09-23T16:49:13+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cf28d38d68266",
+        "thread_id": "1a0cf28d38d68266",
+        "subject": "E47 kernel in KKP-R",
+        "from": "",
+        "email_ts": "2026-09-23T16:45:52+00:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cc64364067c8e",
+        "thread_id": "1a0cc62ff977800c",
+        "subject": "Geodesics",
+        "from": "",
+        "email_ts": "2026-09-22T20:51:54-07:00",
+        "has_attachment": true,
+        "attachment_names": [
+          "persistence-gated-hodge-swarm.tar.gz",
+          "PUBLISH.md",
+          "www.meta.ai(4).pdf",
+          "Pip_125_Cubelet_Citizen_Passport.pdf",
+          "chatgpt.com(9).pdf",
+          "6DOF Flight Dynamics Model and Control Equations Extraction .pdf",
+          "E47_simple_infographic_v2.png",
+          "Matrix_E47_Unified_Mathematical_Physics_Article.docx",
+          "Base 5 Lexical Attractor and Invariant Grammar: A Linguistics Monograph.pdf",
+          "e47-core.html",
+          "preview-auth.txt"
+        ]
+      },
+      {
+        "id": "1a0cc5ef6a01e588",
+        "thread_id": "1a0cc5ef6a01e588",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (aa6e9ec)",
+        "from": "",
+        "email_ts": "2026-09-22T20:46:09-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cc5ee3ddd72f6",
+        "thread_id": "1a0cc5ee3ddd72f6",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Deploy website - main (10d697c)",
+        "from": "",
+        "email_ts": "2026-09-22T20:46:04-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cc5ee13ec1117",
+        "thread_id": "1a0cc5ee13ec1117",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (09f3ea6)",
+        "from": "",
+        "email_ts": "2026-09-22T20:46:04-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0cc5ed4ff77d0e",
+        "thread_id": "1a0cc5ed4ff77d0e",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (10d697c)",
+        "from": "",
+        "email_ts": "2026-09-22T20:46:01-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0ca77e433d95a9",
+        "thread_id": "1a0ca77e433d95a9",
+        "subject": "Check-in: Mathematical City / E47 / Recursive Intelligence collaboration — 2026-09-22",
+        "from": "",
+        "email_ts": "2026-09-22T14:54:10-04:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a969fd5f320",
+        "thread_id": "1a0c9a969fd5f320",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (1765023)",
+        "from": "",
+        "email_ts": "2026-09-22T08:08:35-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a950d50e102",
+        "thread_id": "1a0c9a950d50e102",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (f5250ed)",
+        "from": "",
+        "email_ts": "2026-09-22T08:08:27-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a92098b492b",
+        "thread_id": "1a0c9a92098b492b",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (fcf054a)",
+        "from": "",
+        "email_ts": "2026-09-22T08:08:18-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a8b058baf5a",
+        "thread_id": "1a0c9a8b058baf5a",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (c2a36c5)",
+        "from": "",
+        "email_ts": "2026-09-22T08:07:49-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a899c900541",
+        "thread_id": "1a0c9a899c900541",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (67677e1)",
+        "from": "",
+        "email_ts": "2026-09-22T08:07:42-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a89981294e9",
+        "thread_id": "1a0c9a89981294e9",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (fbd215f)",
+        "from": "",
+        "email_ts": "2026-09-22T08:07:42-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a877dc323ee",
+        "thread_id": "1a0c9a877dc323ee",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (1ee46f3)",
+        "from": "",
+        "email_ts": "2026-09-22T08:07:35-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c9a11d2d0e4f0",
+        "thread_id": "1a0c9a11d2d0e4f0",
+        "subject": "Einstein e47",
+        "from": "",
+        "email_ts": "2026-09-22T07:59:27-07:00",
+        "has_attachment": true,
+        "attachment_names": [
+          "E47_INTRINSIC_SPACETIME_UNMARKED_CERTIFICATE.json"
+        ]
+      },
+      {
+        "id": "1a0c9a0b72780e82",
+        "thread_id": "1a0c9a0b72780e82",
+        "subject": "(No Subject)",
+        "from": "",
+        "email_ts": "2026-09-22T07:59:00-07:00",
+        "has_attachment": true,
+        "attachment_names": [
+          "e47_intrinsic_spacetime_unmarked.py"
+        ]
+      },
+      {
+        "id": "1a0c990d3afe6175",
+        "thread_id": "1a0c990d3afe6175",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (2533637)",
+        "from": "",
+        "email_ts": "2026-09-22T07:41:44-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98f730dc5fd2",
+        "thread_id": "1a0c98f730dc5fd2",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (b646988)",
+        "from": "",
+        "email_ts": "2026-09-22T07:40:15-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98f6cfb0045f",
+        "thread_id": "1a0c98f6cfb0045f",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (1afc885)",
+        "from": "",
+        "email_ts": "2026-09-22T07:40:14-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98f63e9d04d5",
+        "thread_id": "1a0c98f63e9d04d5",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (300a265)",
+        "from": "",
+        "email_ts": "2026-09-22T07:40:11-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98f52cc5f5d7",
+        "thread_id": "1a0c98f52cc5f5d7",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (b646988)",
+        "from": "",
+        "email_ts": "2026-09-22T07:40:07-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98f4b67ca3b3",
+        "thread_id": "1a0c98f4b67ca3b3",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (300a265)",
+        "from": "",
+        "email_ts": "2026-09-22T07:40:05-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98f455def8ec",
+        "thread_id": "1a0c98f455def8ec",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (1afc885)",
+        "from": "",
+        "email_ts": "2026-09-22T07:40:03-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98d40baab6b3",
+        "thread_id": "1a0c98d40baab6b3",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: CI - main (02b1c91)",
+        "from": "",
+        "email_ts": "2026-09-22T07:37:52-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c98d0b779c9c9",
+        "thread_id": "1a0c98d0b779c9c9",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Verify Mathematical City Citizens & Spectral Kernels - main (02b1c91)",
+        "from": "",
+        "email_ts": "2026-09-22T07:37:38-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c6f37cb18f9ea",
+        "thread_id": "1a0c6f37cb18f9ea",
+        "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Build the illustrated 22-instrument Mathematical City portal (PR #96)",
+        "from": "",
+        "email_ts": "2026-09-21T19:30:40-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c62b9eed129fc",
+        "thread_id": "1a0c62b9eed129fc",
+        "subject": "E47 Surfaces",
+        "from": "",
+        "email_ts": "2026-09-21T15:52:17-07:00",
+        "has_attachment": true,
+        "attachment_names": [
+          "E47 Surfaces.docx"
+        ]
+      },
+      {
+        "id": "1a0c5f52d47cf64a",
+        "thread_id": "1a0c5f52d47cf64a",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: City Watchtower - main (16e3c56)",
+        "from": "",
+        "email_ts": "2026-09-21T14:52:53-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f37c0b7d788",
+        "thread_id": "1a0c5f37c0b7d788",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Deploy website - atlas-homepage-20260921 (419e57a)",
+        "from": "",
+        "email_ts": "2026-09-21T14:51:01-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f35bbeb6c6a",
+        "thread_id": "1a0c5f35bbeb6c6a",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Validate Eidolon embed - atlas-homepage-20260921 (419e57a)",
+        "from": "",
+        "email_ts": "2026-09-21T14:50:54-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f34421b998e",
+        "thread_id": "1a0c5f34421b998e",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Deploy website - atlas-homepage-20260921 (8e718f5)",
+        "from": "",
+        "email_ts": "2026-09-21T14:50:47-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f33bb5fb4d5",
+        "thread_id": "1a0c5f33bb5fb4d5",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] Run failed: Validate Eidolon embed - atlas-homepage-20260921 (8e718f5)",
+        "from": "",
+        "email_ts": "2026-09-21T14:50:46-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f25bb1225ad",
+        "thread_id": "1a0c5f25bb1225ad",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] PR run failed: Deploy website - Rebuild the Mathematical City homepage as the executable Atlas (31bfcb3)",
+        "from": "",
+        "email_ts": "2026-09-21T14:49:49-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f25488354f9",
+        "thread_id": "1a0c5f25488354f9",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] PR run failed: Validate Eidolon embed - Rebuild the Mathematical City homepage as the executable Atlas (31bfcb3)",
+        "from": "",
+        "email_ts": "2026-09-21T14:49:47-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c5f22a78340f3",
+        "thread_id": "1a0c5f22a78340f3",
+        "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Rebuild the Mathematical City homepage as the executable Atlas (PR #95)",
+        "from": "",
+        "email_ts": "2026-09-21T14:49:36-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c59f3f6e27e82",
+        "thread_id": "1a0c59f3f6e27e82",
+        "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Attach MATRIX branding images to salient surfaces (PR #94)",
+        "from": "",
+        "email_ts": "2026-09-21T13:19:02-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c58d32787d9bf",
+        "thread_id": "1a0c58d32787d9bf",
+        "subject": "Re: [nicholaskouns-create/E47-Kartekeya] Curate THE MATRIX as a certified quantum simulator (PR #93)",
+        "from": "",
+        "email_ts": "2026-09-21T12:59:20-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      },
+      {
+        "id": "1a0c585488564a52",
+        "thread_id": "1a0c585488564a52",
+        "subject": "[nicholaskouns-create/E47-Kartekeya] PR run failed: Matrix MPS validation - Fix MATRIX worker parse error and run full parity validation (5fff893)",
+        "from": "",
+        "email_ts": "2026-09-21T12:50:41-07:00",
+        "has_attachment": false,
+        "attachment_names": []
+      }
+    ]
+  },
+  "public_web": {
+    "direct_probe_status": "not_verified_by_web_tool",
+    "public_surface_registry_source": "formalism-provenance.json#public_surfaces"
+  }
+}

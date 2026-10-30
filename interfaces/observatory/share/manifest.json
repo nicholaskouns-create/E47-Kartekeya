@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "title": "City Observatory social share kit",
+  "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+  "default_asset": "city-observatory-og.jpg",
+  "assets": [
+    {
+      "id": "city-observatory-og",
+      "variant": "city-observatory",
+      "format": "og",
+      "file": "city-observatory-og.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "platforms": {
+        "Open Graph": {
+          "suggested_use": "og"
+        },
+        "LinkedIn": {
+          "suggested_use": "og"
+        },
+        "Facebook": {
+          "suggested_use": "og"
+        }
+      },
+      "caption": "Explore the City Observatory: complex ideas made playable, with experiments you can inspect and share. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "City Observatory: Complex ideas. Playable worlds. A cyan and orange constellation on a midnight background. Explore connected instruments, experiments and evidence.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 80568
+    },
+    {
+      "id": "city-observatory-square",
+      "variant": "city-observatory",
+      "format": "square",
+      "file": "city-observatory-square.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1080,
+      "platforms": {
+        "Instagram feed": {
+          "suggested_use": "square"
+        },
+        "Threads": {
+          "suggested_use": "square"
+        }
+      },
+      "caption": "Explore the City Observatory: complex ideas made playable, with experiments you can inspect and share. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "City Observatory: Complex ideas. Playable worlds. A cyan and orange constellation on a midnight background. Explore connected instruments, experiments and evidence.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 77903
+    },
+    {
+      "id": "city-observatory-story",
+      "variant": "city-observatory",
+      "format": "story",
+      "file": "city-observatory-story.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1920,
+      "platforms": {
+        "Instagram Stories": {
+          "suggested_use": "story"
+        },
+        "TikTok cover": {
+          "suggested_use": "story"
+        }
+      },
+      "caption": "Explore the City Observatory: complex ideas made playable, with experiments you can inspect and share. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "City Observatory: Complex ideas. Playable worlds. A cyan and orange constellation on a midnight background. Explore connected instruments, experiments and evidence.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 105334
+    },
+    {
+      "id": "city-observatory-landscape",
+      "variant": "city-observatory",
+      "format": "landscape",
+      "file": "city-observatory-landscape.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 675,
+      "platforms": {
+        "X": {
+          "suggested_use": "landscape"
+        },
+        "Bluesky": {
+          "suggested_use": "landscape"
+        }
+      },
+      "caption": "Explore the City Observatory: complex ideas made playable, with experiments you can inspect and share. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "City Observatory: Complex ideas. Playable worlds. A cyan and orange constellation on a midnight background. Explore connected instruments, experiments and evidence.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 79097
+    },
+    {
+      "id": "signal-garden-og",
+      "variant": "signal-garden",
+      "format": "og",
+      "file": "signal-garden-og.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "platforms": {
+        "Open Graph": {
+          "suggested_use": "og"
+        },
+        "LinkedIn": {
+          "suggested_use": "og"
+        },
+        "Facebook": {
+          "suggested_use": "og"
+        }
+      },
+      "caption": "Explore Signal Garden: a 125-to-47 spectral projection experiment. Change the signal and compare its components. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Signal Garden: 125 dimensions. 47 retained. A cyan and orange constellation on a midnight background. Shape a signal. Project it. Compare the result.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 77886
+    },
+    {
+      "id": "signal-garden-square",
+      "variant": "signal-garden",
+      "format": "square",
+      "file": "signal-garden-square.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1080,
+      "platforms": {
+        "Instagram feed": {
+          "suggested_use": "square"
+        },
+        "Threads": {
+          "suggested_use": "square"
+        }
+      },
+      "caption": "Explore Signal Garden: a 125-to-47 spectral projection experiment. Change the signal and compare its components. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Signal Garden: 125 dimensions. 47 retained. A cyan and orange constellation on a midnight background. Shape a signal. Project it. Compare the result.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 74460
+    },
+    {
+      "id": "signal-garden-story",
+      "variant": "signal-garden",
+      "format": "story",
+      "file": "signal-garden-story.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1920,
+      "platforms": {
+        "Instagram Stories": {
+          "suggested_use": "story"
+        },
+        "TikTok cover": {
+          "suggested_use": "story"
+        }
+      },
+      "caption": "Explore Signal Garden: a 125-to-47 spectral projection experiment. Change the signal and compare its components. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Signal Garden: 125 dimensions. 47 retained. A cyan and orange constellation on a midnight background. Shape a signal. Project it. Compare the result.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 101728
+    },
+    {
+      "id": "signal-garden-landscape",
+      "variant": "signal-garden",
+      "format": "landscape",
+      "file": "signal-garden-landscape.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 675,
+      "platforms": {
+        "X": {
+          "suggested_use": "landscape"
+        },
+        "Bluesky": {
+          "suggested_use": "landscape"
+        }
+      },
+      "caption": "Explore Signal Garden: a 125-to-47 spectral projection experiment. Change the signal and compare its components. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Signal Garden: 125 dimensions. 47 retained. A cyan and orange constellation on a midnight background. Shape a signal. Project it. Compare the result.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 76494
+    },
+    {
+      "id": "neural-lab-og",
+      "variant": "neural-lab",
+      "format": "og",
+      "file": "neural-lab-og.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "platforms": {
+        "Open Graph": {
+          "suggested_use": "og"
+        },
+        "LinkedIn": {
+          "suggested_use": "og"
+        },
+        "Facebook": {
+          "suggested_use": "og"
+        }
+      },
+      "caption": "Play with learning in Neural Lab. Train a small network, compare runs and inspect what changed. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Neural Lab: Make a prediction. Then test it. A cyan and orange constellation on a midnight background. Train, compare and discover what changed.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 75074
+    },
+    {
+      "id": "neural-lab-square",
+      "variant": "neural-lab",
+      "format": "square",
+      "file": "neural-lab-square.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1080,
+      "platforms": {
+        "Instagram feed": {
+          "suggested_use": "square"
+        },
+        "Threads": {
+          "suggested_use": "square"
+        }
+      },
+      "caption": "Play with learning in Neural Lab. Train a small network, compare runs and inspect what changed. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Neural Lab: Make a prediction. Then test it. A cyan and orange constellation on a midnight background. Train, compare and discover what changed.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 71179
+    },
+    {
+      "id": "neural-lab-story",
+      "variant": "neural-lab",
+      "format": "story",
+      "file": "neural-lab-story.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1920,
+      "platforms": {
+        "Instagram Stories": {
+          "suggested_use": "story"
+        },
+        "TikTok cover": {
+          "suggested_use": "story"
+        }
+      },
+      "caption": "Play with learning in Neural Lab. Train a small network, compare runs and inspect what changed. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Neural Lab: Make a prediction. Then test it. A cyan and orange constellation on a midnight background. Train, compare and discover what changed.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 96997
+    },
+    {
+      "id": "neural-lab-landscape",
+      "variant": "neural-lab",
+      "format": "landscape",
+      "file": "neural-lab-landscape.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 675,
+      "platforms": {
+        "X": {
+          "suggested_use": "landscape"
+        },
+        "Bluesky": {
+          "suggested_use": "landscape"
+        }
+      },
+      "caption": "Play with learning in Neural Lab. Train a small network, compare runs and inspect what changed. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Neural Lab: Make a prediction. Then test it. A cyan and orange constellation on a midnight background. Train, compare and discover what changed.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 73783
+    },
+    {
+      "id": "evidence-atlas-og",
+      "variant": "evidence-atlas",
+      "format": "og",
+      "file": "evidence-atlas-og.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "platforms": {
+        "Open Graph": {
+          "suggested_use": "og"
+        },
+        "LinkedIn": {
+          "suggested_use": "og"
+        },
+        "Facebook": {
+          "suggested_use": "og"
+        }
+      },
+      "caption": "Visit Evidence Atlas to explore sources, assumptions and replayable results behind the instruments. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Evidence Atlas: Follow the idea to its evidence. A cyan and orange constellation on a midnight background. Inspect sources, assumptions and replayable results.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 79654
+    },
+    {
+      "id": "evidence-atlas-square",
+      "variant": "evidence-atlas",
+      "format": "square",
+      "file": "evidence-atlas-square.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1080,
+      "platforms": {
+        "Instagram feed": {
+          "suggested_use": "square"
+        },
+        "Threads": {
+          "suggested_use": "square"
+        }
+      },
+      "caption": "Visit Evidence Atlas to explore sources, assumptions and replayable results behind the instruments. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Evidence Atlas: Follow the idea to its evidence. A cyan and orange constellation on a midnight background. Inspect sources, assumptions and replayable results.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 76233
+    },
+    {
+      "id": "evidence-atlas-story",
+      "variant": "evidence-atlas",
+      "format": "story",
+      "file": "evidence-atlas-story.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1080,
+      "height": 1920,
+      "platforms": {
+        "Instagram Stories": {
+          "suggested_use": "story"
+        },
+        "TikTok cover": {
+          "suggested_use": "story"
+        }
+      },
+      "caption": "Visit Evidence Atlas to explore sources, assumptions and replayable results behind the instruments. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Evidence Atlas: Follow the idea to its evidence. A cyan and orange constellation on a midnight background. Inspect sources, assumptions and replayable results.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 102876
+    },
+    {
+      "id": "evidence-atlas-landscape",
+      "variant": "evidence-atlas",
+      "format": "landscape",
+      "file": "evidence-atlas-landscape.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1200,
+      "height": 675,
+      "platforms": {
+        "X": {
+          "suggested_use": "landscape"
+        },
+        "Bluesky": {
+          "suggested_use": "landscape"
+        }
+      },
+      "caption": "Visit Evidence Atlas to explore sources, assumptions and replayable results behind the instruments. https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "alt": "Evidence Atlas: Follow the idea to its evidence. A cyan and orange constellation on a midnight background. Inspect sources, assumptions and replayable results.",
+      "canonical_url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
+      "bytes": 78773
+    }
+  ]
+}

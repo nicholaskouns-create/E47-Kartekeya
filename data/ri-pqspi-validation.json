@@ -1,0 +1,26 @@
+{
+  "schema": "RI-PQSPI-VALIDATION/1.0",
+  "generated": "2026-09-25",
+  "evidence": [
+    "E1 software",
+    "E2 simulation"
+  ],
+  "results": {
+    "continuity_residual": 0.00007221095279056409,
+    "theta_opt": -1.2464062499999975,
+    "e_ri_star": 0.8359894110500515,
+    "psi_c_norm": 0.8021083352158924,
+    "fixed_point": 0.8878622115708661,
+    "ubuntu_threshold_pass": true,
+    "noisy_variances": {
+      "0.00": 0,
+      "0.01": 0.00006294048131205044,
+      "0.05": 0.003253961958777811,
+      "0.10": 0.015248550020874007
+    },
+    "software_checks_pass": true
+  },
+  "boundary": "Numerically validates the declared toy/model equations and deterministic simulation only. It does not establish consciousness, non-local signaling, lossless communication, legal personhood, or a complete physical theory.",
+  "git_blob_sha": "54a0de2398e5763473ba6874d82a3cf730655729",
+  "canonical_source": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/src/coherence_runtime/ri_pqspi.py"
+}

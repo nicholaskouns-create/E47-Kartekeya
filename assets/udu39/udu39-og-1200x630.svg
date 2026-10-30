@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071018"/><stop offset="1" stop-color="#111827"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f7d47d"/><stop offset="1" stop-color="#c89457"/></linearGradient>
+</defs>
+<rect width="1200" height="630" rx="0" fill="url(#bg)"/>
+<rect x="44" y="44" width="1112" height="542" rx="26" fill="#0b131b" stroke="#c89457" stroke-width="2"/>
+<text x="78" y="108" fill="#7bf0c5" font-family="Arial,Helvetica,sans-serif" font-size="24" letter-spacing="4">URUK · P325352 · EXECUTABLE PROOF</text>
+<text x="78" y="194" fill="#ffffff" font-family="Georgia,serif" font-weight="700" font-size="66">THE UDU₃₉</text>
+<text x="78" y="260" fill="#ffffff" font-family="Georgia,serif" font-weight="700" font-size="66">ATTRACTOR THEOREM</text>
+<text x="78" y="315" fill="#aeb9c4" font-family="Arial,Helvetica,sans-serif" font-size="26">A finite projector proof of semantic-accounting invariance</text>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="700" text-anchor="middle">
+ <rect x="88" y="374" width="205" height="104" rx="18" fill="#111c26" stroke="#2b475b"/>
+ <text x="190" y="414" fill="#93a0aa" font-size="19">RECORDED</text><text x="190" y="458" fill="#61d9ff" font-size="42">41</text>
+ <text x="335" y="440" fill="#c89457" font-size="42">− 2 →</text>
+ <rect x="474" y="374" width="205" height="104" rx="18" fill="#111c26" stroke="#2b475b"/>
+ <text x="576" y="414" fill="#93a0aa" font-size="19">ACCEPTED</text><text x="576" y="458" fill="#7bf0c5" font-size="42">39</text>
+ <text x="727" y="440" fill="#c89457" font-size="42">→</text>
+ <rect x="780" y="358" width="310" height="136" rx="18" fill="#111c26" stroke="#2b475b"/>
+ <text x="935" y="400" fill="#ffffff" font-size="28">16 + 6 + 17 = 39</text>
+ <text x="935" y="447" fill="#ffffff" font-size="26">9 + 7 + 6 + 8 + 9 = 39</text>
+ <text x="935" y="478" fill="#7bf0c5" font-size="17">8 / 8 PYTHON CHECKS PASS</text>
+</g>
+<text x="78" y="548" fill="url(#gold)" font-family="Georgia,serif" font-size="27">ONE LEDGER · TWO DECOMPOSITIONS · ONE ACCEPTED INVARIANT</text>
+<text x="1120" y="555" fill="#93a0aa" font-family="Arial,Helvetica,sans-serif" font-size="17" text-anchor="end">Nicholas Shane Kouns · 2026</text>
+</svg>

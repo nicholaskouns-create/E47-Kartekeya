@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E47 Runtime Instrument Bridge</title><meta name="description" content="E47 Runtime Bridge: independently observed flight and quantum simulation states, 125-dimensional encoding, 47-dimensional spectral selection, and reproducible receipts."><meta property="og:type" content="website"><meta property="og:title" content="E47 | Runtime Bridge"><meta property="og:description" content="EIDOLON × THE MATRIX. Live simulation observations, spectral projection, reproducible evidence."><meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/runtime-e47-bridge/"><meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/runtime-e47-bridge/social-preview.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="E47 | Runtime Bridge"><meta name="twitter:description" content="EIDOLON × THE MATRIX. Live simulation observations and E47 spectral receipts."><meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/runtime-e47-bridge/social-preview.png">
+<style>body{font:15px system-ui;background:#f5f7f8;color:#15232b;margin:0}main{max-width:1240px;margin:auto;padding:24px}h1{margin-bottom:4px}.muted{color:#52636c}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:white;border:1px solid #cdd8df;border-radius:12px;padding:14px}iframe{width:100%;height:360px;border:1px solid #b9c9d1;border-radius:8px}button{background:#173d4e;color:white;border:0;border-radius:7px;padding:10px 15px;cursor:pointer}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}small{display:block}#status{font-weight:700}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style></head>
+<body><main><h1>E47 · Runtime Instrument Bridge</h1><p class="muted">Independent live browser instruments → typed observations → abstract 125-coordinate encoding → 47-dimensional spectral selection → SHA-256 receipt.</p>
+<p id="status">Waiting for independent runtime observations</p>
+<div class="grid"><section class="panel"><h2>EIDOLON · flight wrapper</h2><iframe id="flight" title="EIDOLON live simulation" src="../flight/eidolon/"></iframe><p id="flightState">Awaiting CITY_WORLD runtime state</p></section>
+<section class="panel"><h2>THE MATRIX · quantum simulator</h2><iframe id="matrix" title="THE MATRIX live simulator" src="../matrix/"></iframe><p id="matrixState">Awaiting live MATRIX worker and 125-lift</p><button id="capture">Run MATRIX and request 125-lift</button><small>Lift invokes the existing Matrix Supabase adapter. No replacement simulator.</small></section></div>
+<section class="panel"><h2>Cross-instrument computation</h2><button id="compute">Compute E47 witness from both live instruments</button> <button id="download">Download receipt JSON</button><pre id="result">No witness yet.</pre></section>
+<p class="muted">Evidence boundary: flight data are wrapper/world-model simulation state, not necessarily telemetry from the externally hosted EIDOLON source. Matrix data are the simulator's worker-derived statevector and typed lift, received from its existing postMessage interface. A successful receipt proves processing of observed browser values, not hardware operation, flight safety, or the concrete Casimir representation.</p></main>
+<script type="module">
+const $=id=>document.getElementById(id);
+let matrix=null,receipt=null;
+const spectrum=[0,2,6,12,20,30,42],mult=[1,9,25,28,27,22,13],sector=spectrum.flatMap((j,i)=>Array(mult[i]).fill(j));
+const canonical=x=>JSON.stringify(x,Object.keys(x).sort()); // only used on flat receipt body
+const hex=bytes=>Array.from(bytes).map(x=>x.toString(16).padStart(2,'0')).join('');
+const sha=async s=>hex(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s))));
+function flight(){
+ try{
+  const w=$('flight').contentWindow.CITY_WORLD;
+  if(!w?.state)return null;
+  const s=w.state;
+  const fields=['lat','lon','altitudeM'];
+  if(!fields.every(k=>Number.isFinite(Number(s[k]))))return null;
+  return {lat:Number(s.lat),lon:Number(s.lon),altitude_m:Number(s.altitudeM),source:'CITY_WORLD.state',kind:'modeled-wrapper-state'};
+ }catch{return null}
+}
+window.addEventListener('message',e=>{
+ if(e.source!==$('matrix').contentWindow || e.origin!==location.origin || e.data?.type!=='CITY_MATRIX_STATE')return;
+ const v=e.data.statevector;
+ if(!Array.isArray(v)||v.length!==125||!v.every(z=>Array.isArray(z)&&z.length===2&&z.every(Number.isFinite)))return;
+ matrix={statevector:v,circuit:e.data.circuit,receipt:e.data.aetheris_receipt||null};
+ $('matrixState').textContent='Received 125 complex amplitudes from MATRIX worker-derived lift';
+ $('status').textContent='Both sources can now be sampled; press Compute';
+});
+$('capture').onclick=()=>{
+ const win=$('matrix').contentWindow;
+ try{
+  const run=win.document.getElementById('run'),lift=win.document.getElementById('lift');
+  win.postMessage({type:'CITY_MATRIX_RUN_AND_LIFT'},location.origin); $('matrixState').textContent='Worker run and 125-lift requested. A valid JWT must first be supplied inside MATRIX.';
+  lift?.scrollIntoView({block:'nearest'});
+ }catch(e){$('matrixState').textContent='Instrument inaccessible: '+e.message}
+};
+$('compute').onclick=async()=>{
+ const f=flight();
+ $('flightState').textContent=f?JSON.stringify(f):'No readable modeled flight state';
+ if(!f||!matrix){$('result').textContent='Missing live observation(s). Run MATRIX and click its 125-LIFT button, then retry.';return}
+ // Type-preserving explicit mapping: first 122 real amplitude features, last 3 modeled flight coordinates.
+ // The 125-vector is a feature representation, not a unitary map or physics coupling.
+ const values=matrix.statevector.slice(0,122).map(z=>z[0]);
+ values.push(f.lat/90,f.lon/180,Math.tanh(f.altitude_m/10000));
+ const norm=Math.hypot(...values)||1, v=values.map(x=>x/norm);
+ const projected=v.map((x,i)=>sector[i]===6||sector[i]===30?x:0);
+ const contracted=v.map((x,i)=>x*Math.pow(1-Math.pow((sector[i]-6)*(sector[i]-30),2)/99144,220));
+ const residual=Math.hypot(...contracted.map((x,i)=>x-projected[i]));
+ const bound=Math.pow(15/17,220)*Math.hypot(...v.map((x,i)=>x-projected[i]));
+ const body={schema:'mc.e47.runtime-bridge/1',timestamp:new Date().toISOString(),source_types:['MATRIX-worker-derived-125-lift','EIDOLON-wrapper-CITY_WORLD'],
+ flight:f,matrix_config:matrix.circuit,source_receipt:matrix.receipt,
+ encoding:'122 real components of sampled quantum amplitudes plus normalized modeled lat/lon/alt; unit L2 norm',
+ carrier_dimension:125,kernel_dimension:47,steps:220,residual_l2:residual,bound_l2:bound,
+ within_bound:residual<=bound+1e-12,
+ evidence_class:'browser-runtime-simulation-observations',
+ limitations:['EIDOLON source iframe telemetry not asserted','abstract diagonal E47 model','not hardware or safety proof']};
+ receipt={...body,sha256:await sha(JSON.stringify(body))};
+ $('result').textContent=JSON.stringify(receipt,null,2);
+ $('status').textContent='Runtime bridge computed: '+(body.within_bound?'BOUND PASS':'BOUND FAIL');
+};
+$('download').onclick=()=>{
+ if(!receipt){$('status').textContent='Compute a receipt first';return}
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(receipt,null,2)],{type:'application/json'}));a.download='e47-runtime-bridge-receipt.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+};
+setInterval(()=>{const f=flight();if(f)$('flightState').textContent='Modeled state: '+f.lat.toFixed(5)+', '+f.lon.toFixed(5)+' · '+f.altitude_m.toFixed(1)+'m'},2000);
+</script></body></html>
