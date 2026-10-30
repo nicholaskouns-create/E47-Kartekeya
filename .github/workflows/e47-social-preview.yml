@@ -1,0 +1,26 @@
+name: Render E47 social preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/interfaces/runtime-e47-bridge/social-preview.svg'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install SVG rasterizer
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+      - name: Render social PNG
+        run: rsvg-convert -w 1200 -h 630 website/interfaces/runtime-e47-bridge/social-preview.svg -o website/interfaces/runtime-e47-bridge/social-preview.png
+      - name: Publish PNG to Pages source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add website/interfaces/runtime-e47-bridge/social-preview.png
+          git diff --cached --quiet || (git commit -m "assets: render E47 social preview PNG" && git push)
