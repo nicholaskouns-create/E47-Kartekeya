@@ -114,7 +114,7 @@ async function lift(){
       headers:{'content-type':'application/json',...(jwtAccessToken?{'Authorization':'Bearer '+jwtAccessToken}:{})},
       body:JSON.stringify({statevector,circuit})
     });
-    const x=await r.json();
+    const x=await r.json().catch(()=>({error:'Non-JSON response from adapter'}));
     if(r.status===401||r.status===403)throw Error('JWT authorization required or expired. Supply a valid Supabase user access token in the MATRIX authorization field.');
     if(!r.ok||!x.ok)throw Error(x.error||('HTTP '+r.status));
     const w=x.witness.witness;
