@@ -18,7 +18,7 @@ jobs:
           python-version: '3.12'
       - run: pip install numpy==2.2.6 scipy==1.15.3 scikit-learn==1.6.1
       - run: python temporal-graph-learning/cora_ablation.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: e47-cora-matched-rank-receipts
