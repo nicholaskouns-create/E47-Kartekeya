@@ -17,6 +17,7 @@
     "interfaces/pip-manta/card.html": "share/preview card for embeds",
     "interfaces/kouns-core/bridge.html": "embedded field-bridge panel used inside kouns-core",
     "interfaces/mathematical-city/index.html": "legacy redirect to site root (noindex)",
-    "interfaces/visualizers/index.html": "retired route, redirect to instruments/"
+    "interfaces/visualizers/index.html": "retired route, redirect to instruments/",
+    "interfaces/runtime-e47-bridge/index.html": "direct-link instrument page (E47 Runtime Instrument Bridge, #155/#156); not yet linked from City navigation"
   }
 }
