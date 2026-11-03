@@ -1,0 +1,1 @@
+2026-11-03: Python exact A5 integer projector checks and Ω SymPy factorization and mpmath quadrature executed locally. Lean and Coq proof candidates not compiled. 7-qubit object is numerical matrix block encoding, not gate-decomposed hardware execution. Full ZIP archived separately on Google Drive.
