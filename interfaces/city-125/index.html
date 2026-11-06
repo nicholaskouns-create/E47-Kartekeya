@@ -41,4 +41,5 @@ button:not(:disabled),a[href],[role=button]{cursor:pointer}
 import{makeCity125,applyPacket,browserWitness}from'../../js/city-125-runtime.js';let cells=makeCity125();
 applyPacket(cells,{object:"CITY INDEX",operator:"index→instrument→operator→witness→evidence→next",invariant:"typed address fabric",witness:{status:"initialized"},evidence:"E1-runtime",provenance:{source:"GitHub Pages"},next_action:"spectra",addresses:[0,6,12,18,24,31,37,43,49,56,62,68,74,81,87,93,99,106,112,118,124]});
 const root=document.getElementById('cube'),panel=document.getElementById('panel');cells.forEach(c=>{let b=document.createElement('button');b.className='cell'+(c.state?' hot':'')+(c.e47?' e47':'')+(c.receipt?' receipt':'');b.textContent=c.i;b.onclick=()=>panel.textContent=JSON.stringify(c,null,2);root.appendChild(b)});let w=browserWitness(cells);carrier.textContent='carrier '+w.carrier;active.textContent='active '+cells.filter(c=>c.state).length;receipts.textContent='receipts '+w.receipts;e47.textContent='E47-marked '+w.e47_cells;
-</script></body></html>
+</script><p><a href="../../e47-spectral-kernel/E47-spectral-kernel.svg">The E₄₇ spectral kernel · publication plate</a></p>
+</body></html>
