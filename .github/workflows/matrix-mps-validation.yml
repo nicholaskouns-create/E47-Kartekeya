@@ -45,4 +45,7 @@ jobs:
       - name: Python + Qiskit Aer isomorphic parity
         run: python scripts/validate_matrix_quantum_parity.py --require-qiskit
       - name: E47 prism parity against live MATRIX adapter
+        env:
+          # Public client key, not a secret or a service-role credential.
+          MATRIX_ADAPTER_PUBLISHABLE_KEY: sb_publishable_iTAWrGCDmKaJt9ADfJLnsw_rWCizCDo
         run: python scripts/validate_e47_prism_matrix.py --live-adapter
