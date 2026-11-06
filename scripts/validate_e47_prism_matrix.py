@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import urllib.request
 from pathlib import Path
 
@@ -60,6 +61,9 @@ def spectral_bands(v125: np.ndarray, casimir: np.ndarray) -> list[dict]:
 
 
 def live_adapter(v125: np.ndarray, cfg: Config) -> dict:
+    public_key = os.environ.get("MATRIX_ADAPTER_PUBLISHABLE_KEY")
+    if not public_key:
+        raise RuntimeError("MATRIX_ADAPTER_PUBLISHABLE_KEY is required for the live adapter check")
     state = [[float(z.real), float(z.imag)] for z in v125]
     circuit = {
         "schema": "MATRIX-CIRCUIT-3.0",
@@ -80,7 +84,7 @@ def live_adapter(v125: np.ndarray, cfg: Config) -> dict:
     req = urllib.request.Request(
         ENDPOINT,
         data=json.dumps({"statevector": state, "circuit": circuit}).encode(),
-        headers={"content-type": "application/json"},
+        headers={"content-type": "application/json", "apikey": public_key},
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=30) as response:

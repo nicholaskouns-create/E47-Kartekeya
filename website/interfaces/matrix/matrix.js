@@ -30,8 +30,8 @@ function drawCircuit(c){
   let gates=[];
   for(let k=0;k<c.layers;k++){
     gates.push('<span class="gate">H⊗'+c.n+'</span>','<span class="gate">Rφ⊗'+c.n+'</span>','<span class="gate">CNOT '+c.entangler+'</span>');
-    if(c.noise!=='none')gates.push('<span class="gate warn">𝒩(T1,Tφ)</span>');
   }
+  if(c.noise!=='none')gates.push('<span class="gate warn">𝒩(T1,Tφ) · final channel</span>');
   $('circuit').innerHTML=gates.join('');
 }
 

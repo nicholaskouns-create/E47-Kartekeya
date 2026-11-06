@@ -67,14 +67,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git checkout --orphan gh-pages-publish
-          git rm -rf . >/dev/null 2>&1 || true
-          cp -a "$site_dir/." .
-          touch .nojekyll
-
-          git add -A
-          git commit -m "Deploy website from ${GITHUB_SHA}"
-          git push --force origin HEAD:refs/heads/gh-pages
+          # Commit the new site on top of the published branch; never rewrite history.
+          publish_dir="$(mktemp -d)"
+          git fetch origin gh-pages
+          git worktree add --detach "$publish_dir" FETCH_HEAD
+          git -C "$publish_dir" rm -rf --ignore-unmatch . >/dev/null
+          cp -a "$site_dir/." "$publish_dir/"
+          touch "$publish_dir/.nojekyll"
+          git -C "$publish_dir" add -A
+          if git -C "$publish_dir" diff --cached --quiet; then
+            echo "Published files already match this source."
+          else
+            git -C "$publish_dir" commit -m "Deploy website from ${GITHUB_SHA}"
+            git -C "$publish_dir" push origin HEAD:refs/heads/gh-pages
+          fi
 
       - name: Verify the live Pages document
         shell: bash

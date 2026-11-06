@@ -12,6 +12,7 @@ The 125 feature lift is explicitly not a Hilbert-space isomorphism.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -24,7 +25,7 @@ from pathlib import Path
 
 import numpy as np
 
-CERTIFICATE_ID = "MC-MATRIX-PARITY-20260921-001"
+CERTIFICATE_ID = "MC-MATRIX-CANONICAL-PARITY-20261106-001"
 SCHEMA = "MATRIX-ISOMORPHIC-PARITY-CERTIFICATE/1.0"
 
 
@@ -120,6 +121,26 @@ def materialize_mps(mps: list[np.ndarray]) -> np.ndarray:
     return np.squeeze(state, axis=-1).reshape(-1)
 
 
+def canonicalize_bond(mps: list[np.ndarray], bond: int) -> None:
+    """QR gauge sweeps; no truncation and no change to the represented state."""
+    for q in range(len(mps) - 1, bond + 1, -1):
+        left, _, right = mps[q].shape
+        orthogonal, transfer = np.linalg.qr(
+            mps[q].reshape(left, 2 * right).conj().T, mode='reduced'
+        )
+        rank = orthogonal.shape[1]
+        mps[q] = orthogonal.conj().T.reshape(rank, 2, right)
+        mps[q - 1] = np.einsum('lpa,ab->lpb', mps[q - 1], transfer.conj().T)
+    for q in range(bond):
+        left, _, right = mps[q].shape
+        orthogonal, transfer = np.linalg.qr(
+            mps[q].reshape(2 * left, right), mode='reduced'
+        )
+        rank = orthogonal.shape[1]
+        mps[q] = orthogonal.reshape(left, 2, rank)
+        mps[q + 1] = np.einsum('ab,bpr->apr', transfer, mps[q + 1])
+
+
 def mps_matrix_circuit(cfg: Config) -> tuple[np.ndarray, float, int, np.ndarray]:
     mps = init_mps(cfg.n)
     discarded = 0.0
@@ -129,6 +150,7 @@ def mps_matrix_circuit(cfg: Config) -> tuple[np.ndarray, float, int, np.ndarray]
             mps[q] = apply_1q_mps(mps[q], H())
             mps[q] = apply_1q_mps(mps[q], phase_gate(cfg.phi))
         for q in range(layer % 2, cfg.n - 1, 2):
+            canonicalize_bond(mps, q)
             a, b, last_s, disc = apply_2q_mps(
                 mps[q], mps[q + 1], CNOT, cfg.chi
             )
@@ -381,6 +403,16 @@ def validate(cfg: Config) -> dict:
             "matrix_engine": "website/interfaces/matrix/mps-worker.js",
             "matrix_ui": "website/interfaces/matrix/matrix.js",
             "git_commit": os.getenv("GITHUB_SHA"),
+            "file_sha256": {
+                name: hashlib.sha256(
+                    (Path(__file__).resolve().parents[1] / name).read_bytes()
+                ).hexdigest()
+                for name in (
+                    "website/interfaces/matrix/mps-worker.js",
+                    "website/interfaces/matrix/matrix.js",
+                    "scripts/validate_matrix_quantum_parity.py",
+                )
+            },
         },
         "configuration": asdict(cfg),
         "runtime": {
