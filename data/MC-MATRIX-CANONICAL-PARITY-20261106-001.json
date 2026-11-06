@@ -1,0 +1,162 @@
+{
+  "certificate_id": "MC-MATRIX-CANONICAL-PARITY-20261106-001",
+  "checks": {
+    "casimir_spectrum": true,
+    "dense_norm": true,
+    "e47_rank_47": true,
+    "embedding_isometry": true,
+    "feature_125_norm": true,
+    "invalid_state_population": true,
+    "k2_gap": true,
+    "k2_max": true,
+    "k2_spectrum": true,
+    "kernel_annihilation": true,
+    "max_bond": true,
+    "mps_dense_fidelity": true,
+    "mps_dense_phase_aligned_l2": true,
+    "mps_norm": true,
+    "observable_parity": true,
+    "projector_idempotence": true,
+    "qiskit_aer_fidelity": true,
+    "qiskit_aer_state_parity": true,
+    "r47_intertwiner": true,
+    "representation_typing": true,
+    "schmidt_parity": true,
+    "truncation_stress_exercised": true,
+    "untruncated": true
+  },
+  "configuration": {
+    "chi": 16,
+    "layers": 24,
+    "n": 8,
+    "phi": 0.7
+  },
+  "e47": {
+    "casimir_spectrum": {
+      "0": 1,
+      "12": 28,
+      "2": 9,
+      "20": 27,
+      "30": 22,
+      "42": 13,
+      "6": 25
+    },
+    "coherence_fraction": 0.376,
+    "feature_complement_weight": 0.6249518286632735,
+    "feature_e47_weight": 0.3750481713367265,
+    "feature_k2_energy": 44699.14038394357,
+    "k2_gap": 11663.99999999992,
+    "k2_max": 186624.00000000006,
+    "k2_spectrum": [
+      0,
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
+    "kernel_projector_fro": 4.996015056480397e-12,
+    "projector_idempotence_fro": 5.541372953883602e-15,
+    "rank": 47
+  },
+  "embedding_125_to_128": {
+    "invalid_state_population": 0.0,
+    "j_dagger_j_residual_fro": 0.0,
+    "kind": "isometric embedding",
+    "r47_intertwiner_residual_fro": 0.0
+  },
+  "evidence_class": "E1",
+  "quantum_parity": {
+    "mps_dense": {
+      "dense_norm": 0.9999999999999848,
+      "discarded_weight": 2.781541749398415e-32,
+      "fidelity": 1.0000000000000004,
+      "last_bond_singular_values": [
+        0.9291067731286772,
+        0.30890980583721944,
+        0.1733129448100005,
+        0.10629185832080641
+      ],
+      "max_bond": 16,
+      "mps_norm": 0.9999999999999888,
+      "observable_max_error": 1.4210854715202004e-14,
+      "phase_aligned_relative_l2": 1.2537618116589504e-14,
+      "schmidt_spectrum_max_error": 4.107825191113079e-15
+    },
+    "qiskit_aer": {
+      "available": true,
+      "fidelity": 1.0000000000000004,
+      "phase_aligned_relative_l2": 1.5030029036919424e-14,
+      "qiskit": "2.5.0",
+      "qiskit-aer": "0.17.2",
+      "status": "PASS"
+    }
+  },
+  "runtime": {
+    "numpy": "2.5.4",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "qiskit_aer": {
+      "available": true,
+      "qiskit": "2.5.0",
+      "qiskit-aer": "0.17.2"
+    }
+  },
+  "schema": "MATRIX-ISOMORPHIC-PARITY-CERTIFICATE/1.0",
+  "scope": "software/numerical quantum-simulation parity; no hardware or experimental claim",
+  "source": {
+    "file_sha256": {
+      "scripts/validate_matrix_quantum_parity.py": "a7007690a3f56052b3756d2f5842b11d0a78befc2524335f2cc4ede2b747df6a",
+      "website/interfaces/matrix/matrix.js": "1ec01e21da3d4a164a6ef4c0fefa4f51fca7ecf32bc63555cda2c3d5df7d983f",
+      "website/interfaces/matrix/mps-worker.js": "ecfcce6a169082d3d9c28220dc1573b3051938f762321e8fbc42227fb11f7c7c"
+    },
+    "git_commit": null,
+    "matrix_engine": "website/interfaces/matrix/mps-worker.js",
+    "matrix_ui": "website/interfaces/matrix/matrix.js"
+  },
+  "status": "PASS",
+  "thresholds": {
+    "discarded": 1e-12,
+    "embedding": 1e-12,
+    "fidelity_error": 1e-12,
+    "intertwiner": 1e-12,
+    "kernel_projector": 1e-09,
+    "norm": 1e-12,
+    "observable": 1e-12,
+    "projector": 1e-12,
+    "schmidt": 1e-12,
+    "state_l2": 1e-12
+  },
+  "truncation_stress": {
+    "configuration": {
+      "chi": 4,
+      "layers": 24,
+      "n": 8,
+      "phi": 0.7
+    },
+    "discarded_weight": 0.07490386549446622,
+    "fidelity_vs_dense": 0.9442799090139697,
+    "max_bond": 4,
+    "mps_norm": 0.9631762247363601,
+    "observable_max_error_vs_dense": 0.024480777958791222,
+    "phase_aligned_relative_l2_vs_dense": 0.2362063515786672,
+    "qiskit_aer": {
+      "available": true,
+      "dense_fidelity": 1.0000000000000004,
+      "dense_phase_aligned_relative_l2": 1.5030029036919203e-14,
+      "mps_fidelity": 0.9442799090139695,
+      "mps_phase_aligned_relative_l2": 0.23620635157866793,
+      "qiskit": "2.5.0",
+      "qiskit-aer": "0.17.2",
+      "status": "PASS"
+    },
+    "schmidt_spectrum_max_error_vs_dense": 0.0852409395523763,
+    "truncation_exercised": true
+  },
+  "typed_feature_lift": {
+    "claim": "explicit normalized sampled-amplitude feature map; not Hilbert-space isomorphism",
+    "norm": 0.9999999999999999,
+    "source_dimension": 256,
+    "target_dimension": 125
+  }
+}
