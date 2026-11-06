@@ -338,3 +338,5 @@ The validator distinguishes proved geometry from the still-open §10 constellati
 ## E47 spectral and noiseless-subsystem certificate (2026-10-24)
 
 [Read the cross-repository evidence note](E47_SPECTRAL_ADVANTAGES_2026-10-24.md). Documents the exact 125→47 Casimir construction, the (15/17)^n spectral convergence certificate, and collective-SU(2) noiseless multiplicity encoding, separately from channel-dependent QEC and unmeasured hardware advantages.
+
+[The E₄₇ spectral kernel · formalism and verification](website/e47-spectral-kernel/README.md)

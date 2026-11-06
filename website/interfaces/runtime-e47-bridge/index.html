@@ -69,4 +69,5 @@ $('download').onclick=()=>{
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(receipt,null,2)],{type:'application/json'}));a.download='e47-runtime-bridge-receipt.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 };
 setInterval(()=>{const f=flight();if(f)$('flightState').textContent='Modeled state: '+f.lat.toFixed(5)+', '+f.lon.toFixed(5)+' · '+f.altitude_m.toFixed(1)+'m'},2000);
-</script></body></html>
+</script><p><a href="../../e47-spectral-kernel/E47-spectral-kernel.svg">The E₄₇ spectral kernel · publication plate</a></p>
+</body></html>

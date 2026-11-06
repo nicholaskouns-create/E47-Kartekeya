@@ -53,4 +53,5 @@ fetch('../../data/city_external_agents.json').then(r=>r.json()).then(m=>{
  document.getElementById('workers').innerHTML=m.workers.map(w=>`<article class="card"><span class="code">${w.code}</span><h2>${w.name}</h2><p>${w.mission}</p><dl><dt>Cadence</dt><dd>${w.cadence}</dd><dt>City counterpart</dt><dd>→ ${w.target}</dd><dt>Surfaces</dt><dd>${w.surfaces.join(' · ')}</dd></dl></article>`).join('');
 }).catch(()=>{document.getElementById('workers').textContent='Registry unavailable.'});
 </script>
+<p><a href="../../e47-spectral-kernel/E47-spectral-kernel.svg">The E₄₇ spectral kernel · publication plate</a></p>
 </body></html>

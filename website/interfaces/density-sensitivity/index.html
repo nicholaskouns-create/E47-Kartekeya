@@ -140,5 +140,6 @@ $("publish").onclick=()=>{const q=buildPacket();bus.publish(q);localStorage.setI
 $("download").onclick=()=>{const q=lastPacket||buildPacket(),blob=new Blob([JSON.stringify(q,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=q.query_code+".json";a.click();URL.revokeObjectURL(a.href)};
 loadSeed().then(run).catch(e=>{$("status").textContent=e.message});
 </script>
+<p><a href="../../e47-spectral-kernel/E47-spectral-kernel.svg">The E₄₇ spectral kernel · publication plate</a></p>
 </body>
 </html>
