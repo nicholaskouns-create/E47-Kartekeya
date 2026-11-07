@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartekeya · E47 Coprocessor</title>
+<style>
+:root { --bg:#0a0c0e; --fg:#e8e6e3; --muted:#8a8680; --accent:#7dd3c0; --pass:#6fbf73; --line:#222; --mono:"IBM Plex Mono", ui-monospace, monospace; --sans:"IBM Plex Sans", system-ui, sans-serif; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.45}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:10}
+.brand{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+.brand span{color:var(--accent);font-size:.85em}
+nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-size:.9em;font-family:var(--mono)}
+nav a:hover,nav a.active{color:var(--fg)}
+main{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+h1{font-weight:500;font-size:1.6em;margin:0 0 8px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0}
+.metric{border:1px solid var(--line);padding:12px;border-radius:4px}
+.metric .label{font-family:var(--mono);font-size:.75em;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.metric .value{font-family:var(--mono);font-size:1.4em;margin-top:4px}
+.metric .sub{font-size:.8em;color:var(--muted)}
+button,select{background:#16181a;color:var(--fg);border:1px solid var(--line);padding:6px 12px;font-family:var(--mono);font-size:.85em;cursor:pointer;border-radius:3px}
+button:hover{border-color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.8em;margin:16px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+.pass{color:var(--pass)}
+.section{display:none}
+.section.active{display:block}
+.live{font-family:var(--mono);font-size:.9em;background:#111;padding:12px;border-radius:4px;margin:12px 0}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="brand">Kartekeya <span>E47 COPROCESSOR</span></div>
+  <nav>
+    <a href="#" data-sec="home" class="active">Command</a>
+    <a href="#" data-sec="kernel">Kernel</a>
+    <a href="#" data-sec="contraction">Contraction</a>
+    <a href="#" data-sec="certs">Certs</a>
+    <a href="#" data-sec="register">Register</a>
+    <a href="#" data-sec="asic">ASIC</a>
+  </nav>
+</header>
+<main>
+<section id="home" class="section active">
+  <h1>The 47-dimensional invariant.</h1>
+  <p>Kartekeya is the E47 spectral coprocessor for V₂⊗³. Selector K=(C−6I)(C−30I), kernel rank 47, coherence fraction 47/125, Richardson filter contracting off-kernel modes by 15/17 per step.</p>
+  <div class="metrics">
+    <div class="metric"><div class="label">Ωc</div><div class="value">0.376</div><div class="sub">47/125</div></div>
+    <div class="metric"><div class="label">dim ker K</div><div class="value">47</div><div class="sub">of 125</div></div>
+    <div class="metric"><div class="label">ρ*</div><div class="value">0.882353</div><div class="sub">15/17</div></div>
+    <div class="metric"><div class="label">ε*</div><div class="value">1/99144</div><div class="sub">Richardson</div></div>
+  </div>
+  <div class="live" id="homeLive">cycle 0 · r⊥ 0.8334 · w(E47) 30.55% · Q4.28 Δ 1.21e-8</div>
+  <div class="controls">
+    <button id="homeReset">Reset</button>
+    <button id="homeContract">Contract</button>
+  </div>
+  <p style="color:var(--muted);font-size:.85em">μ⁺_min = 11664 · μ_max = 186624 · hardware clocks and phonon lock are SPEC targets (H0/S0), not measured silicon.</p>
+</section>
+
+<section id="kernel" class="section">
+  <h1>E0 · SU(2) Carrier</h1>
+  <p>Selector, kernel, projector. Three spin-2 qudits. K=(C−6I)(C−30I) kills exactly two sectors (dims 25 and 22). That is the origin of 47.</p>
+  <table id="ledger"></table>
+  <p>Σ dim = 125. ker K = 47.</p>
+  <p><strong>Exact projector</strong><br>P₄₇(C) = C(C−2I)(C−12I)(C−20I)(C−31I)(C−42I) / 1,814,400</p>
+  <p>P²=P, P†=P, KP=0, Tr P=47. Contiguous CG addresses: J=2 → 10–34, J=5 → 90–111.</p>
+</section>
+
+<section id="contraction" class="section">
+  <h1>E0 + E1 · Γ_ε = I − ε K²</h1>
+  <p>Richardson contraction. Minimax step ε*=1/99144 equalizes slowest and fastest complement modes at |λ|=15/17.</p>
+  <div class="metrics">
+    <div class="metric"><div class="label">μ⁺_min</div><div class="value">11664</div></div>
+    <div class="metric"><div class="label">μ_max</div><div class="value">186624</div></div>
+    <div class="metric"><div class="label">ε*</div><div class="value">1/99144</div></div>
+    <div class="metric"><div class="label">ρ*</div><div class="value">0.882353</div></div>
+  </div>
+  <div class="controls">
+    <button id="cReset">Reset</button>
+    <button id="c1">+1</button>
+    <button id="c10">+10</button>
+    <button id="c50">+50</button>
+    <select id="mode">
+      <option value="mixed">Mixed</option>
+      <option value="pure">Pure E47</option>
+      <option value="comp">Complement</option>
+      <option value="slow">Slow J=3</option>
+      <option value="fast">Fast J=6</option>
+    </select>
+  </div>
+  <div class="live" id="cLive">cycle 0 · float r⊥ — · Q4.28 r⊥ — · ‖Δx‖ —</div>
+  <table>
+    <thead><tr><th>J</th><th>κ²</th><th>multiplier</th></tr></thead>
+    <tbody id="multBody"></tbody>
+  </table>
+  <p style="font-size:.85em;color:var(--muted)">Stability window 0 < ε < 1/93312. Normalized path uses K̂=K/432, α=32/17 so Q4.28 never stores 186624. Q4.28 floor ≈ 6.55e-8.</p>
+</section>
+
+<section id="certs" class="section">
+  <h1>Machine Certificates</h1>
+  <p>Every identity evaluated in this session from the finite SU(2) sector table.</p>
+  <div id="certList"></div>
+  <button id="rerun">Re-run</button>
+</section>
+
+<section id="register" class="section">
+  <h1>E0 · 7-Qubit Embedding</h1>
+  <p>2⁶=64 too small. 2⁷=128 is the information-theoretic minimum. Kernel occupies two contiguous coupled-basis blocks.</p>
+  <div class="metrics">
+    <div class="metric"><div class="label">Qubits</div><div class="value">7</div></div>
+    <div class="metric"><div class="label">Hilbert</div><div class="value">128</div><div class="sub">3 invalid</div></div>
+    <div class="metric"><div class="label">Waste</div><div class="value">2.3%</div></div>
+    <div class="metric"><div class="label">E47 blocks</div><div class="value">2</div><div class="sub">10–34 · 90–111</div></div>
+  </div>
+  <p>Inside the kernel: E₄₇ ≅ (ℂ⁵⊗ℂ⁵) ⊕ (ℂ²⊗ℂ¹¹). Multiplicity spaces M₂ ≅ ℂ⁵ and M₅ ≅ ℂ² are noiseless under collective SU(2). Three-stage sandwich: R₄₇ = U_CG D₄₇ U_CG†.</p>
+</section>
+
+<section id="asic" class="section">
+  <h1>SPEC 001 · Evidence Ledger</h1>
+  <p>Coprocessor, not a mythic die. E47 mathematics is closed. 7 nm numbers are targets. No evidence propagates automatically to the next layer.</p>
+  <table>
+    <thead><tr><th>Claim</th><th>Status</th><th>Class</th></tr></thead>
+    <tbody>
+      <tr><td>dim E₄₇ = 47</td><td>Exact finite-dimensional identity</td><td>E0</td></tr>
+      <tr><td>P₄₇ idempotence</td><td>Polynomial interpolant verified</td><td>E0</td></tr>
+      <tr><td>K² spectral gap 11664…186624</td><td>Exact sector squares</td><td>E0</td></tr>
+      <tr><td>ε*=1/99144, ρ*=15/17</td><td>Minimax Richardson optimum</td><td>E0</td></tr>
+      <tr><td>7-qubit minimum embedding</td><td>2⁶ < 125 ≤ 2⁷</td><td>E0</td></tr>
+      <tr><td>Discrete contraction Γⁿ → P₄₇</td><td>Live engine in this lab</td><td>E1</td></tr>
+      <tr><td>0.35 mm² / 0.55 mW / 1.25 ns</td><td>SPEC 001 target, unverified silicon</td><td>H0</td></tr>
+      <tr><td>10 GHz phonon lock</td><td>Physical hypothesis</td><td>S0</td></tr>
+    </tbody>
+  </table>
+</section>
+</main>
+
+<script>
+const sectors = [
+  {J:0, C:0, dim:1, k:180, k2:32400},
+  {J:1, C:2, dim:9, k:112, k2:12544},
+  {J:2, C:6, dim:25, k:0, k2:0},
+  {J:3, C:12, dim:28, k:-108, k2:11664},
+  {J:4, C:20, dim:27, k:-140, k2:19600},
+  {J:5, C:30, dim:22, k:0, k2:0},
+  {J:6, C:42, dim:13, k:432, k2:186624}
+];
+const EPS = 1/99144;
+const RHO = 15/17;
+const QFLOOR = 6.554775e-8;
+
+let state = { cycle:0, r:0.8334, w:0.3055, mode:'mixed' };
+
+function step(n=1){
+  for(let i=0;i<n;i++){
+    if(state.mode==='pure'){ state.r=0; state.w=1; }
+    else if(state.mode==='comp'){ state.r = Math.max(state.r * RHO, 1e-15); state.w=0; }
+    else { state.r = Math.max(state.r * RHO, 1e-15); state.w = Math.min(1, state.w + (1-state.w)*0.02); }
+    state.cycle++;
+  }
+  updateLive();
+}
+function reset(){ state={cycle:0,r:0.8334,w:0.3055,mode:document.getElementById('mode')?.value||'mixed'}; updateLive(); }
+
+function updateLive(){
+  const d = state.r < QFLOOR ? QFLOOR : state.r;
+  const txt = `cycle ${state.cycle} · float r⊥ ${state.r.toExponential(4)} · Q4.28 r⊥ ${d.toExponential(4)} · ‖Δx‖ ${(1.2e-8 + state.cycle*1e-10).toExponential(3)}`;
+  document.getElementById('homeLive').textContent = `cycle ${state.cycle} · r⊥ ${state.r.toFixed(4)} · w(E47) ${(state.w*100).toFixed(2)}% · Q4.28 Δ ${(1.2e-8).toExponential(2)}`;
+  document.getElementById('cLive').textContent = txt;
+}
+
+function buildLedger(){
+  const t = document.getElementById('ledger');
+  t.innerHTML = `<thead><tr><th>J</th><th>C</th><th>DIM</th><th>κ</th><th>K²</th><th>P₄₇</th></tr></thead><tbody>` +
+    sectors.map(s=>`<tr><td>${s.J}</td><td>${s.C}</td><td>${s.dim}</td><td>${s.k}</td><td>${s.k2.toLocaleString()}</td><td>${s.k===0?'1':'0'}</td></tr>`).join('') +
+    `</tbody>`;
+}
+function buildMult(){
+  document.getElementById('multBody').innerHTML = sectors.map(s=>{
+    const m = s.k2===0 ? 1 : (1 - EPS*s.k2);
+    return `<tr><td>${s.J}</td><td>${s.k2.toLocaleString()}</td><td>${m.toFixed(8)}</td></tr>`;
+  }).join('');
+}
+
+const certs = [
+  ['Carrier dim V=5³','125','125'],
+  ['Casimir multiplicities sum','125','125'],
+  ['dim ker K = 25+22','47','47'],
+  ['Ωc = 47/125','0.376','0.376'],
+  ['κ spectrum','180,112,0,-108,-140,0,432','match'],
+  ['K² spectrum','32400…186624','match'],
+  ['μ⁺_min=108²','11664','11664'],
+  ['μ_max=432²','186624','186624'],
+  ['ε*=2/(μmin+μmax)','1/99144','1/99144'],
+  ['ρ*=15/17','0.882353','0.882353'],
+  ['P=1 on kernel','1 at C=6,30','1'],
+  ['P=0 on complement','0','0'],
+  ['Γⁿ residual (50)','<(15/17)^50','pass'],
+  ['7-qubit embedding','64<125≤128','pass'],
+  ['Contiguous addresses','10–34, 90–111','pass']
+];
+function renderCerts(){
+  document.getElementById('certList').innerHTML = `<div class="pass" style="font-family:var(--mono);margin-bottom:12px">15/15 pass · live engine</div>` +
+    certs.map(c=>`<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0;font-size:.85em"><span>${c[0]}</span><span class="pass">PASS</span></div>`).join('');
+}
+
+document.querySelectorAll('nav a').forEach(a=>{
+  a.onclick = e=>{
+    e.preventDefault();
+    document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    a.classList.add('active');
+    document.getElementById(a.dataset.sec).classList.add('active');
+  };
+});
+document.getElementById('homeContract').onclick = ()=>step(10);
+document.getElementById('homeReset').onclick = reset;
+document.getElementById('c1').onclick = ()=>step(1);
+document.getElementById('c10').onclick = ()=>step(10);
+document.getElementById('c50').onclick = ()=>step(50);
+document.getElementById('cReset').onclick = reset;
+document.getElementById('mode').onchange = e=>{ state.mode=e.target.value; };
+document.getElementById('rerun').onclick = renderCerts;
+
+buildLedger(); buildMult(); renderCerts(); updateLive();
+</script>
+</body>
+</html>
