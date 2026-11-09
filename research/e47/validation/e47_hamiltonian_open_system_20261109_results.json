@@ -1,0 +1,102 @@
+{
+  "spin_multiplicities": {
+    "0": 1,
+    "1": 9,
+    "2": 25,
+    "3": 28,
+    "4": 27,
+    "5": 22,
+    "6": 13
+  },
+  "rank_P": 47,
+  "projector_idempotence_error": 1.1517971462646357e-14,
+  "K_P_error": 1.5519678313832537e-12,
+  "gap_K_squared": 11663.99999999992,
+  "max_K_squared": 186624.00000000006,
+  "g": 8.573388203017832e-05,
+  "initial_complement_norm": 0.8187183406216151,
+  "initial_complement_population": 0.6702997212702106,
+  "times": [
+    0.0,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "gradient_complement_norm": [
+    0.8187183406216151,
+    0.5474902621847064,
+    0.3967030751011567,
+    0.2171332977089516,
+    0.07228312715488781,
+    0.00927171533434815,
+    0.0001646113976520254
+  ],
+  "analytic_gap_bound": [
+    0.8187183406216151,
+    0.637618484791035,
+    0.4965777752560607,
+    0.3011896456246903,
+    0.11080147851903584,
+    0.014995349478409168,
+    0.0002746494060569108
+  ],
+  "gradient_energy": [
+    2.0924564311291007,
+    0.39647861777089394,
+    0.19787440052373298,
+    0.054672083496372675,
+    0.005523326733747631,
+    8.70469302306217e-05,
+    2.7242959970558304e-08
+  ],
+  "unitary_complement_population": [
+    0.6702997212702106,
+    0.6702997212702106,
+    0.6702997212702106,
+    0.6702997212702106,
+    0.6702997212702106,
+    0.6702997212702106,
+    0.6702997212702106
+  ],
+  "lindblad_complement_population": [
+    0.6702997212702109,
+    0.5220299478177846,
+    0.40655733214721534,
+    0.24658948687825874,
+    0.09071520263152655,
+    0.012276967642004357,
+    0.0002248605059796261
+  ],
+  "lindblad_expected_population": [
+    0.6702997212702106,
+    0.5220299478177844,
+    0.4065573321472152,
+    0.24658948687825866,
+    0.0907152026315265,
+    0.01227696764200435,
+    0.00022486050597962608
+  ],
+  "lindblad_trace_max_error": 2.220446049250313e-16,
+  "lindblad_min_eigenvalue": -1.1681833163511763e-15,
+  "lindblad_initial_derivative_fd_error": 4.39973492316113e-05,
+  "explicit_jump_count": 78,
+  "checks": {
+    "casimir_multiplicities": true,
+    "rank47": true,
+    "projector": true,
+    "annihilation": true,
+    "gap11664": true,
+    "max186624": true,
+    "gradient_bound": true,
+    "gradient_energy_monotone": true,
+    "unitary_population_constant": true,
+    "lindblad_population_exact": true,
+    "lindblad_trace": true,
+    "lindblad_positive": true,
+    "gksl_generator_finite_difference": true,
+    "jump_count78": true
+  }
+}
