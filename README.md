@@ -1,5 +1,8 @@
 # The Kartekeya Isolation Lock · E47-v1.0
 
+> **Current licensing:** [All Rights Reserved](LICENSE) for original material owned by Nicholas Shane Kouns. No new reuse permission is granted. Previously granted licenses and third-party/public-domain rights remain unaffected.
+
+
 **[Verity companion proof poster](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/verity-poster.html)** · Print-oriented companion to the [responsive Lean/Coq explainer](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/); evidence levels remain explicitly separated.
 
 **[Public Lean/Coq machine-checked proof explainer](https://nicholaskouns-create.github.io/Identity/site/proof/lean-coq/)** · Identity holds the canonical HTML and compiler evidence. The exact construction, formalized scalar statements, and concrete-matrix certification boundary are distinguished there.
