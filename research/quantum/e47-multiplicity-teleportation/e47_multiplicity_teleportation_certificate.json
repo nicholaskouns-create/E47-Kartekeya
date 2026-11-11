@@ -1,0 +1,56 @@
+{
+  "J2_sector_error": 3.9130781363229997e-13,
+  "algorithm": "NumPy/SciPy deterministic full-carrier reconstruction and qudit Bell-branch simulation",
+  "carrier_dimension": 125,
+  "casimir_eigenvalues": [
+    0,
+    2,
+    6,
+    12,
+    20,
+    30,
+    42
+  ],
+  "casimir_sector_dimensions": [
+    1,
+    9,
+    25,
+    28,
+    27,
+    22,
+    13
+  ],
+  "certificate": "E47-MULTIPLICITY-TELEPORT-2026-11-11",
+  "evidence_boundary": "Exact analytic protocol and floating-point simulated implementation; not hardware/experimental verification; collective SU(2) noise only for multiplicity protection; no claim of physical matter transport or wormholes.",
+  "isometry_25_error": 2.5594124432239154e-15,
+  "logical_qubit_teleportation": {
+    "branches_per_state": 4,
+    "dimension": 2,
+    "input_states": 16,
+    "max_branch_amplitude_error": 1.2794688166302258e-16,
+    "max_corrected_channel_error": 5.30526893055539e-16,
+    "max_no_message_depolarization_error": 5.130195650704427e-16,
+    "max_probability_error": 6.661338147750939e-16
+  },
+  "logical_ququint_teleportation": {
+    "branches_per_state": 25,
+    "dimension": 5,
+    "input_states": 19,
+    "max_branch_amplitude_error": 1.9433541940477154e-16,
+    "max_corrected_channel_error": 1.1102230246251565e-15,
+    "max_no_message_depolarization_error": 3.7521195619217756e-16,
+    "max_probability_error": 1.2212453270876722e-15
+  },
+  "max_KP47_error": 1.8172763112225716e-12,
+  "max_collective_rotation_intertwiner_error": 1.7594432085114625e-15,
+  "max_encoded_rotation_prediction_error": 9.165432457280544e-16,
+  "max_encoded_state_sector_leakage": 7.142510533485321e-15,
+  "max_logical_state_error_after_collective_rotation": 1.3107175293697131e-15,
+  "max_projector_idempotence_error": 6.593765653209312e-15,
+  "rank_P2": 25,
+  "rank_P47": 47,
+  "rotation_trials": 10,
+  "seed": 20261111,
+  "selected_E47_complement_rank": 78,
+  "status": "PASS"
+}
