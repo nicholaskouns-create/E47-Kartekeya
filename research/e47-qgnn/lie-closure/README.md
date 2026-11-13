@@ -14,6 +14,12 @@ The positive diagonal similarity `S = diag(s_0,...,s_4)` with `s_0=1`, `s_{i+1}=
 
 Its determinant modulo 101 is `11`, and `certificate.json` includes an explicit inverse over F_101, proving full rank. Since the original generators are skew-Hermitian when multiplied by `i`, the real Lie algebra is contained in `u(5)` (dimension 25). Full complex rank of the generated commutators implies the real Lie algebra has dimension 25 and equals `u(5)`.
 
-**Formalization status:** `E47LieClosure.lean` and `E47LieClosure.v` contain explicit finite-field matrix inverse certificate checks. They have **not** been compiled in this session. Their current theorem verifies the modular inverse witness, not yet the recursive commutator provenance of every column. The Python generator independently verifies those commutator definitions using exact arithmetic. To obtain a full kernel-checked Lie-closure theorem, formalize the commutator recurrence, connect it to the inverse witness, and prove the real-form dimension implication.
+**Formalization status.** Three steps were needed for a full kernel-checked Lie-closure theorem: formalize the commutator recurrence, connect it to the inverse witness, and prove the real-form dimension implication. The first two are now done; the third is not.
+
+`coq/U5Closure.v` compiles under Coq 8.18.0 with no Mathlib and no external library, and all six of its theorems report *Closed under the global context* — no axiom, no `sorry`, no `Admitted`, no `native_decide`. It defines `D` and `B`, computes all 25 bracket words inside Coq by the recurrence above, assembles the column matrix from them, and proves both `M · ADJ = DET · I` and `ADJ · M = DET · I` over the integers with `DET ≠ 0`. Provenance and rank are therefore kernel-checked together, and independence and spanning follow as theorems in the same file. See `coq/README.md`.
+
+What remains open is the real-form implication — that a basis of the 25-dimensional matrix space forces `Lie_ℝ{−iD, −iB} = 𝔲(5)`. That argument is four lines, set out in `coq/README.md`, and the kernel has not seen them.
+
+`E47LieClosure.lean` and `E47LieClosure.v` remain as they were: explicit finite-field inverse certificate checks, not compiled in this session, verifying the modular witness alone.
 
 Run `python build_certificate.py` (requires SymPy). No source repository files were modified.
