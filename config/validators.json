@@ -35,8 +35,7 @@
       "args": ["--registry", "research/e47/validation/sensitivity_boundary_hypothesis.json", "--demo", "--output", "{tmp}/sensitivity-boundary-demo.json"]
     },
     {
-      "path": "research/e47/validation/ri_qegt_live_cross_platform_graph_20260925.py",
-      "known_failing": "Crashes at line 165 writing its report: json.dumps gets a numpy bool ('Object of type bool is not JSON serializable'), so no PASS/FAIL count is produced. Serialization bug, not a math result."
+      "path": "research/e47/validation/ri_qegt_live_cross_platform_graph_20260925.py"
     }
   ],
   "exclude": []

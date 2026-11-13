@@ -162,6 +162,13 @@ checks={
 "componentwise_attractor_count":kernel_dim==components
 }
 
+# numpy comparisons return np.bool_, which json cannot serialise; coerce the
+# report to plain Python scalars before writing it.
+checks={k:bool(v) for k,v in checks.items()}
+def _plain(o):
+    if hasattr(o,"item"): return o.item()
+    raise TypeError(f"Object of type {o.__class__.__name__} is not JSON serializable")
+
 print(json.dumps({
 "nodes":len(nodes),"edges":G.number_of_edges(),"components":components,
 "kernel_dim":kernel_dim,"lambda_max":lam_max,"spectral_gap":gap,
@@ -169,4 +176,4 @@ print(json.dumps({
 "convergence_residual":float(np.linalg.norm(x-target)),
 "max_continuity_residual":max(cont),
 "checks":checks,"pass_count":sum(checks.values()),"test_count":len(checks)
-},indent=2))
+},indent=2,default=_plain))
