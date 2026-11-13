@@ -1,0 +1,66 @@
+{
+  "study": "E47 constrained independent Haar U(5) exchange compilation",
+  "seed": 20261113,
+  "targets": 12,
+  "development": 8,
+  "held_out": 4,
+  "experiments": 96,
+  "pulse_budgets": [
+    8,
+    16,
+    24,
+    32
+  ],
+  "angle_bounds": [
+    0.5,
+    1.5
+  ],
+  "restarts": 2,
+  "max_iterations": 95,
+  "fidelity": "|Tr(T†U)|²/25",
+  "held_out_median": {
+    "0.5": [
+      0.3749015794,
+      0.4744854753,
+      0.6731612813,
+      0.8161562333
+    ],
+    "1.5": [
+      0.4403320084,
+      0.8548761514,
+      0.9944957166,
+      0.9999937848
+    ]
+  },
+  "held_out_min_observed_pulses": {
+    "0.5": {
+      "0.99": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "0.999": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "1.5": {
+      "0.99": [
+        24,
+        24,
+        32,
+        24
+      ],
+      "0.999": [
+        32,
+        32,
+        32,
+        32
+      ]
+    }
+  },
+  "note": "Null means right-censored above 32 tested pulses; minima are observed within budgets and optimization, not global certificates."
+}
