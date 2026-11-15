@@ -346,3 +346,8 @@ The validator distinguishes proved geometry from the still-open §10 constellati
 [Read the cross-repository evidence note](E47_SPECTRAL_ADVANTAGES_2026-10-24.md). Documents the exact 125→47 Casimir construction, the (15/17)^n spectral convergence certificate, and collective-SU(2) noiseless multiplicity encoding, separately from channel-dependent QEC and unmeasured hardware advantages.
 
 [The E₄₇ spectral kernel · formalism and verification](website/e47-spectral-kernel/README.md)
+
+
+## E47 deterministic AI governance and capability isolation (2026-11-14)
+
+[SOX / SEC technical control specification](docs/governance/E47_DETERMINISTIC_AI_GOVERNANCE_COMPLETE.md) · [Lean 4 appendix](docs/governance/E47UnverifiedSuite.lean) · [Coq appendix](docs/governance/E47UnverifiedSuite.v). Publication records the author's stipulated Gemini review and distinguishes claimed prior execution from newly independently checked results.
