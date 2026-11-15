@@ -1,0 +1,86 @@
+{
+  "title": "E47 exact Casimir and Gamma rational arithmetic",
+  "date": "2026-11-14",
+  "computed_here": "direct exact-integer evaluation of seven spectral sectors",
+  "carrier_dimension": 125,
+  "kernel_dimension": 47,
+  "complement_dimension": 78,
+  "epsilon_denominator": 99144,
+  "max_off_kernel_abs_gamma_numerator": 87480,
+  "max_off_kernel_abs_gamma_denominator": 99144,
+  "exact_ratio_simplified": "15/17",
+  "ratio_verified": true,
+  "sector_table": [
+    {
+      "j": 0,
+      "casimir": 0,
+      "sector_dimension": 1,
+      "kernel": false,
+      "k": 180,
+      "k_squared": 32400,
+      "gamma_numerator": 66744,
+      "gamma_denominator": 99144
+    },
+    {
+      "j": 1,
+      "casimir": 2,
+      "sector_dimension": 9,
+      "kernel": false,
+      "k": 112,
+      "k_squared": 12544,
+      "gamma_numerator": 86600,
+      "gamma_denominator": 99144
+    },
+    {
+      "j": 2,
+      "casimir": 6,
+      "sector_dimension": 25,
+      "kernel": true,
+      "k": 0,
+      "k_squared": 0,
+      "gamma_numerator": 99144,
+      "gamma_denominator": 99144
+    },
+    {
+      "j": 3,
+      "casimir": 12,
+      "sector_dimension": 28,
+      "kernel": false,
+      "k": -108,
+      "k_squared": 11664,
+      "gamma_numerator": 87480,
+      "gamma_denominator": 99144
+    },
+    {
+      "j": 4,
+      "casimir": 20,
+      "sector_dimension": 27,
+      "kernel": false,
+      "k": -140,
+      "k_squared": 19600,
+      "gamma_numerator": 79544,
+      "gamma_denominator": 99144
+    },
+    {
+      "j": 5,
+      "casimir": 30,
+      "sector_dimension": 22,
+      "kernel": true,
+      "k": 0,
+      "k_squared": 0,
+      "gamma_numerator": 99144,
+      "gamma_denominator": 99144
+    },
+    {
+      "j": 6,
+      "casimir": 42,
+      "sector_dimension": 13,
+      "kernel": false,
+      "k": 432,
+      "k_squared": 186624,
+      "gamma_numerator": -87480,
+      "gamma_denominator": 99144
+    }
+  ],
+  "scope": "This certificate verifies finite-sector integer arithmetic only. It does not replace an operator-level Lean/Coq compilation, an enterprise control audit, or a regulatory finding."
+}
