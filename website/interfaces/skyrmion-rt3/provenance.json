@@ -1,0 +1,24 @@
+{
+  "schema": "CITY-INVARIANT/1.0",
+  "component": "skyrmion-rt3",
+  "version": "3.0.0",
+  "physics": {
+    "integrator": "Dormand-Prince 5(4) adaptive with PI step control, fixed RK4 fallback, 120 Hz outer cadence",
+    "geodesy": "WGS84 ellipsoid: meridian and prime-vertical radii of curvature, Somigliana normal gravity, Earth rate and transport rate",
+    "atmosphere": "US Standard Atmosphere 1976 to 86 km, Sutherland viscosity, logarithmic boundary-layer wind, Dryden continuous gusts (MIL-F-8785C)",
+    "aerodynamics": "Prandtl-Glauert into Ackeret with a transonic blend, Lock fourth-power drag rise, Wieselsberger ground effect, separation with hysteresis",
+    "propulsion": "spool dynamics with asymmetric time constants, ram drag, TSFC fuel accounting, mass and inertia change with fuel state",
+    "ground": "three-strut spring-damper contact with rolling, braking and lateral friction"
+  },
+  "verification": {
+    "suite": "scripts/check_skyrmion_rt3.cjs",
+    "anchors": [
+      "WGS84 normal gravity matches published equator and pole values to 1e-6 m/s^2",
+      "sea-level ISA reproduces 288.15 K, 101325 Pa, 1.225 kg/m^3 exactly",
+      "adaptive integration beats fixed RK4 by more than two orders of magnitude on an exact solution",
+      "all conventional aircraft trim to residual below 1e-8 m/s^2 on the full force model",
+      "trimmed flight holds altitude within 0.5 m and body rates below 1e-5 rad/s over 120 simulated seconds"
+    ]
+  },
+  "scope": "Numerical integrity and model isolation. Not an aircraft performance certificate and not a physical claim."
+}
