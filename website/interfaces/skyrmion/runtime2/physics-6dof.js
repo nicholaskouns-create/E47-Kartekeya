@@ -6,9 +6,13 @@ export class SixDOFPhysics{
  step(vehicle,state,world,dt,loads){
   const mass=vehicle.massKg,I=vehicle.inertia;
   const initial=[...state.velocityBody,...state.omegaBody,...state.quaternion];
+  // The loads of the most recent derivative evaluation, kept so the committed state
+  // does not pay for a seventh force-model pass to report the same numbers.
+  let lastAero=null;
   const derivative=x=>{
    const s={...state,velocityBody:x.slice(0,3),omegaBody:x.slice(3,6),quaternion:qNormalize(x.slice(6))};
    const {aero,propulsion}=loads(s),omega=s.omegaBody;
+   lastAero=aero;
    const gBody=qRotateInv(s.quaternion,[0,0,world.gravity*mass]);
    const coriolis=cross(omega,s.velocityBody),gyro=cross(omega,omega.map((v,i)=>I[i]*v));
    const acc=gBody.map((g,i)=>(g+aero.forceBody[i]+propulsion.forceBody[i])/mass-coriolis[i]);
@@ -20,8 +24,9 @@ export class SixDOFPhysics{
   const a=derivative(initial),b=derivative(offset(a,.5)),c=derivative(offset(b,.5)),d=derivative(offset(c,1));
   const next=initial.map((v,i)=>v+dt*(a[i]+2*b[i]+2*c[i]+d[i])/6);
   state.velocityBody=next.slice(0,3);state.omegaBody=next.slice(3,6);state.quaternion=qNormalize(next.slice(6));
+  // This evaluation is at the committed state, so its loads are the ones to report.
   state.accelBody=derivative([...state.velocityBody,...state.omegaBody,...state.quaternion]).slice(0,3);state.t+=dt;
-  const {alpha,beta,mach,qbar}=loads(state).aero;state.last={alpha,beta,mach,qbar};return state;
+  const {alpha,beta,mach,qbar}=lastAero;state.last={alpha,beta,mach,qbar};return state;
  }
  velocityNed(state){return qRotate(state.quaternion,state.velocityBody)}
 }

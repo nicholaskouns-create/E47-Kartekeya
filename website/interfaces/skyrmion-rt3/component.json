@@ -1,0 +1,33 @@
+{
+  "schema": "CITY-INSTRUMENT-CONTRACT/1.0",
+  "id": "skyrmion-rt3",
+  "display_name": "SKYRMION Runtime 3",
+  "version": "3.0.0",
+  "kind": "interactive-simulator",
+  "maturity": "research",
+  "evidence": ["E1", "E2"],
+  "entrypoint": "website/interfaces/skyrmion-rt3/index.html",
+  "smoke": {
+    "entrypoint": "website/interfaces/skyrmion-rt3/smoke.mjs",
+    "command": "node website/interfaces/skyrmion-rt3/smoke.mjs",
+    "benchmark_command": "node website/interfaces/skyrmion-rt3/smoke.mjs --benchmark"
+  },
+  "provenance": {
+    "receipt_schema": "CITY-INSTRUMENT-RECEIPT/1.0",
+    "sources": [
+      "website/interfaces/skyrmion-rt3/provenance.json",
+      "scripts/check_skyrmion_rt3.cjs",
+      "website/interfaces/shared/e47-lock.js",
+      "website/interfaces/shared/world-engine/world-engine.js",
+      "website/interfaces/shared/stargate-invariants.js"
+    ]
+  },
+  "telemetry": { "failure_schema": "CITY-INSTRUMENT-FAILURE/1.0" },
+  "boundaries": [
+    "F-16, SR-71 and X-15 use conventional compressible aerodynamic models with reduced simulation coefficients; they are not manufacturer data and the aircraft are not performance-certified.",
+    "EIDOLON, MANTA, SKYRMION and Syntax Jacob use explicitly separated experimental models that receive exactly zero aerodynamic load; the isolation is re-checked on every integration step.",
+    "E47 kernel constants are consumed from the generated canonical lock; the browser cannot restate them independently of src/e47.",
+    "E47 capture is a thrust multiplier inside a simulation, not a probability and not a physical threshold; the Stargate physical gate remains shut.",
+    "Atmosphere, gravity and geodesy follow published standards (US Standard Atmosphere 1976, WGS84 normal gravity); terrain elevation accuracy is bounded by the DEM tile source in use."
+  ]
+}
