@@ -1,6 +1,6 @@
 {
   "contraction_validation": {
-    "asymptotic_projector_residual": 9.841758238512699e-11,
+    "asymptotic_projector_residual": 9.841754851385324e-11,
     "carrier_dimension": 125,
     "complement_dimension": 78,
     "complement_spectral_radius": 0.9437500000000004,
@@ -14,9 +14,9 @@
     "k2_max_eigenvalue": 186624.00000000032,
     "k2_min_eigenvalue": -3.018083924221577e-11,
     "kernel_dimension": 47,
-    "kernel_fixed_residual": 5.293751322975907e-15,
+    "kernel_fixed_residual": 4.930091174622385e-16,
     "monotone_epsilon_max": 5.3583676268861365e-06,
-    "projector_commutator_residual": 5.305043633872107e-15,
+    "projector_commutator_residual": 5.024311692235795e-16,
     "spectral_gap": 11663.999999999904,
     "tolerance": 1e-10,
     "valid": true
@@ -150,13 +150,13 @@
   "projector_validation": {
     "checks": {
       "complement_idempotence": {
-        "computed": 4.921844592890814e-14,
+        "computed": 5.046543958729169e-14,
         "description": "I - P\u2084\u2087 is also an orthogonal projector.",
         "expected": 0.0,
         "pass": true
       },
       "kernel_annihilation": {
-        "computed": 2.3114734903139378e-11,
+        "computed": 8.32665137011768e-12,
         "description": "K annihilates the range of P\u2084\u2087: K P\u2084\u2087 = 0.",
         "expected": 0.0,
         "pass": true
@@ -168,31 +168,31 @@
         "pass": true
       },
       "kernel_basis_orthonormality": {
-        "computed": 8.180984337939198e-15,
+        "computed": 8.153696063381005e-15,
         "description": "The extracted kernel eigenvectors form an orthonormal basis.",
         "expected": 0.0,
         "pass": true
       },
       "kernel_squared_annihilation": {
-        "computed": 3.1097175245485942e-09,
+        "computed": 1.379629156906198e-09,
         "description": "K\u00b2 annihilates the range of P\u2084\u2087.",
         "expected": 0.0,
         "pass": true
       },
       "orthogonal_decomposition": {
-        "computed": 4.751020348473037e-14,
+        "computed": 4.848298141993722e-14,
         "description": "The projector and its complement have orthogonal ranges.",
         "expected": 0.0,
         "pass": true
       },
       "projector_commutes_with_casimir": {
-        "computed": 5.191477943084659e-12,
+        "computed": 1.8694437537749505e-12,
         "description": "P\u2084\u2087 is a spectral projector of C and therefore commutes with C.",
         "expected": 0.0,
         "pass": true
       },
       "projector_commutes_with_kernel": {
-        "computed": 4.495896067865445e-11,
+        "computed": 1.540133051720025e-11,
         "description": "P\u2084\u2087 and K commute.",
         "expected": 0.0,
         "pass": true
@@ -205,13 +205,13 @@
         "pass": true
       },
       "projector_idempotence": {
-        "computed": 4.872565809246576e-14,
+        "computed": 4.9522725771999226e-14,
         "description": "P\u2084\u2087 is idempotent: P\u2084\u2087\u00b2 = P\u2084\u2087.",
         "expected": 0.0,
         "pass": true
       },
       "projector_identity_on_basis": {
-        "computed": 2.2136835204292128e-15,
+        "computed": 2.2387319131226065e-15,
         "description": "P\u2084\u2087 acts as the identity on every kernel-basis vector.",
         "expected": 0.0,
         "pass": true
@@ -223,8 +223,8 @@
         "pass": true
       },
       "projector_trace": {
-        "absolute_error": 7.105427357601002e-15,
-        "computed": 46.99999999999999,
+        "absolute_error": 2.1316282072803006e-14,
+        "computed": 46.99999999999998,
         "description": "The trace of an orthogonal projector equals its rank.",
         "expected": 47,
         "imaginary_component_error": 0.0,
@@ -238,21 +238,21 @@
       "projector_definition": "P47 = sum_i |e_i><e_i| over the zero eigenspace of K^2"
     },
     "results": {
-      "basis_orthonormality_error": 8.180984337939198e-15,
+      "basis_orthonormality_error": 8.153696063381005e-15,
       "carrier_dimension": 125,
-      "complement_idempotence_error": 4.921844592890814e-14,
+      "complement_idempotence_error": 5.046543958729169e-14,
       "construction_tolerance": 1e-08,
-      "kernel_annihilation_error": 2.3114734903139378e-11,
+      "kernel_annihilation_error": 8.32665137011768e-12,
       "kernel_basis_dimension": 47,
-      "kernel_squared_annihilation_error": 3.1097175245485942e-09,
-      "maximum_basis_action_error": 2.2136835204292128e-15,
-      "orthogonal_decomposition_error": 4.751020348473037e-14,
-      "projector_casimir_commutator_error": 5.191477943084659e-12,
+      "kernel_squared_annihilation_error": 1.379629156906198e-09,
+      "maximum_basis_action_error": 2.2387319131226065e-15,
+      "orthogonal_decomposition_error": 4.848298141993722e-14,
+      "projector_casimir_commutator_error": 1.8694437537749505e-12,
       "projector_hermiticity_error": 0.0,
-      "projector_idempotence_error": 4.872565809246576e-14,
-      "projector_kernel_commutator_error": 4.495896067865445e-11,
+      "projector_idempotence_error": 4.9522725771999226e-14,
+      "projector_kernel_commutator_error": 1.540133051720025e-11,
       "projector_rank": 47,
-      "projector_trace": 46.99999999999999
+      "projector_trace": 46.99999999999998
     },
     "status": "pass",
     "tolerances": {
@@ -272,23 +272,23 @@
     "valid": true
   },
   "semigroup_validation": {
-    "asymptotic_projector_residual": 8.597836123001225e-06,
+    "asymptotic_projector_residual": 8.597836122993954e-06,
     "carrier_dimension": 125,
     "complement_dimension": 78,
     "contraction_violation": 6.306066779870889e-14,
     "errors": [],
     "expected_decay_bound": 8.597836122737999e-06,
-    "hermitian_residual": 1.7817037762122965e-16,
-    "identity_residual": 2.426117442421424e-15,
+    "hermitian_residual": 1.7201632098030185e-16,
+    "identity_residual": 2.444779554387546e-15,
     "k2_max_eigenvalue": 186624.0000000001,
     "kernel_dimension": 47,
-    "kernel_fixed_residual": 9.614837420601137e-14,
-    "positivity_violation": 6.963385584285224e-16,
-    "projector_commutator_residual": 9.519007382966256e-14,
+    "kernel_fixed_residual": 6.325187743087881e-14,
+    "positivity_violation": 1.10972029492117e-15,
+    "projector_commutator_residual": 1.195841337336783e-14,
     "second_time": 0.00075,
-    "semigroup_law_residual": 2.2624421874034873e-15,
+    "semigroup_law_residual": 2.2073785379184144e-15,
     "semigroup_max_eigenvalue": 1.000000000000063,
-    "semigroup_min_eigenvalue": -6.963385584285224e-16,
+    "semigroup_min_eigenvalue": -1.10972029492117e-15,
     "spectral_gap": 11663.999999999949,
     "time": 0.001,
     "tolerance": 1e-10,
