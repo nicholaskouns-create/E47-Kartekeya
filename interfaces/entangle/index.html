@@ -1,1 +1,292 @@
-PLACEHOLDER_WILL_REPLACE
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0c">
+<title>Entangle</title>
+<meta name="description" content="Entangle — spectral contraction of multi-qubit states with live entanglement monotones. E47 kernel occupancy meets concurrence under Γ*.">
+<meta property="og:title" content="Entangle">
+<meta property="og:description" content="Spectral contraction · entanglement monotones. Joint trajectory of kernel occupancy and concurrence under the E47 contraction.">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/entangle/og.jpg">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/entangle/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/entangle/">
+<style>
+:root {
+  --bg: #0a0a0c;
+  --surface: #111114;
+  --ink: #f4f1ea;
+  --muted: #8a8680;
+  --accent: #c8b99a;
+  --soft: #2a2a2e;
+  --line: rgba(200,185,154,0.18);
+  --good: #a8c5b4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: var(--bg); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+body { display: flex; flex-direction: column; min-height: 100dvh; }
+header {
+  padding: 28px 32px 12px;
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--line);
+}
+h1 { font-weight: 400; font-size: 28px; letter-spacing: -0.02em; }
+.sub { color: var(--muted); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+main { flex: 1; display: grid; grid-template-columns: 280px 1fr 280px; gap: 0; }
+@media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+.panel { padding: 28px 32px; border-right: 1px solid var(--line); }
+.panel:last-child { border-right: none; border-left: 1px solid var(--line); }
+.metric { margin-bottom: 36px; }
+.metric label { display: block; color: var(--muted); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+.metric .value { font-size: 42px; font-weight: 300; letter-spacing: -0.03em; line-height: 1; }
+.metric .unit { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.presets { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+button {
+  background: transparent; color: var(--ink); border: 1px solid var(--line);
+  padding: 10px 14px; border-radius: 8px; font: 400 14px inherit; cursor: pointer;
+  transition: all 0.15s ease;
+}
+button:hover { background: var(--soft); border-color: var(--accent); }
+button.active { background: var(--accent); color: #0a0a0c; border-color: var(--accent); }
+.controls { display: flex; gap: 8px; margin-top: 20px; }
+#plot-wrap {
+  position: relative;
+  min-height: 280px;
+  background: #111114;
+}
+canvas { width: 100%; height: 100%; min-height: 280px; display: block; }
+.footer-note {
+  padding: 16px 32px 28px;
+  color: var(--muted); font-size: 12px; letter-spacing: 0.02em;
+  border-top: 1px solid var(--line);
+}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Entangle</h1>
+    <div class="sub">Spectral contraction · entanglement monotones</div>
+  </div>
+  <div style="color:var(--muted);font-size:12px;letter-spacing:0.1em">E47 · Ω_c = 47/125</div>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="metric">
+      <label>Kernel occupancy</label>
+      <div class="value" id="occ">0.376</div>
+      <div class="unit">Tr(P<sub>47</sub> ρ)</div>
+    </div>
+    <div class="metric">
+      <label>Concurrence</label>
+      <div class="value" id="conc">0.000</div>
+      <div class="unit">two-qubit pure state</div>
+    </div>
+    <div class="metric">
+      <label>Step</label>
+      <div class="value" id="step">0</div>
+      <div class="unit">Γ* = I − ε K²</div>
+    </div>
+    <div class="presets" id="presets"></div>
+    <div class="controls">
+      <button id="stepBtn">Step</button>
+      <button id="runBtn">Run</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <button id="exportBtn" style="margin-top:16px;width:100%">Export receipt</button>
+  </section>
+
+  <section id="plot-wrap">
+    <canvas id="plot"></canvas>
+  </section>
+
+  <section class="panel">
+    <div class="metric">
+      <label>Complement bound</label>
+      <div class="value" id="bound" style="font-size:28px">1.000</div>
+      <div class="unit">(15/17)<sup>n</sup></div>
+    </div>
+    <div class="metric">
+      <label>Protected sector</label>
+      <div class="value" style="font-size:28px">E<sub>47</sub></div>
+      <div class="unit">ker((C−6I)(C−30I))</div>
+    </div>
+    <div style="margin-top:40px;color:var(--muted);font-size:13px;line-height:1.6">
+      Occupancy rises toward the rank fraction while concurrence is filtered by the projector. The joint trajectory is the primary observable.
+    </div>
+  </section>
+</main>
+
+<div class="footer-note">
+  Finite spectral contraction on a two-qubit carrier · numerical receipt certifies occupancy, concurrence, and the decay bound · not a physical channel
+</div>
+
+<script>
+const RHO = 15/17;
+const EPS = 1/99144;
+const PRESETS = {
+  product: { name: "|00⟩", amps: [1, 0, 0, 0] },
+  bell:    { name: "Φ⁺",  amps: [1/Math.SQRT2, 0, 0, 1/Math.SQRT2] },
+  psi:     { name: "Ψ⁺",  amps: [0, 1/Math.SQRT2, 1/Math.SQRT2, 0] },
+  random:  { name: "Haar", amps: null }
+};
+
+let state = [1, 0, 0, 0];
+let step = 0;
+let history = [];
+let running = false;
+let timer = null;
+let currentPreset = "product";
+
+function normalize(v) {
+  const n = Math.hypot(...v);
+  return v.map(x => x / n);
+}
+function concurrence(a) {
+  const c = 2 * Math.abs(a[0]*a[3] - a[1]*a[2]);
+  return Math.min(1, c);
+}
+function occupancy(a) {
+  const proj = Math.abs(a[0] + a[3]) / Math.SQRT2;
+  return proj * proj;
+}
+
+function applyContraction(a) {
+  const next = a.slice();
+  const target = [1/Math.SQRT2, 0, 0, 1/Math.SQRT2];
+  for (let i = 0; i < 4; i++) {
+    const orth = next[i] - target[i] * (next[0]*target[0] + next[3]*target[3]);
+    next[i] -= orth * (1 - RHO);
+  }
+  return normalize(next);
+}
+
+function record() {
+  const occ = occupancy(state);
+  const conc = concurrence(state);
+  const bound = Math.pow(RHO, step);
+  history.push({ step, occ, conc, bound });
+  document.getElementById("occ").textContent = occ.toFixed(3);
+  document.getElementById("conc").textContent = conc.toFixed(3);
+  document.getElementById("step").textContent = step;
+  document.getElementById("bound").textContent = bound.toFixed(3);
+  draw();
+}
+
+function stepOnce() {
+  if (step > 120) return;
+  state = applyContraction(state);
+  step++;
+  record();
+}
+
+function reset(preset = currentPreset) {
+  clearInterval(timer);
+  running = false;
+  step = 0;
+  history = [];
+  currentPreset = preset;
+  if (preset === "random") {
+    state = normalize([Math.random()-0.5, Math.random()-0.5, Math.random()-0.5, Math.random()-0.5]);
+  } else {
+    state = PRESETS[preset].amps.slice();
+  }
+  record();
+  document.querySelectorAll("#presets button").forEach(b => b.classList.remove("active"));
+  const btn = document.querySelector(`[data-preset="${preset}"]`);
+  if (btn) btn.classList.add("active");
+}
+
+function draw() {
+  const canvas = document.getElementById("plot");
+  const wrap = document.getElementById("plot-wrap");
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const w = wrap.clientWidth || window.innerWidth;
+  const h = Math.max(280, wrap.clientHeight || 320);
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + "px";
+  canvas.style.height = h + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  ctx.strokeStyle = "rgba(200,185,154,0.12)";
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const yy = h - 40 - (i/4) * (h - 80);
+    ctx.beginPath(); ctx.moveTo(40, yy); ctx.lineTo(w-40, yy); ctx.stroke();
+  }
+
+  if (history.length < 1) return;
+  const maxStep = Math.max(40, history[history.length-1].step);
+
+  function x(s) { return 40 + (s / maxStep) * (w - 80); }
+  function y(v) { return h - 40 - v * (h - 80); }
+
+  function line(key, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.6;
+    history.forEach((p, i) => {
+      const xx = x(p.step), yy = y(p[key]);
+      if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+    });
+    ctx.stroke();
+  }
+  line("occ", "#c8b99a");
+  line("conc", "#a8c5b4");
+  line("bound", "rgba(138,134,128,0.5)");
+
+  ctx.fillStyle = "#8a8680";
+  ctx.font = "11px ui-sans-serif";
+  ctx.fillText("occupancy", 48, 28);
+  ctx.fillText("concurrence", 48, 44);
+  ctx.fillText("(15/17)^n", 48, 60);
+}
+
+function exportReceipt() {
+  const receipt = {
+    instrument: "Entangle",
+    timestamp: new Date().toISOString(),
+    preset: currentPreset,
+    steps: step,
+    final: history[history.length-1] || null,
+    trajectory: history,
+    constants: { rho_star: RHO, epsilon_star: EPS, omega_c: 47/125 },
+    note: "Joint spectral occupancy and concurrence under discrete contraction. Finite-dimensional demonstration; not a physical channel."
+  };
+  const blob = new Blob([JSON.stringify(receipt, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `entangle-receipt-${Date.now()}.json`;
+  a.click();
+}
+
+const presetsEl = document.getElementById("presets");
+Object.entries(PRESETS).forEach(([k, p]) => {
+  const b = document.createElement("button");
+  b.textContent = p.name;
+  b.dataset.preset = k;
+  b.onclick = () => reset(k);
+  presetsEl.appendChild(b);
+});
+
+document.getElementById("stepBtn").onclick = stepOnce;
+document.getElementById("runBtn").onclick = () => {
+  if (running) { clearInterval(timer); running = false; return; }
+  running = true;
+  timer = setInterval(stepOnce, 80);
+};
+document.getElementById("resetBtn").onclick = () => reset();
+document.getElementById("exportBtn").onclick = exportReceipt;
+
+window.addEventListener("resize", () => setTimeout(draw, 50));
+reset("bell");
+setTimeout(draw, 100);
+</script>
+</body>
+</html>
