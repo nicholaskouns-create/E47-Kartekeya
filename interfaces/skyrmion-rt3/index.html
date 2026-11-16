@@ -5,30 +5,16 @@
 <title>SKYRMION RT3 · WGS84 Flight Simulator</title>
 <meta name="description" content="SKYRMION Runtime 3: a WGS84 flight simulator with compressible aerodynamics, landing gear, fuel burn, Dryden turbulence and an adaptive Dormand-Prince integrator, wired to every engine in The Mathematical City.">
 <link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion-rt3/">
-<style>/* original styles preserved; enhancements injected via JS */
+<style>
 :root{--ink:#e9f6f5;--dim:#8fb3b0;--key:#7fe8d6;--glass:rgba(5,16,21,.74);--edge:rgba(127,232,214,.26)}
-body{margin:0;background:#04080d;color:var(--ink);font-family:system-ui}
+body{margin:0;background:#04080d;color:var(--ink);font-family:system-ui;overflow:hidden}
+#launch{position:fixed;inset:0;display:grid;place-items:center;background:#04080d;z-index:20;text-align:center}
+#launch.hidden{display:none}
+#status{position:fixed;inset:0;display:none;place-items:center;background:#04080d;z-index:5;color:#7fe8d6;font:14px ui-monospace;text-align:center}
+#status.on{display:grid}
 </style>
 </head><body>
-<div id="hud-placeholder">Loading SKYRMION RT3…</div>
-<script type="module">
-// Minimal bootstrap that loads the original runtime and installs enhancements.
-// Full original index.html logic is preserved in the repository; this surface adds the requested UX layers.
-import { SkyrmionRuntime3, VEHICLES, VEHICLE_ORDER } from './rt3/runtime3.js';
-import { installSkyrmionEnhancements } from './enhancements.js';
-
-const runtime = new SkyrmionRuntime3();
-installSkyrmionEnhancements({ runtime, VEHICLES });
-
-// Re-attach original launch + controls (simplified surface for the revision)
-document.body.innerHTML = `
-<div class="hud">
- <div class="rail" style="position:fixed;top:10px;left:12px;right:12px;display:flex;gap:6px;z-index:10">
-  <span class="chip" style="background:rgba(5,16,21,.74);border:1px solid rgba(127,232,214,.26);padding:6px 9px;border-radius:10px;font:600 9.5px ui-monospace">SKYRMION · RT3 · v3.0.0</span>
-  <span id="cCraft" class="chip" style="background:rgba(5,16,21,.74);border:1px solid rgba(127,232,214,.26);padding:6px 9px;border-radius:10px;font:600 9.5px ui-monospace">F-16 · INIT</span>
- </div>
-</div>
-<div style="position:fixed;inset:0;display:grid;place-items:center;background:#04080d;color:#e9f6f5;text-align:center">
+<div id="launch">
  <div>
   <div style="letter-spacing:.3em;color:#7fe8d6;font:600 11px ui-monospace">MATHEMATICAL CITY · RUNTIME 3</div>
   <h1 style="font:500 64px system-ui;margin:16px 0">SKYRMION</h1>
@@ -36,10 +22,26 @@ document.body.innerHTML = `
   <button id="go" style="margin-top:20px;padding:12px 24px;background:#eaf5f2;color:#05161a;border:0;border-radius:12px;font:650 16px system-ui">Take the aircraft</button>
  </div>
 </div>
-`;
+<div id="status">Runtime started · telemetry live</div>
+<div class="hud">
+ <div class="rail" style="position:fixed;top:10px;left:12px;right:12px;display:flex;gap:6px;z-index:10">
+  <span class="chip" style="background:rgba(5,16,21,.74);border:1px solid rgba(127,232,214,.26);padding:6px 9px;border-radius:10px;font:600 9.5px ui-monospace">SKYRMION · RT3 · v3.0.0</span>
+  <span id="cCraft" class="chip" style="background:rgba(5,16,21,.74);border:1px solid rgba(127,232,214,.26);padding:6px 9px;border-radius:10px;font:600 9.5px ui-monospace">F-16 · INIT</span>
+ </div>
+</div>
+<script type="module">
+import { SkyrmionRuntime3, VEHICLES, VEHICLE_ORDER } from './rt3/runtime3.js';
+import { installSkyrmionEnhancements } from './enhancements.js';
+
+const runtime = new SkyrmionRuntime3();
+runtime.load('f16');
+installSkyrmionEnhancements({ runtime, VEHICLES });
+
 document.getElementById('go').onclick = () => {
- document.body.classList.add('flying');
- document.querySelector('div[style*="place-items:center"]').style.display = 'none';
+ document.getElementById('launch').classList.add('hidden');
+ document.getElementById('status').classList.add('on');
+ runtime.start();
+ document.getElementById('cCraft').textContent = 'F-16 · LIVE';
 };
 </script>
 </body></html>
