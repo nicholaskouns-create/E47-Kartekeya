@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#04080d">
+<title>SKYRMION RT3 · WGS84 Flight Simulator</title>
+<meta name="description" content="SKYRMION Runtime 3: a WGS84 flight simulator with compressible aerodynamics, landing gear, fuel burn, Dryden turbulence and an adaptive Dormand-Prince integrator, wired to every engine in The Mathematical City.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion-rt3/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Mathematical City">
+<meta property="og:title" content="SKYRMION RT3 · WGS84 Flight Simulator">
+<meta property="og:description" content="Compressible aerodynamics, ground contact, fuel burn and adaptive integration over global terrain, with every step carrying a numerical receipt.">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/skyrmion-rt3/">
+<link rel="image_src" href="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-skyrmion-rt3.jpg">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-skyrmion-rt3.jpg">
+<meta property="og:image:secure_url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-skyrmion-rt3.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Share card for SKYRMION RT3 — WGS84 Flight Simulator, showing its cover art">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SKYRMION RT3 · WGS84 Flight Simulator">
+<meta name="twitter:description" content="Compressible aerodynamics, ground contact and fuel burn over live global terrain — every step carrying a numerical receipt.">
+<meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-skyrmion-rt3.jpg">
+<meta name="twitter:image:alt" content="Share card for SKYRMION RT3 — WGS84 Flight Simulator, showing its cover art">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+<style>
+:root{
+ --ink:#e9f6f5; --dim:#8fb3b0; --key:#7fe8d6; --warn:#ffc46b; --bad:#ff7a6b;
+ --glass:rgba(5,16,21,.74); --edge:rgba(127,232,214,.26); --edge-hot:rgba(127,232,214,.6);
+ --mono:ui-monospace,SFMono-Regular,Menlo,monospace; --sans:system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#04080d;color:var(--ink);font-family:var(--sans);
+ -webkit-font-smoothing:antialiased;overscroll-behavior:none}
+button{font-family:inherit;color:inherit;cursor:pointer;background:var(--glass);border:1px solid var(--edge);
+ border-radius:11px;backdrop-filter:blur(14px);transition:border-color .15s,background .15s}
+button:hover{border-color:var(--edge-hot)}
+button.on{border-color:var(--key);background:rgba(18,58,58,.82);color:#bffaee}
+.hud{position:fixed;inset:0;z-index:8;pointer-events:none}
+
+/* ---- top status rail ---- */
+.rail{position:absolute;top:max(10px,env(safe-area-inset-top));left:12px;right:12px;
+ display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start}
+.chip{background:var(--glass);border:1px solid var(--edge);border-radius:10px;padding:6px 9px;
+ font:600 9.5px/1.25 var(--mono);letter-spacing:.07em;backdrop-filter:blur(14px);white-space:nowrap}
+.chip b{color:var(--key);font-weight:700}
+.chip.title{letter-spacing:.2em;color:#9fe3da;border-color:var(--edge-hot)}
+.chip.alert{border-color:var(--bad);color:#ffd9d3}
+.chip.caution{border-color:var(--warn);color:#ffe6bd}
+.spacer{flex:1}
+
+/* ---- primary flight display ---- */
+.pfd{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(70vw,560px);
+ height:min(70vw,560px);max-height:62vh;pointer-events:none}
+.ret{position:absolute;left:50%;top:50%;width:52px;height:52px;transform:translate(-50%,-50%);
+ border:1px solid rgba(170,255,255,.5);border-radius:50%;opacity:.6}
+.ret:after{content:"";position:absolute;left:-18px;right:-18px;top:25px;height:1px;background:rgba(170,255,255,.5)}
+.tape{position:absolute;top:50%;transform:translateY(-50%);width:84px;padding:8px 6px;
+ background:var(--glass);border:1px solid var(--edge);border-radius:12px;backdrop-filter:blur(14px);
+ font:var(--mono);text-align:center}
+.tape.left{left:-10px}.tape.right{right:-10px}
+.tape .big{font:700 23px/1 var(--mono);color:#fff;letter-spacing:-.02em}
+.tape .lbl{font:600 8px/1 var(--mono);letter-spacing:.17em;color:var(--dim);margin-bottom:5px}
+.tape .sub{font:600 10px/1.5 var(--mono);color:var(--key);margin-top:5px}
+
+/* ---- lower panels ---- */
+.deck{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));
+ display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.panel{pointer-events:auto;background:var(--glass);border:1px solid var(--edge);border-radius:14px;
+ backdrop-filter:blur(16px);padding:10px}
+.fleet{display:flex;gap:5px;flex-wrap:wrap;max-width:min(78vw,760px)}
+.fleet button{padding:8px 11px;font:650 11.5px var(--sans);min-height:38px}
+.fleet .grp{display:flex;gap:5px;align-items:center}
+.grp-label{font:8px var(--mono);letter-spacing:.12em;color:var(--dim);margin-right:3px}
+.config{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.config button{padding:7px 10px;font:650 10px var(--mono);letter-spacing:.06em;min-height:34px}
+.hint{font:8px var(--mono);letter-spacing:.05em;color:var(--dim);margin-top:7px;opacity:.85}
+.stick{pointer-events:auto;width:118px;height:118px;flex:0 0 118px;border-radius:50%;
+ border:1px solid var(--edge);background:rgba(5,17,22,.6);position:relative;touch-action:none}
+.knob{position:absolute;width:44px;height:44px;border-radius:50%;left:37px;top:37px;
+ background:rgba(140,255,240,.3);border:1px solid var(--key)}
+.throttle{pointer-events:auto;width:52px;height:150px;border-radius:14px;border:1px solid var(--edge);
+ background:rgba(5,17,22,.6);position:relative;touch-action:none;flex:0 0 52px}
+.throttle .fill{position:absolute;left:3px;right:3px;bottom:3px;border-radius:11px;
+ background:linear-gradient(180deg,var(--key),rgba(127,232,214,.22));opacity:.55}
+.throttle .cap{position:absolute;left:0;right:0;top:4px;text-align:center;font:700 8px var(--mono);
+ letter-spacing:.12em;color:var(--dim)}
+
+/* ---- side panels ---- */
+.side{position:fixed;right:12px;top:58px;z-index:10;width:min(360px,calc(100vw - 24px));
+ max-height:calc(100vh - 230px);overflow:auto;padding:13px;border-radius:14px;
+ background:rgba(3,13,18,.93);border:1px solid var(--edge);backdrop-filter:blur(18px);
+ font:10.5px/1.62 var(--mono);color:#cfeae7;opacity:0;transform:translateY(-8px);
+ pointer-events:none;transition:.18s}
+.side.open{opacity:1;transform:none;pointer-events:auto}
+.side h2{margin:0 0 8px;font:700 12px/1.3 var(--sans);letter-spacing:.04em;color:#fff}
+.side h3{margin:12px 0 4px;font:700 8.5px var(--mono);letter-spacing:.17em;color:var(--key)}
+.side .row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(127,232,214,.1);padding:2px 0}
+.side .row span:last-child{color:#fff}
+.side .ok{color:var(--key)}.side .no{color:var(--bad)}
+.side .note{margin-top:10px;font:9.5px/1.55 var(--sans);color:var(--dim)}
+.attrib{position:fixed;right:9px;bottom:3px;z-index:9;color:rgba(205,214,208,.5);font:6.5px var(--mono);max-width:62vw;text-align:right;pointer-events:none}
+.chip.live{border-color:var(--key);box-shadow:0 0 16px rgba(96,224,208,.12)}
+.toggles{position:fixed;right:12px;top:max(10px,env(safe-area-inset-top));z-index:11;display:flex;gap:6px;pointer-events:auto}
+.toggles button{padding:8px 11px;font:700 10px var(--mono);letter-spacing:.09em;min-height:36px}
+
+/* ---- launch ---- */
+.launch{position:fixed;inset:0;z-index:12;display:grid;place-items:center;padding:24px;
+ background:radial-gradient(ellipse at 50% 35%,rgba(10,30,38,.5),rgba(2,6,10,.95));
+ transition:opacity .5s,transform .5s;pointer-events:auto}
+.launch-inner{max-width:680px;text-align:left}
+.launch .ey{font:600 11px var(--mono);letter-spacing:.34em;color:var(--key)}
+.launch h1{margin:20px 0 14px;font:500 clamp(40px,7.5vw,86px)/.9 var(--sans);letter-spacing:-.05em}
+.launch p{margin:0 0 10px;color:#cfdedb;font:400 clamp(14px,1.7vw,19px)/1.5 var(--sans)}
+.launch ul{margin:14px 0 0;padding-left:18px;color:var(--dim);font:13px/1.75 var(--sans)}
+.launch button{margin-top:26px;background:#eaf5f2;color:#05161a;border:0;border-radius:13px;
+ padding:14px 26px;font:650 16px var(--sans)}
+body.flying .launch{opacity:0;transform:scale(1.04);pointer-events:none}
+.worlds{position:fixed;left:0;right:0;bottom:0;z-index:7;padding:8px 14px calc(176px + env(safe-area-inset-bottom));
+ background:linear-gradient(180deg,transparent,rgba(3,9,13,.82) 34%);transition:opacity .3s}
+.worlds .lbl{font:8.5px var(--mono);letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.world-cards{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;pointer-events:auto}
+.world-cards button{min-width:138px;text-align:left;padding:9px 11px;font:650 11px var(--sans)}
+.world-cards small{display:block;margin-top:2px;color:var(--dim);font-weight:400}
+body.flying .worlds{opacity:.22}body.flying .worlds:hover{opacity:1}
+@media(max-width:820px){
+ .pfd{width:94vw;height:auto;top:44%}
+ .tape{width:74px}.tape.left{left:2px}.tape.right{right:2px}
+ .tape .big{font-size:19px}
+ .side{top:auto;bottom:calc(192px + env(safe-area-inset-bottom));max-height:30vh;left:12px}
+ .deck{gap:8px}.fleet{max-width:calc(100vw - 210px)}
+ .fleet{flex-wrap:nowrap;overflow-x:auto}
+ .stick{width:96px;height:96px;flex-basis:96px}.knob{width:36px;height:36px;left:30px;top:30px}
+ .throttle{height:118px}
+ .worlds{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+ body.flying .worlds{display:none}
+ .rail .opt{display:none}
+}
+</style>
+</head>
+<body>
+<div class="hud">
+ <div class="rail">
+  <span class="chip title">SKYRMION · RT3 · v3.0.0</span>
+  <span class="chip" id="cCraft">F-16 · INIT</span>
+  <span class="chip" id="cRegime">SUBSONIC</span>
+  <span class="chip opt" id="cGps">WGS84 · ACQ</span>
+  <span class="chip opt" id="cMap">MAP · REGISTRY</span>
+  <span class="chip opt" id="cWorld">WORLD · BOOT</span>
+  <span class="chip opt" id="cBus">BUS · PENDING</span>
+  <span class="chip" id="cProof">PROOF · —</span>
+ </div>
+ <div class="pfd">
+  <div class="ret"></div>
+  <div class="tape left"><div class="lbl">KIAS / M</div><div class="big" id="tSpeed">0</div><div class="sub" id="tMach">M 0.00</div></div>
+  <div class="tape right"><div class="lbl">ALT / AGL</div><div class="big" id="tAlt">0</div><div class="sub" id="tAgl">AGL 0</div></div>
+ </div>
+ <div class="deck">
+  <div class="panel">
+   <div class="fleet" id="fleet"></div>
+   <div class="config">
+    <button id="bGear">GEAR ↓</button><button id="bFlap">FLAP 0</button>
+    <button id="bBrake">SPD BRK</button><button id="bAB">A/B</button>
+    <button id="bTrim">RE-TRIM</button><button id="bReset">RESET</button>
+    <button id="bHere">GPS HERE</button><button id="bFollow">GPS FOLLOW</button>
+   </div>
+   <div class="hint" id="hint">W/S PITCH · A/D ROLL · Q/E YAW · SHIFT A/B · Z/X THROTTLE · G GEAR · F FLAP · B BRAKE · 1–7 FLEET · GPS HERE FLIES FROM YOUR FIX</div>
+  </div>
+  <div class="throttle" id="throttle"><div class="fill" id="throttleFill" style="height:40%"></div><div class="cap">THR</div></div>
+  <div class="stick" id="stick"><div class="knob" id="knob"></div></div>
+ </div>
+</div>
+<div class="toggles">
+ <button id="tgProof">PROOF</button><button id="tgBus">BUS</button>
+</div>
+<section class="side" id="pnProof"><h2>Numerical receipt</h2><div id="proofBody">—</div>
+ <p class="note">Integrity and model isolation only. Not an aircraft performance certificate and not a physical claim.</p></section>
+<section class="side" id="pnBus"><h2>City engine bus</h2><div id="busBody">—</div>
+ <p class="note">Every engine already standing on the City sites, bound in one place. A missing module degrades that channel and leaves the simulator flying.</p></section>
+<div class="attrib" id="attrib">Map registry loading · WGS84 / EPSG:4326</div>
+<div class="worlds"><div class="lbl">WORLD ENGINE · WGS84 · DEM + PROCEDURAL TERRAIN · ADAPTIVE DORMAND-PRINCE · 120 HZ</div>
+ <div class="world-cards" id="worlds"></div></div>
+<div class="launch" id="launch"><div class="launch-inner">
+ <div class="ey">MATHEMATICAL CITY · RUNTIME 3</div>
+ <h1>SKYRMION</h1>
+ <p>A WGS84 flight simulator over global terrain, wired to every engine on the City sites.</p>
+ <ul>
+  <li>Compressible aerodynamics — Prandtl-Glauert into Ackeret, transonic drag rise, separation with hysteresis, ground effect</li>
+  <li>Landing gear, fuel burn, spooling engines, Dryden turbulence, boundary-layer wind</li>
+  <li>Adaptive Dormand-Prince 5(4) integration with error control, on a 120 Hz fixed outer cadence</li>
+  <li>Conventional and experimental models held apart, re-checked every single step</li>
+ </ul>
+ <button id="go">Take the aircraft</button>
+</div></div>
+
+<script type="module">
+import {SkyrmionRuntime3,VEHICLES,VEHICLE_ORDER} from './rt3/runtime3.js';
+import {CityEngineBus} from './rt3/engine-bus.js';
+import {createSkyrmionTerrain3D} from '../skyrmion/terrain-3d.js';
+import {installInstrumentTelemetry} from '../shared/instrument-telemetry.js';
+import {installCityGps} from '../shared/city-gps-runtime.js';
+
+const COMPONENT_ID='skyrmion-rt3',COMPONENT_VERSION='3.0.0';
+installInstrumentTelemetry({componentId:COMPONENT_ID,version:COMPONENT_VERSION});
+
+const $=id=>document.getElementById(id);
+const PLACES=[
+ {id:'las-vegas',name:'Las Vegas',region:'Nevada',lat:36.169941,lon:-115.139832,alt:3658},
+ {id:'grand-canyon',name:'Grand Canyon',region:'Arizona',lat:36.1069,lon:-112.1129,alt:3200},
+ {id:'sierra',name:'Sierra Nevada',region:'California',lat:37.2,lon:-118.6,alt:5200},
+ {id:'edwards',name:'Edwards AFB',region:'California',lat:34.9054,lon:-117.8832,alt:1200},
+ {id:'alps',name:'Alps',region:'Switzerland',lat:46.0,lon:7.75,alt:5200},
+ {id:'himalaya',name:'Himalaya',region:'Nepal',lat:27.98,lon:86.92,alt:9400},
+ {id:'iceland',name:'Iceland',region:'Highlands',lat:64.4,lon:-18.0,alt:2400}
+];
+let terrain=null,bus=null,runtime=null,place=PLACES[0];
+const keys=new Set();
+const cmd={pitch:0,roll:0,yaw:0,throttle:.45,gear:1,flap:0,brake:0,afterburner:0,wheelBrake:0};
+
+// The renderer already streams Esri imagery, Esri hillshade and JAXA Terrain-RGB
+// through the Supabase world registry. These listeners surface what it is actually
+// serving, so "live map" is something you can read rather than assume.
+const attribs=new Set();
+addEventListener('skyrmion:world-registry',e=>{
+ const r=e.detail||{};
+ const map=$('cMap');
+ map.textContent=r.online
+  ? `MAP · DB LIVE · ${r.sourceCount||0} SRC · ${(r.imagery||'').replace('esri-world-','ESRI ').toUpperCase()}`
+  : `MAP · FALLBACK · ${(r.imagery||'').replace('esri-world-','ESRI ').toUpperCase()}`;
+ map.classList.toggle('live',!!r.online);
+ if(r.dem)attribs.add('DEM '+r.dem);
+ paintAttrib();
+});
+addEventListener('skyrmion:terrain-status',e=>{
+ const d=e.detail||{},status=String(d.status||'').toUpperCase();
+ const w=$('cWorld');
+ w.dataset.tiles=status;
+ if(d.imagery_source)attribs.add(d.imagery_source);
+ if(d.terrain_source)attribs.add(d.terrain_source);
+ if(d.attribution)attribs.add(d.attribution);
+ paintAttrib();
+});
+addEventListener('skyrmion:render-stats',e=>{
+ const d=e.detail||{};
+ $('cMap').title=`${Math.round(d.triangles||0).toLocaleString()} tri · dpr ${Number(d.dpr||1).toFixed(2)}`;
+});
+function paintAttrib(){
+ const line=[...attribs].filter(Boolean).join(' · ');
+ $('attrib').textContent=line?line+' · WGS84 / EPSG:4326':'WGS84 / EPSG:4326';
+}
+
+// --- device GPS --------------------------------------------------------------
+let gps=null,gpsFollow=false,lastFollow=0;
+function startGps(){
+ if(gps)return gps;
+ gps=installCityGps({
+  chip:$('cGps'),label:'GPS',watch:true,
+  seed:{lat:place.lat,lon:place.lon,altitude_m:place.alt},
+  onUpdate:fix=>{
+   if(fix.source!=='device'||!runtime)return;
+   if(!gpsFollow)return;
+   const now=Date.now();
+   if(now-lastFollow<1500)return;
+   lastFollow=now;
+   // Follow the real fix while keeping the aircraft's height above the ground,
+   // so the map moves under it as the device moves.
+   const agl=runtime.telemetry().altitude_agl_m;
+   runtime.teleport({lat:fix.lat,lon:fix.lon});
+   const ground=groundSampler(fix.lat,fix.lon);
+   runtime.state.position.altitudeM=ground+Math.max(60,agl);
+   terrain?.teleport?.({lat:fix.lat,lon:fix.lon,altitude_m:runtime.state.position.altitudeM});
+  }
+ });
+ return gps;
+}
+
+const groundSampler=(lat,lon)=>{
+ const p=terrain?.patch;
+ if(!p?.center)return 0;
+ const R=6378137,D=Math.PI/180,lat0=p.center.lat*D;
+ return terrain.samplePatchHeight((lon-p.center.lon)*D*R*Math.cos(lat0),-(lat-p.center.lat)*D*R);
+};
+
+function buildFleet(){
+ const host=$('fleet');host.replaceChildren();
+ for(const [label,ids] of [['AERO',['f16','sr71','x15']],['E47',['eidolon','manta','skyrmion','jacob']]]){
+  const g=document.createElement('div');g.className='grp';
+  const l=document.createElement('span');l.className='grp-label';l.textContent=label;g.appendChild(l);
+  for(const id of ids){
+   const b=document.createElement('button');b.textContent=VEHICLES[id].name;b.dataset.craft=id;
+   b.onclick=()=>selectCraft(id);g.appendChild(b);
+  }
+  host.appendChild(g);
+ }
+}
+function markFleet(id){
+ document.querySelectorAll('[data-craft]').forEach(b=>b.classList.toggle('on',b.dataset.craft===id));
+}
+function selectCraft(id){
+ if(!runtime)return;
+ runtime.setVehicle(id);markFleet(id);
+ cmd.throttle=runtime.state.controls.throttle;cmd.afterburner=runtime.state.controls.afterburner;
+ cmd.gear=runtime.state.controls.gear;
+ terrain?.setActiveCraft(VEHICLE_ORDER.indexOf(id));
+}
+function buildWorlds(){
+ const host=$('worlds');host.replaceChildren();
+ for(const p of PLACES){
+  const b=document.createElement('button');
+  b.innerHTML=`${p.name}<small>${p.region}</small>`;
+  b.classList.toggle('on',p.id===place.id);
+  b.onclick=()=>{
+   place=p;
+   document.querySelectorAll('#worlds button').forEach(x=>x.classList.toggle('on',x===b));
+   runtime.teleport({lat:p.lat,lon:p.lon,altitudeM:p.alt});
+   runtime.load(runtime.vehicle.id,{...runtime.spawn,lat:p.lat,lon:p.lon,altitudeM:p.alt,speedMps:216});
+   cmd.throttle=runtime.state.controls.throttle;
+   terrain?.teleport?.({lat:p.lat,lon:p.lon,altitude_m:p.alt});
+  };
+  host.appendChild(b);
+ }
+}
+
+// ---- input ----------------------------------------------------------------
+addEventListener('keydown',e=>{
+ if(e.repeat)return;
+ keys.add(e.key.toLowerCase());
+ const k=e.key.toLowerCase();
+ if(k==='g')setGear(cmd.gear>.5?0:1);
+ if(k==='f')setFlap(cmd.flap>.5?0:1);
+ if(k==='b')setBrake(cmd.brake>.5?0:1);
+ if(k==='c')terrain&&(terrain.quality.renderScale=terrain.quality.renderScale);
+ const n=Number(e.key);
+ if(n>=1&&n<=7)selectCraft(VEHICLE_ORDER[n-1]);
+});
+addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
+function readKeys(dt){
+ const ramp=2.6*dt,decay=3.4*dt;
+ const axis=(pos,neg,v)=>{
+  if(keys.has(pos))return Math.min(1,v+ramp);
+  if(keys.has(neg))return Math.max(-1,v-ramp);
+  return v>0?Math.max(0,v-decay):Math.min(0,v+decay);
+ };
+ cmd.pitch=axis('w','s',cmd.pitch);
+ cmd.roll=axis('d','a',cmd.roll);
+ cmd.yaw=axis('e','q',cmd.yaw);
+ if(keys.has('z'))cmd.throttle=Math.min(1,cmd.throttle+dt*.5);
+ if(keys.has('x'))cmd.throttle=Math.max(0,cmd.throttle-dt*.5);
+ cmd.afterburner=keys.has('shift')?Math.min(1,cmd.afterburner+dt*1.5):Math.max(0,cmd.afterburner-dt*1.5);
+}
+function pointerAxis(el,onMove){
+ let id=null;
+ const rect=()=>el.getBoundingClientRect();
+ const handle=e=>{const r=rect();onMove((e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height)};
+ el.addEventListener('pointerdown',e=>{id=e.pointerId;el.setPointerCapture(id);handle(e)});
+ el.addEventListener('pointermove',e=>{if(e.pointerId===id)handle(e)});
+ el.addEventListener('pointerup',e=>{if(e.pointerId===id){id=null;onMove(null,null)}});
+ el.addEventListener('pointercancel',()=>{id=null;onMove(null,null)});
+}
+pointerAxis($('stick'),(u,v)=>{
+ if(u===null){cmd.roll=0;cmd.pitch=0;$('knob').style.transform='';return}
+ cmd.roll=Math.max(-1,Math.min(1,(u-.5)*2.4));
+ cmd.pitch=Math.max(-1,Math.min(1,(.5-v)*2.4));
+ $('knob').style.transform=`translate(${cmd.roll*32}px,${-cmd.pitch*32}px)`;
+});
+pointerAxis($('throttle'),(u,v)=>{if(v!==null)cmd.throttle=Math.max(0,Math.min(1,1-v))});
+
+const setGear=v=>{cmd.gear=v;$('bGear').textContent=v>.5?'GEAR ↓':'GEAR ↑';$('bGear').classList.toggle('on',v>.5)};
+const setFlap=v=>{cmd.flap=v;$('bFlap').textContent='FLAP '+(v>.5?'1':'0');$('bFlap').classList.toggle('on',v>.5)};
+const setBrake=v=>{cmd.brake=v;$('bBrake').classList.toggle('on',v>.5)};
+$('bGear').onclick=()=>setGear(cmd.gear>.5?0:1);
+$('bFlap').onclick=()=>setFlap(cmd.flap>.5?0:1);
+$('bBrake').onclick=()=>setBrake(cmd.brake>.5?0:1);
+$('bAB').onclick=()=>{cmd.afterburner=cmd.afterburner>.5?0:1;$('bAB').classList.toggle('on',cmd.afterburner>.5)};
+$('bReset').onclick=()=>{runtime.reset();cmd.throttle=runtime.state.controls.throttle};
+$('bTrim').onclick=()=>{
+ if(runtime.vehicle.evidence!=='conventional')return;
+ const r=runtime.trim(runtime.telemetry().heading*Math.PI/180);
+ cmd.throttle=r.throttle;cmd.afterburner=r.afterburner;cmd.pitch=0;
+};
+$('bHere').onclick=()=>{
+ const g=startGps();
+ const fix=g.state;
+ if(fix.source!=='device'){$('cGps').classList.add('caution');return}
+ const ground=groundSampler(fix.lat,fix.lon);
+ runtime.load(runtime.vehicle.id,{...runtime.spawn,lat:fix.lat,lon:fix.lon,
+  altitudeM:ground+1200,speedMps:216,heading:0});
+ cmd.throttle=runtime.state.controls.throttle;
+ terrain?.teleport?.({lat:fix.lat,lon:fix.lon,altitude_m:ground+1200});
+};
+$('bFollow').onclick=()=>{
+ startGps();
+ gpsFollow=!gpsFollow;
+ $('bFollow').classList.toggle('on',gpsFollow);
+ $('bFollow').textContent=gpsFollow?'GPS FOLLOW ●':'GPS FOLLOW';
+};
+for(const [btn,panel] of [['tgProof','pnProof'],['tgBus','pnBus']])
+ $(btn).onclick=()=>{const p=$(panel);p.classList.toggle('open');$(btn).classList.toggle('on',p.classList.contains('open'))};
+
+// ---- display --------------------------------------------------------------
+function paint(t){
+ $('tSpeed').textContent=Math.round(t.speed*1.94384);
+ $('tMach').textContent='M '+t.aero.mach.toFixed(2);
+ $('tAlt').textContent=Math.round(t.altitude_m*3.28084).toLocaleString();
+ $('tAgl').textContent='AGL '+Math.round(t.altitude_agl_m*3.28084).toLocaleString();
+ $('cCraft').innerHTML=`${t.vehicleName} · <b>${t.evidence==='conventional'?'AERO':'E47'}</b> · α ${(t.aero.alpha*57.2958).toFixed(1)}° · n<sub>z</sub> ${t.aero.loadFactor.toFixed(1)}`;
+ const regime=t.aero.regime.toUpperCase();
+ const sep=t.aero.separation>.25;
+ const cR=$('cRegime');
+ cR.textContent=`${regime}${sep?' · SEPARATED':''}${t.gear?.weightOnWheels?' · WoW':''}${t.limiter?.g?' · G-LIM':''}${t.limiter?.alpha?' · α-LIM':''}`;
+ cR.className='chip'+(sep?' caution':'');
+ if(!gps)$('cGps').textContent=`${t.position.lat.toFixed(4)} ${t.position.lon.toFixed(4)} · ${Math.round(t.range_m/1000)} km`;
+ $('cWorld').textContent=`${$('cWorld').dataset.tiles||'WORLD'} · ρ ${t.environment.density.toFixed(4)} · g ${t.environment.gravity.toFixed(4)} · ${t.mass.fuelFraction>0?Math.round(t.mass.fuelFraction*100)+'% FUEL':'NO FUEL'}`;
+ const p=$('cProof');
+ p.textContent=`PROOF · ${t.proof?.pass?'PASS':'FAIL'} · seq ${t.proof?.sequence??0}`;
+ p.className='chip'+(t.proof?.pass?'':' alert');
+ $('throttleFill').style.height=Math.round(t.controls.throttle*100)+'%';
+ if($('pnProof').classList.contains('open'))paintProof(t);
+}
+function row(k,v,cls=''){return `<div class="row"><span>${k}</span><span class="${cls}">${v}</span></div>`}
+function paintProof(t){
+ const c=t.proof?.checks??{};
+ $('proofBody').innerHTML=
+  `<h3>Integrity</h3>`+Object.entries(c).map(([k,v])=>row(k,v?'PASS':'FAIL',v?'ok':'no')).join('')+
+  `<h3>Integrator</h3>`+row('scheme',t.proof?.integrator?.schema??'—')+
+   row('accepted',t.proof?.integrator?.accepts??0)+row('rejected',t.proof?.integrator?.rejects??0)+
+   row('local error',(t.proof?.integrator?.lastError??0).toExponential(2))+
+  `<h3>Air</h3>`+row('alpha',(t.aero.alpha*57.2958).toFixed(2)+'°')+row('beta',(t.aero.beta*57.2958).toFixed(2)+'°')+
+   row('CL / CD',t.aero.CL.toFixed(3)+' / '+t.aero.CD.toFixed(4))+row('q̄',Math.round(t.aero.qbar)+' Pa')+
+   row('separation',t.aero.separation.toFixed(3))+
+  `<h3>Mass</h3>`+row('total',Math.round(t.mass.totalKg)+' kg')+row('fuel',Math.round(t.mass.fuelKg)+' kg')+
+  (t.propulsion?`<h3>Propulsion</h3>`+Object.entries(t.propulsion).map(([k,v])=>
+   row(k,typeof v==='number'?v.toFixed(4):String(v))).join(''):'')+
+  (t.e47?`<h3>E47 drive</h3>`+row('capture',t.e47.capture.toFixed(6))+row('residual',t.e47.residual.toExponential(3))+
+   row('kernel / carrier',`${t.e47.kernelDim} / ${t.e47.carrier}`)+row('ω_c',t.e47.omegaC):'')+
+  (t.overstress?`<h3>Overstress</h3>`+row('reason',t.overstress.reason,'no')+row('sink',t.overstress.sinkRateMps.toFixed(2)+' m/s','no'):'');
+}
+function paintBus(){
+ if(!bus)return;
+ const r=bus.report();
+ $('busBody').innerHTML=
+  `<h3>Bound engines</h3>`+Object.entries(r.bound).map(([k,v])=>row(k,v.toUpperCase(),v==='bound'?'ok':'no')).join('')+
+  (r.kernel?`<h3>Canonical kernel</h3>`+row('carrier',r.kernel.carrier)+row('kernel dim',r.kernel.kernelDim)+
+   row('ω_c',r.kernel.omegaC)+row('ε',r.kernel.epsilon.toExponential(4)):'')+
+  (r.weather?`<h3>World engine</h3>`+row('wind',r.weather.windMps.toFixed(1)+' m/s @ '+Math.round(r.weather.windHeadingDeg)+'°')+
+   row('cloud',Math.round(r.weather.cloudCover*100)+'%')+row('visibility',Math.round(r.weather.visibilityKm)+' km')+
+   row('sun',r.solar.altitudeDeg.toFixed(1)+'° · '+(r.solar.night?'night':'day'))+
+   row('biome',r.biome?.biome??r.biome?.id??'—'):'')+
+  `<h3>Channels</h3>`+row('broadcast',r.channels.broadcast?'city-world-engine-v1':'local only',r.channels.broadcast?'ok':'no')+
+   row('publishes',r.channels.flightState);
+ $('cBus').textContent='BUS · '+Object.values(r.bound).filter(v=>v==='bound').length+'/'+Object.keys(r.bound).length;
+}
+
+// ---- boot -----------------------------------------------------------------
+async function boot(){
+ runtime=new SkyrmionRuntime3({fixedStepHz:120,adaptive:true,turbulence:.55,
+  spawn:{lat:place.lat,lon:place.lon,altitudeM:place.alt,speedMps:216,heading:0},
+  groundSampler});
+ buildFleet();buildWorlds();markFleet('f16');
+ startGps();
+ cmd.throttle=runtime.state.controls.throttle;
+ cmd.gear=0;setGear(0);
+
+ bus=new CityEngineBus();
+ bus.connect({lat:place.lat,lon:place.lon,onWorldState:d=>{
+  if(Number.isFinite(d.lat)&&Number.isFinite(d.lon)&&
+     Math.abs(d.lat-runtime.state.position.lat)+Math.abs(d.lon-runtime.state.position.lon)>.02)
+   runtime.teleport({lat:d.lat,lon:d.lon});
+ }}).then(()=>{bus.windFor(runtime);paintBus()}).catch(()=>{$('cBus').textContent='BUS · LOCAL'});
+
+ try{
+  terrain=await createSkyrmionTerrain3D({host:document.body,lat:place.lat,lon:place.lon,
+   altitude_m:place.alt,heading:0,pitch:0,roll:0,speed:216,active:0});
+ }catch(err){
+  $('cWorld').textContent='WORLD · RENDERER UNAVAILABLE';
+  bus?.failure?.('renderer',err);
+ }
+
+ let last=performance.now(),acc=0,publishAcc=0;
+ const dt=runtime.dt;
+ function frame(now){
+  const elapsed=Math.min(.05,(now-last)/1000);last=now;acc+=elapsed;
+  readKeys(elapsed);
+  runtime.setControls(cmd);
+  let n=0;
+  while(acc>=dt&&n<12){runtime.step();acc-=dt;n++}
+  const t=runtime.telemetry();
+  paint(t);
+  terrain?.updateFlightState({lat:t.position.lat,lon:t.position.lon,altitude_m:t.altitude_m,
+   heading:t.heading*Math.PI/180,pitch:t.pitch*Math.PI/180,roll:t.roll*Math.PI/180,speed:t.speed,
+   active:VEHICLE_ORDER.indexOf(t.vehicleId)});
+  publishAcc+=elapsed;
+  if(publishAcc>.25){publishAcc=0;bus?.publish(t);if($('pnBus').classList.contains('open'))paintBus()}
+  requestAnimationFrame(frame);
+ }
+ requestAnimationFrame(frame);
+}
+$('go').onclick=()=>{document.body.classList.add('flying')};
+boot().catch(err=>{
+ $('cProof').textContent='BOOT FAILED';$('cProof').className='chip alert';
+ console.error(err);
+});
+</script>
+</body></html>
