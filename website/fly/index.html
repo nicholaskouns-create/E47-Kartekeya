@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kouns Flight Simulators — click and fly</title>
+<meta name="description" content="Fourteen browser instruments from The Mathematical City — eleven of them fly. No install, no login. Click one and go.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/fly/">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/fly/">
+<meta property="og:title" content="Kouns Flight Simulators">
+<meta property="og:description" content="Fourteen instruments, eleven of them fly. No install, no login — click one and go.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#07100f; --ground-2:#0b1817; --panel:#0e1f1d; --line:rgba(127,232,214,.15);
+  --ink:#e9f6f5; --dim:#8fb3b0; --key:#7fe8d6; --mint:#b8f5d8; --copper:#d9955b;
+  --mono:'IBM Plex Mono',ui-monospace,monospace; --serif:'Newsreader',Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1100px 620px at 50% -12%,rgba(127,232,214,.12),transparent 70%),
+    radial-gradient(760px 520px at 88% 108%,rgba(217,149,91,.09),transparent 70%),
+    var(--ground);
+  color:var(--ink); font-family:var(--serif);
+  -webkit-font-smoothing:antialiased; line-height:1.5;
+}
+.wrap{max-width:860px;margin:0 auto;padding:44px 20px 72px}
+header{text-align:center;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--key);opacity:.85;margin:0 0 18px
+}
+h1{
+  font-family:var(--serif);font-weight:300;font-size:clamp(34px,8vw,56px);
+  line-height:1.04;letter-spacing:-.015em;margin:0 0 14px
+}
+h1 em{font-style:italic;color:var(--mint)}
+.sub{font-size:clamp(15px,3.6vw,18px);color:var(--dim);font-weight:300;margin:0 auto;max-width:46ch}
+.meta{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);margin-top:22px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap
+}
+.meta span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--key);box-shadow:0 0 9px var(--key)}
+
+h2{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--copper);margin:46px 0 4px
+}
+.h2note{font-size:14px;color:var(--dim);font-weight:300;margin:0 0 18px}
+
+.grid{display:grid;gap:12px}
+@media(min-width:620px){.grid.two{grid-template-columns:1fr 1fr}}
+
+a.card{
+  display:block;text-decoration:none;color:inherit;
+  background:linear-gradient(170deg,var(--panel),var(--ground-2));
+  border:1px solid var(--line);border-radius:14px;padding:18px 19px;
+  transition:border-color .18s,transform .18s,box-shadow .18s;
+}
+a.card:hover,a.card:focus-visible{
+  border-color:rgba(127,232,214,.5);transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(0,0,0,.45),0 0 0 1px rgba(127,232,214,.12);outline:none
+}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.name{font-family:var(--mono);font-size:14.5px;font-weight:500;letter-spacing:.05em;color:var(--mint)}
+.go{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--key);white-space:nowrap;opacity:.7}
+.desc{font-size:14.5px;color:var(--dim);font-weight:300;margin:7px 0 0}
+.tag{
+  display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--copper);border:1px solid rgba(217,149,91,.32);
+  border-radius:4px;padding:2px 7px;margin-top:11px
+}
+
+a.card.hero{padding:26px 22px;border-color:rgba(127,232,214,.34)}
+a.card.hero .name{font-size:19px}
+a.card.hero .desc{font-size:15.5px;color:#c5ddda}
+
+.keys{
+  margin:44px 0 0;background:rgba(11,24,23,.7);border:1px solid var(--line);
+  border-radius:14px;padding:22px
+}
+.keys h3{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--key);margin:0 0 15px;font-weight:500
+}
+.klist{display:grid;gap:9px 22px;margin:0;font-family:var(--mono);font-size:12.5px}
+@media(min-width:520px){.klist{grid-template-columns:1fr 1fr}}
+.klist div{display:flex;gap:11px;align-items:center}
+kbd{
+  background:rgba(127,232,214,.1);border:1px solid rgba(127,232,214,.28);border-radius:4px;
+  padding:2px 7px;color:var(--mint);font-family:var(--mono);font-size:11.5px;min-width:34px;text-align:center
+}
+.klist span{color:var(--dim);letter-spacing:.07em;font-size:11.5px;text-transform:uppercase}
+.keys p{font-size:13.5px;color:var(--dim);font-weight:300;margin:16px 0 0;font-family:var(--serif)}
+
+
+.lgrp{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--copper);margin-bottom:14px}
+.links{display:grid;gap:9px}
+@media(min-width:620px){.links{grid-template-columns:1fr 1fr}}
+.links a{display:block;text-decoration:none;color:var(--mint);font-family:var(--mono);font-size:13.5px;
+ border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:.16s;background:rgba(7,16,15,.5)}
+.links a:hover{border-color:rgba(127,232,214,.5);background:rgba(127,232,214,.07);transform:translateY(-1px)}
+.links a small{display:block;font-size:11.5px;color:var(--dim);margin-top:4px;letter-spacing:.02em}
+footer{margin-top:46px;padding-top:24px;border-top:1px solid var(--line);text-align:center}
+footer p{font-size:14px;color:var(--dim);font-weight:300;margin:0 0 10px}
+footer a{color:var(--key);text-decoration:none;border-bottom:1px solid rgba(127,232,214,.3)}
+.sig{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(143,179,176,.6);margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;margin-bottom:26px"><a href="../" style="color:var(--key);text-decoration:none;border-bottom:1px solid rgba(127,232,214,.3)">&larr; The Mathematical City</a></p>
+<header>
+  <p class="eyebrow">The Mathematical City</p>
+  <h1>Fourteen doors.<br><em>Eleven of them fly.</em></h1>
+  <p class="sub">Flight, hover and propulsion instruments that run in your browser. Nothing to install, nothing to sign into. Pick one and go.</p>
+  <div class="meta">
+    <span><i class="dot"></i>All 14 live</span>
+    <span>Desktop or phone</span>
+    <span>Keyboard or gamepad</span>
+  </div>
+</header>
+
+<h2>Start here</h2>
+<p class="h2note">If you only click one thing, click this.</p>
+<div class="grid">
+  <a class="card hero" href="../interfaces/skyrmion-rt3/">
+    <div class="row"><span class="name">SKYRMION RT3</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">The full simulator. Real-earth WGS84 terrain, seven aircraft on keys 1–7, landing gear, flaps, fuel burn, afterburner and live turbulence. Take off, fly somewhere, land it.</p>
+    <span class="tag">Flagship · 7 aircraft</span>
+  </a>
+</div>
+
+<h2>Flight</h2>
+<p class="h2note">Different airframes, different physics.</p>
+<div class="grid two">
+  <a class="card" href="../interfaces/skyrmion/">
+    <div class="row"><span class="name">SKYRMION</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">Global terrain flight lab. Seven vehicles, live telemetry, geographic presets.</p>
+  </a>
+  <a class="card" href="../interfaces/manta/">
+    <div class="row"><span class="name">MANTA</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">Programmable-matter craft with six degrees of freedom. It changes shape as you fly it.</p>
+  </a>
+  <a class="card" href="../interfaces/manta-daylight/">
+    <div class="row"><span class="name">MANTA Daylight</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">The same morphing flight in full daylight, with side-by-side telemetry.</p>
+  </a>
+  <a class="card" href="../interfaces/flight/eidolon/">
+    <div class="row"><span class="name">EIDOLON</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">The flagship airframe, flown inside the City's instrument shell.</p>
+  </a>
+  <a class="card" href="../interfaces/flight/eidolon-harmonic/">
+    <div class="row"><span class="name">EIDOLON Harmonic</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">EIDOLON with the horizon, dense reticle and coherence-field overlay switched on.</p>
+  </a>
+  <a class="card" href="../interfaces/eidolon-flight-lab/">
+    <div class="row"><span class="name">EIDOLON Flight Lab</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">The lab bench version — same aircraft, instruments exposed.</p>
+  </a>
+  <a class="card" href="../interfaces/flight/mav/">
+    <div class="row"><span class="name">MAV</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">Micro aerial vehicle. Small, twitchy, clean HUD. Good on a phone.</p>
+  </a>
+</div>
+
+<h2>Hover &amp; propulsion</h2>
+<p class="h2note">Craft that don't need a runway.</p>
+<div class="grid two">
+  <a class="card" href="../interfaces/flight/hover-cockpit/">
+    <div class="row"><span class="name">Hover Cockpit</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">Sit in the P47 hover cockpit — range ticks, field ring, bronze-and-cyan panel.</p>
+  </a>
+  <a class="card" href="../interfaces/flight/hover-assembly/">
+    <div class="row"><span class="name">Hover Assembly</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">Build the hover craft before you fly it.</p>
+  </a>
+  <a class="card" href="../interfaces/flight/ufo-propulsion/">
+    <div class="row"><span class="name">UFO Propulsion Lab</span><span class="go">LAUNCH →</span></div>
+    <p class="desc">Fly the thing that moves without wings or thrust. This one is the conversation starter.</p>
+    <span class="tag">Crowd favorite</span>
+  </a>
+  <a class="card" href="../interfaces/propulsion/">
+    <div class="row"><span class="name">Propulsion Atlas</span><span class="go">OPEN →</span></div>
+    <p class="desc">The index of every flight and propulsion surface, with GPS enabled.</p>
+  </a>
+</div>
+
+<h2>While you're in there</h2>
+<p class="h2note">Not aircraft, but worth the click.</p>
+<div class="grid two">
+  <a class="card" href="../interfaces/matrix/">
+    <div class="row"><span class="name">THE MATRIX</span><span class="go">OPEN →</span></div>
+    <p class="desc">A quantum simulator that runs in the browser. Push the buttons, watch it solve.</p>
+  </a>
+  <a class="card" href="../interfaces/city-live/">
+    <div class="row"><span class="name">The Mathematical City</span><span class="go">OPEN →</span></div>
+    <p class="desc">The front door. Every instrument in the City, all eleven labs.</p>
+  </a>
+</div>
+
+<div class="keys">
+  <h3>How to fly (SKYRMION RT3)</h3>
+  <div class="klist">
+    <div><kbd>W</kbd><kbd>S</kbd><span>Pitch</span></div>
+    <div><kbd>Z</kbd><kbd>X</kbd><span>Throttle</span></div>
+    <div><kbd>A</kbd><kbd>D</kbd><span>Roll</span></div>
+    <div><kbd>G</kbd><span>Landing gear</span></div>
+    <div><kbd>Q</kbd><kbd>E</kbd><span>Yaw</span></div>
+    <div><kbd>F</kbd><span>Flaps</span></div>
+    <div><kbd>Shift</kbd><span>Afterburner</span></div>
+    <div><kbd>B</kbd><span>Brake</span></div>
+    <div><kbd>1</kbd>–<kbd>7</kbd><span>Switch aircraft</span></div>
+    <div><kbd>Pad</kbd><span>Gamepad works too</span></div>
+  </div>
+  <p>Throttle up to about three-quarters, pull back gently on <kbd>W</kbd>, raise the gear with <kbd>G</kbd> once you're climbing. The other sims use the same keys where they apply.</p>
+</div>
+
+
+<h2>When you&rsquo;ve landed</h2>
+<p class="h2note">The rest of the City, and the work underneath it.</p>
+<div class="keys" style="padding:22px">
+  <div class="lgrp">Play with an idea</div>
+  <div class="links">
+    <a href="https://nicholaskouns-create.github.io/Identity/explainers/price/">The price of making up your mind<small>forgetting costs energy &middot; three toys, no mathematics</small></a>
+    <a href="../interfaces/entangle/">Entangle<small>watch a contraction filter a Bell state</small></a>
+    <a href="https://nicholaskouns-create.github.io/Time/">The Quantum Clock<small>a qubit as a clock face</small></a>
+    <a href="https://nicholaskouns-create.github.io/matrix-quantum-simulator/">Matrix &middot; standalone<small>three-qubit circuit laboratory</small></a>
+    <a href="../interfaces/observatory/">The Observatory<small>playable experiments and evidence</small></a>
+    <a href="https://nicholaskouns-create.github.io/Identity/explainers/">Six visual explainers<small>the same mathematics, told two ways</small></a>
+  </div>
+  <div class="lgrp" style="margin-top:22px">Check the work</div>
+  <div class="links">
+    <a href="https://nicholaskouns-create.github.io/Identity/">Identity research laboratory<small>construction, certificates, open problems</small></a>
+    <a href="https://nicholaskouns-create.github.io/e47-formal-validation.html">E&#8324;&#8327; Formal Validation Archive<small>Lean 4 and Coq compilation record</small></a>
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya">E47-Kartekeya on GitHub<small>source for everything here</small></a>
+    <a href="https://github.com/nicholaskouns-create/Identity/tree/main/formal/e47">The proofs themselves<small>Lean 4 &middot; axiom-free, no sorry</small></a>
+  </div>
+</div>
+
+<footer>
+  <p>Built by Nicholas S. Kouns, DO — AIMS Research Institute, Las Vegas.<br>Source and receipts: <a href="https://github.com/nicholaskouns-create/E47-Kartekeya">E47-Kartekeya on GitHub</a>.</p>
+  <p class="sig">E₄₇ · The Mathematical City</p>
+</footer>
+
+</div>
+</body>
+</html>
