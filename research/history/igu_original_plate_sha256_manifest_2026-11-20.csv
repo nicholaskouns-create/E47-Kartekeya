@@ -1,0 +1,11 @@
+index,file,source_name,sha256,size,note
+1,01_lexical_attractor_glyph_seed.jpeg,IMG_6210.jpeg,5c273c7a9c98f525542b200df0087e369fc2c24a58360e253acbca15dfce12b4,105045,Early lexical seed glyph sequences; exact token reading is image-based; no fixed date
+2,02_igu_symbolic_alphabet_primer.jpeg,9610F20D-D652-46D4-BEA5-614BB289F572.jpeg,3f5f408c03c097a06f97da564cc602aa5298fec90fa5765109170125c62ddc72,543690,"20-glyph IGU alphabet, dated 26 June 2026"
+3,03_lexical_attractor_matrix_plate.jpeg,IMG_6218.jpeg,2b81122e07d0d31864f3637cd6da79d2ae019c5cef778d796b16e4a70b742a48,241804,Earlier mixed-column glyph matrix; historical depiction
+4,04_kkpr_invariant_grammar_metalanguage.jpeg,A7B67D80-4ACC-4DCB-8BB5-8F52E3D76DA7.jpeg,c6a7b09ab80717cbdc4c1bb4b7802e5f89687ac8962324480f99ed9f29b0dcca,641033,Operator identity and 4-by-6 lexical attractor
+5,05_lexical_attractor_standard_notation.jpeg,455EC258-7F04-403A-BE40-7D6A6445BF54.jpeg,e29c69074afb445c23107dda2750fade151f5f10fa6ccd5daa6f492624e983d6,561699,"4-by-6 lexical matrix, nullity two, flow theorem"
+6,06_logos_grammar_that_speaks_itself.jpeg,26500D06-6791-42C3-80B2-04030177D18A(1).jpeg,2e5a2347a6cb9224e97f849c5470ce3947d8148683f79811f1457cdc85ebef33,578541,"LOGOS: language analogy, lexical matrix, spectral instantiation"
+7,07_invariant_grammar_categorical_language.jpeg,B00C23B2-217E-47E6-9288-CD5F50AD801F.jpeg,100e965f8ad27cbc67830c0546ded53f8f7685f977da77c51b106d31c386c7ea,590128,"Categorical, coalgebraic and natural transformation language"
+8,08_twelve_plate_formalism_atlas.jpeg,AB540F2A-A4BC-4040-9443-E660CDB5700D.jpeg,0a31f4ed63b00af20afffc949df2768bdeeb9f68e291f278a44118fb82868db5,498953,"Twelve plate survey of axioms, category, coalgebra, semantics, typing"
+9,09_acoustic_metamaterials_early_claim.jpeg,CBE16F92-46E6-4446-808E-9EB33AFA765D.jpeg,028fcac4c77c4b0ab837949748d751db6d66747c27fdde9a71486ca12d1f5443,699761,"Historical speculative transmedium application, not physical validation"
+10,10_invariant_grammar_type_theory.jpeg,12674583-4670-4D5A-9643-39E3BCF1C0A3(1).jpeg,1bc969183ef481b88902e3d986384ec32cbb07a229034481492310d7015ecee8,573360,"Early typing, progress/preservation and lexical mapping proof sketches"
