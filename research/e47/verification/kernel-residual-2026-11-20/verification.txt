@@ -1,0 +1,18 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+/workspace/scratch/lean/bin/lean -o Witness.olean Witness.lean
+/workspace/scratch/lean/bin/lean -o Certificate.olean Certificate.lean
+'E47.casimir_from_ladders' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.gram_equation' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.eigenbasis_equation' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.inverse_equations' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.discrete_bound' depends on axioms: [propext, Lean.ofReduceBool]
+/workspace/scratch/lean/bin/lean -o Bounds.olean Bounds.lean
+'E47.contraction_all_steps' depends on axioms: [propext, Lean.ofReduceBool]
+/workspace/scratch/lean/bin/lean -o Algebra.olean Algebra.lean
+'E47.native_kernel_all' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.iterate_on_basis' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+/workspace/scratch/lean/bin/lean -o Algebra.olean Algebra.lean
+'E47.projector_scaled_idempotent' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.native_kernel_all' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+'E47.iterate_on_basis' depends on axioms: [propext, Lean.ofReduceBool, Quot.sound]
+Witness regeneration and benchmark rerun reproduced the checked-in files byte for byte.
