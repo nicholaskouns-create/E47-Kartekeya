@@ -1,0 +1,197 @@
+Collecting numpy==2.3.5 (from -r /workspace/scratch/e47-program/deliverables/requirements.txt (line 1))
+  Downloading numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting sympy==1.14.0 (from -r /workspace/scratch/e47-program/deliverables/requirements.txt (line 2))
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath==1.3.0 (from -r /workspace/scratch/e47-program/deliverables/requirements.txt (line 3))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Downloading numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 30.5 MB/s eta 0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 31.0 MB/s eta 0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 29.3 MB/s eta 0:00:00
+Installing collected packages: mpmath, sympy, numpy
+Successfully installed mpmath-1.3.0 numpy-2.3.5 sympy-1.14.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: python -m pip install --upgrade pip
+PASS metric adjoint, exact spectral projector, kernel 47
+PASS B invertible, E rank 90, A rank 43, ker A dimension 82
+PASS E intersection ker A = span(first 47 B columns) = ker K
+Construction: B=[basis(im P) | basis(im(I-P))]; A=(B^-1)[47:90,:]; E=B[:,0:90]
+{
+  "boundary": "Finite census of the fixed 125-dimensional carrier. The uniqueness statement is about selections of whole Casimir sectors; other 47-dimensional subspaces exist.",
+  "checks": {
+    "all_127_selections_enumerated": true,
+    "casimir_multiplicities_machine": true,
+    "census_1_3_5_4_3_2_1": true,
+    "census_total_125": true,
+    "dim47_commutants_29_35": true,
+    "dim47_selections_exactly_two": true,
+    "dim47_selections_machine": true,
+    "e47_commutant_29": true,
+    "e47_dim_47": true,
+    "e47_unique_quadratic_selector": true,
+    "full_su2_commutant_65": true,
+    "sector_dims": true
+  },
+  "exact": {
+    "census": {
+      "casimir": [
+        0,
+        2,
+        6,
+        12,
+        20,
+        30,
+        42
+      ],
+      "multiplicity": [
+        1,
+        3,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "sector_dimension": [
+        1,
+        9,
+        25,
+        28,
+        27,
+        22,
+        13
+      ],
+      "spins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "decomposition": "V2\u2297V2\u2297V2 = V0 + 3V1 + 5V2 + 4V3 + 3V4 + 2V5 + V6",
+    "dimension_47_selections": [
+      {
+        "commutant": 29,
+        "spins": [
+          2,
+          5
+        ]
+      },
+      {
+        "commutant": 35,
+        "spins": [
+          1,
+          2,
+          6
+        ]
+      }
+    ],
+    "e47": {
+      "commutant": 29,
+      "dimension": 47,
+      "selection": [
+        2,
+        5
+      ]
+    },
+    "evidence": "exact character arithmetic: chi(q)^3, chi(q)=q^-2+...+q^2",
+    "full_su2_commutant": 65,
+    "selector_rule": "dim ker prod_S (C - j(j+1)I) = sum_S m_j(2j+1); SU(2) commutant dim = sum_S m_j^2",
+    "two_sector_dimensions": [
+      10,
+      14,
+      22,
+      23,
+      26,
+      28,
+      29,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38,
+      40,
+      41,
+      47,
+      49,
+      50,
+      52,
+      53,
+      55
+    ]
+  },
+  "machine": {
+    "casimir_multiplicities": {
+      "0": 1,
+      "12": 28,
+      "2": 9,
+      "20": 27,
+      "30": 22,
+      "42": 13,
+      "6": 25
+    },
+    "evidence": "float64 replay on the 125x125 carrier",
+    "nullity_of_dimension_47_selectors": {
+      "1,2,6": 47,
+      "2,5": 47
+    }
+  },
+  "schema": "MC-E47-CASIMIR-CENSUS/1.0",
+  "status": "PASS"
+}
+(a)/(b) census along the tower
+[PASS] n=5 j=2 J=5: n(j)=F_n=5  5
+[PASS] n=5: n(J)=F_(n-2)=2  2
+[PASS] n=5: J(J+1)=5j(j+1)  (30, 30)
+[PASS] n=5: D=F_n^2+F_(n-2)L_n  47
+[PASS] n=7 j=6 J=14: n(j)=F_n=13  13
+[PASS] n=7: n(J)=F_(n-2)=5  5
+[PASS] n=7: J(J+1)=5j(j+1)  (210, 210)
+[PASS] n=7: D=F_n^2+F_(n-2)L_n  314
+[PASS] n=11 j=44 J=99: n(j)=F_n=89  89
+[PASS] n=11: n(J)=F_(n-2)=34  34
+[PASS] n=11: J(J+1)=5j(j+1)  (9900, 9900)
+[PASS] n=11: D=F_n^2+F_(n-2)L_n  14687
+[PASS] n=13 j=116 J=260: n(j)=F_n=233  233
+[PASS] n=13: n(J)=F_(n-2)=89  89
+[PASS] n=13: J(J+1)=5j(j+1)  (67860, 67860)
+[PASS] n=13: D=F_n^2+F_(n-2)L_n  100658
+[PASS] E47: D(n=5) = 5*5 + 2*11 = 47  47
+(c) D/(2j+1)^2 -> 3/phi
+    n=5  j=2     D/(2j+1)^2=47/25                  |err|=2.590e-02
+    n=7  j=6     D/(2j+1)^2=314/169                |err|=3.886e-03
+    n=9: j or J not an integer (F_n=34, L_n=76), not on the tower
+    n=11 j=44    D/(2j+1)^2=14687/7921             |err|=8.311e-05
+    n=13 j=116   D/(2j+1)^2=100658/54289           |err|=1.213e-05
+    n=15: j or J not an integer (F_n=610, L_n=1364), not on the tower
+    n=17 j=798   D/(2j+1)^2=4728719/2550409        |err|=2.581e-07
+    n=19 j=2090  D/(2j+1)^2=32411114/17480761      |err|=3.766e-08
+[PASS] |D/(2j+1)^2 - 3/phi| strictly decreasing over n=5,7,11,13,17,19  [5, 7, 11, 13, 17, 19]
+[PASS] |D/(2j+1)^2 - 3/phi| < 1e-6 at n=19  3.766e-08
+[PASS] 1 + sqrt5/phi^2 = 3/phi (to 1e-12)  2.2e-16
+(d) dim Inv(V_j^4) = multiplicity of j in V_j^3
+[PASS] j=2: dim Inv(V_j^4)=5, n(j) in V_j^3=5, both 5  (5, 5)
+[PASS] j=6: dim Inv(V_j^4)=13, n(j) in V_j^3=13, both 13  (13, 13)
+(e) selector identity mu +/- sigma
+[PASS] n=5 j=2: mu-sigma=j(j+1), mu+sigma=J(J+1)=30, sum S_a.S_b = -/+ j(j+1)  (6, 30)
+[PASS] n=7 j=6: mu-sigma=j(j+1), mu+sigma=J(J+1)=210, sum S_a.S_b = -/+ j(j+1)  (42, 210)
+[PASS] n=11 j=44: mu-sigma=j(j+1), mu+sigma=J(J+1)=9900, sum S_a.S_b = -/+ j(j+1)  (1980, 9900)
+[PASS] n=13 j=116: mu-sigma=j(j+1), mu+sigma=J(J+1)=67860, sum S_a.S_b = -/+ j(j+1)  (13572, 67860)
+[PASS] n=17 j=798: mu-sigma=j(j+1), mu+sigma=J(J+1)=3188010, sum S_a.S_b = -/+ j(j+1)  (637602, 3188010)
+[PASS] n=19 j=2090: mu-sigma=j(j+1), mu+sigma=J(J+1)=21850950, sum S_a.S_b = -/+ j(j+1)  (4370190, 21850950)
+[PASS] j=2 census n(J) = 1,3,5,4,3,2,1 (J=0..6)  [1, 3, 5, 4, 3, 2, 1]
+[PASS] tr C = sum_J n(J)(2J+1) J(J+1)  2250
+[PASS] prod over J present of (C - J(J+1)I) = 0  
+[PASS] eigenspace dim of J(J+1) = n(J)(2J+1) for every J present  {0: 1, 1: 9, 2: 25, 3: 28, 4: 27, 5: 22, 6: 13}
+[PASS] E_6 (J=2): eigenvalue 6 = mu - sigma, dim 25  25
+[PASS] E_30 (J=5): eigenvalue 30 = mu + sigma, dim 22  22
+[PASS] rank K = 78, dim ker K = 47, Omega_c = 47/125  (78, 47, '47/125')
+RESULT: 35 / 35 checks
+PASS
