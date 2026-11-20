@@ -1,3 +1,5 @@
+/- Appendix A — Abstract specification sanity checks.
+   Evidence scope: the encoded definitions and assumptions. -/
 /- E47UnverifiedSuite.lean — standalone source supplied with the Complete Edition.
    Preservation of submitted formal verification appendix; publication does not itself execute Lean. -/
 namespace E47UnverifiedSuite

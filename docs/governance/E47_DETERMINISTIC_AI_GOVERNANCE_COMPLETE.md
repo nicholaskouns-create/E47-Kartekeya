@@ -35,16 +35,34 @@ G(x) = 𝟙[‖Qx‖₂/‖x‖₂ < τ_comp] · 𝟙[‖Kx‖₂ < τ_K]. Defin
 
 auth-kernel: Verify(σ,m)=true ∧ SubjectActive(s)=false ⇒ Invoke=false. Signature validity alone does not establish action authority.
 
-CPTP fallback candidate: E_α(ρ) = ΓρΓ + tr[(I−Γ²)ρ]|α⟩⟨α|, for a normalized kernel reference |α⟩.
+CPTP density-state recovery control: E_α(ρ) = ΓρΓ + tr[(I−Γ²)ρ]|α⟩⟨α|, for a normalized kernel reference |α⟩.
 
 ## Formal ITGC control matrix
 
 | ID | Domain | Specified control | Audit evidence |
 |---|---|---|---|
-| ITGC-AI-01 | Access security / segregation | Authentication cannot independently authorize invocation; require active, authorized subject and scoped capability | Reject valid signatures paired with inactive subjects; execution log; theorem witness |
-| ITGC-AI-02 | Processing integrity | P-commuting layers, block-diagonal cross-sector weights, independent sector softmax, zero-preserving operations | Commutator checks; checkpoint hashes; 125-vs-47 coordinate comparisons |
-| ITGC-AI-03 | Exception handling | Spectral contraction Γ; output residual gate G; fail-closed or documented fallback | Runtime R_comp and R_ker; injected Q₇₈ perturbations; exception traces |
+| ITGC-AI-01 | Access security / segregation | Authentication cannot independently authorize invocation; require active, authorized subject and scoped capability | Pinned executable decision receipt, including valid signatures with inactive subjects and nonce replay |
+| ITGC-AI-02 | Processing integrity | P-commuting layers, block-diagonal cross-sector weights, independent sector softmax, zero-preserving operations | Pinned checkpoint cross-block and bias measurements; separate graph and 125-vs-47 coordinate comparisons |
+| ITGC-AI-03 | Exception handling | Finite noise window; mandatory fail-closed G; CPTP reset before density-state retry | Noise and window receipt; measured residuals; perturbation, reset, and recheck traces |
 | ITGC-AI-04 | Change management | Proof-assistant checks and recorded axioms for relevant production theorem modules | Coq/Lean build logs, certificate.json, theorem hashes, build attestations |
+
+### Runtime evidence for ITGC-AI-01 and ITGC-AI-02
+
+The [standalone runtime verifier](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/tools/governance) checks SHA-256-pinned serialized PyTorch tensors in the orthonormal 125-coordinate E47 basis and runs an isolated decision probe against the pinned executable auth-kernel artifact. Record checkpoint and policy hashes from the approved deployment inventory. The tensor check covers both off-diagonal blocks and zero bias for recognized linear weights. Sector-local attention, operations, observed logits and deployment binding require their own evidence. The replay and rejection probes exercise the artifact’s actual decision function on isolated fixtures. Record a passing receipt only for the artifacts and cases exercised.
+
+### ITGC-AI-03 operating envelope for quantized or noisy inference
+
+The buoy bound applies to a self-adjoint approximation K̂ = p̂(Ĉ) of K = p(C), with selected eigenvalue zero. Take δ = min{|λ| : λ ∈ spec(K), λ ≠ 0} = 108. For hermitian C and Ĉ in a common spectral interval, allocate ε ≥ ‖K̂ − K‖₂ using
+
+ε = max_{λ ∈ spec(Ĉ)} |p̂(λ) − p(λ)| + L_op ‖Ĉ − C‖₂.
+
+For p(z) = (z − 18)² − 144, use L_op = 2R where R bounds both centered operator norms. This follows by expanding X² − Y² = X(X − Y) + (X − Y)Y, including the noncommuting case. Budget ε < δ/2. For more general polynomials a scalar derivative bound alone does not justify an operator-norm ceiling on noncommuting matrices.
+
+With P̂ the perturbed half-gap cluster projector, the continuous comparison flow obeys ‖exp(−tK̂²) − P̂‖₂ ≤ max{1 − exp(−tε²), exp(−t(δ−ε)²)}. Thus useful damping requires 1/(δ−ε)² ≪ t ≪ 1/ε². For a flow budget 0 < η < 1, record t ≥ log(1/η)/(δ−ε)² and t ≤ −log(1−η)/ε² with an infinite upper bound when ε = 0. Budget projector displacement and discretization separately. A layer count L can use the flow window only with a justified map to t and an error allowance for the actual discrete implementation.
+
+Rank retention by itself gives no emission guarantee. A perturbed near-zero eigenvalue can decay over a long horizon, and inference noise can reintroduce complement components after contraction. Under quantized or noisy inference, require a calibrated ceiling and admissible window, then evaluate the fail-closed G(x_L) on the actual output state after the final noisy operation. Missing calibration, an empty window, zero or nonfinite state, or either residual at or above threshold blocks emission. Record the noise budget, time window, measured residuals and disposition.
+
+For a configured density-state recovery path, invoke the CPTP reset before any retry. Require Hermitian Γ with Γ² ≤ I and a normalized α ∈ ker K. The complementary effect I − Γ² is positive, and the reset restores the lost trace into |α⟩⟨α|. Reapply the configured residual check to the recovered output before any emission, including for a classical readout after recovery. A failed reset or recheck blocks emission. A classical activation without a validated density encoding stays blocked and may use an independently approved fallback. The buoy bound motivates containment. The reset is the specified recovery control, with its own channel and runtime validation.
 
 ## Regulatory mapping
 
@@ -69,8 +87,10 @@ The *Complete Edition* records author-supplied prior evidence: Coq 8.18.0 full-t
 
 ## Appendices
 
-- `E47UnverifiedSuite.lean`: supplied stand-alone Lean 4 source.
-- `E47UnverifiedSuite.v`: supplied stand-alone Coq 8.18 source.
+Appendices A and B are abstract specification sanity checks in Lean and Coq. They establish consequences of their stated definitions and assumptions. Disclosure under the Rule 10b-5 mapping must distinguish this specification evidence from artifact receipts, operating effectiveness and any legal conclusion.
+
+- **Appendix A — Abstract specification sanity checks (Lean 4).** `E47UnverifiedSuite.lean`.
+- **Appendix B — Abstract specification sanity checks (Coq 8.18).** `E47UnverifiedSuite.v`.
 - `E47_VERIFICATION_PROVENANCE.md`: publication status, scope, and exact interleaved-layer theorem.
 
 ## Source and attribution

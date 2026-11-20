@@ -1,3 +1,5 @@
+(* Appendix B — Abstract specification sanity checks.
+   Evidence scope: the encoded definitions and assumptions. *)
 (* E47UnverifiedSuite.v — source supplied with the Complete Edition.
    Publication preserves author-submitted source; no coqc execution is claimed. *)
 From Coq Require Import ZArith List Bool Lia.

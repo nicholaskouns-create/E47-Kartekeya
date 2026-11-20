@@ -21,9 +21,9 @@
     "The eight supabase-corpus files match python_migration_manifest.json sha256 exactly and are now at migration/python/."
   ],
   "counts": {
-    "uploaded": 48,
+    "uploaded": 47,
     "supabase_corpus": 8,
-    "drive_unique": 40
+    "drive_unique": 39
   },
   "files": [
     {
@@ -207,12 +207,6 @@
       "class": "drive-unique"
     },
     {
-      "name": "p325357_certify.py",
-      "sha256": "cbbd90842131b7b0b81525f2ffd5389f9deeb32d4273213d5e5fb686b2334817",
-      "bytes": 7634,
-      "class": "drive-unique"
-    },
-    {
       "name": "projected_gibbs_theorem.py",
       "sha256": "cba6123a925c1c2b99958c6863cf1137972369ba4ceb4735b103808be8c8ef60",
       "bytes": 8994,
@@ -244,8 +238,8 @@
     },
     {
       "name": "run_blocker_closure.py",
-      "sha256": "8b2cae681fae3176592c8d77b39e42578aa6f73b54d01ed80d5f71c7b23e5243",
-      "bytes": 4038,
+      "sha256": "3fbfa303901c5b420172b0b03d55e85b25926982348984d759ea406b6f43fbe3",
+      "bytes": 3497,
       "class": "drive-unique"
     },
     {
