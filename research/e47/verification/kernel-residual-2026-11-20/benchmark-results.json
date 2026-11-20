@@ -1,0 +1,492 @@
+{
+  "seed": 470125,
+  "samples_per_scenario": 600,
+  "tolerance": 0.001,
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "scenarios": {
+    "clean": {
+      "trials": 600,
+      "unsafe_leak": 0,
+      "wrong_output": 0,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          0,
+          0
+        ],
+        "shared_spec_contract": [
+          0,
+          0
+        ],
+        "norm_screen": [
+          0,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_axis_layout": {
+      "trials": 600,
+      "unsafe_leak": 600,
+      "wrong_output": 600,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          600,
+          0
+        ],
+        "shared_spec_contract": [
+          600,
+          0
+        ],
+        "norm_screen": [
+          600,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_wrong_root": {
+      "trials": 600,
+      "unsafe_leak": 600,
+      "wrong_output": 600,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          600,
+          0
+        ],
+        "shared_spec_contract": [
+          600,
+          0
+        ],
+        "norm_screen": [
+          600,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_operator_drift": {
+      "trials": 600,
+      "unsafe_leak": 600,
+      "wrong_output": 600,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          600,
+          0
+        ],
+        "shared_spec_contract": [
+          600,
+          0
+        ],
+        "norm_screen": [
+          600,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_small_operator_drift": {
+      "trials": 600,
+      "unsafe_leak": 0,
+      "wrong_output": 0,
+      "exact_K_inconclusive": 164,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 164
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          0,
+          0
+        ],
+        "shared_spec_contract": [
+          0,
+          0
+        ],
+        "norm_screen": [
+          0,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_early_stop": {
+      "trials": 600,
+      "unsafe_leak": 600,
+      "wrong_output": 600,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 600,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          600,
+          0
+        ],
+        "shared_spec_contract": [
+          600,
+          0
+        ],
+        "norm_screen": [
+          600,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_wrong_job": {
+      "trials": 600,
+      "unsafe_leak": 0,
+      "wrong_output": 600,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 600,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 0,
+          "wrong_output_accepted": 0,
+          "safe_leak_blocked": 600
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          0,
+          0
+        ],
+        "shared_spec_contract": [
+          0,
+          0
+        ],
+        "norm_screen": [
+          0,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    },
+    "shared_payload_decode": {
+      "trials": 600,
+      "unsafe_leak": 592,
+      "wrong_output": 597,
+      "exact_K_inconclusive": 0,
+      "metrics": {
+        "cross_backend_agreement": {
+          "unsafe_leak_accepted": 592,
+          "wrong_output_accepted": 597,
+          "safe_leak_blocked": 0
+        },
+        "shared_spec_contract": {
+          "unsafe_leak_accepted": 592,
+          "wrong_output_accepted": 597,
+          "safe_leak_blocked": 0
+        },
+        "norm_screen": {
+          "unsafe_leak_accepted": 592,
+          "wrong_output_accepted": 597,
+          "safe_leak_blocked": 0
+        },
+        "independent_exact_K": {
+          "unsafe_leak_accepted": 592,
+          "wrong_output_accepted": 597,
+          "safe_leak_blocked": 0
+        },
+        "independent_projector": {
+          "unsafe_leak_accepted": 592,
+          "wrong_output_accepted": 597,
+          "safe_leak_blocked": 0
+        },
+        "independent_reference_replay": {
+          "unsafe_leak_accepted": 592,
+          "wrong_output_accepted": 597,
+          "safe_leak_blocked": 0
+        }
+      },
+      "paired_unsafe_disagreements": {
+        "cross_backend_agreement": [
+          0,
+          0
+        ],
+        "shared_spec_contract": [
+          0,
+          0
+        ],
+        "norm_screen": [
+          0,
+          0
+        ],
+        "independent_projector": [
+          0,
+          0
+        ],
+        "independent_reference_replay": [
+          0,
+          0
+        ]
+      }
+    }
+  }
+}
