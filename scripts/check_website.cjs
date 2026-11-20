@@ -98,6 +98,7 @@ test("homepage routes only current flagship experiences", () => {
 test("technical entry surfaces isolate the EIDOLON flight simulator", () => {
   assert.doesNotMatch(html, /eidolon/i);
   assert.doesNotMatch(read(resolve(site, "interfaces/city-live/index.html")), /eidolon/i);
+  assert.doesNotMatch(read(resolve(site, "interfaces/city-live/labs.js")), /eidolon/i);
   assert.doesNotMatch(read(resolve(site, "interfaces/formalism-atlas/index.html")), /eidolon/i);
   assert.match(read(resolve(site, "fly/index.html")), /eidolon/i);
 });
