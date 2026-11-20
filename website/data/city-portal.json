@@ -259,7 +259,7 @@
       "name": "MAV",
       "edition": "Micro aerial vehicle",
       "category": "flight",
-      "description": "Tune five spectral nodes toward Ωc = 47/125 in the Eidolon-class micro aerial vehicle console.",
+      "description": "Tune five spectral nodes toward Ωc = 47/125 in the micro aerial vehicle console.",
       "role": "Vehicle instrument",
       "url": "https://glow-garden-brick-cedar.grok.me/",
       "image": "../../assets/city-portal/mav.webp",

@@ -84,7 +84,7 @@ test("homepage routes only current flagship experiences", () => {
   for (const target of [
     'interfaces/skyrmion/',
     'interfaces/syntax-jacob/',
-    'interfaces/kouns-core/?module=eidolon#flight',
+    'interfaces/city-live/',
     'interfaces/coherence-runtime/',
     'interfaces/route-packets/',
     'interfaces/formalism-atlas/'
@@ -93,6 +93,13 @@ test("homepage routes only current flagship experiences", () => {
   }
   assert.ok(!html.includes('interfaces/visualizers/?lab='), 'Legacy visualizer query route returned to homepage');
   assert.ok(!app.includes('interfaces/visualizers/?lab='), 'Legacy visualizer query route returned to browser app');
+});
+
+test("technical entry surfaces isolate the EIDOLON flight simulator", () => {
+  assert.doesNotMatch(html, /eidolon/i);
+  assert.doesNotMatch(read(resolve(site, "interfaces/city-live/index.html")), /eidolon/i);
+  assert.doesNotMatch(read(resolve(site, "interfaces/formalism-atlas/index.html")), /eidolon/i);
+  assert.match(read(resolve(site, "fly/index.html")), /eidolon/i);
 });
 
 test("legacy visualizer route is retired into the current instrument portal", () => {

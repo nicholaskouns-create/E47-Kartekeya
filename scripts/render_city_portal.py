@@ -33,7 +33,7 @@ def render():
 </a>''')
     sources = [f'<li><a href="{escape(s["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(s["provider"])} · {escape(s["title"])}</a></li>' for s in data["sources"]]
     html = TEMPLATE.read_text(encoding="utf-8")
-    for key, value in {"HERO_IMAGE": escape(data["hero"]["image"], quote=True), "FILTERS": "\n".join(filters), "APP_CARDS": "\n".join(cards), "SOURCE_LINKS": "\n".join(sources)}.items():
+    for key, value in {"COUNT": str(len(apps)), "HERO_IMAGE": escape(data["hero"]["image"], quote=True), "FILTERS": "\n".join(filters), "APP_CARDS": "\n".join(cards), "SOURCE_LINKS": "\n".join(sources)}.items():
         html = html.replace(f"@@{key}@@", value)
     return html
 
