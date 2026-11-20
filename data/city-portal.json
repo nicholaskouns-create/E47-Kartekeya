@@ -67,7 +67,7 @@
       "name": "SKYRMION",
       "edition": "Runtime 2",
       "category": "flight",
-      "description": "Cinematic 6DOF flight over WGS84 terrain. Take the controls of F-16, SR-71, X-15, and EIDOLON.",
+      "description": "Explore a 6DOF flight simulation over WGS84 terrain.",
       "role": "Flight simulation",
       "url": "https://moon-shale-tulip-xenon.grok.me/",
       "image": "../../assets/city-portal/skyrmion-runtime.webp",
@@ -77,25 +77,6 @@
         "localSha256": "d8b0aff554cc713e6ccff400a5f85b7c58c80cc32af3b33784caf161cd845f97"
       },
       "pageTitle": "SKYRMION",
-      "httpStatus": 200,
-      "checkedOn": "2026-09-22"
-    },
-    {
-      "id": "eidolon-flight",
-      "number": 2,
-      "name": "EIDOLON",
-      "edition": "Flight Lab",
-      "category": "flight",
-      "description": "Fly, explore, and discover spectral fields in the Mathematical City’s open flight playground.",
-      "role": "Flight simulation",
-      "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site",
-      "image": "../../assets/city-portal/eidolon-flight.webp",
-      "imageSource": {
-        "provider": "Application",
-        "url": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site/assets/eidolon-cover.png",
-        "localSha256": "fbc674601814dfcc13c11891eb618a6b59b3fcbbea9cd5033e435b017b048741"
-      },
-      "pageTitle": "EIDOLON · Flight Lab",
       "httpStatus": 200,
       "checkedOn": "2026-09-22"
     },
@@ -172,25 +153,6 @@
         "localSha256": "d2f876a5f787e094f867f0cc037fba992e0c17720a0ecccded6d584d7139b52c"
       },
       "pageTitle": "The Mathematical City",
-      "httpStatus": 200,
-      "checkedOn": "2026-09-22"
-    },
-    {
-      "id": "city-core-eidolon",
-      "number": 7,
-      "name": "CITY CORE",
-      "edition": "EIDOLON flight console",
-      "category": "flight",
-      "description": "Open the GitHub flight console at EIDOLON, with the City’s research instruments close at hand.",
-      "role": "Flight & instruments",
-      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight",
-      "image": "../../assets/city-portal/city-core-eidolon.webp",
-      "imageSource": {
-        "provider": "Application",
-        "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/assets/eidolon-social-share.jpg",
-        "localSha256": "5ac65f3986a1f3527c1d3fa2bdc121026bbd7c537df689529dce43513a93d9c1"
-      },
-      "pageTitle": "CITY CORE // MATHEMATICAL CITY",
       "httpStatus": 200,
       "checkedOn": "2026-09-22"
     },
@@ -297,7 +259,7 @@
       "name": "MAV",
       "edition": "Micro aerial vehicle",
       "category": "flight",
-      "description": "Tune five spectral nodes toward Ωc = 47/125 in the Eidolon-class micro aerial vehicle console.",
+      "description": "Tune five spectral nodes toward Ωc = 47/125 in the micro aerial vehicle console.",
       "role": "Vehicle instrument",
       "url": "https://glow-garden-brick-cedar.grok.me/",
       "image": "../../assets/city-portal/mav.webp",
