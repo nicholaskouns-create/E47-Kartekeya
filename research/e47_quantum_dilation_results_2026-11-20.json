@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-20",
+  "verification": "local NumPy/SciPy statevector Halmos dilation",
+  "backend": "scipy.linalg 128x128 real unitary; 7-qubit equivalent",
+  "physical_dimension": 128,
+  "logical_dimension": 47,
+  "idle_dimension": 17,
+  "step": 0.1,
+  "unitarity_residual_fro": 1.4100122273101503e-13,
+  "success_branch_error": 1.072060511650706e-16,
+  "idle_leakage": 0,
+  "success_probability": 0.7962582917251668,
+  "failure_probability": 0.20374170827483548,
+  "probability_sum": 1.0000000000000022,
+  "operator_contraction_norm": 0.9654560561560519,
+  "notes": "Numerical unitary dilation check. Not hardware, gate compilation, or a formal proof."
+}
