@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071122"><meta name="description" content="E47 Phi4: interactive 125D Clebsch–Gordan, 250D QSP, 500D two-ancilla LCU quantum circuit with exact polynomial identities and reproducible 14-check certificate.">
+<title>E₄₇ Φ₄ | Quantum Circuit Atlas</title>
+<style>
+:root{color-scheme:dark;--bg:#071122;--card:#0e1d32;--card2:#142845;--ink:#eaf6ff;--muted:#9fb7ca;--aqua:#62e9da;--gold:#f9c976;--rose:#ff9bba;--stroke:#294564}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 75% 35% at 50% 2%,#183b60 0%,transparent 68%),var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--aqua)}.wrap{max-width:1180px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}.mark{letter-spacing:.2em;font-size:12px;font-weight:800;color:var(--gold)}.nav a{margin-left:16px;text-decoration:none;font-size:13px}.hero{padding:52px 0 30px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.24em;color:var(--aqua)}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(44px,7vw,82px);line-height:1.05;letter-spacing:-.04em;margin:16px 0}.hero p{max-width:760px;font-size:18px;color:var(--muted)}.chips{display:flex;gap:9px;flex-wrap:wrap}.chip{border:1px solid var(--stroke);border-radius:999px;padding:5px 13px;font-size:12px;color:var(--gold);background:#10253c}.hero-split{display:grid;grid-template-columns:1.35fr .65fr;gap:24px}.sig{border:1px solid var(--stroke);border-radius:19px;padding:20px;background:linear-gradient(160deg,#142d48,#08172a)}.sig span{color:var(--muted);font-size:12px}.sig strong{font:normal 40px Georgia,serif;color:var(--aqua);display:block;margin:7px 0}.section{margin:30px 0}.panel{background:linear-gradient(155deg,#10253c,#0a182b);border:1px solid var(--stroke);border-radius:21px;padding:26px;margin-bottom:18px;box-shadow:0 8px 25px #0002}h2{font:normal 31px Georgia,serif;margin:0 0 8px}.lead{color:var(--muted);margin:0 0 22px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}button{font:inherit;cursor:pointer}.tab{color:var(--muted);border:1px solid var(--stroke);background:#081729;border-radius:10px;padding:10px 17px}.tab[aria-selected=true]{background:#19455a;color:var(--aqua);border-color:var(--aqua)}.view{display:none}.view.active{display:block}.circuit{overflow:auto;border:1px solid #284864;background:radial-gradient(circle at 24% 15%,#153452,#091626 70%);padding:14px;border-radius:15px}svg{display:block;min-width:780px;width:100%;height:auto}svg text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.wire{stroke:#7aadc2;stroke-width:2}.gate{fill:#174368;stroke:#69e8da;stroke-width:1.5;rx:9}.phase{fill:#423751;stroke:#e6bff1}.lcu{fill:#4c392c;stroke:#f6c373}.lbl{fill:#fff;font-size:19px}.small{fill:#b9c9d9;font-size:15px}.muted{color:var(--muted)}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(12px,1.6vw,17px);overflow-x:auto;padding:14px 18px;border-left:3px solid var(--aqua);background:#09192c;border-radius:8px;white-space:pre-wrap}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.metric{padding:16px;border:1px solid var(--stroke);background:#0a1a2c;border-radius:13px}.metric b{font-size:24px;color:var(--aqua);display:block}.metric span{font-size:12px;color:var(--muted)}.sectors{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.sector{border:1px solid var(--stroke);border-radius:12px;background:#0b1b2e;padding:14px 5px;text-align:center;color:var(--ink)}.sector:hover,.sector:focus{border-color:var(--aqua)}.sector.sel{background:#134a4b;border-color:var(--aqua)}.sector small{display:block;color:var(--muted)}.sector b{font-size:23px}.status{color:var(--gold)}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.mono{font-family:ui-monospace,monospace}table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:10px;border-bottom:1px solid var(--stroke);text-align:left}th{color:var(--aqua)}footer{padding:35px 0;color:var(--muted);font-size:13px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.action{border:1px solid #4c8d9d;border-radius:10px;padding:10px 14px;text-decoration:none;background:#17334a;color:#eaffff}details{margin:15px 0}summary{cursor:pointer;color:var(--gold)}@media(max-width:750px){.hero-split,.two{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.sectors{grid-template-columns:repeat(4,1fr)}.panel{padding:16px}.nav a{margin-left:7px}.hero{padding-top:35px}}
+</style></head><body><div class="wrap">
+<header class="top"><div class="mark">AIMS / MATHEMATICAL CITY / E₄₇</div><nav class="nav"><a href="https://nicholaskouns-create.github.io/website/">City</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya">Source</a><a href="#certificate">Certificate</a></nav></header>
+<section class="hero hero-split"><div><div class="eyebrow">An executable mathematical construction · 125 → 250 → 500</div><h1>From invariant<br>to quantum circuit.</h1><p>An interactive atlas of exact complementary QSP synthesis, product-basis Clebsch–Gordan transport, and the two-ancilla LCU operation whose selected block is Q₄(A).</p><div class="chips"><div class="chip">E₄₇ retained</div><div class="chip">Φ₄ · degree 4</div><div class="chip">14 / 14 NUMERICAL PASS</div><div class="chip">9-qubit padded space</div></div></div><aside class="sig"><span>EXACT SPECTRAL FILTER ERROR</span><strong>225 / 353</strong><div class="mono" style="font-size:13px;color:var(--muted)">‖Q₄(A) − P₄₇‖₂ = 0.637393767705…</div><hr style="border:0;border-top:1px solid var(--stroke);margin:22px 0"><span>KERNEL / CARRIER</span><strong>47 / 125</strong><span>All quantities are defined on the spin-2 triple tensor product.</span></aside></section>
+<section class="panel section" id="circuit"><h2>The full demonstrated circuit</h2><p class="lead">Switch between the five-phase QSP chain, the 500-dimensional LCU superstructure, and the mathematical block semantics.</p>
+<div class="tabs" role="tablist" aria-label="Circuit views"><button class="tab" role="tab" aria-selected="true" data-tab="qsp">01 · QSP gate chain</button><button class="tab" role="tab" aria-selected="false" data-tab="lcu">02 · Two-ancilla LCU</button><button class="tab" role="tab" aria-selected="false" data-tab="blocks">03 · Operator blocks</button></div>
+<div id="view-qsp" class="view active" role="tabpanel"><div class="circuit">
+<svg viewBox="0 0 1300 278" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QSP circuit with one signal ancilla; sequence Z phi zero, W A, Z phi one, W A, Z phi two, W A, Z phi three, W A, Z phi four">
+<text x="20" y="42" class="small">SIGNAL ANCILLA · |0⟩</text><line class="wire" x1="215" y1="110" x2="1280" y2="110"/>
+<text x="20" y="185" class="small">125D CARRIER · |ψ⟩</text><line class="wire" x1="215" y1="198" x2="1280" y2="198"/>
+<g><rect class="gate phase" x="238" y="75" width="88" height="70"/><text class="lbl" x="252" y="107">Z(φ₀)</text><text class="small" x="268" y="127">0</text></g>
+<rect class="gate" x="341" y="75" width="85" height="153"/><text class="lbl" x="360" y="127">W(A)</text><text class="small" x="357" y="151">250D</text>
+<rect class="gate phase" x="441" y="75" width="91" height="70"/><text class="lbl" x="448" y="107">Z(φ₁)</text><text class="small" x="445" y="127">+0.6189</text>
+<rect class="gate" x="546" y="75" width="85" height="153"/><text class="lbl" x="565" y="127">W(A)</text><text class="small" x="563" y="151">250D</text>
+<rect class="gate phase" x="645" y="75" width="91" height="70"/><text class="lbl" x="652" y="107">Z(φ₂)</text><text class="small" x="649" y="127">+0.4398</text>
+<rect class="gate" x="750" y="75" width="85" height="153"/><text class="lbl" x="769" y="127">W(A)</text><text class="small" x="767" y="151">250D</text>
+<rect class="gate phase" x="849" y="75" width="91" height="70"/><text class="lbl" x="856" y="107">Z(φ₃)</text><text class="small" x="853" y="127">−0.1790</text>
+<rect class="gate" x="954" y="75" width="85" height="153"/><text class="lbl" x="973" y="127">W(A)</text><text class="small" x="971" y="151">250D</text>
+<rect class="gate phase" x="1054" y="75" width="88" height="70"/><text class="lbl" x="1065" y="107">Z(φ₄)</text><text class="small" x="1084" y="127">0</text>
+<text x="1162" y="103" class="small">⟨0|</text><text x="1161" y="188" class="small">OUTPUT</text><text x="220" y="260" class="small">LEFT → RIGHT  ·  MATHEMATICAL OPERATOR U₂₅₀ = Z₀WZ₁WZ₂WZ₃WZ₄</text>
+</svg></div><p class="muted">Z(φ) acts on the QSP signal ancilla. W(A) acts jointly on that ancilla and the 125D carrier. The upper-left 125D block is complex P(A), not directly Q₄(A).</p></div>
+<div id="view-lcu" class="view" role="tabpanel"><div class="circuit"><svg viewBox="0 0 1300 385" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hadamard then multiplexor choosing U250 or U250 adjoint controlled by LCU ancilla, then Hadamard; QSP signal ancilla and carrier inside multiplexor">
+<text x="18" y="64" class="small">LCU ANCILLA |0⟩</text><text x="18" y="164" class="small">QSP SIGNAL |0⟩</text><text x="18" y="270" class="small">CARRIER |ψ⟩ · 125D</text>
+<line class="wire" x1="230" y1="85" x2="1250" y2="85"/><line class="wire" x1="230" y1="190" x2="1250" y2="190"/><line class="wire" x1="230" y1="292" x2="1250" y2="292"/>
+<rect class="gate" x="310" y="48" width="72" height="74"/><text class="lbl" x="335" y="92">H</text>
+<rect class="gate lcu" x="478" y="41" width="488" height="297"/><text x="495" y="76" class="lbl">SELECT(U₂₅₀ , U₂₅₀†)</text>
+<text x="495" y="116" class="small">control |0⟩ → U₂₅₀ = Z₀ W Z₁ W Z₂ W Z₃ W Z₄</text>
+<text x="495" y="149" class="small">control |1⟩ → U₂₅₀† = Z₄† W† Z₃† W† Z₂† W† Z₁† W† Z₀†</text>
+<line x1="680" y1="177" x2="680" y2="268" stroke="#f9c976" stroke-width="2" stroke-dasharray="6 7"/>
+<text x="501" y="229" class="small">QSP signal + carrier</text><text x="501" y="257" class="small">carry the selected unitary</text><text x="501" y="316" class="small">One coherent, controlled 500D SELECT operation</text>
+<rect class="gate" x="1054" y="48" width="72" height="74"/><text class="lbl" x="1079" y="92">H</text>
+<text x="1162" y="90" class="small">⟨0|</text><text x="1162" y="195" class="small">⟨0|</text><text x="1162" y="298" class="small">OUT</text>
+<text x="238" y="365" class="small">DOUBLE |0⟩ SELECTION → Q₄(A) |ψ⟩  (NON-NORMALIZED, POSTSELECTED BLOCK)</text>
+</svg></div><p class="muted">One LCU ancilla is added outside the existing QSP signal ancilla. Total exact Hilbert-space dimension: 2 × 2 × 125 = 500. A physically allocated 9-qubit register has 512 states, of which 12 require defined padding behavior.</p></div>
+<div id="view-blocks" class="view" role="tabpanel"><div class="two"><div><h3>250D signal unitary</h3><div class="formula">A = |K| / 432
+B = √(I₁₂₅ − A²)
+
+W₂₅₀(A) =
+[  A    iB  ]
+[ iB     A  ]
+
+Z₂₅₀(φ) =
+[ eⁱᵠI₁₂₅      0     ]
+[     0     e⁻ⁱᵠI₁₂₅ ]</div></div><div><h3>500D Hermitian LCU</h3><div class="formula">SELECT =
+[ U₂₅₀      0    ]
+[   0     U₂₅₀†  ]
+
+V₅₀₀ = (H ⊗ I₂₅₀)
+       SELECT
+       (H ⊗ I₂₅₀)
+
+⟨00|V₅₀₀|00⟩
+= [P(A)+P(A)†]/2
+= Q₄(A)</div></div></div><p class="muted">The double |0⟩ notation refers to both ancillas. A numerical block extraction is an audit, while circuit preparation, controlled SELECT, Hadamard interference and postselection specify a physical route if the constituent operator access is available.</p></div>
+</section>
+<section class="panel" id="algebra"><h2>Exact algebra under the circuit</h2><p class="lead">No polynomial-root optimization is needed for this complementary pair.</p><div class="two"><div><h3>Target filter</h3><div class="formula">Q₂(s) = 1 − 32s²/17
+
+Q₄(s) = 1 − (2176/353)s²
+             + (2048/353)s⁴
+
+Q₄(0) = 1
+max complementary |Q₄| = 225/353</div></div><div><h3>Complementary factor</h3><div class="formula">P(s) = Q₄(s) + (272i/353)s²
+
+R(s) = s(2048s² − 1152
+           + 16i√817)/353
+
+|P|² + (1−s²)|R|² = 1</div></div></div><details><summary>Layer-stripping recurrence · exact first principles</summary><div class="formula">Remove rightmost Z(φₙ)W(s) layer:
+
+Pₙ₋₁ = s e⁻ⁱᵠⁿ Pₙ
+       + (1−s²)eⁱᵠⁿ Rₙ
+
+Rₙ₋₁ = −e⁻ⁱᵠⁿ Pₙ
+       + s eⁱᵠⁿ Rₙ
+
+e²ⁱᵠⁿ = leading(Pₙ) / leading(Rₙ)
+
+Repeat n = 4, 3, 2, 1.
+Residual P₀ = eⁱᵠ⁰.</div></details></section>
+<section class="panel" id="spectrum"><h2>The seven Casimir sectors</h2><p class="lead">Select a sector to inspect its normalized signal and target filter. Kernel sectors remain exactly at 1.</p><div class="sectors" id="sectors"></div><div class="formula" id="sector-detail" aria-live="polite">Select a sector.</div><p class="muted">J = 2 and J = 5 jointly span 47 dimensions. The complement spans 78. Complement extrema occur at J = 3 and J = 6, not J = 1.</p></section>
+<section class="panel" id="certificate"><h2>Executed certificate</h2><p class="lead">The published Python source and SHA-256 receipt are accessible and independently rerunnable. These displayed figures are the committed NumPy results, not a claim of a browser-side 500D matrix run.</p><div class="metrics"><div class="metric"><b>14/14</b><span>NUMERICAL CHECKS PASSED</span></div><div class="metric"><b>2.82e−15</b><span>CG UNITARITY · F</span></div><div class="metric"><b>3.30e−14</b><span>250D UNITARITY · F</span></div><div class="metric"><b>4.94e−14</b><span>500D UNITARITY · F</span></div></div><div class="two" style="margin-top:18px"><div><table><tr><th>Independent numerical check</th><th>Residual</th></tr><tr><td>Casimir diagonalization</td><td>6.32e−14</td></tr><tr><td>K diagonalization</td><td>7.99e−13</td></tr><tr><td>LCU 125D block vs Q₄(A)</td><td>1.46e−14</td></tr><tr><td>‖Q₄(A)−P₄₇‖₂</td><td>0.637393767705</td></tr></table></div><div><h3>Reproduce the result</h3><div class="formula" style="font-size:13px">OPENBLAS_NUM_THREADS=1 python research/e47/qsp_phi4/e47_phi4_cg_lcu_certificate.py</div><div class="actions"><a class="action" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/qsp_phi4/README.md">Full formalism</a><a class="action" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/qsp_phi4/e47_phi4_cg_lcu_certificate.py">Python source</a><a class="action" href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/qsp_phi4/e47_phi4_cg_lcu_receipt.json">JSON receipt</a></div><button class="tab" id="copy" type="button">Copy circuit link</button> <span id="copy-note" class="muted" aria-live="polite"></span></div></div></section>
+<footer>E₄₇ / AIMS Research Institute / Kouns–Killion Paradigm · Exact algebra (E0) · Numerical matrix certification (E1) · Quantum hardware not tested. This construction uses postselected block-encoding semantics; it does not establish an efficient fault-tolerant gate compilation or physical timing advantage.</footer>
+</div><script>
+const data=[{j:0,m:1,c:0,k:180},{j:1,m:3,c:2,k:112},{j:2,m:5,c:6,k:0},{j:3,m:4,c:12,k:-108},{j:4,m:3,c:20,k:-140},{j:5,m:2,c:30,k:0},{j:6,m:1,c:42,k:432}];
+const q4=s=>1-2176/353*s*s+2048/353*s*s*s*s;
+const tabs=[...document.querySelectorAll('[data-tab]')];tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected',String(x===t)));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+t.dataset.tab))}));
+const sc=document.getElementById('sectors'),detail=document.getElementById('sector-detail');
+function choose(d){document.querySelectorAll('.sector').forEach(b=>b.classList.toggle('sel',Number(b.dataset.j)===d.j));const s=Math.abs(d.k)/432; detail.textContent='J = '+d.j+'  ·  Casimir C = '+d.c+'  ·  K = '+d.k+'  ·  multiplicity '+d.m+'  ·  dimension '+d.m*(2*d.j+1)+'\nσ = '+s.toFixed(9)+'  ·  Q₄(σ) = '+q4(s).toFixed(12)+'\n'+(d.k===0?'E₄₇ KERNEL · exactly retained':'COMPLEMENT · filtered amplitude');}
+data.forEach(d=>{const b=document.createElement('button');b.className='sector'+(d.k===0?' sel':'');b.dataset.j=d.j;b.innerHTML='<small>SPIN J</small><b>'+d.j+'</b><small>dim '+d.m*(2*d.j+1)+'</small><small>'+(d.k===0?'KERNEL':'COMPLEMENT')+'</small>';b.addEventListener('click',()=>choose(d));sc.appendChild(b)});choose(data[2]);
+document.getElementById('copy').addEventListener('click',async()=>{const u=location.href.split('#')[0];try{await navigator.clipboard.writeText(u);document.getElementById('copy-note').textContent='Link copied'}catch{document.getElementById('copy-note').textContent=u}});
+</script></body></html>
