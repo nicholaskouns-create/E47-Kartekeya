@@ -1,0 +1,19 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+c44e0c8ee63ca166450922a373c7409c5d26b00b
+'KKP.both_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean exit 0
+The Coq Proof Assistant, version 8.20.1
+compiled with OCaml 5.3.0
+Axioms:
+ClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}
+ClassicalDedekindReals.sig_forall_dec :
+  forall P : nat -> Prop,
+  (forall n : nat, {P n} + {~ P n}) ->
+  {n : nat | ~ P n} + {forall n : nat, P n}
+FunctionalExtensionality.functional_extensionality_dep :
+  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),
+  (forall x : A, f x = g x) -> f = g
+Coq exit 0
+spectral   sqrt = 0.61318838867023566626   step 6 = 0.613188388670
+geometric  sqrt = 0.30028310600077760789   step 6 = 0.300283106001
+Python exit 0

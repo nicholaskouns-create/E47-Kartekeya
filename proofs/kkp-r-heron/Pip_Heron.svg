@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1290" viewBox="0 0 960 1290" role="img" aria-labelledby="title desc"><title id="title">Pip finds the square root</title><desc id="desc">Pip makes a rectangle more square by averaging its sides. Two examples track the spectral and geometric targets from an initial side of one. Lean and Coq prove convergence for every positive starting side and area.</desc><rect width="960" height="1290" fill="#fbf7ed"/>
+<text x="56" y="59" style="font-family:DejaVu Sans;font-weight:700;font-size:18px;fill:#146759">AIMS RESEARCH INSTITUTE   /   PIP EXPLAINS</text>
+<text x="52" y="142" style="font-family:DejaVu Serif;font-weight:700;font-size:64px;fill:#172f36">Pip finds the</text>
+<text x="52" y="216" style="font-family:DejaVu Serif;font-weight:700;font-size:64px;fill:#172f36">square root</text>
+<g transform="translate(735 63)"><circle cx="78" cy="77" r="78" fill="#f1dcab"/><path d="M36 62 Q22 21 10 36 Q-4 52 6 107 Q16 131 35 91 M115 51 Q136 21 148 43 Q160 72 146 114 Q132 125 113 88" fill="#714733"/><path d="M24 76 Q24 29 73 29 Q116 23 131 65 Q146 118 101 141 Q58 161 28 122 Q18 106 24 76" fill="#dca36c"/><path d="M73 31 Q60 52 68 78 Q45 86 48 106 Q47 128 78 139 Q111 136 120 114 Q119 87 91 79 Q90 52 82 30" fill="#fff1cf"/><g fill="#302f2c"><circle cx="50" cy="79" r="6"/><circle cx="106" cy="77" r="6"/><path d="M65 98 Q78 91 92 97 Q95 108 79 115 Q64 111 65 98"/></g><path d="M79 114 Q78 128 63 119 M79 114 Q88 126 99 115" fill="none" stroke="#48372f" stroke-width="3" stroke-linecap="round"/><path d="M42 137 Q81 157 115 136 L84 168Z" fill="#146759"/></g>
+<text x="56" y="275" style="font-family:DejaVu Sans;font-weight:400;font-size:27px;fill:#172f36">“If I know the area, how long is one side of the square?”</text>
+<path d="M56 307 L904 307" fill="none" stroke="#cfcbbd" stroke-width="2"/>
+<text x="56" y="356" style="font-family:DejaVu Sans;font-weight:700;font-size:35px;fill:#172f36">Start with a rectangle</text>
+<text x="56" y="399" style="font-family:DejaVu Sans;font-weight:400;font-size:24px;fill:#172f36">Pick a positive area S and guess a side x. The other side is S/x.</text>
+<text x="56" y="433" style="font-family:DejaVu Sans;font-weight:400;font-size:24px;fill:#172f36">Average those two lengths for the next guess. Repeat.</text>
+<rect x="80" y="534" width="186" height="47" rx="3" fill="#b2d8c4"/>
+<text x="80" y="615" style="font-family:DejaVu Sans;font-weight:700;font-size:23px;fill:#146759">4 × 1</text>
+<rect x="410" y="506" width="116" height="75" rx="3" fill="#7eba9f"/>
+<text x="410" y="615" style="font-family:DejaVu Sans;font-weight:700;font-size:23px;fill:#146759">2.5 × 1.6</text>
+<rect x="731" y="488" width="94" height="93" rx="3" fill="#438f75"/>
+<text x="731" y="615" style="font-family:DejaVu Sans;font-weight:700;font-size:23px;fill:#146759">≈ 2 × 2</text>
+<text x="310" y="554" style="font-family:DejaVu Sans;font-weight:400;font-size:36px;fill:#146759">→</text>
+<text x="611" y="554" style="font-family:DejaVu Sans;font-weight:400;font-size:36px;fill:#146759">→</text>
+<text x="56" y="668" style="font-family:DejaVu Sans;font-weight:400;font-size:22px;fill:#172f36">Area stays 4. The sides approach 2.</text>
+<rect x="56" y="700" width="848" height="84" rx="13" fill="#173e42"/>
+<text x="82" y="752" style="font-family:DejaVu Sans;font-weight:700;font-size:32px;fill:#ffffff">Next guess = (guess + area ÷ guess) ÷ 2</text>
+<text x="56" y="849" style="font-family:DejaVu Sans;font-weight:700;font-size:34px;fill:#172f36">One rule, two KKP-R targets</text>
+<text x="56" y="887" style="font-family:DejaVu Sans;font-weight:400;font-size:23px;fill:#172f36">Start both guesses at 1. Read each column downward.</text>
+<rect x="56" y="915" width="410" height="212" rx="12" fill="#e1eee4"/>
+<rect x="481" y="915" width="423" height="212" rx="12" fill="#f4e5d4"/>
+<text x="77" y="953" style="font-family:DejaVu Sans;font-weight:700;font-size:27px;fill:#146759">Spectral</text>
+<text x="77" y="990" style="font-family:DejaVu Sans;font-weight:400;font-size:22px;fill:#172f36">Area   47/125 = 0.376</text>
+<text x="77" y="1032" style="font-family:DejaVu Sans;font-weight:400;font-size:18px;fill:#172f36">First guess after 1</text>
+<text x="262" y="1032" style="font-family:DejaVu Sans;font-weight:700;font-size:21px;fill:#146759">0.688000</text>
+<text x="77" y="1071" style="font-family:DejaVu Sans;font-weight:400;font-size:19px;fill:#172f36">Limiting side</text>
+<text x="77" y="1105" style="font-family:DejaVu Sans;font-weight:700;font-size:29px;fill:#146759">0.6131883887</text>
+<text x="502" y="953" style="font-family:DejaVu Sans;font-weight:700;font-size:27px;fill:#a24723">Geometric</text>
+<text x="502" y="990" style="font-family:DejaVu Sans;font-weight:400;font-size:22px;fill:#172f36">Area   φ⁻⁵ ≈ 0.09016994</text>
+<text x="502" y="1032" style="font-family:DejaVu Sans;font-weight:400;font-size:18px;fill:#172f36">First guess after 1</text>
+<text x="687" y="1032" style="font-family:DejaVu Sans;font-weight:700;font-size:21px;fill:#a24723">0.545085</text>
+<text x="502" y="1071" style="font-family:DejaVu Sans;font-weight:400;font-size:19px;fill:#172f36">Limiting side</text>
+<text x="502" y="1105" style="font-family:DejaVu Sans;font-weight:700;font-size:29px;fill:#a24723">0.3002831060</text>
+<text x="56" y="1180" style="font-family:DejaVu Sans;font-weight:700;font-size:28px;fill:#172f36">Why it works</text>
+<text x="56" y="1220" style="font-family:DejaVu Sans;font-weight:400;font-size:23px;fill:#172f36">After one step, the guess is at least the root. Each step from there</text>
+<text x="56" y="1252" style="font-family:DejaVu Sans;font-weight:400;font-size:23px;fill:#172f36">at least halves the remaining error. Proved in Lean 4 and Coq.</text>
+</svg>
