@@ -1,3 +1,8 @@
+
+
+<!-- FUN-WITH-EINSTEIN-LINK-2026 -->
+**🪐 [FUN WITH EINSTEIN — LIVE EXPERIMENT](https://nicholaskouns-create.github.io/fun-with-einstein/)** · Five-cycle φ⁻² spectrum · 125→47 Casimir selector · 250D quantum Born-rule simulation · Einstein stationary-limit equations · [Python/Lean/Coq proof sources](docs/fun-with-einstein/). Compiler acceptance is separately tracked.
+<!-- /FUN-WITH-EINSTEIN-LINK-2026 -->
 > ⚛️ **[NEW · Φ₄ QUANTUM CIRCUIT THEATER](https://nicholaskouns-create.github.io/qsvt-phi4/)** — Full 125D Clebsch–Gordan → 250D QSP → 500D two-ancilla LCU circuit · [Interactive instrument](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/qsvt-phi4-circuit/) · [Exact derivation + executable 14-check certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/qsp_phi4). E0 algebra / E1 NumPy; hardware not asserted.
 
 # The Kartekeya Isolation Lock · E47-v1.0
