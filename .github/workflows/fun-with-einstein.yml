@@ -9,7 +9,7 @@ permissions:
   contents: read
 jobs:
   python-certificate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,14 +29,23 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y coq
           coqc --version
-          coqc docs/fun-with-einstein/KKPSpectralBridge.v
+          coqc -q docs/fun-with-einstein/KKPSpectralBridge.v
   lean-proof:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare isolated Lean/Mathlib project
+        run: |
+          mkdir lean-work
+          cp docs/fun-with-einstein/KKPSpectralBridge.lean lean-work/
+          printf '%s\n' leanprover/lean4:v4.35.0 > lean-work/lean-toolchain
+          printf '%s\n' 'name = "einstein"' 'version = "0.1.0"' '[[require]]' 'name = "mathlib"' 'scope = "leanprover-community"' 'rev = "v4.35.0"' > lean-work/lakefile.toml
       - uses: leanprover/lean-action@v1
         with:
           auto-config: false
-      - run: |
+      - name: Compile theorem source
+        run: |
+          cd lean-work
+          lake update
           lake exe cache get
-          lake env lean docs/fun-with-einstein/KKPSpectralBridge.lean
+          lake env lean KKPSpectralBridge.lean
