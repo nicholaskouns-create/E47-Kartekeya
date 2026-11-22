@@ -1,0 +1,42 @@
+name: Fun With Einstein — Python, Lean and Coq
+on:
+  push:
+    paths:
+      - 'docs/fun-with-einstein/**'
+      - '.github/workflows/fun-with-einstein.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy sympy
+      - run: python docs/fun-with-einstein/certificate.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: einstein-python-results
+          path: docs/fun-with-einstein/results.json
+  coq-proof:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y coq
+          coqc --version
+          coqc docs/fun-with-einstein/KKPSpectralBridge.v
+  lean-proof:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+      - run: |
+          lake exe cache get
+          lake env lean docs/fun-with-einstein/KKPSpectralBridge.lean
