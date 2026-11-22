@@ -9,7 +9,7 @@ Theorem five_cycle_ratio : forall s:R,
   (5-s)/(5+s)=(3-s)/2.
 Proof.
   intros s hs hden.
-  field_simplify; nra.
+  field_simplify [hden]; nra.
 Qed.
 
 Theorem alpha_radical : forall s:R,
