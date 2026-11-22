@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "checks_passed": 21,
+  "checks_total": 21,
+  "alpha_exact": "(141 - 47*sqrt(5))/250",
+  "alpha_decimal": "0.143619220230039537075075350278520067737163748393033163837071",
+  "projector_rank": 47,
+  "projector_idempotency_defect_fro": 6.654705070535472e-15,
+  "ancilla_unitarity_defect_fro": 4.609585269326284e-15,
+  "ancilla_probability": 0.14361922023003965,
+  "spin_C_spectrum": {
+    "0": 1,
+    "2": 9,
+    "6": 25,
+    "12": 28,
+    "20": 27,
+    "30": 22,
+    "42": 13
+  },
+  "execution": "NumPy + SymPy on 2026-11-22; values from previously executed source with same protocol",
+  "lean_compilation": "unverified",
+  "coq_compilation": "unverified",
+  "gr_emergence": "not established"
+}
