@@ -15,4 +15,8 @@ for(let k=-9;k<=0;k++){const y=Y(k);el("line",{x1:L,x2:R,y1:y,y2:y,stroke:"#2941
 function line(v,color,dashed){const s=v.map((y,i)=>X(D.times[i])+","+Y(Math.log10(Math.max(y,1e-11)))).join(" ");el("polyline",{points:s,fill:"none",stroke:color,"stroke-width":3,"stroke-dasharray":dashed?"7 5":"", "stroke-linecap":"round","stroke-linejoin":"round"},svg);v.forEach((y,i)=>el("circle",{cx:X(D.times[i]),cy:Y(Math.log10(Math.max(y,1e-11))),r:3.4,fill:color},svg))}
 line(D.analytic_gap_bound.map(x=>x*x),"#8da4ff",true);line(D.gradient_complement_norm.map(x=>x*x),"#5dd5bd");line(D.lindblad_complement_population,"#d3a3ff");line(D.unitary_complement_population,"#ffbd68");
 D.times.forEach((t,i)=>{const tr=document.createElement("tr");[t,D.gradient_complement_norm[i]**2,D.lindblad_complement_population[i],D.unitary_complement_population[i]].forEach((n,j)=>{const td=document.createElement("td");td.textContent=j===0?n.toString():n.toExponential(3);tr.appendChild(td)});document.getElementById("rows").appendChild(tr)});
-</script></body></html>
+</script><!-- KKP-GRID-DOOR-1 · doorway to Grid, the live U.S. power-grid monitor (Identity/tools/grid/install_door.py) -->
+<a id="kkp-grid-door" href="https://nicholaskouns-create.github.io/Identity/grid/" title="Grid · live U.S. power-grid monitor with a certified spectral auditor" aria-label="Open Grid, the live U.S. power-grid monitor" style="position:fixed;left:12px;bottom:12px;z-index:2147483000;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:rgba(9,11,13,.86);border:1px solid rgba(110,223,212,.38);color:#6edfd4;font:600 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.16em;text-decoration:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)">GRID</a>
+<script src="https://nicholaskouns-create.github.io/Identity/grid/door.js" defer></script>
+<!-- /KKP-GRID-DOOR-1 -->
+</body></html>
