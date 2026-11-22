@@ -22,7 +22,7 @@ jobs:
           name: einstein-python-results
           path: docs/fun-with-einstein/results.json
   coq-proof:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - run: |
@@ -40,11 +40,11 @@ jobs:
           cp docs/fun-with-einstein/KKPSpectralBridge.lean lean-work/
           printf '%s\n' leanprover/lean4:v4.35.0 > lean-work/lean-toolchain
           printf '%s\n' 'name = "einstein"' 'version = "0.1.0"' '[[require]]' 'name = "mathlib"' 'scope = "leanprover-community"' 'rev = "v4.35.0"' > lean-work/lakefile.toml
-      - uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-      - name: Compile theorem source
+      - name: Install Lean and compile theorem source
         run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.35.0
+          export PATH="$HOME/.elan/bin:$PATH"
           cd lean-work
           lake update
           lake exe cache get
