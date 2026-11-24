@@ -1,0 +1,23 @@
+{
+  "id": "SPEC001-CORR-TIMING-001",
+  "revision": "A4",
+  "evidence": "H0",
+  "status": "unresolved physical characterization",
+  "original": {
+    "throughput_ops_s": 800000,
+    "latency_ns": 1.25,
+    "digital_clock_hz": 3000000000
+  },
+  "derived": {
+    "interval_ns": 1250,
+    "ratio": 1000,
+    "interval_cycles": 3750,
+    "latency_cycles": 3.75
+  },
+  "proposed_scope": {
+    "throughput": "transaction rate",
+    "latency": "local datapath delay"
+  },
+  "measured": false,
+  "math_impact": "none on spectral theorem; legacy projector expression corrected independently"
+}
