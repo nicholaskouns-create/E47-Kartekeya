@@ -69,7 +69,7 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
   <p>Selector, kernel, projector. Three spin-2 qudits. K=(C−6I)(C−30I) kills exactly two sectors (dims 25 and 22). That is the origin of 47.</p>
   <table id="ledger"></table>
   <p>Σ dim = 125. ker K = 47.</p>
-  <p><strong>Exact projector</strong><br>P₄₇(C) = C(C−2I)(C−12I)(C−20I)(C−31I)(C−42I) / 1,814,400</p>
+  <p><strong>Exact projector</strong><br>P₄₇(C) = L₆(C) + L₃₀(C), where Lₐ(C) = ∏_{b∈{0,2,6,12,20,30,42}, b≠a}(C−bI)/(a−b)</p>
   <p>P²=P, P†=P, KP=0, Tr P=47. Contiguous CG addresses: J=2 → 10–34, J=5 → 90–111.</p>
 </section>
 
@@ -134,7 +134,7 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
       <tr><td>ε*=1/99144, ρ*=15/17</td><td>Minimax Richardson optimum</td><td>E0</td></tr>
       <tr><td>7-qubit minimum embedding</td><td>2⁶ < 125 ≤ 2⁷</td><td>E0</td></tr>
       <tr><td>Discrete contraction Γⁿ → P₄₇</td><td>Live engine in this lab</td><td>E1</td></tr>
-      <tr><td>0.35 mm² / 0.55 mW / 1.25 ns</td><td>SPEC 001 target, unverified silicon</td><td>H0</td></tr>
+      <tr><td>0.35 mm² / 0.55 mW / 1.25 ns</td><td>SPEC 001 targets, unverified silicon; 1.25 ns proposed local delay, 800k ops/s implies 1.25 µs interval. <a href='../kartekeya-spec001/#timing-correction'>Timing correction</a></td><td>H0</td></tr>
       <tr><td>10 GHz phonon lock</td><td>Physical hypothesis</td><td>S0</td></tr>
     </tbody>
   </table>
