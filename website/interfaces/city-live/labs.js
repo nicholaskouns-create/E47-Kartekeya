@@ -8,6 +8,7 @@ const LABS=[
 ["MANTA","State-coupled geometry surface","⌁","../manta/","same"],
 ["DENSITY","Observer-limited measurement","⌗","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/density/","external"],
 ["DENSITY TOMOGRAPHY","Query · reconstruct · withhold · compare","⌗","../density-sensitivity/","same"],
+["SEE","Local-first evidence mirror · optional on-device AI","◉","https://nicholaskouns-create.github.io/Identity/see/","external"],
 ["MNEMOSYNE","Sealed predictions and recall","◉","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/mnemosyne/","external"],
 ["HORIZON","Prospective next-state forecast","⟲","https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/horizon/","external"],
 ["SYNTAX JACOB","ATLAS 3I copilot · live JPL data","☄","../syntax-jacob/","same"],
