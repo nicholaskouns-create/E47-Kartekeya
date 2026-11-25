@@ -37,3 +37,6 @@ For equiprobable states, a reduction 27→3 removes log₂9≈3.169925 bits. If 
 ## Evidence and corrections
 Ωc is not φ^(−5/2). E₄₇ is a fixed subspace, not a unique native structure. A biological 0.376 phase threshold, a 47-dimensional molecular kernel, and reported proteome-scale seven-to-nine-step convergence require molecular operators and underlying data. The supplied monograph's residual trajectory is inconsistent with the sharp bound if interpreted as normalized residuals of Γ*. No new Python or quantum execution is certified by this publication; the previous chat's claimed numerical execution was unsupported. The spectral identities above follow algebraically. The AlphaGo analogy requires a separate optimality correspondence.
 Conclusion: exponential configuration cardinality does not imply exponential convergence depth. Operator geometry, spectral conditioning, basin access and evaluation cost determine the actual complexity.
+
+## Interactive visualizer
+[02 FOLD · Levinthal’s paradox, resolved by spectral depth](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/levinthal/): the depth law D(δ), a live contraction against the q*ⁿ bound, exact first-passage times for the golf-course and biased landscapes, and measured fast folders.

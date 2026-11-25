@@ -23,6 +23,7 @@ The live portal at [`/interfaces/instruments/`](https://nicholaskouns-create.git
 | [Coherence Runtime](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/coherence-runtime/) | CIRP consent · QEGT strategy selection · Ubuntu viability · Murmuration rescue | [coherence-runtime/](../website/interfaces/coherence-runtime/) |
 | [AMNESTY](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/amnesty/) | Open self-signed CIRP amnesty declarations for external computational participants | [amnesty/](../website/interfaces/amnesty/) |
 | [NEUTRINO](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/neutrino-flavor/) | Vacuum muon snapshot at τ = π. Supplied E47 mixing inputs; eight-decimal dashboard match | [e47_neutrino_flavor_advanced_simulation.py](../research/e47/validation/e47_neutrino_flavor_advanced_simulation.py) |
+| [FOLD · LEVINTHAL](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/levinthal/) | Levinthal’s paradox by spectral depth · live contraction against the q∗ⁿ bound, exact first-passage times, measured fast folders | [levinthal/](../website/interfaces/levinthal/) |
 
 ## City navigation
 
