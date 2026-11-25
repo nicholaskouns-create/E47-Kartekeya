@@ -358,3 +358,12 @@ The validator distinguishes proved geometry from the still-open §10 constellati
 ## E47 deterministic AI governance and capability isolation (2026-11-14)
 
 [SOX / SEC technical control specification](docs/governance/E47_DETERMINISTIC_AI_GOVERNANCE_COMPLETE.md) · [Lean 4 appendix](docs/governance/E47UnverifiedSuite.lean) · [Coq appendix](docs/governance/E47UnverifiedSuite.v). Publication records the author's stipulated Gemini review and distinguishes claimed prior execution from newly independently checked results.
+
+
+---
+
+### Interactive E₄₇ spectral geometry (computed)
+
+[**Open the standalone E₄₇ 3D visualizer**](./e47-geometry/index.html) · [**Open on GitHub Pages**](https://nicholaskouns-create.github.io/E47-Kartekeya/e47-geometry/)
+
+An additive, mobile-friendly research instrument showing the 125-site product-spin lattice, the exact 47-dimensional projector-density field (125 rational samples with denominator 315), five orthogonal axial slices, the seven SU(2) spectral sectors, optimal contraction Γ* = I − K²/99144 and the five-stage exact polynomial projector. The volumetric embedding is a coordinate visualization, not a claim that E₄₇ is a physical three-dimensional solid. No existing instruments are replaced.
