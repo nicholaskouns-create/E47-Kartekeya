@@ -367,3 +367,12 @@ The validator distinguishes proved geometry from the still-open §10 constellati
 [**Open the standalone E₄₇ 3D visualizer**](./e47-geometry/index.html) · [**Open on GitHub Pages**](https://nicholaskouns-create.github.io/E47-Kartekeya/e47-geometry/)
 
 An additive, mobile-friendly research instrument showing the 125-site product-spin lattice, the exact 47-dimensional projector-density field (125 rational samples with denominator 315), five orthogonal axial slices, the seven SU(2) spectral sectors, optimal contraction Γ* = I − K²/99144 and the five-stage exact polynomial projector. The volumetric embedding is a coordinate visualization, not a claim that E₄₇ is a physical three-dimensional solid. No existing instruments are replaced.
+
+
+<!-- ΩBA-PROOF-LINK-20261124 -->
+### ΩBA · First-Principles Triadic Contraction and E₄₇ Continuity
+
+[**Open the light-mode interactive ΩBA proof plate**](https://nicholaskouns-create.github.io/omega-ba/) · [Local Unicode derivation](omega-ba/README.md) · [Executable NumPy validation](omega-ba/omega_ba_validation.py) · [Local interactive page](omega-ba/index.html).
+
+A mathematical three-stage alignment → binding → commitment map (𝒪=A∘B∘Ω), Banach strict-contraction proof with explicit assumptions, and a distinct E₄₇ spectral complement contraction (125→47, rate 15/17). Python tests and evidence boundaries are supplied; acoustic, biological and retrocausal effects are not asserted.
+<!-- /ΩBA-PROOF-LINK-20261124 -->
