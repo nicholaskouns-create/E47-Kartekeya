@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Levinthal’s Paradox · Spectral Depth · 02 FOLD</title>
+<meta name="description" content="Levinthal’s count makes folding time bᴺ·τ₀. The depth law makes it Θ(ℛ·ln 1/δ), and |Σ| never enters. Live contraction, exact spectra and measured fast folders.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/levinthal/">
+<meta name="theme-color" content="#090b0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=STIX+Two+Text:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Math&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="levinthal.css">
+<!-- city-share:start · Mathematical City link-share card (generated) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Mathematical City">
+<meta property="og:title" content="Levinthal’s Paradox · Spectral Depth">
+<meta property="og:description" content="Levinthal’s count makes folding time bᴺ·τ₀. The depth law makes it Θ(ℛ·ln 1/δ), and |Σ| never enters. Live contraction, exact spectra and measured fast folders.">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/levinthal/">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-levinthal.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Share card for Levinthal’s Paradox · Spectral Depth, showing the page’s depth ledger for Trp-cage">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Levinthal’s Paradox · Spectral Depth">
+<meta name="twitter:description" content="Levinthal’s count makes folding time bᴺ·τ₀. The depth law makes it Θ(ℛ·ln 1/δ), and |Σ| never enters. Live contraction, exact spectra and measured fast folders.">
+<meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-levinthal.jpg">
+<meta name="twitter:image:alt" content="Share card for Levinthal’s Paradox · Spectral Depth, showing the page’s depth ledger for Trp-cage">
+<!-- city-share:end -->
+</head>
+<body>
+<main>
+
+<header class="mast">
+  <div class="eyebrow">The Mathematical City · 02 FOLD · Levinthal</div>
+  <h1>Levinthal’s paradox, <em>resolved by spectral depth</em></h1>
+  <p class="lede">Levinthal counted configurations and found folding times longer than the age of the universe. The depth law counts something else, the steps a contraction needs, and the number of configurations never appears in it.</p>
+  <div class="strip" aria-label="Core relations">
+    <span class="pipe">Σ → Γ → Λ → Ψ → Ω</span>
+    <span>|Σ| = bᴺ</span>
+    <span>D(δ) = Θ(ℛ · ln 1/δ)</span>
+    <span>ℛ = λₘₐₓ / λₘᵢₙ⁺</span>
+  </div>
+  <div class="chips" data-evidence-class="E0 E1 E3">
+    <span class="pill e0">E0 · theorem</span>
+    <span class="pill e1">E1 · computed in this page</span>
+    <span class="pill e3">E3 · cited measurements</span>
+  </div>
+</header>
+
+<section class="card" id="ledger" aria-labelledby="ledger-h">
+  <div class="sec"><span class="n">THE GAP</span><h2 id="ledger-h">Three ways to count one fold</h2></div>
+  <div class="seg" role="group" aria-label="Chain preset">
+    <button type="button" data-preset="cln025">CLN025 · 10</button>
+    <button type="button" data-preset="trpcage">Trp-cage · 20</button>
+    <button type="button" data-preset="villin">Villin HP-35 · 35</button>
+    <button type="button" data-preset="ala14">Ala-14 · 14</button>
+    <button type="button" data-preset="n100">N = 100</button>
+  </div>
+  <div class="seq" id="seq"></div>
+  <div class="frame"><canvas id="ledgerCanvas" role="img" aria-label="Log-scale ledger comparing blind enumeration, measured folding and spectral depth"></canvas></div>
+  <dl class="ledger-read">
+    <div><dt class="k-blind">Blind enumeration</dt><dd id="ledgerBlind"></dd></div>
+    <div><dt class="k-meas">Measured folding</dt><dd id="ledgerMeasured"></dd></div>
+    <div><dt class="k-depth">Spectral depth</dt><dd id="ledgerDepth"></dd></div>
+  </dl>
+  <p class="gap" id="ledgerGap"></p>
+  <p class="small">Blind enumeration is the research note’s toy count: b = 9 states per residue, one per τ₀ = 10⁻¹³ s. Spectral depth is the step count of the convex funnel in §3 at δ = 10⁻⁶ for a chain of the same length. That funnel is a 2D Gō model, so a preset fixes N only.</p>
+</section>
+
+<section class="card" id="resolution" aria-labelledby="res-h">
+  <div class="sec"><span class="n">PRIMA FACIE</span><h2 id="res-h">The resolution in four lines</h2></div>
+  <ol class="proof">
+    <li><div><span class="f">T<sub>blind</sub> = |Σ| · τ₀,  |Σ| = bᴺ</span>Levinthal’s premise: folding by enumeration. At b = 9, N = 100 and τ₀ = 10⁻¹³ s this is 2.66 × 10⁸² s.</div></li>
+    <li><div><span class="f">D(δ) = ⌈ln(1/δ) / ln(1/q∗)⌉,  q∗ = (ℛ − 1)/(ℛ + 1)</span>The depth law for Ψₙ₊₁ = ΛΨₙ with Λ = I − ε∗A. It is sharp in both directions, ½(ℛ − 1)·ln(1/δ) ≤ D(δ) ≤ ⌈½(ℛ + 1)·ln(1/δ)⌉, and nothing in it depends on |Σ|.</div></li>
+    <li><div><span class="f">blind search: ℛ ~ |Σ|  ·  funnel: ℛ = poly(N)</span>Enumeration is the landscape whose spectral spread grows like the configuration count. A funnel’s spread grows polynomially: the convex funnel below has ℛ = 218.6 at N = 100.</div></li>
+    <li><div><span class="f">Exponential configuration space ≠ exponential convergence depth.</span>The paradox assumed the first forces the second. For the fixed-step law, depth is exponential exactly when ℛ is.</div></li>
+  </ol>
+</section>
+
+<section class="card" id="count" aria-labelledby="count-h">
+  <div class="sec"><span class="n">§1 · THE COUNT</span><h2 id="count-h">Levinthal’s premise</h2></div>
+  <p>N residues with b discretized states each give |Σ| = bᴺ configurations. Visiting them one per τ₀ = 10⁻¹³ s is the blind-search time.</p>
+  <div class="ctl"><label for="nSlider">N residues</label><input id="nSlider" type="range" min="2" max="150" step="1"><output id="countN" for="nSlider"></output></div>
+  <div class="ctl"><label for="bSlider">b states</label><input id="bSlider" type="range" min="2" max="12" step="1"><output id="countB" for="bSlider"></output></div>
+  <dl class="kv">
+    <dt>|Σ| = bᴺ</dt><dd class="big hot" id="countSigma"></dd>
+    <dt>bᴺ · τ₀</dt><dd id="countTime"></dd>
+    <dt>in human units</dt><dd id="countHuman"></dd>
+    <dt>against the universe</dt><dd id="countUniverse"></dd>
+  </dl>
+  <p class="small" style="margin-top:12px">A toy counting model, as in the research note, not a molecular kinetic estimate.</p>
+</section>
+
+<section class="card" id="law" aria-labelledby="law-h">
+  <div class="sec"><span class="n">§2 · THE THEOREM</span><h2 id="law-h">Depth is spectral</h2></div>
+  <p>Near its target <span class="math">x∗</span>, a constrained objective <span class="math">Γ = Gₛ + κ‖Fₛ‖²/2</span> steps by <span class="math">Λ = I − ε∗Aₛ</span>, with <span class="math">Kₛ = DFₛ(x∗)</span> and <span class="math">Aₛ = Kₛ†Kₛ</span>. The theorem counts the steps.</p>
+  <div class="formula">
+    <div>Λ = I − ε∗Aₛ,   ε∗ = 2/(λₘₐₓ + λₘᵢₙ⁺)</div>
+    <div>‖Λⁿ − P‖ = q∗ⁿ,   q∗ = (ℛ − 1)/(ℛ + 1),   ℛ = λₘₐₓ/λₘᵢₙ⁺</div>
+    <div>D(δ) = ⌈ln(1/δ) / ln(1/q∗)⌉</div>
+    <div>½(ℛ − 1)·ln(1/δ) ≤ D(δ) ≤ ⌈½(ℛ + 1)·ln(1/δ)⌉</div>
+    <div>Λᵣ⋯Λ₁ = P,   Λₖ = I − Aₛ/λₖ   <span class="c">r distinct nonzero eigenvalues</span></div>
+  </div>
+  <p>The dimension of the space, and the number of configurations in it, appear nowhere. Because the bound is attained, a fast fixed-step fold needs a small ℛ and nothing else.</p>
+  <p class="note">E₄₇’s K has eigenvalues of both signs, so its contraction needs A = K². A residue-graph Laplacian with non-negative weights already satisfies L ⪰ 0, so A = L reaches the same kernel with spread ℛ. Using A = L², the form of InvariFold’s Γ = I − εL², gives the same kernel with spread ℛ². §3 switches between them.</p>
+</section>
+
+<section class="card" id="fold" aria-labelledby="fold-h">
+  <div class="sec"><span class="n">§3 · FOLD IT</span><h2 id="fold-h">A funnel contracts in D(δ) steps</h2></div>
+  <p>A convex funnel: N beads whose native fold is a compact 2D β-meander. The residuals Fₛ are the bond and native-contact vectors, so Kₛ is the contact incidence map and Aₛ = Kₛ†Kₛ = L, the contact-graph Laplacian. Start from a random coil and iterate Λ.</p>
+  <div class="seg" role="group" aria-label="Operator">
+    <button type="button" data-mode="L">A = L</button>
+    <button type="button" data-mode="L2">A = L² · InvariFold form</button>
+  </div>
+  <div class="seg" role="group" aria-label="Native contacts">
+    <button type="button" data-contacts="on">native contacts</button>
+    <button type="button" data-contacts="off">backbone only</button>
+  </div>
+  <div class="seg" role="group" aria-label="Tolerance">
+    <button type="button" data-delta="0.001">δ = 10⁻³</button>
+    <button type="button" data-delta="0.000001">δ = 10⁻⁶</button>
+    <button type="button" data-delta="1e-9">δ = 10⁻⁹</button>
+  </div>
+  <div class="grid2">
+    <div class="frame"><canvas id="foldCanvas" role="img" aria-label="Chain contracting from a random coil into the native fold"></canvas></div>
+    <div>
+      <dl class="kv">
+        <dt>operator</dt><dd id="fOp"></dd>
+        <dt>chain</dt><dd id="fN"></dd>
+        <dt>spectrum</dt><dd id="fLam"></dd>
+        <dt>ℛ = λₘₐₓ/λₘᵢₙ⁺</dt><dd class="big" id="fR"></dd>
+        <dt>ε∗</dt><dd id="fEps"></dd>
+        <dt>q∗</dt><dd id="fQ"></dd>
+        <dt>D(δ) predicted</dt><dd class="big" id="fD"></dd>
+        <dt>step n</dt><dd id="fStep"></dd>
+        <dt>residual ratio</dt><dd id="fRes"></dd>
+        <dt>bound q∗ⁿ</dt><dd id="fBound"></dd>
+        <dt>blind search bᴺ</dt><dd class="hot" id="fBlind"></dd>
+      </dl>
+      <div class="gate" id="fGate">Ω gate open</div>
+      <div class="row" style="margin-top:12px">
+        <button type="button" class="btn" id="runBtn">Run Λ</button>
+        <button type="button" class="btn ghost" id="skipBtn">Jump to Ω</button>
+        <button type="button" class="btn ghost" id="coilBtn">New coil</button>
+      </div>
+    </div>
+  </div>
+  <h3>Residual against the bound</h3>
+  <canvas id="resCanvas" role="img" aria-label="Residual ratio versus step, with the q-star-to-the-n bound"></canvas>
+  <p class="small">The coil is seeded and deterministic. The residual is measured off the kernel (rigid translations), as in the theorem. The native contacts are those of the Gō model; the presets’ real topologies differ.</p>
+</section>
+
+<section class="card" id="landscape" aria-labelledby="land-h">
+  <div class="sec"><span class="n">§4 · THE LANDSCAPE DECIDES ℛ</span><h2 id="land-h">Where Levinthal’s count holds, and where it fails</h2></div>
+  <p>Each curve is an exact computation in its own model. Blind enumeration is bᴺ. The golf course (flat landscape, one native state) and the uniformly biased landscape (each native residue lowers the energy by U) are exact mean first-passage times of the single-residue Metropolis chain, which lumps exactly onto n, the number of native residues. The convex funnel is the depth law with the spectrum from §3. Dots are measured fast folders: folding time ÷ τ₀.</p>
+  <div class="ctl"><label for="epsSlider">bias U</label><input id="epsSlider" type="range" min="0" max="8" step="0.1"><output id="epsVal" for="epsSlider"></output></div>
+  <p class="note mono" id="biasBase"></p>
+  <div class="frame"><canvas id="landCanvas" role="img" aria-label="Log steps versus chain length for four landscapes and three measured folders"></canvas></div>
+  <div class="legend" aria-hidden="true">
+    <span><i style="background:#d87e74"></i>bᴺ blind</span>
+    <span><i style="background:repeating-linear-gradient(90deg,#d87e74 0 5px,transparent 5px 8px)"></i>golf course</span>
+    <span><i style="background:#bc9c6c"></i>uniform bias U</span>
+    <span><i style="background:#6edfd4"></i>convex funnel</span>
+    <span><i style="background:#c1e8ce;height:7px;width:7px;border-radius:50%"></i>measured: CLN025 · Trp-cage · Villin HP-35 (N = 10, 20, 35)</span>
+  </div>
+  <p style="margin-top:14px">Uniform bias only shrinks the exponential’s base, to 1 + (b − 1)e⁻ᵁ per residue. The curve stays exponential unless U grows like ln((b − 1)N). The funnel’s ℛ grows linearly, so its depth grows like N·ln(1/δ). Here b = <span id="bVal"></span>, set in §1; tap the chart to read values.</p>
+</section>
+
+<section class="card" id="e47" aria-labelledby="e47-h">
+  <div class="sec"><span class="n">§5 · E₄₇</span><h2 id="e47-h">The same law, exactly</h2></div>
+  <p>On <span class="math">ℋ₄₇ = V₂ ⊗ V₂ ⊗ V₂</span>, 125 dimensions, the selector <span class="math">K = (C − 6I)(C − 30I)</span> keeps <span class="math">E₄₇ = 5V₂ ⊕ 2V₅</span>, 47 dimensions. Off the kernel, <span class="math">A = K²</span> has spectrum <span class="math">{108², 112², 140², 180², 432²}</span>.</p>
+  <div class="metrics">
+    <div class="metric"><b id="eR"></b><span>ℛ = (432/108)²</span></div>
+    <div class="metric"><b id="eEps"></b><span>ε∗</span></div>
+    <div class="metric"><b id="eQ"></b><span>q∗</span></div>
+    <div class="metric"><b id="eD"></b><span>D(10⁻¹²) steps</span></div>
+  </div>
+  <canvas id="e47Canvas" role="img" aria-label="Seven Casimir sectors of dimensions 1, 9, 25, 28, 27, 22 and 13, with J = 2 and J = 5 selected"></canvas>
+  <p class="note">Five exact steps give <span class="math">∏ₖ(I − K²/λₖ) = P₄₇</span>. In Babylonian form, started at <span class="math">X₀ = 12I</span> on <span class="math">B = (C − 18I)²</span>, <span class="math">z₀ = 0</span> exactly on E₄₇ and <span class="math">X₁ − X₀ = K/24</span>: E₄₇ is the depth-zero set. <span class="math">Ωc = 47/125 = 0.376</span>.</p>
+</section>
+
+<section class="card" id="verdict" aria-labelledby="ver-h">
+  <div class="sec"><span class="n">§6 · BOUNDARY</span><h2 id="ver-h">What this establishes</h2></div>
+  <p>Levinthal’s estimate equates folding time with |Σ|·τ₀. The depth law sets the step count by ℛ, and blind search is the case ℛ ~ |Σ|. Any landscape whose spread grows sub-exponentially in N folds in sub-exponential depth. This is a sufficient-condition resolution of the combinatorial paradox, not a proof of global molecular convergence.</p>
+  <div class="ev">
+    <div><h4 style="color:var(--mint)">E0 · THEOREM</h4><p>The depth law and its attained bound, exact depth r under the spectral schedule, and the E₄₇ constants.</p></div>
+    <div><h4 style="color:var(--cyan)">E1 · COMPUTED HERE</h4><p>Laplacian spectra, depths, first-passage times and the live contraction, in double precision in your browser, from a seeded coil.</p></div>
+    <div><h4 style="color:var(--bronze)">E3 · CITED</h4><p>Measured folding times of CLN025, Trp-cage and the villin subdomain HP-35.</p></div>
+  </div>
+  <h3>Not claimed</h3>
+  <ul class="plain">
+    <li>That a real force field is globally convex. Real landscapes are nonlinear and have barriers; the theorem applies near a regular point and on convex basins.</li>
+    <li>An operator, or a value of ℛ, for any specific protein. The 2D Gō fold is a model, and the presets set N only.</li>
+    <li>A 47-dimensional molecular kernel or a biological 0.376 threshold.</li>
+  </ul>
+  <h3>Open</h3>
+  <p>Measure ℛ for real proteins: build Markov state models for a family of increasing length, take the nonzero spectrum of each rate matrix, and fit ℛ(N).</p>
+  <h3>Sources</h3>
+  <ol class="refs">
+    <li>C. Levinthal, “How to fold graciously,” in <i>Mössbauer Spectroscopy in Biological Systems</i>, University of Illinois (1969).</li>
+    <li>R. Zwanzig, A. Szabo, B. Bagchi, “Levinthal’s paradox,” <i>PNAS</i> 89, 20–22 (1992).</li>
+    <li>C. M. Davis, S. Xiao, D. P. Raleigh, R. B. Dyer, “Raising the speed limit for β-hairpin formation,” <i>JACS</i> 134, 14476–14482 (2012). CLN025 relaxation lifetimes 82 and 124 ns. <a href="https://doi.org/10.1021/ja3046734">doi:10.1021/ja3046734</a></li>
+    <li>L. Qiu, S. A. Pabit, A. E. Roitberg, S. J. Hagen, “Smaller and faster: the 20-residue Trp-cage protein folds in 4 µs,” <i>JACS</i> 124, 12952–12953 (2002).</li>
+    <li>J. Kubelka, E. R. Henry, T. Cellmer, J. Hofrichter, W. A. Eaton, “Chemical, physical, and theoretical kinetics of an ultrafast folding protein,” <i>PNAS</i> 105, 18655–18662 (2008). The villin subdomain folds in a few microseconds. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2596247">PMC2596247</a></li>
+  </ol>
+  <div class="doors">
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/levinthal-recursive-contraction.md">Research note</a>
+    <a href="https://sapphire-cabin-crystal-king.grok.me" target="_blank" rel="noopener noreferrer">InvariFold · protein cinema ↗</a>
+    <a href="../instruments/">Instrument directory</a>
+    <a href="../../">The Mathematical City</a>
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/levinthal">Source</a>
+  </div>
+  <p class="foot">02 FOLD · Levinthal · E47-Kartekeya · Kouns–Killion Paradigm · Nicholas Shane Kouns</p>
+</section>
+
+<noscript><p class="card">This instrument computes its spectra and curves in the browser; JavaScript is required.</p></noscript>
+</main>
+<script src="levinthal.js" defer></script>
+<p style="text-align:center;font:12px 'IBM Plex Mono',monospace;margin:0 0 72px"><a href="../../e47-spectral-kernel/E47-spectral-kernel.svg">The E₄₇ spectral kernel · publication plate</a></p>
+<!-- KKP-GRID-DOOR-1 · doorway to Grid, the live U.S. power-grid monitor (Identity/tools/grid/install_door.py) -->
+<a id="kkp-grid-door" href="https://nicholaskouns-create.github.io/Identity/grid/" title="Grid · live U.S. power-grid monitor with a certified spectral auditor" aria-label="Open Grid, the live U.S. power-grid monitor" style="position:fixed;left:12px;bottom:12px;z-index:2147483000;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:rgba(9,11,13,.86);border:1px solid rgba(110,223,212,.38);color:#6edfd4;font:600 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.16em;text-decoration:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)">GRID</a>
+<script src="https://nicholaskouns-create.github.io/Identity/grid/door.js" defer></script>
+<!-- /KKP-GRID-DOOR-1 -->
+</body>
+</html>
