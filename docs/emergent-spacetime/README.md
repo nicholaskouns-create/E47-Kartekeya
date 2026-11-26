@@ -94,3 +94,7 @@ The occupancy map in integers is `(a,b) ↦ (289a, 289a + 225(b−a))`, started 
   involved and no quantum advantage is claimed.
 
 Original work of Nicholas Shane Kouns.
+
+## Dirac–Kouns Clifford–Casimir extension (26 November 2026)
+
+[**Full first-principles Unicode theorem, with Python and nine-qubit statevector evidence**](Dirac-Kouns-Clifford-Casimir-Bridge.md). The additive four-component Clifford lift establishes an internal rank-188 protected projector, exact operator-square identities, and inherited contraction. This is complementary to, and distinct from, the host half-occupancy induced-metric theorem.
