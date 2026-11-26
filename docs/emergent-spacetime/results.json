@@ -1,0 +1,473 @@
+{
+  "a_spectrum": [
+    11664,
+    12544,
+    19600,
+    32400,
+    186624
+  ],
+  "checks": [
+    {
+      "detail": "dim H = 125",
+      "name": "carrier dimension is 125",
+      "pass": true
+    },
+    {
+      "detail": "max |[Ja,Jb] - i eps Jc| = 1.78e-15",
+      "name": "su(2) commutators close on the carrier",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "Casimir is Hermitian",
+      "pass": true
+    },
+    {
+      "detail": "max deviation 2.84e-14",
+      "name": "Casimir spectrum is integral",
+      "pass": true
+    },
+    {
+      "detail": "[0, 2, 6, 12, 20, 30, 42]",
+      "name": "Casimir spectrum is {0,2,6,12,20,30,42}",
+      "pass": true
+    },
+    {
+      "detail": "[1, 9, 25, 28, 27, 22, 13]",
+      "name": "state counts are 1,9,25,28,27,22,13",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "state counts sum to 125",
+      "pass": true
+    },
+    {
+      "detail": "mu = 18",
+      "name": "mean of the Casimir spectrum is exactly 18",
+      "pass": true
+    },
+    {
+      "detail": "sigma^2 = 144",
+      "name": "variance of the Casimir spectrum is exactly 144",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "sigma is exactly 12 (144 is a perfect square)",
+      "pass": true
+    },
+    {
+      "detail": "(6, 30)",
+      "name": "the selector roots are mu -+ sigma = 6 and 30",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "K annihilates exactly the j=2 and j=5 sectors",
+      "pass": true
+    },
+    {
+      "detail": "25 + 22 = 47",
+      "name": "kernel dimension is 47 = 25 + 22",
+      "pass": true
+    },
+    {
+      "detail": "Omega_c = 47/125 = 0.376",
+      "name": "coherence fraction is 47/125",
+      "pass": true
+    },
+    {
+      "detail": "rank K = 78",
+      "name": "numerical rank of K is 78 = 125 - 47",
+      "pass": true
+    },
+    {
+      "detail": "max |P^2 - P| = 5.00e-16",
+      "name": "P47 is idempotent",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "P47 is Hermitian",
+      "pass": true
+    },
+    {
+      "detail": "tr P = 47.000000000000",
+      "name": "trace P47 = 47",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "P47 commutes with the Casimir",
+      "pass": true
+    },
+    {
+      "detail": "max |K P| = 4.15e-13",
+      "name": "K P47 = 0 (the projector lands in the kernel)",
+      "pass": true
+    },
+    {
+      "detail": "max |eta^2 - I| = 1.93e-15",
+      "name": "eta_E squares to the identity",
+      "pass": true
+    },
+    {
+      "detail": "(47, 78)",
+      "name": "inertia of eta_E is (47, 78)",
+      "pass": true
+    },
+    {
+      "detail": "[11664, 12544, 19600, 32400, 186624]",
+      "name": "nonzero spectrum of A = K^2 is {11664,12544,19600,32400,186624}",
+      "pass": true
+    },
+    {
+      "detail": "186624/11664 = 16",
+      "name": "condition number of A off the kernel is exactly 16",
+      "pass": true
+    },
+    {
+      "detail": "2/(11664+186624) = 1/99144",
+      "name": "the minimax step is eps* = 1/99144",
+      "pass": true
+    },
+    {
+      "detail": "1 - 11664/99144 = 15/17",
+      "name": "the contraction rate is rho* = 15/17",
+      "pass": true
+    },
+    {
+      "detail": "|-15/17| = 15/17",
+      "name": "rho* equioscillates: |1 - eps* a_max| = rho*",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "rho* is attained twice (at C=12 and C=42), the minimax signature",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "every non-kernel sector strictly contracts",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "both kernel sectors are exactly fixed",
+      "pass": true
+    },
+    {
+      "detail": "||Lambda|| = 1.000000000000",
+      "name": "Lambda has operator norm 1 (the kernel is fixed)",
+      "pass": true
+    },
+    {
+      "detail": "||Lambda(I-P)|| = 0.882352941176 vs 15/17 = 0.882352941176",
+      "name": "Lambda restricted off the kernel has norm 15/17",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "log-odds is exactly geometric: u_n = u_0 r^-n",
+      "pass": true
+    },
+    {
+      "detail": "max |p_n(exact) - p_n(operator)| = 1.55e-15",
+      "name": "the rational flow is saturated exactly in sector C = 12",
+      "pass": true
+    },
+    {
+      "detail": "max |p_n(exact) - p_n(operator)| = 3.66e-15",
+      "name": "the rational flow is saturated exactly in sector C = 42",
+      "pass": true
+    },
+    {
+      "detail": "p_0 = 0.376000000000000",
+      "name": "a generic state starts at the same occupancy 47/125",
+      "pass": true
+    },
+    {
+      "detail": "min slack = 1.11e-16",
+      "name": "a generic state never contracts slower than the envelope",
+      "pass": true
+    },
+    {
+      "detail": "crossing step = 2",
+      "name": "a generic state crosses half occupancy at step 3 or sooner",
+      "pass": true
+    },
+    {
+      "detail": "2 ln(17/15) = 0.250326285908012, ln(1/r) = 0.250326285908012",
+      "name": "kappa = ln(17/15) reproduces the exact per-step log-odds slope",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.1",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.3",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.49",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.5",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.51",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.7",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "g_00 = p-double-dot/4 at p = 0.9",
+      "pass": true
+    },
+    {
+      "detail": "(4, 0, 0)",
+      "name": "Euclidean below half occupancy: (4,0,0)",
+      "pass": true
+    },
+    {
+      "detail": "(3, 0, 1)",
+      "name": "degenerate exactly at half occupancy: (3,0,1)",
+      "pass": true
+    },
+    {
+      "detail": "(3, 1, 0)",
+      "name": "Lorentzian above half occupancy: (3,1,0)",
+      "pass": true
+    },
+    {
+      "detail": "(3, 0, 1)",
+      "name": "degenerate again at full occupancy: (3,0,1)",
+      "pass": true
+    },
+    {
+      "detail": "0 exceptions",
+      "name": "the signature is constant on each side of p = 1/2 (800 samples)",
+      "pass": true
+    },
+    {
+      "detail": "5 copies",
+      "name": "the j=2 sector has exactly five highest-weight vectors",
+      "pass": true
+    },
+    {
+      "detail": "max |J_+ v| = 1.43e-14",
+      "name": "highest-weight vectors are annihilated by J_+",
+      "pass": true
+    },
+    {
+      "detail": "||u|| = 1.000000000000000",
+      "name": "u is normalized",
+      "pass": true
+    },
+    {
+      "detail": "max |K u| = 1.54e-12",
+      "name": "u lies inside the kernel",
+      "pass": true
+    },
+    {
+      "detail": "max |G_kk - 2| = 1.78e-15",
+      "name": "spatial Gram matrix is 2 x identity (diagonal)",
+      "pass": true
+    },
+    {
+      "detail": "max |G_ab| = 7.62e-16",
+      "name": "spatial Gram matrix is 2 x identity (off-diagonal)",
+      "pass": true
+    },
+    {
+      "detail": "(1/5) tr(Jx^2) = 2.000000000000",
+      "name": "this is the trace identity (1/5) tr_V2(J_a J_b) = 2 delta_ab",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "all three spatial legs live in the C = 6 sector",
+      "pass": true
+    },
+    {
+      "detail": "max |<u, J_a u>| = 8.25e-16",
+      "name": "g_0k vanishes: <u, J_a u> = 0 for all three legs",
+      "pass": true
+    },
+    {
+      "detail": "3925487/7874237",
+      "name": "p_2 = 3925487/7874237",
+      "pass": true
+    },
+    {
+      "detail": "1134465743/2022934493",
+      "name": "p_3 = 1134465743/2022934493",
+      "pass": true
+    },
+    {
+      "detail": "2*3925487 < 7874237",
+      "name": "p_2 < 1/2  (still Euclidean at step 2)",
+      "pass": true
+    },
+    {
+      "detail": "2*1134465743 > 2022934493",
+      "name": "p_3 > 1/2  (Lorentzian at step 3)",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "the map is strictly increasing on (0,1)",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "therefore the signature changes at exactly step 3",
+      "pass": true
+    },
+    {
+      "detail": "1/2 - p_2 = 23263/15748474 = 0.0014772",
+      "name": "step 2 lands within 0.15% of the critical point",
+      "pass": true
+    },
+    {
+      "detail": "n* = 2.023604",
+      "name": "the continuum crossing time is n* in (2,3)",
+      "pass": true
+    }
+  ],
+  "condition_number": 16,
+  "eps_star": "1/99144",
+  "eta_inertia": [
+    47,
+    78
+  ],
+  "failed": [],
+  "gap_below_half": "23263/15748474",
+  "generic_trajectory": [
+    0.3760000000000001,
+    0.45919414246710527,
+    0.5417581495506687,
+    0.6196413157342799,
+    0.6898686961607521,
+    0.7508128123933532,
+    0.8020761078713121,
+    0.8441538679845452,
+    0.8780568021217948
+  ],
+  "kappa": "ln(17/15)",
+  "kappa_value": 0.125163142954006,
+  "kernel_dimension": 47,
+  "mu": "18",
+  "n_star": 2.0236038062965567,
+  "omega_c": "47/125",
+  "p2": "3925487/7874237",
+  "p2_float": 0.49852284100669053,
+  "p3": "1134465743/2022934493",
+  "p3_float": 0.5608020165386541,
+  "rho_star": "15/17",
+  "selector_roots": [
+    6,
+    30
+  ],
+  "sigma": "12",
+  "sigma_squared": "144",
+  "signature_ladder": {
+    "0 < p < 1/2": [
+      4,
+      0,
+      0
+    ],
+    "1/2 < p < 1": [
+      3,
+      1,
+      0
+    ],
+    "p -> 0": [
+      0,
+      0,
+      4
+    ],
+    "p = 1": [
+      3,
+      0,
+      1
+    ],
+    "p = 1/2": [
+      3,
+      0,
+      1
+    ]
+  },
+  "spatial_gram_diagonal": 2.0,
+  "spectrum": [
+    0,
+    2,
+    6,
+    12,
+    20,
+    30,
+    42
+  ],
+  "state_counts": [
+    1,
+    9,
+    25,
+    28,
+    27,
+    22,
+    13
+  ],
+  "total": 68,
+  "trajectory": [
+    [
+      "47/125",
+      0.376
+    ],
+    [
+      "13583/31133",
+      0.43628946776732086
+    ],
+    [
+      "3925487/7874237",
+      0.49852284100669053
+    ],
+    [
+      "1134465743/2022934493",
+      0.5608020165386541
+    ],
+    [
+      "327860599727/527766068477",
+      0.6212233398655642
+    ],
+    [
+      "94751713321103/139730443789853",
+      0.6781035739327103
+    ],
+    [
+      "27383245149798767/37503459505267517",
+      0.7301525115557053
+    ],
+    [
+      "7913757848291843663/10190806078272312413",
+      0.7765585752009024
+    ],
+    [
+      "2287076018156342818607/2799411869901948287357",
+      0.816984468325645
+    ]
+  ],
+  "transition_step": 3
+}
