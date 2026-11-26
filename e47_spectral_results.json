@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "carrier dimension 125": true,
+    "Casimir eigenvalues": true,
+    "Casimir multiplicities": true,
+    "Casimir Hermitian": true,
+    "selector Hermitian": true,
+    "Q equals K squared": true,
+    "kernel rank 47": true,
+    "P rank 47": true,
+    "P idempotent": true,
+    "P Hermitian": true,
+    "KP zero": true,
+    "QP zero": true,
+    "Q positive semidefinite": true,
+    "rho min": true,
+    "rho max": true,
+    "Q spectrum matches K^2 values": true,
+    "epsilon optimal": true,
+    "rho optimal": true,
+    "discrete n100 convergence": true,
+    "discrete n100 matches (15/17)^100": true,
+    "spectral residual equals rho^n": true,
+    "continuous t0.001 convergence": true,
+    "continuous t0.001 matches exp(-11.664)": true
+  },
+  "rank": 47,
+  "epsilon": 1.0086339062373921e-05,
+  "rho": 0.8823529411764706
+}

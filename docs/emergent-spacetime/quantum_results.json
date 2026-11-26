@@ -1,0 +1,202 @@
+{
+  "checks": [
+    {
+      "detail": "tr P = 47.000000000000",
+      "name": "kernel projector has trace 47",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "the filter is Hermitian",
+      "pass": true
+    },
+    {
+      "detail": "||Lambda|| = 1.000000000000000",
+      "name": "the filter is contractive (all singular values <= 1)",
+      "pass": true
+    },
+    {
+      "detail": "max |Lambda*Lambda - I| = 0.276619",
+      "name": "the filter is NOT unitary, so it is not a gate",
+      "pass": true
+    },
+    {
+      "detail": "min eigenvalue = 0.00e+00",
+      "name": "I - Lambda*Lambda is positive semidefinite",
+      "pass": true
+    },
+    {
+      "detail": "max deviation = 6.17e-16",
+      "name": "the Kraus pair is complete: K0*K0 + K1*K1 = I",
+      "pass": true
+    },
+    {
+      "detail": "max |K1 P| = 7.27e-09",
+      "name": "K1 annihilates the kernel (no leakage from E47)",
+      "pass": true
+    },
+    {
+      "detail": "max deviation = 6.17e-16",
+      "name": "the dilation column block is an isometry: V*V = I",
+      "pass": true
+    },
+    {
+      "detail": "shape (250, 250)",
+      "name": "the dilation is a 250-dimensional unitary",
+      "pass": true
+    },
+    {
+      "detail": "max |U*U - I| = 8.88e-16",
+      "name": "U is unitary to machine precision",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "the initial state is a valid density matrix",
+      "pass": true
+    },
+    {
+      "detail": "max deviation = 0.00e+00",
+      "name": "tracing the ancilla out of U reproduces the Kraus channel exactly",
+      "pass": true
+    },
+    {
+      "detail": "max |p_quantum - p_exact| = 6.66e-16",
+      "name": "the quantum run reproduces the exact rational envelope",
+      "pass": true
+    },
+    {
+      "detail": "p_2 = 0.498522841",
+      "name": "the simulated signature is Euclidean at step 2",
+      "pass": true
+    },
+    {
+      "detail": "p_3 = 0.560802017",
+      "name": "the simulated signature is Lorentzian at step 3",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "the signature changes exactly once over the run",
+      "pass": true
+    },
+    {
+      "detail": "min success probability = 0.861813",
+      "name": "the post-selection branch never becomes improbable",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "from p0 = 1/100 the turn is the first step past half occupancy (step 19)",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "from p0 = 1/4 the turn is the first step past half occupancy (step 5)",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "from p0 = 47/125 the turn is the first step past half occupancy (step 3)",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "from p0 = 2/5 the turn is the first step past half occupancy (step 2)",
+      "pass": true
+    }
+  ],
+  "dilation_dimension": 250,
+  "dilation_unitarity_error": 8.881784197001252e-16,
+  "failed": [],
+  "kappa": 0.125163142954006,
+  "kraus_completeness_error": 6.173911791800464e-16,
+  "min_success_probability": 0.8618131487889275,
+  "rows": [
+    {
+      "occupancy": 0.37599999999999956,
+      "occupancy_exact": "47/125",
+      "regime": "Euclidean",
+      "signature": [
+        4,
+        0,
+        0
+      ],
+      "step": 0,
+      "success_probability": 0.8618131487889275
+    },
+    {
+      "occupancy": 0.43628946776732036,
+      "occupancy_exact": "13583/31133",
+      "regime": "Euclidean",
+      "signature": [
+        4,
+        0,
+        0
+      ],
+      "step": 1,
+      "success_probability": 0.8751644496093722
+    },
+    {
+      "occupancy": 0.49852284100669,
+      "occupancy_exact": "3925487/7874237",
+      "regime": "Euclidean",
+      "signature": [
+        4,
+        0,
+        0
+      ],
+      "step": 2,
+      "success_probability": 0.8889462346866028
+    },
+    {
+      "occupancy": 0.5608020165386536,
+      "occupancy_exact": "1134465743/2022934493",
+      "regime": "Lorentzian",
+      "signature": [
+        3,
+        1,
+        0
+      ],
+      "step": 3,
+      "success_probability": 0.9027381628320896
+    },
+    {
+      "occupancy": 0.6212233398655636,
+      "occupancy_exact": "327860599727/527766068477",
+      "regime": "Lorentzian",
+      "signature": [
+        3,
+        1,
+        0
+      ],
+      "step": 4,
+      "success_probability": 0.9161186634996406
+    },
+    {
+      "occupancy": 0.6781035739327096,
+      "occupancy_exact": "94751713321103/139730443789853",
+      "regime": "Lorentzian",
+      "signature": [
+        3,
+        1,
+        0
+      ],
+      "step": 5,
+      "success_probability": 0.9287149783103581
+    },
+    {
+      "occupancy": 0.7301525115557046,
+      "occupancy_exact": "27383245149798767/37503459505267517",
+      "regime": "Lorentzian",
+      "signature": [
+        3,
+        1,
+        0
+      ],
+      "step": 6,
+      "success_probability": 0.940241386642094
+    }
+  ],
+  "total": 21
+}

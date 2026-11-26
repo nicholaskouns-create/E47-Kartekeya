@@ -96,3 +96,11 @@ research/e47-lexical-attractor-20260923/results/spacetime_execution.log
 research/e47/validation/e47_grassmann_validation.json
 research/e47/validation/e47_symbolic_python_quantum_validation_report.json
 research/e47/workbench-inputs/operators.npz
+
+# Coq and Lean build artefacts
+*.vo
+*.vok
+*.vos
+*.glob
+.*.aux
+*.olean

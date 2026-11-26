@@ -1,0 +1,87 @@
+name: Emergent Spacetime — Python, Lean, Coq and quantum simulation
+on:
+  push:
+    paths:
+      - 'docs/emergent-spacetime/**'
+      - 'website/interfaces/emergent-spacetime/**'
+      - '.github/workflows/emergent-spacetime.yml'
+  pull_request:
+    paths:
+      - 'docs/emergent-spacetime/**'
+      - 'website/interfaces/emergent-spacetime/**'
+      - '.github/workflows/emergent-spacetime.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python-certificate:
+    name: Certificate and quantum simulation
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - name: Derive every constant from the su(2) generators
+        run: python docs/emergent-spacetime/certificate.py
+      - name: Kraus channel and Stinespring dilation
+        run: python docs/emergent-spacetime/quantum_simulation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: emergent-spacetime-results
+          path: |
+            docs/emergent-spacetime/results.json
+            docs/emergent-spacetime/quantum_results.json
+
+  browser-engine:
+    name: Browser flow engine
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test website/interfaces/emergent-spacetime/flow.test.mjs
+
+  coq-proof:
+    name: Coq, axiom-free
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y coq
+          coqc --version
+          coqc -q docs/emergent-spacetime/HalfOccupancy.v | tee /tmp/coq.log
+      - name: Fail if any theorem depends on an axiom
+        run: |
+          set -euo pipefail
+          if grep -qv 'Closed under the global context' /tmp/coq.log; then
+            echo "A theorem reported assumptions:"
+            grep -v 'Closed under the global context' /tmp/coq.log
+            exit 1
+          fi
+          echo "All $(grep -c 'Closed under the global context' /tmp/coq.log) theorems are axiom-free."
+
+  lean-proof:
+    name: Lean, axiom-free
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean 4.35.0 (core only, no Mathlib)
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.35.0
+      - name: Compile and audit axioms
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lean docs/emergent-spacetime/HalfOccupancy.lean | tee /tmp/lean.log
+          if grep -q 'depends on axioms' /tmp/lean.log; then
+            echo "A theorem depends on axioms:"
+            grep 'depends on axioms' /tmp/lean.log
+            exit 1
+          fi
+          echo "All $(grep -c 'does not depend on any axioms' /tmp/lean.log) theorems are axiom-free."
