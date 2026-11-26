@@ -105,3 +105,37 @@ Direct NumPy/SciPy spin-2 raising/lowering reconstruction; momentum p = (2, 0.3,
 **Relation to the host page:** The Clifford–Casimir bridge is an independent extension of the internal E₄₇ selector. The host page's half-occupancy induced metric g₀₀ = p̈/4 is a separate specified metric construction; the Clifford identity does not alone prove that induced signature transition.
 
 [Emergent Spacetime instrument](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/emergent-spacetime/) · [Half-Occupancy source](README.md)
+
+## Ⅷ. Computational certificate — supplied formalism
+
+[Executable NumPy certificate](dirac_kouns_certificate.py). Run with Python 3 and NumPy. The supplied algorithm is retained with ASCII identifiers, trace-derived moments and explicit assertions on contraction residuals. The expected output was corrected using a fresh local reconstruction of the 125-dimensional carrier; the tensor lift has the identical operator norm.
+
+n = (10, 50, 100)
+
+ρ⋆ⁿ = (2.860377655391561 × 10⁻¹, 1.914771187734083 × 10⁻³, 3.666348701376589 × 10⁻⁶)
+
+Measured reduced-carrier residuals: 0.28603776553915616, 0.0019147711877342633, 0.0000036663487015360417.
+
+The newly added complete script has not yet been executed as a whole. Its Clifford and projector assertions are included as supplied; the differential operator identities follow symbolically, not from a differential-equation simulation.
+
+### Explicit representation derivation
+
+V₂ ⊗ V₂ ≅ V₀ ⊕ V₁ ⊕ V₂ ⊕ V₃ ⊕ V₄
+
+V₂⊗³ ≅ ⊕ⱼ₌₀⁶ nⱼVⱼ
+
+(n₀,…,n₆) = (1,3,5,4,3,2,1)
+
+dim Eⱼ₍ⱼ₊₁₎ = nⱼ(2j+1)
+
+Tr C = Σⱼ nⱼ(2j+1)j(j+1) = 2250
+
+Tr C² = Σⱼ nⱼ(2j+1)[j(j+1)]² = 58500
+
+rank K = 78; rank 𝒫 = 188
+
+spec(𝒢) = {1} ∪ {1−ε⋆λ : λ ∈ spec(K²), λ ≠ 0}
+
+‖𝒢−𝒫‖₂ = ρ⋆ ⇒ ‖𝒢ⁿ−𝒫‖₂ = ρ⋆ⁿ → 0
+
+∎
