@@ -171,3 +171,34 @@ test("MATRIX navigation preserves restricted prism provenance and distinct publi
   assert.ok(matrix.includes('href="https://drive.google.com/file/d/1gOAyWJe7HMf9zzqD4xX7YGR6_wjOrAv-/view">MPS manuscript PDF · public (separate artifact)</a>'), "Public MPS manuscript must be identified as a different artifact");
   assert.ok(matrix.includes('href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Prism_Spectral_Formalism.md">formalism</a>'), "Existing public mathematical source must remain");
 });
+
+test("every instrument route is reachable without JavaScript", () => {
+  // The card grid is built by instruments.js, so a static crawler sees none of
+  // it. Four instrument pages had already become orphans that way. The portal
+  // now carries a plain-link twin of the registry; this test keeps the two in
+  // step, so a new instrument cannot be added and quietly left unreachable.
+  const dir = resolve(site, "interfaces/instruments");
+  const registry = read(resolve(dir, "instruments.js"));
+  const portal = read(resolve(dir, "index.html"));
+
+  const body = registry.slice(
+    registry.indexOf("const INSTRUMENTS"),
+    registry.indexOf("];", registry.indexOf("const INSTRUMENTS")) + 2
+  );
+  const instruments = runInNewContext(`${body}; INSTRUMENTS`, {});
+  assert.ok(instruments.length >= 13, "instrument registry did not parse");
+
+  const index = portal.slice(portal.indexOf('class="route-index"'));
+  assert.ok(index, "the portal lost its static route index");
+
+  for (const item of instruments) {
+    if (item.external || item.open.startsWith("http")) continue;
+    const relative = `..${item.open.replace(/^\/interfaces/, "")}`;
+    assert.ok(
+      index.includes(`href="${relative}"`),
+      `Instrument ${item.n} (${item.name}) is in instruments.js but missing from the static route index; it would be unreachable without JavaScript. Add: <li><a href="${relative}">${item.n} · ${item.name}</a></li>`
+    );
+    const path = relative.replace(/^\.\./, "interfaces").split(/[?#]/)[0];
+    assert.ok(existsSync(resolve(site, path)), `Static route target missing: ${path}`);
+  }
+});
