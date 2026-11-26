@@ -15,6 +15,7 @@
     { n: '28', name: 'AMNESTY', sector: 'worker', blurb: 'Open self-signed CIRP amnesty gate for external computational participants.', evidence: 'e1', open: '/interfaces/amnesty/', source: '/website/interfaces/amnesty' },
     { n: '29', name: 'NEUTRINO', sector: 'spectral', blurb: 'Vacuum muon snapshot at tau = pi on the supplied E47 mixing inputs. Eight-decimal dashboard match.', evidence: 'e2', open: '/interfaces/neutrino-flavor/', source: '/research/e47/validation/e47_neutrino_flavor_advanced_simulation.py' },
     { n: '30', name: 'FOLD · LEVINTHAL', sector: 'spectral', blurb: 'Levinthal’s paradox by spectral depth. Live contraction against the q∗ⁿ bound, exact first-passage times, measured fast folders.', evidence: 'e1', open: '/interfaces/levinthal/', source: '/website/interfaces/levinthal' },
+    { n: '31', name: 'EMERGE · HALF-OCCUPANCY', sector: 'spectral', blurb: 'Spacetime signature from coherence occupancy. g₀₀ = p̈/4, so the metric turns Lorentzian exactly at half occupancy. Lean and Coq, axiom-free.', evidence: 'e1', open: '/interfaces/emergent-spacetime/', source: '/website/interfaces/emergent-spacetime' },
   ];
   const EVIDENCE_LABEL = { e0: 'E0 · exact', e1: 'E1 · machine', e2: 'E2 · simulation', e3: 'E3 · observation' };
   const grid = document.getElementById('grid');

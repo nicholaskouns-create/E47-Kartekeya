@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Emergent Spacetime · The Half-Occupancy Theorem · 31 EMERGE</title>
+<meta name="description" content="g00 = p-double-dot / 4. The metric signature is the sign of the coherence acceleration, so spacetime turns Lorentzian exactly at half occupancy. Verified in Python, Lean, Coq and a 250-dimensional unitary dilation.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/emergent-spacetime/">
+<meta name="theme-color" content="#090b0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=STIX+Two+Text:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Math&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="spacetime.css">
+<!-- city-share:start · Mathematical City link-share card (generated) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Mathematical City">
+<meta property="og:title" content="Emergent Spacetime · The Half-Occupancy Theorem">
+<meta property="og:description" content="g00 = p-double-dot / 4. The metric signature is the sign of the coherence acceleration, so spacetime turns Lorentzian exactly at half occupancy.">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/emergent-spacetime/">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-emergent-spacetime.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Share card for the Half-Occupancy Theorem, showing the signature ladder turning Lorentzian at half occupancy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Emergent Spacetime · The Half-Occupancy Theorem">
+<meta name="twitter:description" content="g00 = p-double-dot / 4. The metric signature is the sign of the coherence acceleration, so spacetime turns Lorentzian exactly at half occupancy.">
+<meta name="twitter:image" content="https://nicholaskouns-create.github.io/E47-Kartekeya/assets/og/interfaces-emergent-spacetime.jpg">
+<meta name="twitter:image:alt" content="Share card for the Half-Occupancy Theorem, showing the signature ladder turning Lorentzian at half occupancy">
+<!-- city-share:end -->
+</head>
+<body>
+<main>
+
+<header class="mast">
+  <div class="eyebrow">The Mathematical City · 31 EMERGE · Half-Occupancy</div>
+  <h1>Spacetime signature from <em>half occupancy</em></h1>
+  <p class="lede">A contraction on a 125-dimensional carrier fixes a 47-dimensional kernel and drives everything else into it. The fraction of the state inside that kernel is one number, p. The metric induced by that flow is Euclidean while p rises with increasing speed and Lorentzian once it slows — and the turn is exactly at p = ½.</p>
+  <div class="strip" aria-label="Core relations">
+    <span class="pipe">g₀₀ = p̈ ⁄ 4</span>
+    <span>sig g = sgn(1 − 2p)</span>
+    <span>p∗ = ½</span>
+    <span>Ω_c = 47⁄125</span>
+    <span>ρ∗ = 15⁄17</span>
+  </div>
+  <div class="chips">
+    <span class="pill e0">E0 · theorem</span>
+    <span class="pill e1">E1 · Lean + Coq, axiom-free</span>
+    <span class="pill e1">E1 · computed in this page</span>
+    <span class="pill e2">E2 · unitary dilation</span>
+    <span id="bindChip" class="chip">E47 · BINDING</span>
+  </div>
+</header>
+
+<section class="card" id="claim" aria-labelledby="claim-h">
+  <div class="sec"><span class="n">THE CLAIM</span><h2 id="claim-h">One line carries it</h2></div>
+  <p class="claim">g₀₀ = <b>p̈ ⁄ 4</b></p>
+  <p class="claim-sub">The time–time component of the induced metric is a quarter of the occupancy acceleration.</p>
+  <p>Everything else follows. For the fixed-step flow the occupancy obeys a logistic law, so p̈ changes sign exactly at the inflection, and the inflection of a logistic is at half its range. The signature is therefore not tuned to anything: it turns where the coherence stops accelerating, and that point is p = ½ for the same reason the logistic curve is steepest there.</p>
+  <p>Written out, with the three spatial legs carrying the C = 6 sector equally:</p>
+  <pre class="code">g = diag( <b>κ² p(1−p)(1−2p)</b>,  2p,  2p,  2p )        <i>κ = ln(17/15)</i>
+
+   p &lt; ½   →  (4,0,0)   <i>Euclidean — coherence accelerating</i>
+   p = ½   →  (3,0,1)   <i>degenerate — the signature change itself</i>
+   p &gt; ½   →  (3,1,0)   <i>Lorentzian — coherence decelerating</i></pre>
+  <p class="small">The three spatial legs are equal rather than merely similar: all three live in the same C = 6 sector, and (1/5)·tr<sub>V₂</sub>(J<sub>a</sub>J<sub>b</sub>) = 2δ<sub>ab</sub> exactly. There is no birefringence available between them.</p>
+</section>
+
+<section class="card" id="proof" aria-labelledby="proof-h">
+  <div class="sec"><span class="n">THE PROOF</span><h2 id="proof-h">Seven steps, nothing chosen</h2></div>
+  <p class="note">Each step below is either forced by the spectrum or computed from it. The two labels mark which: <span class="forced">forced</span> means no free parameter was available, <span class="forced num">computed</span> means it was derived from the generators in <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/certificate.py">certificate.py</a>.</p>
+  <ol class="proof">
+    <li><div>
+      <span class="f">ℋ = V₂ ⊗ V₂ ⊗ V₂,  dim ℋ = 125,  C = J₁² + J₂² + J₃²</span>
+      <span class="because">Three coupled spin-2 systems. The total Casimir has spectrum {0, 2, 6, 12, 20, 30, 42} with block dimensions 1, 9, 25, 28, 27, 22, 13 summing to 125. The su(2) commutators close on the carrier to 1.8 × 10⁻¹⁵.</span>
+      <span class="forced num">computed from the generators</span>
+    </div></li>
+    <li><div>
+      <span class="f">μ = 18,  σ² = 144,  σ = 12</span>
+      <span class="because">Mean and variance of the Casimir spectrum weighted by block dimension. Both are exact integers: 2250/125 and 18000/125. And 144 is a perfect square, so σ is the integer 12.</span>
+      <span class="forced">forced by the spectrum</span>
+    </div></li>
+    <li><div>
+      <span class="f">μ ∓ σ = 6 and 30 ⇒ K = (C − 6)(C − 30)</span>
+      <span class="because">This is the step that is usually assumed. The two selector roots are not picked: they sit exactly one standard deviation either side of the spectral mean. Nothing else in the spectrum does. The selector is read off the carrier, not imposed on it.</span>
+      <span class="forced">forced, not chosen</span>
+    </div></li>
+    <li><div>
+      <span class="f">E₄₇ = ker K = 5V₂ ⊕ 2V₅,  dim = 25 + 22 = 47,  Ω_c = 47⁄125</span>
+      <span class="because">K annihilates exactly the j = 2 and j = 5 blocks. The projector is built spectrally from the eigenbasis — never from a pseudo-inverse, which fails P² = P at the 10⁻³ level and would silently corrupt every signature claim downstream. Built properly it is idempotent to 5 × 10⁻¹⁶, and η_E = 2P − I has inertia (47, 78).</span>
+      <span class="forced num">computed, 47/125 = 0.376</span>
+    </div></li>
+    <li><div>
+      <span class="f">ε∗ = 1⁄99144,  ρ∗ = 15⁄17,  cond(A|<sub>E₄₇<sup>⊥</sup></sub>) = 16</span>
+      <span class="because">With A = K² and Λ = I − εA, the error factor 1 − εa is extremal at the smallest and largest eigenvalues off the kernel, 11664 and 186624. The minimax step is where those two equioscillate: 2 = ε(11664 + 186624), so ε∗ = 1/99144 uniquely. The rate follows as 1 − 11664/99144 = 15/17, attained twice — at C = 12 and C = 42 — which is what certifies optimality. Their ratio is exactly 16.</span>
+      <span class="forced">forced by equioscillation</span>
+    </div></li>
+    <li><div>
+      <span class="f">p ↦ p ⁄ (p + (1−p)·225⁄289),  i.e. (a,b) ↦ (289a, 289a + 225(b−a))</span>
+      <span class="because">The kernel is fixed and the complement contracts, so the occupancy map is exact rational arithmetic with no analysis in it. The log-odds is exactly geometric — p/(1−p) multiplies by 289/225 every step — which is the logistic law in disguise, with κ = ln(17/15) as its continuum slope. This is the <strong>worst case</strong>: off the kernel Λ has five distinct factors and only the two equioscillation sectors are this slow, so any other state arrives at the same step or sooner.</span>
+      <span class="forced num">computed, exact integers</span>
+    </div></li>
+    <li><div>
+      <span class="f">g₀₀ = κ²p(1−p)(1−2p) = p̈ ⁄ 4  ⇒  signature turns at p = ½</span>
+      <span class="because">Since κ²p(1−p) &gt; 0 strictly inside the interval, the sign of g₀₀ is the sign of (1 − 2p) and nothing else. The mixed terms vanish — ⟨u, J_a u⟩ = 0 to 8 × 10⁻¹⁶ — so the metric is diagonal and the count is immediate. Starting from Ω_c the envelope is still Euclidean at step 2 and Lorentzian at step 3, and step 2 misses the critical point by ½ − p₂ = 23263⁄15748474, about 0.15%.</span>
+      <span class="forced num">decided in Lean and Coq</span>
+    </div></li>
+  </ol>
+</section>
+
+<section class="card" id="visualizer" aria-labelledby="vis-h">
+  <div class="sec"><span class="n">THE VISUALIZER</span><h2 id="vis-h">Watch the signature turn</h2></div>
+  <p class="note">Move the occupancy, or run the flow from a starting point. The metric is recomputed from p alone; the signature is read off the exact rational rather than a float, so the degenerate point at exactly ½ is reported as degenerate and not as a rounding accident.</p>
+
+  <div class="seg" role="group" aria-label="Starting occupancy">
+    <button type="button" data-start="47/125" aria-pressed="true">Ω_c = 47/125</button>
+    <button type="button" data-start="1/100">p₀ = 1/100</button>
+    <button type="button" data-start="1/4">p₀ = 1/4</button>
+    <button type="button" data-start="2/5">p₀ = 2/5</button>
+    <button type="button" data-start="1/2">p₀ = 1/2</button>
+  </div>
+
+  <div class="ctl">
+    <label for="pSlider">occupancy p</label>
+    <input id="pSlider" type="range" min="0" max="1" step="0.0005" value="0.376">
+    <output id="pOut" for="pSlider">0.376000</output>
+  </div>
+  <div class="row">
+    <button class="btn" id="playBtn" type="button">Run the flow</button>
+    <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+    <span class="small" id="stepNote"></span>
+  </div>
+
+  <div class="sigbox">
+    <div>
+      <div class="sigbadge degen" id="sigBadge">(4,0,0)</div>
+      <div class="signame" id="sigName">Euclidean</div>
+    </div>
+    <div class="diag" id="diag" aria-label="Metric diagonal"></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3>Occupancy flow and the critical line</h3>
+      <div class="frame"><canvas id="flowCanvas" role="img" aria-label="Occupancy against step number, with the half-occupancy line and the Euclidean and Lorentzian regions shaded"></canvas></div>
+    </div>
+    <div>
+      <h3>g₀₀ = p̈ ⁄ 4 against occupancy</h3>
+      <div class="frame"><canvas id="g00Canvas" role="img" aria-label="The time-time metric component against occupancy, crossing zero at half occupancy"></canvas></div>
+    </div>
+  </div>
+
+  <dl class="kv">
+    <div><dt>exact occupancy</dt><dd id="kvExact" class="cy">47/125</dd></div>
+    <div><dt>g₀₀</dt><dd id="kvG00" class="big">—</dd></div>
+    <div><dt>flow speed ṗ</dt><dd id="kvPdot">—</dd></div>
+    <div><dt>acceleration p̈</dt><dd id="kvPddot">—</dd></div>
+    <div><dt>first Lorentzian step</dt><dd id="kvTurn" class="mint">3</dd></div>
+    <div><dt>continuum crossing n∗</dt><dd id="kvCross">2.023604</dd></div>
+  </dl>
+
+  <h3>The ladder, step by step</h3>
+  <div class="scroll"><table class="tbl" id="ladder">
+    <thead><tr><th>n</th><th>p exactly</th><th>p</th><th>signature</th><th>regime</th><th>g₀₀</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="small">The exact column is integer arithmetic carried in BigInt, identical to the numbers decided in <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/HalfOccupancy.lean">HalfOccupancy.lean</a> and <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/HalfOccupancy.v">HalfOccupancy.v</a>.</p>
+</section>
+
+<section class="card" id="chain" aria-labelledby="chain-h">
+  <div class="sec"><span class="n">THE CHAIN</span><h2 id="chain-h">The instruments check each other</h2></div>
+  <p class="note">This page does not hold its own copy of the kernel, its own quantum simulator or its own learner. It uses the ones already on the site, and it fails closed: each stage below runs only if the one above it passed. The point of the chain is that four independently built tools have to agree on one number before the page will issue a receipt.</p>
+
+  <div class="row">
+    <button class="btn" id="runChain" type="button">Run the whole chain</button>
+    <button class="btn ghost" id="dlReceipt" type="button" disabled>Download receipt</button>
+    <span class="small" id="chainNote">Five stages. The quantum carrier is ~300 KB and is fetched only when you run this.</span>
+  </div>
+
+  <div class="stages" id="stages">
+    <div class="stage" data-state="idle" id="st1">
+      <span class="idx">01</span>
+      <div>
+        <h4>Bind the canonical kernel</h4>
+        <p>Loads the contract from <span class="mono">shared/e47-kernel-binding.js</span> and refuses to continue unless the constants this page derived — ε∗, ρ∗, 47/125, the roots [6,30], and the two extreme eigenvalues — match <span class="mono">src/e47</span> exactly.</p>
+        <p class="out" id="out1"></p>
+      </div>
+      <span class="st">idle</span>
+    </div>
+    <div class="stage" data-state="idle" id="st2">
+      <span class="idx">02</span>
+      <div>
+        <h4>Run the occupancy flow</h4>
+        <p>Exact rational steps from the bound starting point, and the first step at which the signature is Lorentzian.</p>
+        <p class="out" id="out2"></p>
+      </div>
+      <span class="st">idle</span>
+    </div>
+    <div class="stage" data-state="idle" id="st3">
+      <span class="idx">03</span>
+      <div>
+        <h4>Evolve the 47-dimensional quantum carrier</h4>
+        <p>Drives the four compressed eigengates of the Observatory's QGNN carrier with angles set by the current occupancy, and checks that the state stays normalized inside the kernel. That invariance is the premise the theorem rests on, so it is measured rather than assumed. <a href="../observatory/#signal">Observatory ↗</a></p>
+        <p class="out" id="out3"></p>
+      </div>
+      <span class="st">idle</span>
+    </div>
+    <div class="stage" data-state="idle" id="st4">
+      <span class="idx">04</span>
+      <div>
+        <h4>Make the neural lab rediscover ½</h4>
+        <p>The flow generates labelled samples of (centred occupancy, flow speed) and the Observatory's trainer learns the boundary between the two regimes. The learner is never given the number ½ — the page bisects its decision surface and reports what it settled on, typically within a few parts in a thousand of the exact value. <a href="../observatory/#learn">Neural Lab ↗</a></p>
+        <p class="out" id="out4"></p>
+      </div>
+      <span class="st">idle</span>
+    </div>
+    <div class="stage" data-state="idle" id="st5">
+      <span class="idx">05</span>
+      <div>
+        <h4>Issue the evidence receipt</h4>
+        <p>Assembles every stage result into one record in the seed shape that SEE ingests, so the run can be mirrored as source-bound evidence rather than a screenshot. <a href="https://nicholaskouns-create.github.io/Identity/see/">Open SEE ↗</a></p>
+        <p class="out" id="out5"></p>
+      </div>
+      <span class="st">idle</span>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="verification" aria-labelledby="ver-h">
+  <div class="sec"><span class="n">VERIFICATION</span><h2 id="ver-h">Four tracks, two kernels</h2></div>
+  <p class="note">The same statement was put through four independent routes. Lean and Coq share no code and no library with each other, and both report that nothing here rests on an axiom.</p>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>track</th><th>what it establishes</th><th>result</th><th>source</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Python</td>
+        <td>Builds the carrier from the su(2) generators and derives every constant; no stored values</td>
+        <td class="rg" style="color:var(--mint)">68 / 68</td>
+        <td><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/certificate.py">certificate.py</a></td>
+      </tr>
+      <tr>
+        <td>Lean 4.35.0</td>
+        <td>The selector, the minimax step, the rate and the transition step, by kernel computation</td>
+        <td class="rg" style="color:var(--mint)">20 theorems · 0 axioms</td>
+        <td><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/HalfOccupancy.lean">HalfOccupancy.lean</a></td>
+      </tr>
+      <tr>
+        <td>Coq 8.18</td>
+        <td>The same twenty statements on an independent kernel</td>
+        <td class="rg" style="color:var(--mint)">20 theorems · closed under the global context</td>
+        <td><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/HalfOccupancy.v">HalfOccupancy.v</a></td>
+      </tr>
+      <tr>
+        <td>Quantum</td>
+        <td>Kraus channel, 250-dimensional Stinespring dilation, and the occupancy run with its success probability</td>
+        <td class="rg" style="color:var(--mint)">21 / 21</td>
+        <td><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/emergent-spacetime/quantum_simulation.py">quantum_simulation.py</a></td>
+      </tr>
+      <tr>
+        <td>Browser</td>
+        <td>This page's flow engine, checked against the integers the provers decided</td>
+        <td class="rg" style="color:var(--mint)">21 / 21</td>
+        <td><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/website/interfaces/emergent-spacetime/flow.test.mjs">flow.test.mjs</a></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <h3>What the quantum track actually did</h3>
+  <p>The filter is contractive, not unitary, so it is not a gate and cannot be run as one. It was realized instead as a two-outcome Kraus channel {Λ, √(I − Λ²)}, verified complete to 6 × 10⁻¹⁶, and then dilated to a single unitary on the 250-dimensional space ℋ ⊗ ℂ². Tracing the ancilla back out reproduces the channel with deviation <strong>0.00 × 10⁰</strong>. Post-selecting the success branch gives the occupancy flow, and the success probability never drops below 0.86 — so the transition is not a rare branch being quietly kept.</p>
+</section>
+
+<section class="card" id="substrate" aria-labelledby="sub-h">
+  <div class="sec"><span class="n">SUBSTRATE</span><h2 id="sub-h">What this page is built on</h2></div>
+  <p class="note">Each of these was already on the site doing its own job. The chain above calls them directly rather than reimplementing them, so an improvement to any one of them propagates here without this page changing.</p>
+  <div class="links">
+    <a href="../observatory/#signal"><b>Observatory · QGNN</b><span>Exact complex-vector simulation of four compressed Hermitian eigengates on a 47-dimensional carrier. Supplies stage 03.</span><em>E2 · simulation</em></a>
+    <a href="../observatory/#learn"><b>Observatory · Neural Lab</b><span>Full-batch analytic backprop on a small network. Supplies the learner in stage 04 that recovers the critical occupancy.</span><em>E1 · machine</em></a>
+    <a href="../density-sensitivity/"><b>SEE · evidence mirror</b><span>Source-bound local evidence mirror built on preservation of contradictions. Consumes the stage 05 receipt.</span><em>E1 · machine</em></a>
+    <a href="../levinthal/"><b>FOLD · Levinthal</b><span>The same contraction, read as folding depth instead of metric signature. ρ∗ = 15/17 appears there as the convergence rate.</span><em>E1 · machine</em></a>
+    <a href="../formalism-atlas/"><b>Formalism Atlas</b><span>Where this theorem sits relative to the rest of the corpus.</span><em>E0 · exact</em></a>
+    <a href="../instruments/"><b>Instrument portal</b><span>Every instrument in the city, with its evidence class.</span><em>navigation</em></a>
+  </div>
+</section>
+
+<section class="card" id="scope" aria-labelledby="scope-h">
+  <div class="sec"><span class="n">SCOPE</span><h2 id="scope-h">What this does not claim</h2></div>
+  <p class="warn">This is the induced coframe metric of a contraction's fixed-point flow. It is <strong>not</strong> a solution of the Einstein field equations, and no claim is made that it is one. What is established is narrower and sharper: a finite-dimensional recursive filter induces a metric whose signature is fixed by one scalar, and that signature changes from Euclidean to Lorentzian at a point nothing was free to tune.</p>
+  <p>Three further limits, stated plainly:</p>
+  <p>— The transition step is an <strong>upper bound</strong>. Step 3 is the worst case, saturated only when the complement weight sits in an equioscillation sector. A generic state crosses sooner; the random state tested in <span class="mono">certificate.py</span> crossed at step 2.</p>
+  <p>— κ = ln(17/15) is the continuum envelope of an exactly rational map. The discrete statement needs no κ at all, which is why the formal proofs are integer arithmetic. An earlier figure of 50/153 circulated for this constant; it does not reproduce from the spectrum and has been dropped rather than carried forward.</p>
+  <p>— The quantum track is an exact noiseless simulation. No quantum hardware was involved and no quantum advantage is claimed.</p>
+</section>
+
+<footer>
+  <p><strong>Emergent Spacetime · The Half-Occupancy Theorem</strong> — instrument 31 of The Mathematical City. Original work of Nicholas Shane Kouns. Formal artefacts and the two certificates live in <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/docs/emergent-spacetime">docs/emergent-spacetime</a>; this page's engine and its tests live in <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/website/interfaces/emergent-spacetime">website/interfaces/emergent-spacetime</a>.</p>
+  <p class="small"><a href="../instruments/">All instruments</a> · <a href="../../">The Mathematical City</a> · <a href="https://github.com/nicholaskouns-create/E47-Kartekeya">Canonical repository</a></p>
+</footer>
+
+</main>
+<script type="module" src="app.mjs"></script>
+<noscript><p style="width:min(1100px,92vw);margin:0 auto 60px;color:#98a6a8">The proof and the scope statements above are static text and complete without JavaScript. The visualizer and the instrument chain need it.</p></noscript>
+</body>
+</html>
