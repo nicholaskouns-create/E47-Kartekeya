@@ -376,3 +376,9 @@ An additive, mobile-friendly research instrument showing the 125-site product-sp
 
 A mathematical three-stage alignment → binding → commitment map (𝒪=A∘B∘Ω), Banach strict-contraction proof with explicit assumptions, and a distinct E₄₇ spectral complement contraction (125→47, rate 15/17). Python tests and evidence boundaries are supplied; acoustic, biological and retrocausal effects are not asserted.
 <!-- /ΩBA-PROOF-LINK-20261124 -->
+
+## E₄₇ and the Standard Model
+
+[Gauge and matter derivation](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/standard-model/) · [Runnable Python validation](interfaces/standard-model/validate.py) · [Read the page source](interfaces/standard-model/index.html)
+
+Pair exchange gives the gauge subgroup. Choosing the exterior-square matter module recovers one generation’s gauge representations. The page includes the assumptions, anomaly sums, Yukawa charge checks, and executed Python output.
