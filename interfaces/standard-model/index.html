@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E₄₇ and the Standard Model · Gauge and matter derivation</title><style>*{box-sizing:border-box}body{max-width:54rem;margin:auto;padding:clamp(1rem,5vw,4rem);background:#faf9f4;color:#162d32;font:1.08rem/1.6 system-ui}h1,h2{font-family:Georgia,serif;line-height:1.14}h1{font-size:clamp(2.25rem,7vw,4rem)}h2{margin-top:2.2em;border-top:1px solid #b7c2bb;padding-top:.7em}a{color:#075f60}pre{font:.85rem/1.6 monospace;overflow:auto;background:#eaf0ea;padding:1rem}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.4em;border-bottom:1px solid #c4ceca}.eq{border-left:3px solid #af8431;padding-left:1em}summary{cursor:pointer}</style><main>
+<h1>E₄₇ and the Standard Model</h1><p>Three spin-2 factors give a gauge subgroup for each choice of tensor pair. An additional exterior-square matter assignment yields the internal representations of one Standard Model generation. The calculation below tracks precisely where each input enters.</p><nav><a href="#validation">Python validation</a> · <a href="validate.py" download>Download Python</a></nav>
+<h2>1. The spectral kernel</h2><p>Couple the first two spins to L = 0, 1, 2, 3, 4. The third spin gives each total spin J from |L − 2| to L + 2. On that sector C acts by J(J + 1), so K = (C − 6I)(C − 30I) vanishes only for J = 2 and 5. All five intermediate spins reach J = 2. Only L = 3, 4 reach J = 5.</p><p class="eq">E₄₇ ≅ (W ⊗ V₂) ⊕ (T ⊗ V₅)<br>dim W = 5, dim T = 2<br>dim E₄₇ = 5·5 + 2·11 = 47, Ω꜀ = 47/125.</p>
+<h2>2. Pair exchange gives the gauge subgroup</h2><p>Choose τ = (12). On W the exchange eigenvalue is (−1)ᴸ. The even and odd intermediate spins split W = U ⊕ V into dimensions 3 and 2. The other two pair choices are related by permutation. An operator commutes with τ exactly when its two off-diagonal blocks vanish. Inside SU(W), unitarity and determinant one give Gτ = S(U(3) × U(2)).</p><p class="eq">Φ(A,B,z) = diag(z⁻²A, z³B)<br>ker Φ = {(z²I₃, z⁻³I₂, z) : z⁶ = 1} ≅ ℤ₆.</p><p>For any block pair (u,v) in Gτ, choose z with z⁶ = det(v), then A = z²u and B = z⁻³v both have determinant one. Thus Φ is onto, and Gτ ≅ (SU(3) × SU(2) × U(1))/ℤ₆. Tracelessness gives 3a + 2b = 0. The primitive central weights are (−2,3) up to sign. In the conventional unit Y = diag(−⅓I₃, ½I₂).</p>
+<h2>3. Where the quark doublet appears</h2><p>Every compact gauge action through End<sub>SU(2)</sub>(E₄₇) ≅ M₅ ⊕ M₂ acts on the kernel as five copies of W and eleven copies of T. Neither space can contain an irreducible six-dimensional (3,2). Choose the additional module ℱ = W* ⊕ Λ²W. Its exterior square contains the missing cross term U ⊗ V.</p><table><thead><tr><th>Summand</th><th>SU(3) × SU(2)</th><th>Y</th><th>Field</th></tr></thead><tbody><tr><td>U*</td><td>(3̅,1)</td><td>⅓</td><td>dᶜ</td></tr><tr><td>V*</td><td>(1,2)</td><td>−½</td><td>L</td></tr><tr><td>Λ²U</td><td>(3̅,1)</td><td>−⅔</td><td>uᶜ</td></tr><tr><td>U ⊗ V</td><td>(3,2)</td><td>⅙</td><td>Q</td></tr><tr><td>Λ²V</td><td>(1,1)</td><td>1</td><td>eᶜ</td></tr></tbody></table><p>Duals reverse hypercharge and tensor products add it. The three-color exterior square transforms as the antitriplet by the invariant determinant tensor. The two-dimensional exterior square of the weak doublet is a singlet. These dimensions sum to 15.</p>
+<h2>4. Anomalies, families and interactions</h2><p>The cubic color coefficient is 2 − 1 − 1 = 0. The mixed color and weak coefficients are 2(⅙) − ⅔ + ⅓ = 0 and 3(⅙) − ½ = 0. The traces of Y and Y³ vanish when weighted by the five multiplet dimensions. There are four weak doublets per generation. Each cancellation persists for any number of identical copies, so it does not select three families.</p><p>Assign left-handed Weyl fields to ℱ, three family copies, and a scalar Higgs H to V with Y = ½. The up, down and charged-lepton Yukawa contractions are neutral:</p><p class="eq">Y(Q̄ᴸ H̃ uᴿ) = −⅙ − ½ + ⅔ = 0<br>Y(Q̄ᴸ H dᴿ) = −⅙ + ½ − ⅓ = 0<br>Y(L̄ᴸ H eᴿ) = ½ + ½ − 1 = 0.</p><p>The lock leaves the Yukawa matrices, gauge couplings and Higgs potential undetermined. For example, two different positive coefficients of (H†H)² preserve the same kernel and gauge representation while giving different scalar self-interactions. A spacetime field theory, its chirality assignment and its measured parameters require additional input.</p>
+<h2 id="validation">5. Python validation</h2><p>Run <code>python3 validate.py</code> with standard Python 3. The output below was produced by the linked script. It checks multiplicities and charges by exact integer and rational arithmetic. The group identification uses the proof above.</p><pre>PASS  carrier: 125
+PASS  kernel sectors: [25, 22]
+PASS  kernel fraction: 47/125
+PASS  exchange multiplicities: (3, 2)
+PASS  centralizer dimension: 12
+PASS  primitive central weights: (-2, 3, 0)
+PASS  covering kernel order: 6
+PASS  dual multiplicities: (3, 2)
+PASS  exterior square multiplicities: (3, 6, 1)
+PASS  one generation: 15
+PASS  five anomaly sums: ('0', '0', '0', '0', '0')
+PASS  weak doublet parity: 0
+PASS  three barred-field Yukawa sums: ('0', '0', '0')</pre><details><summary>Show Python source</summary><pre>"""Validate the E47 gauge and matter construction with exact Python arithmetic."""
+from collections import Counter
+from fractions import Fraction as F
+from itertools import combinations
+from math import gcd
+
+def check(name, actual, expected):
+    if actual != expected:
+        raise AssertionError(f"{name}: {actual} != {expected}")
+    print(f"PASS  {name}: {actual}")
+
+# Couple spin 2 twice, then couple the third spin 2.
+paths = {j: [l for l in range(5) if abs(l - 2) &lt;= j &lt;= l + 2]
+         for j in range(7)}
+dims = {j: len(ls) * (2*j + 1) for j, ls in paths.items()}
+check("carrier", sum(dims.values()), 125)
+endpoints = [j for j in paths if j*(j+1) in (6, 30)]
+check("kernel sectors", [dims[j] for j in endpoints], [25, 22])
+check("kernel fraction", F(sum(dims[j] for j in endpoints), sum(dims.values())), F(47,125))
+
+# Pair exchange in the spin-2 multiplicity space.
+signs = [(-1)**l for l in paths[2]]
+p, q = signs.count(1), signs.count(-1)
+check("exchange multiplicities", (p,q), (3,2))
+# Rank of the traceless commutator kernel: one real determinant constraint.
+check("centralizer dimension", sum(a == b for a in signs for b in signs)-1, 12)
+a, b = -q//gcd(p,q), p//gcd(p,q)
+check("primitive central weights", (a,b,p*a+q*b), (-2,3,0))
+check("covering kernel order", gcd(abs(p*a),abs(q*b)), 6)
+
+# Conventional charge unit; chosen matter module W* + exterior square of W.
+u, v = F(a,6), F(b,6)
+weights = [u]*p + [v]*q
+dual = Counter(-w for w in weights)
+wedge = Counter(x+y for x,y in combinations(weights,2))
+dc, lepton, uc, quark, ec = -u, -v, 2*u, u+v, 2*v
+check("dual multiplicities", (dual[dc],dual[lepton]), (3,2))
+check("exterior square multiplicities", (wedge[uc],wedge[quark],wedge[ec]), (3,6,1))
+family = dual + wedge
+check("one generation", sum(family.values()), 15)
+anomalies = (q-1-1, q*quark+uc+dc, p*quark+lepton,
+             sum(n*y for y,n in family.items()),
+             sum(n*y**3 for y,n in family.items()))
+check("five anomaly sums", tuple(map(str, anomalies)), ("0",)*5)
+check("weak doublet parity", (p+1)%2, 0)
+yukawa = (-quark-v-uc, -quark+v-dc, -lepton+v-ec)
+check("three barred-field Yukawa sums", tuple(map(str,yukawa)), ("0",)*3)
+</pre></details><p><a href="validate.py" download>Download validate.py</a> · <a href="https://github.com/nicholaskouns-create/E47-Kartekeya">E₄₇ kernel repository</a> · <a href="https://github.com/nicholaskouns-create/E47-Electroweak-Identities">Electroweak identities</a> · <a href="https://pdg.lbl.gov/2024/reviews/rpp2024-rev-guts.pdf">PDG gauge representations</a></p></main></html>
