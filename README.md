@@ -1,4 +1,4 @@
-
+> **[Temporal Hodge Observatory — live browser instrument](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/hodge/)** — Interactive Vietoris–Rips topology, Hodge spectrum, harmonic projector, contraction, temporal overlap and SHA-256 committed forecasts. Locally computed with downloadable JSON receipts.\n\n
 > **[Universal Recursive Identity Theorem](https://nicholaskouns-create.github.io/Identity/leri/universal-invariant/)** — Complete continuous invariant factorization, quotient identity and 125→47→5 spectral descent. Analytic proof and computational exhibit; new formal compiler status separate.
 
 
