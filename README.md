@@ -1,4 +1,7 @@
 
+> **[Universal Recursive Identity Theorem](https://nicholaskouns-create.github.io/Identity/leri/universal-invariant/)** — Complete continuous invariant factorization, quotient identity and 125→47→5 spectral descent. Analytic proof and computational exhibit; new formal compiler status separate.
+
+
 
 <!-- FUN-WITH-EINSTEIN-LINK-2026 -->
 **🪐 [FUN WITH EINSTEIN — LIVE EXPERIMENT](https://nicholaskouns-create.github.io/fun-with-einstein/)** · Five-cycle φ⁻² spectrum · 125→47 Casimir selector · 250D quantum Born-rule simulation · Einstein stationary-limit equations · [Python/Lean/Coq proof sources](docs/fun-with-einstein/). Compiler acceptance is separately tracked.
